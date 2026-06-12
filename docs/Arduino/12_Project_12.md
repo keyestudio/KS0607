@@ -1,47 +1,47 @@
-### プロジェクト12：超音波障害物回避タンク
+### Project 12: Ultrasonic Hindernisvermijdende Tank
 
 ![](./media/image-20250709112200577.png)
 
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-前のプロジェクトでは、超音波を使った追跡スマートカーを作りました。実際には、同じコンポーネントと同じ配線方法を使い、テストコードを変更するだけで、超音波障害物回避スマートカーに変えることができます。このスマートカーは人の手の動きに合わせて動くことができます。
+In het vorige project maakten we een ultrasone geluidvolgende slimme auto. In feite kunnen we met dezelfde componenten en dezelfde bedradingsmethode, door alleen de testcode te veranderen, er een ultrasone hindernisvermijdende slimme auto van maken. Deze slimme auto kan meebewegen met de beweging van de menselijke handen.
 
-超音波センサーを使って、スマートカーと前方の障害物との距離を検出し、そのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
+We gebruiken ultrasone sensoren om de afstand te meten tussen de slimme auto en het obstakel aan de voorkant, en besturen vervolgens de rotatie van de twee motoren op basis van deze gegevens om zo de bewegingen van de slimme auto te regelen.
 
-|                          検出                           |        |
+|                          Detectie                            |        |
 | :----------------------------------------------------------: | :----: |
-| 超音波センサーで測定したカーと前方の障害物との距離 <br />（サーボの角度を90°に設定） | a(cm)  |
-| 超音波センサーで測定したカーと右側の障害物との距離 <br />（サーボの角度を20°に設定） | a2(cm) |
-| 超音波センサーで測定したカーと左側の障害物との距離 <br />（サーボの角度を160°に設定） | a1(cm) |
-|   **設定：** サーボの開始角度を90°に設定する    |        |
+| Afstand gemeten door de ultrasone sensor tussen de auto en het obstakel aan de voorkant <br />（stel de hoek van de servo in op 90°） | a(cm)  |
+| Afstand gemeten door de ultrasone sensor tussen de auto en het obstakel aan de rechterkant <br />（stel de hoek van de servo in op 20°） | a2(cm) |
+| Afstand gemeten door de ultrasone sensor tussen de auto en het obstakel aan de linkerkant <br />（stel de hoek van de servo in op 160°） | a1(cm) |
+|   **Instelling:** stel de beginhoek van de servo in op 90°    |        |
 
-|   条件1   |        条件2         | 条件3 | 動作                                                     |
+|   Conditie 1   |        Conditie 2         | Conditie 3 | Beweging                                                     |
 | :-------------: | :------------------------: | ----------- | ------------------------------------------------------------ |
-|      a＜20      |                            |             | 500ms停止；<br />サーボの角度を180°に設定し、a1を読み取り、100msの遅延；<br />サーボの角度を0°に設定し、a2を読み取り、0.1sの遅延。 |
-|                 | a1＜50<br />または<br />a2＜50 |             | a1とa2を比較する                                           |
-|                 |                            | a1＞a2      | サーボの角度を90°に設定し、700ms左回転（PWMを255に設定）<br />前進（PWMを200に設定）。 |
-|                 |                            | a1＜a2      | サーボの角度を90°に設定し、700ms右回転（PWMを255に設定）<br />前進（PWMを200に設定）。 |
-| **条件1** |      **条件2**       |             | **動作**                                                 |
-|      a＜20      | a1≥50<br />かつ<br />a2≥50  | ランダム      | サーボの角度を90°に設定し、500ms左回転（PWMを255に設定）<br />前進（PWMを200に設定）<br /><br />サーボの角度を90°に設定し、500ms右回転（PWMを255に設定）<br />前進（PWMを200に設定） |
-|  **条件**  |                            |             | **動作**                                                 |
-|      a≥20       |                            |             | 前進（PWMを100に設定）                                 |
+|      a＜20      |                            |             | Stop gedurende 500ms；<br />stel de hoek van de servo in op 180°, lees a1, vertraging van 100ms；<br />stel de hoek van de servo in op 0°, lees a2, vertraging van 0.1s. |
+|                 | a1＜50<br />of<br />a2＜50 |             | Vergelijk a1 met a2                                          |
+|                 |                            | a1＞a2      | Stel de hoek van de servo in op 90°, draai links voor 700ms (stel PWM in op 255)<br />beweeg vooruit（stel PWM in op 200）. |
+|                 |                            | a1＜a2      | Stel de hoek van de servo in op 90°, draai rechts voor 700ms (stel PWM in op 255) <br />beweeg vooruit（stel PWM in op 200）. |
+| **Conditie 1** |      **Conditie 2**       |             | **Beweging**                                                 |
+|      a＜20      | a1≥50<br />en<br />a2≥50  | Willekeurig      | stel de hoek van de servo in op 90°, draai links voor 500ms (stel PWM in op 255)<br />beweeg vooruit (stel PWM in op 200)<br /><br />stel de hoek van de servo in op 90°, draai rechts voor 500ms (stel PWM in op 255) <br />beweeg vooruit (stel PWM in op 200) |
+|  **Conditie**  |                            |             | **Beweging**                                                 |
+|      a≥20       |                            |             | beweeg vooruit (stel PWM in op 100)                                 |
 
 
 
-#### **(2)フローチャート：**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps10.png)
 
-#### **(3)接続図：**
+#### **(3)Aansluitingsdiagram:**
 
 ![](media/72a10097d286bc5f9589df031b60484a.png)
 
-(<span style="color: rgb(255, 76, 65);">注意：</span> サーボの茶色、赤色、オレンジ色のワイヤーはそれぞれ拡張ボードのG（GND）、V（5V）、D10に接続します；超音波センサーについては、VCCピンを5v（V）に、Trigピンをデジタル12（S）に、Echoピンをデジタル13（S）に、GndピンをGnd（G）に接続します；前のプロジェクトと同様です。）
+(<span style="color: rgb(255, 76, 65);">Opmerking:</span> de bruine, rode en oranje draden van de servo zijn respectievelijk verbonden met G (GND), V（5V）en D10 van de uitbreidingskaart；en voor de ultrasone sensor is de VCC-pin verbonden met 5v (V), de Trig-pin met digitaal 12 (S), de Echo-pin met digitaal 13 (S), en de Gnd-pin met Gnd (G); hetzelfde als het vorige project.）
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er mogelijk conflicten kunnen optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -50,12 +50,12 @@
   Ultrasonic avoid tank
   http://www.keyestudio.com
 */
-#define servoPin 10  //サーボのピン
+#define servoPin 10  //De pin van de servo
 int a, a1, a2;
-#define ML_Ctrl 4  //左モーターの方向制御ピンを定義する
-#define ML_PWM 6   //左モーターのPWM制御ピンを定義する
-#define MR_Ctrl 2  //右モーターの方向制御ピンを定義する
-#define MR_PWM 5   //右モーターのPWM制御ピンを定義する
+#define ML_Ctrl 4  //Definieer de richtingsbesturingspin van de linkermotor
+#define ML_PWM 6   //Definieer de PWM-besturingspin van de linkermotor
+#define MR_Ctrl 2  //Definieer de richtingsbesturingspin van de rechtermotor
+#define MR_PWM 5   //Definieer de PWM-besturingspin van de rechtermotor
 #define Trig 12
 #define Echo 13
 float distance;
@@ -70,43 +70,43 @@ void setup()
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  procedure(90); //サーボの角度を90°に設定する
-  delay(500); //500ms遅延する
+  procedure(90); //Stel de hoek van de servo in op 90°
+  delay(500); //vertraging van 500ms
 }
 
 void loop() 
 {
-  a = checkdistance();  //超音波センサーで検出した前方への距離を変数aに代入する
+  a = checkdistance();  //Wijs de door de ultrasone sensor gedetecteerde afstand aan de voorkant toe aan de variabele a
 
-  if (a < 20) //前方への距離が20cm未満の場合
+  if (a < 20) //Wanneer de afstand aan de voorkant kleiner is dan 20cm
   {
-    Car_Stop();  //ロボットが停止する
-    delay(500); //500ms遅延する
-    procedure(180);  //超音波パンチルトが左を向く
-    delay(500); //500ms遅延する
-    a1 = checkdistance();  //超音波センサーで検出した左側への距離を変数a1に代入する
-    delay(100); //値を読み取る
-    procedure(0); //超音波パンチルトが右を向く
-    delay(500); //500ms遅延する
-    a2 = checkdistance(); //超音波センサーで検出した右側への距離を変数a2に代入する
-    delay(100); //値を読み取る
+    Car_Stop();  //De robot stopt
+    delay(500); //vertraging van 500ms
+    procedure(180);  //Ultrasone pan-tilt draait naar links
+    delay(500); //vertraging van 500ms
+    a1 = checkdistance();  //Wijs de door de ultrasone sensor gedetecteerde afstand aan de linkerkant toe aan de variabele a1
+    delay(100); //waarde lezen
+    procedure(0); //Ultrasone pan-tilt draait naar rechts
+    delay(500); //vertraging van 500ms
+    a2 = checkdistance(); //Wijs de door de ultrasone sensor gedetecteerde afstand aan de rechterkant toe aan de variabele a2
+    delay(100); //waarde lezen
     
-    procedure(90);  //90°に戻る
+    procedure(90);  //Terug naar 90°
     delay(500);
     if (a1 > a2) 
-    { //左側への距離が右側より大きい場合
-      Car_left();  //ロボットが左折する
-      delay(700);  //700ms左折する
+    { //Wanneer de afstand aan de linkerkant groter is dan aan de rechterkant
+      Car_left();  //De robot draait naar links
+      delay(700);  //700ms naar links draaien
     } 
     else 
     {
-      Car_right(); //700ms右折する
+      Car_right(); //700ms naar links draaien
       delay(700);
     }
   } 
-  else//前方への距離が20cm以上の場合、ロボットは前進する
+  else//Wanneer de afstand aan de voorkant >=20cm is, beweegt de robot vooruit
   {    
-    Car_front(); //前進する
+    Car_front(); //vooruit rijden
   }
 
 }
@@ -151,21 +151,21 @@ void Car_Stop()
   analogWrite(ML_PWM, 0);
 }
 
-//サーボを制御する関数
+//De functie bestuurt servo's
 void procedure(byte myangle) 
 {
   int pulsewidth;
   for (int i = 0; i < 5; i++) 
   {
-    pulsewidth = myangle * 11 + 500;  //パルス幅の値を計算する
+    pulsewidth = myangle * 11 + 500;  //Bereken de waarde van de pulsbreedte
     digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   //ハイレベルの時間がパルス幅を表す
+    delayMicroseconds(pulsewidth);   //De tijd in hoog niveau vertegenwoordigt de pulsbreedte
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  //サイクルは20msなので、残りの時間はローレベルになる
+    delay((20 - pulsewidth / 1000));  //Omdat de cyclus 20ms is, is de resterende tijd op laag niveau
   }
 }
 
-//超音波を制御する関数
+//De functie bestuurt ultrasoon geluid
 float checkdistance() 
 {
   float distance;
@@ -174,14 +174,14 @@ float checkdistance()
   digitalWrite(Trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(Trig, LOW);
-  distance = pulseIn(Echo, HIGH) / 58.20;  //ここでの58.20は2*29.1=58.2から来ている
+  distance = pulseIn(Echo, HIGH) / 58.20;  //De 58.20 hier komt van 2*29.1=58.2
   delay(10);
   return distance;
 }
 ```
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaat:**
 
-テストコードを正常にアップロードし、配線を行い、DIPスイッチをON側に切り替えて電源を入れると、スマートカーは前進しながら自動的に障害物を回避します。
+Na het succesvol uploaden van de testcode, de bedrading aansluiten, de DIP-schakelaar naar de ON-stand zetten en de stroom inschakelen, beweegt de slimme auto vooruit en vermijdt automatisch obstakels.
 
 ![](./media/img-20240117090420.png)

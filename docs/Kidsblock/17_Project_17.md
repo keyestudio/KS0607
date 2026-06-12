@@ -1,65 +1,65 @@
-### プロジェクト17：Bluetooth制御タンク
+### Project 17: Bluetooth Besturing Tank
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-前のプロジェクトでBluetoothの基本知識を学びました。このレッスンでは、Bluetoothを使ってスマートカーを制御します。Bluetoothを使用するため、送信側と受信側が必要です。このプロジェクトでは、携帯電話を送信側（マスター）として使用し、HM-10 Bluetoothモジュールに接続されたスマートカー（スレーブ）を受信側として使用します。
+We hebben de basiskennis van Bluetooth geleerd in het vorige project. In deze les zullen we Bluetooth gebruiken om de slimme auto te besturen. Omdat het Bluetooth betreft, zijn een verzendend en een ontvangend einde nodig. In het project gebruiken we de mobiele telefoon als zender (master), en de slimme auto verbonden met de HM-10 Bluetooth module (slave) als ontvanger.
 
-以前、ビットを送信してLEDを制御する方法を学びました。このロボットカーを制御する原理も同様です。
+We hebben eerder geleerd dat het verzenden van een bit LED's kan besturen. En het principe van het besturen van deze robotauto is hetzelfde.
 
-インテリジェントタンクロボットをより良く制御するために、専用のAPPを作成しました。このレッスンでは、コードを通じてこのAPP上のすべてのキー値を読み取り、タンクロボット専用のAPPをご紹介します。
+Om de intelligente tanktrobot beter te kunnen besturen, hebben we speciaal een APP gemaakt. In deze les lezen we alle toetswaarden op deze APP via code uit, en introduceren we vervolgens de exclusieve APP van onze tanktrobot.
 
-#### **(2)APP上のキー機能：**
+#### **(2)Sleutelfuncties op de APP:**
 
-以下の表は、対応するキーの機能を示しています：
+De volgende tabel illustreert de functies van de bijbehorende toetsen:
 
-|                      キー                       |                                                |                          機能                           |
+|                      Toetsen                       |                                                |                          Functies                           |
 | :---------------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
-| ![](media/1118dccd714c7988a51cf2dde58627e3.png) |                                                | HM-10 Bluetoothモジュールとペアリング・接続；再度クリックで切断 |
-| ![](media/b23e65f788685576275cc16bf0b679cc.png) |                                                |                 操作するロボットを選択                  |
-| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) |                                                |       ボタンでロボットの動きを制御する       |
-| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) |                                                |      ジョイスティックでロボットの動きを制御する       |
-| ![](media/3ab61154b4ae730a3757f40171846825.png) |                                                |       重力でロボットの動きを制御する       |
-| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) |   押すと"F"を送信、離すと"S"を送信    | 押している間は前進し、離すと停止する |
-| ![](media/b1765938932b8633bd5a96af0293ef24.png) |   押すと"L"を送信、離すと"S"を送信    | 押している間は左折し、離すと停止する |
-| ![](media/67f26bd7d2076922470e8805711f2ef9.png) |   押すと"R"を送信、離すと"S"を送信    | 押している間は右折し、離すと停止する |
-| ![](media/77615a8ca984e538d58e02ac90bc5382.png) |   押すと"B"を送信、離すと"S"を送信    | 押している間は後退し、離すと停止する |
-| ![](media/f58421773a56c911b09c150d08b0fd67.png) |        ドラッグ時に"u"+数字+"\#"を送信         |          ドラッグして左モーターの速度を変更する          |
-| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) |        ドラッグ時に"v"+数字+"\#"を送信         |         ドラッグして右モーターの速度を変更する          |
-| ![](media/5dd730ab4d2299210dc2399303b94e33.png) |         選択してファンクションページへ移動          |                                                              |
-| ![](media/a352ca9be952db2838540657b9a70f8c.png) | 押すと"G"を送信、再度押すと"S"を送信 | 押すと障害物回避モードに入り、再度押すと終了する |
-| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | 押すと"h"を送信、再度押すと"S"を送信 | 押すと追従モードに入り、再度押すと終了する |
-| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | 押すと"e"を送信、再度押すと"S"を送信 | 押すとライントレースモードに入り、再度押すと終了する |
-| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | 押すと"f"を送信、再度押すと"S"を送信 | 押すと限られたスペース内移動モードに入り、再度押すと終了する |
-| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | 押すと"i"を送信、再度押すと"S"を送信 | 押すとライトフォローモードに入り、再度押すと終了する |
-| ![](media/4250a152c647cc59f72bf51328943371.png) | 押すと"j"を送信、再度押すと"S"を送信 | 押すと消火モードに入り、再度押すと終了する |
-| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | 選択して顔表情表示モードへ移動 |                                                              |
-| ![](media/17261f134c25702ae129624860ab8fe1.png) | 押すと"k"を送信、再度押すと"z"を送信 | クリックすると笑顔のパターンを表示し、再度クリックすると表情をクリアする |
-| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | 押すと"l"を送信、再度押すと"z"を送信 | クリックすると嫌悪のパターンを表示し、再度クリックすると表情をクリアする |
-| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | 押すと"m"を送信、再度押すと"z"を送信 | クリックすると喜びの顔を表示し、再度クリックすると表情をクリアする |
-| ![](media/63d935cd1958863f862374ded9b87d6b.png) | 押すと"n"を送信、再度押すと"z"を送信 | クリックすると悲しいパターンを表示し、再度クリックすると表情をクリアする |
-| ![](media/5e84087020b919a85495831b231efa5a.png) | 押すと"o"を送信、再度押すと"z"を送信 | クリックすると軽蔑のパターンを表示し、再度クリックすると表情をクリアする |
-| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | 押すと"p"を送信、再度押すと"z"を送信 | クリックするとハート型のパターンを表示し、再度クリックすると表情をクリアする |
-| ![](media/41bf8b28dea6061cea89b640f5646403.png) |                                                | カスタム機能インターフェースへ移動を選択；1、2、3、4、5、6の6つのキーがあり、これらのキーを使って独自に機能を拡張できる |
-| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) |               クリックで"w"を送信                | クリックすると左側のフォトレジスタで検出されたアナログ値を表示する |
-| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) |                クリックで"y"を送信                | クリックすると右側のフォトレジスタで検出されたアナログ値を表示する |
-| ![](media/a76df707b84409e57a1167889c3510d9.png) |                クリックで"x"を送信                | クリックすると超音波センサーで検出された距離を表示する（単位：cm） |
-| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | クリックで"c"を送信<br />再度クリックで"d"を送信  |   押すとファンをオンにし、再度押すとオフにする    |
+| ![](media/1118dccd714c7988a51cf2dde58627e3.png) |                                                | Koppel en verbind de HM-10 Bluetooth module; klik opnieuw om de verbinding te verbreken |
+| ![](media/b23e65f788685576275cc16bf0b679cc.png) |                                                |                 Selecteer de robot om te bedienen                  |
+| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) |                                                |       Bestuur de bewegingen van de robot via knoppen       |
+| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) |                                                |      Bestuur de bewegingen van de robot via joystick       |
+| ![](media/3ab61154b4ae730a3757f40171846825.png) |                                                |       Bestuur de bewegingen van de robot via zwaartekracht       |
+| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) |   Stuurt "F" bij indrukken en "S" bij loslaten    | De auto beweegt vooruit wanneer ingedrukt en stopt wanneer losgelaten |
+| ![](media/b1765938932b8633bd5a96af0293ef24.png) |   Stuurt "L" bij indrukken en "S" bij loslaten    | De auto draait links wanneer stevig ingedrukt en stopt wanneer losgelaten |
+| ![](media/67f26bd7d2076922470e8805711f2ef9.png) |   Stuurt "R" bij indrukken en "S" bij loslaten    | De auto draait rechts wanneer stevig ingedrukt en stopt wanneer losgelaten |
+| ![](media/77615a8ca984e538d58e02ac90bc5382.png) |   Stuurt "B" bij indrukken en "S" bij loslaten    | De auto rijdt achteruit wanneer stevig ingedrukt en stopt wanneer losgelaten |
+| ![](media/f58421773a56c911b09c150d08b0fd67.png) |        Stuurt "u"+cijfer+"\#" bij slepen         |          Sleep om de snelheid van de linkermotor te wijzigen          |
+| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) |        Stuurt "v"+cijfer+"\#" bij slepen         |         Sleep om de snelheid van de rechtermotor te wijzigen          |
+| ![](media/5dd730ab4d2299210dc2399303b94e33.png) |         Selecteer om de Functiepagina te openen          |                                                              |
+| ![](media/a352ca9be952db2838540657b9a70f8c.png) | Stuurt "G" bij indrukken en "S" bij opnieuw indrukken | Activeer obstakelvermijdingsmodus bij indrukken en deactiveer bij opnieuw indrukken |
+| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | Stuurt "h" bij indrukken en "S" bij opnieuw indrukken | Activeer volgmodus bij indrukken en deactiveer bij opnieuw indrukken |
+| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | Stuurt "e" bij indrukken en "S" bij opnieuw indrukken | Activeer lijnvolgmodus bij indrukken en deactiveer bij opnieuw indrukken |
+| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | Stuurt "f" bij indrukken en "S" bij opnieuw indrukken | Activeer rijden-in-beperkte-ruimte-modus bij indrukken en deactiveer bij opnieuw indrukken |
+| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | Stuurt "i" bij indrukken en "S" bij opnieuw indrukken | Activeer lichtvolgende modus bij indrukken en deactiveer bij opnieuw indrukken |
+| ![](media/4250a152c647cc59f72bf51328943371.png) | Stuurt "j" bij indrukken en "S" bij opnieuw indrukken | Activeer brandblussende modus bij indrukken en deactiveer bij opnieuw indrukken |
+| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | Selecteer om de weergavemodus voor gezichtsuitdrukkingen te openen |                                                              |
+| ![](media/17261f134c25702ae129624860ab8fe1.png) | Stuurt "k" bij indrukken en "z" bij opnieuw indrukken | Toont lachend patroon bij klikken en wist de uitdrukking bij opnieuw klikken |
+| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | Stuurt "l" bij indrukken en "z" bij opnieuw indrukken | Toont walgend patroon bij klikken en wist de uitdrukking bij opnieuw klikken |
+| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | Stuurt "m" bij indrukken en "z" bij opnieuw indrukken | Toont blij gezicht bij klikken en wist de uitdrukking bij opnieuw klikken |
+| ![](media/63d935cd1958863f862374ded9b87d6b.png) | Stuurt "n" bij indrukken en "z" bij opnieuw indrukken | Toont verdrietig patroon bij klikken en wist de uitdrukking bij opnieuw klikken |
+| ![](media/5e84087020b919a85495831b231efa5a.png) | Stuurt "o" bij indrukken en "z" bij opnieuw indrukken | Toont minachtend patroon bij klikken en wist de uitdrukking bij opnieuw klikken |
+| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | Stuurt "p" bij indrukken en "z" bij opnieuw indrukken | Toont hartvormig patroon bij klikken en wist de uitdrukking bij opnieuw klikken |
+| ![](media/41bf8b28dea6061cea89b640f5646403.png) |                                                | Kies om de aangepaste functie-interface te openen; er zijn zes toetsen 1,2,3,4,5,6; met deze toetsen kunt u zelf enkele functies uitbreiden |
+| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) |               Klik om "w" te versturen                | Klik om de analoge waarde weergeven die wordt gedetecteerd door de linker fotoweerstand |
+| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) |                Klik om "y" te versturen                | Klik om de analoge waarde weer te geven die wordt gedetecteerd door de rechter fotoweerstand |
+| ![](media/a76df707b84409e57a1167889c3510d9.png) |                Klik om "x" te versturen                | Klik om de afstand weer te geven die wordt gedetecteerd door de ultrasone sensor (eenheid: cm) |
+| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | Klik om "c" te versturen <br />Klik opnieuw om "d" te versturen  |   Druk om de ventilator aan te zetten en druk opnieuw om hem uit te zetten    |
 
-#### **(3)フローチャート：**
+#### **(3)Stroomdiagram:**
 
 ![](./media/image-20250709135203165.png)
 
-#### **(4)接続図：**
+#### **(4)Aansluitingsdiagram:**
 
 ![](media/930a8024364e07505e845624a94c27bd.png)
 
-<span style="color: rgb(255, 76, 65);">注意：</span>
+<span style="color: rgb(255, 76, 65);">Opmerking:</span>
 
-8x16 LEDパネルのGND、VCC、SDA、SCLは、拡張ボードのG（GND）、V（5V）、A4、A5に接続します。STATEとBRKは接続不要です。BTモジュールは拡張ボードに差し込みます。
+GND, VCC, SDA en SCL van het 8x16 LED-paneel zijn verbonden met G（GND), V（5V), A4 en A5 van de uitbreidingskaart. STATE en BRK hoeven niet te worden aangesloten. De BT-module wordt in de uitbreidingskaart gestoken.
 
-#### **(5)テストコード：**
+#### **(5)Testcode:**
 
-ブロックをドラッグしてコードを編集できます
+U kunt blokken slepen om uw code te bewerken
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -79,26 +79,26 @@
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/341e0a01bd6a76edb53f9414ef641a75.png)
 
-#### **(6)テスト結果：**
+#### **(6)Testresultaat:**
 
-コードをアップロードした後、ロボットをBluetoothモジュールに接続し、Bluetooth APPとペアリングします。モータードライブシールドの電源スイッチをオンにします。ロボットを床に置き、Bluetooth APPのボタンでロボットを制御できます。
+Na het uploaden van de code, verbindt u de robot met de Bluetooth-module en koppelt u de Bluetooth APP. Zet de aan/uitschakelaar van het motoraandrijfschild aan. Plaats de robot op de vloer, u kunt de knoppen van de Bluetooth-app gebruiken om de robot te besturen.
 
 ![](media/352d5ec83c4246b980da10b5f99711c5.jpeg)
 
-1. 上下左右の矢印でロボットをそれぞれ前進、後退、左折、右折させます。
+1. De pijlen omhoog, omlaag, links en rechts besturen de robot om respectievelijk vooruit, achteruit, naar links en naar rechts te bewegen.
 
 ![](./media/img-20240117095015.png)
 
-2. ジョイスティックボタンをクリックし、白い円の中の黒い点の方向を引っ張ってロボットの移動方向を制御します。
+2. Klik op de joystickknop en trek de richting van het zwarte punt in de witte cirkel om de bewegingsrichting van de robot te besturen.
 
 ![](./media/img-20240117095052.png)
 
-3. 重力ボタンをクリックし、スマートフォンを前後左右に傾けると、ロボットはスマートフォンが傾いた方向に移動します。
+3. Klik op de Zwaartekrachtknop en kantel de telefoon in de voorwaartse, achterwaartse, linker en rechter richtingen, en de robot zal bewegen in de richting waarin de telefoon wordt gekanteld.
 
 ![](./media/img-20240117095131.png)

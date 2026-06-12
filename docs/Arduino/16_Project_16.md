@@ -1,137 +1,137 @@
-### プロジェクト16：Bluetoothリモートコントロール
+### Project 16: Bluetooth Afstandsbediening
 
 ![](./media/img-20240111140012.png)
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-ここ数十年、Bluetoothは使いやすさからバッテリー駆動のほとんどのデバイスに広く利用されており、最も人気のあるワイヤレス通信モジュールとなっています。
+In de afgelopen decennia is Bluetooth de populairste draadloze communicatiemodule geworden omdat het eenvoudig te gebruiken is en brede toepassingen heeft gevonden in de meeste apparaten die op batterijen werken.
 
-時代やユーザーのニーズに対応するため、Bluetoothは何度もアップグレードされてきました。近年では、データ転送速度、ウェアラブルデバイスやIoTデバイスの消費電力、セキュリティシステムなど多くの面で変革を遂げています。ここでは、ArduinoボードとDX-BT24について学習します。
+Om zich aan te passen aan de tijd, de realiteit en de behoeften van klanten, is Bluetooth meerdere keren geüpgraded. De afgelopen jaren heeft het veel transformaties ondergaan op het gebied van gegevensoverdrachtssnelheid, stroomverbruik van draagbare apparaten en IoT-apparaten, beveiligingssystemen en andere aspecten. Hier plannen we te leren over DX-BT24 met een Arduino-board.
 
-#### **(2)仕様：**
+#### **(2)Parameters:**
 
-- Bluetoothプロトコル：Bluetooth Specification V5.1 BLE
+- Bluetooth-protocol: Bluetooth Specificatie V5.1 BLE
 
-- シリアルポートの送受信バイト数制限なし
+- Seriële poort verzenden en ontvangen zonder bytelimiet
 
-- 通信距離：40m（開放環境）
+- Communicatieafstand: 40m (open omgeving)
 
-- 動作周波数：2.4GHz ISMバンド
+- Werkfrequentie: 2,4GHz ISM-band
 
-- 変調方式：GFSK（ガウス周波数偏移変調）
+- Modulatiemethode: GFSK (Gaussian Frequency Shift Keying)
 
-- セキュリティ機能：認証および暗号化
+- Beveiligingsfuncties: Authenticatie en encryptie
 
-- サポートサービス：Central および Peripheral UUIDs FFE0、FFE1、FFE2
+- Ondersteunde services: Central en Peripheral UUIDs FFE0, FFE1, FFE2
 
-- 消費電力：自動スリープモード、スタンバイ電流 400uA〜800uA、送信中 8.5mA
+- Stroomverbruik: automatische slaapstand, stand-bystroomverbruik 400uA\~800uA, 8,5mA tijdens verzending.
+  
+- Voeding: 5V
 
-- 電源：5V
+- Bedrijfstemperatuur: –10 tot +65 graden Celsius
 
-- 動作温度：–10〜+65℃
+#### **(3)Aansluitschema:**
 
-#### **(3)接続図：**
+1.STATE is de statustest-pin verbonden met de interne lichtgevende diode en blijft gewoonlijk niet aangesloten.
 
-1.STATEはステータステストピンで、内部発光ダイオードに接続されており、通常は未接続のままにします。
+2.RXD is de seriële poortinterface voor de ontvangstterminal.
 
-2.RXDは受信端子のシリアルポートインターフェースです。
+3.TXD is de seriële poortinterface voor de verzendterminal.
 
-3.TXDは送信端子のシリアルポートインターフェースです。
+4.GND is voor aarding.
 
-4.GNDはグランドです。
+5.VCC is de positieve pool.
 
-5.VCCはプラス極です。
+6.EN/BRK: de verbreking hiervan staat voor de verbreking van de Bluetooth-verbinding en blijft gewoonlijk niet aangesloten.
 
-6.EN/BRK：これを切断するとBluetoothが切断され、通常は未接続のままにします。
-
-（注：ここではBluetoothをV2シールドに直接接続します。**方向に注意してください**）
+(Opmerking: hier wordt de Bluetooth rechtstreeks verbonden met het V2-shield en **let op de richting**)
 
 ![](media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
 
-#### **(4)アプリのダウンロードとインストール：**
+#### **(4)APP downloaden en installeren:**
 
-##### **iOSシステムの場合**
+##### **Voor iOS-systeem**
 
-1\. App Storeを開きます。
+1\. Open de App Store.
 
-2\. Apple Storeで <span style="color: rgb(61, 167, 66);">KeyesRobot</span> を検索し、ダウンロードをクリックします。
+2\. Zoek <span style="color: rgb(61, 167, 66);">KeyesRobot</span> in de Apple Store en klik op downloaden.
 
 ![](./media/img-20240111141301.png)
 
-3\. アプリがインストールされると、スマートフォンのデスクトップに以下のアイコンが表示されます。
+3\. Nadat de app is geïnstalleerd, ziet u het volgende pictogram op het bureaublad van uw telefoon.
 
 ![](./media/img-20240111141412.png)
 
-**iOSスマートフォンをBluetoothモジュールに接続する方法：**
+**Hoe iOS-telefoon verbinden met de Bluetooth-module:**
 
-1\. 設定からスマートフォンのBluetoothと位置情報サービスをオンにします。
+1\. Schakel Bluetooth en locatieservices in op de telefoon via instellingen.
 
 ![](./media/img-20240111141943.png)
 
-2\. 設定からKeyesRobot APPがBluetoothにアクセスすることを許可します。
+2\. Sta KeyesRobot APP toe om toegang te krijgen tot Bluetooth via instellingen.
 
 ![](./media/img-20240111142052.png)
 
-3\. KeyesRobot Appをタップして開きます。
+3\. Klik om de KeyesRobot App te openen.
 
 ![](./media/img-20240111142140.png)
 
-4\. KeyesRobot Appは複数のkeyestudioロボットに対応したユニバーサルAPPです。インターフェースに「TANK ROBOT」が表示されていない場合は、左右のボタンをクリックして「TANK ROBOT」を見つけてください。
+4\. KeyesRobot App is een universele APP, die wordt toegepast op meerdere keyestudio-robots. Als de interface geen "TANK ROBOT" weergeeft, kunt u op de linker- en rechterknop klikken om "TANK ROBOT" te vinden.
 
-5\. 右上隅の <span style="color: rgb(61, 167, 66);">Bluetooth</span> ボタン ![](./media/img-20240111142336.png) をクリックしてBluetoothをスキャンします。
+5\. Klik op de <span style="color: rgb(61, 167, 66);">Bluetooth</span>-knop ![](./media/img-20240111142336.png) in de rechterbovenhoek om Bluetooth te scannen.
 
 ![](./media/img-20240111142415.png)
 
-6\. <span style="color: rgb(0, 209, 0);">**BT24**</span> という名前のBluetoothが表示されます。<span style="color: rgb(255, 169, 0);">Connect</span> ボタンをクリックします。
+6\. U ziet een Bluetooth met de naam <span style="color: rgb(0, 209, 0);">**BT24**</span>, klik op de knop <span style="color: rgb(255, 169, 0);">Connect</span>.
 
 ![](./media/img-20240111142536.png)
 
-7\. BluetoothモジュールのオンボードLEDが点滅をやめて点灯し続ければ、スマートフォンがBluetoothモジュールへの接続に成功したことを意味します。
+7\. Als de ingebouwde LED op de Bluetooth-module stopt met knipperen en aan blijft, betekent dit dat uw telefoon succesvol is verbonden met de Bluetooth-module.
 
 ![](./media/img-20240111142702.png)
 
 
-##### **Androidシステムの場合**
+##### **Voor Android-systeem**
 
-1\. Google Playで <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> を検索するか、以下のリンクを開いてアプリをダウンロードしてインストールします。
+1\. Zoek <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> in Google Play, of open de volgende link om de app te downloaden en te installeren.
 
 [https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio](https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio)
 
 ![](./media/img-20240111143312.png)
 
-2\. スマートフォンのBluetoothと位置情報サービスをオンにします。
+2\. Schakel Bluetooth en de locatieservices van de mobiele telefoon in.
 
 ![](./media/img-20240111143354.png)
 
-3\. 設定からKeyesRobot Bluetooth appを見つけ、アプリの権限オプションをクリックして、位置情報と近くのデバイスの権限を有効にします。（<span style="color: rgb(255, 76, 65);">注：</span>一部のスマートフォンには近くのデバイスの権限機能がない場合があります。）
+3\. Zoek de KeyesRobot Bluetooth-app via instellingen, klik op de machtigingsopties van de app en schakel locatie- en nabijgelegen apparaatmachtigingen in. (<span style="color: rgb(255, 76, 65);">Opmerking:</span> Sommige mobiele telefoons hebben geen functie voor machtigingen voor nabijgelegen apparaten.)
 
 ![](./media/img-20240111143451.png)
 
-4\. KeyesRobot Appをタップして開きます。
+4\. Klik om de KeyesRobot App te openen.
 
 ![](./media/img-20240111143529.png)
 
-5\. KeyesRobot Appは複数のkeyestudioロボットに対応したユニバーサルAPPです。インターフェースに「TANK ROBOT」が表示されていない場合は、左右のボタンをクリックして「TANK ROBOT」を見つけてください。
+5\. KeyesRobot App is een universele APP, die wordt toegepast op meerdere keyestudio-robots. Als de interface geen "TANK ROBOT" weergeeft, kunt u op de linker- en rechterknop klikken om "TANK ROBOT" te vinden.
 
-6\. 右上隅の <span style="color: rgb(61, 167, 66);">Bluetooth</span> ボタン ![](./media/img-20240111142336.png) をクリックしてBluetoothをスキャンします。
+6\. Klik op de <span style="color: rgb(61, 167, 66);">Bluetooth</span>-knop ![](./media/img-20240111142336.png) in de rechterbovenhoek om Bluetooth te scannen.
 
 ![](./media/img-20240111142415.png)
 
-7\. <span style="color: rgb(0, 209, 0);">**BT24**</span> という名前のBluetoothが表示されます。<span style="color: rgb(255, 169, 0);">Connect</span> ボタンをクリックします。
+7\. U ziet een Bluetooth met de naam <span style="color: rgb(0, 209, 0);">**BT24**</span>, klik op de knop <span style="color: rgb(255, 169, 0);">Connect</span>.
 
 ![](./media/img-20240111143910.png)
 
-8\. スマートフォンがBluetoothモジュールへの接続に成功すると、BluetoothモジュールのオンボードLEDが点滅をやめて点灯し続けます。
+8\. Wanneer uw telefoon succesvol is verbonden met de Bluetooth-module, stopt de ingebouwde LED op de Bluetooth-module met knipperen en blijft aan.
 
 ![](./media/img-20240111144004.png)
 
 ![](./media/img-20240111142702.png)
 
 
-#### **(5)Bluetooth APPのテスト：**
+#### **(5)De Bluetooth APP testen:**
 
-（<span style="color: rgb(255, 76, 65);">**注：**</span>コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、BluetoothのシリアP通信と競合してアップロードが失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -141,7 +141,7 @@ Bluetooth
 http://www.keyestudio.com
 */
 
-char ble_val; // 文字変数（Bluetoothで受信した値を格納するために使用）
+char ble_val; // Tekenvariabele (gebruikt om de waarde ontvangen door Bluetooth op te slaan)
 
 void setup() 
 {
@@ -150,51 +150,51 @@ void setup()
 
 void loop() 
 {
-    if (Serial.available() > 0) // シリアルポートバッファにデータがあるか確認
+    if (Serial.available() > 0) // Bepaal of er gegevens in de seriële poortbuffer zijn
     {
-        ble_val = Serial.read(); // シリアルポートバッファのデータを読み取る
-        Serial.println(ble_val); // 出力する
+        ble_val = Serial.read(); // Lees de gegevens in de seriële poortbuffer
+        Serial.println(ble_val); // Afdrukken
     }
 }
 ```
 
-コードを開発ボードにアップロードし、Bluetoothモジュールを差し込み、スマートフォンをBluetoothモジュールに接続します。
+Upload de code naar het ontwikkelbord, sluit vervolgens de Bluetooth-module aan en verbind daarna de mobiele telefoon met de Bluetooth-module.
 
-スマートフォンがBluetoothモジュールへの接続に成功したら、Bluetooth APPを開き、<span style="color: rgb(0, 252, 255);">ホームページ</span>の <span style="color: rgb(0, 252, 255);">Select</span> ボタンをクリックします。
+Nadat de mobiele telefoon succesvol is verbonden met de Bluetooth-module, klikt u om de Bluetooth APP te openen en klikt u op de knop <span style="color: rgb(0, 252, 255);">Select</span> op de <span style="color: rgb(0, 252, 255);">startpagina</span>.
 
 ![](./media/img-20240111144744.png)
 
-Bluetooth appのメインインターフェースは以下の図のとおりです。
+De hoofdinterface van de Bluetooth-app wordt weergegeven in de onderstaande afbeelding.
 
 ![](./media/img-20240111144859.png)
 
-上記のコードのアップロードが成功したら、Arduino IDEのシリアルモニターを開き、ボーレートを9600に設定します。APP画面のアイコンをクリックすると、シリアルモニターにボタンから送信されたコマンドが表示されます。
+Nadat de bovenstaande code succesvol is geüpload, opent u de seriële monitor van de Arduino IDE en stelt u de baudrate in op 9600. Klik op het pictogram in de APP-interface en de seriële monitor geeft het commando weer dat door de knop is verzonden.
 
 ![](media/805f8ee5c8998a5d6cb8bcef9da09186.png)
 
 <br>
 <br>
-<span style="color: rgb(255, 76, 65);">**注：APPの接続方法は以下と同様です。**</span>
+<span style="color: rgb(255, 76, 65);">**Opmerking: De APP-verbindingsmethode is hetzelfde als hieronder.**</span>
 <br>
 <b>
 
-#### **(6)コードの説明：**
+#### **(6)Code-uitleg:**
 
-**Serial.available()** はシリアルポートバッファに現在残っている文字数を表します。
+**Serial.available()** vertegenwoordigt het aantal tekens dat momenteel overblijft in de seriële poortbuffer.
 
-この関数は一般的にこの領域にデータがあるかどうかを判断するために使用されます。Serial.available()\>0 の場合、シリアルポートがデータを受信しており、読み取ることができることを意味します。
+Deze functie wordt over het algemeen gebruikt om te bepalen of er gegevens in dit gebied zijn. Wanneer Serial.available()\>0, betekent dit dat de seriële poort gegevens heeft ontvangen en deze kunnen worden gelezen.
 
-**Serial.read()** はシリアルポートバッファから1バイトのデータを取り出して読み取ることを指します。例えば、デバイスがシリアルポートを介してArduinoにデータを送信した場合、Serial.read()を使用して送信されたデータを読み取ることができます。
+**Serial.read()** verwijst naar het uitnemen en lezen van een Byte aan gegevens uit de seriële poortbuffer. Als een apparaat bijvoorbeeld gegevens naar de Arduino verzendt via de seriële poort, kunnen we Serial.read() gebruiken om de verzonden gegevens te lezen.
 
-#### **(7)応用プロジェクト：**
+#### **(7)Uitbreidingsproject:**
 
-ここでは、スマートフォンから送信されるコマンドを使用してLEDライトをオン・オフします。接続図を見ると、LEDはD9ピンに接続されています。
+Hier gebruiken we het commando dat door de mobiele telefoon wordt verzonden om een LED-lamp aan of uit te zetten. Als we naar het bedradingsschema kijken, is een LED verbonden met de D9-pin.
 
 ![](media/549c10efcf47f29f8f6355d8cd0497cc.png)
 
-**テストコード**
+**Testcode**
 
-（<span style="color: rgb(255, 76, 65);">注：</span>コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、BluetoothのシリアP通信と競合してコードのアップロードが失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">Opmerking: </span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de seriële communicatie van de Bluetooth, waardoor het uploaden van de code kan mislukken.)
 
 ```C
 /*
@@ -205,7 +205,7 @@ http://www.keyestudio.com
 */
 
 int LED = 9;
-char ble_val; // Bluetoothで受信した値を格納するために使用する整数変数
+char ble_val; // Gehele getalvariabele gebruikt om de waarde ontvangen door Bluetooth op te slaan
 
 void setup() 
 {
@@ -216,9 +216,9 @@ void setup()
 void loop() 
 {
 
-    if (Serial.available() > 0) // シリアルポートバッファにデータがあるか確認
+    if (Serial.available() > 0) // Bepaal of er gegevens in de seriële poortbuffer zijn
     {
-        ble_val = Serial.read(); // シリアルポートバッファからデータを読み取る
+        ble_val = Serial.read(); // Lees gegevens uit de seriële poortbuffer
         Serial.print("DATA RECEIVED:");
         Serial.println(ble_val);
         if (ble_val == 'a') 
@@ -237,10 +237,10 @@ void loop()
 
 ![](media/3577f17c526b1dc55d4f587ef95f2d08.png)
 
-上記のコードのアップロードが成功したら、Arduino IDEのシリアルモニターを開き、ボーレートを9600に設定します。![](media/3fd6c998c0f665fb607a5827794b9bfe.png) をクリックしてLEDを制御します。クリックすると文字 a が送信され、LEDが点灯します。このボタンをもう一度押すと、LEDが消灯します。
+Nadat de bovenstaande code succesvol is geüpload, opent u de seriële monitor van de Arduino IDE en stelt u de baudrate in op 9600. Klik op ![](media/3fd6c998c0f665fb607a5827794b9bfe.png) om de LED te bedienen. Wanneer u erop klikt, wordt het teken a verzonden en gaat de LED aan. Als deze knop opnieuw wordt ingedrukt, gaat de LED uit.
 
 ![](./media/img-20240117094533.png)
 
 ![](media/b45c3c46391467218fe07003dbb2f3e3.png)
 
-プロジェクトが終了したら、BTモジュールを取り外してください。
+U moet de BT-module verwijderen als u klaar bent met de projecten.

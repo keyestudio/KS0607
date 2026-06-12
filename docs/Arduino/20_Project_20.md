@@ -1,54 +1,54 @@
-### プロジェクト 20: 炎センサー
+### Project 20: Flame Sensor
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)説明：**
+#### **(1)Beschrijving：**
 
-炎センサーはIR受光管を使用して炎を検出します。炎の明るさを高低レベルの信号に変換し、中央処理装置に入力して対応するプログラム処理を行います。アナログポートの電圧値は、近くに炎があるかどうかによって異なります。
+De vlamsensor gebruikt een IR-ontvangstbuis om vlammen te detecteren. Het converteert de helderheid van de vlam naar hoog- en laagsignalen en voert deze in de centrale processor voor de bijbehorende programmaverwerking. De spanningswaarde van de analoge poort varieert afhankelijk van of er een vlam dichtbij is of helemaal geen vlam.
 
-炎がない場合、アナログポートは約0.3Vを読み取ります。炎がある場合、アナログポートは約1.0Vを読み取ります。炎が近いほど、電圧値は高くなります。火源の検出やスマートロボットの構築に使用できます。
+Als er geen vlam is, leest de analoge poort ongeveer 0,3V; wanneer er een vlam is, leest de analoge poort ongeveer 1,0V. Hoe dichter de vlam, hoe hoger de spanningswaarde. Het kan worden gebruikt om een vuurhaard te detecteren of om een slimme robot te bouwen.
 
-炎センサーのプローブは-25℃から85℃の温度範囲しか耐えられないことに注意してください。
+Merk op dat de sonde van de vlamsensor alleen temperaturen tussen -25℃ en 85℃ kan verdragen.
 
-使用中は、炎センサーを火から安全な距離に保ち、損傷を避けてください。
+Zorg er tijdens gebruik voor dat de vlamsensor op een veilige afstand van het vuur blijft om beschadiging te voorkomen.
 
-#### **(2)パラメータ：**
+#### **(2)Parameters：**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- 動作電圧：3.3V-5V（DC）
+- Werkspanning: 3,3V-5V (DC)
 
-- 電流：100mA
+- Stroom: 100mA
 
-- 最大電力：0.5W
+- Maximaal vermogen: 0,5W
 
-- 動作温度：-10°Cから+50°C
+- Werktemperatuur: -10°C tot +50 graden Celsius
 
-- センサーサイズ：31.6mmx23.7mm
+- Sensorafmetingen: 31,6mmx23,7mm
 
-- インターフェース：4pinから3PINインターフェース
+- Interface: 4pin naar 3PIN interface
 
-- 出力信号：アナログ信号 A0、A1
+- Uitgangssignaal: analoge signalen A0, A1
 
 
 
-#### **(3)接続図：**
+#### **(3)Aansluitingsschema:**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-炎センサーはA1とA2に接続されています。
+Vlamsensoren zijn aangesloten op A1 en A2.
 
-超音波センサーと光電抵抗を取り外し、炎センサーとファンモジュールを追加すると、
-消火ロボットが完成します。
+Wanneer we ultrasone sensoren en fotoweerstandjes verwijderen en vervolgens vlamsensoren en ventilatormodules toevoegen,
+wordt de brandblussende robot gecreëerd.
 
-<span style="color: rgb(255, 76, 65);">**注意：**</span>
-1）この実験では火源を使用します。火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。
-2）**炎センサーは耐火性ではありません。直接炎で燃やさないでください。**
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+1）Dit experiment vereist het gebruik van een vuurhaard. Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment uit te voeren onder toezicht van een volwassene. Als u niet kunt bevestigen dat u veilig bent, stop dan met het experiment.
+2）**De vlamsensor is niet vuurbestendig, verbrand hem niet direct met een vlam.**
 
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -63,53 +63,53 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; //炎ピンをアナログピンA1として定義
-int val = 0; //デジタル変数を定義
+int flame = A1; // Definieer de vlam-pin als analoge pin A1
+int val = 0; // Definieer digitale variabelen
 
 void setup() 
 {
-	pinMode(flame, INPUT); //ブザーを入力ソースとして定義
-    Serial.begin(9600); //ボーレートを9600に設定
+	pinMode(flame, INPUT); // Definieer de buzzer als een ingangsbron
+    Serial.begin(9600); // Stel de baudrate in op 9600
 }
 
 void loop() 
 {
-	val = analogRead(flame); //炎センサーのアナログ値を読み取る
-	Serial.println(val);//アナログ値を出力して印刷する
-	delay(100); //100msの遅延
+	val = analogRead(flame); // Lees de analoge waarde van de vlamsensor
+	Serial.println(val); // Geef de analoge waarde weer en druk deze af
+	delay(100); // Vertraging van 100ms
 }
 ```
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaat：**
 
-部品を接続し、コードを書き込み、シリアルモニターを開いてボーレートを9600に設定します。
+Sluit de componenten aan, upload de code, open de seriële monitor en stel de baudrate in op 9600.
 
-炎センサーのシミュレーション値を確認できます。
+U kunt de simulatiewaarde van de vlamsensor bekijken.
 
-炎が近いほど、シミュレーション値は小さくなります。
+Hoe dichter de vlam, hoe kleiner de simulatiewaarde.
 
-モジュールのポテンショメーターを調整して、D1を臨界点に維持します。センサーが炎を検出しない場合、D1はオフになりますが、センサーが炎を検出した場合、D1はオンになります。
+Pas de potentiometer op de module aan om D1 op het kritieke punt te houden. Wanneer de sensor geen vlam detecteert, zal D1 uit zijn, maar als de sensor een vlam detecteert, zal D1 aan zijn.
 
 ![](./media/img-20240117085629.png)
 
 ![](media/05db06b3e205dfca63c2ba3aa7ff528e.png)
 
-<span style="color: rgb(255, 76, 65);">**注意：**</span>
-火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。直接炎で燃やさないでください。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment uit te voeren onder toezicht van een volwassene. Als u niet kunt bevestigen dat u veilig bent, stop dan met het experiment. De vlamsensor is niet vuurbestendig, verbrand hem niet direct met een vlam.
 
-#### **(6)応用練習：**
+#### **(6)Uitgebreide oefening:**
 
-<span style="color: rgb(255, 76, 65);">**注意：**</span>
-1）この実験では火源を使用します。火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。
-2）炎センサーは耐火性ではありません。直接炎で燃やさないでください。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+1）Dit experiment vereist het gebruik van een vuurhaard. Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment uit te voeren onder toezicht van een volwassene. Als u niet kunt bevestigen dat u veilig bent, stop dan met het experiment.
+2）De vlamsensor is niet vuurbestendig, verbrand hem niet direct met een vlam.
 
-次に、LEDをピン9に接続し、炎センサーで制御します。以下のとおりです；
+Vervolgens sluiten we een LED aan op pin 9 en kunnen we deze bedienen met een vlamsensor, zoals hieronder weergegeven;
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-**テストコード**
+**Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -124,38 +124,38 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; //炎ピンをアナログピンA1として定義
-int LED = 9; //LEDをデジタルポート9として定義
-int val = 0; //デジタル変数を定義
+int flame = A1; // Definieer de vlam-pin als analoge pin A1
+int LED = 9; // Definieer de LED als digitale poort 9
+int val = 0; // Definieer digitale variabelen
 
 void setup() 
 {
-    pinMode(flame, INPUT); //炎を入力ソースとして定義
-    pinMode(LED, OUTPUT); //LEDを出力モードに設定
-    Serial.begin(9600); //ボーレートを9600に設定
+    pinMode(flame, INPUT); // Definieer de vlam als een ingangsbron
+    pinMode(LED, OUTPUT); // Stel LED in op uitvoermodus
+    Serial.begin(9600); // Stel de baudrate in op 9600
 }
 
 void loop() 
 {
-    val = analogRead(flame); //炎センサーのアナログ値を読み取る
-    Serial.println(val);//アナログ値を出力して印刷する
-    if (val < 300)  //アナログ値が300未満の場合、LEDがオンになる
+    val = analogRead(flame); // Lees de analoge waarde van de vlamsensor
+    Serial.println(val); // Geef de analoge waarde weer en druk deze af
+    if (val < 300)  // Wanneer de analoge waarde kleiner is dan 300, gaat de LED aan
     {
-    	digitalWrite(LED, HIGH); //LEDをオンにする
+    	digitalWrite(LED, HIGH); // LED gaat aan
     } 
     else 
     {
-    	digitalWrite(LED, LOW); //LEDをオフにする
+    	digitalWrite(LED, LOW); // LED gaat uit
     }
-    delay(50); //50msの遅延
+    delay(50); // Vertraging van 50ms
 }
 ```
 
-#### **(8)テスト結果：**
+#### **(8)Testresultaten：**
 
-ライターの炎を左の炎センサーに近づけることができます。炎センサーが炎を検出すると、LEDモジュールがアラームとして点灯します。
+U kunt de vlam van een aansteker dicht bij de linker vlamsensor houden. Wanneer de vlamsensor een vlam detecteert, zal de LED-module oplichten als alarm.
 
 ![](./media/img-20240117085131.png)
 
-<span style="color: rgb(255, 76, 65);">**注意：**</span>
-火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。直接炎で燃やさないでください。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment uit te voeren onder toezicht van een volwassene. Als u niet kunt bevestigen dat u veilig bent, stop dan met het experiment. De vlamsensor is niet vuurbestendig, verbrand hem niet direct met een vlam.

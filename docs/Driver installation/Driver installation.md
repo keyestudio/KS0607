@@ -1,42 +1,42 @@
-# 3. ドライバのインストール
+# 3. Stuurprogramma-installatie
 
-## 3.1 Windowsシステム
+## 3.1 Windows-systeem
 
-**ドライバの確認**
+**Het stuurprogramma controleren**
 
-1. マザーボードをコンピュータに接続します。
+1. Sluit het moederbord aan op de computer.
 
 ![](./media/1.jpg)
 
-2. デバイスマネージャーを開きます。**「Silicon Labs CP210x USB to UART Bridge (COMx)」** というメッセージが表示された場合、ドライバがインストール済みであることを示しており、**「ドライバのインストール」** の部分をスキップできます。
+2. Open de Apparaatbeheer. Als de melding **"Silicon Labs CP210x USB to UART Bridge (COMx)"** verschijnt, betekent dit dat het stuurprogramma is geïnstalleerd en kunt u het gedeelte **"Stuurprogramma-installatie"** overslaan.
 
 ![](./media/Animation.gif)
 
-**手動ドライバのインストール**
+**Handmatige stuurprogramma-installatie**
 
-1. ドライバのダウンロード
+1. Stuurprogramma downloaden
 
-- Windowsシステム: [Windowsシステムドライバ](./Windows.7z)
+- Windows-systeem: [Windows-systeem stuurprogramma](./Windows.7z)
 
-2. マザーボードをコンピュータに接続し、デバイスマネージャーを開きます。画像のドライバの前に黄色の感嘆符がある場合、ドライバがインストールされていないことを示しています。ドライバをダウンロードして手動でインストールしてください。
+2. Sluit het moederbord aan op de computer en open de Apparaatbeheer. Als er een geel uitroepteken voor het stuurprogramma in de afbeelding staat, betekent dit dat het stuurprogramma niet is geïnstalleerd. Download het stuurprogramma en installeer het handmatig.
 
 ![](./media/Animation-1750921346712-3.gif)
 
-## 3.2 MACシステム
+## 3.2 MAC-systeem
 
-**1 ドライバの確認**
+**1 Het stuurprogramma controleren**
 
-開発ボードをコンピュータに接続し、[Tools] ---> [Port] に移動して開発ボードのポートを選択します。（注意：どのポートが開発ボードのポートか確認できない場合は、マザーボードを接続した状態ですべてのポートを記録するためにスクリーンショットを撮り、次に開発ボードを取り外してもう一枚スクリーンショットを撮ってください。2枚の画像を比較して、消えたポートを見つけてください。それが開発ボードのポートです。それを選択してください。）ポートが認識できない場合は、コンピュータのUSBポートまたはUSBケーブルを交換して再認識させてください。それでも解決しない場合は、以下の手順を参照してドライバをインストールしてください。
+Sluit het ontwikkelbord aan op de computer en ga naar [Extra] ---> [Poort] om de poort van het ontwikkelbord te selecteren. (Opmerking: Als u niet zeker weet welke poort het ontwikkelbord is, sluit dan het moederbord aan en maak een foto om alle poorten te registreren. Koppel vervolgens het ontwikkelbord los en maak nog een foto. Vergelijk de twee foto's om de verdwenen poort te vinden; dat is de poort van het bord. Selecteer deze vervolgens.) Als u de poort niet herkent, vervang dan de USB-poort van de computer of de USB-kabel om de poort opnieuw te herkennen. Als het nog steeds niet werkt, raadpleeg dan de volgende stappen om het stuurprogramma te installeren.
 
 ![](./media/20250626154343.png)
 
-**2 手動ドライバのインストール**
+**2 Handmatige stuurprogramma-installatie**
 
-1. ドライバのダウンロード
+1. Stuurprogramma downloaden
 
-​       Macシステム: [Macシステムドライバ](./Mac.7z)
+​       Mac-systeem: [Mac-systeem stuurprogramma](./Mac.7z)
 
-2. ダウンロードしたドライバのzipパッケージをダブルクリックして解凍します。
+2. Dubbelklik om het gedownloade stuurprogramma zip-pakket te decomprimeren.
 
 ![](./media/image-20250417083615847-1749262759458-8.png)
 
@@ -44,16 +44,16 @@
 
 ![](./media/image-20250417083918581-1749262759458-5.png)
 
-3. その後、インストールが完了するまで **「Next」** をクリックし続けます。
+3. Klik daarna steeds op **"Volgende"** totdat de installatie is voltooid.
 
 ![](./media/7cca827fe946096f228797dadce10661.png)
 
-この時点で、ボードを再度接続するとポートが認識されます。
+Op dit punt kan de poort worden herkend door het bord opnieuw in te pluggen.
 
-4. 次に Arduino IDE に移動し、「Tools」をクリックして、ボード Arduino Uno と認識された開発ボードのポートを選択します。
+4. Ga vervolgens naar de Arduino IDE, klik op "Extra" en selecteer het bord Arduino Uno en de herkende poort van het ontwikkelbord.
 
 ![](./media/2.png)
 
-5. ![image-20250417085312966](./media/image-20250417085312966-1749262759459-18.png) をクリックしてコードをアップロードします。完了すると「Done uploading」と表示されます。
+5. Klik op ![image-20250417085312966](./media/image-20250417085312966-1749262759459-18.png) om de code te uploaden. Wanneer het klaar is, verschijnt "Done uploading".
 
 ![](./media/3.png)

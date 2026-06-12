@@ -1,36 +1,36 @@
-### プロジェクト 20: ファン
+### Project 20: Ventilator
 
-#### **(1)説明：**
+#### **(1)Beschrijving：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-このファンモジュールはHR1124Sモーター制御チップを使用しており、低導電抵抗のPMOSおよびNMOSパワートランジスタを含む単チャンネルHブリッジドライバーチップです。低導電抵抗により消費電力を抑えることができ、チップが長時間安全に動作することに貢献します。
+Deze ventilatormodule gebruikt een HR1124S motorbesturingschip, een enkelvoudig H-brug stuurprogrammachip dat een laag-geleidingsweerstand PMOS en NMOS vermogenstransistoren bevat. De lage geleidingsweerstand kan het stroomverbruik verminderen, wat bijdraagt aan het veilig werken van de chip voor een langere tijd.
 
-また、低スタンバイ電流および低静的動作電流により、おもちゃへの応用が可能です。IN+およびIN-信号とPWM信号を出力することで、ファンの回転方向と速度を制御できます。
+Bovendien maken zijn lage stand-bystroomverbruik en lage statische werkstroom het geschikt voor speelgoed. We kunnen de rotatierichting en snelheid van de ventilator regelen door IN+ en IN- signalen en PWM-signalen uit te sturen.
 
-#### **(2)パラメータ：**
+#### **(2)Parameters:**
 
-- 動作電圧：5V
+- Werkspanning: 5V
 
-- 電流：200mA
+- Stroom: 200mA
 
-- 最大電力：2W
+- Maximaal vermogen: 2W
 
-- 動作温度：-10°C ～ +50°C
+- Werktemperatuur: -10°C tot +50 graden Celsius
 
-- サイズ：47.6mm \* 23.8mm
+- Afmeting: 47,6mm \* 23,8mm
 
-#### **(3)接続図：**
+#### **(3)Aansluitschema:**
 
-ファンモジュールは大電流による駆動が必要なため、バッテリーホルダーを取り付けます。
+De ventilatormodule heeft aandrijving door een grote stroom nodig; daarom installeren we een batterijhouder.
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-ファンモジュールのピン GND、VCC、IN+、IN- は、シールドのピン G、V、12、13 に接続されます。
+De pinnen GND, VCC, IN+ en IN- van de ventilatormodule zijn verbonden met de pinnen G, V, 12 en 13 van het shield.
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます
+Je kunt ook blokken slepen om je code te bewerken, zoals hieronder weergegeven
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -38,26 +38,26 @@
 
 ![](media/4e9354e674060efe6cf540a3e1b87813.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voor het uploaden van de code, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/cbb8f153dd0d114bdd350577af7a1f02.png)
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaten:**
 
-コードをアップロードし、部品を配線して電源を入れ、DIPスイッチをONにします。小型ファンは時計回りに2秒間回転し、2秒間停止した後、反時計回りに2秒間回転します。
+Upload de code, verbind de componenten, zet de stroom aan en zet de DIP-schakelaar op ON. De kleine ventilator draait 2s met de klok mee, stopt 2s en draait 2s tegen de klok in.
 
 ![](./media/img-20240117100504.png)
 
-#### **(6)応用練習：**
+#### **(6)Uitbreidingsoefening:**
 
-炎センサーの動作原理を理解しました。次に、以下に示すように回路に炎センサーを接続します。そして炎センサーを使ってファンで火を吹き消す制御を行います。
+We hebben het werkingsprincipe van de vlamsensor begrepen. Vervolgens sluiten we een vlamsensor aan in het circuit, zoals hieronder weergegeven. Vervolgens regelen we de ventilator om het vuur uit te blazen met de vlamsensor.
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
 
-以下のようにブロックをドラッグしてコードを編集できます
+Je kunt blokken slepen om je code te bewerken, zoals hieronder weergegeven
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -67,13 +67,13 @@
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voor het uploaden van de code, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/74ddb07daf4063f0640c31f4243a0864.png)
 
 
-コードをアップロードした後、モータードライブシールドの電源スイッチをオンにすると、ロボットの左側の炎センサーが炎を検知したときにファンをオンにすることができます。
+Na het uploaden van de code, zet de aan/uit-schakelaar van het motoraandrijvingsshield aan. De ventilator kan worden ingeschakeld wanneer er vlammen worden gedetecteerd door de linker vlamsensor van de robot.
 
 ![](./media/img-20240117102303.png)

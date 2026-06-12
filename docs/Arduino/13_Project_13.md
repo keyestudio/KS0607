@@ -1,32 +1,32 @@
-### プロジェクト13: 限られたスペース内で動くタンク
+### Project 13: Tank die Beweegt in een Afgebakende Ruimte
 
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-スマートカーの超音波追従および障害物回避機能については、以前のプロジェクトで紹介しました。ここでは、以前のコースの知識を組み合わせて、スマートカーを一定のスペース内で動くように制限することを目的としています。
+De ultrasone volgfunctie en obstakelvermijdingsfuncties van de slimme auto zijn in vorige projecten besproken. Hier willen we de kennis uit de vorige cursussen combineren om de slimme auto te beperken tot bewegen binnen een bepaalde ruimte.
 
-実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒線があるかどうかを検出し、その検出結果に応じて2つのモーターの回転を制御することで、黒線で描かれた円の中にスマートカーを閉じ込めます。
+In het experiment gebruiken we de lijnvolgsensor om te detecteren of er een zwarte lijn rondom de slimme auto aanwezig is, en vervolgens regelen we de rotatie van de twee motoren op basis van de detectieresultaten, zodat de slimme auto binnen een cirkel getrokken met een zwarte lijn blijft.
 
-ライントラッキングスマートカーの具体的なロジックは、以下の表に示されています：
+De specifieke logica van de lijnvolgende slimme auto wordt weergegeven in de onderstaande tabel:
 
 ![](./media/image-20250709112523897.png)
 
-|                         条件                         |                         動作                          |
+|                         Conditie                          |                         Beweging                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| 3つのライントラッキングセンサーのいずれかが黒線を検出した場合 | 後退する（PWMを150に設定）その後左折する（PWMを150に設定） |
-|             いずれも黒線を検出しない場合              |               前進する（PWMを100に設定）                |
+| Als één van de drie lijnvolgsensoren zwarte lijnen detecteert | Achteruit rijden（PWM instellen op 150）Dan links afslaan（PWM instellen op 150） |
+|             Geen van hen detecteert zwarte lijnen              |               Vooruit rijden（PWM instellen op 100）                |
 
-#### **(2)フローチャート:**
+#### **(2)Stroomdiagram:**
 
 ![](media/image-20230427092708208.png)
 
-#### **(3)接続図:**
+#### **(3)Aansluitingsschema:**
 
 ![](media/e5c3763e764359ec8be92102b6d2a7f9.png)
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat de code wordt geüpload, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden mislukt.)
 
 ```C
 /*
@@ -36,21 +36,21 @@
   http://www.keyestudio.com
 */
 
-// ラインセンサーの配線
-#define L_pin  11  // 左
-#define M_pin  7  // 中央
-#define R_pin  8  // 右
+// De bedrading van de lijnvolgsensor
+#define L_pin  11  // links
+#define M_pin  7  // midden
+#define R_pin  8  // rechts
 
-#define ML_Ctrl 4  // 左モーターの方向制御ピンを定義
-#define ML_PWM 6   // 左モーターのPWM制御ピンを定義
-#define MR_Ctrl 2  // 右モーターの方向制御ピンを定義
-#define MR_PWM 5   // 右モーターのPWM制御ピンを定義
+#define ML_Ctrl 4  // Definieer de richtingsbesturingspin van de linkermotor
+#define ML_PWM 6   // Definieer de PWM-besturingspin van de linkermotor
+#define MR_Ctrl 2  // Definieer de richtingsbesturingspin van de rechtermotor
+#define MR_PWM 5   // Definieer de PWM-besturingspin van de rechtermotor
 int L_val, M_val, R_val;
 
 void setup()
 {
-  Serial.begin(9600); // ボーレートを9600に設定
-  pinMode(L_pin, INPUT); // ラインセンサーの全ピンを入力モードに設定
+  Serial.begin(9600); // Stel de baudrate in op 9600
+  pinMode(L_pin, INPUT); // Stel alle pinnen van de lijnvolgsensor in als invoermodus
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
   pinMode(ML_Ctrl, OUTPUT);
@@ -61,14 +61,14 @@ void setup()
 
 void loop () 
 {
-  L_val = digitalRead(L_pin); // 左センサーの値を読み取る
-  M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
-  R_val = digitalRead(R_pin); // 右センサーの値を読み取る
-  if ( L_val == 0 && M_val == 0 && R_val == 0 )  // 黒線が検出されない場合、前進する
+  L_val = digitalRead(L_pin); // Lees de waarde van de linkersensor
+  M_val = digitalRead(M_pin); // Lees de waarde van de middensensor
+  R_val = digitalRead(R_pin); // Lees de waarde van de rechtersensor
+  if ( L_val == 0 && M_val == 0 && R_val == 0 )  // wanneer er geen zwarte lijnen worden gedetecteerd, rijd vooruit
   {
     Car_front();
   }
-  else  // 黒線が検出された場合、後退してから左折する
+  else  // zwarte lijnen gedetecteerd, rijd achteruit dan links afslaan
   {
     Car_back();
     delay(700);
@@ -118,8 +118,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaten:**
 
-テストコードのアップロードが成功し、電源を入れると、スマートカーは黒線で描かれた円の中の限られたスペース内で動きます。
+Nadat de testcode succesvol is geüpload en de stroom is ingeschakeld, beweegt de slimme auto binnen een afgebakende ruimte, de cirkel getrokken met een zwarte lijn.
 
 ![](./media/img-20240117090340.png)

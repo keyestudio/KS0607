@@ -1,10 +1,10 @@
-# 2. 製品の組み立て
+# 2. Productinstallatie
 
-<span style="color: rgb(255, 76, 65);">**注意**</span>: このロボットを組み立てる前に、サーボの初期角度を設定し、ボードから薄い保護フィルムを剥がしてください。
+<span style="color: rgb(255, 76, 65);">**Waarschuwing**</span>: Stel de beginhoek van de servo in en verwijder dunne folies van de platen voordat u deze robot installeert.
 
 ![](./media/image-20250709092645945.png)
 
- **Step1**
+ **Stap 1**
 
 ![KS0607_18](./media/KS0607_18.png)
 
@@ -12,7 +12,7 @@
 
 ![KS0607_20](./media/KS0607_20.png)
 
-最初に配線してください。
+Sluit eerst de bedrading aan.
 
 ![](./media/image-20250709093344681.png)
 
@@ -24,7 +24,7 @@
 
 ![KS0607_23](./media/KS0607_23.png)
 
-**Step2 **
+**Stap 2**
 
 ![KS0607_24](./media/KS0607_24.png)
 
@@ -32,7 +32,7 @@
 
 ![KS0607_26](./media/KS0607_26.png)
 
-**Step 3**
+**Stap 3**
 
 ![KS0607_28](media\KS0607_28.png)
 
@@ -40,7 +40,7 @@
 
 ![KS0607_30](./media/KS0607_30-177909269696918.png)
 
- **Step 4**
+ **Stap 4**
 
 ![KS0607_31](./media/KS0607_31-17790915380363.png)
 
@@ -54,17 +54,17 @@
 
 
 
-**Step 5**
+**Stap 5**
 
 ![KS0607_36](./media/KS0607_36-17790915806918.png)
 
-<span style="color: rgb(255, 76, 65);">ジャンパーキャップの向きに注意してください。</span>
+<span style="color: rgb(255, 76, 65);">Let op de richting van de jumperkappen.</span>
 
 ![KS0607_37](./media/KS0607_37-17790915896649.png)
 
 ![KS0607_38](./media/KS0607_38-177909159600610.png)
 
- **Step 6**
+ **Stap 6**
 
 ![KS0607_39](./media/KS0607_39.png)
 
@@ -72,7 +72,7 @@
 
 ![KS0607_41](./media/KS0607_41.png)
 
-**Step 7**
+**Stap 7**
 
 ![KS0607_42](./media/KS0607_42.png)
 
@@ -80,35 +80,35 @@
 
 ![KS0607_44](./media/KS0607_44.png)
 
-**Step 8**
+**Stap 8**
 
-（サーボの角度を調整する必要があります）
+（De hoek van de servo moet worden afgesteld）
 
 ![KS0607-098](./media/KS0607-098.jpg)
 
 ![KS0607-097](./media/KS0607-097.jpg)
 
-**サーボの角度を90°に設定する**
+**Stel de hoek van de servo in op 90°**
 
-サーボのコードを調整するには、コースに従って選択してください。
+Om de code van de servo aan te passen, selecteer deze op basis van de cursus.
 
-1.**Arduino:** コードファイルをダウンロード: [Arduino](./Arduino.7z)
+1.**Arduino:** Download het codebestand: [Arduino](./Arduino.7z)
 
 ![](./media/image-20250710110650230.png)
 
-2.**Kidsblock: **コードファイルをダウンロード: [Kidsblock](./Kidsblock.7z)
+2.**Kidsblock:** Download het codebestand: [Kidsblock](./Kidsblock.7z)
 
 ![](./media/image-20250710110906515.png)
 
-**サーボの角度を初期化した後、Bluetoothモジュールを取り付けてください。**
+**Nadat de servo-hoek is geïnitialiseerd, installeert u de Bluetooth-module.**
 
-超音波センサーをボードと平行に保ってください。
+Houd de ultrasone sensor parallel aan de plaat.
 
 ![KS0607-096](./media/KS0607-096.jpg)
 
 ![](./media/image-20250709095307371.png)
 
- **Step 9**
+ **Stap 9**
 
 ![KS0607_48](./media/KS0607_48-177909161769011.png)
 
@@ -116,7 +116,7 @@
 
 ![KS0607_50](./media/KS0607_50-177909163131113.png)
 
-**Step 10**
+**Stap 10**
 
 ![KS0607_51](./media/KS0607_51-177909163803814.png)
 
@@ -124,9 +124,9 @@
 
 ![KS0607_53](./media/KS0607_53-177909164907716.png)
 
-**配線**
+**Bedrading aansluiten**
 
-8\*16 LEDパネルの配線は、A4とA5に接続してください。
+Voor het 8\*16 LED-paneel, sluit de draden aan op A4 en A5.
 
 ![](./media/image-20250709095552072.png)
 
@@ -134,19 +134,19 @@
 
 ![](./media/image-20250709095643567.png)
 
-モーターAをAポートに、モーターBをBポートに接続してください。
+Sluit motor A aan op poort A en motor B op poort B.
 
 ![](./media/image-20250709095728739.png)
 
 ![](./media/image-20250709095740866.png)
 
-電源ワイヤーを接続してください。
+Sluit de voedingskabel aan.
 
 ![](./media/image-20250709095759390.png)
 
 ![](./media/image-20250709095811580.png)
 
-ライントラッキングセンサー（写真を参照）
+Lijnvolgsensor (zie de afbeelding)
 
 ![](./media/image-20250709095830428.png)
 
@@ -156,13 +156,13 @@
 
 ![](./media/image-20250709095911639.png)
 
-フォトレジスターの配線
+Sluit de fotoweerstand aan
 
 ![](./media/image-20250709095929779.png)
 
 ![](./media/image-20250709095939414.png)
 
-| フォトレジスター | Keyestudio 8833 Board |
+| Fotoweerstand | Keyestudio 8833 Board |
 | :-----------: | :-------------------: |
 |       G       |           G           |
 |       V       |           V           |
@@ -170,35 +170,35 @@
 
 ![](./media/image-20250709100043670.png)
 
-| フォトレジスター | Keyestudio 8833 Board |
-| :-----------: | :--------------------: |
-|       G       |           G            |
-|       V       |           V            |
-|       S       |           V2           |
+| Fotoweerstand | Keyestudio 8833 Board |
+| :-----------: | :-------------------: |
+|       G       |           G           |
+|       V       |           V           |
+|       S       |           V2          |
 
-超音波センサーの配線。
+Sluit de ultrasone sensor aan.
 
 ![](./media/image-20250709100317508.png)
 
 ![](./media/image-20250709100329430.png)
 
-| 超音波センサー | Keyestudio 8833 Board |
-| :---------------: | :-------------------: |
-|        Vcc        |           V           |
-|       Trig        |          D12          |
-|       Echo        |          D13          |
-|        Gnd        |           G           |
+| Ultrasone Sensor | Keyestudio 8833 Board |
+| :--------------: | :-------------------: |
+|       Vcc        |           V           |
+|       Trig       |          D12          |
+|       Echo       |          D13          |
+|       Gnd        |           G           |
 
-サーボの配線（D10）
+Sluit de servo aan (D10)
 
 ![](./media/image-20250709100626238.png)
 
-| サーボ | Keyestudio 8833 Board |
+| Servo  | Keyestudio 8833 Board |
 | :----: | :-------------------: |
-| Brown  |           G           |
-|  Red   |         V(5V)         |
-| Orange |          D10          |
+| Bruin  |           G           |
+|  Rood  |         V(5V)         |
+| Oranje |          D10          |
 
-<span style="color: rgb(255, 76, 65);">**先端が尖った正極を持つ18650型リチウム電池を使用します。電力と容量は特に指定はありません。**</span>
+<span style="color: rgb(255, 76, 65);">**Wij gebruiken een 18650 lithiumbatterij met een puntige positieve pool, waarbij het vermogen en de capaciteit niet vereist zijn.**</span>
 
 ![](./media/image-20250709100841625.png)

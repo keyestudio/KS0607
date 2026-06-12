@@ -1,38 +1,38 @@
-### プロジェクト14：ライントラッキングタンク
+### Project 14: Lijnvolgend Pantservoertuig
 
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-前のプロジェクトでは、スマートカーを特定のスペース内で移動させる方法を紹介しました。このプロジェクトでは、これまでに学んだ知識を活用して、ライントラッキングスマートカーを作成します。実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒線があるかどうかを検出し、その検出結果に基づいて2つのモーターの回転を制御することで、スマートカーが黒線に沿って移動できるようにします。
+Het vorige project heeft uitgelegd hoe je de slimme auto kunt beperken om in een bepaalde ruimte te bewegen. In dit project kunnen we de eerder geleerde kennis gebruiken om er een lijnvolgend slim voertuig van te maken. In het experiment gebruiken we de lijnvolgsensor om te detecteren of er een zwarte lijn in de buurt van het slimme voertuig is, en vervolgens de rotatie van de twee motoren te regelen op basis van de detectieresultaten, zodat het slimme voertuig langs de zwarte lijn kan bewegen.
 
-ライントラッキングスマートカーの具体的なロジックを以下の表に示します：
+De specifieke logica van het lijnvolgende slimme voertuig wordt weergegeven in de onderstaande tabel:
 
-|               センサー               |                          検出内容                           |
+|               Sensor               |                          Detectie                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| 中央のライントラッキングセンサー | 黒線を検出：ハイレベル<br />白線を検出：ローレベル |
-|  左のライントラッキングセンサー  | 黒線を検出：ハイレベル<br />白線を検出：ローレベル |
-| 右のライントラッキングセンサー  | 黒線を検出：ハイレベル<br />白線を検出：ローレベル |
+| Lijnvolgsensor in het midden | Zwarte lijn gedetecteerd: hoog niveau<br />Witte lijn gedetecteerd: laag niveau |
+|  Lijnvolgsensor aan de linkerkant  | Zwarte lijn gedetecteerd: hoog niveau<br />Witte lijn gedetecteerd: laag niveau |
+| Lijnvolgsensor aan de rechterkant  | Zwarte lijn gedetecteerd: hoog niveau<br />Witte lijn gedetecteerd: laag niveau |
 
-|                         条件1                          |                         条件2                          |             動作             |
+|                         Conditie 1                          |                         Conditie 2                          |             Beweging             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------: |
-| 中央のライントラッキングセンサーが<br />黒線を検出 | 左のライントラッキングセンサーが黒線を検出<br />かつ<br />右のセンサーが白線を検出 | 左回転<br />PWMを200に設定  |
-| 中央のライントラッキングセンサーが<br />黒線を検出 | 左のライントラッキングセンサーが白線を検出<br />かつ<br />右のセンサーが黒線を検出 | 右回転<br />PWMを200に設定 |
-| 中央のライントラッキングセンサーが<br />黒線を検出 | 左右両方のライントラッキングセンサーが白線を検出<br />または<br />左右両方が黒線を検出 |           前進           |
-| 中央のライントラッキングセンサーが<br />白線を検出  | 左のライントラッキングセンサーが黒線を検出<br />かつ<br />右のセンサーが白線を検出 | 左回転<br />PWMを200に設定  |
-| 中央のライントラッキングセンサーが<br />白線を検出  | 左のライントラッキングセンサーが白線を検出<br />かつ<br />右のセンサーが黒線を検出 | 右回転<br />PWMを200に設定 |
-| 中央のライントラッキングセンサーが<br />白線を検出  | 左右両方のライントラッキングセンサーが白線を検出<br />または<br />左右両方のライントラッキングセンサーが黒線を検出 |               停止               |
+| Lijnvolgsensor in het midden <br />detecteert de zwarte lijn | Lijnvolgsensor aan de linkerkant detecteert de zwarte lijn <br />en <br />die aan de rechterkant detecteert witte lijn | Draai links<br />stel PWM in op 200  |
+| Lijnvolgsensor in het midden <br />detecteert de zwarte lijn | Lijnvolgsensor aan de linkerkant detecteert witte lijn <br />en <br />die aan de rechterkant detecteert de zwarte lijn | Draai rechts<br />stel PWM in op 200 |
+| Lijnvolgsensor in het midden <br />detecteert de zwarte lijn | Zowel de linker- als de rechter lijnvolgsensor detecteren witte lijn<br />of<br />Zowel de linker- als de rechter detecteren de zwarte lijn |           Rij vooruit           |
+| Lijnvolgsensor in het midden <br />detecteert witte lijn  | Lijnvolgsensor aan de linkerkant detecteert de zwarte lijn <br />en <br />die aan de rechterkant detecteert witte lijn | Draai links<br />stel PWM in op 200  |
+| Lijnvolgsensor in het midden <br />detecteert witte lijn  | Lijnvolgsensor aan de linkerkant detecteert witte lijn<br />en <br />die aan de rechterkant detecteert de zwarte lijn | Draai rechts<br />stel PWM in op 200 |
+| Lijnvolgsensor in het midden <br />detecteert witte lijn  | Zowel de linker- als de rechter lijnvolgsensor detecteren witte lijn<br />of<br />Zowel de linker- als de rechter lijnvolgsensoren detecteren de zwarte lijn |               Stop               |
 
-#### **(2)フローチャート：**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps11.png)
 
-#### **(3)配線図：**
+#### **(3)Bedradingsschema:**
 
 ![](media/e5c3763e764359ec8be92102b6d2a7f9.png)
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat je de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -42,20 +42,20 @@
   http://www.keyestudio.com
 */
 
-//ライントラッキングセンサーの配線
-#define L_pin  11  //左
-#define M_pin  7  //中央
-#define R_pin  8  //右
-#define ML_Ctrl 4  //左モーターの方向制御ピンを定義
-#define ML_PWM 6   //左モーターのPWM制御ピンを定義
-#define MR_Ctrl 2  //右モーターの方向制御ピンを定義
-#define MR_PWM 5   //右モーターのPWM制御ピンを定義
+//De bedrading van de lijnvolgsensor
+#define L_pin  11  //links
+#define M_pin  7  //midden
+#define R_pin  8  //rechts
+#define ML_Ctrl 4  //Definieer de richtingsbesturingspin van de linkermotor
+#define ML_PWM 6   //Definieer de PWM-besturingspin van de linkermotor
+#define MR_Ctrl 2  //Definieer de richtingsbesturingspin van de rechtermotor
+#define MR_PWM 5   //Definieer de PWM-besturingspin van de rechtermotor
 int L_val, M_val, R_val;
 
 void setup()
 {
-  Serial.begin(9600); //ボーレートを9600に設定
-  pinMode(L_pin, INPUT); //ライントラッキングセンサーの全ピンを入力モードに設定
+  Serial.begin(9600); //Stel de baudrate in op 9600
+  pinMode(L_pin, INPUT); //Stel alle pinnen van de lijnvolgsensor in als invoermodus
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
   pinMode(ML_Ctrl, OUTPUT);
@@ -66,41 +66,41 @@ void setup()
 
 void loop () 
 {
-  L_val = digitalRead(L_pin); //左センサーの値を読み取る
-  M_val = digitalRead(M_pin); //中央センサーの値を読み取る
-  R_val = digitalRead(R_pin); //右センサーの値を読み取る
-  if (M_val == 1) { //中央センサーが黒線を検出
-    if (L_val == 1 && R_val == 0)  //左で黒線を検出し、右では検出しない場合、左折
+  L_val = digitalRead(L_pin); //Lees de waarde van de linkersensor
+  M_val = digitalRead(M_pin); //Lees de waarde van de middelste sensor
+  R_val = digitalRead(R_pin); //Lees de waarde van de rechtersensor
+  if (M_val == 1) { //de middelste detecteert zwarte lijnen
+    if (L_val == 1 && R_val == 0)  //Als er een zwarte lijn aan de linkerkant wordt gedetecteerd, maar niet aan de rechterkant, draai links
     {
       Car_left();
     }
-    else if (L_val == 0 && R_val == 1)  //右で黒線を検出し、左では検出しない場合、右折
+    else if (L_val == 0 && R_val == 1)  //Als er een zwarte lijn aan de rechterkant wordt gedetecteerd, maar niet aan de linkerkant, draai rechts
     {
       Car_right();
     }
-    else  //それ以外の場合、前進
+    else  //anders, rij vooruit
     {
       Car_front();
     }
   }
-  else  //中央センサーが黒線を検出しない
+  else  //De middelste detecteert geen zwarte lijnen
   {
-    if (L_val == 1 && R_val == 0)  //左で黒線を検出し、右では検出しない場合、左折
+    if (L_val == 1 && R_val == 0)  //Als er een zwarte lijn aan de linkerkant wordt gedetecteerd, maar niet aan de rechterkant, draai links
     {
       Car_left();
     }
-    else if (L_val == 0 && R_val == 1)  //右で黒線を検出し、左では検出しない場合、右折
+    else if (L_val == 0 && R_val == 1)  //Als er een zwarte lijn aan de rechterkant wordt gedetecteerd, maar niet aan de linkerkant, draai rechts
     {
       Car_right();
     }
-    else  //それ以外の場合、停止
+    else  //anders, stop
     {
       Car_Stop();
     }
   }
 }
 
-//前進
+//rij vooruit
 void Car_front()
 {
   digitalWrite(MR_Ctrl, HIGH);
@@ -109,7 +109,7 @@ void Car_front()
   analogWrite(ML_PWM, 100);
 }
 
-//後退
+//rij achteruit
 void Car_back()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -118,7 +118,7 @@ void Car_back()
   analogWrite(ML_PWM, 150);
 }
 
-//左折
+//draai links
 void Car_left()
 {
   digitalWrite(MR_Ctrl, HIGH);
@@ -127,7 +127,7 @@ void Car_left()
   analogWrite(ML_PWM, 150);
 }
 
-//右折
+//draai rechts
 void Car_right()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -136,7 +136,7 @@ void Car_right()
   analogWrite(ML_PWM, 100);
 }
 
-//停止
+//stop
 void Car_Stop()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -146,8 +146,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaat:**
 
-テストコードのアップロードが成功し、電源を入れると、スマートカーは黒線に沿って移動します。
+Na het succesvol uploaden van de testcode en het inschakelen van de voeding, beweegt het slimme voertuig langs de zwarte lijn.
 
 ![](./media/img-20240117085916.png)

@@ -1,62 +1,62 @@
-### プロジェクト16：Bluetoothリモートコントロール
+### Project 16: Bluetooth Afstandsbediening
 
 ![](./media/image-20250709134858245.png)
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-ここ数十年で、Bluetoothは使いやすさから最も人気の高い無線通信モジュールとなり、バッテリー駆動のほとんどのデバイスで広く活用されています。
+In de afgelopen decennia is Bluetooth de populairste draadloze communicatiemodule geworden omdat het eenvoudig te gebruiken is en wijde toepassingen heeft gevonden in de meeste apparaten die op batterijen werken.
 
-時代や現実のニーズ、顧客の要望に応えるため、Bluetoothは何度もアップグレードされてきました。近年では、データ転送速度、ウェアラブルデバイスやIoTデバイスの消費電力、セキュリティシステムなど、多くの面で大きな変革を遂げています。ここでは、ArduinoボードとDX-BT24について学びます。
+Om aan te passen aan de tijd, realiteit en de behoeften van klanten, is Bluetooth meerdere keren geüpgraded. In de afgelopen jaren heeft het veel transformaties ondergaan op het gebied van gegevensoverdrachtsnelheid, energieverbruik van wearable apparaten en IoT-apparaten, beveiligingssystemen en anderen. Hier plannen we om meer te leren over DX-BT24 met een Arduino-bord.
 
-#### **(2)仕様：**
+#### **(2)Parameter:**
 
-- Bluetoothプロトコル：Bluetooth Specification V5.1 BLE
-- 通信距離：開けた環境で最大40mの超長距離通信
-- 動作周波数：2.4GHz ISMバンド
-- 通信インターフェース：UART
-- Bluetooth認証：FCC CE ROHS REACH認証基準に準拠
-- シリアルポートパラメータ：9600、データビット8、ストップビット1、パリティなし、フロー制御なし
-- 電源：5V DC
-- 動作温度：–10〜+65℃
+- Bluetooth-protocol: Bluetooth Specification V5.1 BLE
+- Werkafstand: In een open omgeving, bereik een ultra-lange afstand van 40m
+- Communicatie-werkfrequentie: 2,4GHz ISM-band
+- Communicatie-interface: UART
+- Bluetooth-certificering: in overeenstemming met FCC CE ROHS REACH certificeringsnormen
+- Seriële poortparameters: 9600, 8 databits, 1 stopbit, geen pariteitsbit, geen stroomregeling
+- Voeding: 5V DC
+- Werktemperatuur: –10 tot +65 graden Celsius
 
 
-#### **(3)用途：**
+#### **(3)Toepassing:**
 
-DX-BT24モジュールはBT5.1 BLEプロトコルにも対応しており、BLE Bluetooth機能を持つiOSデバイスに直接接続でき、バックグラウンドプログラムの常駐起動をサポートします。主に短距離の無線データ通信分野で使用されます。煩わしいケーブル接続を回避でき、シリアルケーブルを直接置き換えることができます。BT24モジュールの主な応用分野：
+De DX-BT24-module ondersteunt ook het BT5.1 BLE-protocol, dat rechtstreeks verbinding kan maken met iOS-apparaten met BLE Bluetooth-functie, en ondersteunt het op de achtergrond draaien van programma's. Voornamelijk gebruikt op het gebied van draadloze gegevensoverdracht op korte afstand. Vermijdt omslachtige kabelverbindingen en kan seriële kabels direct vervangen. Succesvolle toepassingsgebieden van BT24-modules:
 
-※ Bluetooth無線データ通信；
+※ Draadloze Bluetooth-gegevensoverdracht; 
 
-※ 携帯電話・コンピュータ周辺機器；
+※ Mobiele telefoon, randapparatuur voor computers; 
 
-※ ハンドヘルドPOS機器；
+※ Draagbare POS-apparatuur; 
 
-※ 医療機器の無線データ通信；
+※ Draadloze gegevensoverdracht van medische apparatuur;
 
-※ スマートホームコントロール；
+※ Slimme thuisbediening; 
 
-※ Bluetoothプリンタ；
+※ Bluetooth-printer; 
 
-※ Bluetoothリモートコントロールトイ；
+※ Bluetooth-afstandsbediening speelgoed; 
 
-※ シェアサイクル；
+※ Gedeelde fietsen;
 
-#### **(4)ピン説明：**
+#### **(4)Beschrijving van pinnen:**
 
 ![](media/cd97cf79ff5cdd5bbd78f4cc960d38e5.png)
 
-①STATE：状態ピン
+①STATE：statuspin
 
-②RX：受信ピン
+②RX：ontvangstpin
 
-③TX：送信ピン
+③TX：zendpin
 
-④GND：グラウンド
+④GND：geaard
 
-⑤VCC：電源ピン
+⑤VCC：voedingspin
 
-⑥EN：イネーブルピン
+⑥EN：inschakelpin
 
-Bluetoothを開発ボードに接続する
+Verbind Bluetooth met het ontwikkelbord
 
 | Uno  | BT24 |
 | :--: | :--: |
@@ -65,91 +65,92 @@ Bluetoothを開発ボードに接続する
 | VCC  |  5V  |
 | GND  | GND  |
 
-#### **(5)接続図：**
+#### **(5)Aansluitschema:**
 
 ![](media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
-#### **(6)アプリのダウンロード：**
+#### **(6)Download APP:**
 
-##### **iOS システムの場合**
+##### **Voor iOS-systeem**
 
-1\. App Storeを開きます。
+1\. Open de App Store.
 
-2\. Apple Storeで<span style="color: rgb(61, 167, 66);">KeyesRobot</span>を検索し、ダウンロードをクリックします。
+2\. Zoek <span style="color: rgb(61, 167, 66);">KeyesRobot</span> in de Apple Store en klik op downloaden.
 
 ![](./media/img-20240111141301.png)
 
-3\. アプリがインストールされると、スマートフォンのデスクトップに以下のアイコンが表示されます。
+3\. Nadat de app is geïnstalleerd, ziet u het volgende pictogram op het bureaublad van uw telefoon.
 
 ![](./media/img-20240111141412.png)
 
-**iOSスマートフォンをBluetoothモジュールに接続する方法：**
+**Hoe iOS-telefoon verbinden met Bluetooth-module:**
 
-1\. 設定からスマートフォンのBluetoothと位置情報サービスをオンにします。
+1\. Schakel Bluetooth en locatiediensten in op de telefoon via instellingen.
 
 ![](./media/img-20240111141943.png)
 
-2\. 設定からKeyesRobot APPのBluetooth使用を許可します。
+2\. Sta toe dat de KeyesRobot APP toegang krijgt tot Bluetooth via instellingen.
 
 ![](./media/img-20240111142052.png)
 
-3\. KeyesRobot Appをタップして開きます。
+3\. Klik om de KeyesRobot App te openen.
 
 ![](./media/img-20240111142140.png)
 
-4\. KeyesRobot Appは複数のkeyestudioロボットに対応したユニバーサルAPPです。インターフェースに「TANK ROBOT」が表示されていない場合は、左右ボタンをクリックして「TANK ROBOT」を見つけてください。
+4\. KeyesRobot App is een universele APP, die wordt toegepast op meerdere keyestudio robots. Als de interface "TANK ROBOT" niet weergeeft, kunt u op de linker- en rechterknop klikken om "TANK ROBOT" te vinden.
 
-5\. 右上角の<span style="color: rgb(61, 167, 66);">Bluetoothボタン</span>![](./media/img-20240111142336.png)をクリックしてBluetoothをスキャンします。
+5\. Klik op de <span style="color: rgb(61, 167, 66);">Bluetooth-knop</span>![](./media/img-20240111142336.png) in de rechterbovenhoek om Bluetooth te scannen
 
 ![](./media/img-20240111142415.png)
 
-6\. <span style="color: rgb(0, 209, 0);">**BT24**</span>という名前のBluetoothが表示されたら、<span style="color: rgb(255, 169, 0);">Connect</span>ボタンをクリックします。
+6\. U ziet een Bluetooth met de naam <span style="color: rgb(0, 209, 0);">**BT24**</span>, klik op de <span style="color: rgb(255, 169, 0);">Verbinden</span>-knop.
 
 ![](./media/img-20240111142536.png)
 
-7\. BluetoothモジュールのオンボードLEDが点滅を止めて点灯し続けたら、スマートフォンがBluetoothモジュールへの接続に成功したことを意味します。
+7\. Als de ingebouwde LED op de Bluetooth-module stopt met knipperen en aan blijft, betekent dit dat uw telefoon succesvol verbonden is met de Bluetooth-module.
 
 ![](./media/img-20240111142702.png)
 
 
-##### **Androidシステムの場合**
+##### **Voor Android-systeem**
 
-1\. Google Playで<span style="color: rgb(61, 167, 66);">**KeyesRobot**</span>を検索するか、以下のリンクを開いてアプリをダウンロード・インストールします。
+1\. Zoek <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> in Google Play, of open de volgende link om de app te downloaden en te installeren. 
 
 [https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio](https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio)
 
 ![](./media/img-20240111143312.png)
 
-2\. スマートフォンのBluetoothと位置情報サービスをオンにします。
+2\. Schakel de Bluetooth en de locatiediensten van de mobiele telefoon in
 
 ![](./media/img-20240111143354.png)
 
-3\. 設定からKeyesRobot Bluetooth appを見つけ、アプリの権限オプションをクリックして、位置情報と近くのデバイスの権限を有効にします。（<span style="color: rgb(255, 76, 65);">注意：</span>一部のスマートフォンには近くのデバイスの権限機能がない場合があります。）
+3\. Zoek de KeyesRobot Bluetooth-app in de instellingen, klik op de machtigingsopties van de app, en
+schakel Locatie- en nabijgelegen apparaten-machtigingen in.(<span style="color: rgb(255, 76, 65);">Opmerking:</span> Sommige mobiele telefoons hebben geen functie voor nabijgelegen apparaten-machtigingen.)
 
 ![](./media/img-20240111143451.png)
 
-4\. KeyesRobot Appをタップして開きます。
+4\. Klik om de KeyesRobot App te openen.
 
 ![](./media/img-20240111143529.png)
 
-5\. KeyesRobot Appは複数のkeyestudioロボットに対応したユニバーサルAPPです。インターフェースに「TANK ROBOT」が表示されていない場合は、左右ボタンをクリックして「TANK ROBOT」を見つけてください。
+5\. KeyesRobot App is een universele APP, die wordt toegepast op meerdere keyestudio robots. Als de interface "TANK ROBOT" niet weergeeft, kunt u op de linker- en rechterknop klikken om "TANK ROBOT" te vinden.
 
-6\. 右上角の<span style="color: rgb(61, 167, 66);">Bluetoothボタン</span>![](./media/img-20240111142336.png)をクリックしてBluetoothをスキャンします。
+6\. Klik op de <span style="color: rgb(61, 167, 66);">Bluetooth-knop</span>![](./media/img-20240111142336.png) in de rechterbovenhoek om Bluetooth te scannen
 
 ![](./media/img-20240111142415.png)
 
-7\. <span style="color: rgb(0, 209, 0);">**BT24**</span>という名前のBluetoothが表示されたら、<span style="color: rgb(255, 169, 0);">Connect</span>ボタンをクリックします。![](./media/img-20240111143910.png)
+7\. U ziet een Bluetooth met de naam <span style="color: rgb(0, 209, 0);">**BT24**</span>, klik op de <span style="color: rgb(255, 169, 0);">Verbinden</span>-knop.![](./media/img-20240111143910.png)
 
-8\. スマートフォンがBluetoothモジュールへの接続に成功すると、BluetoothモジュールのオンボードLEDが点滅を止めて点灯し続けます。
+8\. Wanneer uw telefoon succesvol verbonden is met de Bluetooth-module, stopt de ingebouwde LED op de Bluetooth-module met knipperen en blijft aan.
 
 ![](./media/img-20240111144004.png)
 
 ![](./media/img-20240111142702.png)
 
 
-#### **(7)BTテストコード：**
+#### **(7)BT Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 （1）![](media/2a66a7e8b37c68ddc51cfdb3aff53ac2.png)
 
@@ -161,42 +162,42 @@ Bluetoothを開発ボードに接続する
 
 （5）![](media/c8228c5040a43ae322612b312c995ac3.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span>コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth-seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/4766ada3bf48bb35522f292d9352bb78.png)
 
 
-コードを開発ボードにアップロードしたら、Bluetoothモジュールを接続し、スマートフォンをBluetoothモジュールに接続します。
+Upload de code naar het ontwikkelbord, sluit daarna de Bluetooth-module aan, en verbind vervolgens de mobiele telefoon met de Bluetooth-module.
 
-スマートフォンのBluetoothモジュールへの接続が成功したら、Bluetooth APPを開き、<span style="color: rgb(0, 252, 255);">ホームページ</span>の<span style="color: rgb(0, 252, 255);">Select</span>ボタンをクリックします。
+Nadat de mobiele telefoon succesvol verbonden is met de Bluetooth-module, klik om de Bluetooth APP te openen en klik op de <span style="color: rgb(0, 252, 255);">Selecteer</span>-knop op de <span style="color: rgb(0, 252, 255);">startpagina</span>.
 
 ![](./media/img-20240111144744.png)
 
-Bluetooth appのメインインターフェースは下図のとおりです。
+De hoofdinterface van de Bluetooth-app is weergegeven in de onderstaande afbeelding.
 
 ![](./media/img-20240111144859.png)
 
-![Img](./media/img-20240111171312.png)をクリックして、ボーレートを9600に設定します。APPインターフェース上のアイコンをクリックすると、シリアルモニタにボタンから送信されたコマンドが表示されます。
+Klik op ![Img](./media/img-20240111171312.png) en stel de baudrate in op 9600. Klik op het pictogram in de APP-interface en de seriële monitor geeft het commando weer dat door de knop is verzonden.
 
 ![](media/f5004f5334fb4885ac0096f99e4133f9.png)
 
 <br>
 <br>
-<span style="color: rgb(255, 76, 65);">**注意：APPの接続方法は以下と同様です。**</span>
+<span style="color: rgb(255, 76, 65);">**Opmerking: De APP-verbindingsmethode is hetzelfde als hieronder.**</span>
 <br>
 <br>
 
 
-#### **(8)応用練習：**
+#### **(8)Uitbreidingsoefening:**
 
-上記のプロジェクトでは、BluetoothがスマートフォンからのシグナルをDX-BT24モジュールで受信し、開発ボードのシリアルポートに表示しました。ここでは、スマートフォンから送信されたコマンドを使ってLEDのオン・オフを制御します。配線図を見ると、LEDがD9ピンに接続されています。
+In het bovenstaande project ontvangt Bluetooth het signaal dat door de mobiele telefoon is verzonden en geeft het weer op de seriële poort van het ontwikkelbord. Hier gebruiken we het commando dat door de mobiele telefoon is verzonden om een LED aan of uit te zetten. Bekijk het aansluitschema, een LED is verbonden met pin D9,
 
 ![](media/549c10efcf47f29f8f6355d8cd0497cc.png)
 
 
-以下のようにブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 （1）![](media/2a66a7e8b37c68ddc51cfdb3aff53ac2.png)
 
@@ -210,15 +211,15 @@ Bluetooth appのメインインターフェースは下図のとおりです。
 
 （6）![](media/4164bcf66d3d2415f43a0efcd1ce4243.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span>コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth-seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/91fd9d6f85e291fe90a63e5095ed7f44.png)
 
-上記のコードが正常にアップロードされたら、![](media/d5e59839bafc63f8b35c78c60573d1fc.png)をクリックしてLEDを制御します。
+Nadat de bovenstaande code succesvol is geüpload. Klik op ![](media/d5e59839bafc63f8b35c78c60573d1fc.png) om de LED te bedienen.
 
 ![](./media/img-20240117094418.png)
 
 
-BTプロジェクトが終了したら、取り外してください。
+Nadat u het BT-project heeft voltooid, verwijdert u het.

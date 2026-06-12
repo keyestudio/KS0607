@@ -1,33 +1,33 @@
-### プロジェクト11: 超音波追従タンク
+### Project 11: Ultrasonic Volgend Pantservoertuig
 
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-前のレッスンでは、光追従スマートカーについて学びました。このレッスンでは、その知識を組み合わせて超音波追従カーを作ることができます。このプロジェクトでは、超音波センサーを使用して車と前方の障害物との距離を検出し、そのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
+In de vorige les hebben we geleerd over de lichtvolgende slimme auto. En in deze les kunnen we de kennis combineren om een ultrasone volgende auto te maken. In het project gebruiken we ultrasone sensoren om de afstand tussen de auto en het obstakel voor hem te detecteren, en vervolgens de rotatie van de twee motoren te regelen op basis van deze gegevens om zo de bewegingen van de slimme auto te besturen.
 
-超音波追従スマートカーの具体的なロジックは、以下の表に示されています：
+De specifieke logica van de ultrasone volgende slimme auto wordt weergegeven in de onderstaande tabel:
 
-|                        検出                        |              設定              |
+|                        Detectie                        |              Instelling              |
 | :-----------------------------------------------------: | :-------------------------------: |
-| 車と前方の障害物との距離（cm） | サーボの角度を90°に設定 |
-|                      **条件**                      |           **動作**            |
-|               distance≥20 かつ distance≤50               |             前進              |
-|            10＜distance＜20<br/>distance＞50            |               停止                |
-|                       distance≤10                       |              後退              |
+| De afstand (cm) tussen de auto en het obstakel ervoor | Stel de hoek van de servo in op 90° |
+|                      **Conditie**                      |           **Beweging**            |
+|               afstand≥20 en afstand≤50               |             Vooruit rijden              |
+|            10＜afstand＜20<br/>afstand＞50            |               Stoppen                |
+|                       afstand≤10                       |              Achteruit rijden              |
 
-#### **(2)フローチャート:**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps118.png)
 
-#### **(3)接続図:**
+#### **(3)Aansluitingsdiagram:**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-<span style="color: rgb(255, 76, 65);">注意：</span> 超音波センサー、サーボ、モーターの配線は前のプロジェクト実験と同じです。8x16 LEDパネルのGND、VCC、SDA、SCLはそれぞれ拡張ボードのG（GND）、V（VCC）、A4、A5に接続されています。
+<span style="color: rgb(255, 76, 65);">Opmerking:</span> De bedrading van de ultrasone sensor, de servo en de motor is hetzelfde als het vorige projectexperiment. De GND, VCC, SDA en SCL van het 8x16 LED-paneel zijn respectievelijk verbonden met G (GND), V (VCC), A4 en A5 op het uitbreidingsbord.
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven.
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -49,15 +49,15 @@
 
 (10) ![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/b895ca60e3249e09d4c15c356c60099a.png)
 
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaat:**
 
-コードをアップロードし、電源を入れ、DIPスイッチをONにします。サーボが90°回転し、8X16 LEDパネルに![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png)が表示され、車は障害物に追従して動きます。
+Upload de code, zet de stroom aan en zet de DIP-schakelaar op ON. De servo zal 90° roteren, het 8X16 LED-paneel toont ![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png), en de auto zal het obstakel volgen om te bewegen.
 
 ![](./media/img-20240117093900.png)

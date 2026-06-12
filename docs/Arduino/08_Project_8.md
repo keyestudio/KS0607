@@ -1,77 +1,77 @@
-### プロジェクト8: モーター駆動と速度制御
+### Project 8: Motoraansturing en Snelheidsregeling
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-モーターを駆動する方法はたくさんあります。このスマートカーは、L298Pと呼ばれる最も一般的なソリューションを使用しています。STMicroelectronicsが製造するL298Pは、高出力モーターを駆動するために特別に設計された優れた駆動チップです。
+Er zijn veel manieren om motoren aan te sturen. Onze slimme auto gebruikt de meest gebruikelijke oplossing genaamd L298P. L298P, geproduceerd door STMicroelectronics, is een uitstekende aandrijfchip speciaal ontworpen voor het aansturen van hoogvermogen motoren.
 
-DCモーター、2相および4相モーターを直接駆動でき、駆動電流は2Aに達します。また、モーターの出力端子には保護として8つの高速ショットキーダイオードが採用されています。
+Het kan DC-motoren, twee-fase en vier-fase motoren direct aansturen met een aandrijfstroom die 2A bereikt. En de uitgangsaansluiting van de motor maakt gebruik van 8 hoge-snelheid Schottky-diodes als bescherming.
 
-L298P回路をベースにした拡張ボードを設計しており、積層設計によりUNO R3ボードに直接差し込んで使用することができ、ユーザーがモーターを使用・駆動する際の技術的な困難を軽減します。
+We hebben een uitbreidingsbord ontworpen op basis van het L298P-circuit, waarvan het gelaagde ontwerp direct in het UNO R3-bord gestoken kan worden voor gebruik, waardoor de technische moeilijkheden voor gebruikers bij het gebruiken en aansturen van de motor worden verminderd.
 
-拡張ボードをボードに重ね、BATに電源を入れ、DIPスイッチをON側に切り替えると、外部電源を介して拡張ボードとUNO R3ボードに同時に電源が供給されます。
+Stapel het uitbreidingsbord op het bord, sluit de BAT aan, zet de DIP-schakelaar naar het ON-uiteinde, en voed het uitbreidingsbord en het UNO R3-bord tegelijkertijd via externe voeding.
 
-配線を容易にするため、拡張ボードには逆接防止インターフェース（PH2.0 -2P -3P -4P -5P）が装備されており、モーター、電源、センサー/モジュールを直接接続することができます。
+Om het bedraden te vergemakkelijken, is het uitbreidingsbord uitgerust met anti-omgekeerde interface (PH2.0 -2P -3P -4P -5P) en kan het dus direct worden aangesloten met motoren, voeding en sensoren/modules.
 
-駆動拡張ボードのBluetoothインターフェースは、Keyestudio HM-10 Bluetoothモジュールと完全に互換性があります。そのため、接続時にHM-10 Bluetoothモジュールを対応するインターフェースに挿入するだけです。
+De Bluetooth-interface van het aandrijf-uitbreidingsbord is volledig compatibel met de Keyestudio HM-10 Bluetooth-module. Daarom hoeven we alleen de HM-10 Bluetooth-module in de bijbehorende interface te steken bij het aansluiten.
 
-同時に、駆動拡張ボードは2.54ピンヘッダーを使用して、利用可能なデジタルポートとアナログポートを拡張しているため、他のセンサーを追加して拡張実験を続けることができます。
+Tegelijkertijd gebruikt het aandrijf-uitbreidingsbord ook 2.54 pin-headers om enkele beschikbare digitale poorten en analoge poorten uit te breiden, zodat u andere sensoren kunt blijven toevoegen en uitbreidingsexperimenten kunt uitvoeren.
 
-拡張ボードには4つのDCモーターを接続できます。デフォルトのジャンパーキャップ接続モードでは、AとA1、BとB1インターフェースのモーターは並列接続されており、動作パターンは同じです。8つのジャンパーキャップを使用して、4つのモーターインターフェースの回転方向を制御できます。
+Het uitbreidingsbord kan worden aangesloten op 4 DC-motoren. In de standaard jumper-cap verbindingsmodus zijn de A- en A1-, B- en B1-interface-motoren parallel aangesloten, en hun bewegingspatroon is hetzelfde. 8 jumper-caps kunnen worden gebruikt om de rotatierichting van de 4 motorinterfaces te regelen.
 
-例えば、モーターAインターフェース前面の2つのジャンパーキャップを横接続から縦接続に変更すると、モーターAの回転方向が元の方向と逆になります。
+Wanneer de twee jumper-caps voor de motor A-interface bijvoorbeeld worden veranderd van een horizontale verbinding naar een verticale verbinding, is de rotatierichting van motor A nu tegengesteld aan de oorspronkelijke rotatierichting.
 
 ![](media/image-20230427081635216.png)
 
 ![](media/5381c98d3be6da099ce43e841b8f736b.png)
 
-#### **(2)パラメーター：**
+#### **(2)Parameters：**
 
-- ロジック部入力電圧: DC 5V
+- Invoerspanning logisch deel: DC 5V
 
-- 駆動部入力電圧: DC 7-12V
+- Invoerspanning aandrijvingsdeel: DC 7-12V
 
-- ロジック部動作電流: ≤36mA
+- Werkstroom logisch deel: ≤36mA
 
-- 駆動部動作電流: ≤ 2A
+- Werkstroom aandrijvingsdeel: ≤ 2A
 
-- 最大消費電力: 25W (T=75℃)
+- Maximaal dissipatiemogen: 25W (T=75℃)
 
-- 制御信号入力レベル:
+- Ingangsniveau regelsignaal:
   
-  ​	ハイレベル: 2.3V ≤ Vin ≤ 5V
+  ​	Hoog niveau: 2.3V ≤ Vin ≤ 5V
   
-  ​	ローレベル: 0V ≤ Vin ≤ 1.5V
+  ​	Laag niveau: 0V ≤ Vin ≤ 1.5V
 
-- 動作温度: -25℃～＋130℃
+- Werktemperatuur: -25℃～＋130℃
 
-#### **(3)ロボットを動かす**
+#### **(3)De robot laten bewegen**
 
-モーターAの方向ピンはD2、速度制御ピンはD5です。モーターBの方向ピンはD4、速度制御ピンはD6です。
+De richtingspin van motor A is D2, de snelheidsregelingspin is D5; de richtingspin van motor B is D4 en de snelheidsregelingspin is D6.
 
-以下の表から、デジタルポートとPWMポートを通じて2つのモーターの回転を制御することにより、ロボットの動きを制御する方法がわかります。PWM値の範囲は0〜255で、値が大きいほどモーターの回転が速くなります。
+Volgens de onderstaande tabel kunnen we zien hoe we de beweging van de robot kunnen regelen door de rotatie van twee motoren te besturen via de digitale poorten en PWM-poorten. Hierbij is het bereik van de PWM-waarde 0-255. Hoe groter de waarde, hoe sneller de motor roteert.
 
-|   機能   |  D4  | D6（PWM） | モーター（左）B |  D2  | D5（PWM） | モーター（右）A |
-| :------: | :--: | :-------: | :-------------: | :--: | :-------: | :-------------: |
-| 前進     | HIGH |  255-200  |   左回転        | HIGH |  255-200  |   左回転        |
-| 後退     | LOW  |    200    |  右回転         | LOW  |    200    |  右回転         |
-| 左折     | LOW  |    200    |  右回転         | HIGH |  255-200  |   左回転        |
-| 右折     | HIGH |  255-200  |   左回転        | LOW  |    200    |  右回転         |
-| 停止     | LOW  |     0     |      停止       | LOW  |     0     |      停止       |
-
-
+|     Functie      |  D4  | D6（PWM） | Motor （links）B |  D2  | D5（PWM） | Motor（Rechts）A |
+| :--------------: | :--: | :-------: | :--------------: | :--: | :-------: | :--------------: |
+|  Vooruit rijden  | HIGH |  255-200  |  Draait Links    | HIGH |  255-200  |  Draait Links    |
+|  Achteruit gaan  | LOW  |    200    |  Draait Rechts   | LOW  |    200    |  Draait Rechts   |
+|  Links draaien   | LOW  |    200    |  Draait Rechts   | HIGH |  255-200  |  Draait Links    |
+|  Rechts draaien  | HIGH |  255-200  |  Draait Links    | LOW  |    200    |  Draait Rechts   |
+|     Stoppen      | LOW  |     0     |      Stop        | LOW  |     0     |      Stop        |
 
 
-#### **(4)接続図:**
+
+
+#### **(4)Aansluitingsschema:**
 
 ![](media/3e53cf19ea5f85a931b955453b86304b.png)
 
-<span style="color: rgb(255, 76, 65);">注意:</span>
+<span style="color: rgb(255, 76, 65);">Opmerking:</span>
 
-4ピンコネクタにはA、A1、B1、Bと表示されています。右後部モーターは8833ボードのBに接続され、左前部モーターはAポートに接続されています。
+De 4-pins connector is gemarkeerd met A, A1, B1 en B. De rechter achtermotor is verbonden met B van het 8833-bord en de linker voormotor is verbonden met de A-poort.
 
-#### **(5)テストコード:**
+#### **(5)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Verbind de Bluetooth-module niet voordat u de code uploadt, omdat het uploaden van de code ook seriële communicatie gebruikt, en er mogelijk conflicten zijn met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -81,83 +81,83 @@ motor driver
 http://www.keyestudio.com
 */
 
-#define ML_Ctrl 4 // 左モーターの方向制御ピンを定義する
-#define ML_PWM 6 // 左モーターのPWM制御ピンを定義する
-#define MR_Ctrl 2 // 右モーターの方向制御ピンを定義する
-#define MR_PWM 5 // 右モーターのPWM制御ピンを定義する
+#define ML_Ctrl 4 // Definieer de richtingsregelingspin van de linker motor
+#define ML_PWM 6 // Definieer de PWM-regelingspin van de linker motor
+#define MR_Ctrl 2 // Definieer de richtingsregelingspin van de rechter motor
+#define MR_PWM 5 // Definieer de PWM-regelingspin van de rechter motor
 
 void setup()
 {
-    pinMode(ML_Ctrl, OUTPUT);// 左モーターの方向制御ピンをOUTPUTとして定義する
-    pinMode(ML_PWM, OUTPUT);// 左モーターのPWM制御ピンをOUTPUTとして定義する
-    pinMode(MR_Ctrl, OUTPUT);// 右モーターの方向制御ピンをOUTPUTとして定義する
-    pinMode(MR_PWM, OUTPUT);// 右モーターのPWM制御ピンをOUTPUTとして定義する
+    pinMode(ML_Ctrl, OUTPUT);// Definieer de richtingsregelingspin van de linker motor als OUTPUT
+    pinMode(ML_PWM, OUTPUT);// Definieer de PWM-regelingspin van de linker motor als OUTPUT
+    pinMode(MR_Ctrl, OUTPUT);// Definieer de richtingsregelingspin van de rechter motor als OUTPUT
+    pinMode(MR_PWM, OUTPUT);// Definieer de PWM-regelingspin van de rechter motor als OUTPUT
 }
 
 void loop()
 {
-    // 前進
-    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
-    analogWrite(ML_PWM, 55); // 左モーターのPWM制御速度は55
-    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
-    analogWrite(MR_PWM, 55); // 右モーターのPWM制御速度は55
-    delay(2000);// 2秒間待機
+    // vooruit
+    digitalWrite(ML_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de linker motor in op HIGH
+    analogWrite(ML_PWM, 55); // PWM-regelingssnelheid van de linker motor is 55
+    digitalWrite(MR_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de rechter motor in op HIGH
+    analogWrite(MR_PWM, 55); // PWM-regelingssnelheid van de rechter motor is 55
+    delay(2000);// vertraging van 2s
 
-    // 後退
-    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
-    analogWrite(ML_PWM, 200); // 左モーターのPWM制御速度は200
-    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
-    analogWrite(MR_PWM, 200); // 右モーターのPWM制御速度は200
-    delay(2000);// 2秒間待機
+    // achteruit
+    digitalWrite(ML_Ctrl, LOW); // Stel richtingsregelingssnelheid van de linker motor in op LOW
+    analogWrite(ML_PWM, 200); // PWM-regelingssnelheid van de linker motor is 200
+    digitalWrite(MR_Ctrl, LOW); // Stel richtingsregelingssnelheid van de rechter motor in op LOW
+    analogWrite(MR_PWM, 200); // PWM-regelingssnelheid van de rechter motor is 200
+    delay(2000);// vertraging van 2s
 
-    // 左折
-    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
-    analogWrite(ML_PWM, 200); // 左モーターのPWM制御速度は200
-    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
-    analogWrite(MR_PWM, 55); // 右モーターのPWM制御速度は55
-    delay(2000);// 2秒間待機
+    // links draaien
+    digitalWrite(ML_Ctrl, LOW); // Stel richtingsregelingssnelheid van de linker motor in op LOW
+    analogWrite(ML_PWM, 200); // PWM-regelingssnelheid van de linker motor is 200
+    digitalWrite(MR_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de rechter motor in op HIGH
+    analogWrite(MR_PWM, 55); // PWM-regelingssnelheid van de rechter motor is 55
+    delay(2000);// vertraging van 2s
 
-    // 右折
-    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
-    analogWrite(ML_PWM, 55); // 左モーターのPWM制御速度は55
-    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
-    analogWrite(MR_PWM, 200); // 右モーターのPWM制御速度は200
-    delay(2000);// 2秒間待機
+    // rechts draaien
+    digitalWrite(ML_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de linker motor in op HIGH
+    analogWrite(ML_PWM, 55); // PWM-regelingssnelheid van de linker motor is 55
+    digitalWrite(MR_Ctrl, LOW); // Stel richtingsregelingssnelheid van de rechter motor in op LOW
+    analogWrite(MR_PWM, 200); // PWM-regelingssnelheid van de rechter motor is 200
+    delay(2000);// vertraging van 2s
 
-    // 停止
+    // stoppen
     digitalWrite(ML_Ctrl, LOW);
-    analogWrite(ML_PWM, 0); // 左モーターのPWM制御速度は0
+    analogWrite(ML_PWM, 0); // PWM-regelingssnelheid van de linker motor is 0
     digitalWrite(MR_Ctrl, LOW);
-    analogWrite(MR_PWM, 0); // 右モーターのPWM制御速度は0
-    delay(2000);// 2秒間待機
+    analogWrite(MR_PWM, 0); // PWM-regelingssnelheid van de rechter motor is 0
+    delay(2000);// vertraging van 2s
 }
 ```
 
-#### **(6)テスト結果:**
+#### **(6)Testresultaten:**
 
-図に従って配線し、テストコードをアップロードして電源を入れると、
+Na het bedraden volgens het schema, het uploaden van de testcode en het inschakelen.
 
 ![](./media/img-20240117082646.png)
 
-スマートカーは2秒間前進し、2秒間後退し、2秒間左折し、2秒間右折し、2秒間停止し、この動作を繰り返します。
+rijdt de slimme auto 2s vooruit, 2s achteruit, 2s naar links, 2s naar rechts en stopt 2s en herhaalt deze volgorde.
 
-#### **(7)コード説明:**
+#### **(7)Code-uitleg:**
 
 **digitalWrite(ML_Ctrl,LOW);**
 
-ハイレベルとローレベルの切り替えにより、モーターを時計回りまたは反時計回りに回転させることができます。これらの動作を制御するには、一般的なデジタルピンを使用できます。
+De wisseling tussen hoge en lage niveaus kan motoren clockwise of anticlockwise laten roteren. Algemene digitale pinnen kunnen worden gebruikt om deze bewegingen te besturen.
 
 **analogWrite(ML_PWM,200);**
 
-モーターの速度調整はPWMによって実現されており、モーターの速度を制御するピンはArduinoのPWMピンである必要があります。
+De snelheidsregeling van de motor wordt gerealiseerd door PWM, en de pin die de snelheid van de motor regelt moet de PWM-pin van Arduino zijn.
 
-#### **(8)応用プロジェクト:**
+#### **(8)Uitbreidingsproject:**
 
-PWMを制御することでモーターの速度を調整します。配線は同じです。
+We passen de snelheid van motoren aan door PWM te regelen en de bedrading blijft hetzelfde.
 
-**テストコード**
+**Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Verbind de Bluetooth-module niet voordat u de code uploadt, omdat het uploaden van de code ook seriële communicatie gebruikt, en er mogelijk conflicten zijn met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -167,58 +167,58 @@ motor driver pwm
 http://www.keyestudio.com
 */
 
-#define ML_Ctrl 4 // 左モーターの方向制御ピンを定義する
-#define ML_PWM 6 // 左モーターのPWM制御ピンを定義する
-#define MR_Ctrl 2 // 右モーターの方向制御ピンを定義する
-#define MR_PWM 5 // 右モーターのPWM制御ピンを定義する
+#define ML_Ctrl 4 // Definieer de richtingsregelingspin van de linker motor
+#define ML_PWM 6 // Definieer de PWM-regelingspin van de linker motor
+#define MR_Ctrl 2 // Definieer de richtingsregelingspin van de rechter motor
+#define MR_PWM 5 // Definieer de PWM-regelingspin van de rechter motor
 
 void setup() 
 {
-    pinMode(ML_Ctrl, OUTPUT);// 左モーターの方向制御ピンをOUTPUTとして定義する
-    pinMode(ML_PWM, OUTPUT);// 左モーターのPWM制御ピンをOUTPUTとして定義する
-    pinMode(MR_Ctrl, OUTPUT);// 右モーターの方向制御ピンをOUTPUTとして定義する
-    pinMode(MR_PWM, OUTPUT);// 右モーターのPWM制御ピンをOUTPUTとして定義する
+    pinMode(ML_Ctrl, OUTPUT);// Definieer de richtingsregelingspin van de linker motor als OUTPUT
+    pinMode(ML_PWM, OUTPUT);// Definieer de PWM-regelingspin van de linker motor als OUTPUT
+    pinMode(MR_Ctrl, OUTPUT);// Definieer de richtingsregelingspin van de rechter motor als OUTPUT
+    pinMode(MR_PWM, OUTPUT);// Definieer de PWM-regelingspin van de rechter motor als OUTPUT
 }
 
 void loop() 
 {
-    // 前進
-    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
-    analogWrite(ML_PWM, 155); // 左モーターのPWM制御速度は155
-    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
-    analogWrite(MR_PWM, 155); // 右モーターのPWM制御速度は155
-    delay(2000);// 2秒間待機
+    // vooruit
+    digitalWrite(ML_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de linker motor in op HIGH
+    analogWrite(ML_PWM, 155); // PWM-regelingssnelheid van de linker motor is 155
+    digitalWrite(MR_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de rechter motor in op HIGH
+    analogWrite(MR_PWM, 155); // PWM-regelingssnelheid van de rechter motor is 155
+    delay(2000);// vertraging van 2s
 
-    // 後退
-    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
-    analogWrite(ML_PWM, 100); // 左モーターのPWM制御速度は100
-    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
-    analogWrite(MR_PWM, 100); // 右モーターのPWM制御速度は100
-    delay(2000);// 2秒間待機
+    // achteruit
+    digitalWrite(ML_Ctrl, LOW); // Stel richtingsregelingssnelheid van de linker motor in op LOW
+    analogWrite(ML_PWM, 100); // PWM-regelingssnelheid van de linker motor is 100
+    digitalWrite(MR_Ctrl, LOW); // Stel richtingsregelingssnelheid van de rechter motor in op LOW
+    analogWrite(MR_PWM, 100); // PWM-regelingssnelheid van de rechter motor is 100
+    delay(2000);// vertraging van 2s
 
-    // 左折
-    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
-    analogWrite(ML_PWM, 100); // 左モーターのPWM制御速度は100
-    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
-    analogWrite(MR_PWM, 155); // 右モーターのPWM制御速度は155
-    delay(2000);// 2秒間待機
+    // links
+    digitalWrite(ML_Ctrl, LOW); // Stel richtingsregelingssnelheid van de linker motor in op LOW
+    analogWrite(ML_PWM, 100); // PWM-regelingssnelheid van de linker motor is 100
+    digitalWrite(MR_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de rechter motor in op HIGH
+    analogWrite(MR_PWM, 155); // PWM-regelingssnelheid van de rechter motor is 155
+    delay(2000);// vertraging van 2s
 
-    // 右折
-    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
-    analogWrite(ML_PWM, 155); // 左モーターのPWM制御速度は155
-    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
-    analogWrite(MR_PWM, 100); // 右モーターのPWM制御速度は100
-    delay(2000);// 2秒間待機
+    // rechts
+    digitalWrite(ML_Ctrl, HIGH); // Stel richtingsregelingssnelheid van de linker motor in op HIGH
+    analogWrite(ML_PWM, 155); // PWM-regelingssnelheid van de linker motor is 155
+    digitalWrite(MR_Ctrl, LOW); // Stel richtingsregelingssnelheid van de rechter motor in op LOW
+    analogWrite(MR_PWM, 100); // PWM-regelingssnelheid van de rechter motor is 100
+    delay(2000);// vertraging van 2s
 
-    // 停止
-    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
-    analogWrite(ML_PWM, 0); // 左モーターのPWM制御速度は0
-    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
-    analogWrite(MR_PWM, 0); // 右モーターのPWM制御速度は0
-    delay(2000);// 2秒間待機
+    // stoppen
+    digitalWrite(ML_Ctrl, LOW); // Stel richtingsregelingssnelheid van de linker motor in op LOW
+    analogWrite(ML_PWM, 0); // PWM-regelingssnelheid van de linker motor is 0
+    digitalWrite(MR_Ctrl, LOW); // Stel richtingsregelingssnelheid van de rechter motor in op LOW
+    analogWrite(MR_PWM, 0); // PWM-regelingssnelheid van de rechter motor is 0
+    delay(2000);// vertraging van 2s
 }
 ```
 
-コードをアップロードすると、モーターの速度が遅くなります。
+Upload de code, de snelheid van de motor is lager.
 
-電流が低いとモーターの回転が遅くなります。
+Een lage stroom zorgt ervoor dat de motor langzaam roteert.

@@ -1,39 +1,39 @@
-## 4.1 データのダウンロード
+## 4.1 Gegevens downloaden
 
-Arduinoの情報にはライブラリファイルとプロジェクトコードが含まれています。以下のリンクからダウンロードして、今後の学習にお役立てください。
+Arduino-informatie bevat bibliotheekbestanden en projectcode. Klik om te downloaden voor verdere studie.
 
-データダウンロード：[Arduino Data](./Arduino.7z)
+Gegevens downloaden:[Arduino Data](./Arduino.7z)
 
-## 4.2 ソフトウェアのダウンロード
+## 4.2 Software downloaden
 
-コントロールボードを入手したら、まず Arduino IDE とドライバをダウンロードする必要があります。
+Wanneer we de besturingskaart ontvangen, moeten we eerst de Arduino IDE en het stuurprogramma downloaden.
 
-Arduino IDE は公式サイトからダウンロードできます：<https://www.arduino.cc/en/software>
+Je kunt de Arduino IDE downloaden van de officiële website:<https://www.arduino.cc/en/software>.
 
-Arduino にはさまざまなバージョンがあります。お使いのシステムに合ったバージョンをダウンロードしてください。ここでは WINDOWS システムを例に、ダウンロードとインストールの方法をご説明します。
+Er zijn verschillende versies van Arduino. Download gewoon een geschikte versie voor uw systeem. We nemen het WINDOWS-systeem als voorbeeld om u te laten zien hoe u het kunt downloaden en installeren.
 
 ![](./media/Animati.gif)
 
-JUST DOWNLOAD をクリックし、ダウンロードしたファイルをクリックしてインストールするだけです。
+U hoeft alleen op JUST DOWNLOAD te klikken, klik vervolgens op het gedownloade bestand om het te installeren.
 
-ZIP ファイルをダウンロードした場合は、直接解凍して起動することができます。
+En wanneer het ZIP-bestand is gedownload, kunt u het direct uitpakken en starten.
 
 ![](./media/Animat.gif)
 
-## 4.3 Arduino IDE の設定
+## 4.3 Arduino IDE instellen
 
-1. ボードをコンピュータに接続します。
+1. De kaart op de computer aansluiten.
 
 ![](./media/Anima.gif)
 
-## 4.4 ライブラリの追加
+## 4.4 Bibliotheek toevoegen
 
-ライブラリとは？
+Wat zijn bibliotheken?
 
-ライブラリとは、センサー、ディスプレイ、モジュールなどへの接続を簡単にするためのコードの集まりです。
+Bibliotheken zijn een verzameling code waarmee u eenvoudig verbinding kunt maken met een sensor, display, module, enz.
 
-インターネット上には、ダウンロード可能な追加ライブラリが数百種類あります。
+Er zijn honderden aanvullende bibliotheken beschikbaar op het internet om te downloaden.
 
-ここでは、ライブラリを追加する最も簡単な方法をご紹介します。
+We introduceren de eenvoudigste manier om bibliotheken toe te voegen.
 
 ![](./media/Anim.gif)

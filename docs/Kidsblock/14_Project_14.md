@@ -1,38 +1,38 @@
-### プロジェクト14：ライントラッキングタンク
+### Project 14: Lijnvolgend Pantservoertuig
 
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-前のプロジェクトでは、スマートカーを一定のスペース内で移動させる方法を紹介しました。このプロジェクトでは、これまで学んだ知識を活用して、ライントラッキングスマートカーを作製します。実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒いラインがあるかどうかを検出し、検出結果に応じて2つのモーターの回転を制御することで、スマートカーが黒いラインに沿って移動できるようにします。
+Het vorige project liet zien hoe je de slimme auto kunt beperken om binnen een bepaalde ruimte te bewegen. In dit project gebruiken we de eerder geleerde kennis om er een lijnvolgende slimme auto van te maken. In het experiment gebruiken we de lijnvolgsensor om te detecteren of er een zwarte lijn in de buurt van de slimme auto is, en vervolgens regelen we de rotatie van de twee motoren op basis van de detectieresultaten, zodat de slimme auto langs de zwarte lijn beweegt.
 
-スマートカーの具体的なロジックを以下の表に示します：
+De specifieke logica van de slimme auto wordt weergegeven in de onderstaande tabel:
 
-|               センサー               |                          検出内容                           |
+|               Sensor               |                          Detectie                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| 中央のライントラッキングセンサー | 黒いライン検出時：ハイレベル<br />白いライン検出時：ローレベル |
-|  左側のライントラッキングセンサー  | 黒いライン検出時：ハイレベル<br />白いライン検出時：ローレベル |
-| 右側のライントラッキングセンサー  | 黒いライン検出時：ハイレベル<br />白いライン検出時：ローレベル |
+| Lijnvolgsensor in het midden | Zwarte lijn gedetecteerd: hoog niveau<br />Witte lijn gedetecteerd: laag niveau |
+|  Lijnvolgsensor aan de linkerkant  | Zwarte lijn gedetecteerd: hoog niveau<br />Witte lijn gedetecteerd: laag niveau |
+| Lijnvolgsensor aan de rechterkant  | Zwarte lijn gedetecteerd: hoog niveau<br />Witte lijn gedetecteerd: laag niveau |
 
-|                         条件1                          |                         条件2                          |   動作   |
+|                         Conditie 1                          |                         Conditie 2                          |   Beweging   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------: |
-| 中央の<br />ライントラッキングセンサーが<br />黒いラインを検出 | 左側のライントラッキングセンサーが黒いラインを検出<br />右側のセンサーが白いラインを検出 | 左回転  |
-| 中央の<br />ライントラッキングセンサーが<br />黒いラインを検出 | 左側のライントラッキングセンサーが白いラインを検出<br />右側のセンサーが黒いラインを検出 | 右回転 |
-| 中央の<br />ライントラッキングセンサーが<br />黒いラインを検出 | 左右両方のライントラッキングセンサーが白いラインを検出<br />左右両方のライントラッキングセンサーが黒いラインを検出 | 前進 |
-| 中央の<br />ライントラッキングセンサーが<br />白いラインを検出 | 左側のライントラッキングセンサーが黒いラインを検出<br />右側のセンサーが白いラインを検出 | 左回転  |
-| 中央の<br />ライントラッキングセンサーが<br />白いラインを検出 | 左側のライントラッキングセンサーが白いラインを検出<br />右側のセンサーが黒いラインを検出 | 右回転 |
-| 中央の<br />ライントラッキングセンサーが<br />白いラインを検出 | 左右両方のライントラッキングセンサーが白いラインを検出<br />左右両方のライントラッキングセンサーが黒いラインを検出 |     停止     |
+| Lijnvolgsensor <br />in het midden <br />detecteert de zwarte lijn | Lijnvolgsensor aan de linkerkant detecteert de zwarte lijn<br />die aan de rechterkant detecteert witte lijnen | Draai links  |
+| Lijnvolgsensor <br />in het midden <br />detecteert de zwarte lijn | Lijnvolgsensor aan de linkerkant detecteert witte lijnen<br />die aan de rechterkant detecteert de zwarte lijn | Draai rechts |
+| Lijnvolgsensor <br />in het midden <br />detecteert de zwarte lijn | Beide linker- en rechter lijnvolgsensoren detecteren witte lijnen<br />Beide linker- en rechter lijnvolgsensoren detecteren de zwarte lijn | Vooruit rijden |
+| Lijnvolgsensor<br />in het midden <br />detecteert witte lijnen | Lijnvolgsensor aan de linkerkant detecteert de zwarte lijn<br />die aan de rechterkant detecteert witte lijnen | Draai links  |
+| Lijnvolgsensor<br />in het midden <br />detecteert witte lijnen | Lijnvolgsensor aan de linkerkant detecteert witte lijnen<br />die aan de rechterkant detecteert de zwarte lijn | Draai rechts |
+| Lijnvolgsensor<br />in het midden <br />detecteert witte lijnen | Beide linker- en rechter lijnvolgsensoren detecteren witte lijnen<br />Beide linker- en rechter lijnvolgsensoren detecteren de zwarte lijn |     Stoppen     |
 
-#### **(2)フローチャート：**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps11.png)
 
-#### **(3)接続図：**
+#### **(3)Aansluitingsschema:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます
+Je kunt ook blokken slepen om je code te bewerken, zoals hieronder weergegeven
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -50,15 +50,15 @@
 
 （8）![](media/fec93c7b8b089de709fd50575931519c.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Let op:**</span> Sluit de Bluetooth-module niet aan voordat je de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er mogelijk conflicten kunnen ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden mislukt.)
 
 ![](media/294ae4c01072e34b58a334912c90083a.png)
 
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaten:**
 
-テストコードのアップロードが成功し、電源を入れると、スマートカーが黒いラインに沿って移動します。
+Na het succesvol uploaden van de testcode en het inschakelen van de voeding, beweegt de slimme auto langs de zwarte lijn.
 
 ![](./media/img-20240117094129.png)

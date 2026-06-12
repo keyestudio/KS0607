@@ -1,4 +1,4 @@
-**チュートリアルの言語切り替えについては、以下のアニメーション画像をご参照ください。**
+**Wat betreft het veranderen van de taal in de tutorial, zie de volgende geanimeerde afbeelding.**
 
 ![](./media/1234567.gif)
 
@@ -6,137 +6,137 @@
 
  [Kidsblock Tutorial](./Kidsblock/Kidsblock.7z) 
 
-# 1. 製品紹介
+# 1. Productintroductie
 
 ![](media/0eed85e053eec9481023a1aaa999190e.png)
 
 
-## 1.1 はじめに
+## 1.1 Introductie
 
-このSTEM教育用V3.1タンクロボットは新たにアップグレードされ、ライントラッキングと消火機能が追加されました。プログラミングとコーディングを通じて、子供と保護者の絆を強め、子供たちの想像力を刺激します。
+Deze STEM educatieve V3.1 tankrobot is nieuw verbeterd en heeft een lijnvolgfunctie en een brandblussende functie toegevoegd gekregen. Het versterkt de relatie tussen kinderen en ouders enorm en prikkelt de verbeelding van kinderen door middel van programmeren en coderen.
 
-組み立てプロセスの中で、ライトフォロー、ライントラッキング、IRおよびBTリモートコントロール、速度調整など、複数の機能を確認できます。また、ロボットカーの組み立てに役立つ小さなパーツもあります。
+Tijdens het assemblageproces kunt u de verschillende functies ontdekken, zoals licht volgen, lijn volgen, IR- en BT-afstandsbediening, snelheidsregeling enzovoort. Daarnaast zijn er kleine onderdelen die u helpen bij het assembleren van de robotauto.
 
-炎センサー、BTセンサー、障害物回避センサー、ライントラッキングセンサー、超音波センサーなど、基本的なセンサーとモジュールが含まれています。
+Er zijn basissenoren en -modules aanwezig, zoals een vlamsensor, een BT-sensor, een obstakelontwijkingssensor, een lijnvolgsensor en een ultrasone sensor.
 
-Arduino IDE のC言語コードと KidsBlock グラフィカルプログラミングの2種類のチュートリアルは、さまざまな年齢の愛好家にも適しています。
+De twee tutorials voor C-taalcode van Arduino IDE en KidsBlock grafisch programmeren zijn ook geschikt voor enthousiastelingen van verschillende leeftijden.
 
-これはまさに最良の選択です。
+Het is echt de beste keuze voor u.
 
-## 1.2 特徴
+## 1.2 Kenmerken
 
-1. 多機能：領域制限、ライントラッキング、消火、ライトフォロー、IRおよびBTリモートコントロール、速度制御など。
+1. Meerdere functies: Begrenzing, lijn volgen, brandblussen, licht volgen, IR- en BT-afstandsbediening, snelheidsregeling enzovoort.
 
-2. 簡単な組み立て：いくつかのパーツでロボットを組み立て。
+2. Eenvoudig te bouwen: assembleer de robot met enkele onderdelen.
 
-3. 高い耐久性：アルミ合金ブラケット、金属モーター、高品質ホイール。
+3. Hoge duurzaamheid: Aluminiumlegeringsbeugels, metalen motoren, hoogwaardige wielen
 
-4. 高い拡張性：モータードライバーシールドとLEGOパーツを通じて多くのセンサーやモジュールを接続可能。
+4. Hoge uitbreidbaarheid: verbind veel sensoren en modules via het motorstuurpaneel en LEGO-onderdelen
 
-5. 複数の制御方法：IRリモートコントロール、アプリコントロール（iOSおよびAndroidシステム）。
+5. Meerdere bedieningsmogelijkheden: IR-afstandsbediening, App-bediening (iOS en Android)
 
-6. 基本プログラミング：Arduino IDE のC言語コードと KidsBlock グラフィカルプログラミング。
+6. Basisprogrammering: C-taalcode van Arduino IDE en KidsBlock grafisch programmeren.
 
-## 1.3 仕様
+## 1.3 Parameters
 
-- 動作電圧：5V
+- Werkspanning: 5V
 
-- 入力電圧：6-9V
+- Ingangsspanning: 6-9V
 
-- 最大出力電流：1.5A
+- Maximale uitgangsstroom: 1,5A
 
-- 最大消費電力：32W
+- Maximaal energieverbruik: 32W
 
-- モーター速度：5V 200 rpm/分
+- Motorsnelheid: 5V 200 rpm/min
 
-- モータードライブ方式：デュアルHブリッジドライブ（HR8833）
+- Motoraansturingmodus: dubbele H-brug aansturing (HR8833)
 
-- 超音波感知角度：\<15°
+- Ultrasone detectiehoek: \<15°
 
-- 超音波検知距離：2cm-300cm
+- Ultrasone detectieafstand: 2cm-300cm
 
-- 赤外線リモートコントロール距離：10メートル（実測値）
+- Infrarood afstandsbedieningsafstand: 10 meter (gemeten)
 
-- BTリモートコントロール距離：30メートル（実測値）
+- BT afstandsbedieningsafstand: 30 meter (gemeten)
 
-## 1.4 キット内容
+## 1.4 Onderdelenlijst
 
-| No.  |                 名称                  | 数量  |                           画像                            |
-| ---- | :-----------------------------------: | ---- | :----------------------------------------------------------: |
-| 1    |            ボトムアセンブリ            | 1    | ![image-20260610134727912](media/image-20260610134727912.png) |
-| 2    |           開発ボード           | 1    |       ![](media/8ecfc7e4f74bd2001452e33f74eace2e.png)        |
-| 3    |     モータードライバー拡張ボード      | 1    |       ![ ](media/a68b920cd30c3b17941fa8b28b643c8f.png)       |
-| 4    |             BLE BTモジュール             | 1    | ![image-20260610134843265](media/image-20260610134843265.png) |
-| 5    |       HC-SR04 超音波センサー       | 1    |       ![](media/b0906d68835b2659491e53a85567569b.png)        |
-| 6    |      Keyestudio 8\*16 LEDパネル       | 1    |       ![](media/2d831a9e71d1777b7b12132267d22947.png)        |
-| 7    |           黄色LEDモジュール           | 1    |       ![2](media/0b130b1b8eb4e626a9cad08906af2ef5.png)       |
-| 8    |             炎センサー              | 2    |       ![1](media/ecf808f114234039582880ab4682c4e6.png)       |
-| 9    |           130モーターモジュール            | 1    |       ![5](media/465d2f91471dcdab8de9b07e44d37cf4.png)       |
-| 10   |             フォトレジスター             | 2    |       ![4](media/9b0193c19a5a7392052adffdfc4e10c2.png)       |
-| 11   |   8\*16 LEDパネル用アクリルボード   | 1    |       ![4](media/2d8e4747f80f8134999a16c9aa0dabb7.png)       |
-| 12   |           トップアクリルボード           | 1    |       ![](media/704f390bd65080844e77b498d37784f7.jpeg)       |
-| 13   |             アクリルボード             | 1    |            ![Img](./media/img-20240115093710.png)            |
-| 14   |            リモートコントロール             | 1    |      ![11](media/4bcc6cd652f8101c6a4680b40e40e593.png)       |
-| 15   |                 サーボ                 | 1    | ![image-20260610134952103](media/image-20260610134952103.png) |
-| 16   |               USBケーブル               | 1    | ![image-20260610135025809](media/image-20260610135025809.png) |
-| 17   |             巻きパイプ              | 1    | ![image-20260610135055396](media/image-20260610135055396.png) |
-| 18   |         3.0\*40MM ドライバー         | 1    |       ![](media/f353b46e6c2c0597c3268d5aa137fd99.png)        |
-| 19   |             3\*100MM 結束バンド             | 5    |       ![](media/247e99cde38f40eb256ed698ec47bb1d.png)        |
-| 20   |          L型 M2.5 レンチ           | 1    | ![image-20260610135131871](media/image-20260610135131871.png) |
-| 21   |           L型 M3 レンチ            | 1    | ![image-20260610135152012](media/image-20260610135152012.png) |
-| 22   |          L型 M1.5 レンチ           | 1    | ![image-20260610135209244](media/image-20260610135209244.png) |
-| 23   |               段ボール               | 1    |       ![](media/8c9753cc11848ca134532d52e9ca2277.png)        |
-| 24   |  4P M-F PH2.0mm to 2.54 デュポンワイヤー   | 1    | ![image-20260610135244231](media/image-20260610135244231.png) |
-| 25   |        4P HX-2.54 デュポンワイヤー         | 1    | ![image-20260610135308461](media/image-20260610135308461.png) |
-| 26   |      5P JST-PH2.0MM デュポンワイヤー       | 1    | ![image-20260610135335802](media/image-20260610135335802.png) |
-| 27   |   3P-3P XH2.54 to 2.54 デュポンワイヤー    | 1    |       ![9](media/6a1c8e7c27ca08c62ac0c30a0dbd4578.png)       |
-| 28   |   3P-3P XH2.54 to PH2.0 デュポンワイヤー   | 2    |     ![10-1](media/054fc8fbedd22e8e9c6074207bc94524.png)      |
-| 29   |   4P-3P XH2.54 to PH2.0 デュポンワイヤー   | 2    |      ![11](media/7856a38f34cdeb19966cd0fb99b55f85.png)       |
-| 30   |    4P XH2.54 to PH2.0 デュポンワイヤー     | 1    | ![image-20260610135549039](media/image-20260610135549039.png) |
-| 31   |      M1.4\*8MM 丸頭ネジ      | 6    | ![image-20260610135833573](media/image-20260610135833573.png) |
-| 32   |               M1.4 ナット               | 6    | ![image-20260610135858395](media/image-20260610135858395.png) |
-| 33   |                M2 ナット                | 8    | ![image-20260610135917083](media/image-20260610135917083.png) |
-| 34   |       M2\*8MM 丸頭ネジ       | 8    | ![image-20260610135938981](media/image-20260610135938981.png) |
-| 35   |      M1.2\*5MM 丸頭ネジ      | 6    | ![image-20260610140002084](media/image-20260610140002084.png) |
-| 36   |       M3\*6MM 丸頭ネジ       | 18   | ![image-20260610140022308](media/image-20260610140022308.png) |
-| 37   |       M3\*10MM 皿頭ネジ       | 3    | ![image-20260610140045542](media/image-20260610140045542.png) |
-| 38   |                M3 ナット                | 3    | ![image-20260610140117820](media/image-20260610140117820.png) |
-| 39   |   M3\*10MM 両通し銅柱    | 4    | ![image-20260610140133733](media/image-20260610140133733.png) |
-| 40   |    M3*45MM 両通し銅柱    | 4    | ![image-20260610140222831](media/image-20260610140222831.png) |
-| 41   | テクニックアクスルピン（摩擦リッジ付き） | 11   | ![image-20260610140300817](media/image-20260610140300817.png) |
-| 42   |          4265c テクニックブッシュ           | 11   | ![image-20260610140321012](media/image-20260610140321012.png) |
-| 43   |            青ジャンパーキャップ            | 4    | ![image-20260610140340732](media/image-20260610140340732.png) |
-| 44   |            赤ジャンパーキャップ             | 4    | ![image-20260610140359700](media/image-20260610140359700.png) |
-| 45   |        片口スパナ         | 1    | ![image-20260610140437496](media/image-20260610140437496.png) |
-| 46   |        両口スパナ         | 1    | ![image-20260610140514692](media/image-20260610140514692.png) |
+| Nr.  |                 Naam                  | Aantal |                           Afbeelding                            |
+| ---- | :-----------------------------------: | ------ | :----------------------------------------------------------: |
+| 1    |            Bodemassemblage            | 1    | ![image-20260610134727912](media/image-20260610134727912.png) |
+| 2    |           Ontwikkelbord           | 1    |       ![](media/8ecfc7e4f74bd2001452e33f74eace2e.png)        |
+| 3    |     Motorstuuruitbreidingsbord      | 1    |       ![ ](media/a68b920cd30c3b17941fa8b28b643c8f.png)       |
+| 4    |             BLE BT Module             | 1    | ![image-20260610134843265](media/image-20260610134843265.png) |
+| 5    |       HC-SR04 Ultrasone Sensor       | 1    |       ![](media/b0906d68835b2659491e53a85567569b.png)        |
+| 6    |      Keyestudio 8\*16 LED Paneel       | 1    |       ![](media/2d831a9e71d1777b7b12132267d22947.png)        |
+| 7    |           Gele LED Module           | 1    |       ![2](media/0b130b1b8eb4e626a9cad08906af2ef5.png)       |
+| 8    |             Vlamsensor              | 2    |       ![1](media/ecf808f114234039582880ab4682c4e6.png)       |
+| 9    |           130 Motormodule            | 1    |       ![5](media/465d2f91471dcdab8de9b07e44d37cf4.png)       |
+| 10   |             Fotoweerstand             | 2    |       ![4](media/9b0193c19a5a7392052adffdfc4e10c2.png)       |
+| 11   |   Acrylplaat voor 8\*16 LED Paneel   | 1    |       ![4](media/2d8e4747f80f8134999a16c9aa0dabb7.png)       |
+| 12   |           Bovenste acrylplaat           | 1    |       ![](media/704f390bd65080844e77b498d37784f7.jpeg)       |
+| 13   |             Acrylplaat             | 1    |            ![Img](./media/img-20240115093710.png)            |
+| 14   |            Afstandsbediening             | 1    |      ![11](media/4bcc6cd652f8101c6a4680b40e40e593.png)       |
+| 15   |                 Servo                 | 1    | ![image-20260610134952103](media/image-20260610134952103.png) |
+| 16   |               USB-kabel               | 1    | ![image-20260610135025809](media/image-20260610135025809.png) |
+| 17   |             Wikkelbuisje              | 1    | ![image-20260610135055396](media/image-20260610135055396.png) |
+| 18   |         3.0\*40MM Schroevendraaier         | 1    |       ![](media/f353b46e6c2c0597c3268d5aa137fd99.png)        |
+| 19   |             3\*100MM Kabelbinders             | 5    |       ![](media/247e99cde38f40eb256ed698ec47bb1d.png)        |
+| 20   |          L-type M2.5 Inbussleutel           | 1    | ![image-20260610135131871](media/image-20260610135131871.png) |
+| 21   |           L-type M3 Inbussleutel            | 1    | ![image-20260610135152012](media/image-20260610135152012.png) |
+| 22   |          L-type M1.5 Inbussleutel           | 1    | ![image-20260610135209244](media/image-20260610135209244.png) |
+| 23   |               Karton               | 1    |       ![](media/8c9753cc11848ca134532d52e9ca2277.png)        |
+| 24   |  4P M-F PH2.0mm naar 2.54 Dupont Draad   | 1    | ![image-20260610135244231](media/image-20260610135244231.png) |
+| 25   |        4P HX-2.54 Dupont Draad         | 1    | ![image-20260610135308461](media/image-20260610135308461.png) |
+| 26   |      5P JST-PH2.0MM Dupont Draad       | 1    | ![image-20260610135335802](media/image-20260610135335802.png) |
+| 27   |   3P-3P XH2.54 naar 2.54 Dupont Draad    | 1    |       ![9](media/6a1c8e7c27ca08c62ac0c30a0dbd4578.png)       |
+| 28   |   3P-3P XH2.54 naar PH2.0 Dupont Draad   | 2    |     ![10-1](media/054fc8fbedd22e8e9c6074207bc94524.png)      |
+| 29   |   4P-3P XH2.54 naar PH2.0 Dupont Draad   | 2    |      ![11](media/7856a38f34cdeb19966cd0fb99b55f85.png)       |
+| 30   |    4P XH2.54 naar PH2.0 Dupont Draad     | 1    | ![image-20260610135549039](media/image-20260610135549039.png) |
+| 31   |      M1.4\*8MM Rondkopschroeven      | 6    | ![image-20260610135833573](media/image-20260610135833573.png) |
+| 32   |               M1.4 Moeren               | 6    | ![image-20260610135858395](media/image-20260610135858395.png) |
+| 33   |                M2 Moeren                | 8    | ![image-20260610135917083](media/image-20260610135917083.png) |
+| 34   |       M2\*8MM Rondkopschroeven       | 8    | ![image-20260610135938981](media/image-20260610135938981.png) |
+| 35   |      M1.2\*5MM Rondkopschroeven      | 6    | ![image-20260610140002084](media/image-20260610140002084.png) |
+| 36   |       M3\*6MM Rondkopschroeven       | 18   | ![image-20260610140022308](media/image-20260610140022308.png) |
+| 37   |       M3\*10MM Verzonken schroeven       | 3    | ![image-20260610140045542](media/image-20260610140045542.png) |
+| 38   |                M3 Moeren                | 3    | ![image-20260610140117820](media/image-20260610140117820.png) |
+| 39   |   M3\*10MM Dubbelzijdige koperen afstandsbout    | 4    | ![image-20260610140133733](media/image-20260610140133733.png) |
+| 40   |    M3*45MM Dubbelzijdige koperen afstandsbout    | 4    | ![image-20260610140222831](media/image-20260610140222831.png) |
+| 41   | Technic asspinpen met wrijvingsrichels | 11   | ![image-20260610140300817](media/image-20260610140300817.png) |
+| 42   |          4265c Technic Bus           | 11   | ![image-20260610140321012](media/image-20260610140321012.png) |
+| 43   |            Blauwe jumpercap            | 4    | ![image-20260610140340732](media/image-20260610140340732.png) |
+| 44   |            Rode jumpercap             | 4    | ![image-20260610140359700](media/image-20260610140359700.png) |
+| 45   |        Enkelvoudige steeksleutel         | 1    | ![image-20260610140437496](media/image-20260610140437496.png) |
+| 46   |        Dubbele steeksleutel         | 1    | ![image-20260610140514692](media/image-20260610140514692.png) |
 
-## 1.5 Keyestudio V4.0 開発ボード
+## 1.5 Keyestudio V4.0 Ontwikkelbord
 
-このスマートカーのコアは Keyestudio V4.0 開発ボードであることを理解しておく必要があります。
+U moet weten dat het Keyestudio V4.0 ontwikkelbord de kern is van deze slimme auto.
 
 ![](./media/image-20250709102941963.png)
 
-Keyestudio V4.0 開発ボードは ATmega328P MCU をベースにしており、UART-USB変換チップとして CP2102 チップを搭載しています。
+Het Keyestudio V4.0 ontwikkelbord is gebaseerd op de ATmega328P MCU en maakt gebruik van een CP2102 chip als UART-naar-USB converter.
 
 ![](./media/image-20250709103216112.png)
 
-14本のデジタル入出力ピン（うち6本はPWM出力として使用可能）、6本のアナログ入力、16MHz水晶振動子、USB接続、電源ジャック、2つのICSPヘッダー、およびリセットボタンを備えています。
+Het heeft 14 digitale in-/uitvoerpinnen (waarvan 6 kunnen worden gebruikt als PWM-uitgangen), 6 analoge ingangen, een 16 MHz kwartskristal, een USB-aansluiting, een stroomaansluiting, 2 ICSP-headers en een resetknop.
 
 ![](./media/image-20250709103241560.png)
 
-USBケーブル、外部DC電源ジャック（DC 7-12V）、またはメスヘッダー Vin/GND（DC 7-12V）で電力を供給できます。
+We kunnen het voeden met een USB-kabel, de externe DC-stroomaansluiting (DC 7-12V) of vrouwelijke headers Vin/GND (DC 7-12V)
 
-|      マイクロコントローラー       |                      ATmega328P-PU                       |
+|      Microcontroller       |                      ATmega328P-PU                       |
 | :-------------------------: | :------------------------------------------------------: |
-|      動作電圧      |                            5V                            |
-| 入力電圧（推奨） |                         DC7-12V                          |
-|      デジタル I/O ピン       |       14 (D0-D13)  （うち6本はPWM出力）       |
-|    PWM デジタル I/O ピン     |               6 (D3, D5, D6, D9, D10, D11)               |
-|      アナログ入力ピン      |                        6 (A0-A5)                         |
-|   I/O ピンあたりのDC電流    |                          20 mA                           |
-|   3.3V ピンのDC電流   |                          50 mA                           |
-|        フラッシュメモリ         | 32 KB (ATmega328P-PU)（うち0.5KBはブートローダーが使用） |
+|      Werkspanning      |                            5V                            |
+| Ingangsspanning (aanbevolen) |                         DC7-12V                          |
+|      Digitale I/O-pinnen       |       14 (D0-D13)  (waarvan 6 PWM-uitgang bieden)       |
+|    PWM Digitale I/O-pinnen     |               6 (D3, D5, D6, D9, D10, D11)               |
+|      Analoge ingangspinnen      |                        6 (A0-A5)                         |
+|   DC-stroom per I/O-pin    |                          20 mA                           |
+|   DC-stroom voor 3.3V-pin   |                          50 mA                           |
+|        Flashgeheugen         | 32 KB (ATmega328P-PU) waarvan 0,5 KB gebruikt door bootloader |
 |            SRAM             |                   2 KB (ATmega328P-PU)                   |
 |           EEPROM            |                   1 KB (ATmega328P-PU)                   |
-|         クロック速度         |                          16 MHz                          |
+|         Kloksnelheid         |                          16 MHz                          |
 |         LED_BUILTIN         |                           D13                            |

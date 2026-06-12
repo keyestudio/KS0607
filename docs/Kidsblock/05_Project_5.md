@@ -1,50 +1,50 @@
-### プロジェクト5: サーボ制御
+### Project 5: Servo Besturing
 
-#### **(1)概要:**
+#### **(1)Beschrijving:**
 
-サーボモーターは位置制御型の回転アクチュエーターです。主にハウジング、回路基板、コアレスモーター、ギア、位置センサーで構成されています。その動作原理は、サーボがMCUまたは受信機から送られた信号を受け取り、周期20ms、幅1.5msの基準信号を生成します。次に、取得したDCバイアス電圧をポテンショメーターの電圧と比較し、電圧差出力を得ます。
+Een servomotor is een roterende actuator voor positieregeling. Het bestaat voornamelijk uit een behuizing, een printplaat, een kernloze motor, een tandwiel en een positiesensor. Het werkingsprincipe is dat de servo het signaal ontvangt dat door de MCU of ontvanger wordt verzonden en een referentiesignaal produceert met een periode van 20ms en een breedte van 1,5ms. Vervolgens vergelijkt het de verkregen DC-spanningsoffset met de spanning van de potentiometer en verkrijgt het de spanningsverschil-uitvoer.
 
-モーターの速度が一定のとき、ポテンショメーターはカスケード減速ギアを通じて回転駆動され、電圧差が0になり、モーターは回転を停止します。一般的に、サーボの回転角度範囲は0°〜180°です。
+Wanneer de motorsnelheid constant is, wordt de potentiometer via het trapsgewijs reductietandwiel aangedreven om te draaien, waardoor het spanningsverschil 0 wordt en de motor stopt met draaien. Over het algemeen is het hoekbereik van servorotatie 0° --180°.
 
-サーボモーターの回転角度は、PWM（パルス幅変調）信号のデューティサイクルを調整することで制御されます。PWM信号の標準周期は20ms（50Hz）です。理論上、パルス幅は1ms〜2msの間に分布しますが、実際には0.5ms〜2.5msの間です。この幅は0°〜180°の回転角度に対応しています。なお、ブランドが異なるモーターでは、同じ信号でも異なる回転角度になる場合があります。
+De rotatiehoek van de servomotor wordt geregeld door de duty cycle van het PWM-signaal (Pulse-Width Modulation) aan te passen. De standaardcyclus van het PWM-signaal is 20ms (50Hz). Theoretisch is de breedte verdeeld tussen 1ms-2ms, maar in de praktijk is het tussen 0,5ms-2,5ms. De breedte correspondeert met de rotatiehoek van 0° tot 180°. Let op: voor verschillende merkmotoren kan hetzelfde signaal resulteren in verschillende rotatiehoeken.
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-一般的に、サーボには茶色、赤色、オレンジ色の3本の線があります。茶色の線はアース、赤色の線はプラス極、オレンジ色の線は信号線です。
+Over het algemeen heeft een servo drie draden in bruin, rood en oranje. De bruine draad is geaard, de rode is een positieve poolleiding en de oranje is een signaaldraad.
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-サーボの角度：
+De hoek van de servo:
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)パラメーター:**
+#### **(2)Parameters:**
 
-- 動作電圧: DC 4.8V \~ 6V
+- Werkspanning: DC 4,8V \~ 6V
 
-- 動作角度範囲: 約180°（500 → 2500 μsec時）
+- Werkhoekbereik: ongeveer 180° (bij 500 → 2500 μsec)
 
-- パルス幅範囲: 500 → 2500 μsec
+- Pulsbreedte bereik: 500 → 2500 μsec
 
-- 無負荷速度: 0.12 ± 0.01 sec / 60（DC 4.8V）　0.1 ± 0.01 sec / 60（DC 6V）
+- Onbelaste snelheid: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
 
-- 無負荷電流: 200 ± 20mA（DC 4.8V）　220 ± 20mA（DC 6V）
+- Onbelaste stroom: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
 
-- 停動トルク: 1.3 ± 0.01kg · cm（DC 4.8V）　1.5 ± 0.1kg · cm（DC 6V）
+- Stoppend koppel: 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
 
-- 停止電流: ≦ 850mA（DC 4.8V）　≦ 1000mA（DC 6V）
+- Stoorstroom: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
 
-- 待機電流: 3 ± 1mA（DC 4.8V）　4 ± 1mA（DC 6V）
+- Standbystroom: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
 
-#### **(3)接続図:**
+#### **(3)Aansluitschema:**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span> サーボの茶色、赤色、オレンジ色の線は、それぞれシールドのGnd(G)、5v(V)、D10に接続します。サーボの電流が大きいため、外部電源を必ず接続してください。接続しない場合、開発ボードが破損する恐れがあります。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> De bruine, rode en oranje draden van de servo zijn respectievelijk aangesloten op Gnd(G), 5v(V) en D10 van het shield. Vergeet niet een externe voeding aan te sluiten vanwege de hoge stroom van de servo. Anders wordt het ontwikkelbord beschadigd.
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 ![](media/5b04350e0310955ee2ecd48338f556a3.png)
 
@@ -54,14 +54,14 @@
 
 ![](media/e149b45054fe94196dea220b319cb0bf.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、BluetoothのシリアL通信と競合し、アップロードが失敗する場合があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/26e37037daf84d69320b76dd13346cd1.png)
 
-#### **(6)テスト結果:**
+#### **(6)Testresultaten:**
 
-コードをアップロードし、電源を接続するとサーボが0°〜180°の範囲で動作します。
+Upload de code, sluit de voeding aan en de servo beweegt in het bereik van 0° en 180°.
 
 ![](./media/img-20240117092225.png)

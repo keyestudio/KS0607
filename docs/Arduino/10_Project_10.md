@@ -1,33 +1,33 @@
-### プロジェクト10：ライトフォロータンク
+### Project 10: Lichtvolgende Tank
 
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-前回のプロジェクトでは、スマートカーに搭載されている各種センサー、モジュール、拡張ボードの使い方について詳しく説明しました。ここからはスマートカーを使ったプロジェクトに移ります。ライトフォロースマートカーとは、その名の通り光を追いかけることができるスマートカーです。
+In de vorige projecten hebben we het gebruik van diverse sensoren, modules en uitbreidingskaarten op de slimme auto in detail besproken. Nu gaan we over naar de projecten van de slimme auto. De lichtvolgende slimme auto, zoals de naam al aangeeft, is een slimme auto die het licht kan volgen.
 
-フォトレジスターとモータードライブのプロジェクトで学んだ知識を組み合わせて、光追尾スマートカーを作ることができます。このプロジェクトでは、2つのフォトレジスターモジュールを使用してスマートカーの左右の光の強度を検出し、対応するアナログ値を読み取り、その2つのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
+We kunnen de kennis uit de projecten over de lichtgevoelige weerstand en de motoraansturing combineren om een lichtzoekende slimme auto te maken. In dit project gebruiken we twee fotoweerststandmodules om de lichtintensiteit aan de linker- en rechterkant van de slimme auto te detecteren, de bijbehorende analoge waarden uit te lezen, en vervolgens de rotatie van de twee motoren op basis van deze twee gegevens te sturen om zo de bewegingen van de slimme auto te regelen.
 
-ライトフォロースマートカーの具体的なロジックは以下の通りです。
+De specifieke logica van de lichtvolgende slimme auto wordt hieronder weergegeven.
 
 ![](./media/image-20250709111733042.png)
 
-#### **(2)フローチャート：**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps8.png)
 
-#### **(3)接続図：**
+#### **(3)Aansluitschema:**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">注意：</span> 左フォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A1 に接続されています；
+<span style="color: rgb(255, 76, 65);">Let op:</span> De pin "G", "V" en S van de linker fotoweerststandmodule zijn verbonden met respectievelijk G (GND), V (VCC) en A1;
 
-右フォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A2 に接続されています。
+De pin "G", "V" en S van de rechter fotoweerststandmodule zijn verbonden met respectievelijk G (GND), V (VCC) en A2.
 
-4ピンケーブルにはA、A1、B1、Bの表示があります。右後方モーターは8833モータードライバー拡張ボードのBポートに接続し、左前方モーターはAポートに接続します。
+De 4-pins kabel is gemarkeerd met A, A1, B1 en B. De rechter achtermotor is verbonden met poort B van de 8833 motordriver-uitbreidingskaart en de linker voormotor is verbonden met poort A van de 8833 motordriver-uitbreidingskaart.
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Let op:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -36,12 +36,12 @@
   light follow tank
   http://www.keyestudio.com
 */
-#define light_L_Pin A1   //左側の光センサーのピンを定義する
-#define light_R_Pin A2   //右側の光センサーのピンを定義する
-#define ML_Ctrl 4  //左モーターの方向制御ピンを定義する
-#define ML_PWM 6   //左モーターのPWM制御ピンを定義する
-#define MR_Ctrl 2  //右モーターの方向制御ピンを定義する
-#define MR_PWM 5   //右モーターのPWM制御ピンを定義する
+#define light_L_Pin A1   // Definieer de pin van de lichtgevoelige sensor aan de linkerkant
+#define light_R_Pin A2   // Definieer de pin van de lichtgevoelige sensor aan de rechterkant
+#define ML_Ctrl 4  // Definieer de richtingsbesturingspin van de linkermotor
+#define ML_PWM 6   // Definieer de PWM-besturingspin van de linkermotor
+#define MR_Ctrl 2  // Definieer de richtingsbesturingspin van de rechtermotor
+#define MR_PWM 5   // Definieer de PWM-besturingspin van de rechtermotor
 int left_light;
 int right_light;
 void setup() 
@@ -63,19 +63,19 @@ void loop()
   Serial.println(left_light);
   Serial.print("right_light_value = ");
   Serial.println(right_light);
-  if (left_light > 650 && right_light > 650) //前進
+  if (left_light > 650 && right_light > 650) // rijd vooruit
   {
     Car_front();
   }
-  else if (left_light > 650 && right_light <= 650)  //左折
+  else if (left_light > 650 && right_light <= 650)  // draai naar links
   {
     Car_left();
   }
-  else if (left_light <= 650 && right_light > 650) //右折
+  else if (left_light <= 650 && right_light > 650) // draai naar rechts
   {
     Car_right();
   }
-  else  //それ以外は停止
+  else  // anders, stop
   {
     Car_Stop();
   }
@@ -114,8 +114,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)テスト結果**
+#### **(5)Testresultaat**
 
-テストコードのアップロードが完了し、配線図通りに接続し、DIPスイッチを右端に切り替えて電源を入れると、スマートカーは光を追いかけて動きます。
+Nadat de testcode succesvol is geüpload, de bedrading is aangesloten volgens het aansluitschema, de DIP-schakelaar naar de rechterkant is omgezet en de stroom is ingeschakeld, volgt de slimme auto het licht om te bewegen.
 
 ![Img](./media/img-20240117090537.png)

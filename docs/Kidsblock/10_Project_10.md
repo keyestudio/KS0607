@@ -1,34 +1,34 @@
-### プロジェクト10：光追跡タンク
+### Project 10: Lichtvolgende Tank
 
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
-前のプロジェクトでは、スマートカーのさまざまなセンサー、モジュール、および拡張ボードの使用方法について詳しく説明しました。次はスマートカーのプロジェクトに移りましょう。光追跡スマートカーは、その名の通り、光を追いかけることができるスマートカーです。
+In vorige projecten hebben we het gebruik van verschillende sensoren, modules en uitbreidingsborden op de slimme auto in detail besproken. Nu gaan we verder met de projecten van de slimme auto. De lichtvolgende slimme auto is, zoals de naam al aangeeft, een slimme auto die het licht kan volgen.
 
-フォトレジスターとモータードライブのプロジェクトの知識を組み合わせて、光追跡スマートカーを作ることができます。このプロジェクトでは、2つのフォトレジスターモジュールを使用してスマートカーの左右の光の強度を検出し、対応するアナログ値を読み取り、この2つのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
+We kunnen de kennis uit de projecten over de lichtweerstand en de motoraandrijving combineren om een lichtzoekende slimme auto te maken. In dit project gebruiken we twee lichtweerstandmodules om de lichtintensiteit aan de linker- en rechterkant van de slimme auto te meten, de bijbehorende analoge waarden te lezen en vervolgens de rotatie van de twee motoren te besturen op basis van deze twee gegevens, zodat de bewegingen van de slimme auto worden geregeld.
 
-光追跡スマートカーの具体的なロジックは以下の通りです。
+De specifieke logica van de lichtvolgende slimme auto wordt hieronder weergegeven.
 
 ![image-20230525113331422](media/image-20230525113331422.png)
 
-#### **(2)フローチャート：**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps117.png)
 
-#### **(3)接続図：**
+#### **(3)Aansluitingsschema:**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">注意：</span>左側のフォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A1 に接続されています。
+<span style="color: rgb(255, 76, 65);">Opmerking: </span>De pinnen "G", "V" en S van de linker lichtweerstandmodule zijn verbonden met G (GND), V (VCC) en A1 respectievelijk;
 
-右側のフォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A2 に接続されています。
+De pinnen "G", "V" en S van de rechter lichtweerstandmodule zijn verbonden met G (GND), V (VCC) en A2 respectievelijk.
 
-4ピンケーブルはA、A1、B1、Bと表示されています。右後方モーターは8833モータードライバー拡張ボードのBポートに接続され、左前方モーターはAポートに接続されています。
+De 4-pins kabel is gemarkeerd met A, A1, B1 en B. De rechter achtermotor is verbonden met poort B van het 8833 motorrijder-uitbreidingsbord en de linker voormotor is verbonden met poort A van het 8833 motorrijder-uitbreidingsbord.
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
 
-以下のようにブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven.
 
 （1）![](media/9352e6447f9648efddc7d5a748618332.png)
 
@@ -44,17 +44,17 @@
 
 (7) ![](media/9f023e6f571e597e661a8d71a7f803cb.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">注意：</span>コード内の閾値650は、具体的な光の強度に応じて適宜調整できます。
+(<span style="color: rgb(255, 76, 65);">Opmerking:</span> De drempelwaarde 650 in de code kan naar behoefte worden aangepast op basis van de specifieke lichtintensiteit.
 
-コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、BluetoothのシリアL通信と競合が発生し、コードのアップロードが失敗する可能性があります。)
+Sluit de Bluetooth-module niet aan voordat de code wordt geüpload, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er mogelijk conflicten ontstaan met de seriële communicatie van de Bluetooth, waardoor het uploaden van de code kan mislukken.)
 
 ![](media/6300174b85f63c05dbdcb3b77188f9dc.png)
 
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaten:**
 
-テストコードのアップロードが成功したら、配線し、DIPスイッチをON側に切り替えて電源を入れると、スマートカーは光を追いかけて移動します。
+Na het succesvol uploaden van de testcode, de bedrading aansluiten, de DIP-schakelaar naar de ON-stand zetten en de stroom inschakelen, volgt de slimme auto het licht om te bewegen.
 
 ![](./media/img-20240117093758.png)

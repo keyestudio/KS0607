@@ -1,43 +1,43 @@
-### プロジェクト 1: LEDの点滅
+### Project 1: LED Knippert
 
-#### (1)概要：
+#### (1)Beschrijving：
 
 ![](./media/image-20250709122631704.png)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-初心者や愛好家にとって、LEDの点滅は基本的なプログラムです。LEDは発光ダイオードの略称で、Ga、As、P、Nなどの化学化合物で構成されています。テストコードの遅延時間を変えることで、LEDをさまざまな色で点滅させることができます。制御する際は、GNDとVCCに電源を供給します。S端子がHIGHレベルの場合はLEDが点灯し、そうでない場合は消灯します。
+Voor beginners en enthousiastelingen is LED Knipperen een fundamenteel programma. LED, de afkorting van light emitting diodes (lichtgevende diodes), bestaat uit Ga, As, P, N chemische verbindingen enzovoort. De LED kan in diverse kleuren knipperen door de vertragingstijd in de testcode te wijzigen. Bij bediening wordt stroom aangesloten op GND en VCC. De LED gaat aan als het S-uiteinde op een hoog niveau staat; anders gaat hij uit.
 
-#### **(2)パラメータ：**
+#### **(2)Parameters:**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- 制御インターフェース：デジタルポート
-- 動作電圧：DC 3.3〜5V
-- ピン間隔：2.54mm
-- LED表示色：黄色
+- Besturingsinterface: digitale poort
+- Werkspanning: DC 3.3-5V
+- Pinafstand: 2.54mm
+- LED weergavekleur: geel
 
-#### (3)必要なコンポーネント：
+#### (3)Benodigde Componenten:
 
 ![](./media/image-20250709122437613.png)
 
-#### **(4)8833モータードライバー拡張ボード：**
+#### **(4)8833 Motor Driver Expansiebord:**
 
-Keyestudio 8833モータードライバー拡張ボードは、Arduino UNO開発ボードと互換性があります。使用する際は、開発ボードの上に重ねて取り付けてください。
+Het Keyestudio 8833 motor driver expansiebord is compatibel met het Arduino UNO ontwikkelbord. Stapel het gewoon op het ontwikkelbord bij gebruik.
 
 ![](media/d8696e83ade31f2b7c56cc5911eacbd7.GIF)
 
-#### **(5)接続図：**
+#### **(5)Aansluitschema:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](./media/image-20250709122655936.png)
 
-<span style="color: rgb(255, 76, 65);">**注意：**</span> LEDはD9ポートに接続されています。シールドにジャンパーキャップを取り付けることを忘れないでください。
+<span style="color: rgb(255, 76, 65);">**OPMERKING:**</span> De LED is verbonden met de D9 poort. Vergeet niet om jumperkapjes op het shield te installeren.
 
-#### **(6)テストコード：**
+#### **(6)Testcode:**
 
-以下のように、ブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven.
 
 ![](media/cc43ba357acb68a4961adb7e5041b6fe.png)
 
@@ -45,28 +45,28 @@ Keyestudio 8833モータードライバー拡張ボードは、Arduino UNO開発
 
 ![](media/21dc3c24da4271aa7ec2bfdac732eeb3.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する場合があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/ba4723bab640078eccbe1811da138bc3.png)
 
-#### **(7)テスト結果：**
+#### **(7)Testresultaten:**
 
-プログラムをアップロードすると、LEDが1秒間隔で点滅します。
+Upload het programma, de LED knippert met een interval van 1s.
 
-#### **(8)応用練習：**
+#### **(8)Uitbreidingsoefening:**
 
-LEDの制御方法がわかったところで、LEDの点滅頻度を変えてみましょう。
+We weten nu hoe we de LED moeten besturen, laten we dan de frequentie van de LED wijzigen.
 
-LEDのピンを変えずに、LEDの点滅頻度を変えることができます。コードを修正してみましょう。
+We kunnen de frequentie van de LED wijzigen zonder de pin van de LED te veranderen. Laten we de code aanpassen.
 
-以下のように、ブロックをドラッグしてコードを編集することもできます。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven.
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する場合があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/58c76be4c719a885afb500e8f3b80b85.png)
 
-テスト結果から、LEDがより速く点滅することがわかります。したがって、ピンと遅延時間が点滅頻度に影響を与えるという結論を導き出すことができます。
+Het testresultaat toont aan dat de LED sneller knippert. Daarom kunnen we concluderen dat pinnen en vertragingstijd de knipperfrequentie beïnvloeden.

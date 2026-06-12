@@ -1,3 +1,3 @@
-# 6. テクニカルサポートが必要ですか？
+# 6. Technische ondersteuning nodig?
 
-技術的な問題が発生した場合、またはアフターサービスが必要な場合は、サポートチームまでお気軽にご連絡ください：**asa12321sas@gmail.com**。喜んでお手伝いいたします！
+Als u technische problemen ondervindt of hulp na aankoop nodig heeft, neem dan gerust contact op met ons ondersteuningsteam via **asa12321sas@gmail.com**. Wij staan klaar om u te helpen!

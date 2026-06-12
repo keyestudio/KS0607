@@ -1,48 +1,48 @@
-### プロジェクト19: 炎センサー
+### Project 19: Vlamsensor
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-炎センサーはIR受信チューブを使用して炎を検出します。炎の明るさを高低レベルの信号に変換し、中央プロセッサに入力して対応するプログラム処理を行います。炎が近くにあるかどうかによって、アナログポートの電圧値が変化します。
+De vlamsensor gebruikt een IR-ontvangstbuis om vlammen te detecteren. Het zet de helderheid van de vlam om in hoog- en laagsignalen en stuurt deze naar de centrale processor voor bijbehorende programmaverwerking. De spanningswaarde van de analoge poort varieert afhankelijk van of er een vlam dichtbij is of helemaal geen vlam.
 
-炎がない場合、アナログポートは約0.3Vを読み取ります。炎がある場合、アナログポートは約1.0Vを読み取ります。炎が近いほど、電圧値は高くなります。火源の検出やスマートロボットの構築に使用できます。
+Als er geen vlam is, leest de analoge poort ongeveer 0,3V; wanneer er een vlam is, leest de analoge poort ongeveer 1,0V. Hoe dichter de vlam, hoe hoger de spanningswaarde. Het kan worden gebruikt om een vuurbron te detecteren of om een slimme robot te bouwen.
 
-炎センサーのプローブは-25℃から85℃の温度範囲しか耐えられないことに注意してください。
+Let op: de sonde van de vlamsensor kan alleen temperaturen tussen -25℃ en 85℃ verdragen.
 
-使用中は、炎センサーが損傷しないように、火から安全な距離を保つようにしてください。
+Zorg er tijdens gebruik voor dat de vlamsensor op een veilige afstand van het vuur blijft om beschadiging te voorkomen.
 
-#### **(2)パラメータ:**
+#### **(2)Parameters:**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- 動作電圧: 3.3V-5V (DC)
+- Werkspanning: 3,3V-5V (DC)
 
-- 電流: 100mA
+- Stroom: 100mA
 
-- 最大電力: 0.5W
+- Maximaal vermogen: 0,5W
 
-- 動作温度: -10°C から +50°C
+- Werktemperatuur: -10°C tot +50 graden Celsius
 
-- センサーサイズ: 31.6mmx23.7mm
+- Sensorafmetingen: 31,6mmx23,7mm
 
-- インターフェース: 4ピンから3PINインターフェース
+- Interface: 4pin naar 3PIN interface
 
-- 出力信号: アナログ信号 A0、A1
+- Uitgangssignaal: analoge signalen A0, A1
 
-#### **(3)接続図:**
+#### **(3)Aansluitschema:**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-2つの光抵抗のピンAはA1とA2に接続されています。炎センサーをA1とA2に接続します。2つの光抵抗と超音波センサーを2つの炎センサーとファンに置き換えると、消火カーが作られます。
+Pin A van twee fotoresistoren zijn verbonden met A1 en A2. We verbinden de vlamsensor met A1 en A2. We vervangen twee fotoresistoren en de ultrasone sensor door twee vlamsensoren en een ventilator, waarmee een bluswagen wordt gecreëerd.
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-1）この実験では火源の使用が必要です。火災を防ぐため、可燃物から離してください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。
-2）**炎センサーは耐火性ではありません。直接炎で燃やさないでください。**
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+1）Dit experiment vereist het gebruik van een vuurbron. Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment onder toezicht van een volwassene uit te voeren. Als u niet kunt bevestigen dat u veilig bent, verlaat dan het experiment.
+2）**De vlamsensor is niet vuurbestendig, verbrand hem niet rechtstreeks met een vlam.**
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -52,36 +52,36 @@
 
 ![](media/d4da0bd0c55e3580fa95782d50f6e540.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook seriële communicatie gebruikt, en er mogelijk conflicten zijn met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/4bc6c8a4d6e964fd078a6aeb0dd51ff4.png)
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaten:**
 
-コンポーネントを配線し、コードを書き込んで、シリアルモニターを開き、ボーレートを9600に設定します。
+Sluit de componenten aan, upload de code, open de seriële monitor en stel de baudrate in op 9600.
 
-炎センサーのシミュレーション値を確認できます。
+U kunt de simulatiewaarde van de vlamsensor bekijken.
 
-炎が近いほど、シミュレーション値は小さくなります。
+Hoe dichter de vlam, hoe kleiner de simulatiewaarde.
 
-モジュールのポテンショメーターを調整して、LEDを臨界点に保ちます。センサーが炎を検出しない場合、LEDは消灯しますが、センサーが炎を検出すると、LEDが点灯します。
+Stel de potentiometer op de module af om de LED op het kritieke punt te houden. Wanneer de sensor geen vlam detecteert, gaat de LED uit, maar als de sensor een vlam detecteert, gaat de LED aan.
 
 ![](./media/img-20240117100139.png)
 
 ![](media/60d0ce2044a504135af3b1113a1a4c7d.png)
 
-#### **(6)応用練習:**
+#### **(6)Uitbreidingsoefening:**
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-1）この実験では火源の使用が必要です。火災を防ぐため、可燃物から離してください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。
-2）炎センサーは耐火性ではありません。直接炎で燃やさないでください。
-炎センサーで外部LEDを制御できます。LEDはD9に接続されたままです。火が検出されると、LEDが点灯します。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+1）Dit experiment vereist het gebruik van een vuurbron. Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment onder toezicht van een volwassene uit te voeren. Als u niet kunt bevestigen dat u veilig bent, verlaat dan het experiment.
+2）De vlamsensor is niet vuurbestendig, verbrand hem niet rechtstreeks met een vlam.
+We kunnen een externe LED besturen met de vlamsensor. De LED is nog steeds verbonden met D9. Wanneer vuur wordt gedetecteerd, gaat de LED aan.
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-以下のようにブロックをドラッグしてコードを編集できます
+U kunt blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -93,15 +93,15 @@
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook seriële communicatie gebruikt, en er mogelijk conflicten zijn met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/9d2f5915e4a6991ed4549b39ec853fa5.png)
 
-ライターの炎を左側の炎センサーの近くで使用できます。炎センサーが炎を検出すると、LEDモジュールが警報として点灯します。
+U kunt de vlam van een aansteker in de buurt van de linker vlamsensor houden. Wanneer de vlamsensor een vlam detecteert, zal de LED-module oplichten als alarm.
 
 ![](./media/img-20240117100333.png)
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-火災を防ぐため、可燃物から離してください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。直接炎で燃やさないでください。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment onder toezicht van een volwassene uit te voeren. Als u niet kunt bevestigen dat u veilig bent, verlaat dan het experiment. De vlamsensor is niet vuurbestendig, verbrand hem niet rechtstreeks met een vlam.

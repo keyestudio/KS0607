@@ -1,33 +1,33 @@
-### プロジェクト 11: 超音波追従タンク
+### Project 11: Ultrasonic Following Tank
 
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-前回のレッスンでは、光追従スマートカーについて学びました。このレッスンでは、その知識を組み合わせて超音波音追従カーを作ることができます。
+In de vorige les hebben we geleerd over de licht-volgende slimme auto. En in deze les kunnen we de kennis combineren om een ultrasone geluid-volgende auto te maken.
 
-このプロジェクトでは、超音波センサーを使用してカーと前方の障害物との距離を検出し、そのデータに基づいて2つのモーターの回転を制御し、スマートカーの動きを制御します。
+In het project gebruiken we ultrasone sensoren om de afstand tussen de auto en het obstakel voor te detecteren, en vervolgens de rotatie van de twee motoren te besturen op basis van deze gegevens om zo de bewegingen van de slimme auto te beheersen.
 
-超音波音追従スマートカーの具体的なロジックを以下の表に示します：
+De specifieke logica van de ultrasone geluid-volgende slimme auto wordt weergegeven in de onderstaande tabel:
 
-|                        検出                        |              設定              |
-| :-----------------------------------------------------: | :-------------------------------: |
-| カーと前方の障害物との距離(cm) | サーボの角度を90°に設定 |
-|                      **条件**                      |           **動作**            |
-|               distance≥20 かつ distance≤50               |             前進              |
-|            10＜distance＜20<br/>distance＞50            |               停止                |
-|                       distance≤10                       |              後退              |
+|                        Detectie                        |              Instelling              |
+| :----------------------------------------------------: | :----------------------------------: |
+| De afstand(cm) tussen de auto en het obstakel voor | Stel de hoek van de servo in op 90° |
+|                      **Conditie**                      |           **Beweging**            |
+|               afstand≥20 en afstand≤50               |             Vooruit rijden              |
+|            10＜afstand＜20<br/>afstand＞50            |               Stoppen                |
+|                       afstand≤10                       |              Achteruit rijden              |
 
-#### **(2)フローチャート:**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps9.png)
 
-#### **(3)接続図:**
+#### **(3)Aansluitingsschema:**
 
 ![](media/72a10097d286bc5f9589df031b60484a.png)
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -36,12 +36,12 @@
   Ultrasonic follow tank
   http://www.keyestudio.com
 */
-#define servoPin 10  //サーボのピン
+#define servoPin 10  //De pin van de servo
 
-#define ML_Ctrl 4  //左モーターの方向制御ピンを定義
-#define ML_PWM 6   //左モーターのPWM制御ピンを定義
-#define MR_Ctrl 2  //右モーターの方向制御ピンを定義
-#define MR_PWM 5   //右モーターのPWM制御ピンを定義
+#define ML_Ctrl 4  //Definieer de richtingsbesturingspin van de linkermotor
+#define ML_PWM 6   //Definieer de PWM-besturingspin van de linkermotor
+#define MR_Ctrl 2  //Definieer de richtingsbesturingspin van de rechtermotor
+#define MR_PWM 5   //Definieer de PWM-besturingspin van de rechtermotor
 #define Trig 12
 #define Echo 13
 float distance;
@@ -55,26 +55,26 @@ void setup()
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  procedure(90); //サーボの角度を90°に設定
-  delay(500); //500msの遅延
+  procedure(90); //Stel de hoek van de servo in op 90°
+  delay(500); //vertraging van 500ms
 }
 
 void loop() 
 {
-  distance = checkdistance();  //超音波で測定した距離をdistanceに代入
-  if (distance >= 20 && distance <= 50) //前進
+  distance = checkdistance();  //Wijs de door ultrasoon gemeten afstand toe aan distance
+  if (distance >= 20 && distance <= 50) //vooruit rijden
   {
     Car_front();
   }
-  else if (distance > 10 && distance < 20)  //停止
+  else if (distance > 10 && distance < 20)  //stoppen
   {
     Car_Stop();
   }
-  else if (distance <= 10)  //後退
+  else if (distance <= 10)  //achteruit rijden
   {
     Car_back();
   }
-  else  //その他の条件では停止
+  else  //In andere omstandigheden stopt het
   {
     Car_Stop();
   }
@@ -120,19 +120,19 @@ void Car_Stop()
   analogWrite(ML_PWM, 0);
 }
 
-//サーボを制御する関数
+//De functie om servo's te besturen
 void procedure(byte myangle) 
 {
   int pulsewidth;
   for (int i = 0; i < 5; i++) 
   {
-    pulsewidth = myangle * 11 + 500;  //パルス幅の値を計算    digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   //ハイレベルの時間がパルス幅を表す
+    pulsewidth = myangle * 11 + 500;  //Bereken de waarde van de pulsebreedte    digitalWrite(servoPin, HIGH);
+    delayMicroseconds(pulsewidth);   //De tijd in hoog niveau vertegenwoordigt de pulsebreedte
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  //サイクルは20msなので、残りの時間はローレベル
+    delay((20 - pulsewidth / 1000));  //Omdat de cyclus 20ms is, is de resterende tijd in laag niveau
   }
 }
-//超音波を制御する関数
+//De functie om ultrasoon geluid te besturen
 float checkdistance() 
 {
   static float distance;
@@ -141,14 +141,14 @@ float checkdistance()
   digitalWrite(Trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(Trig, LOW);
-  distance = pulseIn(Echo, HIGH) / 58.20;  //58.20は2*29.1=58.2から来ている
+  distance = pulseIn(Echo, HIGH) / 58.20;  //De 58.20 hier komt van 2*29.1=58.2
   delay(10);
   return distance;
 }
 ```
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaten:**
 
-テストコードを正常にアップロードし、配線して、DIPスイッチを右端に切り替え、電源を入れてサーボを90°に設定すると、スマートカーは障害物に追従して移動します。
+Upload de testcode succesvol, sluit de bedrading aan, zet de DIP-schakelaar naar de rechterkant, schakel de stroom in en stel de servo in op 90°, de slimme auto volgt het obstakel om te bewegen.
 
 ![](./media/img-20240117090457.png)

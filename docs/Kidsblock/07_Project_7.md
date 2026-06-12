@@ -1,39 +1,39 @@
-### プロジェクト7：IR受信
+### Project 7: IR-ontvangst
 
-#### **(1)概要：**
+#### **(1)Beschrijving:**
 
 ![](./media/image-20250709133757050.png)
 
-赤外線リモコンは日常生活のあらゆる場所で使用されていることは間違いありません。テレビ、ステレオ、ビデオレコーダー、衛星信号受信機など、様々な家庭用電化製品の制御に使用されています。赤外線リモコンは赤外線送信システムと赤外線受信システムで構成されており、すなわち赤外線リモコン本体、赤外線受信モジュール、およびデコード可能なシングルチップマイコンで構成されています。
+Het staat buiten kijf dat infrarood afstandsbediening alomtegenwoordig is in het dagelijks leven. Het wordt gebruikt om verschillende huishoudelijke apparaten te bedienen, zoals televisies, stereo-installaties, videorecorders en satellietsignaalontvangers. Infrarood afstandsbediening bestaat uit een infrarood zend- en ontvangstysteem, dat wil zeggen een infrarood afstandsbediening en een infrarood ontvangstmodule en een enkelvoudige-chip microcomputer die in staat is tot decodering.
 
-リモコンから送信される38Kの赤外線キャリア信号は、リモコン内のエンコーディングチップによってエンコードされます。これはパイロットコード、ユーザーコード、ユーザー逆コード、データコード、およびデータ逆コードのセクションで構成されています。パルスの時間間隔を使用して0または1の信号を区別し、エンコーディングはこれらの0と1の信号で構成されています。
+Het 38K infrarood draaggolfsignaal dat door de afstandsbediening wordt uitgezonden, wordt gecodeerd door de coderingschip in de afstandsbediening. Het bestaat uit een stuk pilootcode, gebruikerscode, inverse gebruikerscode, datacode en inverse datacode. Het tijdsinterval van de puls wordt gebruikt om te onderscheiden of het een 0- of 1-signaal is, en de codering bestaat uit deze 0- en 1-signalen.
 
-同じリモコンのユーザーコードは変わりませんが、データコードによってキーを区別できます。
+De gebruikerscode van dezelfde afstandsbediening blijft ongewijzigd, terwijl de datacode de toets kan onderscheiden.
 
-リモコンのボタンが押されると、リモコンは赤外線キャリア信号を送信します。IR受信機が信号を受信すると、プログラムはキャリア信号をデコードして、どのキーが押されたかを判断します。MCUは受信した01信号をデコードし、リモコンのどのキーが押されたかを判断します。
+Wanneer de knop op de afstandsbediening wordt ingedrukt, verzendt de afstandsbediening een infrarood draaggolfsignaal. Wanneer de IR-ontvanger het signaal ontvangt, zal het programma het draaggolfsignaal decoderen en bepalen welke toets is ingedrukt. De MCU decodeert het ontvangen 01-signaal en bepaalt daarmee welke toets op de afstandsbediening is ingedrukt.
 
 ![](media/5ad0f889b39646ecb13664511479efc8.png)
 
-使用している赤外線受信機は赤外線受信モジュールです。主に赤外線受信ヘッドで構成されており、受信、増幅、復調を統合したデバイスです。内部のICが復調を完了しており、赤外線受信から出力まで対応し、TTL信号と互換性があります。また、赤外線リモコンや赤外線データ転送に適しています。受信機で作られた赤外線受信モジュールはピンが3本のみで、信号線、VCC、GNDです。Arduinoやその他のマイコンとの通信が非常に便利です。
+De infrarood ontvanger die we gebruiken is een infrarood ontvangstmodule. Deze bestaat voornamelijk uit een infrarood ontvangerhoofd, wat een apparaat is dat ontvangst, versterking en demodulatie integreert. De interne IC heeft de demodulatie voltooid en kan infraroodontvangst tot uitvoer verwezenlijken en is compatibel met TTL-signalen. Bovendien is het geschikt voor infrarood afstandsbediening en infraroodgegevensoverdracht. De infrarood ontvangstmodule die door de ontvanger is gemaakt, heeft slechts drie pinnen: signaallijn, VCC en GND. Het is zeer eenvoudig om te communiceren met Arduino en andere microcontrollers.
 
-#### **(2)パラメータ：**
+#### **(2)Parameters:**
 
-- 動作電圧：3.3〜5V（DC）
-- インターフェース：3PIN
-- 出力信号：デジタル信号
-- 受信角度：90度
-- 周波数：38khz
-- 受信距離：10m
+- Werkspanning: 3,3-5V (DC)
+- Interface: 3PIN
+- Uitgangssignaal: Digitaal signaal
+- Ontvangsthoek: 90 graden
+- Frequentie: 38khz
+- Ontvangstafstand: 10m
 
-モータードライブボードに統合された赤外線受信機：
+Infrarood ontvanger geïntegreerd op de motoraansturingskaart:
 
 ![](./media/image-20250709133832650.png)
 
-<span style="color: rgb(255, 76, 65);">**注意：**</span> IR受信機はKeyestudio 8833モータードライブ拡張ボードに統合されているため、追加の配線は不要です。Keyestudio 8833モータードライブ拡張ボード上のIR受信機のピンはG（GND）、V（VCC）、D3です。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Aangezien de IR-ontvanger is geïntegreerd in de Keyestudio 8833 motoraansturing uitbreidingskaart, is geen extra bedrading vereist. De pinnen van de IR-ontvanger op de Keyestudio 8833 motoraansturing uitbreidingskaart zijn G (GND), V (VCC) en D3.
 
-#### **(4)テストコード：**
+#### **(4)Testcode:**
 
-ブロックをドラッグしてコードを編集することもできます。以下に示します。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 ![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -43,30 +43,30 @@
 
 ![](media/0aa28f86f26d94bdb4c951c994aa854f.png)
 
-**完全なテストコード**
+**Volledige testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/90978855cddd94c161f9ed02f85b0674.png)
 
-#### **(5)テスト結果：**
+#### **(5)Testresultaten:**
 
-コードを開発ボードにアップロードし、ボーレートを9600に設定します。リモコンを取り出し、赤外線受信センサーに向けて、ボタンを押して信号を送信します。対応するキー値が表示されます。キーを長押しすると、文字化けした「FFFFFFFF」が表示されやすくなります。
+Upload de code naar de ontwikkelkaart en stel de baudrate in op 9600. Pak de afstandsbediening erbij, richt hem op de infrarood ontvangersensor en druk op een knop om het signaal te verzenden. U zult de overeenkomstige toetswaarde zien. Als de toets te lang wordt ingedrukt, kan er gemakkelijk een onleesbaar "FFFFFFFF" verschijnen.
 
 ![](media/5c01c594a5a11511cf52466eb5f27e45.png)
 
-以下にkeyestudioリモコンの各キー値を一覧にしました。参考用としてご活用ください。
+Hieronder hebben we elke toetswaarde van de Keyestudio afstandsbediening vermeld. U kunt dit als referentie bewaren.
 
 ![](media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-#### **(6)応用練習：**
+#### **(6)Uitbreidingsoefening:**
 
-IRリモコンのキー値のデコードができました。次に、これを使用してLEDライトのオン・オフを制御してみましょう。LEDライトモジュールをD9ピンに接続する必要があります。一方、赤外線受信機のピン位置は変わりません。リモコンのOKボタンを押すと、D9に接続されたLEDが点灯し、OKボタンをもう一度押すと、LEDが消灯します。
+We hebben zojuist de toetswaarden van de IR-afstandsbediening gedecodeerd. Laten we die nu gebruiken om een LED-lamp aan en uit te zetten. We moeten een LED-lichtmodule aansluiten op pin D9, terwijl de pinpositie van de infrarood ontvanger ongewijzigd blijft. Wanneer de OK-knop op de afstandsbediening wordt ingedrukt, gaat de LED aangesloten op D9 aan, en wanneer de OK-knop opnieuw wordt ingedrukt, gaat de LED uit.
 
 ![](media/e05da7ef9e7b6f63f414f2ca7e3f4ee3.png)
 
 
-ブロックをドラッグしてコードを編集することもできます。以下に示します。
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 （1）![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -82,12 +82,12 @@ IRリモコンのキー値のデコードができました。次に、これを
 
 （7）![](media/d7be3fa06a1456d46472fffd61823c73.png)
 
-**完全なテストコード**
+**Volledige testcode**
 
-（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/57149c79243ff22aa00ff2c54dd4f70b.png)
 
-コードを開発ボードにアップロードし、リモコンの「OK」キーを押してLEDのオン・オフを切り替えます。
+Upload de code naar de ontwikkelkaart en druk op de "OK"-toets op de afstandsbediening om de LED aan en uit te zetten.
 
 ![](./media/img-20240117092532.png)

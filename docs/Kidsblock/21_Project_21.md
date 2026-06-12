@@ -1,44 +1,44 @@
-### プロジェクト21: 消火タンク
+### Project 21: Brandblussende Tank
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-スマートタンクのライントラッキング機能については前のプロジェクトで説明しました。このプロジェクトでは、炎センサーを使用して消火ロボットを作ります。
+De lijnvolgfunctie van de slimme tank is uitgelegd in het vorige project. In dit project gebruiken we de vlamsensor om een brandblussende robot te maken.
 
-車が炎に遭遇すると、ファンのモーターが回転して火を吹き消します。もちろん、まず超音波センサーと2つの光抵抗をファンモジュールと炎センサーに交換する必要があります。
+Wanneer de auto vlammen tegenkomt, zal de motor van de ventilator draaien om het vuur te blussen. Natuurlijk moeten we eerst de ultrasone sensor en twee fotoweerstand vervangen door een ventilatormodule en vlamsensoren.
 
-スマートカーの具体的なロジックを以下の表に示します：
+De specifieke logica van de slimme auto wordt weergegeven in de onderstaande tabel:
 
-| 左炎センサー | 右炎センサー | 状態                                          |
-| :----------: | :----------: | :---------------------------------------------- |
-|    ≤700    |    ≤700     | 車停止、ファンが回転して炎を吹き消す |
-|    ≥700    |    ≥700     | 車停止、ファンが回転して炎を吹き消す |
-|    ≥700    |    ≥700     | 車停止、ファンが回転して炎を吹き消す |
-|   ＞700    |   ＞700    | ファン停止、車が走行する                            |
+| Linker Vlamsensor | Rechter Vlamsensor | Status                                                        |
+| :---------------: | :----------------: | :------------------------------------------------------------ |
+|       ≤700        |        ≤700        | Auto stopt, ventilator begint te draaien om het vuur te blussen |
+|       ≥700        |        ≥700        | Auto stopt, ventilator begint te draaien om het vuur te blussen |
+|       ≥700        |        ≥700        | Auto stopt, ventilator begint te draaien om het vuur te blussen |
+|       ＞700       |       ＞700        | Ventilator stopt, auto rijdt                                  |
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-1）この実験では火源を使用します。火災を防ぐため、可燃物から離れた場所で行ってください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。
-2）炎センサーは耐火性ではありません。炎で直接燃やさないでください。
-炎センサーで外部LEDを制御することができます。LEDはD9に接続されています。火が検出されると、LEDが点灯します。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+1) Dit experiment vereist het gebruik van een vuurhaard. Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen moeten experimenteren onder toezicht van een volwassene. Als u niet zeker kunt zijn van uw veiligheid, laat het experiment dan achterwege.
+2) De vlamsensor is niet vuurbestendig. Verbrand hem niet rechtstreeks met een vlam.
+We kunnen een externe LED bedienen met de vlamsensor. De LED is nog steeds aangesloten op D9. Wanneer er vuur wordt gedetecteerd, gaat de LED aan.
 
 
-#### **(2)フローチャート:**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps120.png)
 
-#### **(3)接続図:**
+#### **(3)Aansluitingsdiagram:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-<span style="color: rgb(255, 76, 65);">注意:</span>
+<span style="color: rgb(255, 76, 65);">Opmerking:</span>
 
-8x16 LEDパネルのGND、VCC、SDA、SCLはG（GND）、V（VCC）、A4、A5に接続されています。
+GND, VCC, SDA en SCL van het 8x16 LED-paneel zijn verbonden met G（GND), V（VCC), A4 en A5.
 
-2つの炎センサーのG、V、AはG（GND）、V（VCC）、A1、A2に接続されています。
+G, V en A van de twee vlamsensoren zijn verbonden met G（GND), V（VCC), A1 en A2 van het uitbreidingsbord.
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
 
-以下のようにブロックをドラッグしてコードを編集することもできます
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -52,17 +52,17 @@
 
 （6）![](media/c0365237fa7ec7de10e9fc465353fae1.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth-seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/c07c09e5533a37838722b8c2b513646d.png)
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaten:**
 
-テストコードのアップロードが成功したら、電源を入れてDIPスイッチをON側に切り替えます。スマートカーは炎を検出すると消火します。
+Nadat de testcode succesvol is geüpload, zet u de voeding aan en zet u de DIP-schakelaar op de ON-stand. De slimme auto zal het vuur blussen wanneer hij vlammen detecteert.
 
 ![](media/2de5f1d832d40c0fc94274f1d87443c6.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-火災を防ぐため、可燃物から離れた場所で行ってください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。炎で直接燃やさないでください。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen moeten experimenteren onder toezicht van een volwassene. Als u niet zeker kunt zijn van uw veiligheid, laat het experiment dan achterwege. De vlamsensor is niet vuurbestendig. Verbrand hem niet rechtstreeks met een vlam.

@@ -1,37 +1,37 @@
-### プロジェクト22: 消火タンク
+### Project 22: Brandblusser Tank
 
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-スマートタンクのライントラッキング機能については前のプロジェクトで説明しました。このプロジェクトでは炎センサーを使用して消火ロボットを作成します。
+De lijnvolgfunctie van de slimme tank is uitgelegd in het vorige project. In dit project gebruiken we de vlamsensor om een brandblussende robot te maken.
 
-車が炎を検知すると、ファンのモーターが回転して火を吹き消します。もちろん、まず超音波センサーと2つの光抵抗をファンモジュールと炎センサーに交換する必要があります。
+Wanneer de auto vlammen tegenkomt, zal de motor van de ventilator draaien om het vuur te blussen. Natuurlijk moeten we eerst de ultrasone sensor en twee fotoresistoren vervangen door een ventilatormodule en vlamsensoren.
 
-ライントラッキングスマートカーの具体的なロジックを以下の表に示します：
+De specifieke logica van de lijnvolgende slimme auto wordt weergegeven in de onderstaande tabel:
 
-| 左炎センサー | 右炎センサー | 状態                                          |
-| :----------: | :----------: | :---------------------------------------------- |
-|    ≤700      |    ≤700      | 車が停止、ファンが回転して炎を吹き消す |
-|    ≥700      |    ≥700      | 車が停止、ファンが回転して炎を吹き消す |
-|    ≥700      |    ≥700      | 車が停止、ファンが回転して炎を吹き消す |
-|    ＞700     |    ＞700     | ファンが停止、車が移動                            |
+| Linker Vlamsensor | Rechter Vlamsensor | Status                                                        |
+| :---------------: | :----------------: | :------------------------------------------------------------ |
+|       ≤700        |        ≤700        | Auto stopt, ventilator begint te draaien om vlam te blussen   |
+|       ≥700        |        ≥700        | Auto stopt, ventilator begint te draaien om vlam te blussen   |
+|       ≥700        |        ≥700        | Auto stopt, ventilator begint te draaien om vlam te blussen   |
+|       ＞700       |        ＞700       | Ventilator stopt, auto rijdt verder                           |
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-1）この実験では火源を使用します。火災を防ぐために可燃物から遠ざけてください。子供は大人の監督のもとで実験してください。安全であることが確認できない場合は、実験を中断してください。
-2）炎センサーは耐火性ではありません。炎で直接燃やさないでください。
-炎センサーで外部LEDを制御することができます。LEDは引き続きD9に接続されています。火が検知されると、LEDが点灯します。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+1）Dit experiment vereist het gebruik van een vuurzaak. Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment uit te voeren onder toezicht van een volwassene. Als u niet zeker weet of het veilig is, sla het experiment dan over.
+2）De vlamsensor is niet vuurbestendig, verbrand hem niet direct met een vlam.
+We kunnen een externe LED bedienen met de vlamsensor. De LED is nog steeds verbonden met D9. Wanneer er vuur wordt gedetecteerd, gaat de LED aan.
 
-#### **(2)フローチャート:**
+#### **(2)Stroomdiagram:**
 
 ![](media/wps12.png)
 
-#### **(3)接続図:**
+#### **(3)Aansluitschema:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er mogelijk conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden mislukt.)
 
 ```C
 /*
@@ -41,43 +41,43 @@
   http://www.keyestudio.com
 */
 
-int flame_L = A1; //左の炎インターフェースをアナログピンA1として定義
-int flame_R = A2; //右の炎インターフェースをアナログピンA2として定義
-//ライントラッキングセンサーの配線
-#define L_pin  11  //左
-#define M_pin  7  //中央
-#define R_pin  8  //右
-//サーボ130のピン
+int flame_L = A1; // Definieer de vlam-interface links als analoge pin A1
+int flame_R = A2; // Definieer de vlam-interface rechts als analoge pin A2
+// De bedrading van de lijnvolgsensor
+#define L_pin  11  // links
+#define M_pin  7  // midden
+#define R_pin  8  // rechts
+// De pin van de servo 130
 int INA = 12;
 int INB = 13;
-#define ML_Ctrl 4  //左モーターの方向制御ピンを定義
-#define ML_PWM 6   //左モーターのPWM制御ピンを定義
-#define MR_Ctrl 2  //右モーターの方向制御ピンを定義
-#define MR_PWM 5   //右モーターのPWM制御ピンを定義
+#define ML_Ctrl 4  // Definieer de richtingsbesturingspin van de linkermotor
+#define ML_PWM 6   // Definieer de PWM-besturingspin van de linkermotor
+#define MR_Ctrl 2  // Definieer de richtingsbesturingspin van de rechtermotor
+#define MR_PWM 5   // Definieer de PWM-besturingspin van de rechtermotor
 int L_val, M_val, R_val, flame_valL, flame_valR;
 
 void setup()
 {
   Serial.begin(9600);
-  //ライントラッキングセンサーの全ピンを入力モードに設定
+  // Stel alle pinnen van de lijnvolgsensor in als invoermodus
   pinMode(L_pin, INPUT);
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  //炎センサーをINPUTとして定義
+  // Definieer de vlamsensor als INPUT
   pinMode(flame_L, INPUT);
   pinMode(flame_R, INPUT);
-  //モーターをOUTPUTとして定義
+  // Definieer de motor als OUTPUT
   pinMode(ML_Ctrl, OUTPUT);
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  pinMode(INA, OUTPUT);//デジタルポートINAをOUTPUTに設定
-  pinMode(INB, OUTPUT);//デジタルポートINBをOUTPUTに設定
+  pinMode(INA, OUTPUT);// Stel digitale poort INA in als OUTPUT
+  pinMode(INB, OUTPUT);// Stel digitale poort INB in als OUTPUT
 }
 
 void loop () 
 {
-  //炎センサーのアナログ値を読み取る
+  // Lees de analoge waarde van de vlamsensoren
   flame_valL = analogRead(flame_L);
   flame_valR = analogRead(flame_R);
   Serial.print(flame_valL);
@@ -93,36 +93,36 @@ void loop ()
   else 
   {
     fan_stop();
-    L_val = digitalRead(L_pin); //左センサーの値を読み取る
-    M_val = digitalRead(M_pin); //中央センサーの値を読み取る
-    R_val = digitalRead(R_pin); //右センサーの値を読み取る
+    L_val = digitalRead(L_pin); // Lees de waarde van de linkersensor
+    M_val = digitalRead(M_pin); // Lees de waarde van de middelste sensor
+    R_val = digitalRead(R_pin); // Lees de waarde van de rechtersensor
     
-    if (M_val == 1)  //中央が黒線を検知
+    if (M_val == 1)  // de middelste detecteert zwarte lijnen
     {
-      if (L_val == 1 && R_val == 0)  //左に黒線を検知し、右に検知しない場合、左折
+      if (L_val == 1 && R_val == 0)  // Als een zwarte lijn links wordt gedetecteerd, maar niet rechts, draai links
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //右に黒線を検知し、左に検知しない場合、右折
+      else if (L_val == 0 && R_val == 1)  // Als een zwarte lijn rechts wordt gedetecteerd, niet links, draai rechts
       {
         Car_right();
       }
-      else  //それ以外は前進
+      else  // anders, ga vooruit
       {
         Car_front();
       }
     }
-    else  //中央が黒線を検知しない
+    else  // De middelste detecteert geen zwarte lijnen
     {
-      if (L_val == 1 && R_val == 0)  //左に黒線を検知し、右に検知しない場合、左折
+      if (L_val == 1 && R_val == 0)  // Als een zwarte lijn links wordt gedetecteerd, maar niet rechts, draai links
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //右に黒線を検知し、左に検知しない場合、右折
+      else if (L_val == 0 && R_val == 1)  // Als een zwarte lijn rechts wordt gedetecteerd, niet links, draai rechts
       {
         Car_right();
       }
-      else  //それ以外は停止
+      else  // anders, stop
       {
         Car_Stop();
       }
@@ -132,14 +132,14 @@ void loop ()
 
 void fan_stop() 
 {
-  //回転停止
+  // stop met draaien
   digitalWrite(INA, LOW);
   digitalWrite(INB, LOW);
 }
 
 void fan_begin() 
 {
-  //ファン回転
+  // ventilator draait
   digitalWrite(INA, LOW);
   digitalWrite(INB, HIGH);
 }
@@ -190,11 +190,11 @@ void Car_Stop()
 }
 ```
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaat:**
 
-テストコードを正常にアップロードして電源を入れると、スマートカーは炎を検知したときに消火し、引き続き黒線に沿って移動します。
+Na het succesvol uploaden van de testcode en het inschakelen van de voeding, blust de slimme auto het vuur wanneer het vlammen detecteert en blijft het langs de zwarte lijn rijden.
 
 ![](media/694677ab33053846ec588667dc40ecfa.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span>
-火災を防ぐために可燃物から遠ざけてください。子供は大人の監督のもとで実験してください。安全であることが確認できない場合は、実験を中断してください。炎センサーは耐火性ではありません。炎で直接燃やさないでください。
+<span style="color: rgb(255, 76, 65);">**Opmerking:**</span>
+Houd het uit de buurt van brandbare materialen om brand te voorkomen. Kinderen dienen het experiment uit te voeren onder toezicht van een volwassene. Als u niet zeker weet of het veilig is, sla het experiment dan over. De vlamsensor is niet vuurbestendig, verbrand hem niet direct met een vlam.

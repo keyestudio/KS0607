@@ -1,43 +1,43 @@
-### プロジェクト4: ライントラッキングセンサー
+### Project 4: Lijnvolgingssensor
 
-#### **(1)概要:**
+#### **(1)Beschrijving:**
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
-トラッキングセンサーは実際には赤外線センサーです。ここで使用されているコンポーネントはTCRT5000赤外線チューブです。
+De lijnvolgingssensor is eigenlijk een infraroodsensor. Het hier gebruikte onderdeel is de TCRT5000 infraroodbuis.
 
-その動作原理は、赤外線の色に対する反射率の違いを利用し、反射信号の強度を電流信号に変換するものです。
+Het werkingsprincipe is gebaseerd op het gebruik van de verschillende reflectiviteit van infraroodlicht op kleuren, en vervolgens het omzetten van de sterkte van het gereflecteerde signaal naar een stromsignaal.
 
-検出プロセスでは、黒はHIGHレベルでアクティブになり、白はLOWレベルでアクティブになります。検出高さは0〜3 cmです。
+Tijdens het detectieproces is zwart actief op HOOG niveau terwijl wit actief is op LAAG niveau. De detectiehoogte is 0-3 cm.
 
-Keyestudio 3チャンネルライントラッキングモジュールは、3セットのTCRT5000赤外線チューブを1枚の基板に統合しており、配線と制御がより便利になっています。
+De Keyestudio 3-kanaals lijnvolgingsmodule heeft 3 sets TCRT5000 infraroodbuizen geïntegreerd op één printplaat, wat de bedrading en besturing eenvoudiger maakt.
 
-ライントラッキングセンサーが期待通りに動作しない場合は、ドライバーを使用してポテンショメーターを調整し、感度を高める必要があります。指をセンサーに近づけると基板上のLEDライトが点灯し、指を離すとLEDライトが消灯します。この状態のとき、感度は比較的良好です。
+Als de lijnvolgingssensor niet werkt zoals verwacht, moet u een schroevendraaier gebruiken om de potentiometer aan te passen om hem gevoeliger te maken. Wanneer uw vinger dicht bij de sensor komt, gaat het ingebouwde LED-lampje aan, en wanneer uw vinger wegbeweegt, gaat het ingebouwde LED-lampje uit. Op dat moment is de gevoeligheid relatief goed.
 
 ![](./media/img-20240117090858.png)
 
-#### **(2)パラメータ:**
+#### **(2)Parameters:**
 
-- 動作電圧: 3.3-5V (DC)
+- Bedrijfsspanning: 3.3-5V (DC)
 
-- インターフェース: 5PIN
+- Interface: 5PIN
 
-- 出力信号: デジタル信号
+- Uitgangssignaal: Digitaal signaal
 
-- 検出高さ: 0〜3 cm
+- Detectiehoogte: 0-3 cm
 
 
-特記事項: テスト前に、センサーのポテンショメーターを回して検出感度を調整してください。LEDがONとOFFの閾値に調整されたとき、感度が最も良くなります。
+Speciale opmerking: voor het testen, draai de potentiometer op de sensor om de detectiegevoeligheid aan te passen. Wanneer de LED wordt ingesteld op de drempel tussen AAN en UIT, is de gevoeligheid het beste.
 
-<span style="color: rgb(255, 76, 65);">注意:</span> ライントラッキングセンサーはロボットの底部の下に取り付けられています。
+<span style="color: rgb(255, 76, 65);">Opmerking:</span> de lijnvolgingssensor is gemonteerd onder de bodem van de robot.
 
-#### **(3)接続図:**
+#### **(3)Aansluitschema:**
 
 ![](media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -52,24 +52,25 @@ http://www.keyestudio.com
 
 */
 
-// ライントラッキングセンサーの配線
-#define L_pin 11 // 左
-#define M_pin 7 // 中央
-#define R_pin 8 // 右
+// De bedrading van de lijnvolgingssensoren
+
+#define L_pin 11 // links
+#define M_pin 7 // midden
+#define R_pin 8 // rechts
 
 void setup()
 {
-    Serial.begin(9600); // ボーレートを9600に設定
-    pinMode(L_pin, INPUT); // ライントラッキングセンサーのすべてのピンを入力モードに設定
+    Serial.begin(9600); // Stel de baudrate in op 9600
+    pinMode(L_pin, INPUT); // Stel alle pinnen van de lijnvolgingssensoren in op invoermodus
     pinMode(M_pin, INPUT);
     pinMode(R_pin, INPUT);
 }
 
 void loop ()
 {
-    int L_val = digitalRead(L_pin); // 左センサーの値を読み取る
-    int M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
-    int R_val = digitalRead(R_pin); // 右センサーの値を読み取る
+    int L_val = digitalRead(L_pin); // Lees de waarde van de linkersensor
+    int M_val = digitalRead(M_pin); // Lees de waarde van de middelste sensor
+    int R_val = digitalRead(R_pin); // Lees de waarde van de rechtssensor
 
     Serial.print(L_val);
     Serial.print(" ");
@@ -77,36 +78,36 @@ void loop ()
     Serial.print(" ");
     Serial.print(R_val);
     Serial.println(" ");
-    delay(100); // 100msの遅延
+    delay(100); // vertraging van 100ms
 }
 ```
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaten:**
 
-開発ボードにコードをアップロードし、シリアルモニターを開いてライントラッキングセンサーを確認します。信号が受信されない場合、表示される値は1（HIGHレベル）です。センサーを紙で覆うと値が0に変わります。
+Upload de code op het ontwikkelbord, open de seriële monitor om de lijnvolgingssensoren te controleren. De weergegeven waarde is 1 (hoog niveau) wanneer er geen signalen worden ontvangen. De waarde verandert naar 0 wanneer de sensor wordt bedekt met papier.
 
 ![](./media/img-20240117090920.png)
 
 
 ![](media/b9319753c148f66aabc9bf648ed93da1.png)
 
-#### **(6)コードの説明:**
+#### **(6)Codeuitleg:**
 
-**Serial.begin(9600)** - シリアルポートを初期化し、ボーレートを9600に設定します
+**Serial.begin(9600)**- Initialiseer de seriële poort, stel de baudrate in op 9600
 
-**pinMode** - ピンを入力または出力モードとして定義します
+**pinMode-** Definieer de pin als invoer- of uitvoermodus
 
-**digitalRead** - ピンの状態を読み取ります。一般的にHIGHレベルとLOWレベルがあります
+**digitalRead-** Lees de toestand van de pin, dit zijn over het algemeen HOOG en LAAG niveau
 
-#### **(7)応用練習:**
+#### **(7)Uitgebreide oefening:**
 
-動作原理を理解した後、D9にLEDを接続することで、ライントラッキングセンサーによってLEDを制御できます。
+Na het kennen van het werkingsprincipe kunt u een LED verbinden met D9, zodat u de LED kunt bedienen via de lijnvolgingssensor.
 
 ![](media/1dd733ed6248d09e9b4d218e41559294.png)
 
-**テストコード**
+**Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten ontstaan met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -120,34 +121,35 @@ http://www.keyestudio.com
 
 */
 
-// LEDピン
+// LED pin
+
 #define LED 9
-// ライントラッキングセンサーの配線
-#define L_pin 11 // 左
-#define M_pin 7 // 中央
-#define R_pin 8 // 右
+// De bedrading van de lijnvolgingssensoren
+#define L_pin 11 // links
+#define M_pin 7 // midden
+#define R_pin 8 // rechts
 
 void setup()
 {
-    Serial.begin(9600); // ボーレートを9600に設定
-    pinMode(LED, OUTPUT); // LEDを出力モードに設定
-    pinMode(L_pin, INPUT); // ライントラッキングセンサーのすべてのピンを入力モードに設定
+    Serial.begin(9600); // Stel de baudrate in op 9600
+    pinMode(LED, OUTPUT); // Stel LED in op uitvoermodus
+    pinMode(L_pin, INPUT); // Stel alle pinnen van de lijnvolgingssensoren in op invoermodus
     pinMode(M_pin, INPUT);
     pinMode(R_pin, INPUT);
 }
 
 void loop ()
 {
-    int L_val = digitalRead(L_pin); // 左センサーの値を読み取る
-    int M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
-    int R_val = digitalRead(R_pin); // 右センサーの値を読み取る
+    int L_val = digitalRead(L_pin); // Lees de waarde van de linkersensor
+    int M_val = digitalRead(M_pin); // Lees de waarde van de middelste sensor
+    int R_val = digitalRead(R_pin); // Lees de waarde van de rechtssensor
     Serial.print(L_val);
     Serial.print(" ");
     Serial.print(M_val);
     Serial.print(" ");
     Serial.print(R_val);
     Serial.println(" ");
-    delay(100); // 遅延
+    delay(100); // Vertraging in
 
     if (L_val == 0 || M_val == 0 || R_val == 0) 
     {
@@ -159,5 +161,3 @@ void loop ()
     }
 }
 ```
-
- 

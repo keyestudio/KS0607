@@ -1,30 +1,30 @@
-### プロジェクト 13: 限られた空間内での走行タンク
+### Project 13: Beweeg-in-Beperkte-Ruimte Tank
 
 
-#### **(1)説明:**
+#### **(1)Beschrijving:**
 
-スマートカーの超音波追跡および障害物回避機能については、前のプロジェクトで紹介しました。ここでは、前のコースの知識を組み合わせて、スマートカーを特定の空間内で動くように制限することを目的としています。実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒線があるかどうかを検出し、検出結果に応じて2つのモーターの回転を制御することで、黒線で描かれた円の中にスマートカーを閉じ込めます。
+De ultrasone volgfunctie en obstakelvermijdingsfuncties van de slimme auto zijn in eerdere projecten besproken. Hier willen we de kennis uit de vorige cursussen combineren om de slimme auto te beperken tot bewegen binnen een bepaalde ruimte. In het experiment gebruiken we de lijnvolgsensor om te detecteren of er een zwarte lijn rondom de slimme auto is, en vervolgens de rotatie van de twee motoren te besturen op basis van de detectieresultaten, zodat de slimme auto binnen een cirkel getekend met een zwarte lijn blijft.
 
-スマートカーの具体的なロジックは以下の表に示すとおりです:
+De specifieke logica van de slimme auto wordt weergegeven in de onderstaande tabel:
 
 ![](media/image-20230525114604923.png)
 
-|                         条件                         |                         動作                          |
+|                         Voorwaarde                         |                         Beweging                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| 3つのライントラッキングセンサーのうち1つが黒線を検出した場合 | 後退（PWMを150に設定）その後左折（PWMを150に設定） |
-|             どれも黒線を検出しない場合              |               前進（PWMを100に設定）                |
+| Als één van de drie lijnvolgsensoren zwarte lijnen detecteert | Ga achteruit（stel PWM in op 150）Dan draai links（stel PWM in op 150） |
+|             Geen van hen detecteert zwarte lijnen              |               Ga vooruit（stel PWM in op 100）                |
 
-#### **(2)フローチャート**
+#### **(2)Stroomdiagram**
 
 ![](media/b3c30f92cb78d4c2a4a8bd746aef24e1.png)
 
-#### **(3)接続図:**
+#### **(3)Aansluitingsdiagram:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)テストコード:**
+#### **(4)Testcode:**
 
-以下のようにブロックをドラッグしてコードを編集することもできます
+U kunt ook blokken slepen om uw code te bewerken, zoals hieronder weergegeven
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -44,14 +44,14 @@
 
 （9）![](media/b919eb2b47ee87ae36e21099e754e8a1.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードが失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ![](media/e656126c11bb8ebe7b6b0df8f22e7a79.png)
 
-#### **(5)テスト結果:**
+#### **(5)Testresultaten:**
 
-テストコードを正常にアップロードして電源を入れると、スマートカーは黒線で描かれた円の中を走行します。
+Na het succesvol uploaden van de testcode en het inschakelen van de voeding, beweegt de slimme auto binnen een cirkel getekend met een zwarte lijn.
 
 ![](./media/img-20240117094034.png)

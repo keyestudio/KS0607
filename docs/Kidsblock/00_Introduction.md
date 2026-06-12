@@ -1,38 +1,38 @@
-## 5.1 データのダウンロード
+## 5.1 Gegevens downloaden
 
-Scratchの情報にはプロジェクトコードが含まれています。以降の学習のために、クリックしてダウンロードしてください。
+Scratch-informatie bevat projectcode. Klik om te downloaden voor vervolgstudies.
 
-データダウンロード：[データダウンロード](./Kidsblock.7z)
+Gegevens downloaden: [Gegevens downloaden](./Kidsblock.7z)
 
-## 5.2 Windowsシステムへのソフトウェアインストール
+## 5.2 Software-installatie van Windows-systeem
 
-1. KidsBlockのダウンロード：https://wiki.kidsbits.cc/projects/KidsBlock/en/latest/
+1. Download KidsBlock: https://wiki.kidsbits.cc/projects/KidsBlock/en/latest/ 
 
    ![](./media/Ani.gif)
 
-2. ソフトウェアのインストール
+2. Software-installatie
 
 ![](./media/An.gif)
 
-3. ソフトウェアの起動
+3. Software uitvoeren
 
-まず、開発ボードをコンピューターに接続します。
+Verbind eerst het ontwikkelbord met de computer.
 
 ![](./media/A.gif)
 
-KidsBlockのインストール中に以下のエラーが表示された場合、再インストールで解決できる場合があります。ビデオチュートリアルを参照し、記載された手順に従ってください。
+Als u tijdens de installatie van KidsBlock de onderstaande fout tegenkomt, kan een herinstallatie het probleem oplossen. Raadpleeg de videozelfstudie en volg de beschreven stappen.
 
 ![](./media/c37b8b9849a01212eb02a3ab28ca82d0.jpg)
 
 <iframe width="951" height="536" src="https://www.youtube.com/embed/ZOIm0tTaBeQ" title="KidsBlock Error Resolution" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## 5.3 Macシステムへのソフトウェアインストール
+## 5.3 Software-installatie van Mac-systeem
 
-1. KidsBlockのダウンロード：https://xiazai.keyesrobot.cn/KidsBlock.dmg Desktop 2.0.4.dmg
+1. Download KidsBlock: https://xiazai.keyesrobot.cn/KidsBlock.dmg Desktop 2.0.4.dmg.
 ![](./media/img-20230302102209-1749281036490-1.png)
 
-2. KidsBlockをクリックし、KidsBlock DesktopをApplicationsにドラッグします。
+2. Klik op KidsBlock en sleep KidsBlock Desktop naar Programma's.
 ![](./media/img-20230302102213-1749281036490-2.png)
 
-3. インストールが完了するまで待ちます。インストールが成功すると、LaunchpadにKidsBlockのアイコンが表示されます。
+3. Wacht tot de installatie is voltooid. Het KidsBlock-pictogram verschijnt in Launchpad als de installatie succesvol is.
 ![](./media/image-20250709122026453.png)

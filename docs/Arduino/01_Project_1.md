@@ -1,44 +1,44 @@
-### プロジェクト 1: LED点滅
+### Project 1: LED Knippert
 
-#### **(1)概要:**
+#### **(1)Beschrijving:**
 
 ![](media/64b0b431d58473408ac46b39d2dc2ad0.jpeg)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-初心者や愛好家にとって、LED点滅は基本的なプログラムです。LEDは発光ダイオードの略称で、Ga、As、P、Nなどの化学化合物で構成されています。テストコードのディレイ時間を変更することで、LEDはさまざまな色で点滅することができます。制御時は、GNDとVCCに電源を供給します。S端がハイレベルの場合、LEDが点灯し、ローレベルの場合は消灯します。
+Voor beginners en enthousiastelingen is LED Knipperen een fundamenteel programma. LED, de afkorting van lichtgevende diodes, bestaat uit Ga, As, P, N chemische verbindingen enzovoort. De LED kan in verschillende kleuren knipperen door de vertragingstijd in de testcode te wijzigen. Bij bediening wordt stroom aangesloten op GND en VCC. De LED gaat aan als het S-uiteinde op een hoog niveau is; anders gaat hij uit.
 
-#### **(2)パラメータ:**
+#### **(2)Parameters:**
 
 ![](./media/image-20250709104606457.png)
 
-- 制御インターフェース: デジタルポート
-- 動作電圧: DC 3.3-5V
-- ピン間隔: 2.54mm
-- LED表示色: 黄色
+- Besturingsinterface: digitale poort
+- Werkspanning: DC 3.3-5V
+- Pinafstand: 2.54mm
+- LED weergavekleur: geel
 
-#### **(3)必要なコンポーネント:**
+#### **(3)Benodigde Componenten:**
 
 ![](media/img-20240117081416.png)
 
 
-#### **(4)8833モータードライバー拡張ボード:**
+#### **(4)8833 Motor driver uitbreidingsbord:**
 
-Keyestudio 8833モータードライバー拡張ボードは、Arduino UNO開発ボードと互換性があります。使用する際は、開発ボードの上に重ねて装着してください。
+Het Keyestudio 8833 motor driver uitbreidingsbord is compatibel met het Arduino UNO ontwikkelbord. Stapel het gewoon op het ontwikkelbord wanneer u het gebruikt.
 
 ![](./media/image-20250709104749140.png)
 
-#### **(5)接続図:**
+#### **(5)Aansluitdiagram:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](media/d68e6475a7c9ed55bb057b75d1b11689.png)
 
-<span style="color: rgb(255, 76, 65);">**注意:**</span> LEDはD9ポートに接続されています。シールドにジャンパーキャップを取り付けることを忘れないでください。
+<span style="color: rgb(255, 76, 65);">**LET OP:**</span> De LED is aangesloten op de D9 poort. Vergeet niet om jumperkapjes op het shield te plaatsen.
 
-#### **(6)テストコード:**
+#### **(6)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -53,39 +53,39 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; //LEDのピンをデジタルポート9に定義する
+int LED = 9; //Definieer de pin van de LED om te verbinden met digitale poort 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); //LEDピンを出力モードに初期化する
+	pinMode(LED, OUTPUT); //Initialiseer de LED-pin naar uitvoermodus
 }
 
-void loop() //無限ループ
+void loop() //oneindige lus
 {
-	digitalWrite(LED, HIGH); //ハイレベルを出力し、LEDを点灯する
-	delay(1000); //1秒待つ
-	digitalWrite(LED, LOW); //ローレベルを出力し、LEDを消灯する
-	delay(1000); //1秒待つ
+	digitalWrite(LED, HIGH); //Geef hoog niveau uit en zet de LED aan
+	delay(1000); //Wacht 1s
+	digitalWrite(LED, LOW); //Geef laag niveau uit en zet de LED uit
+	delay(1000); //Wacht 1s
 }
 ```
 
-#### **(7)テスト結果:**
+#### **(7)Testresultaten:**
 
-プログラムをアップロードすると、LEDが1秒間隔で点滅します。
+Upload het programma, de LED knippert met een interval van 1s.
 
-#### **(8)コードの説明:**
+#### **(8)Code Uitleg:**
 
-**pinMode(LED，OUTPUT) -** この関数はピンがINPUTかOUTPUTかを指定します。
+**pinMode(LED，OUTPUT) -** Deze functie kan aangeven dat de pin INPUT of OUTPUT is
 
-**digitalWrite(LED，HIGH) -** ピンがOUTPUTの場合、HIGH（5V出力）またはLOW（0V出力）に設定できます。
+**digitalWrite(LED，HIGH) -** Wanneer de pin OUTPUT is, kunnen we deze instellen op HIGH (5V uitvoer) of LOW (0V uitvoer)
 
-#### **(9)応用練習:**
+#### **(9)Uitbreidingsoefening:**
 
-LEDの点滅に成功しました。次に、ピンとディレイ時間を変更するとLEDがどうなるか観察してみましょう。
+We hebben de LED succesvol laten knipperen. Laten we nu observeren wat er met de LED gebeurt als we pins en vertragingstijd wijzigen.
 
-**テストコード**
+**Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+(<span style="color: rgb(255, 76, 65);">**Opmerking:**</span> Sluit de Bluetooth-module niet aan voordat u de code uploadt, omdat het uploaden van de code ook gebruik maakt van seriële communicatie, en er kunnen conflicten optreden met de Bluetooth seriële communicatie, waardoor het uploaden kan mislukken.)
 
 ```C
 /*
@@ -100,21 +100,21 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; //LEDのピンを9として定義する
+int LED = 9; //Definieer de pin van de LED als 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); //LEDのピンをOUTPUTに設定する
+	pinMode(LED, OUTPUT); //Stel de pin van de LED in op OUTPUT
 }
 
-void loop() //無限ループ
+void loop() //Oneindige lus
 {
-    digitalWrite(LED, HIGH); //ハイレベルを出力し、LEDを点灯する
-	delay(100); //0.1秒待つ
-	digitalWrite(LED, LOW); //ローレベルを出力し、LEDを消灯する
-	delay(100); //0.1秒待つ
+    digitalWrite(LED, HIGH); //geef hoge niveaus uit, zet LED aan
+	delay(100); //Wacht 0.1s
+	digitalWrite(LED, LOW); //LED geeft lage niveaus uit, zet LED uit
+	delay(100); //Wacht 0.1s
 
 }
 ```
 
-テスト結果より、LEDがより速く点滅することが確認できます。したがって、ピンとディレイ時間が点滅の周波数に影響を与えるという結論を導くことができます。
+Het testresultaat toont aan dat de LED sneller knippert. Daarom kunnen we concluderen dat pins en vertragingstijd de knipperfrequentie beïnvloeden.
