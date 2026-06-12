@@ -1,96 +1,98 @@
-### Projekt 9: 8*16 LED-Punktmatrix für Gesichtsausdrücke
+### Proyecto 9: Matriz de puntos LED de expresión facial 8*16
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Wäre es nicht toll, wenn dem Roboter ein Ausdrucks-Display hinzugefügt wird? Die Keyestudio 8*16 LED-Punktmatrix kann genau das leisten. Mit ihrer Hilfe können Sie selbst Gesichtsausdrücke, Bilder, Muster und andere Anzeigen gestalten.
+¿No sería divertido agregar una pantalla de expresiones al robot? Y la matriz de puntos LED 8*16 de Keyestudio puede hacerlo. Con su ayuda, podrías diseñar expresiones faciales, imágenes, patrones y otras pantallas por ti mismo.
 
-Das 8*16 LED-Board verfügt über 128 LEDs. Die Daten des Mikroprozessors (Arduino) kommunizieren mit dem AiP1640 über eine Zwei-Draht-Busschnittstelle. Damit kann er das Ein- und Ausschalten von 128 LEDs auf dem Modul steuern, sodass die Punktmatrix auf dem Modul das gewünschte Muster anzeigt. Ein HX-2.54 4Pin-Kabel wird für Ihre Bequemlichkeit bei der Verkabelung mitgeliefert.
+La placa LED 8*16 viene con 128 LEDs. Los datos del microprocesador (Arduino) se comunican con el AiP1640 a través de una interfaz de bus de dos hilos. Por lo tanto, puede controlar el encendido y apagado de los 128 LEDs en el módulo, de modo que la matriz de puntos en el módulo muestre el patrón que necesitas. Se proporciona un cable HX-2.54 4Pin para tu comodidad al conectar los cables.
 
-#### **(2)Parameter:**
+#### **(2)Parámetros:**
 
--   Betriebsspannung: DC 3,3–5 V
+-   Voltaje de trabajo: DC 3.3-5V
 
--   Leistungsaufnahme: 400 mW
+-   Pérdida de potencia: 400mW
 
--   Schwingungsfrequenz: 450 KHz
+-   Frecuencia de oscilación: 450KHz
 
--   Treiberstrom: 200 mA
+-   Corriente de conducción: 200mA
 
--   Betriebstemperatur: -40\~80℃
+-   Temperatura de trabajo: -40\~80℃
 
--   Kommunikationsmodus: Zwei-Draht-Bus
+-   Modo de comunicación: bus de dos hilos
 
-#### **(3)Wissenswertes:**
+#### **(3)Conocimientos:**
 
-**Schaltkreis der 8\*16 LED-Punktmatrix**
+**Circuito de la matriz de puntos LED 8\*16**
 
 ![](media/edf6c77d05904eebbaa89d557e9e9c1a.png)
 
-**Funktionsprinzip der 8\*16 LED-Punktmatrix**
+**Principio de la matriz de puntos LED 8\*16**
 
-Wie steuert man jede LED der 8*16-Punktmatrix? Es ist bekannt, dass jedes Byte 8 Bits hat und jedes Bit 0 oder 1 ist. Wenn es 0 ist, ist die LED aus, wenn es 1 ist, ist die LED an. Ein Byte kann eine Spalte der LEDs steuern, und entsprechend können 16 Bytes 16 Spalten von LEDs steuern – das ist die 8*16-Punktmatrix.
+¿Cómo controlar cada LED de la matriz de puntos 8\*16? Se sabe que cada byte tiene 8 bits y cada bit es 0 o 1. Cuando es 0, el LED está apagado, mientras que cuando es 1, el LED está encendido. Un byte puede controlar una columna del LED, y naturalmente 16 bytes pueden controlar 16 columnas de LEDs, eso es la matriz de puntos 8\*16.
 
-**Pin-Beschreibung und Kommunikationsprotokoll**
+**Descripción de pines y protocolo de comunicación**
 
-Die Daten des Mikroprozessors (Arduino) kommunizieren mit dem AiP1640 über ein Zwei-Draht-Buskabel.
+Los datos del microprocesador (Arduino) se comunican con el AiP1640 a través de un cable de bus de dos hilos.
 
-Das Kommunikationsprotokoll-Diagramm ist wie folgt: (SCLK) ist SCL, (DIN) ist SDA.
+El diagrama del protocolo de comunicación es el siguiente: (SCLK) es SCL, (DIN) es SDA.
 
 ![](media/ea2bab37f23c09453c680590b84653d6.png)
 
-①Die Startbedingung für die Dateneingabe: SCL ist High-Pegel und SDA wechselt von High zu Low.
+①La condición de inicio para la entrada de datos: SCL está en nivel alto y SDA cambia de alto a bajo.
 
-②Für die Datenbefehls-Einstellung gibt es Methoden, wie in der folgenden Abbildung gezeigt.
+②Para la configuración del comando de datos, hay métodos como se muestra en la figura a continuación.
 
-In unserem Beispielprogramm wird die Methode **Adresse automatisch um 1 erhöhen** gewählt; der Binärwert ist 0100 0000 und der entsprechende Hexadezimalwert ist 0x40.
+En nuestro programa de ejemplo, selecciona la forma de **agregar 1 a la dirección automáticamente**, el valor binario es 0100 0000 y el valor hexadecimal correspondiente es 0x40.
 
 ![](media/image-20230907161100692.png)
 
-③Für die Adressbefehls-Einstellung kann die Adresse wie unten gezeigt ausgewählt werden.
+③Para la configuración del comando de dirección, la dirección se puede seleccionar como se muestra a continuación.
 
-Im Beispielprogramm wird die erste Adresse 00H ausgewählt, und die Binärzahl 1100 0000 entspricht dem Hexadezimalwert 0xc0.
+El primer 00H se selecciona en nuestro programa de ejemplo, y el número binario 1100 0000 corresponde al hexadecimal 0xc0.
 
 ![](media/image-20230907161152467.png)
 
-④Die Anforderung für die Dateneingabe ist, dass bei High-Pegel von SCL während der Dateneingabe das Signal auf SDA unverändert bleiben muss. Nur wenn das Taktsignal auf SCL Low-Pegel hat, kann das Signal auf SDA geändert werden. Die Dateneingabe erfolgt zuerst mit dem niedrigsten Bit und zuletzt mit dem höchsten Bit.
 
-⑤Die Bedingung für das Ende der Datenübertragung ist, dass wenn SCL auf Low-Pegel und SDA auf Low-Pegel ist und SCL auf High-Pegel wechselt, der Pegel von SDA auf High wechselt.
+④El requisito para la entrada de datos es que cuando SCL está en nivel alto al ingresar datos, la señal en SDA debe permanecer sin cambios. Solo cuando la señal de reloj en SCL está en nivel bajo, puede cambiarse la señal en SDA. La entrada de datos es primero el bit menos significativo y luego el bit más significativo.
 
-⑥Anzeigesteuerung: verschiedene Pulsbreiten einstellen; die Pulsbreite kann wie in der folgenden Abbildung gezeigt ausgewählt werden.
+⑤La condición para el fin de la transmisión de datos es que cuando SCL está en nivel bajo, SDA en nivel bajo y SCL en nivel alto, el nivel de SDA se vuelve alto.
 
-Im Beispiel beträgt die Pulsbreite 4/16, und das Hexadezimaläquivalent von 1000 1010 ist 0x8A.
+⑥Control de pantalla, configurar diferentes anchos de pulso; el ancho de pulso se puede seleccionar como se muestra en la figura a continuación.
+
+En el ejemplo, el ancho de pulso es 4/16, y el hexadecimal correspondiente a 1000 1010 es 0x8A.
 
 ![](media/image-20230907161220995.png)
 
-**Anleitung zur Verwendung des Modulus-Tools**
+**Instrucciones para el uso de la herramienta de módulo**
 
-Das Punktmatrix-Tool verwendet die Online-Version, der Link lautet: <http://dotmatrixtool.com/#>
+La herramienta de matriz de puntos utiliza la versión en línea, y el enlace es: <http://dotmatrixtool.com/#>
 
-①Rufen Sie den Link auf, und die Seite erscheint wie unten abgebildet.
+①Ingresa el enlace y la página aparece como se muestra a continuación
 
 ![](media/354693b5679a2615c62e99b7025d6355.png)
 
-②Die Punktmatrix ist 8\*16, passen Sie daher die Höhe auf 8 und die Breite auf 16 an, wie in der folgenden Abbildung gezeigt.
+②La matriz de puntos es 8\*16, por lo que ajusta la altura a 8 y el ancho a 16, como se muestra en la figura a continuación.
 
 ![](media/5f0278d66ade370e871b447d360d6e7b.png)
 
-③Hexadezimaldaten aus dem Muster generieren.
+③Generar datos hexadecimales a partir del patrón.
 
-Wie in der folgenden Abbildung gezeigt: linke Maustaste drücken zum Auswählen, rechtsklicken zum Abbrechen; zeichnen Sie das gewünschte Muster, klicken Sie auf Generate, und die benötigten Hexadezimaldaten werden generiert.
+Como se muestra en la figura a continuación, presiona el botón izquierdo del ratón para seleccionar, haz clic derecho para cancelar; dibuja el patrón que deseas, haz clic en Generate, y se generarán los datos hexadecimales que necesitamos.
 
 ![](media/586e88bf13c61b0918046437ed7f6796.png)
 
-#### **(4)Anschlussdiagramm:**
+#### **(4)Diagrama de conexión:**
 
 ![](media/cec50fec4a335b6922e4c6694a133bc1.png)
 
-GND, VCC, SDA und SCL des 8x16 LED-Boards werden jeweils mit G(GND), V(VCC), A4 und A5 der Erweiterungsplatine für die serielle Zwei-Draht-Kommunikation verbunden.
+El GND, VCC, SDA y SCL de la placa de luz LED 8x16 están conectados respectivamente al G(GND), V (VCC), A4 y A5 de la placa de expansión para comunicación serie de dos hilos.
 
-(<span style="color: rgb(255, 76, 65);">Hinweis:</span> Obwohl es mit dem IIC-Pin des Arduino verbunden ist, ist dieses Modul nicht für die IIC-Kommunikation vorgesehen. Der IO-Port hier simuliert die I2C-Kommunikation und kann mit beliebigen zwei Pins verbunden werden.)
+(<span style="color: rgb(255, 76, 65);">Nota:</span> aunque está conectado con el pin IIC de Arduino, este módulo no es para comunicación IIC. Y el puerto IO aquí es para simular la comunicación I2C y puede conectarse con cualquier dos pines)
 
-#### **(5)Testcode:**
+#### **(5)Código de prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 ![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -98,43 +100,43 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 ![](media/0f0df06e3ed2adbbe3ffaa20dd3fa0a5.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serie, y puede haber conflictos con la comunicación serie Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/75e6f65c9a299868d37544ac42c54f66.png)
 
-#### **(6)Testergebnisse:**
+#### **(6)Resultados de la prueba:**
 
-Nachdem der Testcode erfolgreich hochgeladen wurde, verkabeln Sie alles, drehen Sie den DIP-Schalter auf die ON-Seite und schalten Sie die Stromversorgung ein. Auf der Punktmatrix erscheint ein lächelndes Muster.
+Después de cargar el código de prueba exitosamente, conecta los cables, gira el interruptor DIP al extremo ON y enciende, un patrón en forma de sonrisa aparece en la matriz de puntos.
 
 ![](media/0fd4831db288e04e75828346ea66a3f5.png)
 
-#### **(7)Erweiterungsübung:**
+#### **(7)Práctica de extensión:**
 
-Wir verwenden das gerade erlernte Modulus-Tool, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), damit die Punktmatrix die Muster Start, Vorwärts fahren und Stopp anzeigt und dann das Muster löscht. Das Zeitintervall beträgt 2000 ms.
+Usamos la herramienta de módulo que acabamos de aprender, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), para hacer que la matriz de puntos muestre el patrón de inicio, avanzar y detener, y luego limpiar el patrón. El intervalo de tiempo es de 2000 ms.
 
 ![](media/31ab1346c58438ca95c990e4ff963c0d.png)
 
-Block zum Anzeigen eines lächelnden Gesichts![](media/1702a82ce685e3e7da7b136cbc51e718.png)
+Bloque para mostrar cara sonriente![](media/1702a82ce685e3e7da7b136cbc51e718.png)
 
-Code zum Anzeigen eines Ausdrucks![](media/bae6801afc8fbcc0e7a70c243559c266.png)
+Código para mostrar expresión![](media/bae6801afc8fbcc0e7a70c243559c266.png)
 
-Block zum Anzeigen eines Herzens![](media/dcaa414f16d10068d2c3627959141da6.png)
+Bloque para mostrar corazón![](media/dcaa414f16d10068d2c3627959141da6.png)
 
-Code für Vorwärtsfahren![](media/8fc218e6b35826aa31f5e00f61414651.png)
+Código para avanzar![](media/8fc218e6b35826aa31f5e00f61414651.png)
 
-Block für Rückwärtsfahren![](media/043abae4540c578f93772ed9b6648e60.png)
+Bloque para retroceder![](media/043abae4540c578f93772ed9b6648e60.png)
 
-Block für Linksdrehen![](media/7b3d80a76228ee5b23555af17269a02d.png)
+Bloque para girar a la izquierda![](media/7b3d80a76228ee5b23555af17269a02d.png)
 
-Block für Rechtsdrehen![](media/5a84b3538a62367a8f35cc59071c0bda.png)
+Bloque para girar a la derecha![](media/5a84b3538a62367a8f35cc59071c0bda.png)
 
-Block zum Stoppen![](media/733bd1f96e1c9d116033a317cb507fac.png)
+Bloque para detenerse![](media/733bd1f96e1c9d116033a317cb507fac.png)
 
-Block zum Löschen![](media/06d37680acd61c9c5c4113c78c985eca.png)
+Bloque para limpiar![](media/06d37680acd61c9c5c4113c78c985eca.png)
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación.
 
 （1）![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -142,13 +144,13 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 （3）![](media/e72e75122897b0ef930196f762080623.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serie, y puede haber conflictos con la comunicación serie Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/dee30ed46775feb634d4e8e4ec0a189a.png)
 
-Laden Sie den Code auf das Entwicklungsboard hoch; das 8\*16-Board zeigt folgende Muster an.
+Carga el código en la placa de desarrollo, la placa 8\*16 mostrará los siguientes patrones.
 
 ![](./media/image-20250709134319784.png)
 

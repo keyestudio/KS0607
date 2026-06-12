@@ -1,42 +1,42 @@
-### Projekt 2: LED-Helligkeit einstellen
+### Proyecto 2: Ajustar el Brillo del LED
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-In der vorherigen Lektion haben wir die LED ein- und ausgeschaltet und zum Blinken gebracht.
+En la lección anterior, controlamos el LED encendiéndolo y apagándolo para que parpadeara.
 
-In diesem Projekt steuern wir die Helligkeit der LED über PWM und simulieren damit einen Atemeffekt. Ebenso können Sie die Schrittlänge und die Verzögerungszeit im Code ändern, um verschiedene Atemeffekte darzustellen.
+En este proyecto, controlaremos el brillo del LED a través de PWM simulando un efecto de respiración. De igual manera, puedes cambiar el tamaño del paso y el tiempo de retardo en el código para demostrar diferentes efectos de respiración.
 
-PWM ist eine Methode zur Steuerung des analogen Ausgangs über digitale Mittel. Die digitale Steuerung wird verwendet, um Rechteckwellen mit unterschiedlichen Tastverhältnissen (ein Signal, das ständig zwischen hohen und niedrigen Pegeln wechselt) zu erzeugen, um den analogen Ausgang zu steuern.
+PWM es un medio para controlar la salida analógica a través de medios digitales. El control digital se utiliza para generar ondas cuadradas con diferentes ciclos de trabajo (una señal que cambia constantemente entre niveles alto y bajo) para controlar la salida analógica.
 
-Im Allgemeinen betragen die Eingangsspannungen der Ports 0V und 5V. Was ist, wenn 3V benötigt werden? Oder ein Wechsel zwischen 1V, 3V und 3,5V? Wir können nicht ständig Widerstände wechseln. Aus diesem Grund greifen wir auf PWM zurück.
+En general, los voltajes de entrada de los puertos son 0V y 5V. ¿Qué pasa si se requieren 3V? ¿O un cambio entre 1V, 3V y 3.5V? No podemos estar cambiando resistencias constantemente. Por esta razón, recurrimos al PWM.
 
 ![](media/bbcfcb9ae56abb7e80ee587246fc4be9.GIF)
 
-Bei den digitalen Port-Spannungsausgängen des Arduino gibt es nur LOW- und HIGH-Pegel, die jeweils den Spannungsausgängen von 0V und 5V entsprechen. Sie können LOW als „0" und HIGH als „1" definieren und den Arduino innerhalb von 1 Sekunde fünfhundert „0" oder „1" ausgeben lassen. Wenn fünfhundert „1" ausgegeben werden, sind das 5V; wenn alles „0" ist, sind das 0V; wenn 250 01-Muster ausgegeben werden, sind das 2,5V.
+Para las salidas de voltaje de los puertos digitales de Arduino, solo existen niveles BAJO y ALTO, que corresponden a las salidas de voltaje de 0V y 5V respectivamente. Puedes definir BAJO como "0" y ALTO como "1", y hacer que Arduino produzca quinientos "0" o "1" dentro de 1 segundo. Si produce quinientos "1", eso es 5V; si todos son "0", eso es 0V; si produce 250 patrones de 01, eso es 2.5V.
 
-Dieser Vorgang lässt sich mit dem Abspielen eines Films vergleichen. Die Filme, die wir schauen, sind nicht vollständig kontinuierlich. Tatsächlich werden 25 Bilder pro Sekunde erzeugt, was das menschliche Auge nicht unterscheiden kann. Daher nehmen wir es als kontinuierlichen Prozess wahr. PWM funktioniert auf die gleiche Weise. Um unterschiedliche Spannungen auszugeben, müssen wir das Verhältnis von 0 und 1 steuern. Je mehr „0" oder „1" pro Zeiteinheit ausgegeben werden, desto genauer ist die Steuerung.
+Este proceso puede compararse con ver una película. Las películas que vemos no son completamente continuas. En realidad, generan 25 imágenes por segundo, lo cual no puede ser percibido por los ojos humanos. Por lo tanto, lo percibimos como un proceso continuo. El PWM funciona de la misma manera. Para generar diferentes voltajes, necesitamos controlar la proporción de 0 y 1. Cuantos más "0" o "1" se produzcan por unidad de tiempo, más preciso será el control.
 
-#### **(2)Parameter:**
+#### **(2)Parámetros:**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Steuerungsschnittstelle: Digitaler Port 3
+- Interfaz de control: Puerto digital 3
 
-- Betriebsspannung: DC 3,3-5V
+- Voltaje de trabajo: DC 3.3-5V
 
-- Pin-Abstand: 2,54mm
+- Espaciado entre pines: 2.54mm
 
-- LED-Anzeigefarbe: Gelb
+- Color de visualización del LED: amarillo
 
-#### **(3)Schaltplan**
+#### **(3)Diagrama de Conexión**
 
-Die PWM-Pins des Arduino sind mit 3, 5, 6, 9, 10 und 11 verbunden. Pin9 bleibt unverändert.
+Los pines PWM de Arduino están conectados a 3, 5, 6, 9, 10 y 11. Mantén el pin9 sin cambios.
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
-#### **(4)Testcode:**
+#### **(4)Código de Prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 ![](media/de8ccd3cb6621f0eb89a8514a9fd8452.png)
 
@@ -44,26 +44,25 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 ![](media/3157917e305c01f1920cf4d06aff4ff9.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/aaab53a06684ab078936ee61f9abcbb3.png)
 
 
-#### **(5)Testergebnisse**
+#### **(5)Resultados de la Prueba**
 
-Nach erfolgreichem Hochladen des Testcodes ändert sich die LED allmählich von hell zu dunkel, wie der menschliche Atem, anstatt sofort ein- und auszuschalten.
+Una vez cargado el código de prueba exitosamente, el LED cambia gradualmente de brillante a oscuro, como la respiración humana, en lugar de encenderse y apagarse de inmediato.
 
-#### **(6)Erweiterungsübung:**
+#### **(6)Práctica de Extensión:**
 
+Modifiquemos el valor del retardo y mantengamos el pin sin cambios, luego observemos cómo cambia el LED.
 
-Lassen Sie uns den Verzögerungswert ändern und den Pin unverändert lassen, und beobachten Sie dann, wie sich die LED verändert.
+**Código de Prueba Completo**
 
-**Vollständiger Testcode**
-
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/2ff0d71c2688d39695b760a1d0f76965.png)
 
-Laden Sie den Code auf die Entwicklungsplatine hoch, die LED blinkt langsamer.
+Carga el código en la placa de desarrollo, el LED parpadea más lentamente.

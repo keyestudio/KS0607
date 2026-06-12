@@ -1,38 +1,38 @@
-### Projekt 14: Spurverfolgungs-Panzer
+### Proyecto 14: Tanque Seguidor de Línea
 
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Im vorherigen Projekt wurde erklärt, wie man das Smart Car dazu bringt, sich innerhalb eines bestimmten Bereichs zu bewegen. In diesem Projekt werden wir das bisher erlernte Wissen nutzen, um daraus ein spurverfolgendes Smart Car zu machen. Im Experiment verwenden wir den Spurverfolgungssensor, um zu erkennen, ob sich eine schwarze Linie in der Nähe des Smart Cars befindet, und steuern dann entsprechend den Erkennungsergebnissen die Drehung der beiden Motoren, damit das Smart Car der schwarzen Linie entlangfährt.
+El proyecto anterior introdujo cómo confinar el automóvil inteligente para que se mueva dentro de un cierto espacio. En este proyecto, utilizaremos los conocimientos aprendidos anteriormente para convertirlo en un automóvil inteligente seguidor de línea. En el experimento, usamos el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del automóvil inteligente, y luego controlamos la rotación de los dos motores según los resultados de la detección, para que el automóvil inteligente se mueva a lo largo de la línea negra.
 
-Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del automóvil inteligente se muestra en la siguiente tabla:
 
-|               Sensor               |                          Erkennung                           |
+|               Sensor               |                          Detección                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| Spurverfolgungssensor in der Mitte | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
-|  Spurverfolgungssensor links  | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
-| Spurverfolgungssensor rechts  | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
+| Sensor de seguimiento de línea en el centro | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
+|  Sensor de seguimiento de línea a la izquierda  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
+| Sensor de seguimiento de línea a la derecha  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
 
-|                         Bedingung 1                          |                         Bedingung 2                          |   Bewegung   |
+|                         Condición 1                          |                         Condición 2                          |   Movimiento   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------: |
-| Spurverfolgungssensor <br />in der Mitte <br />erkennt die schwarze Linie | Spurverfolgungssensor links erkennt die schwarze Linie<br />der rechte erkennt weiße Linien | Links drehen  |
-| Spurverfolgungssensor <br />in der Mitte <br />erkennt die schwarze Linie | Spurverfolgungssensor links erkennt weiße Linien<br />der rechte erkennt die schwarze Linie | Rechts drehen |
-| Spurverfolgungssensor <br />in der Mitte <br />erkennt die schwarze Linie | Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen weiße Linien<br />Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen die schwarze Linie | Vorwärts fahren |
-| Spurverfolgungssensor<br />in der Mitte <br />erkennt weiße Linien | Spurverfolgungssensor links erkennt die schwarze Linie<br />der rechte erkennt weiße Linien | Links drehen  |
-| Spurverfolgungssensor<br />in der Mitte <br />erkennt weiße Linien | Spurverfolgungssensor links erkennt weiße Linien<br />der rechte erkennt die schwarze Linie | Rechts drehen |
-| Spurverfolgungssensor<br />in der Mitte <br />erkennt weiße Linien | Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen weiße Linien<br />Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen die schwarze Linie |     Stopp     |
+| El sensor de seguimiento de línea <br />en el centro <br />detecta la línea negra | El sensor de seguimiento de línea a la izquierda detecta la línea negra<br />el de la derecha detecta líneas blancas | Girar a la izquierda  |
+| El sensor de seguimiento de línea <br />en el centro <br />detecta la línea negra | El sensor de seguimiento de línea a la izquierda detecta líneas blancas<br />el de la derecha detecta la línea negra | Girar a la derecha |
+| El sensor de seguimiento de línea <br />en el centro <br />detecta la línea negra | Ambos sensores izquierdo y derecho detectan líneas blancas<br />Ambos sensores izquierdo y derecho detectan la línea negra | Avanzar |
+| El sensor de seguimiento de línea<br />en el centro <br />detecta líneas blancas | El sensor de seguimiento de línea a la izquierda detecta la línea negra<br />el de la derecha detecta líneas blancas | Girar a la izquierda  |
+| El sensor de seguimiento de línea<br />en el centro <br />detecta líneas blancas | El sensor de seguimiento de línea a la izquierda detecta líneas blancas<br />el de la derecha detecta la línea negra | Girar a la derecha |
+| El sensor de seguimiento de línea<br />en el centro <br />detecta líneas blancas | Ambos sensores izquierdo y derecho detectan líneas blancas<br />Ambos sensores izquierdo y derecho detectan la línea negra |     Detener     |
 
-#### **(2)Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps11.png)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -50,15 +50,15 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 （8）![](media/fec93c7b8b089de709fd50575931519c.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/294ae4c01072e34b58a334912c90083a.png)
 
 
-#### **(5)Testergebnisse:**
+#### **(5)Resultados de la prueba:**
 
-Nach dem erfolgreichen Hochladen des Testcodes und dem Einschalten der Stromversorgung fährt das Smart Car der schwarzen Linie entlang.
+Después de cargar el código de prueba exitosamente y encender el dispositivo, el automóvil inteligente se mueve a lo largo de la línea negra.
 
 ![](./media/img-20240117094129.png)

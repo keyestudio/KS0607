@@ -1,39 +1,39 @@
-### Projekt 7: IR-Empfang
+### Proyecto 7: Recepción IR
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
 ![](./media/image-20250709133757050.png)
 
-Zweifellos ist die Infrarot-Fernbedienung im täglichen Leben allgegenwärtig. Sie wird zur Steuerung verschiedener Haushaltsgeräte verwendet, wie z. B. Fernseher, Stereoanlagen, Videorekorder und Satellitenempfänger. Die Infrarot-Fernbedienung besteht aus einem Infrarot-Sende- und einem Infrarot-Empfangssystem, d. h. einer Infrarot-Fernbedienung, einem Infrarot-Empfangsmodul und einem Mikrocontroller, der zur Decodierung fähig ist.
+Sin duda, el control remoto infrarrojo es omnipresente en la vida diaria. Se utiliza para controlar varios electrodomésticos, como televisores, equipos de sonido, videograbadoras y receptores de señal satelital. El control remoto infrarrojo está compuesto por sistemas de transmisión infrarroja y recepción infrarroja, es decir, un control remoto infrarrojo, un módulo receptor infrarrojo y un microcontrolador capaz de decodificar.
 
-Das vom Fernbedienungsgerät ausgesendete 38K-Infrarot-Trägersignal wird vom Codierchip in der Fernbedienung codiert. Es besteht aus einem Pilotcode, einem Benutzercode, einem invertierten Benutzercode, einem Datencode und einem invertierten Datencode. Das Zeitintervall der Impulse wird verwendet, um zu unterscheiden, ob es sich um ein 0- oder 1-Signal handelt, und die Codierung wird aus diesen 0- und 1-Signalen zusammengesetzt.
+La señal portadora infrarroja de 38K emitida por el control remoto es codificada por el chip de codificación del control remoto. Está compuesta por una sección de código piloto, código de usuario, código inverso de usuario, código de datos y código inverso de datos. El intervalo de tiempo del pulso se utiliza para distinguir si es una señal 0 o 1, y la codificación está formada por estas señales 0 y 1.
 
-Der Benutzercode derselben Fernbedienung bleibt unverändert, während der Datencode die Taste unterscheiden kann.
+El código de usuario del mismo control remoto no cambia, mientras que el código de datos puede distinguir la tecla.
 
-Wenn die Fernbedienungstaste gedrückt wird, sendet die Fernbedienung ein Infrarot-Trägersignal aus. Wenn der IR-Empfänger das Signal empfängt, decodiert das Programm das Trägersignal und bestimmt, welche Taste gedrückt wurde. Der Mikrocontroller decodiert das empfangene 01-Signal und ermittelt dadurch, welche Taste der Fernbedienung gedrückt wurde.
+Cuando se presiona el botón del control remoto, éste envía una señal portadora infrarroja. Cuando el receptor IR recibe la señal, el programa decodificará la señal portadora y determinará qué tecla fue presionada. El MCU decodifica la señal 01 recibida, determinando así qué tecla fue presionada en el control remoto.
 
 ![](media/5ad0f889b39646ecb13664511479efc8.png)
 
-Der von uns verwendete Infrarotempfänger ist ein Infrarot-Empfangsmodul. Es besteht hauptsächlich aus einem Infrarot-Empfangskopf, einem Gerät, das Empfang, Verstärkung und Demodulation integriert. Der interne IC hat die Demodulation abgeschlossen und kann den Infrarotempfang bis zur Ausgabe realisieren und ist mit TTL-Signalen kompatibel. Außerdem ist es für Infrarot-Fernsteuerung und Infrarot-Datenübertragung geeignet. Das vom Empfänger hergestellte Infrarot-Empfangsmodul hat nur drei Pins: Signalleitung, VCC und GND. Es ist sehr praktisch, mit Arduino und anderen Mikrocontrollern zu kommunizieren.
+El receptor infrarrojo que utilizamos es un módulo receptor infrarrojo. Está compuesto principalmente por una cabeza receptora infrarroja, que es un dispositivo que integra recepción, amplificación y demodulación. Su CI interno ha completado la demodulación y puede lograr desde la recepción infrarroja hasta la salida, siendo compatible con señales TTL. Además, es adecuado para control remoto infrarrojo y transmisión de datos por infrarrojos. El módulo receptor infrarrojo fabricado con el receptor tiene solo tres pines: línea de señal, VCC y GND. Es muy conveniente para comunicarse con Arduino y otros microcontroladores.
 
-#### **(2) Parameter:**
+#### **(2)Parámetros:**
 
-- Betriebsspannung: 3,3–5 V (DC)
-- Schnittstelle: 3PIN
-- Ausgangssignal: Digitalsignal
-- Empfangswinkel: 90 Grad
-- Frequenz: 38 kHz
-- Empfangsreichweite: 10 m
+- Voltaje de operación: 3.3-5V（DC）
+- Interfaz: 3PIN
+- Señal de salida: Señal digital
+- Ángulo de recepción: 90 grados
+- Frecuencia: 38khz
+- Distancia de recepción: 10m
 
-Auf der Motorsteuerplatine integrierter Infrarotempfänger:
+Receptor infrarrojo integrado en la placa de control del motor:
 
 ![](./media/image-20250709133832650.png)
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Da der IR-Empfänger in die Keyestudio 8833 Motorantriebs-Erweiterungsplatine integriert ist, ist keine zusätzliche Verkabelung erforderlich. Die Pins des IR-Empfängers auf der Keyestudio 8833 Motorantriebs-Erweiterungsplatine sind G (GND), V (VCC) und D3.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span> Dado que el receptor IR está integrado en la placa de expansión de control de motor Keyestudio 8833, no se requiere cableado adicional. Los pines del receptor IR en la placa de expansión de control de motor Keyestudio 8833 son G (GND), V (VCC) y D3.
 
-#### **(4) Testcode:**
+#### **(4)Código de prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 ![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -43,30 +43,30 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 ![](media/0aa28f86f26d94bdb4c951c994aa854f.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was zu einem Fehlschlagen des Uploads führen kann.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serial y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
 
 ![](media/90978855cddd94c161f9ed02f85b0674.png)
 
-#### **(5) Testergebnisse:**
+#### **(5)Resultados de la prueba:**
 
-Laden Sie den Code auf die Entwicklungsplatine hoch und stellen Sie die Baudrate auf 9600 ein. Nehmen Sie die Fernbedienung heraus, richten Sie sie auf den Infrarot-Empfangssensor und drücken Sie eine Taste, um das Signal zu senden. Sie sehen den entsprechenden Tastenwert. Wenn die Taste zu lange gedrückt wird, kann leicht ein unlesbares „FFFFFFFF" erscheinen.
+Carga el código en la placa de desarrollo y configura la velocidad en baudios a 9600. Saca el control remoto, apúntalo hacia el sensor receptor infrarrojo y presiona un botón para enviar la señal. Verás el valor de tecla correspondiente. Si la tecla se mantiene presionada demasiado tiempo, puede aparecer fácilmente el mensaje "FFFFFFFF" en formato ilegible.
 
 ![](media/5c01c594a5a11511cf52466eb5f27e45.png)
 
-Nachfolgend haben wir jeden Tastenwert der Keyestudio-Fernbedienung aufgelistet. Sie können ihn als Referenz aufbewahren.
+A continuación hemos listado cada valor de tecla del control remoto Keyestudio. Puedes guardarlo como referencia.
 
 ![](media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-#### **(6) Erweiterungsübung:**
+#### **(6)Práctica de extensión:**
 
-Wir haben gerade die Tastenwerte der IR-Fernbedienung decodiert. Nun wollen wir damit eine LED-Leuchte ein- und ausschalten. Wir müssen ein LED-Leuchtmodul an den D9-Pin anschließen, während die Pin-Position des Infrarotempfängers unverändert bleibt. Wenn die OK-Taste auf der Fernbedienung gedrückt wird, leuchtet die an D9 angeschlossene LED auf, und wenn die OK-Taste erneut gedrückt wird, erlischt die LED.
+Acabamos de decodificar los valores de tecla del control remoto IR. Ahora vamos a usarlo para controlar el encendido y apagado de un LED. Necesitamos conectar un módulo de luz LED al pin D9, mientras que la posición del pin del receptor infrarrojo permanece sin cambios. Cuando se presione el botón OK del control remoto, el LED conectado a D9 se encenderá, y cuando se presione el botón OK nuevamente, el LED se apagará.
 
 ![](media/e05da7ef9e7b6f63f414f2ca7e3f4ee3.png)
 
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 （1）![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -82,12 +82,12 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 （7）![](media/d7be3fa06a1456d46472fffd61823c73.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was zu einem Fehlschlagen des Uploads führen kann.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serial y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
 
 ![](media/57149c79243ff22aa00ff2c54dd4f70b.png)
 
-Laden Sie den Code auf die Entwicklungsplatine hoch und drücken Sie die „OK"-Taste auf der Fernbedienung, um die LED ein- und auszuschalten.
+Carga el código en la placa de desarrollo y presiona la tecla "OK" del control remoto para encender y apagar el LED.
 
 ![](./media/img-20240117092532.png)

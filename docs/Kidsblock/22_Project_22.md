@@ -1,49 +1,49 @@
-### Projekt 22: Feuerlöschroboter – Mehrere Funktionen
+### Proyecto 22: Múltiples Funciones del Robot Extintor de Incendios
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
-Das intelligente Fahrzeug hat in jedem vorherigen Projekt eine einzelne Funktion ausgeführt.
+El coche inteligente ha realizado una sola función en cada proyecto anterior.
 
-Kann es mehrere Funktionen gleichzeitig anzeigen? Ja, das kann es.
+¿Puede mostrar múltiples funciones a la vez? Sí, puede.
 
-In diesem abschließenden großen Projekt beabsichtigen wir, einen vollständigen Code zu verwenden, um das intelligente Fahrzeug zu steuern und alle in den vorherigen Projekten erwähnten Funktionen zu demonstrieren. Wir verwenden die Tasten der Bluetooth-APP, um automatisch zwischen verschiedenen Funktionen zu wechseln, was sehr einfach und bequem ist.
+En este último proyecto grande, pretendemos usar un código completo para controlar el coche inteligente y demostrar todas las funciones mencionadas en los proyectos anteriores. Usamos las teclas de la APP de Bluetooth para cambiar automáticamente entre varias funciones, lo cual es bastante simple y conveniente.
 
-#### **(2) Ablaufdiagramm:**
+#### **(2)Diagrama de Flujo:**
 
-<span style="color: rgb(255, 76, 65);">**Bitte beachten Sie Projekt 16 zur Installation und Konfiguration der Bluetooth-APP**</span>
+<span style="color: rgb(255, 76, 65);">**Por favor, consulte el Proyecto 16 para instalar y configurar la APP de Bluetooth**</span>
 
 ![](media/wps122.png)
 
-#### **(3) Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/e7ac834ba04aa2e8862995d2d33ce935.png)
 
-1\. GND, VCC, SDA und SCL der 8x16-Platine sind mit G (GND), + (VCC), A4 und A5 der Erweiterungsplatine verbunden.
+1\. GND, VCC, SDA y SCL de la placa 8x16 están conectados a G (GND), + (VCC), A4 y A5 de la placa de expansión.
 
-2\. VCC, IN+, IN- und Gnd des Lüftermoduls sind mit 5V (V), 12 (S), 13 (S) und Gnd (G) verbunden.
+2\. VCC, IN+, IN- y Gnd del módulo de ventilador están conectados a 5V (V), 12 (S), 13 (S) y Gnd (G).
 
-3\. Das braune Kabel, das rote Kabel und das orangefarbene Kabel des Servos sind mit Gnd (G), 5v (V) und D10 verbunden.
+3\. El cable marrón, el cable rojo y el cable naranja del servo están conectados a Gnd (G), 5v (V) y D10.
 
-4\. RXD, TXD, GND und VCC des BT-Moduls sind mit TX, RX, G (GND) und 5V (VCC) verbunden. STATE und BRK müssen nicht angeschlossen werden.
+4\. RXD, TXD, GND y VCC del módulo BT están conectados a TX, RX, G (GND) y 5V (VCC). STATE y BRK no necesitan ser conectados.
 
-5\. Die Pins „G", „V" und A des linken Flammensensors sind mit G (GND), V (VCC) bzw. A1 verbunden; der rechte Flammensensor ist mit G (GND), V (VCC) und A2 verbunden.
+5\. Los pines "G", "V" y A del sensor de llama izquierdo están conectados a G (GND), V (VCC) y A1, respectivamente; El sensor de llama derecho está conectado a G (GND), V (VCC) y A2, respectivamente.
 
-6\. Die distalen Anschlüsse des Linienverfolgungssensors sind 11, 7 und 8.
+6\. Los puertos distales del sensor de seguimiento de línea son 11, 7 y 8.
 
-#### **(4) Testcode:**
+#### **(4)Código de Prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Sie können das Fahrzeug über die App nicht beschleunigen.
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+<span style="color: rgb(255, 76, 65);">**Nota:**</span> No puede acelerar el coche mediante la App.
 
 ![](media/b1527b806741e28e8f2af5107db505fe.png)
 
 
-#### **(5) Testergebnis:**
+#### **(5)Resultado de la Prueba:**
 
-Vor dem Hochladen des Programmcodes muss das Bluetooth-Modul entfernt werden; andernfalls schlägt der Code-Upload fehl.
+Antes de cargar el código del programa, el módulo Bluetooth debe ser retirado; de lo contrario, la carga del código fallará.
 
-Nachdem der Code erfolgreich hochgeladen wurde, aktivieren Sie die Standortdienste auf Ihrem Gerät und verbinden Sie dann das Bluetooth-Modul.
+Después de cargar el código exitosamente, active los servicios de ubicación en su dispositivo y luego conecte el módulo Bluetooth.
 
-Sobald das Bluetooth-Modul eingesteckt und eingeschaltet ist und die mobile APP erfolgreich mit dem Bluetooth verbunden ist, können wir die mobile APP verwenden, um den Panzerroboter zu steuern.
+Una vez que el módulo Bluetooth esté conectado y encendido, y la APP móvil esté conectada exitosamente al Bluetooth, podemos usar la APP móvil para controlar el robot tanque.
 
 ![](media/13656cfee75dc5acbeba18a90a084e159.jpg)

@@ -1,43 +1,43 @@
-### Projekt 3: Fotowiderstand
+### Proyecto 3: Fotoresistencia
 
 ![](media/36e7e08764ed3c61a1c22f86be8c23d9.jpeg)
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Der lichtempfindliche Widerstand ist ein spezieller Widerstand, der aus einem Halbleitermaterial wie Sulfid oder Selen hergestellt wird, und zusätzlich mit einem feuchtigkeitsbeständigen Harz mit fotoleitendem Effekt beschichtet ist. Der Fotowiderstand reagiert am empfindlichsten auf das Umgebungslicht; bei unterschiedlicher Lichtstärke ist der Widerstandswert des Fotowiderstands unterschiedlich. Wir verwenden den lichtempfindlichen Widerstand, um das Fotowiderstandsmodul zu entwerfen.
+La resistencia fotosensible es una resistencia especial hecha de un material semiconductor como un sulfuro o selenio, y también se recubre con una resina a prueba de humedad con efecto fotoconductivo. La resistencia fotosensible es más sensible a la luz ambiental; con diferentes intensidades de iluminación, la resistencia de la fotoresistencia es diferente. Usamos la resistencia fotosensible para diseñar el módulo de resistencia fotosensible.
 
-Das Modulsignal ist mit dem analogen Port des Mikrocontrollers verbunden. Wenn die Lichtintensität stärker ist, ist die Spannung am analogen Port größer, d.h. der Simulationswert des Mikrocontrollers ist ebenfalls größer; umgekehrt gilt: Wenn die Lichtintensität schwächer ist, ist die Spannung am analogen Port kleiner, d.h. der Simulationswert des Mikrocontrollers ist ebenfalls kleiner.
+La señal del módulo se conecta al puerto analógico del microcontrolador. Cuando la intensidad de la luz es mayor, el voltaje del puerto analógico es mayor, es decir, el valor de simulación del microcontrolador también es grande; por el contrario, cuando la intensidad de la luz es menor, el voltaje del puerto analógico es menor, es decir, el valor de simulación del microcontrolador también es pequeño.
 
-Auf diese Weise können wir den entsprechenden Analogwert mithilfe des Fotowiderstandsmoduls auslesen und die Lichtintensität in der Umgebung erfassen.
+De esta manera, podemos leer el valor analógico correspondiente usando el módulo de resistencia fotosensible y la intensidad de la luz en el entorno inductivo.
 
 ![](./media/image-20250709122809574.png)
 
 ![](media/0d9daba6454ef099fe1ceb0e6cb56ec4.png)
 
-#### **(2)Parameter:**
+#### **(2)Parámetros:**
 
-- Widerstandswert des Fotowiderstands: 5K Ohm-0,5m
+- Valor de resistencia de la resistencia fotosensible: 5K Ω - 0.5M
 
-- Schnittstellentyp: Simulationsport A0, A1
+- Tipo de interfaz: puerto de simulación A0, A1
 
-- Betriebsspannung: 3,3V-5V
+- Voltaje de trabajo: 3.3V-5V
 
-- Pin-Abstand: 2,54mm
+- Espaciado entre pines: 2.54mm
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
-Als nächstes testen wir das Fotowiderstandsmodul auf der linken Seite des Roboters.
+Lo que vamos a probar a continuación es el módulo fotoresistor en el lado izquierdo del robot.
 
 ![](./media/img-20240117091730.png)
 
-Der linke Fotowiderstand ist mit A1/P3 des Motorantriebsshields verbunden.
+El fotoresistor izquierdo está conectado a A1/P3 del escudo de control del motor.
 
 ![](media/484852a36f52bdbe44bec1b9a8941e44.png)
 
 
-#### **(4)Testcode:**
+#### **(4)Código de Prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación.
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -47,31 +47,31 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 ![](media/d4da0bd0c55e3580fa95782d50f6e540.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
 
 ![](media/f29c7da2238bcc2bc70cb4b2c773b50d.png)
 
-#### **(5)Testergebnisse:**
+#### **(5)Resultados de la Prueba:**
 
-Laden Sie den Code auf das Entwicklungsboard hoch. Klicken Sie auf ![](media/9011f20d83897d7a5936793c4ae142fc.png), um die Baudrate auf 9600 einzustellen. Wenn Sie den Sensor mit der Hand abdecken, wird der Wert kleiner; wenn nicht, wird der Wert größer.
+Carga el código en la placa de desarrollo. Haz clic en ![](media/9011f20d83897d7a5936793c4ae142fc.png) para configurar la velocidad de baudios a 9600. Al cubrirlo con tu mano, el valor disminuye; si no lo cubres, el valor aumenta.
 
 ![](media/53e2fc37ee5bb2c6ec187c309c431c47.png)
 
 
 
-#### **(6)Erweiterungsübung:**
+#### **(6)Práctica de Extensión:**
 
-Der obige Code liest lediglich den Wert des Fotowiderstands. Wir können den Fotowiderstand und die LED kombinieren, um die LED zu steuern. Was wäre, wenn wir die Helligkeit der LED damit steuern würden?
+El código anterior solo lee el valor del fotoresistor. Podemos combinar el fotosensible y el LED para cambiar el LED. ¿Qué tal controlar el brillo del LED con él?
 
 ![](media/88a89f7996fb7f7d037315e57e8bcd33.png)
 
-PWM kann die Lichthelligkeit ändern, d.h. die LED sollte mit dem PWM des Entwicklungsboards verbunden werden.
+PWM puede cambiar el brillo de la luz, es decir, el LED debe estar conectado al PWM de la placa de desarrollo.
 
-Verbinden Sie die LED mit D9 und lassen Sie die anderen Pins unverändert, dann bearbeiten wir den Code.
+Conecta el LED a D9 y mantén los demás pines sin cambios, luego editamos el código.
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación.
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -81,12 +81,12 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 ![](media/9ecdfd77e2a69dea5a8df04e7d56a13a.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
 
 ![](media/b23bcae806e8e27382b162909d30f3c0.png)
 
-Laden Sie den Code auf das Entwicklungsboard hoch. Wir drücken auf den Fotowiderstand, um zu sehen, ob sich die Helligkeit der LED verändert hat.
+Carga el código en la placa de desarrollo, presionamos el fotoresistor para ver si el brillo de la luz LED ha cambiado.
 
 ![](./media/img-20240117091759.png)

@@ -1,42 +1,42 @@
-# 3. Treiberinstallation
+# 3. Instalación del controlador
 
-## 3.1 Windows-System
+## 3.1 Sistema Windows
 
-**Treiber überprüfen**
+**Verificación del controlador**
 
-1. Schließen Sie das Motherboard an den Computer an.
+1. Conecta la placa base al ordenador.
 
 ![](./media/1.jpg)
 
-2. Öffnen Sie den Geräte-Manager. Wenn die Meldung **"Silicon Labs CP210x USB to UART Bridge (COMx)"** erscheint, ist der Treiber bereits installiert und Sie können den Abschnitt **"Treiberinstallation"** überspringen.
+2. Abre el Administrador de dispositivos. Si aparece el mensaje **"Silicon Labs CP210x USB to UART Bridge (COMx)"**, significa que el controlador ya está instalado y puedes omitir la sección **"Instalación del controlador"**.
 
 ![](./media/Animation.gif)
 
-**Manuelle Treiberinstallation**
+**Instalación manual del controlador**
 
-1. Treiber herunterladen
+1. Descarga del controlador
 
-- Windows-System: [Windows-System-Treiber](./Windows.7z)
+- Sistema Windows: [Controlador para sistema Windows](./Windows.7z)
 
-2. Schließen Sie das Motherboard an den Computer an und öffnen Sie den Geräte-Manager. Wenn ein gelbes Ausrufezeichen vor dem Treiber im Bild angezeigt wird, ist der Treiber nicht installiert. Bitte laden Sie den Treiber herunter und installieren Sie ihn manuell.
+2. Conecta la placa base al ordenador y abre el Administrador de dispositivos. Si aparece un signo de exclamación amarillo delante del controlador en la imagen, significa que el controlador no está instalado. Por favor, descarga el controlador e instálalo manualmente.
 
 ![](./media/Animation-1750921346712-3.gif)
 
-## 3.2 MAC-System
+## 3.2 Sistema MAC
 
-**1 Treiber überprüfen**
+**1 Verificación del controlador**
 
-Schließen Sie das Entwicklungsboard an den Computer an und gehen Sie zu [Tools] ---> [Port], um den Port des Entwicklungsboards auszuwählen. (Hinweis: Wenn Sie nicht sicher sind, welcher Port das Entwicklungsboard ist, schließen Sie das Motherboard an, machen Sie ein Foto, um alle Ports zu dokumentieren, trennen Sie dann das Entwicklungsboard und machen Sie ein weiteres Foto. Vergleichen Sie die beiden Fotos, um den verschwundenen Port zu finden – das ist der Port des Boards – und wählen Sie ihn aus.) Wenn der Port nicht erkannt werden kann, tauschen Sie bitte den USB-Port des Computers oder das USB-Kabel aus, um den Port erneut zu erkennen. Wenn es immer noch nicht funktioniert, folgen Sie den nachstehenden Schritten zur Treiberinstallation.
+Conecta la placa de desarrollo al ordenador y ve a [Herramientas] ---> [Puerto] para seleccionar el puerto de la placa de desarrollo. (Nota: Si no puedes confirmar cuál es el puerto de la placa de desarrollo, conecta la placa base y toma una captura de pantalla para registrar todos los puertos, luego desconecta la placa de desarrollo y toma otra captura. Compara las dos imágenes para encontrar el puerto que desapareció, que es el puerto de la placa, y selecciónalo.) Si no puedes reconocer el puerto, intenta cambiar el puerto USB del ordenador o el cable USB para volver a reconocerlo. Si aún no funciona, consulta los siguientes pasos para instalar el controlador.
 
 ![](./media/20250626154343.png)
 
-**2 Manuelle Treiberinstallation**
+**2 Instalación manual del controlador**
 
-1. Treiber herunterladen
+1. Descarga del controlador
 
-​       Mac-System: [Mac-System-Treiber](./Mac.7z)
+​       Sistema Mac: [Controlador para sistema Mac](./Mac.7z)
 
-2. Doppelklicken Sie auf das heruntergeladene Treiber-Zip-Paket, um es zu entpacken.
+2. Haz doble clic para descomprimir el paquete zip del controlador descargado.
 
 ![](./media/image-20250417083615847-1749262759458-8.png)
 
@@ -44,16 +44,16 @@ Schließen Sie das Entwicklungsboard an den Computer an und gehen Sie zu [Tools]
 
 ![](./media/image-20250417083918581-1749262759458-5.png)
 
-3. Klicken Sie anschließend so lange auf **"Weiter"**, bis die Installation abgeschlossen ist.
+3. Después, sigue haciendo clic en **"Siguiente"** hasta que la instalación se complete.
 
 ![](./media/7cca827fe946096f228797dadce10661.png)
 
-An diesem Punkt kann der Port erkannt werden, wenn das Board erneut eingesteckt wird.
+En este punto, el puerto podrá ser reconocido al volver a conectar la placa.
 
-4. Gehen Sie dann zur Arduino IDE, klicken Sie auf "Tools" und wählen Sie das Board Arduino Uno sowie den erkannten Entwicklungsboard-Port aus.
+4. Luego ve al Arduino IDE, haz clic en "Herramientas" y selecciona la placa Arduino Uno y el puerto de la placa de desarrollo reconocido.
 
 ![](./media/2.png)
 
-5. Klicken Sie auf ![image-20250417085312966](./media/image-20250417085312966-1749262759459-18.png), um den Code hochzuladen. Nach Abschluss wird "Done uploading" angezeigt.
+5. Haz clic en ![image-20250417085312966](./media/image-20250417085312966-1749262759459-18.png) para cargar el código. Mostrará "Done uploading" cuando haya terminado.
 
 ![](./media/3.png)

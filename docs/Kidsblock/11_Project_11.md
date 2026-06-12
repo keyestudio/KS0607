@@ -1,33 +1,33 @@
-### Projekt 11: Ultraschall-Folge-Tank
+### Proyecto 11: Tanque Seguidor de Ultrasonidos
 
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-In der vorherigen Lektion haben wir etwas über das lichtfolgende Smart-Car gelernt. In dieser Lektion können wir das Wissen kombinieren, um ein ultraschallfolgendes Auto zu bauen. In diesem Projekt verwenden wir Ultraschallsensoren, um den Abstand zwischen dem Auto und dem Hindernis vorne zu messen, und steuern dann die Drehung der beiden Motoren basierend auf diesen Daten, um die Bewegungen des Smart-Cars zu kontrollieren.
+En la lección anterior, aprendimos sobre el auto inteligente seguidor de luz. En esta lección, podemos combinar los conocimientos para construir un auto seguidor de ultrasonidos. En el proyecto, usamos sensores ultrasónicos para detectar la distancia entre el auto y el obstáculo al frente, y luego controlamos la rotación de los dos motores en función de estos datos para controlar los movimientos del auto inteligente.
 
-Die spezifische Logik des ultraschallfolgenden Smart-Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del auto inteligente seguidor de ultrasonidos se muestra en la siguiente tabla:
 
-|                        Erkennung                        |              Einstellung              |
-| :-----------------------------------------------------: | :-----------------------------------: |
-| Der Abstand (cm) zwischen dem Auto und dem Hindernis vorne | Servowikel auf 90° einstellen |
-|                      **Bedingung**                      |           **Bewegung**            |
-|               Abstand≥20 und Abstand≤50               |             Vorwärts fahren              |
-|            10＜Abstand＜20<br/>Abstand＞50            |               Stopp                |
-|                       Abstand≤10                       |              Rückwärts fahren              |
+|                        Detección                        |              Configuración              |
+| :-----------------------------------------------------: | :-------------------------------: |
+| La distancia (cm) entre el auto y el obstáculo al frente | Ajustar el ángulo del servo a 90° |
+|                      **Condición**                      |           **Movimiento**            |
+|               distancia≥20 y distancia≤50               |             Avanzar              |
+|            10＜distancia＜20<br/>distancia＞50            |               Detener                |
+|                       distancia≤10                       |              Retroceder              |
 
-#### **(2)Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps118.png)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span> Die Verkabelung des Ultraschallsensors, des Servos und des Motors ist dieselbe wie beim vorherigen Projektexperiment. GND, VCC, SDA und SCL des 8x16-LED-Panels sind jeweils mit G (GND), V (VCC), A4 und A5 auf der Erweiterungsplatine verbunden.
+<span style="color: rgb(255, 76, 65);">Nota:</span> El cableado del sensor ultrasónico, el servo y el motor es el mismo que en el experimento del proyecto anterior. El GND, VCC, SDA y SCL del panel LED 8x16 están conectados respectivamente a G (GND), V (VCC), A4 y A5 en la placa de expansión.
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
-Sie können auch Blöcke per Drag & Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación.
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -49,15 +49,15 @@ Sie können auch Blöcke per Drag & Drop verschieben, um Ihren Code zu bearbeite
 
 (10) ![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serie, y puede haber conflictos con la comunicación serie Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/b895ca60e3249e09d4c15c356c60099a.png)
 
 
-#### **(5)Testergebnis:**
+#### **(5)Resultado de la prueba:**
 
-Laden Sie den Code hoch, schalten Sie die Stromversorgung ein und stellen Sie den DIP-Schalter auf ON. Der Servo dreht sich um 90°, das 8X16-LED-Panel zeigt ![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png) an, und das Auto folgt dem Hindernis.
+Carga el código, enciende el dispositivo y mueve el interruptor DIP a ON. El servo rotará 90°, el panel LED 8X16 mostrará ![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png), y el auto seguirá al obstáculo en movimiento.
 
 ![](./media/img-20240117093900.png)

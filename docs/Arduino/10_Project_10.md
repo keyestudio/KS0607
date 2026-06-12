@@ -1,33 +1,33 @@
-### Projekt 10: Lichtfolgendes Fahrzeug
+### Proyecto 10: Tanque Seguidor de Luz
 
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-In den vorherigen Projekten haben wir die Verwendung verschiedener Sensoren, Module und Erweiterungsplatinen am Smart Car detailliert vorgestellt. Jetzt wenden wir uns den Projekten des Smart Cars zu. Das lichtfolgende Smart Car ist, wie der Name schon sagt, ein Smart Car, das dem Licht folgen kann.
+En proyectos anteriores, presentamos en detalle el uso de varios sensores, módulos y placas de expansión en el auto inteligente. Ahora pasemos a los proyectos del auto inteligente. Los autos inteligentes seguidores de luz, como su nombre lo indica, son autos inteligentes que pueden seguir la luz.
 
-Wir können das Wissen aus den Projekten Fotowiderstand und Motorsteuerung kombinieren, um ein lichtfolgendes Smart Car zu bauen. In diesem Projekt verwenden wir zwei Fotowiderstandsmodule, um die Lichtintensität auf der linken und rechten Seite des Smart Cars zu erfassen, lesen die entsprechenden Analogwerte aus und steuern dann die Drehung der beiden Motoren basierend auf diesen zwei Datenwerten, um die Bewegungen des Smart Cars zu kontrollieren.
+Podemos combinar los conocimientos de los proyectos de fotoresistencia y control de motores para crear un auto inteligente buscador de luz. En el proyecto, usamos dos módulos fotoresistores para detectar la intensidad de la luz en los lados izquierdo y derecho del auto inteligente, leemos los valores analógicos correspondientes y luego controlamos la rotación de los dos motores basándonos en estos dos datos para así controlar los movimientos del auto inteligente.
 
-Die spezifische Logik des lichtfolgenden Smart Cars ist wie folgt dargestellt.
+La lógica específica del auto inteligente seguidor de luz se muestra a continuación.
 
 ![](./media/image-20250709111733042.png)
 
-#### **(2)Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps8.png)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span> Die Pins „G", „V" und S des linken Fotowiderstandsmoduls sind mit G (GND), V (VCC) bzw. A1 verbunden;
+<span style="color: rgb(255, 76, 65);">Nota:</span> Los pines "G", "V" y S del módulo fotoresistor izquierdo están conectados a G (GND), V (VCC) y A1 respectivamente;
 
-Die Pins „G", „V" und S des rechten Fotowiderstandsmoduls sind mit G (GND), V (VCC) bzw. A2 verbunden.
+Los pines "G", "V" y S del módulo fotoresistor derecho están conectados a G (GND), V (VCC) y A2 respectivamente.
 
-Das 4-polige Kabel ist mit A, A1, B1 und B gekennzeichnet. Der rechte hintere Motor ist mit dem B-Anschluss der 8833-Motortreiber-Erweiterungsplatine verbunden und der linke vordere Motor ist mit dem A-Anschluss der 8833-Motortreiber-Erweiterungsplatine verbunden.
+El cable de 4 pines está marcado con A, A1, B1 y B. El motor trasero derecho está conectado al puerto B de la placa de expansión del controlador de motores 8833 y el motor delantero izquierdo está conectado al puerto A de la placa de expansión del controlador de motores 8833.
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was das Hochladen fehlschlagen lässt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ```C
 /*
@@ -36,12 +36,12 @@ Das 4-polige Kabel ist mit A, A1, B1 und B gekennzeichnet. Der rechte hintere Mo
   light follow tank
   http://www.keyestudio.com
 */
-#define light_L_Pin A1   // Definiere den Pin des Lichtsensors auf der linken Seite
-#define light_R_Pin A2   // Definiere den Pin des Lichtsensors auf der rechten Seite
-#define ML_Ctrl 4  // Definiere den Richtungssteuerungspin des linken Motors
-#define ML_PWM 6   // Definiere den PWM-Steuerungspin des linken Motors
-#define MR_Ctrl 2  // Definiere den Richtungssteuerungspin des rechten Motors
-#define MR_PWM 5   // Definiere den PWM-Steuerungspin des rechten Motors
+#define light_L_Pin A1   //Define el pin del sensor fotosensible de la izquierda
+#define light_R_Pin A2   //Define el pin del sensor fotosensible de la derecha
+#define ML_Ctrl 4  //Define el pin de control de dirección del motor izquierdo
+#define ML_PWM 6   //Define el pin de control PWM del motor izquierdo
+#define MR_Ctrl 2  //Define el pin de control de dirección del motor derecho
+#define MR_PWM 5   //Define el pin de control PWM del motor derecho
 int left_light;
 int right_light;
 void setup() 
@@ -63,19 +63,19 @@ void loop()
   Serial.println(left_light);
   Serial.print("right_light_value = ");
   Serial.println(right_light);
-  if (left_light > 650 && right_light > 650) // vorwärts fahren
+  if (left_light > 650 && right_light > 650) //avanzar
   {
     Car_front();
   }
-  else if (left_light > 650 && right_light <= 650)  // links abbiegen
+  else if (left_light > 650 && right_light <= 650)  //girar a la izquierda
   {
     Car_left();
   }
-  else if (left_light <= 650 && right_light > 650) // rechts abbiegen
+  else if (left_light <= 650 && right_light > 650) //girar a la derecha
   {
     Car_right();
   }
-  else  // andernfalls anhalten
+  else  //de lo contrario, detenerse
   {
     Car_Stop();
   }
@@ -114,8 +114,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Testergebnis**
+#### **(5)Resultado de la prueba**
 
-Nachdem der Testcode erfolgreich hochgeladen wurde, entsprechend dem Verdrahtungsdiagramm angeschlossen, den DIP-Schalter nach rechts gestellt und das Gerät eingeschaltet wurde, folgt das Smart Car dem Licht und bewegt sich entsprechend.
+Después de cargar el código de prueba exitosamente, conectar según el diagrama de cableado, deslizar el interruptor DIP hacia el extremo derecho y encenderlo, el auto inteligente sigue la luz para moverse.
 
 ![Img](./media/img-20240117090537.png)

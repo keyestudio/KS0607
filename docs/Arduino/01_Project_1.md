@@ -1,44 +1,44 @@
-### Projekt 1: LED blinkt
+### Proyecto 1: Parpadeo de LED
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
 ![](media/64b0b431d58473408ac46b39d2dc2ad0.jpeg)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-Für Einsteiger und Enthusiasten ist das LED-Blinken ein grundlegendes Programm. LED, die Abkürzung für Leuchtdioden, besteht aus chemischen Verbindungen wie Ga, As, P, N und so weiter. Die LED kann in verschiedenen Farben aufleuchten, indem die Verzögerungszeit im Testcode geändert wird. Bei der Steuerung werden GND und VCC mit Strom versorgt. Die LED leuchtet, wenn der S-Anschluss auf hohem Pegel ist; andernfalls geht sie aus.
+Para principiantes y entusiastas, el parpadeo de LED es un programa fundamental. LED, la abreviatura de diodos emisores de luz, está compuesto por compuestos químicos de Ga, As, P, N, entre otros. El LED puede parpadear en diversos colores modificando el tiempo de retardo en el código de prueba. Durante el control, se alimenta GND y VCC. El LED se encenderá si el extremo S está en nivel alto; de lo contrario, se apagará.
 
-#### **(2)Parameter:**
+#### **(2)Parámetros:**
 
 ![](./media/image-20250709104606457.png)
 
-- Steuerungsschnittstelle: digitaler Port
-- Betriebsspannung: DC 3,3–5 V
-- Pin-Abstand: 2,54 mm
-- LED-Anzeigefarbe: gelb
+- Interfaz de control: puerto digital
+- Voltaje de trabajo: DC 3.3-5V
+- Espaciado de pines: 2.54mm
+- Color de visualización del LED: amarillo
 
-#### **(3)Benötigte Komponenten:**
+#### **(3)Componentes Requeridos:**
 
 ![](media/img-20240117081416.png)
 
 
-#### **(4)8833 Motor-Treiber-Erweiterungsplatine:**
+#### **(4)Placa de expansión del motor 8833:**
 
-Die Keyestudio 8833 Motor-Treiber-Erweiterungsplatine ist kompatibel mit dem Arduino UNO Entwicklungsboard. Beim Verwenden einfach auf das Entwicklungsboard aufstecken.
+La placa de expansión del motor Keyestudio 8833 es compatible con la placa de desarrollo Arduino UNO. Solo apílela sobre la placa de desarrollo al utilizarla.
 
 ![](./media/image-20250709104749140.png)
 
-#### **(5)Anschlussdiagramm:**
+#### **(5)Diagrama de Conexión:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](media/d68e6475a7c9ed55bb057b75d1b11689.png)
 
-<span style="color: rgb(255, 76, 65);">**HINWEIS:**</span> Die LED ist mit dem D9-Port verbunden. Denken Sie daran, Jumper-Kappen auf dem Shield zu installieren.
+<span style="color: rgb(255, 76, 65);">**NOTA:**</span> El LED está conectado al puerto D9. Recuerde instalar los puentes (jumper caps) en el shield.
 
-#### **(6)Testcode:**
+#### **(6)Código de Prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, die das Hochladen fehlschlagen lassen.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
 
 ```C
 /*
@@ -53,39 +53,39 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Definiere den Pin der LED, der mit dem digitalen Port 9 verbunden ist
+int LED = 9; // Define el pin del LED para conectar con el puerto digital 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Initialisiere den LED-Pin als Ausgang
+	pinMode(LED, OUTPUT); // Inicializa el pin del LED en modo de salida
 }
 
-void loop() // Endlosschleife
+void loop() // Bucle infinito
 {
-	digitalWrite(LED, HIGH); // Hohen Pegel ausgeben und LED einschalten
-	delay(1000); // 1s warten
-	digitalWrite(LED, LOW); // Niedrigen Pegel ausgeben und LED ausschalten
-	delay(1000); // 1s warten
+	digitalWrite(LED, HIGH); // Salida de nivel alto y enciende el LED
+	delay(1000); // Espera 1s
+	digitalWrite(LED, LOW); // Salida de nivel bajo y apaga el LED
+	delay(1000); // Espera 1s
 }
 ```
 
-#### **(7)Testergebnisse:**
+#### **(7)Resultados de la Prueba:**
 
-Nach dem Hochladen des Programms blinkt die LED im Abstand von 1 s.
+Cargue el programa, el LED parpadea con un intervalo de 1s.
 
-#### **(8)Code-Erklärung:**
+#### **(8)Explicación del Código:**
 
-**pinMode(LED，OUTPUT) -** Diese Funktion kann angeben, ob der Pin INPUT oder OUTPUT ist
+**pinMode(LED，OUTPUT) -** Esta función puede indicar que el pin es de ENTRADA (INPUT) o SALIDA (OUTPUT)
 
-**digitalWrite(LED，HIGH) -** Wenn der Pin OUTPUT ist, kann er auf HIGH (5 V ausgeben) oder LOW (0 V ausgeben) gesetzt werden
+**digitalWrite(LED，HIGH) -** Cuando el pin está en modo OUTPUT, podemos configurarlo en HIGH (salida de 5V) o LOW (salida de 0V)
 
-#### **(9)Erweiterungsübung:**
+#### **(9)Práctica de Extensión:**
 
-Wir haben die LED erfolgreich zum Blinken gebracht. Als Nächstes beobachten wir, was mit der LED passiert, wenn wir Pins und Verzögerungszeit ändern.
+Hemos logrado hacer parpadear el LED. A continuación, observemos qué le sucederá al LED si modificamos los pines y el tiempo de retardo.
 
-**Testcode**
+**Código de Prueba**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, die das Hochladen fehlschlagen lassen.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
 
 ```C
 /*
@@ -100,21 +100,21 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Definiere den Pin der LED als 9
+int LED = 9; // Define el pin del LED como 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Setze den Pin der LED auf OUTPUT
+	pinMode(LED, OUTPUT); // Configura el pin del LED como OUTPUT
 }
 
-void loop() // Endlosschleife
+void loop() // Bucle infinito
 {
-    digitalWrite(LED, HIGH); // Hohe Pegel ausgeben, LED einschalten
-	delay(100); // 0,1s warten
-	digitalWrite(LED, LOW); // LED gibt niedrige Pegel aus, LED ausschalten
-	delay(100); // 0,1s warten
+    digitalWrite(LED, HIGH); // Salida de niveles altos, enciende el LED
+	delay(100); // Espera 0.1s
+	digitalWrite(LED, LOW); // Salida de niveles bajos del LED, apaga el LED
+	delay(100); // Espera 0.1s
 
 }
 ```
 
-Das Testergebnis zeigt, dass die LED schneller blinkt. Daher können wir schlussfolgern, dass Pins und Verzögerungszeit die Blinkfrequenz beeinflussen.
+El resultado de la prueba muestra que el LED parpadea más rápido. Por lo tanto, podemos concluir que los pines y el tiempo de retardo afectan la frecuencia de parpadeo.

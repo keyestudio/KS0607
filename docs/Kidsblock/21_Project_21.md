@@ -1,44 +1,44 @@
-### Projekt 21: Feuerlösch-Panzer
+### Proyecto 21: Tanque Extintor de Incendios
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
-Die Spurverfolgungs-Funktion des Smart-Panzers wurde im vorherigen Projekt erläutert. In diesem Projekt verwenden wir den Flammensensor, um einen Feuerlöschroboter zu bauen.
+La función de seguimiento de línea del tanque inteligente se explicó en el proyecto anterior. En este proyecto utilizamos el sensor de llama para crear un robot extintor de incendios.
 
-Wenn das Fahrzeug auf Flammen trifft, dreht sich der Motor des Lüfters, um das Feuer auszublasen. Natürlich müssen wir zuerst den Ultraschallsensor und die beiden Fotowiderstände durch ein Lüftermodul und Flammensensoren ersetzen.
+Cuando el carro encuentra llamas, el motor del ventilador girará para apagar el fuego. Por supuesto, primero necesitamos reemplazar el sensor ultrasónico y los dos fotorresistores con un módulo de ventilador y sensores de llama.
 
-Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del carro inteligente se muestra en la tabla a continuación:
 
-| Linker Flammensensor | Rechter Flammensensor | Status                                                        |
-| :------------------: | :-------------------: | :------------------------------------------------------------ |
-|        ≤700          |         ≤700          | Auto stoppt, Lüfter beginnt zu drehen, um die Flamme auszublasen |
-|        ≥700          |         ≥700          | Auto stoppt, Lüfter beginnt zu drehen, um die Flamme auszublasen |
-|        ≥700          |         ≥700          | Auto stoppt, Lüfter beginnt zu drehen, um die Flamme auszublasen |
-|        ＞700         |         ＞700         | Lüfter stoppt, Auto bewegt sich                               |
+| Sensor de Llama Izquierdo | Sensor de Llama Derecho | Estado                                                        |
+| :-----------------------: | :---------------------: | :------------------------------------------------------------ |
+|           ≤700            |          ≤700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
+|           ≥700            |          ≥700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
+|           ≥700            |          ≥700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
+|           ＞700           |          ＞700          | El ventilador se detiene, el carro se mueve                   |
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-1） Dieses Experiment erfordert die Verwendung einer Feuerquelle. Bitte halten Sie Abstand von brennbaren Gegenständen, um Brände zu verhindern. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie sich nicht sicher sind, dass Sie sicher sind, verzichten Sie bitte auf das Experiment.
-2） Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
-Wir können eine externe LED mit dem Flammensensor steuern. Die LED ist weiterhin mit D9 verbunden. Wenn Feuer erkannt wird, leuchtet die LED auf.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1）Este experimento requiere el uso de una fuente de fuego. Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está en condiciones seguras, abandone el experimento.
+2）El sensor de llama no es resistente al fuego, por favor no lo queme directamente con llama.
+Podemos controlar un LED externo con el sensor de llama. El LED sigue conectado a D9. Cuando se detecta fuego, el LED se encenderá.
 
 
-#### **(2) Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps120.png)
 
-#### **(3) Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span>
+<span style="color: rgb(255, 76, 65);">Nota:</span>
 
-GND, VCC, SDA und SCL des 8x16-LED-Panels sind mit G（GND), V（VCC), A4 und A5 verbunden.
+GND, VCC, SDA y SCL del panel LED 8x16 están conectados a G（GND), V（VCC), A4 y A5.
 
-G, V und A der beiden Flammensensoren sind mit G（GND), V（VCC), A1 und A2 des Erweiterungsboards verbunden.
+G, V y A de los dos sensores de llama están conectados a G（GND), V（VCC), A1 y A2 de la placa de expansión.
 
-#### **(4) Testcode:**
+#### **(4)Código de Prueba:**
 
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
+También puede arrastrar bloques para editar su código, como se muestra a continuación
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -52,17 +52,17 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 （6）![](media/c0365237fa7ec7de10e9fc465353fae1.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/c07c09e5533a37838722b8c2b513646d.png)
 
-#### **(5) Testergebnisse:**
+#### **(5)Resultados de la Prueba:**
 
-Nachdem der Testcode erfolgreich hochgeladen wurde, schalten Sie die Stromversorgung ein und stellen Sie den DIP-Schalter auf die ON-Seite. Das Smart Car löscht das Feuer, wenn es eine Flamme erkennt.
+Después de cargar el código de prueba exitosamente, encienda el dispositivo y gire el interruptor DIP al extremo ON. El carro inteligente apagará el fuego cuando detecte una llama.
 
 ![](media/2de5f1d832d40c0fc94274f1d87443c6.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-Bitte halten Sie Abstand von brennbaren Gegenständen, um Brände zu verhindern. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie sich nicht sicher sind, dass Sie sicher sind, verzichten Sie bitte auf das Experiment. Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Por favor, manténgalo alejado de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está en condiciones seguras, abandone el experimento. El sensor de llama no es resistente al fuego, por favor no lo queme directamente con llama.

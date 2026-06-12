@@ -1,34 +1,34 @@
-### Projekt 10: Lichtfolgendes Fahrzeug
+### Proyecto 10: Tanque Seguidor de Luz
 
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-In den vorherigen Projekten haben wir die Verwendung verschiedener Sensoren, Module und Erweiterungsplatinen am Smart Car ausführlich vorgestellt. Nun wollen wir uns den Projekten des Smart Cars widmen. Das lichtfolgende Smart Car, wie der Name schon sagt, ist ein Smart Car, das dem Licht folgen kann.
+En proyectos anteriores, presentamos detalladamente el uso de varios sensores, módulos y placas de expansión en el carro inteligente. Ahora pasemos a los proyectos del carro inteligente. Los carros inteligentes seguidores de luz, como su nombre lo indica, son carros inteligentes que pueden seguir la luz.
 
-Wir können das Wissen aus den Projekten über Fotowiderstände und Motorsteuerung kombinieren, um ein lichtsuchen des Smart Car zu bauen. In diesem Projekt verwenden wir zwei Fotowiderstandsmodule, um die Lichtintensität auf der linken und rechten Seite des Smart Cars zu messen, lesen die entsprechenden Analogwerte aus und steuern dann die Drehung der beiden Motoren basierend auf diesen zwei Datenwerten, um so die Bewegungen des Smart Cars zu kontrollieren.
+Podemos combinar el conocimiento de los proyectos de fotorresistor y accionamiento de motor para crear un carro inteligente buscador de luz. En el proyecto, usamos dos módulos fotorresistores para detectar la intensidad de luz en los lados izquierdo y derecho del carro inteligente, leemos los valores analógicos correspondientes y luego controlamos la rotación de los dos motores basándonos en estos dos datos para controlar así los movimientos del carro inteligente.
 
-Die spezifische Logik des lichtfolgenden Smart Cars ist wie folgt dargestellt.
+La lógica específica del carro inteligente seguidor de luz se muestra a continuación.
 
 ![image-20230525113331422](media/image-20230525113331422.png)
 
-#### **(2)Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps117.png)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis: </span>Die Pins „G", „V" und S des linken Fotowiderstandsmoduls sind mit G (GND), V (VCC) bzw. A1 verbunden;
+<span style="color: rgb(255, 76, 65);">Nota: </span>Los pines "G", "V" y S del módulo fotorresistor izquierdo están conectados a G (GND), V (VCC) y A1 respectivamente;
 
-Die Pins „G", „V" und S des rechten Fotowiderstandsmoduls sind mit G (GND), V (VCC) bzw. A2 verbunden.
+Los pines "G", "V" y S del módulo fotorresistor derecho están conectados a G (GND), V (VCC) y A2 respectivamente.
 
-Das 4-polige Kabel ist mit A, A1, B1 und B gekennzeichnet. Der rechte Hinterradmotor ist mit dem B-Anschluss der 8833-Motortreiber-Erweiterungsplatine verbunden und der linke Vorderradmotor ist mit dem A-Anschluss der 8833-Motortreiber-Erweiterungsplatine verbunden.
+El cable de 4 pines está marcado con A, A1, B1 y B. El motor trasero derecho está conectado al puerto B de la placa de expansión controladora de motor 8833 y el motor delantero izquierdo está conectado al puerto A de la placa de expansión controladora de motor 8833.
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación.
 
 （1）![](media/9352e6447f9648efddc7d5a748618332.png)
 
@@ -44,17 +44,17 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
 
 (7) ![](media/9f023e6f571e597e661a8d71a7f803cb.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">Hinweis:</span> Der Schwellenwert 650 im Code kann entsprechend der spezifischen Lichtintensität angemessen angepasst werden.
+(<span style="color: rgb(255, 76, 65);">Nota:</span> El umbral 650 en el código puede ajustarse apropiadamente según la intensidad de luz específica.
 
-Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Kommunikation des Bluetooth kommen kann, was dazu führen kann, dass das Hochladen des Codes fehlschlägt.)
+No conectes el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial del Bluetooth, lo que puede provocar que la carga del código falle.)
 
 ![](media/6300174b85f63c05dbdcb3b77188f9dc.png)
 
 
-#### **(5)Testergebnisse:**
+#### **(5)Resultados de la prueba:**
 
-Nach erfolgreichem Hochladen des Testcodes, Verkabelung herstellen, den DIP-Schalter auf die ON-Seite stellen und einschalten – das Smart Car folgt dem Licht und bewegt sich entsprechend.
+Después de cargar el código de prueba con éxito, realiza el cableado, cambia el interruptor DIP al extremo ON y enciende el dispositivo; el carro inteligente sigue la luz para moverse.
 
 ![](./media/img-20240117093758.png)

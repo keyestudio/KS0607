@@ -1,39 +1,39 @@
-### Projekt 4: Linienverfolgungssensor
+### Proyecto 4: Sensor de Seguimiento de Línea
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
-Der Linienverfolgungssensor ist eigentlich ein Infrarotsensor. Das hier verwendete Bauteil ist die TCRT5000 Infrarotröhre.
+El sensor de seguimiento es en realidad un sensor infrarrojo. El componente utilizado aquí es el tubo infrarrojo TCRT5000.
 
-Sein Funktionsprinzip beruht darauf, dass Infrarotlicht unterschiedlich stark von verschiedenen Farben reflektiert wird, und das reflektierte Signal wird in ein Stromsignal umgewandelt.
+Su principio de funcionamiento es usar la diferente reflectividad de la luz infrarroja a los colores, luego convertir la intensidad de la señal reflejada en una señal de corriente.
 
-Während des Erkennungsvorgangs ist Schwarz bei HIGH-Pegel aktiv, während Weiß bei LOW-Pegel aktiv ist. Die Erkennungshöhe beträgt 0–3 cm.
+Durante el proceso de detección, el negro está activo en nivel ALTO mientras que el blanco está activo en nivel BAJO. La altura de detección es de 0 a 3 cm.
 
-Das Keyestudio 3-Kanal-Linienverfolgungsmodul hat 3 TCRT5000 Infrarotröhren auf einer einzigen Platine integriert, was die Verkabelung und Steuerung komfortabler macht.
+El módulo de seguimiento de línea de 3 canales de Keyestudio ha integrado 3 conjuntos de tubos infrarrojos TCRT5000 en una sola placa, lo que resulta más conveniente para el cableado y el control.
 
-Wenn der Linienverfolgungssensor nicht wie erwartet funktioniert, müssen Sie einen Schraubenzieher verwenden, um das Potentiometer anzupassen und ihn empfindlicher zu machen. Wenn Ihr Finger sich dem Sensor nähert, leuchtet die bordeigene LED auf, und wenn Ihr Finger sich entfernt, erlischt die bordeigene LED. Zu diesem Zeitpunkt ist die Empfindlichkeit relativ gut.
+Si el Sensor de Seguimiento de Línea no funciona como se espera, deberá usar un destornillador para ajustar su potenciómetro para hacerlo más sensible. Cuando su dedo se acerca al sensor, su LED incorporado se enciende, y cuando su dedo se aleja, su LED incorporado se apaga. En ese momento, su sensibilidad es relativamente buena.
 
 ![](./media/img-20240117091947.png)
 
-#### **(2) Parameter:**
+#### **(2)Parámetros:**
 
-- Betriebsspannung: 3,3–5 V (DC)
-- Schnittstelle: 5PIN
-- Ausgangssignal: Digitales Signal
-- Erkennungshöhe: 0–3 cm
+- Voltaje de operación: 3.3-5V (DC)
+- Interfaz: 5PIN
+- Señal de salida: Señal digital
+- Altura de detección: 0-3 cm
 
-Besonderer Hinweis: Drehen Sie vor dem Test das Potentiometer am Sensor, um die Erkennungsempfindlichkeit einzustellen. Wenn die LED an der Schaltschwelle zwischen EIN und AUS eingestellt wird, ist die Empfindlichkeit am besten.
+Nota especial: antes de realizar las pruebas, gire el potenciómetro del sensor para ajustar la sensibilidad de detección. Cuando ajuste el LED en el umbral entre ENCENDIDO y APAGADO, la sensibilidad es la mejor.
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span> Der Linienverfolgungssensor ist unter dem Boden des Roboters montiert.
+<span style="color: rgb(255, 76, 65);">Nota:</span> el sensor de seguimiento de línea está instalado en la parte inferior del robot.
 
-#### **(3) Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
-#### **(4) Testcode:**
+#### **(4)Código de Prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+También puede arrastrar bloques para editar su código, como se muestra a continuación.
 
 ![](media/5ad9eb9c639b74f8271a55079dcf845c.png)
 
@@ -45,25 +45,25 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 ![](media/1a6838765472e3cd3836abb5202d9ab1.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/5298cdfb6fd7c71df155c969c80450cd.png)
 
-#### **(5) Testergebnisse:**
+#### **(5)Resultados de la Prueba:**
 
-Laden Sie den Code auf das Entwicklungsboard hoch, öffnen Sie den seriellen Monitor auf 9600 und überprüfen Sie die Linienverfolgungssensoren. Der angezeigte Wert ist 1 (HIGH-Pegel), wenn keine Signale empfangen werden. Der Wert wechselt zu 0, wenn der Sensor mit Papier abgedeckt wird.
+Cargue el código en la placa de desarrollo, abra el monitor serial a 9600 y verifique los sensores de seguimiento de línea. El valor mostrado es 1 (nivel alto) cuando no se reciben señales. El valor cambia a 0 cuando el sensor es cubierto con papel.
 
 ![](media/5630032421adf9446d51b770f0e7f8af.png)
 
-#### **(6) Erweiterungsübung:**
+#### **(6)Práctica de Extensión:**
 
-Wir können eine LED mit diesem Sensor steuern. Die LED ist mit D9 verbunden. Wenn wir ihn abdecken, leuchtet die LED auf.
+Podemos controlar un LED con este sensor. El LED está conectado a D9. Si lo cubrimos, el LED se encenderá.
 
 ![](media/1dd733ed6248d09e9b4d218e41559294.png)
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
+También puede arrastrar bloques para editar su código, como se muestra a continuación.
 
 ![](media/5ad9eb9c639b74f8271a55079dcf845c.png)
 
@@ -79,12 +79,12 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 ![](media/b10e1897e99af2c1ade6c09da6c30dba.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/b5a4b5a04cdee9f79d6e18a5c48cbe48.png)
 
-Wenn sich ein Objekt (wie Papier oder ein Finger) dem Linienverfolgungssensor nähert, erkennt der Sensor das von ihm selbst ausgesendete Rücksignal und das LED-Modul leuchtet auf. Wenn der Sensor kein Rücksignal erkennt, erlischt das LED-Modul.
+Cuando un objeto (como papel o un dedo) se acerca al sensor de seguimiento de línea, el sensor detecta la señal de retorno emitida por sí mismo, y el módulo LED se enciende. Cuando el sensor no detecta ninguna señal de retorno, el módulo LED se apaga.
 
 ![](./media/img-20240117092116.png)

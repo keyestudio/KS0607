@@ -1,66 +1,66 @@
-### Projekt 17: Bluetooth-gesteuerter Panzer
+### Proyecto 17: Tanque de Control por Bluetooth
 
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
-Im vorherigen Projekt haben wir die Grundkenntnisse über Bluetooth erlernt. In dieser Lektion werden wir Bluetooth verwenden, um das Smart Car zu steuern. Da es Bluetooth betrifft, werden ein Sender und ein Empfänger benötigt. In diesem Projekt verwenden wir das Mobiltelefon als Sender (Master) und das Smart Car mit dem angeschlossenen HM-10 Bluetooth-Modul (Slave) als Empfänger.
+Hemos aprendido los conocimientos básicos sobre Bluetooth en el proyecto anterior. En esta lección, usaremos Bluetooth para controlar el coche inteligente. Dado que involucra Bluetooth, se necesitan un extremo emisor y un extremo receptor. En el proyecto, usamos el teléfono móvil como emisor (maestro), y el coche inteligente conectado con el módulo Bluetooth HM-10 (esclavo) como receptor.
 
-Wir haben früher gelernt, dass das Senden eines Bits LEDs steuern kann. Das Prinzip der Steuerung dieses Roboterfahrzeugs ist dasselbe.
+Aprendimos anteriormente que enviar un bit puede controlar los LEDs. Y el principio de controlar este coche robot es el mismo.
 
-Wir verstehen zunächst die Funktion jeder Schaltfläche in der APP und verwenden dann die Schaltflächen der APP, um den Panzer zu steuern.
+Primero entendemos la función de cada botón en la APP, y luego usamos el botón de la APP para controlar el tanque.
 
-#### **(2) Hauptfunktionen der APP**
+#### **(2)Función Principal en la APP**
 
-Die folgende Tabelle veranschaulicht die Funktionen der entsprechenden Tasten:
+La siguiente tabla ilustra las funciones de las teclas correspondientes:
 
-|                      TASTEN                       | FUNKTIONEN                                                    |
+|                      TECLAS                       | FUNCIONES                                                    |
 | :---------------------------------------------: | ------------------------------------------------------------ |
-| ![](media/1118dccd714c7988a51cf2dde58627e3.png) | HM-10 Bluetooth-Modul koppeln und verbinden; erneut klicken zum Trennen |
-| ![](media/b23e65f788685576275cc16bf0b679cc.png) | Auswahl des zu bedienenden Roboters                                  |
-| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) | Steuerung der Roboterbewegungen über Schaltflächen             |
-| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) | Steuerung der Roboterbewegungen über Joystick            |
-| ![](media/3ab61154b4ae730a3757f40171846825.png) | Steuerung der Roboterbewegungen über Schwerkraft             |
-| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) | Sendet „F" beim Drücken und „S" beim Loslassen<br />Das Auto fährt vorwärts beim Drücken und hält beim Loslassen an |
-| ![](media/b1765938932b8633bd5a96af0293ef24.png) | Sendet „L" beim Drücken und „S" beim Loslassen <br />Das Auto dreht links beim Drücken und hält beim Loslassen an |
-| ![](media/67f26bd7d2076922470e8805711f2ef9.png) | Sendet „R" beim Drücken und „S" beim Loslassen<br />Das Auto dreht rechts beim Drücken und hält beim Loslassen an |
-| ![](media/77615a8ca984e538d58e02ac90bc5382.png) | Sendet „B" beim Drücken und „S" beim Loslassen<br />Das Auto fährt rückwärts beim Drücken und hält beim Loslassen an |
-| ![](media/f58421773a56c911b09c150d08b0fd67.png) | Sendet „u"+Ziffer+„\#" beim Ziehen<br />Ziehen zum Ändern der Geschwindigkeit des linken Motors |
-| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) | Sendet „v"+Ziffer+„\#" beim Ziehen<br />Ziehen zum Ändern der Geschwindigkeit des rechten Motors |
-| ![](media/5dd730ab4d2299210dc2399303b94e33.png) | Auswahl zum Öffnen der Funktionsseite                                |
-| ![](media/a352ca9be952db2838540657b9a70f8c.png) | Sendet „G" beim Drücken und „S" beim erneuten Drücken<br />Hindernisumfahrungsmodus beim Drücken aktivieren, beim erneuten Drücken beenden |
-| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | Sendet „h" beim Drücken und „S" beim erneuten Drücken<br />Folgemodus beim Drücken aktivieren, beim erneuten Drücken beenden |
-| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | Sendet „e" beim Drücken und „S" beim erneuten Drücken<br />Linienfolgemodus beim Drücken aktivieren, beim erneuten Drücken beenden |
-| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | Sendet „f" beim Drücken und „S" beim erneuten Drücken<br />Modus „Bewegung im begrenzten Raum" beim Drücken aktivieren, beim erneuten Drücken beenden |
-| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | Sendet „i" beim Drücken und „S" beim erneuten Drücken<br />Lichtfolgemodus beim Drücken aktivieren, beim erneuten Drücken beenden |
-| ![](media/4250a152c647cc59f72bf51328943371.png) | Sendet „j" beim Drücken und „S" beim erneuten Drücken<br />Feuerlöschmodus beim Drücken aktivieren, beim erneuten Drücken beenden |
-| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | Auswahl zum Öffnen des Gesichtsausdrucks-Anzeigemodus               |
-| ![](media/17261f134c25702ae129624860ab8fe1.png) | Sendet „k" beim Drücken und „z" beim erneuten Drücken<br />Lächelndes Muster beim Klicken anzeigen, Ausdruck beim erneuten Klicken löschen |
-| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | Sendet „l" beim Drücken und „z" beim erneuten Drücken<br />Ekeliges Muster beim Klicken anzeigen, Ausdruck beim erneuten Klicken löschen |
-| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | Sendet „m" beim Drücken und „z" beim erneuten Drücken<br />Fröhliches Gesicht beim Klicken anzeigen, Ausdruck beim erneuten Klicken löschen |
-| ![](media/63d935cd1958863f862374ded9b87d6b.png) | Sendet „n" beim Drücken und „z" beim erneuten Drücken<br />Trauriges Muster beim Klicken anzeigen, Ausdruck beim erneuten Klicken löschen |
-| ![](media/5e84087020b919a85495831b231efa5a.png) | Sendet „o" beim Drücken und „z" beim erneuten Drücken<br />Verachtendes Muster beim Klicken anzeigen, Ausdruck beim erneuten Klicken löschen |
-| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | Sendet „p" beim Drücken und „z" beim erneuten Drücken<br />Herzförmiges Muster beim Klicken anzeigen, Ausdruck beim erneuten Klicken löschen |
-| ![](media/41bf8b28dea6061cea89b640f5646403.png) | Auswahl zum Öffnen der benutzerdefinierten Funktionsoberfläche; es gibt sechs Tasten 1,2,3,4,5,6; mit diesen Tasten können Sie selbst einige Funktionen erweitern |
-| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) | Klicken zum Senden von „w"<br />Klicken zur Anzeige des analogen Wertes des linken Fotowiderstands |
-| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) | Klicken zum Senden von „y"<br />Klicken zur Anzeige des analogen Wertes des rechten Fotowiderstands |
-| ![](media/a76df707b84409e57a1167889c3510d9.png) | Klicken zum Senden von „x" <br />Klicken zur Anzeige der vom Ultraschallsensor erkannten Entfernung (Einheit: cm) |
-| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | Klicken zum Senden von „c", erneut klicken zum Senden von „d"<br />Drücken zum Einschalten des Lüfters, erneut drücken zum Ausschalten |
+| ![](media/1118dccd714c7988a51cf2dde58627e3.png) | Emparejar y conectar el módulo Bluetooth HM-10; hacer clic de nuevo para desconectar |
+| ![](media/b23e65f788685576275cc16bf0b679cc.png) | seleccionar el robot a operar                                  |
+| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) | controlar los movimientos del robot mediante botones             |
+| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) | Controlar los movimientos del robot mediante joystick            |
+| ![](media/3ab61154b4ae730a3757f40171846825.png) | Controlar los movimientos del robot mediante gravedad             |
+| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) | Envía "F" cuando se presiona y "S" cuando se suelta<br />El coche avanza cuando se presiona y se detiene cuando se suelta |
+| ![](media/b1765938932b8633bd5a96af0293ef24.png) | Envía "L" cuando se presiona y "S" cuando se suelta <br />El coche gira a la izquierda cuando se mantiene presionado y se detiene cuando se suelta |
+| ![](media/67f26bd7d2076922470e8805711f2ef9.png) | Envía "R" cuando se presiona y "S" cuando se suelta<br />El coche gira a la derecha cuando se mantiene presionado y se detiene cuando se suelta |
+| ![](media/77615a8ca984e538d58e02ac90bc5382.png) | Envía "B" cuando se presiona y "S" cuando se suelta<br />El coche retrocede cuando se mantiene presionado y se detiene cuando se suelta |
+| ![](media/f58421773a56c911b09c150d08b0fd67.png) | Envía "u"+dígito+"\#" cuando se arrastra<br />Arrastrar para cambiar la velocidad del motor izquierdo |
+| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) | Envía "v"+dígito+"\#" cuando se arrastra<br />Arrastrar para cambiar la velocidad del motor derecho |
+| ![](media/5dd730ab4d2299210dc2399303b94e33.png) | Seleccionar para entrar a la página de Funciones                                |
+| ![](media/a352ca9be952db2838540657b9a70f8c.png) | Envía "G" cuando se presiona y "S" cuando se presiona de nuevo<br />Entra en modo de evitación de obstáculos cuando se presiona y sale cuando se presiona de nuevo |
+| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | Envía "h" cuando se presiona y "S" cuando se presiona de nuevo<br />Entra en modo de seguimiento cuando se presiona y sale cuando se presiona de nuevo |
+| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | Envía "e" cuando se presiona y "S" cuando se presiona de nuevo<br />Entra en modo de seguimiento de línea cuando se presiona y sale cuando se presiona de nuevo |
+| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | Envía "f" cuando se presiona y "S" cuando se presiona de nuevo<br />Entra en modo de movimiento en espacio confinado cuando se presiona y sale cuando se presiona de nuevo |
+| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | Envía "i" cuando se presiona y "S" cuando se presiona de nuevo<br />Entra en modo de seguimiento de luz cuando se presiona y sale cuando se presiona de nuevo |
+| ![](media/4250a152c647cc59f72bf51328943371.png) | Envía "j" cuando se presiona y "S" cuando se presiona de nuevo<br />Entra en modo de extinción de incendios cuando se presiona y sale cuando se presiona de nuevo |
+| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | Seleccionar para entrar en modo de visualización de expresiones faciales               |
+| ![](media/17261f134c25702ae129624860ab8fe1.png) | Envía "k" cuando se presiona y "z" cuando se presiona de nuevo<br />Muestra el patrón de sonrisa cuando se hace clic y borra la expresión cuando se hace clic de nuevo |
+| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | Envía "l" cuando se presiona y "z" cuando se presiona de nuevo<br />Muestra el patrón de disgusto cuando se hace clic y borra la expresión cuando se hace clic de nuevo |
+| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | Envía "m" cuando se presiona y "z" cuando se presiona de nuevo<br />Muestra cara feliz cuando se hace clic y borra la expresión cuando se hace clic de nuevo |
+| ![](media/63d935cd1958863f862374ded9b87d6b.png) | Envía "n" cuando se presiona y "z" cuando se presiona de nuevo<br />Muestra el patrón triste cuando se hace clic y borra la expresión cuando se hace clic de nuevo |
+| ![](media/5e84087020b919a85495831b231efa5a.png) | Envía "o" cuando se presiona y "z" cuando se presiona de nuevo<br />Muestra el patrón despectivo cuando se hace clic y borra la expresión cuando se hace clic de nuevo |
+| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | Envía "p" cuando se presiona y "z" cuando se presiona de nuevo<br />Muestra el patrón en forma de corazón cuando se hace clic y borra la expresión cuando se hace clic de nuevo |
+| ![](media/41bf8b28dea6061cea89b640f5646403.png) | Elegir para entrar en la interfaz de función personalizada; hay seis teclas 1,2,3,4,5,6; con estas teclas, puedes expandir algunas funciones por tu cuenta |
+| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) | Clic para enviar "w"<br />Clic para mostrar el valor analógico detectado por la fotorresistencia de la izquierda |
+| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) | Clic para enviar "y"<br />Clic para mostrar el valor analógico detectado por la fotorresistencia de la derecha |
+| ![](media/a76df707b84409e57a1167889c3510d9.png) | Clic para enviar "x" <br />Clic para mostrar la distancia detectada por el sensor ultrasónico (unidad: cm) |
+| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | Clic para enviar "c", clic de nuevo para enviar "d"<br />Presionar para encender el ventilador y presionar de nuevo para apagarlo |
 
-#### **(3) Flussdiagramm:**
+#### **(3)Diagrama de Flujo:**
 
 ![](media/image-20230427101759352.png)
 
-#### **(4) Schaltplan:**
+#### **(4)Diagrama de Cableado:**
 
 ![](media/930a8024364e07505e845624a94c27bd.png)
 
-GND, VCC, SDA und SCL der 8x16 LED-Punktmatrix sind jeweils mit -(GND), +(VCC), SDA, SCL der Erweiterungsplatine verbunden;
+El GND, VCC, SDA y SCL de la matriz de puntos LED de 8x16 están conectados respectivamente a -(GND), +(VCC), SDA, SCL de la placa de expansión;
 
-Die STATE- und BRK-Pins des Bluetooth-Moduls müssen nicht angeschlossen werden.
+Los pines STATE y BRK del módulo Bluetooth no necesitan ser conectados.
 
-#### **(5) Testcode:**
+#### **(5)Código de Prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Beim Hochladen des Codes muss das Bluetooth-Modul getrennt sein. Bluetooth kann nach dem Hochladevorgang wieder verbunden werden. Andernfalls kann der Code möglicherweise nicht erfolgreich hochgeladen werden.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Al cargar el código, el módulo Bluetooth debe estar desconectado, y el Bluetooth puede volver a conectarse después del proceso de carga. De lo contrario, es posible que el código no se cargue correctamente.)
 
 ```C
 /*
@@ -70,7 +70,7 @@ Die STATE- und BRK-Pins des Bluetooth-Moduls müssen nicht angeschlossen werden.
   http://www.keyestudio.com
 */
 
-// Array, zum Speichern von Bilddaten, kann selbst berechnet oder mit einem Modulwerkzeug ermittelt werden
+// Arreglo, usado para guardar datos de imágenes, puede calcularse por uno mismo u obtenerse de la herramienta de módulo
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 unsigned char front[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x12, 0x09, 0x12, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char back[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x48, 0x90, 0x48, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -78,14 +78,14 @@ unsigned char left[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x44, 0x28, 0x10, 0x
 unsigned char right[] = {0x00, 0x10, 0x28, 0x44, 0x10, 0x28, 0x44, 0x10, 0x28, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char STOP01[] = {0x2E, 0x2A, 0x3A, 0x00, 0x02, 0x3E, 0x02, 0x00, 0x3E, 0x22, 0x3E, 0x00, 0x3E, 0x0A, 0x0E, 0x00};
 unsigned char clear[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-#define SCL_Pin  A5  // Taktpin als A5 festlegen
-#define SDA_Pin  A4  // Datenpin als A4 festlegen
+#define SCL_Pin  A5  // Establecer el pin de reloj como A5
+#define SDA_Pin  A4  // Establecer el pin de datos como A4
 
-#define ML_Ctrl 4  // Richtungssteuerungspin des linken Motors definieren
-#define ML_PWM 6   // PWM-Steuerungspin des linken Motors definieren
-#define MR_Ctrl 2  // Richtungssteuerungspin des rechten Motors definieren
-#define MR_PWM 5   // PWM-Steuerungspin des rechten Motors definieren
-char ble_val;      // Zum Speichern des über Bluetooth empfangenen Wertes
+#define ML_Ctrl 4  // Definir el pin de control de dirección del motor izquierdo
+#define ML_PWM 6   // Definir el pin de control PWM del motor izquierdo
+#define MR_Ctrl 2  // Definir el pin de control de dirección del motor derecho
+#define MR_PWM 5   // Definir el pin de control PWM del motor derecho
+char ble_val;      // Usado para almacenar el valor obtenido por Bluetooth
 
 void setup() 
 {
@@ -98,8 +98,8 @@ void setup()
 
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  matrix_display(clear); // Bildschirm löschen
-  matrix_display(start01);  // Startbild anzeigen
+  matrix_display(clear); // limpiar pantallas
+  matrix_display(start01);  // mostrar la imagen de inicio
 }
 
 void loop() 
@@ -111,32 +111,32 @@ void loop()
   }
   switch (ble_val)
   {
-    case 'F':  // Befehl zum Vorwärtsfahren
+    case 'F':  // el comando para avanzar
       Car_front();
       break;
-    case 'B':  // Befehl zum Rückwärtsfahren
+    case 'B':  // el comando para retroceder
       Car_back();
       break;
-    case 'L':  // Befehl zum Linksdrehen
+    case 'L':  // el comando para girar a la izquierda
       Car_left();
       break;
-    case 'R':  // Befehl zum Rechtsdrehen
+    case 'R':  // el comando para girar a la derecha
       Car_right();
       break;
-    case 'S':  // Befehl zum Anhalten
+    case 'S':  // el comando para detenerse
       Car_Stop();
       break;
   }
 }
 
-/***************Funktion zum Betrieb des Motors***************/
+/***************La función para hacer funcionar el motor***************/
 void Car_back() 
 {
   digitalWrite(MR_Ctrl, LOW);
   analogWrite(MR_PWM, 200);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 200);
-  matrix_display(back);  // Rückwärtsfahren
+  matrix_display(back);  // Retroceder
 }
 
 void Car_front() 
@@ -145,7 +145,7 @@ void Car_front()
   analogWrite(MR_PWM, 55);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 55);
-  matrix_display(front);  // Bild für Vorwärtsfahren anzeigen
+  matrix_display(front);  // mostrar la imagen de avanzar
 }
 
 void Car_left() 
@@ -154,7 +154,7 @@ void Car_left()
   analogWrite(MR_PWM, 55);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 200);
-  matrix_display(left);  // Bild für Linksdrehen anzeigen
+  matrix_display(left);  // mostrar la imagen de girar a la izquierda
 }
 
 void Car_right() 
@@ -163,7 +163,7 @@ void Car_right()
   analogWrite(MR_PWM, 200);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 55);
-  matrix_display(right);  // Bild für Rechtsdrehen anzeigen
+  matrix_display(right);  // mostrar la imagen de girar a la derecha
 }
 
 void Car_Stop() 
@@ -172,25 +172,25 @@ void Car_Stop()
   analogWrite(MR_PWM, 0);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 0);
-  matrix_display(STOP01);  // Bild für Anhalten anzeigen
+  matrix_display(STOP01);  // mostrar la imagen de detenerse
 }
 
-// Diese Funktion wird zur Anzeige auf der Punktmatrixanzeige verwendet
+// Esta función se usa para la visualización en la pantalla de matriz de puntos
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  // Funktion zum Aufrufen der Startbedingung der Datenübertragung
-  IIC_send(0xc0);  // Adresse auswählen
-  for (int i = 0; i < 16; i++) // Musterdaten haben 16 Bytes
+  IIC_start();  // Función para llamar a la condición de inicio de transferencia de datos
+  IIC_send(0xc0);  // Elegir una dirección
+  for (int i = 0; i < 16; i++) // Los datos del patrón tienen 16 bytes
   {
-    IIC_send(matrix_value[i]); // Musterdaten übertragen
+    IIC_send(matrix_value[i]); // transferir datos del patrón
   }
-  IIC_end();   // Musterdatenübertragung beenden
+  IIC_end();   // Finalizar la transferencia de datos del patrón
   IIC_start();
-  IIC_send(0x8A);  // Anzeigesteuerung, Impulsbreite als 4/16 auswählen
+  IIC_send(0x8A);  // control de visualización, seleccionar ancho de pulso como 4/16
   IIC_end();
 }
 
-// Bedingungen für den Start der Datenübertragung
+// Condiciones para el inicio de la transferencia de datos
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -201,7 +201,7 @@ void IIC_start()
   digitalWrite(SCL_Pin, LOW);
 }
 
-// Zeichen für das Ende der Datenübertragung
+// la señal de fin de transmisión de datos
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -213,12 +213,12 @@ void IIC_end()
   delayMicroseconds(3);
 }
 
-// Daten übertragen
+// transferir datos
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) // Jedes Zeichen hat 8 Stellen, die einzeln geprüft werden
+  for (byte mask = 0x01; mask != 0; mask <<= 1) // cada carácter tiene 8 dígitos, que se detectan uno por uno
   {
-    if (send_data & mask)  // Hohe oder niedrige Pegel entsprechend jedem Bit (0 oder 1) setzen
+    if (send_data & mask)  // establecer niveles altos o bajos según cada bit (0 o 1)
     {
       digitalWrite(SDA_Pin, HIGH);
     } 
@@ -227,28 +227,28 @@ void IIC_send(unsigned char send_data)
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); // Taktpin SCL_Pin hochziehen, um Datenübertragung zu stoppen
+    digitalWrite(SCL_Pin, HIGH); // Poner el pin de reloj SCL_Pin en alto para detener la transmisión de datos
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); // Taktpin SCL_Pin herunterziehen, um SDA-Signale zu ändern
+    digitalWrite(SCL_Pin, LOW); // bajar el pin de reloj SCL_Pin para cambiar las señales de SDA
   }
 }
 ```
 
-#### **(6) Testergebnis:**
+#### **(6)Resultado de la Prueba:**
 
-Nach dem Hochladen des Codes verbinden Sie den Roboter mit dem Bluetooth-Modul und koppeln Sie die Bluetooth-APP. Schalten Sie den Netzschalter des Motorantriebsschields ein. Stellen Sie den Roboter auf den Boden und Sie können diese Schaltflächen der Bluetooth-App verwenden, um den Roboter zu steuern.
+Después de cargar el código, conecte el robot al módulo Bluetooth y empareje la APP de Bluetooth. Encienda el interruptor de alimentación del escudo del controlador de motores. Coloque el robot en el suelo, puede usar estos botones de la app Bluetooth para controlar el robot.
 
 ![](media/4655aeffe0d2081fa2b9fd254113c392.jpeg)
 
-1. Die Pfeile nach oben, unten, links und rechts steuern den Roboter, um ihn vorwärts, rückwärts, links und rechts zu bewegen.
+1. Las flechas arriba, abajo, izquierda y derecha controlan el robot para que se mueva hacia adelante, hacia atrás, a la izquierda y a la derecha respectivamente.
 
 
 ![](./media/img-20240117095345.png)
 
-2. Klicken Sie auf die Joystick-Schaltfläche und ziehen Sie die Richtung des schwarzen Punktes im weißen Kreis, um die Bewegungsrichtung des Roboters zu steuern.
+2. Haga clic en el botón joystick y jale la dirección del punto negro en el círculo blanco para controlar la dirección de movimiento del robot.
 
 ![](./media/img-20240117095401.png)
 
-3. Klicken Sie auf die Schwerkraft-Schaltfläche und neigen Sie das Telefon in die Vorwärts-, Rückwärts-, Links- und Rechtsrichtungen. Der Roboter bewegt sich in die Richtung, in die das Telefon geneigt ist.
+3. Haga clic en el botón de Gravedad e incline el teléfono en las direcciones hacia adelante, hacia atrás, a la izquierda y a la derecha, y el robot se moverá en la dirección en que se inclina el teléfono.
 
 ![](./media/img-20240117095419.png)

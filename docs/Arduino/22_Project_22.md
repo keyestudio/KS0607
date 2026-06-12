@@ -1,37 +1,37 @@
-### Projekt 22: Feuerlöschpanzer
+### Proyecto 22: Tanque Extintor de Incendios
 
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
-Die Spurverfolgungsfunktion des intelligenten Panzers wurde im vorherigen Projekt erläutert. In diesem Projekt verwenden wir den Flammensensor, um einen feuerlöschenden Roboter zu bauen.
+La función de seguimiento de línea del tanque inteligente se explicó en el proyecto anterior. En este proyecto utilizamos el sensor de llama para crear un robot extintor de incendios.
 
-Wenn das Fahrzeug auf Flammen trifft, dreht sich der Motor des Lüfters, um das Feuer auszublasen. Natürlich müssen wir zuerst den Ultraschallsensor und die zwei Fotowiderstände durch ein Lüftermodul und Flammensensoren ersetzen.
+Cuando el carro encuentra llamas, el motor del ventilador girará para apagar el fuego. Por supuesto, primero necesitamos reemplazar el sensor ultrasónico y los dos fotorresistores con un módulo de ventilador y sensores de llama.
 
-Die spezifische Logik des spurverfolgenden Smart Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del carro inteligente seguidor de línea se muestra en la tabla a continuación:
 
-| Linker Flammensensor | Rechter Flammensensor | Status                                                      |
-| :------------------: | :-------------------: | :---------------------------------------------------------- |
-|        ≤700          |         ≤700          | Auto stoppt, Lüfter beginnt zu drehen, um Flamme auszublasen |
-|        ≥700          |         ≥700          | Auto stoppt, Lüfter beginnt zu drehen, um Flamme auszublasen |
-|        ≥700          |         ≥700          | Auto stoppt, Lüfter beginnt zu drehen, um Flamme auszublasen |
-|        ＞700         |         ＞700         | Lüfter stoppt, Auto bewegt sich                             |
+| Sensor de Llama Izquierdo | Sensor de Llama Derecho | Estado                                                         |
+| :-----------------------: | :---------------------: | :------------------------------------------------------------- |
+|           ≤700            |          ≤700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
+|           ≥700            |          ≥700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
+|           ≥700            |          ≥700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
+|           ＞700           |          ＞700          | El ventilador se detiene, el carro se mueve                    |
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-1) Dieses Experiment erfordert den Einsatz einer Feuerquelle. Bitte halten Sie es von brennbaren Gegenständen fern, um einen Brand zu vermeiden. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie nicht sicher sein können, dass Sie sicher sind, verzichten Sie bitte auf das Experiment.
-2) Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
-Wir können eine externe LED mit dem Flammensensor steuern. Die LED ist weiterhin mit D9 verbunden. Wenn Feuer erkannt wird, leuchtet die LED auf.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1) Este experimento requiere el uso de una fuente de fuego. Por favor, manténgalo alejado de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo supervisión de adultos. Si no puede confirmar que está seguro, abandone el experimento.
+2) El sensor de llama no es ignífugo, por favor no lo queme directamente con una llama.
+Podemos controlar un LED externo con el sensor de llama. El LED sigue conectado a D9. Cuando se detecta fuego, el LED se encenderá.
 
-#### **(2) Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps12.png)
 
-#### **(3) Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-#### **(4) Testcode:**
+#### **(4)Código de Prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ```C
 /*
@@ -41,43 +41,43 @@ Wir können eine externe LED mit dem Flammensensor steuern. Die LED ist weiterhi
   http://www.keyestudio.com
 */
 
-int flame_L = A1; // Definiere die Flammen-Schnittstelle links als analogen Pin A1
-int flame_R = A2; // Definiere die Flammen-Schnittstelle rechts als analogen Pin A2
-// Verdrahtung des Spurverfolgungssensors
-#define L_pin  11  // links
-#define M_pin  7  // mitte
-#define R_pin  8  // rechts
-// Der Pin des Servos 130
+int flame_L = A1; //Define la interfaz de llama en el lado izquierdo como el pin analógico A1
+int flame_R = A2; //Define la interfaz de llama en el lado derecho como el pin analógico A2
+//El cableado del sensor de seguimiento de línea
+#define L_pin  11  //izquierda
+#define M_pin  7  //centro
+#define R_pin  8  //derecha
+//El pin del servo 130
 int INA = 12;
 int INB = 13;
-#define ML_Ctrl 4  // Definiere den Richtungssteuerungspin des linken Motors
-#define ML_PWM 6   // Definiere den PWM-Steuerungspin des linken Motors
-#define MR_Ctrl 2  // Definiere den Richtungssteuerungspin des rechten Motors
-#define MR_PWM 5   // Definiere den PWM-Steuerungspin des rechten Motors
+#define ML_Ctrl 4  //Define el pin de control de dirección del motor izquierdo
+#define ML_PWM 6   //Define el pin de control PWM del motor izquierdo
+#define MR_Ctrl 2  //Define el pin de control de dirección del motor derecho
+#define MR_PWM 5   //Define el pin de control PWM del motor derecho
 int L_val, M_val, R_val, flame_valL, flame_valR;
 
 void setup()
 {
   Serial.begin(9600);
-  // Setze alle Pins des Spurverfolgungssensors als Eingangsmodus
+  //Establece todos los pines del sensor de seguimiento de línea como modo de entrada
   pinMode(L_pin, INPUT);
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  // Definiere die Flamme als EINGANG
+  //Define la llama como INPUT
   pinMode(flame_L, INPUT);
   pinMode(flame_R, INPUT);
-  // Definiere den Motor als AUSGANG
+  //Define el motor como OUTPUT
   pinMode(ML_Ctrl, OUTPUT);
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  pinMode(INA, OUTPUT);// Setze digitalen Port INA als AUSGANG
-  pinMode(INB, OUTPUT);// Setze digitalen Port INB als AUSGANG
+  pinMode(INA, OUTPUT);//Establece el puerto digital INA como OUTPUT
+  pinMode(INB, OUTPUT);//Establece el puerto digital INB como OUTPUT
 }
 
 void loop () 
 {
-  // Lese den Analogwert der Flammensensoren
+  //Lee el valor analógico de los sensores de llama
   flame_valL = analogRead(flame_L);
   flame_valR = analogRead(flame_R);
   Serial.print(flame_valL);
@@ -93,36 +93,36 @@ void loop ()
   else 
   {
     fan_stop();
-    L_val = digitalRead(L_pin); // Lese den Wert des linken Sensors
-    M_val = digitalRead(M_pin); // Lese den Wert des mittleren Sensors
-    R_val = digitalRead(R_pin); // Lese den Wert des rechten Sensors
+    L_val = digitalRead(L_pin); //Lee el valor del sensor izquierdo
+    M_val = digitalRead(M_pin); //Lee el valor del sensor central
+    R_val = digitalRead(R_pin); //Lee el valor del sensor derecho
     
-    if (M_val == 1)  // Der mittlere erkennt schwarze Linien
+    if (M_val == 1)  //el del centro detecta líneas negras
     {
-      if (L_val == 1 && R_val == 0)  // Wenn links eine schwarze Linie erkannt wird, aber nicht rechts, nach links abbiegen
+      if (L_val == 1 && R_val == 0)  //Si se detecta una línea negra a la izquierda, pero no a la derecha, girar a la izquierda
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  // Wenn rechts eine schwarze Linie erkannt wird, aber nicht links, nach rechts abbiegen
+      else if (L_val == 0 && R_val == 1)  //Si se detecta una línea negra a la derecha, no a la izquierda, girar a la derecha
       {
         Car_right();
       }
-      else  // andernfalls vorwärts fahren
+      else  //de lo contrario, avanzar
       {
         Car_front();
       }
     }
-    else  // Der mittlere erkennt keine schwarzen Linien
+    else  //El del centro no detecta líneas negras
     {
-      if (L_val == 1 && R_val == 0)  // Wenn links eine schwarze Linie erkannt wird, aber nicht rechts, nach links abbiegen
+      if (L_val == 1 && R_val == 0)  //Si se detecta una línea negra a la izquierda, pero no a la derecha, girar a la izquierda
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  // Wenn rechts eine schwarze Linie erkannt wird, aber nicht links, nach rechts abbiegen
+      else if (L_val == 0 && R_val == 1)  //Si se detecta una línea negra a la derecha, no a la izquierda, girar a la derecha
       {
         Car_right();
       }
-      else  // andernfalls stoppen
+      else  //de lo contrario, detenerse
       {
         Car_Stop();
       }
@@ -132,14 +132,14 @@ void loop ()
 
 void fan_stop() 
 {
-  // Drehung stoppen
+  //dejar de girar
   digitalWrite(INA, LOW);
   digitalWrite(INB, LOW);
 }
 
 void fan_begin() 
 {
-  // Lüfter dreht sich
+  //el ventilador gira
   digitalWrite(INA, LOW);
   digitalWrite(INB, HIGH);
 }
@@ -190,11 +190,11 @@ void Car_Stop()
 }
 ```
 
-#### **(5) Testergebnis:**
+#### **(5)Resultado de la Prueba:**
 
-Nach dem erfolgreichen Hochladen des Testcodes und dem Einschalten löscht das Smart Car das Feuer, wenn es eine Flamme erkennt, und fährt weiter entlang der schwarzen Linie.
+Después de cargar el código de prueba correctamente y encenderlo, el carro inteligente apaga el fuego cuando detecta llamas y continúa moviéndose a lo largo de la línea negra.
 
 ![](media/694677ab33053846ec588667dc40ecfa.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-Bitte halten Sie es von brennbaren Gegenständen fern, um einen Brand zu vermeiden. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie nicht sicher sein können, dass Sie sicher sind, verzichten Sie bitte auf das Experiment. Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Por favor, manténgalo alejado de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo supervisión de adultos. Si no puede confirmar que está seguro, abandone el experimento. El sensor de llama no es ignífugo, por favor no lo queme directamente con una llama.

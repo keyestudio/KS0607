@@ -1,22 +1,22 @@
-### Feuerlöschroboter zusammenbauen
+### Ensamblar el Robot Extintor de Incendios
 
-Entfernen Sie den Ultraschallsensor und die zwei Fotowiderstände
+Quitar el sensor ultrasónico y los dos fotorresistores
 
 ![](./media/d575fad4068d67daffaf3958996a185b.png)
 
 ![](./media/3a350ba2fda9f37c8f0870f16c981f7b.png)
 
-Setzen Sie ein Lüftermodul und zwei Flammensensoren ein
+Colocar un módulo de ventilador y dos sensores de llama
 
 ![](./media/f1a3dbebcb34d4a390e4b2412d34e03e.png)
 
-Sie können das Lüftermodul weiter entfernt montieren, falls das Lüftermodul und die Flammensensoren sich gegenseitig behindern
+Puedes instalar el módulo de ventilador más lejos si el módulo de ventilador y los sensores de llama interfieren entre sí
 
 ![](./media/8ec448f8b626fd9f8f0a6941b927c0af.png)
 
-**Verdrahtung**
+**Conexiones**
 
-Verdrahten Sie die zwei Flammensensoren
+Conectar los dos sensores de llama
 
 ![](./media/e224ea3ffed9b63eda92e9fbd2fc0ed2.png)
 
@@ -34,7 +34,7 @@ Verdrahten Sie die zwei Flammensensoren
 |      V       |           V           |
 |      A       |          A2           |
 
-Verdrahten Sie das Lüftermodul
+Conectar el módulo de ventilador
 
 ![](./media/c646fb9322c3f4315b246a36ee1df17c.png)
 
@@ -49,6 +49,6 @@ Verdrahten Sie das Lüftermodul
 
 
 
- **Wir verwenden einen 18650 Lithium-Akku mit einem spitzen Pluspol, dessen Leistung und Kapazität keine besonderen Anforderungen haben.**
+ **Utilizamos una batería de litio modelo 18650 con polo positivo en punta, cuya potencia y capacidad no son requisitos específicos.**
 
 ![](./media/img-20240117152622.jpg)

@@ -1,36 +1,36 @@
-### Projekt 20: Lüfter
+### Proyecto 20: Ventilador
 
-#### **(1)Beschreibung：**
+#### **(1)Descripción：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-Dieses Lüftermodul verwendet einen HR1124S Motor-Steuerchip, einen einkanal H-Brücken-Treiber-Chip, der einen PMOS- und NMOS-Leistungstransistor mit niedrigem Leitwiderstand enthält. Der niedrige Leitwiderstand kann den Stromverbrauch verringern und dazu beitragen, dass der Chip länger sicher arbeitet.
+Este módulo de ventilador utiliza un chip de control de motor HR1124S, un chip controlador H-bridge de un solo canal que contiene transistores de potencia PMOS y NMOS de baja resistencia de conducción. La baja resistencia de conducción puede reducir el consumo de energía, contribuyendo al funcionamiento seguro del chip por más tiempo.
 
-Darüber hinaus macht sein niedriger Standby-Strom und niedriger statischer Arbeitsstrom ihn für den Einsatz in Spielzeug geeignet. Wir können die Drehrichtung und Geschwindigkeit des Lüfters steuern, indem wir IN+- und IN--Signale sowie PWM-Signale ausgeben.
+Además, su bajo consumo en espera y bajo consumo en estado estático lo hacen aplicable a juguetes. Podemos controlar la dirección de rotación y la velocidad del ventilador enviando señales IN+ e IN- y señales PWM.
 
-#### **(2)Parameter:**
+#### **(2)Parámetros:**
 
-- Betriebsspannung: 5V
+- Voltaje de funcionamiento: 5V
 
-- Strom: 200mA
+- Corriente: 200mA
 
-- Maximale Leistung: 2W
+- Potencia máxima: 2W
 
-- Arbeitstemperatur: -10 °C bis +50 Grad Celsius
+- Temperatura de trabajo: -10 °C a +50 grados Celsius
 
-- Größe: 47,6mm \* 23,8mm
+- Tamaño: 47.6mm \* 23.8mm
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
-Das Lüftermodul benötigt einen hohen Antriebsstrom; daher installieren wir einen Batteriehalter.
+El módulo de ventilador necesita ser impulsado por una corriente elevada; por lo tanto, instalamos un portapilas.
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-Die Pins GND, VCC, IN+ und IN- des Lüftermoduls sind mit den Pins G, V, 12 und 13 des Shields verbunden.
+Los pines GND, VCC, IN+ e IN- del módulo de ventilador se conectan a los pines G, V, 12 y 13 del shield.
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
-Sie können auch Blöcke ziehen, um Ihren Code zu bearbeiten, wie unten gezeigt
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -38,26 +38,26 @@ Sie können auch Blöcke ziehen, um Ihren Code zu bearbeiten, wie unten gezeigt
 
 ![](media/4e9354e674060efe6cf540a3e1b87813.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de subir el código, porque la subida del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la subida falle.)
 
 ![](media/cbb8f153dd0d114bdd350577af7a1f02.png)
 
-#### **(5)Testergebnisse:**
+#### **(5)Resultados de la prueba:**
 
-Code hochladen, Komponenten verdrahten, einschalten und den DIP-Schalter auf ON stellen. Der kleine Lüfter dreht sich 2s lang im Uhrzeigersinn, hält 2s lang an und dreht sich dann 2s lang gegen den Uhrzeigersinn.
+Sube el código, conecta los componentes, enciende el dispositivo y gira el interruptor DIP a ON. El pequeño ventilador girará en sentido horario durante 2s, se detendrá durante 2s y girará en sentido antihorario durante 2s.
 
 ![](./media/img-20240117100504.png)
 
-#### **(6)Erweiterungsübung:**
+#### **(6)Práctica de extensión:**
 
-Wir haben das Funktionsprinzip des Flammensensors verstanden. Als nächstes schließen wir einen Flammensensor in die Schaltung an, wie unten gezeigt. Dann steuern wir den Lüfter so, dass er das Feuer mit dem Flammensensor ausbläst.
+Hemos comprendido el principio de funcionamiento del sensor de llama. A continuación, conecta un sensor de llama en el circuito, como se muestra a continuación. Luego controla el ventilador para apagar el fuego con el sensor de llama.
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
 
-Sie können Blöcke ziehen, um Ihren Code zu bearbeiten, wie unten gezeigt
+Puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -67,13 +67,13 @@ Sie können Blöcke ziehen, um Ihren Code zu bearbeiten, wie unten gezeigt
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de subir el código, porque la subida del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la subida falle.)
 
 ![](media/74ddb07daf4063f0640c31f4243a0864.png)
 
 
-Nach dem Hochladen des Codes schalten Sie den Netzschalter des Motor-Drive-Shields ein. Der Lüfter kann eingeschaltet werden, wenn eine Flamme vom linken Flammensensor des Roboters erkannt wird.
+Después de subir el código, enciende el interruptor de alimentación del shield del motor, puedes encender el ventilador cuando se detecte llama desde el sensor de llama izquierdo del robot.
 
 ![](./media/img-20240117102303.png)

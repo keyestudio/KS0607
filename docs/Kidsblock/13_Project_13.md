@@ -1,30 +1,30 @@
-### Projekt 13: Panzer – Bewegung im begrenzten Raum
+### Proyecto 13: Tanque Moviéndose en un Espacio Confinado
 
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
-Die Ultraschall-Verfolgungsfunktion und die Hindernisumfahrungsfunktion des Smart Cars wurden in vorherigen Projekten vorgestellt. Hier beabsichtigen wir, das Wissen aus den vorherigen Kursen zu kombinieren, um das Smart Car auf einen bestimmten Bereich zu beschränken. Im Experiment verwenden wir den Linienverfolgungssensor, um zu erkennen, ob sich eine schwarze Linie um das Smart Car befindet, und steuern dann die Drehung der beiden Motoren entsprechend der Erkennungsergebnisse, um das Smart Car innerhalb eines mit einer schwarzen Linie gezeichneten Kreises zu halten.
+Las funciones de seguimiento ultrasónico y evasión de obstáculos del carro inteligente se han presentado en proyectos anteriores. Aquí, tenemos la intención de combinar el conocimiento de los cursos anteriores para confinar el movimiento del carro inteligente dentro de un cierto espacio. En el experimento, usamos el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del carro inteligente, y luego controlamos la rotación de los dos motores según los resultados de la detección, de modo que el carro inteligente quede bloqueado dentro de un círculo dibujado con una línea negra.
 
-Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del carro inteligente se muestra en la tabla a continuación:
 
 ![](media/image-20230525114604923.png)
 
-|                         Bedingung                         |                         Bewegung                          |
+|                         Condición                         |                         Movimiento                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| Wenn einer der drei Linienverfolgungssensoren schwarze Linien erkennt | Zurückfahren (PWM auf 150 setzen), dann links drehen (PWM auf 150 setzen) |
-|             Keiner von ihnen erkennt schwarze Linien              |               Vorwärts fahren (PWM auf 100 setzen)                |
+| Si uno de los tres sensores de seguimiento de línea detecta líneas negras | Retroceder（establecer PWM en 150）Luego girar a la izquierda（establecer PWM en 150） |
+|             Ninguno de ellos detecta líneas negras              |               Avanzar（establecer PWM en 100）                |
 
-#### **(2) Flussdiagramm**
+#### **(2)Diagrama de flujo**
 
 ![](media/b3c30f92cb78d4c2a4a8bd746aef24e1.png)
 
-#### **(3) Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4) Testcode:**
+#### **(4)Código de Prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -44,14 +44,14 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 （9）![](media/b919eb2b47ee87ae36e21099e754e8a1.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/e656126c11bb8ebe7b6b0df8f22e7a79.png)
 
-#### **(5) Testergebnisse:**
+#### **(5)Resultados de la Prueba:**
 
-Nachdem der Testcode erfolgreich hochgeladen und das Gerät eingeschaltet wurde, bewegt sich das Smart Car innerhalb eines mit einer schwarzen Linie gezeichneten Kreises.
+Después de cargar el código de prueba exitosamente y encender el dispositivo, el carro inteligente se mueve dentro de un círculo dibujado con una línea negra.
 
 ![](./media/img-20240117094034.png)

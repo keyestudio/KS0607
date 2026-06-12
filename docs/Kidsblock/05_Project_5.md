@@ -1,50 +1,50 @@
-### Projekt 5: Servo-Steuerung
+### Proyecto 5: Control de Servo
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Ein Servomotor ist ein positionsgesteuerter Drehantrieb. Er besteht hauptsächlich aus einem Gehäuse, einer Leiterplatte, einem kernlosen Motor, einem Getriebe und einem Positionssensor. Das Funktionsprinzip besteht darin, dass der Servo das vom MCU oder Empfänger gesendete Signal empfängt und ein Referenzsignal mit einer Periode von 20 ms und einer Breite von 1,5 ms erzeugt. Anschließend wird die erfasste DC-Offsetspannung mit der Spannung des Potentiometers verglichen und die Spannungsdifferenz am Ausgang ermittelt.
+Un servomotor es un actuador rotativo de control de posición. Consiste principalmente en una carcasa, una placa de circuito, un motor sin núcleo, un engranaje y un sensor de posición. Su principio de funcionamiento es que el servo recibe la señal enviada por el MCU o receptor y produce una señal de referencia con un período de 20ms y un ancho de 1.5ms. Luego compara el voltaje de polarización de CC adquirido con el voltaje del potenciómetro y obtiene la salida de diferencia de voltaje.
 
-Wenn die Motorgeschwindigkeit konstant ist, wird das Potentiometer über das nachgeschaltete Untersetzungsgetriebe zur Rotation angetrieben, wodurch die Spannungsdifferenz 0 wird und der Motor stoppt. Im Allgemeinen liegt der Drehwinkelbereich des Servos bei 0° bis 180°.
+Cuando la velocidad del motor es constante, el potenciómetro se acciona para girar a través del engranaje reductor en cascada, lo que hace que la diferencia de voltaje sea 0, y el motor deja de girar. En general, el rango de ángulo de rotación del servo es de 0° a 180°.
 
-Der Drehwinkel des Servomotors wird durch die Regelung des Tastverhältnisses des PWM-Signals (Pulsweitenmodulation) gesteuert. Der Standardzyklus des PWM-Signals beträgt 20 ms (50 Hz). Theoretisch liegt die Breite zwischen 1 ms und 2 ms, aber tatsächlich liegt sie zwischen 0,5 ms und 2,5 ms. Die Breite entspricht dem Drehwinkel von 0° bis 180°. Zu beachten ist, dass bei verschiedenen Motormarken dasselbe Signal zu unterschiedlichen Drehwinkeln führen kann.
+El ángulo de rotación del servomotor se controla regulando el ciclo de trabajo de la señal PWM (Modulación por Ancho de Pulso). El ciclo estándar de la señal PWM es de 20ms (50Hz). Teóricamente, el ancho se distribuye entre 1ms-2ms, pero en realidad está entre 0.5ms-2.5ms. El ancho corresponde al ángulo de rotación de 0° a 180°. Tenga en cuenta que para diferentes marcas de motores, la misma señal puede resultar en diferentes ángulos de rotación.
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-Im Allgemeinen hat ein Servo drei Leitungen in Braun, Rot und Orange. Die braune Leitung ist die Masse, die rote ist der Pluspol und die orange ist die Signalleitung.
+En general, el servo tiene tres cables en marrón, rojo y naranja. El cable marrón es la conexión a tierra, el rojo es el cable de polo positivo y el naranja es el cable de señal.
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-Der Winkel des Servos:
+El ángulo del servo:
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)Parameter:**
+#### **(2)Parámetros:**
 
-- Betriebsspannung: DC 4,8V \~ 6V
+- Voltaje de funcionamiento: DC 4.8V \~ 6V
 
-- Betriebswinkelbereich: ca. 180° (bei 500 → 2500 μsec)
+- Rango de ángulo de operación: aproximadamente 180 ° (a 500 → 2500 μsec)
 
-- Pulsbreitenbereich: 500 → 2500 μsec
+- Rango de ancho de pulso: 500 → 2500 μsec
 
-- Leerlaufgeschwindigkeit: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
+- Velocidad sin carga: 0.12 ± 0.01 seg / 60 (DC 4.8V) 0.1 ± 0.01 seg / 60 (DC 6V)
 
-- Leerlaufstrom: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
+- Corriente sin carga: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
 
-- Haltemoment: 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
+- Par de detención: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC 6V)
 
-- Haltestrom: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
+- Corriente de detención: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
 
-- Ruhestrom: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
+- Corriente en espera: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Die braunen, roten und orangefarbenen Leitungen des Servos werden jeweils mit Gnd(G), 5v(V) und D10 des Shields verbunden. Denken Sie daran, eine externe Stromversorgung anzuschließen, da der Servo einen hohen Strom benötigt. Andernfalls wird das Entwicklungsboard beschädigt.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span> Los cables marrón, rojo y naranja del servo se conectan respectivamente a Gnd(G), 5v(V) y D10 del shield. Recuerde conectar una fuente de alimentación externa debido a la alta corriente del servo. De lo contrario, la placa de desarrollo se quemará.
 
-#### **(4)Testcode:**
+#### **(4)Código de Prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten dargestellt
+También puede arrastrar bloques para editar su código, como se muestra a continuación
 
 ![](media/5b04350e0310955ee2ecd48338f556a3.png)
 
@@ -54,14 +54,14 @@ Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbei
 
 ![](media/e149b45054fe94196dea220b319cb0bf.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/26e37037daf84d69320b76dd13346cd1.png)
 
-#### **(6)Testergebnisse:**
+#### **(6)Resultados de la Prueba:**
 
-Code hochladen, Stromversorgung anschließen und der Servo bewegt sich im Bereich von 0° bis 180°.
+Cargue el código, conecte la alimentación y el servo se mueve en el rango de 0° a 180°.
 
 ![](./media/img-20240117092225.png)

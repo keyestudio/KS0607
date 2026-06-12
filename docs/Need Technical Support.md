@@ -1,3 +1,3 @@
-# 6. Technischer Support benötigt?
+# 6. ¿Necesita soporte técnico?
 
-Wenn Sie auf technische Probleme stoßen oder Kundendienst nach dem Kauf benötigen, wenden Sie sich bitte an unser Support-Team unter **asa12321sas@gmail.com**. Wir helfen Ihnen gerne weiter!
+ Si encuentra algún problema técnico o necesita asistencia posventa, no dude en ponerse en contacto con nuestro equipo de soporte en **asa12321sas@gmail.com**. ¡Estamos aquí para ayudarle!

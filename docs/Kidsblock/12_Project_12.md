@@ -1,42 +1,42 @@
-### Projekt 12: Ultraschall-Hindernisumfahrungs-Panzer
+### Proyecto 12: Tanque de Evasión de Obstáculos Ultrasónico
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Im vorherigen Projekt haben wir ein ultraschallgesteuertes Smart Car gebaut, das Objekten folgt. Tatsächlich müssen wir bei gleichen Bauteilen und gleicher Verkabelung nur den Testcode ändern, um daraus ein ultraschallgesteuertes Smart Car zu machen, das Hindernissen ausweicht. Dieses Smart Car kann sich mit der Bewegung der menschlichen Hände bewegen.
+En el proyecto anterior, hicimos un auto inteligente seguidor de sonido ultrasónico. De hecho, usando los mismos componentes y el mismo método de cableado, solo necesitamos cambiar el código de prueba para convertirlo en un auto inteligente de evasión de obstáculos ultrasónico. Este auto inteligente puede moverse con el movimiento de las manos humanas.
 
-Wir verwenden Ultraschallsensoren, um den Abstand zwischen dem Smart Car und dem Hindernis vor ihm zu messen, und steuern dann die Drehung der beiden Motoren basierend auf diesen Daten, um die Bewegungen des Smart Cars zu kontrollieren.
+Usamos sensores ultrasónicos para detectar la distancia entre el auto inteligente y el obstáculo al frente, y luego controlamos la rotación de los dos motores basándonos en estos datos para controlar los movimientos del auto inteligente.
 
-|                          Erkennung                           |         |
+|                          Detección                           |         |
 | :----------------------------------------------------------: | :-----: |
-| Vom Ultraschallsensor gemessener Abstand zwischen dem Auto und dem Hindernis vorne <br />（Servowinkel auf 90° einstellen） | a (cm)  |
-| Vom Ultraschallsensor gemessener Abstand zwischen dem Auto und dem Hindernis rechts <br />（Servowinkel auf 0° einstellen） | a2 (cm) |
-| Vom Ultraschallsensor gemessener Abstand zwischen dem Auto und dem Hindernis links <br />（Servowinkel auf 180° einstellen） | a1 (cm) |
+| Distancia medida por el sensor ultrasónico entre el auto y el obstáculo al frente <br />（establecer el ángulo del servo a 90°） | a (cm)  |
+| Distancia medida por el sensor ultrasónico entre el auto y el obstáculo a la derecha <br />（establecer el ángulo del servo a 0°） | a2 (cm) |
+| Distancia medida por el sensor ultrasónico entre el auto y el obstáculo a la izquierda <br />（establecer el ángulo del servo a 180°） | a1 (cm) |
 
-**Einstellung: Startwinkel des Servos auf 90° einstellen**
+**Configuración: establecer el ángulo inicial del servo a 90°**
 
-| Bedingung 1 |        Bedingung 2         |      Bedingung 3       | Bewegung                                                     |
+| Condición 1 |        Condición 2         |      Condición 3       | Movimiento                                                     |
 | :---------: | :------------------------: | :--------------------: | :----------------------------------------------------------- |
-|    a＜20    |                            |                        | 500 ms anhalten; Servowinkel auf 180° einstellen, a1 lesen, 100 ms verzögern; Servowinkel auf 0° einstellen, a2 lesen, 0,1 s verzögern. |
-|             | a1＜50<br />oder<br />a2＜50 | **a1 mit a2 vergleichen** |                                                              |
-|             |                            |         a1＞a2         | Servowinkel auf 90° einstellen, 700 ms nach links drehen (PWM auf 255 setzen) und vorwärts fahren (PWM auf 200 setzen). |
-|             |                            |         a1＜a2         | Servowinkel auf 90° einstellen, 700 ms nach rechts drehen (PWM auf 255 setzen) und vorwärts fahren (PWM auf 200 setzen). |
-|             | a1≥50<br />und<br />a2≥50  |         Zufällig         | Servowinkel auf 90° einstellen, 500 ms nach links drehen (PWM auf 255 setzen) und vorwärts fahren (PWM auf 200 setzen).<br /><br />Servowinkel auf 90° einstellen, 500 ms nach rechts drehen (PWM auf 255 setzen) und vorwärts fahren (PWM auf 200 setzen). |
-|    a≥20     |                            |                        | Vorwärts fahren (PWM auf 100 setzen)                               |
+|    a＜20    |                            |                        | Detener 500ms；establecer el ángulo del servo a 180°，leer a1，retardo de 100ms；establecer el ángulo del servo a 0°，leer a2，retardo de 0.1s. |
+|             | a1＜50<br />o<br />a2＜50 | **Comparar a1 con a2** |                                                              |
+|             |                            |         a1＞a2         | Establecer el ángulo del servo a 90°，girar a la izquierda durante 700ms（establecer PWM a 255），y avanzar（establecer PWM a 200）. |
+|             |                            |         a1＜a2         | Establecer el ángulo del servo a 90°，girar a la derecha durante 700ms（establecer PWM a 255），y avanzar（establecer PWM a 200）. |
+|             | a1≥50<br />y<br />a2≥50  |         Aleatorio         | Establecer el ángulo del servo a 90°，girar a la izquierda durante 500ms（establecer PWM a 255），y avanzar（establecer PWM a 200）.<br /><br />Establecer el ángulo del servo a 90°，girar a la derecha durante 500ms（establecer PWM a 255），y avanzar（establecer PWM a 200）. |
+|    a≥20     |                            |                        | Avanzar（establecer PWM a 100）                               |
 
-#### **(2)Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps119.png)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-(<span style="color: rgb(255, 76, 65);">Hinweis:</span> Die braunen, roten und orangefarbenen Kabel des Servos sind jeweils mit G (GND), V（5V）und D10 der Erweiterungsplatine verbunden; beim Ultraschallsensor ist der VCC-Pin mit 5V (V), der Trig-Pin mit digital 12 (S), der Echo-Pin mit digital 13 (S) und der Gnd-Pin mit Gnd (G) verbunden; wie im vorherigen Projekt.）
+(<span style="color: rgb(255, 76, 65);">Nota:</span> los cables marrón, rojo y naranja del servo están conectados respectivamente a G (GND), V（5V）y D10 de la placa de expansión；y para el sensor ultrasónico, el pin VCC está conectado a 5v (V), el pin Trig al digital 12 (S), el pin Echo al digital 13 (S), y el pin Gnd a Gnd (G); igual que en el proyecto anterior.）
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.![](media/6eb13569aaa7bf560f62049df28b51db.png)
+También puedes arrastrar bloques para editar tu código, como se muestra a continuación.![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
 （2）![](media/5dcbd405806b8e341505d7316246dbdd.png)
 
@@ -58,14 +58,14 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.![](med
 
 （11）![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de subir el código, porque la subida del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la subida falle.)
 
 ![](media/4360f9642a8c6b2488767c079d481482.png)
 
-#### **(5)Testergebnisse:**
+#### **(5)Resultados de la prueba:**
 
-Nachdem der Testcode erfolgreich hochgeladen wurde, die Verkabelung vorgenommen, den DIP-Schalter auf die ON-Seite gestellt und das Gerät eingeschaltet wurde, fährt das Smart Car vorwärts und weicht automatisch Hindernissen aus.
+Después de subir el código de prueba exitosamente, realiza el cableado, gira el interruptor DIP al extremo ON y enciende el dispositivo. El auto inteligente avanzará y evitará obstáculos automáticamente.
 
 ![](./media/img-20240117093950.png)

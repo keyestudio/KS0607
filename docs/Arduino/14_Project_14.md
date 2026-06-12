@@ -1,38 +1,38 @@
-### Projekt 14: Linienverfolgungs-Panzer
+### Proyecto 14: Tanque Seguidor de Línea
 
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Das vorherige Projekt hat erklärt, wie man das Smart Car dazu bringt, sich in einem bestimmten Bereich zu bewegen. In diesem Projekt können wir das zuvor erlernte Wissen nutzen, um ein linienverfolgendes Smart Car zu bauen. Im Experiment verwenden wir den Linienverfolgungssensor, um zu erkennen, ob sich eine schwarze Linie in der Nähe des Smart Cars befindet, und steuern dann die Drehung der beiden Motoren entsprechend den Erkennungsergebnissen, damit das Smart Car entlang der schwarzen Linie fährt.
+El proyecto anterior ha presentado cómo confinar el carro inteligente para que se mueva en un espacio determinado. En este proyecto, podemos usar los conocimientos aprendidos anteriormente para convertirlo en un carro inteligente seguidor de línea. En el experimento, usamos el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del carro inteligente, y luego controlar la rotación de los dos motores según los resultados de la detección, para que el carro inteligente se mueva a lo largo de la línea negra.
 
-Die spezifische Logik des linienverfolgungs-Smart Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del carro inteligente seguidor de línea se muestra en la tabla a continuación:
 
-|               Sensor               |                          Erkennung                           |
+|               Sensor               |                          Detección                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| Linienverfolgungssensor in der Mitte | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
-|  Linienverfolgungssensor links  | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
-| Linienverfolgungssensor rechts  | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
+| Sensor de seguimiento de línea central | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
+|  Sensor de seguimiento de línea izquierdo  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
+| Sensor de seguimiento de línea derecho  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
 
-|                         Bedingung 1                          |                         Bedingung 2                          |             Bewegung             |
+|                         Condición 1                          |                         Condición 2                          |             Movimiento             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------: |
-| Linienverfolgungssensor in der Mitte <br />erkennt die schwarze Linie | Linienverfolgungssensor links erkennt die schwarze Linie <br />und <br />der rechte erkennt weiße Linie | Links drehen<br />PWM auf 200 setzen  |
-| Linienverfolgungssensor in der Mitte <br />erkennt die schwarze Linie | Linienverfolgungssensor links erkennt weiße Linie <br />und <br />der rechte erkennt die schwarze Linie | Rechts drehen<br />PWM auf 200 setzen |
-| Linienverfolgungssensor in der Mitte <br />erkennt die schwarze Linie | Beide Linienverfolgungssensoren (links und rechts) erkennen weiße Linie<br />oder<br />Beide (links und rechts) erkennen die schwarze Linie |           Vorwärts fahren           |
-| Linienverfolgungssensor in der Mitte <br />erkennt weiße Linie  | Linienverfolgungssensor links erkennt die schwarze Linie <br />und <br />der rechte erkennt weiße Linie | Links drehen<br />PWM auf 200 setzen  |
-| Linienverfolgungssensor in der Mitte <br />erkennt weiße Linie  | Linienverfolgungssensor links erkennt weiße Linie<br />und <br />der rechte erkennt die schwarze Linie | Rechts drehen<br />PWM auf 200 setzen |
-| Linienverfolgungssensor in der Mitte <br />erkennt weiße Linie  | Beide Linienverfolgungssensoren (links und rechts) erkennen weiße Linie<br />oder<br />Beide Linienverfolgungssensoren (links und rechts) erkennen die schwarze Linie |               Stopp               |
+| El sensor de seguimiento de línea central <br />detecta la línea negra | El sensor de seguimiento de línea izquierdo detecta la línea negra <br />y <br />el derecho detecta línea blanca | Girar a la izquierda<br />establecer PWM a 200  |
+| El sensor de seguimiento de línea central <br />detecta la línea negra | El sensor de seguimiento de línea izquierdo detecta línea blanca <br />y <br />el derecho detecta la línea negra | Girar a la derecha<br />establecer PWM a 200 |
+| El sensor de seguimiento de línea central <br />detecta la línea negra | Ambos sensores izquierdo y derecho detectan línea blanca<br />o<br />Ambos detectan la línea negra |           Avanzar           |
+| El sensor de seguimiento de línea central <br />detecta línea blanca  | El sensor de seguimiento de línea izquierdo detecta la línea negra <br />y <br />el derecho detecta línea blanca | Girar a la izquierda<br />establecer PWM a 200  |
+| El sensor de seguimiento de línea central <br />detecta línea blanca  | El sensor de seguimiento de línea izquierdo detecta línea blanca<br />y <br />el derecho detecta la línea negra | Girar a la derecha<br />establecer PWM a 200 |
+| El sensor de seguimiento de línea central <br />detecta línea blanca  | Ambos sensores izquierdo y derecho detectan línea blanca<br />o<br />Ambos sensores izquierdo y derecho detectan la línea negra |               Detener               |
 
-#### **(2)Flussdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps11.png)
 
-#### **(3)Schaltplan:**
+#### **(3)Diagrama de cableado:**
 
 ![](media/e5c3763e764359ec8be92102b6d2a7f9.png)
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, die das Hochladen zum Scheitern bringen können.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ```C
 /*
@@ -42,20 +42,20 @@ Die spezifische Logik des linienverfolgungs-Smart Cars ist in der folgenden Tabe
   http://www.keyestudio.com
 */
 
-// Verdrahtung des Linienverfolgungssensors
-#define L_pin  11  // links
-#define M_pin  7  // Mitte
-#define R_pin  8  // rechts
-#define ML_Ctrl 4  // Richtungssteuerungspin des linken Motors definieren
-#define ML_PWM 6   // PWM-Steuerungspin des linken Motors definieren
-#define MR_Ctrl 2  // Richtungssteuerungspin des rechten Motors definieren
-#define MR_PWM 5   // PWM-Steuerungspin des rechten Motors definieren
+//El cableado del sensor de seguimiento de línea
+#define L_pin  11  //izquierdo
+#define M_pin  7  //central
+#define R_pin  8  //derecho
+#define ML_Ctrl 4  //Definir el pin de control de dirección del motor izquierdo
+#define ML_PWM 6   //Definir el pin de control PWM del motor izquierdo
+#define MR_Ctrl 2  //Definir el pin de control de dirección del motor derecho
+#define MR_PWM 5   //Definir el pin de control PWM del motor derecho
 int L_val, M_val, R_val;
 
 void setup()
 {
-  Serial.begin(9600); // Baudrate auf 9600 setzen
-  pinMode(L_pin, INPUT); // Alle Pins des Linienverfolgungssensors als Eingangsmodus setzen
+  Serial.begin(9600); //Establecer la velocidad de baudios a 9600
+  pinMode(L_pin, INPUT); //Establecer todos los pines del sensor de seguimiento de línea como modo de entrada
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
   pinMode(ML_Ctrl, OUTPUT);
@@ -66,41 +66,41 @@ void setup()
 
 void loop () 
 {
-  L_val = digitalRead(L_pin); // Wert des linken Sensors lesen
-  M_val = digitalRead(M_pin); // Wert des mittleren Sensors lesen
-  R_val = digitalRead(R_pin); // Wert des rechten Sensors lesen
-  if (M_val == 1) { // Der mittlere erkennt schwarze Linien
-    if (L_val == 1 && R_val == 0)  // Wenn links eine schwarze Linie erkannt wird, aber nicht rechts, nach links drehen
+  L_val = digitalRead(L_pin); //Leer el valor del sensor izquierdo
+  M_val = digitalRead(M_pin); //Leer el valor del sensor central
+  R_val = digitalRead(R_pin); //Leer el valor del sensor derecho
+  if (M_val == 1) { //el central detecta líneas negras
+    if (L_val == 1 && R_val == 0)  //Si se detecta una línea negra a la izquierda, pero no a la derecha, girar a la izquierda
     {
       Car_left();
     }
-    else if (L_val == 0 && R_val == 1)  // Wenn rechts eine schwarze Linie erkannt wird, aber nicht links, nach rechts drehen
+    else if (L_val == 0 && R_val == 1)  //Si se detecta una línea negra a la derecha, no a la izquierda, girar a la derecha
     {
       Car_right();
     }
-    else  // andernfalls vorwärts fahren
+    else  //de lo contrario, avanzar
     {
       Car_front();
     }
   }
-  else  // Der mittlere erkennt keine schwarzen Linien
+  else  //El central no detecta líneas negras
   {
-    if (L_val == 1 && R_val == 0)  // Wenn links eine schwarze Linie erkannt wird, aber nicht rechts, nach links drehen
+    if (L_val == 1 && R_val == 0)  //Si se detecta una línea negra a la izquierda, pero no a la derecha, girar a la izquierda
     {
       Car_left();
     }
-    else if (L_val == 0 && R_val == 1)  // Wenn rechts eine schwarze Linie erkannt wird, aber nicht links, nach rechts drehen
+    else if (L_val == 0 && R_val == 1)  //Si se detecta una línea negra a la derecha, no a la izquierda, girar a la derecha
     {
       Car_right();
     }
-    else  // andernfalls stoppen
+    else  //de lo contrario, detenerse
     {
       Car_Stop();
     }
   }
 }
 
-// vorwärts fahren
+//avanzar
 void Car_front()
 {
   digitalWrite(MR_Ctrl, HIGH);
@@ -109,7 +109,7 @@ void Car_front()
   analogWrite(ML_PWM, 100);
 }
 
-// rückwärts fahren
+//retroceder
 void Car_back()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -118,7 +118,7 @@ void Car_back()
   analogWrite(ML_PWM, 150);
 }
 
-// nach links drehen
+//girar a la izquierda
 void Car_left()
 {
   digitalWrite(MR_Ctrl, HIGH);
@@ -127,7 +127,7 @@ void Car_left()
   analogWrite(ML_PWM, 150);
 }
 
-// nach rechts drehen
+//girar a la derecha
 void Car_right()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -136,7 +136,7 @@ void Car_right()
   analogWrite(ML_PWM, 100);
 }
 
-// stoppen
+//detenerse
 void Car_Stop()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -146,8 +146,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Testergebnis:**
+#### **(5)Resultado de la prueba:**
 
-Nachdem der Testcode erfolgreich hochgeladen und das Gerät eingeschaltet wurde, fährt das Smart Car entlang der schwarzen Linie.
+Después de cargar el código de prueba correctamente y encenderlo, el carro inteligente se mueve a lo largo de la línea negra.
 
 ![](./media/img-20240117085916.png)

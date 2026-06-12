@@ -1,62 +1,62 @@
-### Projekt 8: Motorsteuerung und Geschwindigkeitsregelung
+### Proyecto 8: Control de Motor y Velocidad
 
-#### **(1) Beschreibung:**
+#### **(1)Descripción:**
 
-Es gibt viele Möglichkeiten, Motoren anzusteuern. Unser Smart Car verwendet die gängigste Lösung namens L298P. L298P, hergestellt von STMicroelectronics, ist ein hervorragender Ansteuerungschip, der speziell für den Antrieb von Hochleistungsmotoren entwickelt wurde. Er kann DC-Motoren, zweiphasige und vierphasige Motoren direkt ansteuern, wobei der Antriebsstrom bis zu 2A erreicht. Der Ausgangsanschluss des Motors verwendet 8 schnelle Schottky-Dioden als Schutz. Wir haben eine Erweiterungsplatine basierend auf dem L298P-Schaltkreis entwickelt, die durch ihr gestapeltes Design direkt auf das UNO R3-Board gesteckt werden kann und so die technischen Schwierigkeiten für Benutzer bei der Verwendung und dem Antrieb des Motors reduziert.
+Hay muchas formas de controlar motores. Nuestro carro inteligente utiliza la solución más común llamada L298P. L298P, producido por STMicroelectronics, es un excelente chip de control especialmente diseñado para manejar motores de alta potencia. Puede controlar directamente motores DC, motores de dos y cuatro fases con una corriente de control que alcanza los 2A. Además, el terminal de salida del motor adopta 8 diodos Schottky de alta velocidad como protección. Hemos diseñado una placa de expansión basada en el circuito L298P cuyo diseño apilado puede conectarse directamente a la placa UNO R3 para su uso, reduciendo las dificultades técnicas para los usuarios al utilizar y controlar el motor.
 
-Stecken Sie die Erweiterungsplatine auf das Board, versorgen Sie BAT mit Strom, drehen Sie den DIP-Schalter auf die ON-Seite und versorgen Sie die Erweiterungsplatine und das UNO R3-Board gleichzeitig über eine externe Stromversorgung. Um die Verkabelung zu erleichtern, ist die Erweiterungsplatine mit verpolungssicheren Schnittstellen (PH2.0 -2P -3P -4P -5P) ausgestattet, sodass Motoren, Stromversorgung und Sensoren/Module direkt angesteckt werden können. Die Bluetooth-Schnittstelle der Antriebserweiterungsplatine ist vollständig kompatibel mit dem Keyestudio HM-10 Bluetooth-Modul. Daher müssen wir das HM-10 Bluetooth-Modul beim Anschließen nur in die entsprechende Schnittstelle stecken. Gleichzeitig verwendet die Antriebserweiterungsplatine auch 2,54-mm-Stiftleisten, um einige verfügbare Digital- und Analogports zu erweitern, sodass Sie weitere Sensoren hinzufügen und Erweiterungsexperimente durchführen können.
+Apile la placa de expansión sobre la placa, alimente el BAT, gire el interruptor DIP al extremo ON, y alimente la placa de expansión y la placa UNO R3 al mismo tiempo mediante una fuente de alimentación externa. Para facilitar el cableado, la placa de expansión está equipada con interfaces anti-inversión (PH2.0 -2P -3P -4P -5P) y por lo tanto puede conectarse directamente con motores, fuente de alimentación y sensores/módulos. La interfaz Bluetooth de la placa de expansión de control es totalmente compatible con el módulo Bluetooth Keyestudio HM-10. Por lo tanto, solo necesitamos insertar el módulo Bluetooth HM-10 en la interfaz correspondiente al conectarlo. Al mismo tiempo, la placa de extensión de control también utiliza cabezales de pines 2.54 para extender algunos puertos digitales y analógicos disponibles, de modo que pueda continuar añadiendo otros sensores y llevar a cabo experimentos de expansión.
 
-Die Erweiterungsplatine kann mit 4 DC-Motoren verbunden werden. Im Standard-Jumper-Verbindungsmodus sind die Schnittstellen A und A1 sowie B und B1 parallel geschaltet, und ihr Bewegungsmuster ist identisch. Mit 8 Jumperkappen kann die Drehrichtung der 4 Motorschnittstellen gesteuert werden. Wenn beispielsweise die zwei Jumperkappen vor der Motorschnittstelle A von einer horizontalen auf eine vertikale Verbindung geändert werden, ist die Drehrichtung von Motor A nun entgegengesetzt zur ursprünglichen Drehrichtung.
+La placa de expansión puede conectarse a 4 motores DC. En el modo de conexión del capuchón de puente predeterminado, los motores de las interfaces A y A1, B y B1 están conectados en paralelo, y su patrón de movimiento es el mismo. Se pueden usar 8 capuchones de puente para controlar la dirección de rotación de las 4 interfaces de motor. Por ejemplo, cuando los dos capuchones de puente frente a la interfaz del motor A se cambian de una conexión horizontal a una conexión vertical, la dirección de rotación del motor A ahora es opuesta a la dirección de rotación original.
 
 ![](media/6c3731f639e113c8f32fe1829f239898.png)
 
 ![](media/62ee9578858ecc8e27b824af65fb22bb.png)
 
-#### **(2) Parameter:**
+#### **(2)Parámetros:**
 
--   Eingangsspannung des Logikteils: DC 5V
+-   Voltaje de entrada de la parte lógica: DC 5V
 
--   Eingangsspannung des Antriebsteils: DC 7-12V
+-   Voltaje de entrada de la parte de control: DC 7-12V
 
--   Betriebsstrom des Logikteils: ≤36mA
+-   Corriente de trabajo de la parte lógica: ≤36mA
 
--   Betriebsstrom des Antriebsteils: ≤ 2A
+-   Corriente de trabajo de la parte de control: ≤ 2A
 
--   Maximale Verlustleistung: 25W (T=75℃)
+-   Potencia máxima de disipación: 25W (T=75℃)
 
--   Eingangspegel des Steuersignals:
+-   Nivel de entrada de señal de control:
 
-    High-Pegel: 2,3V ≤ Vin ≤ 5V
+    Nivel alto: 2.3V ≤ Vin ≤ 5V
 
-    Low-Pegel: 0V ≤ Vin ≤ 1,5V
+    Nivel bajo: 0V ≤ Vin ≤ 1.5V
 
--   Betriebstemperatur: -25℃～＋130℃
+-   Temperatura de trabajo: -25℃～＋130℃
 
-#### **(3) Den Roboter bewegen:**
+#### **(3)Control del movimiento del robot:**
 
-Der Richtungspin von Motor A ist D2, der Geschwindigkeitssteuerungspin ist D5; der Richtungspin von Motor B ist D4 und der Geschwindigkeitssteuerungspin ist D6.
+El pin de dirección del motor A es D2, el pin de control de velocidad es D5; el pin de dirección del motor B es D4 y el pin de control de velocidad es D6.
 
-Anhand der folgenden Tabelle können wir erkennen, wie die Bewegung des Roboters durch die Steuerung der Drehung zweier Motoren über die Digitalports und PWM-Ports gesteuert wird. Der Wertebereich des PWM-Werts liegt dabei zwischen 0 und 255. Je größer der Wert ist, desto schneller dreht sich der Motor.
+Según la tabla a continuación, podemos saber cómo controlar el movimiento del robot controlando la rotación de dos motores a través de los puertos digitales y puertos PWM. Entre estos, el rango del valor PWM es 0-255. Cuanto mayor sea el valor, más rápido girará el motor.
 
-|   Funktion    |  D4  | D6（PWM） | Motor （links）B |  D2  | D5（PWM） | Motor（rechts）A |
-| :-----------: | :--: | :-------: | :--------------: | :--: | :-------: | :--------------: |
-| Vorwärts fahren | HIGH |     0     |   Dreht links   | HIGH |     0     |   Dreht links   |
-|  Rückwärts fahren   | LOW  |    255    |  Dreht rechts   | LOW  |    255    |  Dreht rechts   |
-| Links drehen  | LOW  |    255    |  Dreht rechts   | HIGH |    100    |   Dreht links   |
-| Rechts drehen | HIGH |    100    |   Dreht links   | LOW  |    255    |  Dreht rechts   |
-|    Stopp      | LOW  |     0     |      Stopp       | LOW  |     0     |      Stopp       |
+|   Función    |  D4  | D6（PWM） | Motor（izquierdo）B |  D2  | D5（PWM） | Motor（derecho）A |
+| :----------: | :--: | :-------: | :-----------------: | :--: | :-------: | :---------------: |
+| Avanzar      | HIGH |     0     |   Gira a la izquierda   | HIGH |     0     |   Gira a la izquierda   |
+| Retroceder   | LOW  |    255    |  Gira a la derecha  | LOW  |    255    |  Gira a la derecha  |
+| Girar a la izquierda  | LOW  |    255    |  Gira a la derecha  | HIGH |    100    |   Gira a la izquierda   |
+| Girar a la derecha | HIGH |    100    |   Gira a la izquierda   | LOW  |    255    |  Gira a la derecha  |
+|   Detener    | LOW  |     0     |      Se detiene     | LOW  |     0     |      Se detiene     |
 
-#### **(4) Anschlussdiagramm:**
+#### **(4)Diagrama de Conexión:**
 
 ![](./media/image-20250709134029403.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span>
+<span style="color: rgb(255, 76, 65);">Nota:</span>
 
-Der 4-polige Stecker ist mit A, A1, B1 und B gekennzeichnet. Der rechte hintere Motor ist mit B des 8833-Boards verbunden und der linke vordere Motor ist mit dem A-Port verbunden.
+El conector de 4 pines está marcado con A, A1, B1 y B. El motor trasero derecho está conectado a B de la placa 8833 y el frontal izquierdo está conectado al puerto A.
 
-#### **(5) Testcode:**
+#### **(5)Código de Prueba:**
 
-Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
+También puede arrastrar bloques para editar su código, como se muestra a continuación.
 
 （1）![](media/7cbc4d14c2e2dac956f2e9f145f01f31.png)
 
@@ -66,17 +66,17 @@ Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
 
 （4）![](media/b7215c8a4997a188947e80fdee1a8cd9.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ![](media/332229f3dc01a38de898367f52531b28.png)
 
 
-#### **(6) Testergebnisse:**
+#### **(6)Resultados de la Prueba:**
 
-Nach der Verkabelung gemäß dem Diagramm, dem Hochladen des Testcodes und der Inbetriebnahme.
+Después de cablear según el diagrama, cargar el código de prueba y encenderlo.
 
 ![](./media/img-20240117092625.png)
 
-fährt das Smart Car 2 Sekunden vorwärts, 2 Sekunden rückwärts, dreht 2 Sekunden nach links, dreht 2 Sekunden nach rechts und stoppt für 2 Sekunden.
+el carro inteligente avanza durante 2s, retrocede durante 2s, gira a la izquierda durante 2s, gira a la derecha durante 2s y se detiene durante 2s.

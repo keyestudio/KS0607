@@ -1,44 +1,44 @@
-### Projekt 15: Infrarot-Ferngesteuerter Panzer
+### Proyecto 15: Tanque con Control Remoto por Infrarrojos
 
 ![](./media/image-20250709134800790.png)
 
-#### **(1)Beschreibung:**
+#### **(1)Descripción:**
 
-Infrarot-Fernsteuerung ist eine der häufigsten Fernsteuerungsanwendungen in Elektromotoren, Elektrolüftern und vielen anderen Haushaltsgeräten. In diesem Projekt nutzen wir das zuvor erlernte Wissen, um ein infrarot-ferngesteuertes Smart Car zu bauen.
+El control remoto por infrarrojos es una de las aplicaciones de control remoto más comunes que se encuentra en motores eléctricos, ventiladores eléctricos y muchos otros electrodomésticos. En este proyecto, utilizamos los conocimientos aprendidos anteriormente para construir un coche inteligente con control remoto por infrarrojos.
 
-In der 9. Lektion haben wir den entsprechenden Tastenwert jeder Taste der Infrarot-Fernbedienung getestet. In diesem Projekt können wir den Code (Tastenwert) festlegen, damit die entsprechende Taste die Bewegungen des Smart Cars steuert und die Bewegungsmuster auf der 8X16 LED-Punktmatrix anzeigt.
+En la lección 9, probamos el valor de tecla correspondiente a cada botón del control remoto por infrarrojos. En este proyecto, podemos configurar el código (valor de tecla) para que el botón correspondiente controle los movimientos del coche inteligente y muestre los patrones de movimiento en la matriz de LED 8X16.
 
-Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
+La lógica específica del coche inteligente se muestra en la tabla a continuación:
 
-|                 Ultraschall-Taste                  | Tastenwert | Anweisungen der Tasten                                       |
+|                 Tecla ultrasónica                  | Valor de tecla | Instrucciones de las teclas                                       |
 | :---------------------------------------------: | :-------: | ------------------------------------------------------------ |
-| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Vorwärts fahren（PWM auf 200 setzen）<br />Muster für Vorwärtsfahren anzeigen |
-| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Rückwärts fahren（PWM auf 200 setzen）<br />Muster für Rückwärtsfahren anzeigen |
-| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Links abbiegen<br />Muster „STOP" anzeigen                     |
-| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Rechts abbiegen<br />Muster für Links abbiegen anzeigen          |
-| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Anhalten<br />Muster „STOP" anzeigen                          |
+| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Avanzar（establecer PWM en 200）<br />mostrar el patrón de avance |
+| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Retroceder（establecer PWM en 200）<br />mostrar el patrón de retroceso |
+| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Girar a la izquierda<br />mostrar el patrón"STOP"                     |
+| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Girar a la derecha<br />mostrar el patrón de giro a la izquierda          |
+| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Detener<br />mostrar el patrón"STOP"                          |
 
-**Anfangseinstellung: 8X16 LED-Punktmatrix zeigt das Muster"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
+**Configuración inicial: la matriz de LED 8X16 muestra el patrón"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
 
 
 
-#### **(2)Ablaufdiagramm:**
+#### **(2)Diagrama de flujo:**
 
 ![](media/wps121.png)
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de conexión:**
 
 ![](media/54527fe245b218dd22bdff5dafd4805d.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span>
+<span style="color: rgb(255, 76, 65);">Nota:</span>
 
-GND, VCC, SDA und SCL des 8x16 LED-Panels sind mit G（GND), V（VCC), A4 und A5 der Erweiterungsplatine verbunden.
+GND, VCC, SDA y SCL del panel LED 8x16 están conectados a G（GND), V（VCC). A4 y A5 de la placa de expansión.
 
-Da die 8833-Platine den IR-Empfänger bereits integriert hat, muss dieser nicht extra verdrahtet werden. Die Pins des IR-Empfängers sind G（GND), V（VCC) und D3.
+Dado que la placa 8833 integra el receptor IR, no es necesario cablearlo. Los pines del receptor IR son G（GND), V（VCC) y D3.
 
-#### **(4)Testcode:**
+#### **(4)Código de prueba:**
 
-Sie können Blöcke bearbeiten, um Ihren Code aufzubauen
+Puedes editar bloques para construir tu código
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -58,14 +58,14 @@ Sie können Blöcke bearbeiten, um Ihren Code aufzubauen
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serie, y puede haber conflictos con la comunicación serie Bluetooth, lo que puede provocar que la carga falle.)
 
 ![](media/fae6c22640ced038daca9cb6721ab95e.png)
 
-#### **(5)Testergebnisse:**
+#### **(5)Resultados de la prueba:**
 
-Nachdem der Testcode erfolgreich hochgeladen und das Gerät eingeschaltet wurde, kann das Smart Car durch die Infrarot-Fernbedienung gesteuert werden, und das 8\*16-Display zeigt die entsprechenden Bewegungsmuster an.
+Después de cargar el código de prueba correctamente y encender el dispositivo, el coche inteligente puede controlarse para moverse mediante el control remoto IR y la pantalla 8\*16 muestra los patrones correspondientes a sus movimientos.
 
 ![](./media/img-20240117094223.png)

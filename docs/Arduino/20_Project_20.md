@@ -1,53 +1,53 @@
-### Projekt 20: Flammensensor
+### Proyecto 20: Sensor de Llama
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)Beschreibung：**
+#### **(1)Descripción：**
 
-Der Flammensensor verwendet eine IR-Empfangsdiode, um Flammen zu erkennen. Er wandelt die Helligkeit der Flamme in High- und Low-Pegel-Signale um und gibt diese an den Zentralprozessor zur entsprechenden Programmverarbeitung weiter. Der Spannungswert des Analogports variiert je nachdem, ob eine Flamme in der Nähe ist oder überhaupt keine Flamme vorhanden ist.
+El sensor de llama utiliza un tubo receptor de infrarrojos para detectar llamas. Convierte el brillo de la llama en señales de nivel alto y bajo y las introduce en el procesador central para el procesamiento del programa correspondiente. El valor de voltaje del puerto analógico varía dependiendo de si hay una llama cerca o no.
 
-Wenn keine Flamme vorhanden ist, liest der Analogport etwa 0,3V; wenn eine Flamme vorhanden ist, liest der Analogport etwa 1,0V. Je näher die Flamme ist, desto höher ist der Spannungswert. Er kann verwendet werden, um eine Feuerquelle zu erkennen oder einen intelligenten Roboter zu bauen.
+Si no hay llama, el puerto analógico lee aproximadamente 0.3V; cuando hay una llama, el puerto analógico lee aproximadamente 1.0V. Cuanto más cerca esté la llama, mayor será el valor de voltaje. Puede utilizarse para detectar una fuente de fuego o para construir un robot inteligente.
 
-Beachten Sie, dass die Sonde des Flammensensors nur Temperaturen zwischen -25℃ und 85℃ standhalten kann.
+Tenga en cuenta que la sonda del sensor de llama solo puede soportar temperaturas entre -25℃ y 85℃.
 
-Stellen Sie während des Betriebs sicher, dass der Flammensensor in einem sicheren Abstand zum Feuer gehalten wird, um Schäden daran zu vermeiden.
+Durante el uso, asegúrese de mantener el sensor de llama a una distancia segura del fuego para evitar dañarlo.
 
-#### **(2)Parameter：**
+#### **(2)Parámetros：**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- Betriebsspannung: 3,3V-5V (DC)
+- Voltaje de funcionamiento: 3.3V-5V (DC)
 
-- Strom: 100mA
+- Corriente: 100mA
 
-- Maximale Leistung: 0,5W
+- Potencia máxima: 0.5W
 
-- Betriebstemperatur: -10°C bis +50 Grad Celsius
+- Temperatura de trabajo: -10°C a +50 grados Celsius
 
-- Sensorgröße: 31,6mm x 23,7mm
+- Tamaño del sensor: 31.6mmx23.7mm
 
-- Schnittstelle: 4pin zu 3PIN-Schnittstelle
+- Interfaz: interfaz de 4pin a 3PIN
 
-- Ausgangssignal: Analogsignale A0, A1
+- Señal de salida: señales analógicas A0, A1
 
 
 
-#### **(3)Anschlussdiagramm:**
+#### **(3)Diagrama de Conexión:**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-Flammensensoren sind an A1 und A2 angeschlossen.
+Los sensores de llama están conectados a A1 y A2.
 
-Wenn wir Ultraschallsensoren und Fotowiderstände entfernen und dann Flammensensoren und Lüftermodule hinzufügen, entsteht der Feuerlöschroboter.
+Cuando retiramos los sensores ultrasónicos y las fotorresistencias, y luego añadimos sensores de llama y módulos de ventilador, se crea el robot extintor de incendios.
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-1）Dieses Experiment erfordert den Einsatz einer Feuerquelle. Bitte halten Sie sie von brennbaren Gegenständen fern, um Brände zu vermeiden. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie nicht sicher sein können, dass Sie sicher sind, verzichten Sie bitte auf das Experiment.
-2）**Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.**
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1）Este experimento requiere el uso de una fuente de fuego. Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo supervisión adulta. Si no puede confirmar que está seguro, abandone el experimento.
+2）**El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.**
 
 
-#### **(4)Testcode:**
+#### **(4)Código de Prueba:**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, die dazu führen können, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ```C
 /*
@@ -62,53 +62,53 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; // Definiere den Flammen-Pin als analogen Pin A1
-int val = 0; // Definiere digitale Variablen
+int flame = A1; //Define el pin de llama como pin analógico A1
+int val = 0; //Define variables digitales
 
 void setup() 
 {
-	pinMode(flame, INPUT); // Definiere den Buzzer als Eingabequelle
-    Serial.begin(9600); // Setze die Baudrate auf 9600
+	pinMode(flame, INPUT); //Define el buzzer como fuente de entrada
+    Serial.begin(9600); //Establece la velocidad de baudios a 9600
 }
 
 void loop() 
 {
-	val = analogRead(flame); // Lese den Analogwert des Flammensensors
-	Serial.println(val); // Analogwert ausgeben und drucken
-	delay(100); // Verzögerung von 100ms
+	val = analogRead(flame); //Lee el valor analógico del sensor de llama
+	Serial.println(val);//Muestra el valor analógico y lo imprime
+	delay(100); //Retardo de 100ms
 }
 ```
 
-#### **(5)Testergebnis：**
+#### **(5)Resultado de la Prueba：**
 
-Verbinden Sie die Komponenten, laden Sie den Code hoch, öffnen Sie den seriellen Monitor und stellen Sie die Baudrate auf 9600.
+Conecte los componentes, cargue el código, abra el monitor serial y establezca la velocidad de baudios a 9600.
 
-Sie können den Simulationswert des Flammensensors anzeigen.
+Puede ver el valor de simulación del sensor de llama.
 
-Je näher die Flamme ist, desto kleiner ist der Simulationswert.
+Cuanto más cerca esté la llama, menor será el valor de simulación.
 
-Passen Sie das Potentiometer am Modul an, um D1 am kritischen Punkt zu halten. Wenn der Sensor keine Flamme erkennt, bleibt D1 aus, aber wenn der Sensor eine Flamme erkennt, leuchtet D1 auf.
+Ajuste el potenciómetro en el módulo para mantener D1 en el punto crítico. Cuando el sensor no detecta llama, D1 estará apagado, pero si el sensor detecta llama, D1 se encenderá.
 
 ![](./media/img-20240117085629.png)
 
 ![](media/05db06b3e205dfca63c2ba3aa7ff528e.png)
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-Bitte halten Sie ihn von brennbaren Gegenständen fern, um Brände zu vermeiden. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie nicht sicher sein können, dass Sie sicher sind, verzichten Sie bitte auf das Experiment. Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Por favor, manténgalo alejado de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo supervisión adulta. Si no puede confirmar que está seguro, abandone el experimento. El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.
 
-#### **(6)Erweiterungsübung:**
+#### **(6)Práctica de Extensión:**
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-1）Dieses Experiment erfordert den Einsatz einer Feuerquelle. Bitte halten Sie sie von brennbaren Gegenständen fern, um Brände zu vermeiden. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie nicht sicher sein können, dass Sie sicher sind, verzichten Sie bitte auf das Experiment.
-2）Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1）Este experimento requiere el uso de una fuente de fuego. Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo supervisión adulta. Si no puede confirmar que está seguro, abandone el experimento.
+2）El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.
 
-Als nächstes schließen Sie eine LED an Pin 9 an und wir können sie mit einem Flammensensor steuern, wie unten gezeigt:
+A continuación, conecte un LED al pin 9 y podremos controlarlo mediante un sensor de llama, como se muestra a continuación;
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-**Testcode**
+**Código de Prueba**
 
-(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, die dazu führen können, dass der Upload fehlschlägt.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
 
 ```C
 /*
@@ -123,38 +123,38 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; // Definiere den Flammen-Pin als analogen Pin A1
-int LED = 9; // Definiere die LED als digitalen Port 9
-int val = 0; // Definiere digitale Variablen
+int flame = A1; //Define el pin de llama como pin analógico A1
+int LED = 9; //Define el LED como puerto digital 9
+int val = 0; //Define variables digitales
 
 void setup() 
 {
-    pinMode(flame, INPUT); // Definiere die Flamme als Eingabequelle
-    pinMode(LED, OUTPUT); // Setze LED auf Ausgabemodus
-    Serial.begin(9600); // Setze die Baudrate auf 9600
+    pinMode(flame, INPUT); //Define la llama como fuente de entrada
+    pinMode(LED, OUTPUT); //Establece el LED en modo de salida
+    Serial.begin(9600); //Establece la velocidad de baudios a 9600
 }
 
 void loop() 
 {
-    val = analogRead(flame); // Lese den Analogwert des Flammensensors
-    Serial.println(val); // Analogwert ausgeben und drucken
-    if (val < 300)  // Wenn der Analogwert kleiner als 300 ist, leuchtet die LED
+    val = analogRead(flame); //Lee el valor analógico del sensor de llama
+    Serial.println(val);//Muestra el valor analógico y lo imprime
+    if (val < 300)  //Cuando el valor analógico es menor que 300, el LED se enciende
     {
-    	digitalWrite(LED, HIGH); // LED leuchtet
+    	digitalWrite(LED, HIGH); //El LED se enciende
     } 
     else 
     {
-    	digitalWrite(LED, LOW); // LED ist aus
+    	digitalWrite(LED, LOW); //El LED se apaga
     }
-    delay(50); // Verzögerung von 50ms
+    delay(50); //Retardo de 50ms
 }
 ```
 
-#### **(8)Testergebnisse：**
+#### **(8)Resultados de la Prueba：**
 
-Sie können das Feuerzeug nahe am linken Flammensensor verwenden. Wenn der Flammensensor eine Flamme erkennt, leuchtet das LED-Modul als Alarm auf.
+Puede usar la llama de un encendedor cerca del sensor de llama izquierdo. Cuando el sensor de llama detecta una llama, el módulo LED se encenderá como alarma.
 
 ![](./media/img-20240117085131.png)
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
-Bitte halten Sie ihn von brennbaren Gegenständen fern, um Brände zu vermeiden. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie nicht sicher sein können, dass Sie sicher sind, verzichten Sie bitte auf das Experiment. Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Por favor, manténgalo alejado de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo supervisión adulta. Si no puede confirmar que está seguro, abandone el experimento. El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.
