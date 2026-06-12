@@ -1,33 +1,33 @@
-### Projet 10 : Char Suiveur de Lumière
+### Progetto 10: Tank Insegui-Luce
 
 
-#### **(1)Description :**
+#### **(1)Descrizione:**
 
-Dans les projets précédents, nous avons présenté en détail l'utilisation de divers capteurs, modules et cartes d'extension sur le robot. Passons maintenant aux projets du robot. Le robot suiveur de lumière, comme son nom l'indique, est un robot capable de suivre la lumière.
+Nei progetti precedenti, abbiamo introdotto in dettaglio l'uso di vari sensori, moduli e schede di espansione sul robot smart car. Ora passiamo ai progetti del robot smart car. I robot smart car insegui-luce, come suggerisce il nome, sono robot smart car in grado di seguire la luce.
 
-Nous pouvons combiner les connaissances des projets sur la photorésistance et la commande des moteurs pour fabriquer un robot chercheur de lumière. Dans ce projet, nous utilisons deux modules photorésistors pour détecter l'intensité lumineuse des côtés gauche et droit du robot, lire les valeurs analogiques correspondantes, puis contrôler la rotation des deux moteurs en fonction de ces deux données, afin de contrôler les mouvements du robot.
+Possiamo combinare le conoscenze acquisite nei progetti sul fotoresistore e sulla guida dei motori per realizzare un robot smart car che insegue la luce. Nel progetto, utilizziamo due moduli fotoresistori per rilevare l'intensità luminosa sui lati sinistro e destro del robot smart car, leggiamo i corrispondenti valori analogici, e quindi controlliamo la rotazione dei due motori in base a questi due dati, così da controllare i movimenti del robot smart car.
 
-La logique spécifique du robot suiveur de lumière est présentée ci-dessous.
+La logica specifica del robot smart car insegui-luce è mostrata di seguito.
 
 ![](./media/image-20250709111733042.png)
 
-#### **(2)Organigramme :**
+#### **(2)Diagramma di flusso:**
 
 ![](media/wps8.png)
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di collegamento:**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Remarque :</span> Les broches "G", "V" et S du module photorésistor gauche sont connectées respectivement à G (GND), V (VCC) et A1 ;
+<span style="color: rgb(255, 76, 65);">Nota:</span> I pin "G", "V" e S del modulo fotoresistore sinistro sono collegati rispettivamente a G (GND), V (VCC), A1;
 
-Les broches "G", "V" et S du module photorésistor droit sont connectées respectivement à G (GND), V (VCC) et A2.
+I pin "G", "V" e S del modulo fotoresistore destro sono collegati rispettivamente a G (GND), V (VCC) e A2.
 
-Le câble 4 broches est marqué A, A1, B1 et B. Le moteur arrière droit est connecté au port B de la carte d'extension moteur 8833 et le moteur avant gauche est connecté au port A de la carte d'extension moteur 8833.
+Il cavo a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro è collegato alla porta B della scheda di espansione driver motore 8833 e il motore anteriore sinistro è collegato alla porta A della scheda di espansione driver motore 8833.
 
-#### **(4)Code de test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut provoquer des conflits avec la communication série Bluetooth et faire échouer le téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -36,12 +36,12 @@ Le câble 4 broches est marqué A, A1, B1 et B. Le moteur arrière droit est con
   light follow tank
   http://www.keyestudio.com
 */
-#define light_L_Pin A1   // Définir la broche du capteur photosensible gauche
-#define light_R_Pin A2   // Définir la broche du capteur photosensible droit
-#define ML_Ctrl 4  // Définir la broche de contrôle de direction du moteur gauche
-#define ML_PWM 6   // Définir la broche de contrôle PWM du moteur gauche
-#define MR_Ctrl 2  // Définir la broche de contrôle de direction du moteur droit
-#define MR_PWM 5   // Définir la broche de contrôle PWM du moteur droit
+#define light_L_Pin A1   // Definisce il pin del sensore fotosensibile a sinistra
+#define light_R_Pin A2   // Definisce il pin del sensore fotosensibile a destra
+#define ML_Ctrl 4  // Definisce il pin di controllo della direzione del motore sinistro
+#define ML_PWM 6   // Definisce il pin di controllo PWM del motore sinistro
+#define MR_Ctrl 2  // Definisce il pin di controllo della direzione del motore destro
+#define MR_PWM 5   // Definisce il pin di controllo PWM del motore destro
 int left_light;
 int right_light;
 void setup() 
@@ -63,19 +63,19 @@ void loop()
   Serial.println(left_light);
   Serial.print("right_light_value = ");
   Serial.println(right_light);
-  if (left_light > 650 && right_light > 650) // avancer
+  if (left_light > 650 && right_light > 650) // vai avanti
   {
     Car_front();
   }
-  else if (left_light > 650 && right_light <= 650)  // tourner à gauche
+  else if (left_light > 650 && right_light <= 650)  // gira a sinistra
   {
     Car_left();
   }
-  else if (left_light <= 650 && right_light > 650) // tourner à droite
+  else if (left_light <= 650 && right_light > 650) // gira a destra
   {
     Car_right();
   }
-  else  // sinon, s'arrêter
+  else  // altrimenti, fermati
   {
     Car_Stop();
   }
@@ -114,8 +114,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Résultat du test**
+#### **(5)Risultato del Test**
 
-Après avoir téléversé le code de test avec succès, effectué les connexions conformément au schéma de câblage, basculé le commutateur DIP vers la droite et mis sous tension, le robot se déplace en suivant la lumière.
+Dopo aver caricato con successo il codice di test, collegato secondo lo schema di cablaggio, spostato il selettore DIP verso destra e alimentato il dispositivo, il robot smart car si muove seguendo la luce.
 
 ![Img](./media/img-20240117090537.png)

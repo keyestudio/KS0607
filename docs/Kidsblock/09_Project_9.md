@@ -1,96 +1,96 @@
-### Projet 9 : Matrice de points LED 8*16 pour expressions faciales
+### Progetto 9: Matrice LED Facciale 8*16
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-Ne serait-ce pas amusant d'ajouter un panneau d'expression au robot ? Et la matrice de points LED 8*16 de Keyestudio peut faire l'affaire. Grâce à elle, vous pouvez concevoir vous-mêmes des expressions faciales, des images, des motifs et d'autres affichages.
+Non sarebbe divertente aggiungere un pannello espressivo al robot? La matrice LED 8*16 di Keyestudio può fare al caso tuo. Con il suo aiuto, potresti progettare espressioni facciali, immagini, pattern e altri display da solo.
 
-Le panneau LED 8*16 est équipé de 128 LEDs. Les données du microprocesseur (Arduino) communiquent avec l'AiP1640 via une interface de bus à deux fils. Par conséquent, il peut contrôler l'allumage et l'extinction des 128 LEDs du module, afin de faire afficher à la matrice de points du module le motif dont vous avez besoin. Un câble HX-2.54 4 broches est fourni pour faciliter le câblage.
+Il pannello LED 8*16 è dotato di 128 LED. I dati del microprocessore (Arduino) comunicano con l'AiP1640 attraverso un'interfaccia bus a due fili. Pertanto, può controllare l'accensione e lo spegnimento di 128 LED sul modulo, in modo da far visualizzare alla matrice di punti sul modulo il pattern desiderato. Un cavo HX-2.54 4Pin è fornito per comodità di cablaggio.
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
--   Tension de fonctionnement : DC 3,3-5V
+-   Tensione di lavoro: DC 3.3-5V
 
--   Perte de puissance : 400mW
+-   Dissipazione di potenza: 400mW
 
--   Fréquence d'oscillation : 450KHz
+-   Frequenza di oscillazione: 450KHz
 
--   Courant de commande : 200mA
+-   Corrente di pilotaggio: 200mA
 
--   Température de fonctionnement : -40\~80℃
+-   Temperatura di lavoro: -40\~80℃
 
--   Mode de communication : bus à deux fils
+-   Modalità di comunicazione: bus a due fili
 
-#### **(3) Connaissances :**
+#### **(3)Conoscenze:**
 
-**Circuit de la matrice de points LED 8\*16**
+**Circuito della matrice LED 8\*16**
 
 ![](media/edf6c77d05904eebbaa89d557e9e9c1a.png)
 
-**Principe de la matrice de points LED 8\*16**
+**Principio della matrice LED 8\*16**
 
-Comment contrôler chaque LED de la matrice de points 8\*16 ? On sait que chaque octet comporte 8 bits et que chaque bit vaut 0 ou 1. Quand il vaut 0, la LED est éteinte, et quand il vaut 1, la LED est allumée. Un octet peut contrôler une colonne de LEDs, et naturellement 16 octets peuvent contrôler 16 colonnes de LEDs, ce qui constitue la matrice de points 8\*16.
+Come controllare ogni LED della matrice di punti 8\*16? È noto che ogni byte ha 8 bit e ogni bit è 0 o 1. Quando è 0, il LED è spento, mentre quando è 1 il LED è acceso. Un byte può controllare una colonna di LED, e naturalmente 16 byte possono controllare 16 colonne di LED, questa è la matrice di punti 8\*16.
 
-**Description des broches et protocole de communication**
+**Descrizione dei pin e protocollo di comunicazione**
 
-Les données du microprocesseur (Arduino) communiquent avec l'AiP1640 via un câble de bus à deux fils.
+I dati del microprocessore (Arduino) comunicano con l'AiP1640 attraverso un cavo bus a due fili.
 
-Le schéma du protocole de communication est le suivant : (SCLK) est SCL, (DIN) est SDA.
+Il diagramma del protocollo di comunicazione è il seguente: (SCLK) è SCL, (DIN) è SDA.
 
 ![](media/ea2bab37f23c09453c680590b84653d6.png)
 
-① La condition de départ pour l'entrée de données : SCL est au niveau haut et SDA passe du niveau haut au niveau bas.
+①La condizione di partenza per l'ingresso dati: SCL è a livello alto e SDA cambia da alto a basso.
 
-② Pour le réglage de la commande de données, il existe des méthodes comme indiqué dans la figure ci-dessous.
+②Per l'impostazione del comando dati, ci sono metodi come mostrato nella figura sottostante.
 
-Dans notre exemple de programme, on sélectionne la méthode d'**incrémentation automatique de l'adresse**, la valeur binaire est 0100 0000 et la valeur hexadécimale correspondante est 0x40.
+Nel nostro programma di esempio, selezionare il metodo per **aggiungere 1 all'indirizzo automaticamente**, il valore binario è 0100 0000 e il corrispondente valore esadecimale è 0x40.
 
 ![](media/image-20230907161100692.png)
 
-③ Pour le réglage de la commande d'adresse, l'adresse peut être sélectionnée comme indiqué ci-dessous.
+③Per l'impostazione del comando indirizzo, l'indirizzo può essere selezionato come mostrato di seguito.
 
-Le premier 00H est sélectionné dans notre exemple de programme, et le nombre binaire 1100 0000 correspond à l'hexadécimal 0xc0.
+Il primo 00H è selezionato nel nostro programma di esempio, e il numero binario 1100 0000 corrisponde all'esadecimale 0xc0.
 
 ![](media/image-20230907161152467.png)
 
-④ La condition pour l'entrée de données est que lorsque SCL est au niveau haut lors de la saisie des données, le signal sur SDA doit rester inchangé. Ce n'est que lorsque le signal d'horloge sur SCL est au niveau bas que le signal sur SDA peut être modifié. La saisie des données se fait d'abord par le bit de poids faible, puis par le bit de poids fort.
+④Il requisito per l'ingresso dati è che quando SCL è a livello alto durante l'inserimento dei dati, il segnale su SDA deve rimanere invariato. Solo quando il segnale di clock su SCL è a livello basso, il segnale su SDA può essere modificato. L'inserimento dei dati avviene prima con il bit meno significativo e poi con il bit più significativo.
 
-⑤ La condition de fin de transmission des données est que lorsque SCL est au niveau bas, SDA au niveau bas et SCL au niveau haut, le niveau de SDA devient haut.
+⑤La condizione per la fine della trasmissione dati è che quando SCL è a livello basso, SDA a livello basso e SCL a livello alto, il livello di SDA diventa alto.
 
-⑥ Contrôle d'affichage, réglage de différentes largeurs d'impulsion ; la largeur d'impulsion peut être sélectionnée comme indiqué dans la figure ci-dessous.
+⑥Controllo del display, impostare diverse larghezze di impulso; la larghezza di impulso può essere selezionata come mostrato nella figura sottostante.
 
-Dans l'exemple, la largeur d'impulsion est de 4/16, et l'hexadécimal correspondant à 1000 1010 est 0x8A.
+Nell'esempio, la larghezza di impulso è 4/16, e l'esadecimale corrispondente a 1000 1010 è 0x8A.
 
 ![](media/image-20230907161220995.png)
 
-**Instructions pour l'utilisation de l'outil de modulation**
+**Istruzioni per l'uso dello strumento modulus**
 
-L'outil de matrice de points utilise la version en ligne, et le lien est : <http://dotmatrixtool.com/#>
+Lo strumento per la matrice di punti utilizza la versione online, e il link è: <http://dotmatrixtool.com/#>
 
-① Entrez le lien et la page apparaît comme indiqué ci-dessous
+①Inserire il link e la pagina appare come mostrato di seguito
 
 ![](media/354693b5679a2615c62e99b7025d6355.png)
 
-② La matrice de points est 8\*16, donc ajustez la hauteur à 8 et la largeur à 16, comme indiqué dans la figure ci-dessous.
+②La matrice di punti è 8\*16, quindi regolare l'altezza a 8 e la larghezza a 16, come mostrato nella figura sottostante.
 
 ![](media/5f0278d66ade370e871b447d360d6e7b.png)
 
-③ Générer des données hexadécimales à partir du motif.
+③Generare dati esadecimali dal pattern.
 
-Comme indiqué dans la figure ci-dessous, appuyez sur le bouton gauche de la souris pour sélectionner, cliquez droit pour annuler ; dessinez le motif souhaité, cliquez sur Générer, et les données hexadécimales dont nous avons besoin seront générées.
+Come mostrato nella figura sottostante, premere il tasto sinistro del mouse per selezionare, fare clic con il tasto destro per annullare; disegnare il pattern desiderato, fare clic su Generate, e i dati esadecimali di cui abbiamo bisogno verranno generati.
 
 ![](media/586e88bf13c61b0918046437ed7f6796.png)
 
-#### **(4) Schéma de connexion :**
+#### **(4)Schema di Collegamento:**
 
 ![](media/cec50fec4a335b6922e4c6694a133bc1.png)
 
-Les broches GND, VCC, SDA et SCL du panneau lumineux LED 8x16 sont respectivement connectées aux broches G(GND), V (VCC), A4 et A5 de la carte d'extension pour la communication série à deux fils.
+GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati rispettivamente a G(GND), V (VCC), A4 e A5 della scheda di espansione per la comunicazione seriale a due fili.
 
-(<span style="color: rgb(255, 76, 65);">Remarque :</span> bien qu'il soit connecté à la broche IIC d'Arduino, ce module n'est pas destiné à la communication IIC. Le port IO ici simule la communication I2C et peut être connecté à deux broches quelconques)
+(<span style="color: rgb(255, 76, 65);">Nota:</span> sebbene sia collegato al pin IIC di Arduino, questo modulo non è per la comunicazione IIC. La porta IO qui serve per simulare la comunicazione I2C e può essere collegata a qualsiasi due pin)
 
-#### **(5) Code de test :**
+#### **(5)Codice di Test:**
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
+Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
 
 ![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -98,43 +98,43 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 ![](media/0f0df06e3ed2adbbe3ffaa20dd3fa0a5.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
 
 ![](media/75e6f65c9a299868d37544ac42c54f66.png)
 
-#### **(6) Résultats du test :**
+#### **(6)Risultati del Test:**
 
-Après avoir téléversé le code de test avec succès, effectuez le câblage, mettez l'interrupteur DIP sur la position ON et mettez sous tension ; un motif en forme de sourire s'affiche sur la matrice de points.
+Dopo aver caricato con successo il codice di test, collegare i cavi, portare l'interruttore DIP sull'estremità ON e alimentare il dispositivo; sulla matrice di punti appare un pattern a forma di sorriso.
 
 ![](media/0fd4831db288e04e75828346ea66a3f5.png)
 
-#### **(7) Pratique d'extension :**
+#### **(7)Pratica di Estensione:**
 
-Nous utilisons l'outil de modulation que nous venons d'apprendre, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), pour faire afficher à la matrice de points les motifs : démarrer, avancer et s'arrêter, puis effacer le motif. L'intervalle de temps est de 2000 ms.
+Utilizziamo lo strumento modulus appena imparato, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), per far visualizzare alla matrice di punti il pattern di avvio, andare avanti, fermarsi e poi cancellare il pattern. L'intervallo di tempo è di 2000 ms.
 
 ![](media/31ab1346c58438ca95c990e4ff963c0d.png)
 
-Bloc pour afficher un visage souriant![](media/1702a82ce685e3e7da7b136cbc51e718.png)
+Blocco per mostrare la faccina sorridente![](media/1702a82ce685e3e7da7b136cbc51e718.png)
 
-Code pour afficher une expression![](media/bae6801afc8fbcc0e7a70c243559c266.png)
+Codice per mostrare l'espressione![](media/bae6801afc8fbcc0e7a70c243559c266.png)
 
-Bloc pour afficher un cœur![](media/dcaa414f16d10068d2c3627959141da6.png)
+Blocco per mostrare il cuore![](media/dcaa414f16d10068d2c3627959141da6.png)
 
-Code pour avancer![](media/8fc218e6b35826aa31f5e00f61414651.png)
+Codice per andare avanti![](media/8fc218e6b35826aa31f5e00f61414651.png)
 
-Bloc pour reculer![](media/043abae4540c578f93772ed9b6648e60.png)
+Blocco per andare indietro![](media/043abae4540c578f93772ed9b6648e60.png)
 
-Bloc pour tourner à gauche![](media/7b3d80a76228ee5b23555af17269a02d.png)
+Blocco per girare a sinistra![](media/7b3d80a76228ee5b23555af17269a02d.png)
 
-Bloc pour tourner à droite![](media/5a84b3538a62367a8f35cc59071c0bda.png)
+Blocco per girare a destra![](media/5a84b3538a62367a8f35cc59071c0bda.png)
 
-Bloc pour s'arrêter![](media/733bd1f96e1c9d116033a317cb507fac.png)
+Blocco per fermarsi![](media/733bd1f96e1c9d116033a317cb507fac.png)
 
-Bloc pour effacer![](media/06d37680acd61c9c5c4113c78c985eca.png)
+Blocco per cancellare![](media/06d37680acd61c9c5c4113c78c985eca.png)
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
+Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
 
 （1）![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -142,13 +142,13 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 （3）![](media/e72e75122897b0ef930196f762080623.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
 
 ![](media/dee30ed46775feb634d4e8e4ec0a189a.png)
 
-Téléversez le code sur la carte de développement ; le panneau 8\*16 affichera les motifs suivants.
+Caricare il codice sulla scheda di sviluppo, il pannello 8\*16 mostrerà i seguenti pattern.
 
 ![](./media/image-20250709134319784.png)
 

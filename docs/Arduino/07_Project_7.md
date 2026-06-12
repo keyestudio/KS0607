@@ -1,47 +1,47 @@
-### Projet 7 : Réception IR
+### Progetto 7: Ricezione IR
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
 ![](media/8969111328604c5358f7c915ac94e474.png)
 
-Il ne fait aucun doute que la télécommande infrarouge est omniprésente dans la vie quotidienne. Elle est utilisée pour contrôler divers appareils électroménagers, tels que les téléviseurs, les chaînes stéréo, les magnétoscopes et les récepteurs de signaux satellitaires. La télécommande infrarouge est composée de systèmes d'émission et de réception infrarouge, c'est-à-dire une télécommande infrarouge, un module de réception infrarouge et un microcontrôleur capable de décoder.
+Non c'è dubbio che il telecomando a infrarossi sia onnipresente nella vita quotidiana. Viene utilizzato per controllare vari elettrodomestici, come televisori, stereo, videoregistratori e ricevitori di segnale satellitare. Il telecomando a infrarossi è composto da sistemi di trasmissione e ricezione a infrarossi, ovvero un telecomando a infrarossi, un modulo ricevitore a infrarossi e un microcontrollore in grado di decodificare.
 
-Le signal porteur infrarouge 38K émis par la télécommande est encodé par la puce d'encodage de la télécommande. Il est composé d'une section de code pilote, de code utilisateur, de code inverse utilisateur, de code de données et de code inverse de données. L'intervalle de temps des impulsions est utilisé pour distinguer si c'est un signal 0 ou 1, et l'encodage est constitué de ces signaux 0 et 1.
+Il segnale portante a infrarossi da 38K emesso dal telecomando viene codificato dal chip di codifica nel telecomando. È composto da una sezione di codice pilota, codice utente, codice utente inverso, codice dati e codice dati inverso. L'intervallo di tempo degli impulsi viene utilizzato per distinguere se si tratta di un segnale 0 o 1, e la codifica è composta da questi segnali 0 e 1.
 
-Le code utilisateur de la même télécommande reste inchangé, tandis que le code de données permet de distinguer les touches.
+Il codice utente dello stesso telecomando rimane invariato mentre il codice dati può distinguere il tasto premuto.
 
-Lorsque le bouton de la télécommande est pressé, la télécommande envoie un signal porteur infrarouge. Lorsque le récepteur IR reçoit le signal, le programme décode le signal porteur et détermine quelle touche a été pressée. Le MCU décode le signal 01 reçu, déterminant ainsi quelle touche de la télécommande a été pressée.
+Quando viene premuto il tasto del telecomando, il telecomando invia un segnale portante a infrarossi. Quando il ricevitore IR riceve il segnale, il programma decodifica il segnale portante e determina quale tasto è stato premuto. Il MCU decodifica il segnale 01 ricevuto, determinando così quale tasto è stato premuto sul telecomando.
 
 ![](media/image-20230426172824683.png)
 
-Le récepteur infrarouge est soudé sur la carte de commande du moteur. Il intègre la réception, l'amplification et la démodulation, dont le CI interne est déjà réglé pour assurer la réception infrarouge et la sortie, et est compatible avec les signaux TTL. Il génère des signaux numériques et convient à la télécommande infrarouge et à la transmission de données infrarouges. Ce module ne comporte que trois broches, notamment signal, VCC et GND, ce qui le rend très pratique pour se connecter et communiquer avec des microcontrôleurs tels qu'Arduino.
+Il ricevitore a infrarossi è saldato sulla scheda di controllo motore. Integra ricezione, amplificazione e demodulazione, il cui IC interno è già regolato per eseguire la ricezione a infrarossi e l'uscita, ed è compatibile con segnali TTL. Produce segnali digitali ed è adatto per il telecomando a infrarossi e la trasmissione dati a infrarossi. Questo modulo dispone di soli tre pin, tra cui segnale, VCC e GND, quindi è molto conveniente da collegare e comunicare con microcontrollori come Arduino.
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
-Tension de fonctionnement : 3,3-5V (DC)
+Tensione di funzionamento: 3.3-5V（DC）
 
-Interface : 3PIN
+Interfaccia: 3PIN
 
-Signal de sortie : Signal numérique
+Segnale di uscita: Segnale digitale
 
-Angle de réception : 90 degrés
+Angolo di ricezione: 90 gradi
 
-Fréquence : 38kHz
+Frequenza: 38khz
 
-Distance de réception : 10m
+Distanza di ricezione: 10m
 
-Récepteur infrarouge intégré sur la carte de commande du moteur :
+Ricevitore a infrarossi integrato sulla scheda di controllo motore：
 
 ![](./media/img-20240117082433.png)
 
 
 
 
-#### **(3) Code de test :**
+#### **(3)Codice di Test:**
 
-Vous devez d'abord importer la bibliothèque IR.
+È necessario importare prima la libreria IR.
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero esserci conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -56,58 +56,58 @@ http://www.keyestudio.com
 
 */
 
-#include <IRremote.h> // déclaration de la bibliothèque IRremote
+#include <IRremote.h> // dichiarazione della libreria IRremote
 
-int RECV_PIN = 3; // définir la broche du récepteur IR comme broche 3
+int RECV_PIN = 3; //definisci i pin del ricevitore IR come 3
 IRrecv irrecv(RECV_PIN);
-decode_results results; // les résultats du décodage sont stockés dans "result" de "decode results"
+decode_results results; //i risultati della decodifica esistono nel "result" di "decode results"
 
 void setup() 
 {
     Serial.begin(9600);
-    irrecv.enableIRIn(); // Activer le récepteur
+    irrecv.enableIRIn(); //Abilita il ricevitore
 }
 
 void loop() 
 {
-    if (irrecv.decode(&results))// décodage réussi, réception d'un ensemble de signaux infrarouges
+    if (irrecv.decode(&results))//decodifica riuscita, ricevuto un insieme di segnali infrarossi
     {
-        Serial.println(results.value, HEX);// Afficher et recevoir le code en hexadécimal 16 bits avec retour à la ligne
-        irrecv.resume(); // Recevoir la valeur suivante
+        Serial.println(results.value, HEX);//Stampa in formato HEX a 16 bit il codice ricevuto
+        irrecv.resume(); //Ricevi il valore successivo
     }
     delay(100);
 }
 ```
 
-#### **(4) Résultats du test :**
+#### **(4)Risultati del Test:**
 
-Téléversez le code de test, ouvrez le moniteur série et réglez le débit en bauds sur 9600, pointez la télécommande vers le récepteur IR. La valeur correspondante sera alors affichée. Si vous maintenez les touches enfoncées un moment, des codes d'erreur apparaîtront.
+Carica il codice di test, apri il monitor seriale e imposta il baud rate a 9600, punta il telecomando verso il ricevitore IR. Verrà visualizzato il valore corrispondente. Se si tiene premuto un tasto per un po', appariranno codici di errore.
 
 ![](media/a484b81d031c8d6e8addb169136fd45c.png)
 
-Ci-dessous, nous avons listé la valeur de chaque bouton de la télécommande Keyestudio. Vous pouvez la conserver comme référence.
+Di seguito abbiamo elencato il valore di ogni pulsante del telecomando Keyestudio. Puoi tenerlo come riferimento.
 
 ![](media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-Le récepteur IR est connecté à D3, donc aucun câblage n'est nécessaire.
+Il ricevitore IR è collegato a D3, quindi non è necessario effettuare alcun collegamento
 
-#### **(5) Explication du code :**
+#### **(5)Spiegazione del Codice:**
 
-**irrecv.enableIRIn() :** après l'activation du décodage IR, les signaux IR seront reçus, puis la fonction "decode()" vérifiera continuellement si le décodage a réussi.
+**irrecv.enableIRIn():** dopo aver abilitato la decodifica IR, i segnali IR verranno ricevuti, quindi la funzione "decode()" verificherà continuamente se la decodifica è avvenuta con successo.
 
-**irrecv.decode(&results) :** après un décodage réussi, cette fonction retournera "true" et conservera le résultat dans "results". Après avoir décodé un signal IR, exécutez la fonction resume() pour recevoir le signal suivant.
+**irrecv.decode(&results):** dopo una decodifica riuscita, questa funzione restituirà "true" e manterrà il risultato in "results". Dopo aver decodificato un segnale IR, esegui la funzione resume() e ricevi il segnale successivo.
 
-#### **(6) Pratique d'extension :**
+#### **(6)Pratica Estesa:**
 
-Nous avons décodé la valeur des touches de la télécommande IR. Que diriez-vous de contrôler une LED avec la valeur mesurée ? Nous pourrions concevoir une expérience.
+Abbiamo decodificato il valore dei tasti del telecomando IR. Che ne dici di controllare un LED con il valore misurato? Potremmo progettare un esperimento.
 
-Connectez une LED à D9, puis appuyez sur les touches de la télécommande pour allumer et éteindre la LED.
+Collega un LED a D9, poi premi i tasti del telecomando per accendere e spegnere il LED.
 
 ![](media/e05da7ef9e7b6f63f414f2ca7e3f4ee3.png)
 
-**Code de test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero esserci conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -117,41 +117,41 @@ IRremote
 http://www.keyestudio.com
 */
 
-#include <IRremote.h> // déclaration IRremote
+#include <IRremote.h> //dichiarazione IRremote
 
-int RECV_PIN = 3; // définir la broche de la LED comme broche 3
+int RECV_PIN = 3; //definisci il pin del LED come pin 3
 int LED = 9;
 bool flag = 0;
 IRrecv irrecv(RECV_PIN);
-decode_results results; // les résultats du décodage sont stockés dans "result" de "decode results"
+decode_results results; //i risultati della decodifica esistono nel "result" di "decode results"
 
 void setup() 
 {
     Serial.begin(9600);
-    pinMode(LED, OUTPUT);// régler la LED en sortie
-    irrecv.enableIRIn(); // Activer le récepteur
+    pinMode(LED, OUTPUT);//imposta LED come uscita
+    irrecv.enableIRIn(); //Abilita il ricevitore
 }
 
 void loop() 
 {
     if (irrecv.decode(&results)) 
     {
-        if (results.value == 0xFF02FD & flag == 0) // Le code de touche ci-dessus, nous utilisons le bouton OK de la télécommande, si vous appuyez sur le bouton OK
+        if (results.value == 0xFF02FD & flag == 0) //Il codice del tasto sopra, usiamo il tasto OK del telecomando, se premi il tasto OK
         {
-            digitalWrite(LED, HIGH); // LED allumée
+            digitalWrite(LED, HIGH); //LED acceso
             flag = 1;
         }
 
-        else if (results.value == 0xFF02FD & flag == 1) // appuyer à nouveau
+        else if (results.value == 0xFF02FD & flag == 1) //premi di nuovo
         {
-            digitalWrite(LED, LOW); // LED éteinte
+            digitalWrite(LED, LOW); //LED spento
             flag = 0;
         }
-        irrecv.resume(); // Recevoir la valeur suivante
+        irrecv.resume(); // Ricevi il valore successivo
     }
 }
 ```
 
-Téléversez le code sur la carte de développement, et appuyez sur la touche "OK" de la télécommande pour allumer et éteindre la LED.
+Carica il codice sulla scheda di sviluppo e premi il tasto "OK" sul telecomando per accendere e spegnere il LED.
 
 ![](./media/img-20240117090645.png)

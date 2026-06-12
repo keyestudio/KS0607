@@ -1,33 +1,33 @@
-### Projet 11 : Char Suiveur à Ultrasons
+### Progetto 11: Tank che Segue il Suono a Ultrasuoni
 
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-Dans la leçon précédente, nous avons appris à propos de la voiture intelligente suiveuse de lumière. Dans cette leçon, nous pouvons combiner les connaissances pour fabriquer une voiture suiveuse à ultrasons. Dans ce projet, nous utilisons des capteurs à ultrasons pour détecter la distance entre la voiture et l'obstacle en face, puis nous contrôlons la rotation des deux moteurs en fonction de ces données afin de contrôler les mouvements de la voiture intelligente.
+Nella lezione precedente, abbiamo imparato a conoscere l'auto intelligente che segue la luce. In questa lezione, possiamo combinare le conoscenze acquisite per realizzare un'auto che segue il suono a ultrasuoni. Nel progetto, utilizziamo sensori a ultrasuoni per rilevare la distanza tra l'auto e l'ostacolo davanti, e poi controlliamo la rotazione dei due motori in base a questi dati in modo da controllare i movimenti dell'auto intelligente.
 
-La logique spécifique de la voiture intelligente suiveuse à ultrasons est présentée dans le tableau ci-dessous :
+La logica specifica dell'auto intelligente che segue il suono a ultrasuoni è mostrata nella tabella seguente:
 
-|                        Détection                        |              Paramètre              |
+|                        Rilevamento                        |              Impostazione              |
 | :-----------------------------------------------------: | :-------------------------------: |
-| La distance (cm) entre la voiture et l'obstacle en face | Régler l'angle du servo à 90° |
-|                      **Condition**                      |           **Mouvement**            |
-|               distance≥20 et distance≤50               |             Avancer              |
-|            10＜distance＜20<br/>distance＞50            |               Arrêt                |
-|                       distance≤10                       |              Reculer              |
+| La distanza (cm) tra l'auto e l'ostacolo frontale | Imposta l'angolo del servo a 90° |
+|                      **Condizione**                      |           **Movimento**            |
+|               distanza≥20 e distanza≤50               |             Vai avanti              |
+|            10＜distanza＜20<br/>distanza＞50            |               Stop                |
+|                       distanza≤10                       |              Vai indietro              |
 
-#### **(2) Organigramme :**
+#### **(2)Diagramma di Flusso:**
 
 ![](media/wps118.png)
 
-#### **(3) Schéma de connexion :**
+#### **(3)Schema di Collegamento:**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-<span style="color: rgb(255, 76, 65);">Remarque :</span> Le câblage du capteur à ultrasons, du servo et du moteur est le même que dans l'expérience du projet précédent. Le GND, VCC, SDA et SCL du panneau LED 8x16 sont respectivement connectés à G (GND), V (VCC), A4 et A5 sur la carte d'extension.
+<span style="color: rgb(255, 76, 65);">Nota:</span> Il collegamento del sensore a ultrasuoni, del servo e del motore è lo stesso dell'esperimento del progetto precedente. GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 sulla scheda di espansione.
 
-#### **(4) Code de test :**
+#### **(4)Codice di Test:**
 
-Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous.
+Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -49,15 +49,15 @@ Vous pouvez également faire glisser des blocs pour éditer votre code, comme in
 
 (10) ![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
 ![](media/b895ca60e3249e09d4c15c356c60099a.png)
 
 
-#### **(5) Résultat du test :**
+#### **(5)Risultato del Test:**
 
-Téléversez le code, mettez sous tension et positionnez l'interrupteur DIP sur ON. Le servo tournera de 90°, le panneau LED 8X16 affichera ![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png), et la voiture suivra l'obstacle pour se déplacer.
+Carica il codice, alimenta il dispositivo e porta l'interruttore DIP su ON. Il servo ruoterà di 90°, il pannello LED 8X16 mostrerà ![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png), e l'auto seguirà l'ostacolo durante il movimento.
 
 ![](./media/img-20240117093900.png)

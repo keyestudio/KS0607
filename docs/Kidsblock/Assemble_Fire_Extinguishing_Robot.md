@@ -1,22 +1,22 @@
-### Assembler le Robot d'Extinction d'Incendie
+### Assemblare il Robot Estintore
 
-Retirez le capteur ultrasonique et les deux photorésistances
+Rimuovere il sensore a ultrasuoni e i due fotoresistori
 
 ![](./media/d575fad4068d67daffaf3958996a185b.png)
 
 ![](./media/3a350ba2fda9f37c8f0870f16c981f7b.png)
 
-Installez un module de ventilateur et deux capteurs de flamme
+Montare un modulo ventilatore e due sensori di fiamma
 
 ![](./media/f1a3dbebcb34d4a390e4b2412d34e03e.png)
 
-Vous pouvez faire installer le module de ventilateur plus loin si le module de ventilateur et les capteurs de flamme interfèrent
+È possibile installare il modulo ventilatore più lontano se il modulo ventilatore e i sensori di fiamma interferiscono
 
 ![](./media/8ec448f8b626fd9f8f0a6941b927c0af.png)
 
-**Câblage**
+**Collegamento dei cavi**
 
-Câblez les deux capteurs de flamme
+Collegare i due sensori di fiamma
 
 ![](./media/e224ea3ffed9b63eda92e9fbd2fc0ed2.png)
 
@@ -34,7 +34,7 @@ Câblez les deux capteurs de flamme
 |      V       |           V           |
 |      A       |          A2           |
 
-Câblez le module de ventilateur
+Collegare il modulo ventilatore
 
 ![](./media/c646fb9322c3f4315b246a36ee1df17c.png)
 
@@ -49,6 +49,6 @@ Câblez le module de ventilateur
 
 
 
- **Nous utilisons une batterie lithium 18650 avec un pôle positif pointu, dont la puissance et la capacité ne sont pas requises.**
+ **Utilizziamo una batteria al litio modello 18650 con polo positivo appuntito, la cui potenza e capacità non sono vincolate.**
 
 ![](./media/img-20240117152622.jpg)

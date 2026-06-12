@@ -1,47 +1,47 @@
-### Projet 12 : Char à Évitement d'Obstacles par Ultrasons
+### Progetto 12: Tank con Evitamento Ostacoli a Ultrasuoni
 
 ![](./media/image-20250709112200577.png)
 
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-Dans le projet précédent, nous avons fabriqué une voiture intelligente de suivi par ultrasons. En réalité, en utilisant les mêmes composants et la même méthode de câblage, il suffit de modifier le code de test pour la transformer en une voiture intelligente à évitement d'obstacles par ultrasons. Cette voiture intelligente peut se déplacer en fonction du mouvement des mains humaines.
+Nel progetto precedente, abbiamo realizzato un'auto intelligente che segue i movimenti utilizzando ultrasuoni. In realtà, utilizzando gli stessi componenti e lo stesso schema di collegamento, è sufficiente modificare il codice di test per trasformarla in un'auto intelligente che evita gli ostacoli con ultrasuoni. Questa auto intelligente può muoversi seguendo il movimento delle mani umane.
 
-Nous utilisons des capteurs à ultrasons pour détecter la distance entre la voiture intelligente et l'obstacle devant elle, puis contrôlons la rotation des deux moteurs en fonction de ces données afin de contrôler les mouvements de la voiture intelligente.
+Utilizziamo i sensori a ultrasuoni per rilevare la distanza tra l'auto intelligente e l'ostacolo di fronte, e quindi controlliamo la rotazione dei due motori in base a questi dati per controllare i movimenti dell'auto intelligente.
 
-|                          Détection                           |        |
+|                          Rilevamento                         |        |
 | :----------------------------------------------------------: | :----: |
-| Distance mesurée par le capteur à ultrasons entre la voiture et l'obstacle devant <br />（régler l'angle du servo à 90°） | a(cm)  |
-| Distance mesurée par le capteur à ultrasons entre la voiture et l'obstacle à droite <br />（régler l'angle du servo à 20°） | a2(cm) |
-| Distance mesurée par le capteur à ultrasons entre la voiture et l'obstacle à gauche <br />（régler l'angle du servo à 160°） | a1(cm) |
-|   **Réglage :** régler l'angle de départ du servo à 90°    |        |
+| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo di fronte <br />（impostare l'angolo del servo a 90°） | a(cm)  |
+| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo a destra <br />（impostare l'angolo del servo a 20°） | a2(cm) |
+| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo a sinistra <br />（impostare l'angolo del servo a 160°） | a1(cm) |
+|   **Impostazione:** impostare l'angolo iniziale del servo a 90°    |        |
 
-|   Condition 1   |        Condition 2         | Condition 3 | Mouvement                                                     |
+|   Condizione 1   |        Condizione 2         | Condizione 3 | Movimento                                                     |
 | :-------------: | :------------------------: | ----------- | ------------------------------------------------------------ |
-|      a＜20      |                            |             | Arrêt pendant 500ms ；<br />régler l'angle du servo à 180°, lire a1, délai de 100ms ；<br />régler l'angle du servo à 0°, lire a2, délai de 0,1s. |
-|                 | a1＜50<br />ou<br />a2＜50 |             | Comparer a1 avec a2                                           |
-|                 |                            | a1＞a2      | Régler l'angle du servo à 90°, tourner à gauche pendant 700ms (régler PWM à 255)<br />avancer（régler PWM à 200）. |
-|                 |                            | a1＜a2      | Régler l'angle du servo à 90°, tourner à droite pendant 700ms (régler PWM à 255) <br />avancer（régler PWM à 200）. |
-| **Condition 1** |      **Condition 2**       |             | **Mouvement**                                                 |
-|      a＜20      | a1≥50<br />et<br />a2≥50  | Aléatoire      | Régler l'angle du servo à 90°, tourner à gauche pendant 500ms (régler PWM à 255)<br />avancer (régler PWM à 200)<br /><br />Régler l'angle du servo à 90°, tourner à droite pendant 500ms (régler PWM à 255) <br />avancer (régler PWM à 200) |
-|  **Condition**  |                            |             | **Mouvement**                                                 |
-|      a≥20       |                            |             | avancer (régler PWM à 100)                                 |
+|      a＜20      |                            |             | Stop per 500ms；<br />impostare l'angolo del servo a 180°, leggere a1, ritardo di 100ms；<br />impostare l'angolo del servo a 0°, leggere a2, ritardo di 0,1s. |
+|                 | a1＜50<br />o<br />a2＜50 |             | Confrontare a1 con a2                                           |
+|                 |                            | a1＞a2      | Impostare l'angolo del servo a 90°, ruotare a sinistra per 700ms (impostare PWM a 255)<br />avanzare（impostare PWM a 200）. |
+|                 |                            | a1＜a2      | Impostare l'angolo del servo a 90°, ruotare a destra per 700ms (impostare PWM a 255) <br />avanzare（impostare PWM a 200）. |
+| **Condizione 1** |      **Condizione 2**       |             | **Movimento**                                                 |
+|      a＜20      | a1≥50<br />e<br />a2≥50  | Casuale      | impostare l'angolo del servo a 90°, ruotare a sinistra per 500ms (impostare PWM a 255)<br />avanzare (impostare PWM a 200)<br /><br />impostare l'angolo del servo a 90°, ruotare a destra per 500ms (impostare PWM a 255) <br />avanzare (impostare PWM a 200) |
+|  **Condizione**  |                            |             | **Movimento**                                                 |
+|      a≥20       |                            |             | avanzare (impostare PWM a 100)                                 |
 
 
 
-#### **(2) Organigramme :**
+#### **(2)Diagramma di flusso:**
 
 ![](media/wps10.png)
 
-#### **(3) Schéma de Connexion :**
+#### **(3)Schema di collegamento:**
 
 ![](media/72a10097d286bc5f9589df031b60484a.png)
 
-(<span style="color: rgb(255, 76, 65);">Remarque :</span> les fils marron, rouge et orange du servo sont respectivement connectés à G (GND), V（5V）et D10 de la carte d'extension ; et pour le capteur à ultrasons, la broche VCC est connectée au 5v (V), la broche Trig au numérique 12 (S), la broche Echo au numérique 13 (S), et la broche Gnd à Gnd (G) ; identique au projet précédent.）
+(<span style="color: rgb(255, 76, 65);">Nota:</span> i fili marrone, rosso e arancione del servo sono collegati rispettivamente a G (GND), V（5V）e D10 della scheda di espansione；e per il sensore a ultrasuoni, il pin VCC è collegato a 5v (V), il pin Trig al digitale 12 (S), il pin Echo al digitale 13 (S), e il pin Gnd a Gnd (G); come nel progetto precedente.）
 
-#### **(4) Code de Test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -50,12 +50,12 @@ Nous utilisons des capteurs à ultrasons pour détecter la distance entre la voi
   Ultrasonic avoid tank
   http://www.keyestudio.com
 */
-#define servoPin 10  // La broche du servo
+#define servoPin 10  //Il pin del servo
 int a, a1, a2;
-#define ML_Ctrl 4  // Définir la broche de contrôle de direction du moteur gauche
-#define ML_PWM 6   // Définir la broche de contrôle PWM du moteur gauche
-#define MR_Ctrl 2  // Définir la broche de contrôle de direction du moteur droit
-#define MR_PWM 5   // Définir la broche de contrôle PWM du moteur droit
+#define ML_Ctrl 4  //Definisce il pin di controllo della direzione del motore sinistro
+#define ML_PWM 6   //Definisce il pin di controllo PWM del motore sinistro
+#define MR_Ctrl 2  //Definisce il pin di controllo della direzione del motore destro
+#define MR_PWM 5   //Definisce il pin di controllo PWM del motore destro
 #define Trig 12
 #define Echo 13
 float distance;
@@ -70,43 +70,43 @@ void setup()
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  procedure(90); // Régler l'angle du servo à 90°
-  delay(500); // délai de 500ms
+  procedure(90); //Imposta l'angolo del servo a 90°
+  delay(500); //ritardo di 500ms
 }
 
 void loop() 
 {
-  a = checkdistance();  // Assigner la distance devant détectée par le capteur à ultrasons à la variable a
+  a = checkdistance();  //Assegna la distanza frontale rilevata dal sensore a ultrasuoni alla variabile a
 
-  if (a < 20) // Lorsque la distance devant est inférieure à 20cm
+  if (a < 20) //Quando la distanza frontale è inferiore a 20cm
   {
-    Car_Stop();  // Le robot s'arrête
-    delay(500); // délai de 500ms
-    procedure(180);  // La tourelle à ultrasons tourne à gauche
-    delay(500); // délai de 500ms
-    a1 = checkdistance();  // Assigner la distance à gauche détectée par le capteur à ultrasons à la variable a1
-    delay(100); // lire la valeur
-    procedure(0); // La tourelle à ultrasons tourne à droite
-    delay(500); // délai de 500ms
-    a2 = checkdistance(); // Assigner la distance à droite détectée par le capteur à ultrasons à la variable a2
-    delay(100); // lire la valeur
+    Car_Stop();  //Il robot si ferma
+    delay(500); //ritardo di 500ms
+    procedure(180);  //Il supporto pan-tilt a ultrasuoni gira a sinistra
+    delay(500); //ritardo di 500ms
+    a1 = checkdistance();  //Assegna la distanza a sinistra rilevata dal sensore a ultrasuoni alla variabile a1
+    delay(100); //leggi il valore
+    procedure(0); //Il supporto pan-tilt a ultrasuoni gira a destra
+    delay(500); //ritardo di 500ms
+    a2 = checkdistance(); //Assegna la distanza a destra rilevata dal sensore a ultrasuoni alla variabile a2
+    delay(100); //leggi il valore
     
-    procedure(90);  // Retour à 90°
+    procedure(90);  //Torna a 90°
     delay(500);
     if (a1 > a2) 
-    { // Lorsque la distance à gauche est supérieure à celle à droite
-      Car_left();  // Le robot tourne à gauche
-      delay(700);  // tourner à gauche pendant 700ms
+    { //Quando la distanza a sinistra è maggiore di quella a destra
+      Car_left();  //Il robot gira a sinistra
+      delay(700);  //gira a sinistra per 700ms
     } 
     else 
     {
-      Car_right(); // Il tourne à droite pendant 700ms
+      Car_right(); //Gira a destra per 700ms
       delay(700);
     }
   } 
-  else // Lorsque la distance devant est >=20cm, le robot avance
+  else//Quando la distanza frontale è >=20cm，il robot avanza
   {    
-    Car_front(); // avancer
+    Car_front(); //vai avanti
   }
 
 }
@@ -151,21 +151,21 @@ void Car_Stop()
   analogWrite(ML_PWM, 0);
 }
 
-// La fonction contrôle les servos
+//La funzione controlla i servo
 void procedure(byte myangle) 
 {
   int pulsewidth;
   for (int i = 0; i < 5; i++) 
   {
-    pulsewidth = myangle * 11 + 500;  // Calculer la valeur de la largeur d'impulsion
+    pulsewidth = myangle * 11 + 500;  //Calcola il valore della larghezza dell'impulso
     digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   // Le temps en niveau haut représente la largeur d'impulsion
+    delayMicroseconds(pulsewidth);   //Il tempo in livello alto rappresenta la larghezza dell'impulso
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  // Comme le cycle est de 20ms, le temps restant est en niveau bas
+    delay((20 - pulsewidth / 1000));  //Poiché il ciclo è di 20ms, il tempo rimanente è in livello basso
   }
 }
 
-// La fonction contrôle les ultrasons
+//La funzione controlla gli ultrasuoni
 float checkdistance() 
 {
   float distance;
@@ -174,14 +174,14 @@ float checkdistance()
   digitalWrite(Trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(Trig, LOW);
-  distance = pulseIn(Echo, HIGH) / 58.20;  // Le 58.20 ici provient de 2*29.1=58.2
+  distance = pulseIn(Echo, HIGH) / 58.20;  //Il 58.20 deriva da 2*29.1=58.2
   delay(10);
   return distance;
 }
 ```
 
-#### **(5) Résultat du Test :**
+#### **(5)Risultato del Test:**
 
-Après avoir téléversé le code de test avec succès, câblé, basculé le commutateur DIP sur la position ON et mis sous tension, la voiture intelligente avance et évite automatiquement les obstacles.
+Dopo aver caricato con successo il codice di test, collegato i cavi, spostato il selettore DIP sull'estremità ON e alimentato il sistema, l'auto intelligente avanza e schiva automaticamente gli ostacoli.
 
 ![](./media/img-20240117090420.png)

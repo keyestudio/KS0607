@@ -1,10 +1,10 @@
-# 2. Installation du Produit
+# 2. Installazione del Prodotto
 
-<span style="color: rgb(255, 76, 65);">**Attention**</span> : Réglez l'angle initial du servo et retirez les films protecteurs des cartes avant d'installer ce robot.
+<span style="color: rgb(255, 76, 65);">**Attenzione**</span>: Impostare l'angolo iniziale del servo e rimuovere le pellicole protettive dalle schede prima di installare questo robot.
 
 ![](./media/image-20250709092645945.png)
 
- **Étape 1**
+ **Step1**
 
 ![KS0607_18](./media/KS0607_18.png)
 
@@ -12,7 +12,7 @@
 
 ![KS0607_20](./media/KS0607_20.png)
 
-Veuillez d'abord effectuer le câblage.
+Prima effettuare i collegamenti elettrici.
 
 ![](./media/image-20250709093344681.png)
 
@@ -24,7 +24,7 @@ Veuillez d'abord effectuer le câblage.
 
 ![KS0607_23](./media/KS0607_23.png)
 
-**Étape 2**
+**Step2 **
 
 ![KS0607_24](./media/KS0607_24.png)
 
@@ -32,7 +32,7 @@ Veuillez d'abord effectuer le câblage.
 
 ![KS0607_26](./media/KS0607_26.png)
 
-**Étape 3**
+**Step 3**
 
 ![KS0607_28](media\KS0607_28.png)
 
@@ -40,7 +40,7 @@ Veuillez d'abord effectuer le câblage.
 
 ![KS0607_30](./media/KS0607_30-177909269696918.png)
 
- **Étape 4**
+ **Step 4**
 
 ![KS0607_31](./media/KS0607_31-17790915380363.png)
 
@@ -54,17 +54,17 @@ Veuillez d'abord effectuer le câblage.
 
 
 
-**Étape 5**
+**Step 5**
 
 ![KS0607_36](./media/KS0607_36-17790915806918.png)
 
-<span style="color: rgb(255, 76, 65);">Notez la direction des cavaliers.</span>
+<span style="color: rgb(255, 76, 65);">Prestare attenzione alla direzione dei ponticelli.</span>
 
 ![KS0607_37](./media/KS0607_37-17790915896649.png)
 
 ![KS0607_38](./media/KS0607_38-177909159600610.png)
 
- **Étape 6**
+ **Step 6**
 
 ![KS0607_39](./media/KS0607_39.png)
 
@@ -72,7 +72,7 @@ Veuillez d'abord effectuer le câblage.
 
 ![KS0607_41](./media/KS0607_41.png)
 
-**Étape 7**
+**Step 7**
 
 ![KS0607_42](./media/KS0607_42.png)
 
@@ -80,35 +80,35 @@ Veuillez d'abord effectuer le câblage.
 
 ![KS0607_44](./media/KS0607_44.png)
 
-**Étape 8**
+**Step 8**
 
-（Il est nécessaire de régler l'angle du servo）
+（È necessario regolare l'angolo del servo）
 
 ![KS0607-098](./media/KS0607-098.jpg)
 
 ![KS0607-097](./media/KS0607-097.jpg)
 
-**Régler l'angle du servo à 90°**
+**Impostare l'angolo del servo a 90°**
 
-Pour ajuster le code du servo, veuillez le sélectionner selon le cours.
+Per regolare il codice del servo, selezionarlo in base al corso.
 
-1.**Arduino :** Téléchargez le fichier de code : [Arduino](./Arduino.7z)
+1.**Arduino:** Scarica il file del codice: [Arduino](./Arduino.7z)
 
 ![](./media/image-20250710110650230.png)
 
-2.**Kidsblock :** Téléchargez le fichier de code : [Kidsblock](./Kidsblock.7z)
+2.**Kidsblock: **Scarica il file del codice: [Kidsblock](./Kidsblock.7z)
 
 ![](./media/image-20250710110906515.png)
 
-**Après avoir initialisé l'angle du servo, installez le module Bluetooth.**
+**Dopo aver inizializzato l'angolo del servo, installare il modulo Bluetooth.**
 
-Gardez le capteur ultrasonique parallèle à la carte.
+Mantenere il sensore ultrasonico parallelo alla scheda.
 
 ![KS0607-096](./media/KS0607-096.jpg)
 
 ![](./media/image-20250709095307371.png)
 
- **Étape 9**
+ **Step 9**
 
 ![KS0607_48](./media/KS0607_48-177909161769011.png)
 
@@ -116,7 +116,7 @@ Gardez le capteur ultrasonique parallèle à la carte.
 
 ![KS0607_50](./media/KS0607_50-177909163131113.png)
 
-**Étape 10**
+**Step 10**
 
 ![KS0607_51](./media/KS0607_51-177909163803814.png)
 
@@ -124,9 +124,9 @@ Gardez le capteur ultrasonique parallèle à la carte.
 
 ![KS0607_53](./media/KS0607_53-177909164907716.png)
 
-**Câblage**
+**Collegamento dei cavi**
 
-Pour le panneau LED 8\*16, connectez les fils à A4 et A5.
+Per il pannello LED 8\*16, collegare i cavi ad A4 e A5.
 
 ![](./media/image-20250709095552072.png)
 
@@ -134,19 +134,19 @@ Pour le panneau LED 8\*16, connectez les fils à A4 et A5.
 
 ![](./media/image-20250709095643567.png)
 
-Connectez le moteur A au port A et le moteur B au port B.
+Collegare il motore A alla porta A e il motore B alla porta B.
 
 ![](./media/image-20250709095728739.png)
 
 ![](./media/image-20250709095740866.png)
 
-Connectez le fil d'alimentation.
+Collegare il cavo di alimentazione.
 
 ![](./media/image-20250709095759390.png)
 
 ![](./media/image-20250709095811580.png)
 
-Capteur de suivi de ligne (voir l'image)
+Sensore di rilevamento linea (vedere l'immagine)
 
 ![](./media/image-20250709095830428.png)
 
@@ -156,49 +156,49 @@ Capteur de suivi de ligne (voir l'image)
 
 ![](./media/image-20250709095911639.png)
 
-Câblage des photorésistances
+Collegare i fotoresistori
 
 ![](./media/image-20250709095929779.png)
 
 ![](./media/image-20250709095939414.png)
 
-| Photorésistance | Keyestudio 8833 Board |
-| :-------------: | :-------------------: |
-|        G        |           G           |
-|        V        |           V           |
-|        s        |          A1           |
+| Fotoresistore | Keyestudio 8833 Board |
+| :-----------: | :-------------------: |
+|       G       |           G           |
+|       V       |           V           |
+|       s       |          A1           |
 
 ![](./media/image-20250709100043670.png)
 
-| Photorésistance | Keyestudio 8833 Board |
-| :-------------: | :-------------------: |
-|        G        |           G           |
-|        V        |           V           |
-|        S        |          V2           |
+| Fotoresistore | Keyestudio 8833 Board |
+| :-----------: | :--------------------: |
+|       G       |           G            |
+|       V       |           V            |
+|       S       |           V2           |
 
-Câblage du capteur ultrasonique.
+Collegare il sensore ultrasonico.
 
 ![](./media/image-20250709100317508.png)
 
 ![](./media/image-20250709100329430.png)
 
-| Capteur Ultrasonique | Keyestudio 8833 Board |
-| :------------------: | :-------------------: |
-|         Vcc          |           V           |
-|         Trig         |          D12          |
-|         Echo         |          D13          |
-|         Gnd          |           G           |
+| Sensore Ultrasonico | Keyestudio 8833 Board |
+| :-----------------: | :-------------------: |
+|        Vcc        |           V           |
+|       Trig        |          D12          |
+|       Echo        |          D13          |
+|        Gnd        |           G           |
 
-Câblage du servo (D10)
+Collegare il servo (D10)
 
 ![](./media/image-20250709100626238.png)
 
 | Servo  | Keyestudio 8833 Board |
 | :----: | :-------------------: |
-| Marron |           G           |
-| Rouge  |         V(5V)         |
+| Brown  |           G           |
+|  Red   |         V(5V)         |
 | Orange |          D10          |
 
-<span style="color: rgb(255, 76, 65);">**Nous utilisons une batterie lithium 18650 avec un pôle positif pointu, dont la puissance et la capacité ne sont pas imposées.**</span>
+<span style="color: rgb(255, 76, 65);">**Si utilizza una batteria al litio 18650 con polo positivo a punta, per la quale la potenza e la capacità non sono vincolanti.**</span>
 
 ![](./media/image-20250709100841625.png)

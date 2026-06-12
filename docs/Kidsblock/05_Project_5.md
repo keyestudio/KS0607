@@ -1,50 +1,50 @@
-### Projet 5 : Contrôle du Servomoteur
+### Progetto 5: Controllo del Servomotore
 
-#### **(1)Description :**
+#### **(1)Descrizione:**
 
-Un servomoteur est un actionneur rotatif de contrôle de position. Il se compose principalement d'un boîtier, d'une carte de circuit imprimé, d'un moteur sans noyau, d'un engrenage et d'un capteur de position. Son principe de fonctionnement est que le servo reçoit le signal envoyé par le MCU ou le récepteur et produit un signal de référence avec une période de 20ms et une largeur de 1,5ms. Il compare ensuite la tension de polarisation CC acquise à la tension du potentiomètre et obtient la sortie de différence de tension.
+Un servomotore è un attuatore rotante per il controllo della posizione. È composto principalmente da un alloggiamento, una scheda circuito, un motore senza nucleo, un ingranaggio e un sensore di posizione. Il suo principio di funzionamento è che il servo riceve il segnale inviato dal MCU o dal ricevitore e produce un segnale di riferimento con un periodo di 20ms e una larghezza di 1,5ms. Confronta quindi la tensione di polarizzazione CC acquisita con la tensione del potenziometro e ottiene l'uscita della differenza di tensione.
 
-Lorsque la vitesse du moteur est constante, le potentiomètre est entraîné en rotation par l'engrenage de réduction en cascade, ce qui fait que la différence de tension est 0, et le moteur s'arrête de tourner. En général, la plage d'angle de rotation du servo est de 0° à 180°.
+Quando la velocità del motore è costante, il potenziometro viene azionato a ruotare attraverso l'ingranaggio di riduzione a cascata, il che porta la differenza di tensione a 0 e il motore si ferma. In generale, l'angolo di rotazione del servo è compreso tra 0° e 180°.
 
-L'angle de rotation du servomoteur est contrôlé en réglant le rapport cyclique du signal PWM (Modulation de Largeur d'Impulsion). La période standard du signal PWM est de 20ms (50Hz). Théoriquement, la largeur est distribuée entre 1ms et 2ms, mais en pratique, elle est entre 0,5ms et 2,5ms. La largeur correspond à l'angle de rotation de 0° à 180°. Notez que pour différentes marques de moteurs, le même signal peut entraîner des angles de rotation différents.
+L'angolo di rotazione del servomotore è controllato regolando il ciclo di lavoro del segnale PWM (Pulse-Width Modulation). Il ciclo standard del segnale PWM è 20ms (50Hz). Teoricamente, la larghezza è distribuita tra 1ms-2ms, ma in realtà è tra 0,5ms-2,5ms. La larghezza corrisponde all'angolo di rotazione da 0° a 180°. Si noti che per motori di marchi diversi, lo stesso segnale può risultare in angoli di rotazione diversi.
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-En général, le servo possède trois fils de couleur marron, rouge et orange. Le fil marron est la masse, le rouge est le fil du pôle positif et l'orange est le fil du signal.
+In generale, il servo ha tre fili: marrone, rosso e arancione. Il filo marrone è la massa, quello rosso è il polo positivo e quello arancione è il filo del segnale.
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-L'angle du servo :
+L'angolo del servo:
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)Paramètres :**
+#### **(2)Parametri:**
 
-- Tension de fonctionnement : DC 4,8V \~ 6V
+- Tensione di lavoro: DC 4,8V \~ 6V
 
-- Plage d'angle de fonctionnement : environ 180° (à 500 → 2500 μsec)
+- Intervallo angolo operativo: circa 180° (a 500 → 2500 μsec)
 
-- Plage de largeur d'impulsion : 500 → 2500 μsec
+- Intervallo larghezza impulso: 500 → 2500 μsec
 
-- Vitesse à vide : 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
+- Velocità a vuoto: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
 
-- Courant à vide : 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
+- Corrente a vuoto: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
 
-- Couple d'arrêt : 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
+- Coppia di stallo: 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
 
-- Courant d'arrêt : ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
+- Corrente di stallo: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
 
-- Courant de veille : 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
+- Corrente in standby: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
 
-#### **(3)Schéma de Connexion :**
+#### **(3)Schema di Collegamento:**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Les fils marron, rouge et orange du servo sont respectivement connectés à Gnd(G), 5v(V) et D10 du shield. N'oubliez pas de connecter une alimentation externe en raison du courant élevé du servo. Sinon, la carte de développement sera endommagée.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span> I fili marrone, rosso e arancione del servo sono collegati rispettivamente a Gnd(G), 5v(V) e D10 dello shield. Ricordare di collegare un'alimentazione esterna a causa dell'elevata corrente del servo. In caso contrario, la scheda di sviluppo potrebbe bruciarsi.
 
-#### **(4)Code de Test :**
+#### **(4)Codice di Test:**
 
-Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
+È possibile anche trascinare i blocchi per modificare il codice, come mostrato di seguito
 
 ![](media/5b04350e0310955ee2ecd48338f556a3.png)
 
@@ -54,14 +54,14 @@ Vous pouvez également faire glisser des blocs pour éditer votre code, comme in
 
 ![](media/e149b45054fe94196dea220b319cb0bf.png)
 
-**Code de Test Complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
 ![](media/26e37037daf84d69320b76dd13346cd1.png)
 
-#### **(6)Résultats du Test :**
+#### **(6)Risultati del Test:**
 
-Téléversez le code, branchez l'alimentation et le servo se déplace dans la plage de 0° à 180°.
+Caricare il codice, collegare l'alimentazione e il servo si muove nell'intervallo tra 0° e 180°.
 
 ![](./media/img-20240117092225.png)

@@ -1,39 +1,39 @@
-## 4.1 Téléchargement des données
+## 4.1 Download dei dati
 
-Les informations Arduino contiennent des fichiers de bibliothèque et le code du projet. Veuillez cliquer pour télécharger pour l'étude suivante.
+Le informazioni su Arduino contengono file di libreria e codice del progetto. Clicca per scaricarli per lo studio successivo.
 
-Téléchargement des données : [Arduino Data](./Arduino.7z)
+Download dei dati:[Arduino Data](./Arduino.7z)
 
-## 4.2 Téléchargement du logiciel
+## 4.2 Download del software
 
-Lorsque nous obtenons la carte de contrôle, nous devons d'abord télécharger l'Arduino IDE et le pilote.
+Quando otteniamo la scheda di controllo, dobbiamo prima scaricare l'Arduino IDE e il driver.
 
-Vous pouvez télécharger l'Arduino IDE depuis le site officiel : <https://www.arduino.cc/en/software>.
+Puoi scaricare l'Arduino IDE dal sito ufficiale:<https://www.arduino.cc/en/software>.
 
-Il existe différentes versions d'Arduino. Téléchargez simplement une version adaptée à votre système. Nous prendrons le système WINDOWS comme exemple pour vous montrer comment le télécharger et l'installer.
+Esistono varie versioni di Arduino. Scarica semplicemente una versione adatta al tuo sistema. Prenderemo il sistema WINDOWS come esempio per mostrarti come scaricarlo e installarlo.
 
 ![](./media/Animati.gif)
 
-Il vous suffit de cliquer sur JUST DOWNLOAD, puis de cliquer sur le fichier téléchargé pour l'installer.
+Devi solo cliccare su JUST DOWNLOAD, poi cliccare sul file scaricato per installarlo.
 
-Et lorsque le fichier ZIP est téléchargé, vous pouvez directement le décompresser et le démarrer.
+E quando il file ZIP è scaricato, puoi decomprimerlo direttamente e avviarlo.
 
 ![](./media/Animat.gif)
 
-## 4.3 Configurer l'Arduino IDE
+## 4.3 Configurazione dell'Arduino IDE
 
-1. Connecter la carte à l'ordinateur.
+1. Collegamento della scheda al computer.
 
 ![](./media/Anima.gif)
 
-## 4.4 Ajouter une bibliothèque
+## 4.4 Aggiunta di librerie
 
-Que sont les bibliothèques ?
+Cosa sono le librerie?
 
-Les bibliothèques sont une collection de code qui vous permet de vous connecter facilement à un capteur, un écran, un module, etc.
+Le librerie sono una raccolta di codice che ti permette di collegarti facilmente a un sensore, display, modulo, ecc.
 
-Des centaines de bibliothèques supplémentaires sont disponibles sur Internet au téléchargement.
+Sono disponibili centinaia di librerie aggiuntive su Internet da scaricare.
 
-Nous vous présenterons la méthode la plus simple pour ajouter des bibliothèques.
+Ti illustreremo il modo più semplice per aggiungere le librerie.
 
 ![](./media/Anim.gif)

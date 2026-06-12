@@ -1,30 +1,30 @@
-### Projet 13 : Char se déplaçant dans un espace confiné
+### Progetto 13: Serbatoio di Movimento in Spazio Confinato
 
 
-#### **(1)Description :**
+#### **(1)Descrizione:**
 
-Les fonctions de suivi par ultrasons et d'évitement d'obstacles du véhicule intelligent ont été présentées dans les projets précédents. Ici, nous avons l'intention de combiner les connaissances des cours précédents pour confiner le véhicule intelligent à se déplacer dans un certain espace. Dans l'expérience, nous utilisons le capteur de suivi de ligne pour détecter s'il y a une ligne noire autour du véhicule intelligent, puis nous contrôlons la rotation des deux moteurs en fonction des résultats de détection, afin de confiner le véhicule intelligent dans un cercle tracé avec une ligne noire.
+Le funzioni di inseguimento degli ultrasuoni e di evitamento degli ostacoli dell'auto intelligente sono state introdotte nei progetti precedenti. Qui, intendiamo combinare le conoscenze dei corsi precedenti per confinare l'auto intelligente a muoversi all'interno di un determinato spazio. Nell'esperimento, utilizziamo il sensore di rilevamento della linea per rilevare se c'è una linea nera intorno all'auto intelligente, e poi controlliamo la rotazione dei due motori in base ai risultati del rilevamento, in modo da bloccare l'auto intelligente all'interno di un cerchio disegnato con una linea nera.
 
-La logique spécifique du véhicule intelligent est présentée dans le tableau ci-dessous :
+La logica specifica dell'auto intelligente è mostrata nella tabella seguente:
 
 ![](media/image-20230525114604923.png)
 
-|                         Condition                         |                         Mouvement                          |
+|                         Condizione                         |                         Movimento                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| Si l'un des trois capteurs de suivi de ligne détecte des lignes noires | Reculer（régler le PWM à 150）Puis tourner à gauche（régler le PWM à 150） |
-|             Aucun d'eux ne détecte de lignes noires              |               Avancer（régler le PWM à 100）                |
+| Se uno dei tre sensori di rilevamento della linea rileva linee nere | Vai indietro（imposta PWM a 150）Poi gira a sinistra（imposta PWM a 150） |
+|             Nessuno di essi rileva linee nere              |               Vai avanti（imposta PWM a 100）                |
 
-#### **(2)Organigramme**
+#### **(2)Diagramma di flusso**
 
 ![](media/b3c30f92cb78d4c2a4a8bd746aef24e1.png)
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di collegamento:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Code de test :**
+#### **(4)Codice di Test:**
 
-Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
+Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -44,14 +44,14 @@ Vous pouvez également faire glisser des blocs pour éditer votre code, comme in
 
 （9）![](media/b919eb2b47ee87ae36e21099e754e8a1.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/e656126c11bb8ebe7b6b0df8f22e7a79.png)
 
-#### **(5)Résultats du test :**
+#### **(5)Risultati del Test:**
 
-Après avoir téléversé le code de test avec succès et mis sous tension, le véhicule intelligent se déplace dans un cercle tracé avec une ligne noire.
+Dopo aver caricato con successo il codice di test e aver alimentato il dispositivo, l'auto intelligente si muove all'interno di un cerchio disegnato con una linea nera.
 
 ![](./media/img-20240117094034.png)

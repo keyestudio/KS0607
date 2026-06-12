@@ -1,137 +1,138 @@
-### Projet 16 : Télécommande Bluetooth
+### Progetto 16: Controllo Remoto Bluetooth
 
 ![](./media/img-20240111140012.png)
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-Au cours des dernières décennies, le Bluetooth est devenu le module de communication sans fil le plus populaire car il est facile à utiliser et a trouvé de nombreuses applications dans la plupart des appareils alimentés par des batteries.
+Negli ultimi decenni, il Bluetooth è diventato il modulo di comunicazione wireless più diffuso perché è facile da usare e ha trovato ampie applicazioni nella maggior parte dei dispositivi alimentati a batteria.
 
-Afin de s'adapter à l'époque, à la réalité et aux besoins des clients, le Bluetooth a été mis à niveau plusieurs fois. Ces dernières années, il a connu de nombreuses transformations en termes de débit de transfert de données, de consommation d'énergie des appareils portables et des appareils IoT, de systèmes de sécurité et autres. Nous prévoyons ici d'apprendre à utiliser le DX-BT24 avec une carte Arduino.
+Per adattarsi ai tempi, alla realtà e alle esigenze dei clienti, il Bluetooth è stato aggiornato più volte. Negli ultimi anni ha subito molte trasformazioni in termini di velocità di trasferimento dati, consumo energetico dei dispositivi indossabili e dei dispositivi IoT, sistemi di sicurezza e altro ancora. Qui, intendiamo studiare il DX-BT24 con la scheda Arduino.
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
-- Protocole Bluetooth : Bluetooth Specification V5.1 BLE
+- Protocollo Bluetooth: Bluetooth Specification V5.1 BLE
 
-- Envoi et réception par port série sans limite d'octets
+- Invio e ricezione tramite porta seriale senza limite di byte
 
-- Distance de communication : 40 m (environnement ouvert)
+- Distanza di comunicazione: 40m (ambiente aperto)
 
-- Fréquence de fonctionnement : bande ISM 2,4 GHz
+- Frequenza operativa: banda ISM 2.4GHz
 
-- Méthode de modulation : GFSK (Gaussian Frequency Shift Keying)
+- Metodo di modulazione: GFSK (Gaussian Frequency Shift Keying)
 
-- Fonctions de sécurité : Authentification et Chiffrement
+- Caratteristiche di sicurezza: Autenticazione e Cifratura
 
-- Services pris en charge : UUIDs Central et Peripheral FFE0, FFE1, FFE2
+- Servizi supportati: UUID Central e Peripheral FFE0, FFE1, FFE2
 
-- Consommation d'énergie : mode veille automatique, courant de veille 400uA\~800uA, 8,5 mA lors de la transmission.
+- Consumo energetico: modalità di sospensione automatica, corrente in standby 400uA\~800uA, 8.5mA durante la trasmissione.
+  
+- Alimentazione: 5V
 
-- Alimentation : 5 V
+- Temperatura operativa: da –10 a +65 gradi Celsius
 
-- Température de fonctionnement : –10 à +65 degrés Celsius
+#### **(3)Schema di Collegamento:**
 
-#### **(3) Schéma de connexion :**
+1.STATE è il pin di test dello stato collegato al diodo emettitore di luce interno e di solito rimane non collegato.
 
-1. STATE est la broche de test d'état connectée à la diode électroluminescente interne et reste généralement non connectée.
+2.RXD è l'interfaccia della porta seriale per il terminale di ricezione.
 
-2. RXD est l'interface de port série pour le terminal de réception.
+3.TXD è l'interfaccia della porta seriale per il terminale di invio.
 
-3. TXD est l'interface de port série pour le terminal d'émission.
+4.GND è per la messa a terra.
 
-4. GND est la masse.
+5.VCC è il polo positivo.
 
-5. VCC est le pôle positif.
+6.EN/BRK: la sua disconnessione rappresenta la disconnessione del Bluetooth e di solito rimane non collegato.
 
-6. EN/BRK : sa déconnexion entraîne la déconnexion du Bluetooth et elle reste généralement non connectée.
-
-(Remarque : ici le Bluetooth est directement lié au shield V2 et **veuillez faire attention au sens**)
+(Nota: qui il Bluetooth è collegato direttamente con lo shield V2 e **prestare attenzione alla direzione**)
 
 ![](media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
 
-#### **(4) Télécharger et installer l'APP :**
+#### **(4)Scarica e installa l'APP:**
 
-##### **Pour le système iOS**
+##### **Per sistema IOS**
 
-1\. Ouvrir l'App Store.
+1\. Apri App Store.
 
-2\. Rechercher <span style="color: rgb(61, 167, 66);">KeyesRobot</span> dans l'Apple Store et cliquer sur télécharger.
+2\. Cerca <span style="color: rgb(61, 167, 66);">KeyesRobot</span> nell'Apple Store e clicca su scarica.
 
 ![](./media/img-20240111141301.png)
 
-3\. Une fois l'application installée, vous verrez l'icône suivante sur le bureau de votre téléphone.
+3\. Dopo l'installazione dell'app, vedrai la seguente icona sul desktop del tuo telefono.
 
 ![](./media/img-20240111141412.png)
 
-**Comment connecter un iPhone iOS au module Bluetooth :**
+**Come collegare un telefono iOS al modulo Bluetooth:**
 
-1\. Activer le Bluetooth et les services de localisation sur le téléphone via les paramètres.
+1\. Attiva il Bluetooth e i servizi di localizzazione sul telefono tramite le impostazioni.
 
 ![](./media/img-20240111141943.png)
 
-2\. Autoriser l'application KeyesRobot à accéder au Bluetooth via les paramètres.
+2\. Consenti all'app KeyesRobot di accedere al Bluetooth tramite le impostazioni.
 
 ![](./media/img-20240111142052.png)
 
-3\. Cliquer pour ouvrir l'application KeyesRobot.
+3\. Clicca per aprire l'app KeyesRobot.
 
 ![](./media/img-20240111142140.png)
 
-4\. L'application KeyesRobot est une application universelle, applicable à plusieurs robots keyestudio. Si l'interface n'affiche pas « TANK ROBOT », vous pouvez cliquer sur les boutons gauche et droit pour trouver « TANK ROBOT ».
+4\. KeyesRobot App è un'APP universale, applicata a più robot keyestudio. Se l'interfaccia non mostra "TANK ROBOT", puoi cliccare i pulsanti sinistra e destra per trovare "TANK ROBOT".
 
-5\. Cliquer sur le bouton <span style="color: rgb(61, 167, 66);">Bluetooth</span> ![](./media/img-20240111142336.png) dans le coin supérieur droit pour scanner le Bluetooth.
+5\. Clicca il pulsante <span style="color: rgb(61, 167, 66);">Bluetooth</span> ![](./media/img-20240111142336.png) nell'angolo in alto a destra per scansionare il bluetooth
 
 ![](./media/img-20240111142415.png)
 
-6\. Vous verrez un Bluetooth nommé <span style="color: rgb(0, 209, 0);">**BT24**</span>, cliquer sur le bouton <span style="color: rgb(255, 169, 0);">Connect</span>.
+6\. Vedrai un Bluetooth di nome <span style="color: rgb(0, 209, 0);">**BT24**</span>, clicca il pulsante <span style="color: rgb(255, 169, 0);">Connect</span>.
 
 ![](./media/img-20240111142536.png)
 
-7\. Si la LED embarquée sur le module Bluetooth cesse de clignoter et reste allumée, cela signifie que votre téléphone est correctement connecté au module Bluetooth.
+7\. Se il LED integrato sul modulo Bluetooth smette di lampeggiare e rimane acceso, significa che il tuo telefono è connesso con successo al modulo Bluetooth.
 
 ![](./media/img-20240111142702.png)
 
 
-##### **Pour le système Android**
+##### **Per sistema Android**
 
-1\. Rechercher <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> sur Google Play, ou ouvrir le lien suivant pour télécharger et installer l'application.
+1\. Cerca <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> su Google Play, oppure apri il seguente link per scaricare e installare l'app.
 
 [https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio](https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio)
 
 ![](./media/img-20240111143312.png)
 
-2\. Activer le Bluetooth et les services de localisation du téléphone mobile.
+2\. Attiva il Bluetooth e i servizi di localizzazione del telefono cellulare
 
 ![](./media/img-20240111143354.png)
 
-3\. Trouver l'application Bluetooth KeyesRobot dans les paramètres, cliquer sur les options de permissions de l'application et activer les permissions de Localisation et des appareils à proximité. (<span style="color: rgb(255, 76, 65);">Remarque :</span> Certains téléphones mobiles ne disposent pas de la fonction de permissions des appareils à proximité.)
+3\. Trova l'app Bluetooth KeyesRobot dalle impostazioni, clicca sulle opzioni dei permessi dell'app e
+abilita i permessi di Posizione e dispositivi nelle vicinanze.(<span style="color: rgb(255, 76, 65);">Nota:</span> Alcuni telefoni cellulari non dispongono della funzione dei permessi per i dispositivi nelle vicinanze.)
 
 ![](./media/img-20240111143451.png)
 
-4\. Cliquer pour ouvrir l'application KeyesRobot.
+4\. Clicca per aprire l'app KeyesRobot.
 
 ![](./media/img-20240111143529.png)
 
-5\. L'application KeyesRobot est une application universelle, applicable à plusieurs robots keyestudio. Si l'interface n'affiche pas « TANK ROBOT », vous pouvez cliquer sur les boutons gauche et droit pour trouver « TANK ROBOT ».
+5\. KeyesRobot App è un'APP universale, applicata a più robot keyestudio. Se l'interfaccia non mostra "TANK ROBOT", puoi cliccare i pulsanti sinistra e destra per trovare "TANK ROBOT".
 
-6\. Cliquer sur le bouton <span style="color: rgb(61, 167, 66);">Bluetooth</span> ![](./media/img-20240111142336.png) dans le coin supérieur droit pour scanner le Bluetooth.
+6\. Clicca il pulsante <span style="color: rgb(61, 167, 66);">Bluetooth</span> ![](./media/img-20240111142336.png) nell'angolo in alto a destra per scansionare il bluetooth
 
 ![](./media/img-20240111142415.png)
 
-7\. Vous verrez un Bluetooth nommé <span style="color: rgb(0, 209, 0);">**BT24**</span>, cliquer sur le bouton <span style="color: rgb(255, 169, 0);">Connect</span>.
+7\. Vedrai un Bluetooth di nome <span style="color: rgb(0, 209, 0);">**BT24**</span>, clicca il pulsante <span style="color: rgb(255, 169, 0);">Connect</span>.
 
 ![](./media/img-20240111143910.png)
 
-8\. Lorsque votre téléphone est correctement connecté au module Bluetooth, la LED embarquée sur le module Bluetooth cessera de clignoter et restera allumée.
+8\. Quando il tuo telefono è connesso con successo al modulo Bluetooth, il LED integrato sul modulo Bluetooth smetterà di lampeggiare e rimarrà acceso.
 
 ![](./media/img-20240111144004.png)
 
 ![](./media/img-20240111142702.png)
 
 
-#### **(5) Tester l'application Bluetooth :**
+#### **(5)Testare l'APP Bluetooth:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -141,7 +142,7 @@ Bluetooth
 http://www.keyestudio.com
 */
 
-char ble_val; // Variable de type caractère (utilisée pour stocker la valeur reçue par Bluetooth)
+char ble_val; // Variabile carattere (usata per memorizzare il valore ricevuto dal Bluetooth)
 
 void setup() 
 {
@@ -150,51 +151,51 @@ void setup()
 
 void loop() 
 {
-    if (Serial.available() > 0) // Déterminer s'il y a des données dans le tampon du port série
+    if (Serial.available() > 0) // Determina se ci sono dati nel buffer della porta seriale
     {
-        ble_val = Serial.read(); // Lire les données dans le tampon du port série
-        Serial.println(ble_val); // Afficher
+        ble_val = Serial.read(); // Legge i dati nel buffer della porta seriale
+        Serial.println(ble_val); // Stampa
     }
 }
 ```
 
-Téléverser le code sur la carte de développement, puis brancher le module Bluetooth, puis connecter le téléphone mobile au module Bluetooth.
+Carica il codice sulla scheda di sviluppo, poi inserisci il modulo Bluetooth e connetti il telefono cellulare al modulo Bluetooth.
 
-Une fois le téléphone mobile correctement connecté au module Bluetooth, cliquer pour ouvrir l'application Bluetooth et cliquer sur le bouton <span style="color: rgb(0, 252, 255);">Select</span> sur la <span style="color: rgb(0, 252, 255);">page d'accueil</span>.
+Dopo che il telefono cellulare è connesso con successo al modulo Bluetooth, clicca per aprire l'APP Bluetooth e clicca il pulsante <span style="color: rgb(0, 252, 255);">Select</span> sulla <span style="color: rgb(0, 252, 255);">homepage</span>.
 
 ![](./media/img-20240111144744.png)
 
-L'interface principale de l'application Bluetooth est illustrée dans la figure ci-dessous.
+L'interfaccia principale dell'app Bluetooth è mostrata nella figura seguente.
 
 ![](./media/img-20240111144859.png)
 
-Une fois le code ci-dessus téléversé avec succès, ouvrir le moniteur série de l'IDE Arduino et régler le débit en bauds à 9600. Cliquer sur l'icône dans l'interface de l'application et le moniteur série affichera la commande envoyée par le bouton.
+Dopo che il codice sopra è stato caricato con successo, apri il monitor seriale dell'Arduino IDE e imposta la velocità di baud a 9600. Clicca l'icona sull'interfaccia dell'APP e il monitor seriale mostrerà il comando inviato dal pulsante.
 
 ![](media/805f8ee5c8998a5d6cb8bcef9da09186.png)
 
 <br>
 <br>
-<span style="color: rgb(255, 76, 65);">**Remarque : La méthode de connexion de l'application est la même que ci-dessous.**</span>
+<span style="color: rgb(255, 76, 65);">**Nota: Il metodo di connessione dell'APP è lo stesso di seguito.**</span>
 <br>
 <b>
 
-#### **(6) Explication du code :**
+#### **(6)Spiegazione del Codice:**
 
-**Serial.available()** représente le nombre de caractères actuellement restants dans le tampon du port série.
+**Serial.available()** rappresenta il numero di caratteri attualmente rimanenti nel buffer della porta seriale.
 
-Cette fonction est généralement utilisée pour déterminer s'il y a des données dans cette zone. Lorsque Serial.available()\>0, cela signifie que le port série a reçu des données et qu'elles peuvent être lues.
+Questa funzione è generalmente usata per determinare se ci sono dati in quest'area. Quando Serial.available()\>0, significa che la porta seriale ha ricevuto dati e può essere letta.
 
-**Serial.read()** fait référence à l'extraction et à la lecture d'un octet de données du tampon du port série. Par exemple, si un appareil envoie des données à l'Arduino via le port série, nous pouvons utiliser Serial.read() pour lire les données envoyées.
+**Serial.read()** si riferisce al prelievo e alla lettura di un Byte di dati dal buffer della porta seriale. Ad esempio, se un dispositivo invia dati all'Arduino tramite la porta seriale, possiamo usare Serial.read() per leggere i dati inviati.
 
-#### **(7) Projet d'extension :**
+#### **(7)Progetto di Espansione:**
 
-Ici, nous utilisons la commande envoyée par le téléphone mobile pour allumer ou éteindre une LED. En regardant le schéma de câblage, une LED est connectée à la broche D9.
+Qui usiamo il comando inviato dal telefono cellulare per accendere o spegnere un LED. Guardando il diagramma di cablaggio, un LED è collegato al pin D9.
 
 ![](media/549c10efcf47f29f8f6355d8cd0497cc.png)
 
-**Code de test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">Remarque : </span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série du Bluetooth, ce qui peut entraîner l'échec du téléversement du code.)
+(<span style="color: rgb(255, 76, 65);">Nota: </span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale del Bluetooth, che possono causare il fallimento del caricamento del codice.)
 
 ```C
 /*
@@ -205,7 +206,7 @@ http://www.keyestudio.com
 */
 
 int LED = 9;
-char ble_val; // Variable entière utilisée pour stocker la valeur reçue par Bluetooth
+char ble_val; // Variabile intera usata per memorizzare il valore ricevuto dal Bluetooth
 
 void setup() 
 {
@@ -216,9 +217,9 @@ void setup()
 void loop() 
 {
 
-    if (Serial.available() > 0) // Déterminer s'il y a des données dans le tampon du port série
+    if (Serial.available() > 0) // Determina se ci sono dati nel buffer della porta seriale
     {
-        ble_val = Serial.read(); // Lire les données du tampon du port série
+        ble_val = Serial.read(); // Legge i dati dal buffer della porta seriale
         Serial.print("DATA RECEIVED:");
         Serial.println(ble_val);
         if (ble_val == 'a') 
@@ -237,10 +238,10 @@ void loop()
 
 ![](media/3577f17c526b1dc55d4f587ef95f2d08.png)
 
-Une fois le code ci-dessus téléversé avec succès, ouvrir le moniteur série de l'IDE Arduino et régler le débit en bauds à 9600. Cliquer sur ![](media/3fd6c998c0f665fb607a5827794b9bfe.png) pour contrôler la LED. En cliquant dessus, un caractère a sera envoyé, puis la LED s'allumera. Si ce bouton est pressé à nouveau, la LED s'éteindra.
+Dopo che il codice sopra è stato caricato con successo, apri il monitor seriale dell'Arduino IDE e imposta la velocità di baud a 9600. Clicca ![](media/3fd6c998c0f665fb607a5827794b9bfe.png) per controllare il LED. Quando si clicca, verrà inviato il carattere a, quindi il LED si accenderà. Se questo pulsante viene premuto di nuovo, il LED si spegnerà.
 
 ![](./media/img-20240117094533.png)
 
 ![](media/b45c3c46391467218fe07003dbb2f3e3.png)
 
-Vous devez retirer le module BT une fois les projets terminés.
+È necessario rimuovere il modulo BT al termine dei progetti.

@@ -1,45 +1,45 @@
-### Projet 18 : Fonctions Multiples du Robot Tank à Ultrasons
+### Progetto 18: Robot Carro Armato a Ultrasuoni - Funzioni Multiple
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-La voiture intelligente a exécuté une seule fonction dans chacun des projets précédents.
+Il robot auto intelligente ha eseguito una singola funzione in ogni progetto precedente.
 
-Peut-elle afficher plusieurs fonctions à la fois ? Oui, elle le peut.
+Può visualizzare più funzioni contemporaneamente? Sì, può farlo.
 
-Dans ce dernier grand projet, nous avons l'intention d'utiliser un code complet pour contrôler la voiture intelligente afin de démontrer toutes les fonctions mentionnées dans les projets précédents. Nous utilisons les touches de l'application Bluetooth pour basculer automatiquement entre les différentes fonctions, ce qui est très simple et pratique.
+In questo ultimo grande progetto, intendiamo utilizzare un codice completo per controllare il robot auto intelligente e dimostrare tutte le funzioni menzionate nei progetti precedenti. Utilizziamo i tasti sull'APP Bluetooth per passare automaticamente tra le varie funzioni, il che è abbastanza semplice e conveniente.
 
-#### **(2) Diagramme de flux :**
+#### **(2)Diagramma di Flusso:**
 
 ![](media/wps122.png)
 
-#### **(3) Schéma de connexion :**
+#### **(3)Schema di Collegamento:**
 
 ![](media/e7ac834ba04aa2e8862995d2d33ce935.png)
 
-1\. GND, VCC, SDA et SCL de la carte 8x16 sont connectés à G (GND), + (VCC), A4 et A5 de la carte d'extension.
+1\. GND, VCC, SDA e SCL della scheda 8x16 sono collegati a G (GND), + (VCC), A4 e A5 della scheda di espansione.
 
-2\. VCC, Trig, Echo et Gnd du capteur à ultrasons sont connectés à 5V (V), 12 (S), 13 (S) et Gnd (G).
+2\. VCC, Trig, Echo e Gnd del sensore a ultrasuoni sono collegati a 5V (V), 12 (S), 13 (S) e Gnd (G).
 
-3\. Le fil marron, le fil rouge et le fil orange du servo sont connectés à Gnd (G), 5v (V) et D10.
+3\. Il filo marrone, il filo rosso e il filo arancione del servo sono collegati a Gnd (G), 5v (V) e D10.
 
-4\. RXD, TXD, GND et VCC du module BT sont connectés à TX, RX, G (GND) et 5V (VCC). STATE et BRK n'ont pas besoin d'être interfacés.
+4\. RXD, TXD, GND e VCC del modulo BT sono collegati a TX, RX, G (GND) e 5V (VCC). STATE e BRK non devono essere collegati.
 
-5\. Les broches « G », « V » et S du module photorésistance gauche sont connectées respectivement à G (GND), V (VCC) et A1 ; le module photorésistance droit est connecté à G (GND), V (VCC) et A2, respectivement.
+5\. I pin "G", "V" e S del modulo fotoresistore sinistro sono collegati rispettivamente a G (GND), V (VCC) e A1; Il modulo fotoresistore destro è collegato rispettivamente a G (GND), V (VCC) e A2.
 
-6\. Les ports distaux du capteur de suivi de ligne sont 11, 7 et 8.
+6\. Le porte distali del sensore di rilevamento linea sono 11, 7 e 8.
 
-#### **(4) Code de test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Vous ne pouvez pas accélérer la voiture via l'application.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non è possibile accelerare il robot tramite l'App.
 
 ![](media/e3c4c6cf504b1b9ea6fbae63f5fd9077.png)
 
-#### **(5) Résultat du test :**
+#### **(5)Risultato del Test:**
 
-Avant de téléverser le code du programme, le module Bluetooth doit être retiré ; sinon, le téléversement du code échouera.
+Prima di caricare il codice del programma, il modulo Bluetooth deve essere rimosso; altrimenti il caricamento del codice fallirà.
 
-Après avoir téléversé le code avec succès, activez les services de localisation sur votre appareil, puis connectez le module Bluetooth.
+Dopo aver caricato il codice con successo, attivare i servizi di localizzazione sul dispositivo, quindi collegare il modulo Bluetooth.
 
-Une fois que le module Bluetooth est branché et sous tension, et que l'application mobile est connectée avec succès au Bluetooth, nous pouvons utiliser l'application mobile pour contrôler le robot tank.
+Una volta che il modulo Bluetooth è inserito e alimentato, e l'APP mobile è connessa con successo al Bluetooth, possiamo utilizzare l'APP mobile per controllare il robot carro armato.

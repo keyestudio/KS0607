@@ -1,38 +1,38 @@
-## 5.1 Téléchargement des données
+## 5.1 Download dei dati
 
-Les informations Scratch contiennent le code du projet. Veuillez cliquer pour télécharger pour l'étude suivante.
+Le informazioni Scratch contengono il codice del progetto. Fare clic per scaricare per lo studio successivo.
 
-Téléchargement des données : [Téléchargement des données](./Kidsblock.7z)
+Download dei dati: [Download dei dati](./Kidsblock.7z)
 
-## 5.2 Installation du logiciel sur système Windows
+## 5.2 Installazione del software su sistema Windows
 
-1. Télécharger KidsBlock : https://wiki.kidsbits.cc/projects/KidsBlock/en/latest/
+1. Scarica KidsBlock: https://wiki.kidsbits.cc/projects/KidsBlock/en/latest/ 
 
    ![](./media/Ani.gif)
 
-2. Installation du logiciel
+2. Installazione del software
 
 ![](./media/An.gif)
 
-3. Utilisation du logiciel
+3. Utilizzo del software
 
-Tout d'abord, connectez la carte de développement à l'ordinateur.
+Prima di tutto, collega la scheda di sviluppo al computer.
 
 ![](./media/A.gif)
 
-Si vous rencontrez l'erreur illustrée ci-dessous lors de l'installation de KidsBlock, une réinstallation peut résoudre le problème. Veuillez consulter le tutoriel vidéo et suivre les étapes fournies.
+Se durante l'installazione di KidsBlock si verifica l'errore mostrato di seguito, una reinstallazione potrebbe risolvere il problema. Fare riferimento al tutorial video e seguire i passaggi indicati.
 
 ![](./media/c37b8b9849a01212eb02a3ab28ca82d0.jpg)
 
 <iframe width="951" height="536" src="https://www.youtube.com/embed/ZOIm0tTaBeQ" title="KidsBlock Error Resolution" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## 5.3 Installation du logiciel sur système Mac
+## 5.3 Installazione del software su sistema Mac
 
-1. Télécharger KidsBlock : https://xiazai.keyesrobot.cn/KidsBlock.dmg Desktop 2.0.4.dmg.
+1. Scarica KidsBlock: https://xiazai.keyesrobot.cn/KidsBlock.dmg Desktop 2.0.4.dmg.
 ![](./media/img-20230302102209-1749281036490-1.png)
 
-2. Cliquez sur KidsBlock, puis faites glisser KidsBlock Desktop dans Applications.
+2. Fai clic su KidsBlock e trascina KidsBlock Desktop nella cartella Applicazioni.
 ![](./media/img-20230302102213-1749281036490-2.png)
 
-3. Attendez que l'installation soit terminée. L'icône KidsBlock apparaîtra dans le Launchpad si l'installation est réussie.
+3. Attendi il completamento dell'installazione. L'icona di KidsBlock apparirà nel Launchpad se l'installazione è avvenuta con successo.
 ![](./media/image-20250709122026453.png)

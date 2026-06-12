@@ -1,36 +1,36 @@
-### Projet 20 : Ventilateur
+### Progetto 20: Ventilatore
 
-#### **(1)Description :**
+#### **(1)Descrizione：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-Ce module ventilateur utilise une puce de contrôle de moteur HR1124S, une puce pilote H-bridge à canal unique contenant des tubes d'alimentation PMOS et NMOS à faible résistance de conductivité. La faible résistance de conductivité peut réduire la consommation d'énergie, contribuant ainsi au fonctionnement sûr de la puce pendant une durée plus longue.
+Questo modulo ventilatore utilizza un chip di controllo motore HR1124S, un chip driver H-bridge a canale singolo contenente transistor di potenza PMOS e NMOS a bassa resistenza di conduzione. La bassa resistenza di conduzione può ridurre il consumo energetico, contribuendo al funzionamento sicuro del chip per un tempo più lungo.
 
-De plus, son faible courant en veille et son faible courant de fonctionnement statique le rendent applicable aux jouets. Nous pouvons contrôler le sens de rotation et la vitesse du ventilateur en émettant des signaux IN+ et IN- ainsi que des signaux PWM.
+Inoltre, la sua bassa corrente in standby e la bassa corrente di lavoro statica lo rendono adatto ai giocattoli. Possiamo controllare la direzione di rotazione e la velocità del ventilatore inviando segnali IN+ e IN- e segnali PWM.
 
-#### **(2)Paramètres :**
+#### **(2)Parametri:**
 
-- Tension de fonctionnement : 5V
+- Tensione di lavoro: 5V
 
-- Courant : 200mA
+- Corrente: 200mA
 
-- Puissance maximale : 2W
+- Potenza massima: 2W
 
-- Température de fonctionnement : -10°C à +50 degrés Celsius
+- Temperatura di lavoro: da -10°C a +50 gradi Celsius
 
-- Taille : 47.6mm \* 23.8mm
+- Dimensioni: 47,6mm \* 23,8mm
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di collegamento:**
 
-Le module ventilateur nécessite un courant important pour fonctionner ; par conséquent, nous installons un support de batterie.
+Il modulo ventilatore necessita di essere alimentato con corrente elevata; pertanto, installiamo un portabatterie.
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-Les broches GND, VCC, IN+ et IN- du module ventilateur sont connectées aux broches G, V, 12 et 13 du shield.
+I pin GND, VCC, IN+ e IN- del modulo ventilatore sono collegati ai pin G, V, 12 e 13 dello shield.
 
-#### **(4)Code de test :**
+#### **(4)Codice di Test:**
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
+Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -38,26 +38,26 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 ![](media/4e9354e674060efe6cf540a3e1b87813.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/cbb8f153dd0d114bdd350577af7a1f02.png)
 
-#### **(5)Résultats du test :**
+#### **(5)Risultati del Test:**
 
-Téléversez le code, connectez les composants, mettez sous tension et réglez l'interrupteur DIP sur ON. Le petit ventilateur tournera dans le sens horaire pendant 2s, s'arrêtera pendant 2s et tournera dans le sens antihoraire pendant 2s.
+Carica il codice, collega i componenti, accendi e porta l'interruttore DIP su ON. Il piccolo ventilatore girerà in senso orario per 2s, si fermerà per 2s e girerà in senso antiorario per 2s
 
 ![](./media/img-20240117100504.png)
 
-#### **(6)Pratique d'extension :**
+#### **(6)Pratica di Estensione:**
 
-Nous avons compris le principe de fonctionnement du capteur de flamme. Ensuite, connectez un capteur de flamme dans le circuit, comme indiqué ci-dessous. Puis contrôlez le ventilateur pour éteindre le feu à l'aide du capteur de flamme.
+Abbiamo compreso il principio di funzionamento del sensore di fiamma. Successivamente, collega un sensore di fiamma nel circuito, come mostrato di seguito. Quindi controlla il ventilatore per spegnere le fiamme con il sensore di fiamma.
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
 
-Vous pouvez faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
+Puoi trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -67,13 +67,13 @@ Vous pouvez faire glisser des blocs pour modifier votre code, comme indiqué ci-
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/74ddb07daf4063f0640c31f4243a0864.png)
 
 
-Après avoir téléversé le code, activez l'interrupteur d'alimentation du shield de pilotage du moteur, vous pouvez allumer le ventilateur lorsqu'une flamme est détectée par le capteur de flamme gauche du robot.
+Dopo aver caricato il codice, accendi l'interruttore di alimentazione dello shield di controllo motore; potrai accendere il ventilatore quando viene rilevata una fiamma dal sensore di fiamma sinistro del robot.
 
 ![](./media/img-20240117102303.png)

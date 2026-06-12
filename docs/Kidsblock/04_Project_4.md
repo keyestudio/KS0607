@@ -1,39 +1,39 @@
-### Projet 4 : Capteur de Suivi de Ligne
+### Progetto 4: Sensore di Inseguimento Linea
 
-#### **(1)Description :**
+#### **(1)Descrizione:**
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
-Le capteur de suivi est en réalité un capteur infrarouge. Le composant utilisé ici est le tube infrarouge TCRT5000.
+Il sensore di tracciamento è in realtà un sensore a infrarossi. Il componente utilizzato qui è il tubo a infrarossi TCRT5000.
 
-Son principe de fonctionnement consiste à utiliser la différence de réflectivité de la lumière infrarouge selon les couleurs, puis à convertir l'intensité du signal réfléchi en signal de courant.
+Il suo principio di funzionamento consiste nell'utilizzare la diversa riflettività della luce infrarossa ai colori, per poi convertire l'intensità del segnale riflesso in un segnale di corrente.
 
-Lors du processus de détection, le noir est actif au niveau HAUT (HIGH) tandis que le blanc est actif au niveau BAS (LOW). La hauteur de détection est de 0 à 3 cm.
+Durante il processo di rilevamento, il nero è attivo al livello ALTO mentre il bianco è attivo al livello BASSO. L'altezza di rilevamento è 0-3 cm.
 
-Le module de suivi de ligne 3 canaux Keyestudio intègre 3 ensembles de tubes infrarouges TCRT5000 sur une seule carte, ce qui facilite le câblage et le contrôle.
+Il modulo di tracciamento linea a 3 canali Keyestudio ha integrato 3 set di tubi a infrarossi TCRT5000 su una singola scheda, il che è più conveniente per il cablaggio e il controllo.
 
-Si le capteur de suivi de ligne ne fonctionne pas comme prévu, vous devrez utiliser un tournevis pour ajuster son potentiomètre afin de le rendre plus sensible. Lorsque votre doigt est proche du capteur, la LED embarquée s'allume, et lorsque votre doigt s'éloigne, la LED embarquée s'éteint. À ce moment-là, sa sensibilité est relativement bonne.
+Se il Sensore di Inseguimento Linea non funziona come previsto, sarà necessario utilizzare un cacciavite per regolare il suo potenziometro per renderlo più sensibile. Quando il dito si avvicina al sensore, il suo LED integrato si accende, e quando il dito si allontana, il suo LED integrato si spegne. In questo momento, la sua sensibilità è relativamente buona.
 
 ![](./media/img-20240117091947.png)
 
-#### **(2)Paramètres :**
+#### **(2)Parametri:**
 
-- Tension de fonctionnement : 3,3-5V (DC)
-- Interface : 5PIN
-- Signal de sortie : Signal numérique
-- Hauteur de détection : 0-3 cm
+- Tensione di funzionamento: 3.3-5V (DC)
+- Interfaccia: 5PIN
+- Segnale di uscita: Segnale digitale
+- Altezza di rilevamento: 0-3 cm
 
-Remarque particulière : avant le test, tournez le potentiomètre sur le capteur pour régler la sensibilité de détection. Lorsque vous réglez la LED au seuil entre ALLUMÉ et ÉTEINT, la sensibilité est optimale.
+Nota speciale: prima del test, ruotare il potenziometro sul sensore per regolare la sensibilità di rilevamento. Quando si regola il LED alla soglia tra ON e OFF, la sensibilità è la migliore.
 
-<span style="color: rgb(255, 76, 65);">Remarque :</span> le capteur de suivi de ligne est installé sous le fond du robot.
+<span style="color: rgb(255, 76, 65);">Nota:</span> il sensore di inseguimento linea è installato sotto il fondo del robot.
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di Collegamento:**
 
 ![](media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
-#### **(4)Code de test :**
+#### **(4)Codice di Test:**
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
+È anche possibile trascinare i blocchi per modificare il codice, come mostrato di seguito.
 
 ![](media/5ad9eb9c639b74f8271a55079dcf845c.png)
 
@@ -45,25 +45,25 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 ![](media/1a6838765472e3cd3836abb5202d9ab1.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/5298cdfb6fd7c71df155c969c80450cd.png)
 
-#### **(5)Résultats du test :**
+#### **(5)Risultati del Test:**
 
-Téléversez le code sur la carte de développement, ouvrez le moniteur série à 9600 et vérifiez les capteurs de suivi de ligne. La valeur affichée est 1 (niveau haut) lorsqu'aucun signal n'est reçu. La valeur passe à 0 lorsque le capteur est recouvert de papier.
+Caricare il codice sulla scheda di sviluppo, aprire il monitor seriale a 9600 e verificare i sensori di inseguimento linea. Il valore visualizzato è 1 (livello alto) quando non vengono ricevuti segnali. Il valore passa a 0 quando il sensore viene coperto con della carta.
 
 ![](media/5630032421adf9446d51b770f0e7f8af.png)
 
-#### **(6)Pratique d'extension :**
+#### **(6)Pratica di Estensione:**
 
-Nous pouvons contrôler une LED avec ce capteur. La LED est connectée à D9. Si nous la recouvrons, la LED s'allumera.
+Possiamo controllare un LED con questo sensore. Il LED è collegato a D9. Se lo copriamo, il LED si accenderà.
 
 ![](media/1dd733ed6248d09e9b4d218e41559294.png)
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
+È anche possibile trascinare i blocchi per modificare il codice, come mostrato di seguito.
 
 ![](media/5ad9eb9c639b74f8271a55079dcf845c.png)
 
@@ -79,12 +79,12 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 ![](media/b10e1897e99af2c1ade6c09da6c30dba.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/b5a4b5a04cdee9f79d6e18a5c48cbe48.png)
 
-Lorsqu'un objet (tel que du papier ou un doigt) s'approche du capteur de suivi de ligne, le capteur détecte le signal de retour qu'il a lui-même émis, et le module LED s'allume. Lorsque le capteur ne détecte aucun signal de retour, le module LED s'éteint.
+Quando un oggetto (come carta o un dito) si avvicina al sensore di inseguimento linea, il sensore rileva il segnale di ritorno emesso da se stesso, e il modulo LED si accende. Quando il sensore non rileva alcun segnale di ritorno, il modulo LED si spegne.
 
 ![](./media/img-20240117092116.png)

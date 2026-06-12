@@ -1,43 +1,43 @@
-### Projet 4 : Capteur de Suivi de Ligne
+### Progetto 4: Sensore di Rilevamento Linea
 
-#### **(1) Description :**
+#### **(1) Descrizione:**
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
-Le capteur de suivi est en réalité un capteur infrarouge. Le composant utilisé ici est le tube infrarouge TCRT5000.
+Il sensore di tracciamento è in realtà un sensore a infrarossi. Il componente utilizzato qui è il tubo a infrarossi TCRT5000.
 
-Son principe de fonctionnement consiste à utiliser la différence de réflectivité de la lumière infrarouge selon les couleurs, puis à convertir l'intensité du signal réfléchi en signal de courant.
+Il suo principio di funzionamento è quello di utilizzare la diversa riflettività della luce infrarossa sui colori, convertendo poi l'intensità del segnale riflesso in un segnale di corrente.
 
-Lors du processus de détection, le noir est actif au niveau HAUT (HIGH) tandis que le blanc est actif au niveau BAS (LOW). La hauteur de détection est de 0 à 3 cm.
+Durante il processo di rilevamento, il nero è attivo al livello ALTO mentre il bianco è attivo al livello BASSO. L'altezza di rilevamento è 0-3 cm.
 
-Le module de suivi de ligne 3 canaux de Keyestudio intègre 3 ensembles de tubes infrarouges TCRT5000 sur une seule carte, ce qui facilite le câblage et le contrôle.
+Il modulo di tracciamento linea a 3 canali Keyestudio ha integrato 3 set di tubi a infrarossi TCRT5000 su un singolo scheda, il che rende il cablaggio e il controllo più comodi.
 
-Si le capteur de suivi de ligne ne fonctionne pas comme prévu, vous devrez utiliser un tournevis pour ajuster son potentiomètre afin de le rendre plus sensible. Lorsque votre doigt est proche du capteur, son voyant LED s'allume, et lorsque votre doigt s'éloigne, son voyant LED s'éteint. À ce moment, sa sensibilité est relativement bonne.
+Se il Sensore di Rilevamento Linea non funziona come previsto, sarà necessario utilizzare un cacciavite per regolare il suo potenziometro per renderlo più sensibile. Quando il dito si avvicina al sensore, il LED integrato si accende, e quando il dito si allontana, il LED integrato si spegne. In questo momento, la sensibilità è relativamente buona.
 
 ![](./media/img-20240117090858.png)
 
-#### **(2) Paramètres :**
+#### **(2) Parametri:**
 
-- Tension de fonctionnement : 3,3-5V (DC)
+- Tensione di funzionamento: 3.3-5V (DC)
 
-- Interface : 5PIN
+- Interfaccia: 5PIN
 
-- Signal de sortie : Signal numérique
+- Segnale di uscita: Segnale digitale
 
-- Hauteur de détection : 0-3 cm
+- Altezza di rilevamento: 0-3 cm
 
 
-Remarque spéciale : avant le test, tournez le potentiomètre sur le capteur pour ajuster la sensibilité de détection. Lorsque vous réglez la LED au seuil entre ON et OFF, la sensibilité est optimale.
+Nota speciale: prima del test, ruotare il potenziometro sul sensore per regolare la sensibilità di rilevamento. Quando si regola il LED alla soglia tra ON e OFF, la sensibilità è la migliore.
 
-<span style="color: rgb(255, 76, 65);">Remarque :</span> le capteur de suivi de ligne est installé sous le bas du robot.
+<span style="color: rgb(255, 76, 65);">Nota:</span> il sensore di tracciamento linea è installato sotto il fondo del robot.
 
-#### **(3) Schéma de Connexion :**
+#### **(3) Schema di Collegamento:**
 
 ![](media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
-#### **(4) Code de Test :**
+#### **(4) Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -52,27 +52,27 @@ http://www.keyestudio.com
 
 */
 
-// Câblage des capteurs de suivi de ligne
+//Il cablaggio dei sensori di tracciamento linea
 
-#define L_pin 11 // gauche
+#define L_pin 11 //sinistra
 
-#define M_pin 7 // milieu
+#define M_pin 7 //centro
 
-#define R_pin 8 // droite
+#define R_pin 8 //destra
 
 void setup()
 {
-    Serial.begin(9600); // Définir le débit en bauds à 9600
-    pinMode(L_pin, INPUT); // Définir toutes les broches des capteurs de suivi de ligne en mode entrée
+    Serial.begin(9600); //Imposta il baud rate a 9600
+    pinMode(L_pin, INPUT); //Imposta tutti i pin dei sensori di tracciamento linea in modalità input
     pinMode(M_pin, INPUT);
     pinMode(R_pin, INPUT);
 }
 
 void loop ()
 {
-    int L_val = digitalRead(L_pin); // Lire la valeur du capteur gauche
-    int M_val = digitalRead(M_pin); // Lire la valeur du capteur central
-    int R_val = digitalRead(R_pin); // Lire la valeur du capteur droit
+    int L_val = digitalRead(L_pin); //Leggi il valore del sensore sinistro
+    int M_val = digitalRead(M_pin); //Leggi il valore del sensore centrale
+    int R_val = digitalRead(R_pin); //Leggi il valore del sensore destro
 
     Serial.print(L_val);
     Serial.print(" ");
@@ -80,36 +80,36 @@ void loop ()
     Serial.print(" ");
     Serial.print(R_val);
     Serial.println(" ");
-    delay(100); // délai de 100ms
+    delay(100); //ritardo di 100ms
 }
 ```
 
-#### **(5) Résultats du Test :**
+#### **(5) Risultati del Test:**
 
-Téléversez le code sur la carte de développement, ouvrez le moniteur série pour vérifier les capteurs de suivi de ligne. La valeur affichée est 1 (niveau haut) lorsqu'aucun signal n'est reçu. La valeur passe à 0 lorsque le capteur est recouvert de papier.
+Carica il codice sulla scheda di sviluppo, apri il monitor seriale per verificare i sensori di tracciamento linea. Il valore visualizzato è 1 (livello alto) quando non vengono ricevuti segnali. Il valore passa a 0 quando il sensore è coperto con della carta.
 
 ![](./media/img-20240117090920.png)
 
 
 ![](media/b9319753c148f66aabc9bf648ed93da1.png)
 
-#### **(6) Explication du Code :**
+#### **(6) Spiegazione del Codice:**
 
-**Serial.begin(9600)** - Initialise le port série, définit le débit en bauds à 9600
+**Serial.begin(9600)** - Inizializza la porta seriale, imposta il baud rate a 9600
 
-**pinMode -** Définit la broche en mode entrée ou sortie
+**pinMode** - Definisce il pin come modalità input o output
 
-**digitalRead -** Lit l'état de la broche, qui est généralement au niveau HAUT (HIGH) ou BAS (LOW)
+**digitalRead** - Legge lo stato del pin, che sono generalmente livello ALTO e BASSO
 
-#### **(7) Pratique d'Extension :**
+#### **(7) Pratica di Estensione:**
 
-Après avoir compris son principe de fonctionnement, vous pouvez connecter une LED à D9, afin de contrôler la LED par le capteur de suivi de ligne.
+Dopo aver compreso il suo principio di funzionamento, puoi collegare un LED a D9, in modo da controllare il LED tramite il sensore di tracciamento linea.
 
 ![](media/1dd733ed6248d09e9b4d218e41559294.png)
 
-**Code de Test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -123,35 +123,35 @@ http://www.keyestudio.com
 
 */
 
-// Broche LED
+//Pin LED
 
 #define LED 9
-// Câblage des capteurs de suivi de ligne
-#define L_pin 11 // gauche
-#define M_pin 7 // milieu
-#define R_pin 8 // droite
+//Il cablaggio dei sensori di tracciamento linea
+#define L_pin 11 //sinistra
+#define M_pin 7 //centro
+#define R_pin 8 //destra
 
 void setup()
 {
-    Serial.begin(9600); // Définir le débit en bauds à 9600
-    pinMode(LED, OUTPUT); // Définir LED en mode sortie
-    pinMode(L_pin, INPUT); // Définir toutes les broches des capteurs de suivi de ligne en mode entrée
+    Serial.begin(9600); //Imposta il baud rate a 9600
+    pinMode(LED, OUTPUT); //Imposta LED in modalità output
+    pinMode(L_pin, INPUT); //Imposta tutti i pin dei sensori di tracciamento linea in modalità input
     pinMode(M_pin, INPUT);
     pinMode(R_pin, INPUT);
 }
 
 void loop ()
 {
-    int L_val = digitalRead(L_pin); // Lire la valeur du capteur gauche
-    int M_val = digitalRead(M_pin); // Lire la valeur du capteur central
-    int R_val = digitalRead(R_pin); // Lire la valeur du capteur droit
+    int L_val = digitalRead(L_pin); //Leggi il valore del sensore sinistro
+    int M_val = digitalRead(M_pin); //Leggi il valore del sensore centrale
+    int R_val = digitalRead(R_pin); //Leggi il valore del sensore destro
     Serial.print(L_val);
     Serial.print(" ");
     Serial.print(M_val);
     Serial.print(" ");
     Serial.print(R_val);
     Serial.println(" ");
-    delay(100); // Délai
+    delay(100); //Ritardo di
 
     if (L_val == 0 || M_val == 0 || R_val == 0) 
     {

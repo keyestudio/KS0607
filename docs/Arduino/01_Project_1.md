@@ -1,44 +1,44 @@
-### Projet 1 : Clignotement d'une LED
+### Progetto 1: LED Lampeggiante
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
 ![](media/64b0b431d58473408ac46b39d2dc2ad0.jpeg)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-Pour les débutants et les passionnés, le clignotement d'une LED est un programme fondamental. LED, l'abréviation de diodes électroluminescentes, est composée de composés chimiques Ga, As, P, N et ainsi de suite. La LED peut clignoter dans différentes couleurs en modifiant le délai dans le code de test. Lors du contrôle, alimentez GND et VCC. La LED s'allumera si l'extrémité S est à un niveau haut ; sinon, elle s'éteindra.
+Per i principianti e gli appassionati, il LED Lampeggiante è un programma fondamentale. Il LED, abbreviazione di diodi emettitori di luce, è composto da composti chimici Ga, As, P, N e altri. Il LED può lampeggiare in diversi colori modificando il tempo di ritardo nel codice di test. Quando è in funzione, alimentare GND e VCC. Il LED si accenderà se il terminale S è a livello alto; in caso contrario, si spegnerà.
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
 ![](./media/image-20250709104606457.png)
 
-- Interface de contrôle : port numérique
-- Tension de fonctionnement : DC 3,3-5V
-- Espacement des broches : 2,54mm
-- Couleur d'affichage de la LED : jaune
+- Interfaccia di controllo: porta digitale
+- Tensione di lavoro: DC 3.3-5V
+- Passo pin: 2.54mm
+- Colore display LED: giallo
 
-#### **(3) Composants requis :**
+#### **(3)Componenti Necessari:**
 
 ![](media/img-20240117081416.png)
 
 
-#### **(4) Carte d'extension du pilote moteur 8833 :**
+#### **(4)Scheda di espansione driver motore 8833:**
 
-La carte d'extension du pilote moteur Keyestudio 8833 est compatible avec la carte de développement Arduino UNO. Il suffit de l'empiler sur la carte de développement lors de l'utilisation.
+La scheda di espansione driver motore Keyestudio 8833 è compatibile con la scheda di sviluppo Arduino UNO. Basta installarla sulla scheda di sviluppo durante l'utilizzo.
 
 ![](./media/image-20250709104749140.png)
 
-#### **(5) Schéma de connexion :**
+#### **(5)Schema di Collegamento:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](media/d68e6475a7c9ed55bb057b75d1b11689.png)
 
-<span style="color: rgb(255, 76, 65);">**REMARQUE :**</span> La LED est connectée au port D9. N'oubliez pas d'installer les cavaliers sur le shield.
+<span style="color: rgb(255, 76, 65);">**NOTA:**</span> Il LED è collegato alla porta D9. Ricordarsi di installare i cappucci jumper sullo shield.
 
-#### **(6) Code de test :**
+#### **(6)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -53,39 +53,39 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Définir la broche de la LED pour la connecter au port numérique 9
+int LED = 9; // Definisce il pin del LED da collegare alla porta digitale 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Initialiser la broche de la LED en mode sortie
+	pinMode(LED, OUTPUT); // Inizializza il pin del LED in modalità output
 }
 
-void loop() // Boucle infinie
+void loop() // ciclo infinito
 {
-	digitalWrite(LED, HIGH); // Sortie niveau haut et allumage de la LED
-	delay(1000); // Attendre 1s
-	digitalWrite(LED, LOW); // Sortie niveau bas et extinction de la LED
-	delay(1000); // Attendre 1s
+	digitalWrite(LED, HIGH); // Emette livello alto e accende il LED
+	delay(1000); // Attendi 1s
+	digitalWrite(LED, LOW); // Emette livello basso e spegne il LED
+	delay(1000); // Attendi 1s
 }
 ```
 
-#### **(7) Résultats du test :**
+#### **(7)Risultati del Test:**
 
-Téléversez le programme, la LED clignote à un intervalle de 1s.
+Carica il programma, il LED lampeggia con un intervallo di 1s.
 
-#### **(8) Explication du code :**
+#### **(8)Spiegazione del Codice:**
 
-**pinMode(LED，OUTPUT) -** Cette fonction permet d'indiquer que la broche est en mode INPUT (entrée) ou OUTPUT (sortie)
+**pinMode(LED，OUTPUT) -** Questa funzione può indicare che il pin è INPUT o OUTPUT
 
-**digitalWrite(LED，HIGH) -** Lorsque la broche est en mode OUTPUT, nous pouvons la régler sur HIGH (sortie 5V) ou LOW (sortie 0V)
+**digitalWrite(LED，HIGH) -** Quando il pin è OUTPUT, possiamo impostarlo su HIGH (output 5V) o LOW (output 0V)
 
-#### **(9) Pratique d'extension :**
+#### **(9)Pratica di Estensione:**
 
-Nous avons réussi à faire clignoter la LED. Ensuite, observons ce qui arrivera à la LED si nous modifions les broches et le délai.
+Abbiamo fatto lampeggiare il LED con successo. Ora, osserviamo cosa succederà al LED se modifichiamo i pin e il tempo di ritardo.
 
-**Code de test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -100,21 +100,21 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Définir la broche de la LED comme étant la broche 9
+int LED = 9; // Definisce il pin del LED come 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Régler la broche de la LED en sortie
+	pinMode(LED, OUTPUT); // Imposta il pin del LED su OUTPUT
 }
 
-void loop() // Boucle infinie
+void loop() // Ciclo infinito
 {
-    digitalWrite(LED, HIGH); // Sortie niveau haut, allumer la LED
-	delay(100); // Attendre 0,1s
-	digitalWrite(LED, LOW); // Sortie niveau bas de la LED, éteindre la LED
-	delay(100); // Attendre 0,1s
+    digitalWrite(LED, HIGH); // emette livelli alti, accende il LED
+	delay(100); // Attendi 0.1s
+	digitalWrite(LED, LOW); // LED emette livelli bassi, spegne il LED
+	delay(100); // Attendi 0.1s
 
 }
 ```
 
-Le résultat du test montre que la LED clignote plus rapidement. Par conséquent, nous pouvons conclure que les broches et le délai affectent la fréquence de clignotement.
+Il risultato del test mostra che il LED lampeggia più velocemente. Pertanto, possiamo concludere che i pin e il tempo di ritardo influenzano la frequenza di lampeggio.

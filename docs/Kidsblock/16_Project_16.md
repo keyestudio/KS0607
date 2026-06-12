@@ -1,62 +1,62 @@
-### Projet 16 : Télécommande Bluetooth
+### Progetto 16: Controllo Remoto Bluetooth
 
 ![](./media/image-20250709134858245.png)
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-Au cours des dernières décennies, le Bluetooth est devenu le module de communication sans fil le plus populaire car il est facile à utiliser et a trouvé de nombreuses applications dans la plupart des appareils alimentés par batterie.
+Negli ultimi decenni, il Bluetooth è diventato il modulo di comunicazione wireless più popolare perché è facile da usare e ha trovato ampie applicazioni nella maggior parte dei dispositivi alimentati a batteria.
 
-Afin de s'adapter à l'époque, à la réalité et aux besoins des clients, le Bluetooth a été mis à niveau plusieurs fois. Ces dernières années, il a connu de nombreuses transformations en termes de débit de transfert de données, de consommation d'énergie des appareils portables et des appareils IoT, de systèmes de sécurité et autres. Ici, nous prévoyons d'étudier le DX-BT24 avec la carte Arduino.
+Per adattarsi ai tempi, alla realtà e alle esigenze dei clienti, il Bluetooth è stato aggiornato più volte. Negli ultimi anni, ha subito molte trasformazioni in termini di velocità di trasferimento dati, consumo energetico dei dispositivi indossabili e dispositivi IoT, sistemi di sicurezza e altro ancora. Qui, abbiamo intenzione di apprendere l'uso del DX-BT24 con la scheda Arduino.
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
-- Protocole Bluetooth : Bluetooth Specification V5.1 BLE
-- Distance de fonctionnement : Dans un environnement ouvert, atteint une distance ultra-longue de 40 m
-- Fréquence de fonctionnement de communication : bande ISM 2,4 GHz
-- Interface de communication : UART
-- Certification Bluetooth : conforme aux normes de certification FCC CE ROHS REACH
-- Paramètres du port série : 9600, 8 bits de données, 1 bit d'arrêt, bit non valide, pas de contrôle de flux
-- Alimentation : 5 V DC
-- Température de fonctionnement : –10 à +65 degrés Celsius
+- Protocollo Bluetooth: Bluetooth Specification V5.1 BLE
+- Distanza di funzionamento: In un ambiente aperto, raggiunge una distanza ultra-lunga di 40m
+- Frequenza operativa di comunicazione: Banda ISM 2.4GHz
+- Interfaccia di comunicazione: UART
+- Certificazione Bluetooth: conforme agli standard di certificazione FCC CE ROHS REACH
+- Parametri della porta seriale: 9600, 8 bit di dati, 1 bit di stop, bit non valido, nessun controllo di flusso
+- Alimentazione: 5V DC
+- Temperatura operativa: da –10 a +65 gradi Celsius
 
 
-#### **(3) Application :**
+#### **(3)Applicazioni:**
 
-Le module DX-BT24 prend également en charge le protocole BT5.1 BLE, qui peut être directement connecté aux appareils iOS dotés de la fonction Bluetooth BLE, et prend en charge l'exécution en arrière-plan des programmes résidents. Principalement utilisé dans le domaine de la transmission de données sans fil à courte distance. Évite les connexions câblées encombrantes et peut remplacer directement les câbles série. Domaines d'application réussis des modules BT24 :
+Il modulo DX-BT24 supporta anche il protocollo BT5.1 BLE, che può essere connesso direttamente a dispositivi iOS con funzione Bluetooth BLE, e supporta l'esecuzione in background dei programmi. Principalmente utilizzato nel campo della trasmissione dati wireless a corta distanza. Evita ingombranti connessioni via cavo e può sostituire direttamente i cavi seriali. Aree di applicazione di successo dei moduli BT24:
 
-※ Transmission de données sans fil Bluetooth ;
+※ Trasmissione dati wireless Bluetooth;
 
-※ Téléphone mobile, équipements périphériques informatiques ;
+※ Telefoni cellulari, periferiche per computer;
 
-※ Équipement POS portable ;
+※ Dispositivi POS portatili;
 
-※ Transmission de données sans fil d'équipements médicaux ;
+※ Trasmissione dati wireless di apparecchiature mediche;
 
-※ Contrôle de maison intelligente ;
+※ Controllo smart home;
 
-※ Imprimante Bluetooth ;
+※ Stampanti Bluetooth;
 
-※ Jouets télécommandés Bluetooth ;
+※ Giocattoli con telecomando Bluetooth;
 
-※ Vélos partagés ;
+※ Biciclette condivise;
 
-#### **(4) Description des broches :**
+#### **(4)Descrizione dei pin:**
 
 ![](media/cd97cf79ff5cdd5bbd78f4cc960d38e5.png)
 
-①STATE : broche d'état
+①STATE：pin di stato
 
-②RX : broche de réception
+②RX：pin di ricezione
 
-③TX : broche d'émission
+③TX：pin di trasmissione
 
-④GND : mise à la terre
+④GND：messa a terra
 
-⑤VCC : broche d'alimentation
+⑤VCC：pin di alimentazione
 
-⑥EN : broche d'activation
+⑥EN：pin di abilitazione
 
-Connecter le Bluetooth à la carte de développement
+Collegare il Bluetooth alla scheda di sviluppo
 
 | Uno  | BT24 |
 | :--: | :--: |
@@ -65,92 +65,91 @@ Connecter le Bluetooth à la carte de développement
 | VCC  |  5V  |
 | GND  | GND  |
 
-#### **(5) Schéma de connexion :**
+#### **(5)Schema di Collegamento:**
 
 ![](media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
-#### **(6) Téléchargement de l'APP :**
+#### **(6)Scarica l'APP:**
 
-##### **Pour le système iOS**
+##### **Per sistema iOS**
 
-1\. Ouvrir l'App Store.
+1\. Apri App Store.
 
-2\. Rechercher <span style="color: rgb(61, 167, 66);">KeyesRobot</span> dans l'Apple Store et cliquer sur télécharger.
+2\. Cerca <span style="color: rgb(61, 167, 66);">KeyesRobot</span> nell'Apple Store e clicca su scarica.
 
 ![](./media/img-20240111141301.png)
 
-3\. Une fois l'application installée, vous verrez l'icône suivante sur le bureau de votre téléphone.
+3\. Dopo aver installato l'app, vedrai la seguente icona sul desktop del tuo telefono.
 
 ![](./media/img-20240111141412.png)
 
-**Comment connecter un téléphone iOS au module Bluetooth :**
+**Come connettere il telefono iOS al modulo Bluetooth:**
 
-1\. Activer le Bluetooth et les services de localisation sur le téléphone via les paramètres.
+1\. Attiva il Bluetooth e i servizi di localizzazione sul telefono tramite le impostazioni.
 
 ![](./media/img-20240111141943.png)
 
-2\. Autoriser l'application KeyesRobot à accéder au Bluetooth via les paramètres.
+2\. Consenti all'APP KeyesRobot di accedere al Bluetooth tramite le impostazioni.
 
 ![](./media/img-20240111142052.png)
 
-3\. Cliquer pour ouvrir l'application KeyesRobot.
+3\. Clicca per aprire l'app KeyesRobot.
 
 ![](./media/img-20240111142140.png)
 
-4\. L'application KeyesRobot est une APP universelle, applicable à plusieurs robots keyestudio. Si l'interface n'affiche pas "TANK ROBOT", vous pouvez cliquer sur les boutons gauche et droit pour trouver "TANK ROBOT".
+4\. KeyesRobot App è un'APP universale, applicata a più robot keyestudio. Se l'interfaccia non mostra "TANK ROBOT", puoi cliccare i pulsanti sinistra e destra per trovare "TANK ROBOT".
 
-5\. Cliquer sur le <span style="color: rgb(61, 167, 66);">bouton Bluetooth</span>![](./media/img-20240111142336.png) dans le coin supérieur droit pour scanner le Bluetooth
+5\. Clicca il <span style="color: rgb(61, 167, 66);">pulsante Bluetooth</span>![](./media/img-20240111142336.png) nell'angolo in alto a destra per scansionare il bluetooth
 
 ![](./media/img-20240111142415.png)
 
-6\. Vous verrez un Bluetooth nommé <span style="color: rgb(0, 209, 0);">**BT24**</span>, cliquer sur le bouton <span style="color: rgb(255, 169, 0);">Connecter</span>.
+6\. Vedrai un Bluetooth di nome <span style="color: rgb(0, 209, 0);">**BT24**</span>, clicca il pulsante <span style="color: rgb(255, 169, 0);">Connect</span>.
 
 ![](./media/img-20240111142536.png)
 
-7\. Si la LED embarquée du module Bluetooth cesse de clignoter et reste allumée, cela signifie que votre téléphone est connecté avec succès au module Bluetooth.
+7\. Se il LED integrato sul modulo Bluetooth smette di lampeggiare e rimane acceso, significa che il tuo telefono è connesso con successo al modulo Bluetooth.
 
 ![](./media/img-20240111142702.png)
 
 
-##### **Pour le système Android**
+##### **Per sistema Android**
 
-1\. Rechercher <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> sur Google Play, ou ouvrir le lien suivant pour télécharger et installer l'application.
+1\. Cerca <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> in Google Play, o apri il seguente link per scaricare e installare l'app.
 
 [https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio](https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio)
 
 ![](./media/img-20240111143312.png)
 
-2\. Activer le Bluetooth et les services de localisation du téléphone mobile
+2\. Attiva il Bluetooth e i servizi di localizzazione del telefono cellulare
 
 ![](./media/img-20240111143354.png)
 
-3\. Trouver l'application Bluetooth KeyesRobot dans les paramètres, cliquer sur les options d'autorisation de l'application, et
-activer les autorisations de localisation et d'appareils à proximité. (<span style="color: rgb(255, 76, 65);">Remarque :</span> Certains téléphones mobiles ne disposent pas de la fonction d'autorisation des appareils à proximité.)
+3\. Trova l'app Bluetooth KeyesRobot dalle impostazioni, clicca sulle opzioni di autorizzazione dell'app e abilita i permessi per la Posizione e i dispositivi nelle vicinanze. (<span style="color: rgb(255, 76, 65);">Nota:</span> Alcuni telefoni cellulari non hanno la funzione dei permessi per i dispositivi nelle vicinanze.)
 
 ![](./media/img-20240111143451.png)
 
-4\. Cliquer pour ouvrir l'application KeyesRobot.
+4\. Clicca per aprire l'app KeyesRobot.
 
 ![](./media/img-20240111143529.png)
 
-5\. L'application KeyesRobot est une APP universelle, applicable à plusieurs robots keyestudio. Si l'interface n'affiche pas "TANK ROBOT", vous pouvez cliquer sur les boutons gauche et droit pour trouver "TANK ROBOT".
+5\. KeyesRobot App è un'APP universale, applicata a più robot keyestudio. Se l'interfaccia non mostra "TANK ROBOT", puoi cliccare i pulsanti sinistra e destra per trovare "TANK ROBOT".
 
-6\. Cliquer sur le <span style="color: rgb(61, 167, 66);">bouton Bluetooth</span>![](./media/img-20240111142336.png) dans le coin supérieur droit pour scanner le Bluetooth
+6\. Clicca il <span style="color: rgb(61, 167, 66);">pulsante Bluetooth</span>![](./media/img-20240111142336.png) nell'angolo in alto a destra per scansionare il bluetooth
 
 ![](./media/img-20240111142415.png)
 
-7\. Vous verrez un Bluetooth nommé <span style="color: rgb(0, 209, 0);">**BT24**</span>, cliquer sur le bouton <span style="color: rgb(255, 169, 0);">Connecter</span>.![](./media/img-20240111143910.png)
+7\. Vedrai un Bluetooth di nome <span style="color: rgb(0, 209, 0);">**BT24**</span>, clicca il pulsante <span style="color: rgb(255, 169, 0);">Connect</span>.![](./media/img-20240111143910.png)
 
-8\. Lorsque votre téléphone est connecté avec succès au module Bluetooth, la LED embarquée du module Bluetooth cessera de clignoter et restera allumée.
+8\. Quando il tuo telefono è connesso con successo al modulo Bluetooth, il LED integrato sul modulo Bluetooth smetterà di lampeggiare e rimarrà acceso.
 
 ![](./media/img-20240111144004.png)
 
 ![](./media/img-20240111142702.png)
 
 
-#### **(7) Code de test BT :**
+#### **(7)Codice di Test BT:**
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
+Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seguito
 
 （1）![](media/2a66a7e8b37c68ddc51cfdb3aff53ac2.png)
 
@@ -162,42 +161,42 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 （5）![](media/c8228c5040a43ae322612b312c995ac3.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et des conflits avec la communication série Bluetooth peuvent survenir, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/4766ada3bf48bb35522f292d9352bb78.png)
 
 
-Téléverser le code sur la carte de développement, puis brancher le module Bluetooth, puis connecter le téléphone mobile au module Bluetooth.
+Carica il codice sulla scheda di sviluppo, poi collega il modulo Bluetooth, e quindi connetti il telefono cellulare al modulo Bluetooth.
 
-Une fois le téléphone mobile connecté avec succès au module Bluetooth, cliquer pour ouvrir l'application Bluetooth et cliquer sur le bouton <span style="color: rgb(0, 252, 255);">Sélectionner</span> sur la <span style="color: rgb(0, 252, 255);">page d'accueil</span>.
+Dopo che il telefono cellulare è stato connesso con successo al modulo Bluetooth, clicca per aprire l'APP Bluetooth e clicca il pulsante <span style="color: rgb(0, 252, 255);">Select</span> sulla <span style="color: rgb(0, 252, 255);">homepage</span>.
 
 ![](./media/img-20240111144744.png)
 
-L'interface principale de l'application Bluetooth est illustrée dans la figure ci-dessous.
+L'interfaccia principale dell'app Bluetooth è mostrata nella figura seguente.
 
 ![](./media/img-20240111144859.png)
 
-Cliquer sur ![Img](./media/img-20240111171312.png) et régler le débit en bauds sur 9600. Cliquer sur l'icône dans l'interface de l'APP et le moniteur série affichera la commande envoyée par le bouton.
+Clicca ![Img](./media/img-20240111171312.png) e imposta il baud rate a 9600. Clicca l'icona sull'interfaccia dell'APP e il monitor seriale mostrerà il comando inviato dal pulsante.
 
 ![](media/f5004f5334fb4885ac0096f99e4133f9.png)
 
 <br>
 <br>
-<span style="color: rgb(255, 76, 65);">**Remarque : La méthode de connexion de l'APP est identique à celle décrite ci-dessous.**</span>
+<span style="color: rgb(255, 76, 65);">**Nota: Il metodo di connessione dell'APP è lo stesso di seguito.**</span>
 <br>
 <br>
 
 
-#### **(8) Pratique d'extension :**
+#### **(8)Pratica Estensiva:**
 
-Dans le projet ci-dessus, le Bluetooth reçoit le signal envoyé par le téléphone mobile et l'affiche sur le port série de la carte de développement. Ici, nous utilisons la commande envoyée par le téléphone mobile pour allumer ou éteindre une LED. En regardant le schéma de câblage, une LED est connectée à la broche D9,
+Nel progetto precedente, il Bluetooth riceve il segnale inviato dal telefono cellulare e lo visualizza sulla porta seriale della scheda di sviluppo. Qui utilizziamo il comando inviato dal telefono cellulare per accendere o spegnere un LED. Osservando il diagramma di cablaggio, un LED è collegato al pin D9,
 
 ![](media/549c10efcf47f29f8f6355d8cd0497cc.png)
 
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
+Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seguito
 
 （1）![](media/2a66a7e8b37c68ddc51cfdb3aff53ac2.png)
 
@@ -211,15 +210,15 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 （6）![](media/4164bcf66d3d2415f43a0efcd1ce4243.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et des conflits avec la communication série Bluetooth peuvent survenir, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ![](media/91fd9d6f85e291fe90a63e5095ed7f44.png)
 
-Une fois le code ci-dessus téléversé avec succès. Cliquer sur ![](media/d5e59839bafc63f8b35c78c60573d1fc.png) pour contrôler la LED.
+Dopo che il codice precedente è stato caricato con successo. Clicca ![](media/d5e59839bafc63f8b35c78c60573d1fc.png) per controllare il LED.
 
 ![](./media/img-20240117094418.png)
 
 
-Une fois le projet BT terminé, le retirer.
+Dopo aver completato il progetto BT, rimuoverlo.

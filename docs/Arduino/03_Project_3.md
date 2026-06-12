@@ -1,43 +1,43 @@
-### Projet 3 : Photorésistance
+### Progetto 3: Fotoresistore
 
 ![](media/36e7e08764ed3c61a1c22f86be8c23d9.jpeg)
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-La résistance photosensible est une résistance spéciale fabriquée à partir d'un matériau semi-conducteur tel qu'un sulfure ou du sélénium, et une résine imperméable à l'humidité est également appliquée avec un effet photoconduisant. La résistance photosensible est très sensible à la lumière ambiante ; selon l'intensité lumineuse, la valeur de la résistance photosensible est différente. Nous utilisons la résistance photosensible pour concevoir le module de résistance photosensible.
+La resistenza fotosensibile è una resistenza speciale realizzata con un materiale semiconduttore come un solfuro o il selenio, ed è rivestita con una resina impermeabile all'umidità con effetto fotoconduttivo. La resistenza fotosensibile è molto sensibile alla luce ambientale: con diverse intensità di illuminazione, il valore della resistenza fotosensibile cambia. Usiamo la resistenza fotosensibile per progettare il modulo fotoresistore.
 
-Le signal du module est connecté au port analogique du microcontrôleur. Lorsque l'intensité lumineuse est plus forte, la tension du port analogique est plus élevée, c'est-à-dire que la valeur de simulation du microcontrôleur est également plus grande ; à l'inverse, lorsque l'intensité lumineuse est plus faible, la tension du port analogique est plus basse, c'est-à-dire que la valeur de simulation du microcontrôleur est également plus petite.
+Il segnale del modulo è collegato alla porta analogica del microcontrollore. Quando l'intensità della luce è più forte, la tensione sulla porta analogica è maggiore, ovvero anche il valore analogico del microcontrollore è più grande; al contrario, quando l'intensità della luce è più debole, la tensione sulla porta analogica è minore, ovvero anche il valore analogico del microcontrollore è più piccolo.
 
-De cette façon, nous pouvons lire la valeur analogique correspondante à l'aide du module de résistance photosensible, et ainsi mesurer l'intensité de la lumière dans l'environnement.
+In questo modo, possiamo leggere il corrispondente valore analogico usando il modulo fotoresistore, e rilevare l'intensità della luce nell'ambiente.
 
 ![](media/7784e14e15402644cdbe674d500327c4.png)
 
 ![](media/0d9daba6454ef099fe1ceb0e6cb56ec4.png)
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
-Valeur de résistance de la photorésistance : 5K Ω - 0,5 MΩ
+Valore della resistenza fotosensibile: 5K Ou-0.5m
 
-Type d'interface : port de simulation A0, A1
+Tipo di interfaccia: porta di simulazione A0, A1
 
-Tension de fonctionnement : 3,3 V - 5 V
+Tensione di funzionamento: 3.3V-5V
 
-Espacement des broches : 2,54 mm
+Passo dei pin: 2.54mm
 
 
-#### **(3) Schéma de connexion :**
+#### **(3)Schema di Collegamento:**
 
-Ce que nous allons tester ensuite est le module photorésistance situé sur le côté gauche du robot.
+Quello che andremo a testare è il modulo fotoresistore sul lato sinistro del robot.
 
 ![](./media/img-20240117091559.png)
 
-La photorésistance gauche est connectée à A1/P3 du shield de pilotage moteur.
+Il fotoresistore sinistro è collegato ad A1/P3 dello shield del motore.
 
 ![](media/484852a36f52bdbe44bec1b9a8941e44.png)
 
-#### **(4) Code de test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut créer des conflits avec la communication série Bluetooth et provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -52,48 +52,48 @@ http://www.keyestudio.com
 
 */
 
-int sensorPin = A1; // A1 est la broche d'entrée de la photorésistance
+int sensorPin = A1; // A1 è il pin di ingresso del fotoresistore
 
-int sensorValue = 0; // sauvegarder la valeur de la photorésistance
+int sensorValue = 0; // salva il valore del fotoresistore
 
 void setup() 
 {
-	Serial.begin(9600); // Ouvrir le moniteur du port série et régler le débit en bauds à 9600
+	Serial.begin(9600); // Apri il monitor della porta seriale e imposta il baud rate a 9600
 }
 
 void loop() 
 {
-	sensorValue = analogRead(sensorPin); // Lire la valeur analogique du capteur photorésistance
-	Serial.println(sensorValue); // Le port série affiche la valeur de la photorésistance
-	delay(500); // Délai de 500 ms
+	sensorValue = analogRead(sensorPin); // Leggi il valore analogico dal sensore fotoresistore
+	Serial.println(sensorValue); // La porta seriale stampa il valore del fotoresistore
+	delay(500); // Ritardo di 500ms
 }
 ```
 
-#### **(5) Résultats du test :**
+#### **(5)Risultati del Test:**
 
 ![](media/54b92578e3210999e23f5fb8138f0fa0.png)
 
-En couvrant la photorésistance, la valeur diminue ; sinon, la valeur augmente.
+Coprendo il sensore, il valore diminuisce; se non viene coperto, il valore aumenta.
 
-#### **(6) Explication du code :**
+#### **(6)Spiegazione del Codice:**
 
-**analogRead(sensorPin)** : lit la valeur analogique de la photorésistance
+**analogRead(sensorPin)**: legge il valore analogico del fotoresistore
 
-**Serial.begin(9600)** : initialise le port série et règle le débit en bauds à 9600
+**Serial.begin(9600)**: inizializza la porta seriale e imposta il baud rate a 9600
 
-**Serial.println** : affichage série
+**Serial.println**: stampa seriale
 
-#### **(7) Pratique avancée :**
+#### **(7)Pratica Avanzata:**
 
-Le code ci-dessus se contente de lire la valeur de la photorésistance. Nous pouvons combiner la photosensibilité et une LED pour modifier la LED. Que diriez-vous de contrôler la luminosité de la LED grâce à elle ?
+Il codice sopra legge soltanto il valore del fotoresistore. Possiamo combinare il fotoresistore con un LED per modificarne la luminosità. Che ne dici di controllare la luminosità del LED tramite il fotoresistore?
 
 ![](media/88a89f7996fb7f7d037315e57e8bcd33.png)
 
-La luminosité de la LED est contrôlée par PWM. Par conséquent, nous connectons la LED à la broche PMW (broche 9) du shield.
+La luminosità del LED è controllata tramite PWM. Pertanto, colleghiamo il LED al pin PWM (pin 9) dello shield.
 
-**Code de test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut créer des conflits avec la communication série Bluetooth et provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```c
 /*
@@ -108,31 +108,31 @@ http://www.keyestudio.com
 
 */
 
-int analogInPin = A1; // A1 est la broche d'entrée de la photorésistance
+int analogInPin = A1; // A1 è il pin di ingresso del fotoresistore
 
-int analogOutPin = 9; // Le port numérique 9 est la sortie du PMW
+int analogOutPin = 9; // La porta digitale 9 è l'uscita PMW
 
-int sensorValue = 0; // sauvegarder la variable de la valeur de résistance de la photorésistance
+int sensorValue = 0; // salva la variabile del valore di resistenza del fotoresistore
 
-int outputValue = 0; // Valeur de sortie vers le PMW
+int outputValue = 0; // Valore in uscita al PMW
 
 void setup() 
 {
-	Serial.begin(9600); // Ouvrir le moniteur du port série et régler le débit en bauds à 9600
+	Serial.begin(9600); // Apri il monitor della porta seriale e imposta il baud rate a 9600
 }
 
 void loop() 
 {
-    sensorValue = analogRead(analogInPin); // Lire la valeur analogique du capteur photorésistance
-    // Mapper les valeurs analogiques 0\~1023 vers les valeurs de sortie PWM 255\~0
+    sensorValue = analogRead(analogInPin); // Leggi il valore analogico dal sensore fotoresistore
+    // Mappa i valori analogici da 0\~1023 ai valori di uscita PWM da 255\~0
     outputValue = map(sensorValue, 0, 1023, 255, 0);
-    // Modifier la sortie analogique
+    // Cambia l'uscita analogica
     analogWrite(analogOutPin, outputValue);
-    Serial.println(sensorValue); // Le port série affiche la valeur de la photorésistance
+    Serial.println(sensorValue); // La porta seriale stampa il valore del fotoresistore
     delay(2);
 }
 ```
 
-Téléversez le code sur la carte de développement, puis couvrez la photorésistance et observez la luminosité de la LED.
+Carica il codice sulla scheda di sviluppo, poi copri il fotoresistore e osserva la luminosità del LED.
 
 ![](./media/img-20240117091105.png)

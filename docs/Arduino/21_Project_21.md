@@ -1,36 +1,36 @@
-### Projet 21 : Ventilateur
+### Progetto 21: Ventilatore
 
-#### **(1) Description :**
+#### **(1)Descrizione：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-Ce module ventilateur utilise une puce de contrôle moteur HR1124S, une puce de driver H-bridge à canal unique contenant des tubes de puissance PMOS et NMOS à faible résistance de conductivité. La faible résistance de conduite permet de réduire la consommation d'énergie, contribuant au fonctionnement sécurisé de la puce sur une plus longue durée.
+Questo modulo ventilatore utilizza un chip di controllo motore HR1124S, un chip driver H-bridge a canale singolo contenente transistor di potenza PMOS e NMOS a bassa resistenza di conduzione. La bassa resistenza di conduzione può ridurre il consumo energetico, contribuendo al funzionamento sicuro del chip per un tempo più lungo.
 
-De plus, son faible courant de veille et son faible courant de fonctionnement statique le rendent adapté aux jouets. Nous pouvons contrôler le sens de rotation et la vitesse du ventilateur en émettant les signaux IN+ et IN- ainsi que des signaux PWM.
+Inoltre, la sua bassa corrente di standby e la bassa corrente di lavoro statica lo rendono adatto ai giocattoli. Possiamo controllare la direzione di rotazione e la velocità del ventilatore inviando segnali IN+ e IN- e segnali PWM.
 
-#### **(2) Spécifications :**
+#### **(2)Specifiche:**
 
-Tension de fonctionnement : 5V
+Tensione di lavoro: 5V
 
-Courant : 200MA
+Corrente: 200MA
 
-Puissance maximale : 2W
+Potenza massima: 2W
 
-Température de fonctionnement : -10 degrés Celsius à +50 degrés Celsius
+Temperatura di funzionamento: da -10 gradi Celsius a +50 gradi Celsius
 
-Taille : 47.6MM \*23.8MM
+Dimensioni: 47.6MM \*23.8MM
 
-#### **(3) Schéma de connexion :**
+#### **(3)Schema di collegamento:**
 
-Le module ventilateur nécessite un courant important pour fonctionner ; c'est pourquoi nous installons un support de batterie.
+Il modulo ventilatore necessita di essere alimentato con corrente elevata; pertanto, installiamo un portabatterie.
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-Les broches GND, VCC, IN+ et IN- du module ventilateur sont connectées aux broches G, V, D12 et D13 du shield.
+I pin GND, VCC, IN+ e IN- del modulo ventilatore sono collegati ai pin G, V, D12 e D13 dello shield.
 
-#### **(4) Code de test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et des conflits avec la communication série Bluetooth pourraient survenir, entraînant l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
 ```C
 /*
@@ -45,40 +45,40 @@ int INB = 13;
 
 void setup()
 {
-    pinMode(INA, OUTPUT);//Définir le port numérique INA comme sortie
-    pinMode(INB, OUTPUT);//Définir le port numérique INB comme sortie
+    pinMode(INA, OUTPUT);//Imposta la porta digitale INA come uscita
+    pinMode(INB, OUTPUT);//Imposta la porta digitale INB come uscita
 }
 
 void loop() 
 {
-    //Faire tourner le ventilateur dans le sens antihoraire pendant 3s
+    //Imposta il ventilatore per ruotare in senso antiorario per 3s
     digitalWrite(INA, LOW);
     digitalWrite(INB, HIGH);
     delay(3000);
-    //Arrêter le ventilateur pendant 1s
+    //Imposta il ventilatore per fermarsi per 1s
     digitalWrite(INA, LOW);
     digitalWrite(INB, LOW);
     delay(1000);
-    //Faire tourner le ventilateur dans le sens horaire pendant 3s
+    //Imposta il ventilatore per ruotare in senso orario per 3s
     digitalWrite(INA, HIGH);
     digitalWrite(INB, LOW);
     delay(3000);
 }
 ```
 
-#### **(5) Résultats du test :**
+#### **(5)Risultati del Test：**
 
-Téléversez le code, connectez les composants et branchez l'alimentation. Le petit ventilateur tournera dans le sens antihoraire pendant 3000ms, s'arrêtera pendant 1000ms, puis tournera dans le sens horaire pendant 300ms.
+Carica il codice, collega i componenti e inserisci l'alimentazione. Il piccolo ventilatore girerà in senso antiorario per 3000ms, si fermerà per 1000ms e girerà in senso orario per 3000ms.
 
 ![](./media/img-20240117085032.png)
 
-#### **(6) Pratique d'extension :**
+#### **(6)Pratica Avanzata:**
 
-Nous avons compris le principe de fonctionnement du capteur de flamme. Ensuite, connectez un capteur de flamme dans le circuit, comme illustré ci-dessous. Puis contrôlez le ventilateur pour éteindre le feu à l'aide du capteur de flamme.
+Abbiamo compreso il principio di funzionamento del sensore di fiamma. Ora, collegare un sensore di fiamma nel circuito, come mostrato di seguito. Quindi controllare il ventilatore per spegnere il fuoco con il sensore di fiamma.
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et des conflits avec la communication série Bluetooth pourraient survenir, entraînant l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
 ```C
 /*
@@ -90,34 +90,34 @@ http://www.keyestudio.com
 
 int INA = 12;
 int INB = 13;
-int flame = A1; //Définir la broche de flamme comme broche analogique A1
-int val = 0; //Définir les variables numériques
+int flame = A1; //Definisci il pin della fiamma come pin analogico A1
+int val = 0; //Definisci variabili digitali
 
 void setup() 
 {
-    pinMode(INA, OUTPUT);//Définir le port numérique INA comme sortie
-    pinMode(INB, OUTPUT);//Définir le port numérique INB comme sortie
-    pinMode(flame, INPUT); //Définir la flamme comme source d'entrée
+    pinMode(INA, OUTPUT);//Imposta la porta digitale INA come uscita
+    pinMode(INB, OUTPUT);//Imposta la porta digitale INB come uscita
+    pinMode(flame, INPUT); //Definisci la fiamma come sorgente di ingresso
 }
 
 void loop() 
 {
-    val = analogRead(flame); //Lire la valeur analogique du capteur de flamme
-    if (val <= 700)  //Lorsque la valeur analogique≤700, le ventilateur est allumé
+    val = analogRead(flame); //Leggi il valore analogico del sensore di fiamma
+    if (val <= 700)  //Quando il valore analogico≤700, il ventilatore è acceso
     {
-        //Allumer le ventilateur lorsqu'une flamme est détectée
+        //Accendi il ventilatore quando viene rilevata una fiamma
         digitalWrite(INA, LOW);
         digitalWrite(INB, HIGH);
     } 
     else 
     {
-        //Sinon il s'arrête de fonctionner
+        //Altrimenti si ferma
         digitalWrite(INA, LOW);
         digitalWrite(INB, LOW);
     }
 }
 ```
 
-Après avoir téléversé le code, allumez l'interrupteur d'alimentation du shield de commande moteur, vous pouvez allumer le ventilateur lorsqu'une flamme est détectée par le capteur de flamme gauche du robot.
+Dopo aver caricato il codice, accendi l'interruttore di alimentazione dello shield del driver motore; potrai accendere il ventilatore quando viene rilevata una fiamma dal sensore di fiamma sinistro del robot.
 
 ![](./media/image-20250709115926832.png)

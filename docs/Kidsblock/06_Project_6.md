@@ -1,64 +1,64 @@
-### Projet 6 : Capteur Ultrasonique
+### Progetto 6: Sensore a Ultrasuoni
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
 ![](media/0180b169a1c3b228394b43df704fac32.png)
 
-Le capteur ultrasonique HC-SR04 utilise le sonar pour déterminer la distance d'un objet, à la manière des chauves-souris. Il offre une excellente détection de distance sans contact, avec une haute précision et des mesures stables, dans un boîtier facile à utiliser. Il est livré complet avec des modules émetteur et récepteur ultrasoniques.
+Il sensore a ultrasuoni HC-SR04 utilizza il sonar per determinare la distanza da un oggetto, come fanno i pipistrelli. Offre un'eccellente rilevazione della distanza senza contatto, con alta precisione e letture stabili in un pacchetto facile da usare. È completo di moduli trasmettitore e ricevitore a ultrasuoni.
 
-Le HC-SR04, ou capteur ultrasonique, est utilisé dans une large gamme de projets électroniques pour créer des applications de détection d'obstacles et de mesure de distance, ainsi que diverses autres applications. Nous présentons ici la méthode simple pour mesurer la distance avec Arduino et un capteur ultrasonique, et comment utiliser le capteur ultrasonique avec Arduino.
+L'HC-SR04 o il sensore a ultrasuoni viene utilizzato in una vasta gamma di progetti elettronici per creare applicazioni di rilevamento degli ostacoli e misurazione della distanza, nonché varie altre applicazioni. Qui abbiamo proposto il metodo semplice per misurare la distanza con Arduino e il sensore a ultrasuoni e come utilizzare il sensore a ultrasuoni con Arduino.
 
 ![](./media/image-20250709133626194.png)
 
-#### **(2) Paramètres :**
+#### **(2)Parametri:**
 
-- Alimentation : +5V DC
+- Alimentazione: +5V DC
 
-- Courant au repos : \<2mA
+- Corrente a riposo: \<2mA
 
-- Courant de fonctionnement : 15mA
+- Corrente di funzionamento: 15mA
 
-- Angle effectif : \<15°
+- Angolo efficace: \<15°
 
-- Distance de mesure : 2cm – 400 cm
+- Distanza di rilevamento: 2cm – 400 cm
 
-- Résolution : 0.3 cm
+- Risoluzione: 0.3 cm
 
-- Angle de mesure : 30 degrés
+- Angolo di misurazione: 30 gradi
 
-- Largeur d'impulsion d'entrée du déclencheur : 10uS
+- Larghezza del impulso di trigger in ingresso: 10uS
 
-#### **(3) Principe du capteur ultrasonique :**
+#### **(3)Il principio del sensore a ultrasuoni:**
 
-Comme le montre l'image ci-dessus, il ressemble à deux yeux. L'un est l'extrémité émettrice, l'autre est l'extrémité réceptrice.
+Come mostrato nell'immagine sopra, è come due occhi. Uno è il terminale di trasmissione, l'altro è il terminale di ricezione.
 
-Le module ultrasonique émet des ondes ultrasoniques après le déclenchement d'un signal. Lorsque les ondes ultrasoniques rencontrent un objet et sont réfléchies, le module génère un signal d'écho, ce qui lui permet de déterminer la distance de l'objet à partir de la différence de temps entre le signal de déclenchement et le signal d'écho.
+Il modulo a ultrasuoni emetterà le onde ultrasoniche dopo aver ricevuto un segnale di attivazione. Quando le onde ultrasoniche incontrano l'oggetto e vengono riflesse indietro, il modulo produce un segnale eco, quindi può determinare la distanza dell'oggetto dalla differenza di tempo tra il segnale di trigger e il segnale eco.
 
-Ici, t est le temps entre l'émission du signal jusqu'à ce qu'il rencontre l'obstacle et revienne. La vitesse de propagation du son dans l'air est d'environ 343 m/s, et distance = vitesse × temps. Cependant, comme l'onde ultrasonique se déplace jusqu'à l'obstacle et revient, le temps représente deux fois la distance. Il faut donc diviser par 2. La distance mesurée par l'**onde ultrasonique = (vitesse × temps) / 2**.
+Qui, t è il tempo da quando il segnale emesso incontra l'ostacolo a quando ritorna. La velocità di propagazione del suono nell'aria è di circa 343m/s, e distanza = velocità * tempo. Tuttavia, poiché l'onda ultrasonica percorre la distanza fino all'ostacolo e ritorna, il tempo rappresenta il doppio della distanza. Pertanto, è necessario dividere per 2. La distanza misurata dall'**onda ultrasonica = (velocità * tempo) / 2**.
 
-1. Méthode d'utilisation et chronogramme du module ultrasonique :
+1. Metodo di utilizzo e diagramma temporale del modulo a ultrasuoni:
 
-2. Régler le temps de délai de la broche Trig du SR04 à au moins 10μs, ce qui permet de le déclencher pour détecter la distance.
+2. Impostare il ritardo del pin Trig dell'SR04 ad almeno 10μs, il che può attivarlo per rilevare la distanza.
 
-3. Après le déclenchement, le module envoie automatiquement huit impulsions ultrasoniques à 40KHz et détecte s'il y a un signal de retour. Cette étape est effectuée automatiquement par le module.
+3. Dopo l'attivazione, il modulo invierà automaticamente otto impulsi ultrasonici a 40KHz e rileverà se c'è un segnale di ritorno. Questo passaggio verrà completato automaticamente dal modulo.
 
-4. Si le signal revient, la broche Echo génère un niveau haut, et la durée du niveau haut correspond au temps de transmission de l'onde ultrasonique jusqu'à son retour.
+4. Se il segnale ritorna, il pin Echo produrrà un livello alto, e la durata del livello alto è il tempo dalla trasmissione dell'onda ultrasonica al ritorno.
 
 ![](media/image-20230525110337646.png)
 
-Schéma du circuit du capteur ultrasonique :
+Schema del circuito del sensore a ultrasuoni:
 
 ![](media/a25028af84d6c7c94382c2a907101241.jpeg)
 
-#### **(4) Schéma de connexion :**
+#### **(4)Schema di collegamento:**
 
 ![](media/d8fad040d3ab5abe247d6a8d1e08a13d.png)
 
-<span style="color: rgb(255, 76, 65);">Note de câblage :</span> La broche VCC du module capteur ultrasonique est connectée au 5v(V) de la carte d'extension de pilotage de moteur Keyestudio 8833, la broche Trig est connectée au numérique D12, la broche Echo est connectée au numérique D13, et la broche Gnd est connectée à Gnd(G) ;
+<span style="color: rgb(255, 76, 65);">Nota sul cablaggio:</span> Il pin VCC del modulo sensore a ultrasuoni è collegato al 5v(V) della scheda di espansione del motore Keyestudio 8833, il pin Trig è collegato al digitale D12, il pin Echo è collegato al digitale D13, e il pin Gnd è collegato a Gnd(G);
 
-#### **(5) Code de test :**
+#### **(5)Codice di test:**
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
+Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seguito.
 
 ![](media/8de1b04be1ba147dd242c66bddeacacc.png)
 
@@ -74,26 +74,26 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 ![](media/b6e575b05bdc050e32c9b2e54e61a750.png)
 
-**Code de test complet**
+**Codice di test completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut entraîner des conflits avec la communication série Bluetooth et provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
 
 ![](media/569aff5ff2cbd2f3605f217ebb5ed50b.png)
 
-#### **(6) Résultats du test :**
+#### **(6)Risultati del test:**
 
-Téléversez le code de test sur la carte de développement, ouvrez le moniteur série et réglez le débit en bauds sur 9600. La distance détectée sera affichée en centimètres et en pouces. Lorsque vous obstruez le capteur ultrasonique avec votre main, la valeur de distance affichée diminue.
+Carica il codice di test sulla scheda di sviluppo, apri il monitor seriale e imposta la velocità di trasmissione a 9600. La distanza rilevata verrà visualizzata in cm e pollici. Quando ostacoli il sensore a ultrasuoni con la tua mano, il valore della distanza visualizzato si ridurrà.
 
 ![](media/4f77acbf5b226e20e3cdd70c0f90602e.png)
 
-#### **(7) Pratique avancée :**
+#### **(7)Pratica di estensione:**
 
-Nous venons de mesurer la distance affichée par l'ultrason. Que diriez-vous de contrôler une LED avec la distance mesurée ? Essayons et connectons un module LED à la broche D9.
+Abbiamo appena misurato la distanza visualizzata dagli ultrasuoni. Che ne dici di controllare il LED con la distanza misurata? Proviamoci e colleghiamo un modulo LED al pin D9.
 
 ![](media/291ac1db0f38418772d11bb1786b7314.png)
 
 
-Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
+Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seguito
 
 ![](media/8de1b04be1ba147dd242c66bddeacacc.png)
 
@@ -109,12 +109,12 @@ Vous pouvez également faire glisser des blocs pour modifier votre code, comme i
 
 ![](media/b6e575b05bdc050e32c9b2e54e61a750.png)
 
-**Code de test complet**
+**Codice di test completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut entraîner des conflits avec la communication série Bluetooth et provoquer l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
 
 ![](media/065eac0ad9cfa8f07aeb5e648698bdb5.png)
 
-Téléversez le code de test sur la carte de développement, approchez votre main du capteur ultrasonique et vérifiez si la LED s'allume.
+Carica il codice di test sulla scheda di sviluppo, avvicina la mano al sensore a ultrasuoni e verifica se il LED si accende.
 
 ![](./media/img-20240117092413.png)

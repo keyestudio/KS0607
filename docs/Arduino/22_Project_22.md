@@ -1,37 +1,37 @@
-### Projet 22 : Char Extincteur
+### Progetto 22: Carro Armato Antincendio
 
 
-#### **(1)Description :**
+#### **(1)Descrizione:**
 
-La fonction de suivi de ligne du char intelligent a été expliquée dans le projet précédent. Dans ce projet, nous utilisons le capteur de flamme pour fabriquer un robot extincteur.
+La funzione di inseguimento della linea del carro armato intelligente è stata spiegata nel progetto precedente. In questo progetto utilizziamo il sensore di fiamma per realizzare un robot antincendio.
 
-Lorsque le véhicule rencontre des flammes, le moteur du ventilateur tourne pour souffler le feu. Bien entendu, nous devons d'abord remplacer le capteur ultrasonique et les deux photorésistances par un module ventilateur et des capteurs de flamme.
+Quando il veicolo incontra delle fiamme, il motore della ventola ruoterà per spegnere il fuoco. Naturalmente, dobbiamo prima sostituire il sensore a ultrasuoni e i due fotoresistori con un modulo ventola e sensori di fiamma.
 
-La logique spécifique du char intelligent suiveur de ligne est présentée dans le tableau ci-dessous :
+La logica specifica del carro armato intelligente per il tracciamento della linea è mostrata nella tabella seguente:
 
-| Capteur de flamme gauche | Capteur de flamme droit | État                                                      |
-| :----------------------: | :---------------------: | :-------------------------------------------------------- |
-|          ≤700            |          ≤700           | Le char s'arrête, le ventilateur commence à tourner pour éteindre la flamme |
-|          ≥700            |          ≥700           | Le char s'arrête, le ventilateur commence à tourner pour éteindre la flamme |
-|          ≥700            |          ≥700           | Le char s'arrête, le ventilateur commence à tourner pour éteindre la flamme |
-|          ＞700           |          ＞700          | Le ventilateur s'arrête, le char avance                   |
+| Sensore Fiamma Sinistro | Sensore Fiamma Destro | Stato                                                       |
+| :---------------------: | :-------------------: | :---------------------------------------------------------- |
+|          ≤700           |         ≤700          | Il carro si ferma, la ventola inizia a ruotare per spegnere la fiamma |
+|          ≥700           |         ≥700          | Il carro si ferma, la ventola inizia a ruotare per spegnere la fiamma |
+|          ≥700           |         ≥700          | Il carro si ferma, la ventola inizia a ruotare per spegnere la fiamma |
+|          ＞700          |         ＞700         | La ventola si ferma, il carro si muove                      |
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
-1）Cette expérience nécessite l'utilisation d'une source de feu. Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer votre sécurité, veuillez abandonner l'expérience.
-2）Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
-Nous pouvons contrôler une LED externe avec le capteur de flamme. La LED est toujours connectée à D9. Lorsqu'un feu est détecté, la LED s'allume.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è sicuri della propria sicurezza, si prega di abbandonare l'esperimento.
+2）Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.
+Possiamo controllare un LED esterno con il sensore di fiamma. Il LED è ancora collegato a D9. Quando viene rilevato il fuoco, il LED si accenderà.
 
-#### **(2)Organigramme :**
+#### **(2)Diagramma di flusso:**
 
 ![](media/wps12.png)
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di collegamento:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-#### **(4)Code de test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
 ```C
 /*
@@ -41,43 +41,43 @@ Nous pouvons contrôler une LED externe avec le capteur de flamme. La LED est to
   http://www.keyestudio.com
 */
 
-int flame_L = A1; //Définir l'interface de flamme gauche comme broche analogique A1
-int flame_R = A2; //Définir l'interface de flamme droite comme broche analogique A2
-//Le câblage du capteur de suivi de ligne
-#define L_pin  11  //gauche
-#define M_pin  7  //milieu
-#define R_pin  8  //droite
-//La broche du servo 130
+int flame_L = A1; //Definisce l'interfaccia della fiamma a sinistra come pin analogico A1
+int flame_R = A2; //Definisce l'interfaccia della fiamma a destra come pin analogico A2
+//Il cablaggio del sensore di tracciamento della linea
+#define L_pin  11  //sinistra
+#define M_pin  7  //centro
+#define R_pin  8  //destra
+//Il pin del servo 130
 int INA = 12;
 int INB = 13;
-#define ML_Ctrl 4  //Définir la broche de contrôle de direction du moteur gauche
-#define ML_PWM 6   //Définir la broche de contrôle PWM du moteur gauche
-#define MR_Ctrl 2  //Définir la broche de contrôle de direction du moteur droit
-#define MR_PWM 5   //Définir la broche de contrôle PWM du moteur droit
+#define ML_Ctrl 4  //Definisce il pin di controllo della direzione del motore sinistro
+#define ML_PWM 6   //Definisce il pin di controllo PWM del motore sinistro
+#define MR_Ctrl 2  //Definisce il pin di controllo della direzione del motore destro
+#define MR_PWM 5   //Definisce il pin di controllo PWM del motore destro
 int L_val, M_val, R_val, flame_valL, flame_valR;
 
 void setup()
 {
   Serial.begin(9600);
-  //Définir toutes les broches du capteur de suivi de ligne en mode entrée
+  //Imposta tutti i pin del sensore di tracciamento della linea in modalità input
   pinMode(L_pin, INPUT);
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  //Définir la flamme comme ENTRÉE
+  //Definisce la fiamma come INPUT
   pinMode(flame_L, INPUT);
   pinMode(flame_R, INPUT);
-  //Définir le moteur comme SORTIE
+  //Definisce il motore come OUTPUT
   pinMode(ML_Ctrl, OUTPUT);
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  pinMode(INA, OUTPUT);//Définir le port numérique INA comme SORTIE
-  pinMode(INB, OUTPUT);//Définir le port numérique INB comme SORTIE
+  pinMode(INA, OUTPUT);//Imposta la porta digitale INA come OUTPUT
+  pinMode(INB, OUTPUT);//Imposta la porta digitale INB come OUTPUT
 }
 
 void loop () 
 {
-  //Lire la valeur analogique des capteurs de flamme
+  //Legge il valore analogico dei sensori di fiamma
   flame_valL = analogRead(flame_L);
   flame_valR = analogRead(flame_R);
   Serial.print(flame_valL);
@@ -93,36 +93,36 @@ void loop ()
   else 
   {
     fan_stop();
-    L_val = digitalRead(L_pin); //Lire la valeur du capteur gauche
-    M_val = digitalRead(M_pin); //Lire la valeur du capteur du milieu
-    R_val = digitalRead(R_pin); //Lire la valeur du capteur droit
+    L_val = digitalRead(L_pin); //Legge il valore del sensore sinistro
+    M_val = digitalRead(M_pin); //Legge il valore del sensore centrale
+    R_val = digitalRead(R_pin); //Legge il valore del sensore destro
     
-    if (M_val == 1)  //le capteur du milieu détecte une ligne noire
+    if (M_val == 1)  //il sensore centrale rileva le linee nere
     {
-      if (L_val == 1 && R_val == 0)  //Si une ligne noire est détectée à gauche, mais pas à droite, tourner à gauche
+      if (L_val == 1 && R_val == 0)  //Se viene rilevata una linea nera a sinistra, ma non a destra, gira a sinistra
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //Si une ligne noire est détectée à droite, mais pas à gauche, tourner à droite
+      else if (L_val == 0 && R_val == 1)  //Se viene rilevata una linea nera a destra, non a sinistra, gira a destra
       {
         Car_right();
       }
-      else  //sinon, avancer
+      else  //altrimenti, vai avanti
       {
         Car_front();
       }
     }
-    else  //Le capteur du milieu ne détecte pas de ligne noire
+    else  //Il sensore centrale non rileva linee nere
     {
-      if (L_val == 1 && R_val == 0)  //Si une ligne noire est détectée à gauche, mais pas à droite, tourner à gauche
+      if (L_val == 1 && R_val == 0)  //Se viene rilevata una linea nera a sinistra, ma non a destra, gira a sinistra
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //Si une ligne noire est détectée à droite, mais pas à gauche, tourner à droite
+      else if (L_val == 0 && R_val == 1)  //Se viene rilevata una linea nera a destra, non a sinistra, gira a destra
       {
         Car_right();
       }
-      else  //sinon, s'arrêter
+      else  //altrimenti, fermati
       {
         Car_Stop();
       }
@@ -132,14 +132,14 @@ void loop ()
 
 void fan_stop() 
 {
-  //arrêter la rotation
+  //smetti di ruotare
   digitalWrite(INA, LOW);
   digitalWrite(INB, LOW);
 }
 
 void fan_begin() 
 {
-  //le ventilateur tourne
+  //la ventola ruota
   digitalWrite(INA, LOW);
   digitalWrite(INB, HIGH);
 }
@@ -190,11 +190,11 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Résultat du test :**
+#### **(5)Risultato del Test:**
 
-Après avoir téléversé le code de test avec succès et mis sous tension, le char intelligent éteint le feu lorsqu'il détecte une flamme et continue de se déplacer le long de la ligne noire.
+Dopo aver caricato con successo il codice di test e alimentato il dispositivo, il carro armato intelligente spegne il fuoco quando rileva una fiamma e continua a muoversi lungo la linea nera.
 
 ![](media/694677ab33053846ec588667dc40ecfa.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
-Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer votre sécurité, veuillez abandonner l'expérience. Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Si prega di tenerlo lontano da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è sicuri della propria sicurezza, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.

@@ -1,3 +1,3 @@
-# 6. Besoin d'une assistance technique ?
+# 6. Hai bisogno di supporto tecnico?
 
-Si vous rencontrez des problèmes techniques ou avez besoin d'une assistance après-vente, n'hésitez pas à contacter notre équipe de support à l'adresse **asa12321sas@gmail.com**. Nous sommes là pour vous aider !
+Se riscontri problemi tecnici o hai bisogno di assistenza post-vendita, non esitare a contattare il nostro team di supporto all'indirizzo **asa12321sas@gmail.com**. Siamo qui per aiutarti!

@@ -1,44 +1,44 @@
-### Projet 15 : Char Télécommandé par Infrarouge
+### Progetto 15: Tank con Telecomando IR
 
 ![](./media/image-20250709134800790.png)
 
-#### **(1)Description :**
+#### **(1)Descrizione:**
 
-La télécommande infrarouge est l'une des applications de télécommande les plus courantes que l'on trouve dans les moteurs électriques, les ventilateurs électriques et de nombreux autres appareils électroménagers. Dans ce projet, nous utilisons les connaissances acquises précédemment pour fabriquer une voiture intelligente à télécommande infrarouge.
+Il telecomando a infrarossi è una delle applicazioni di controllo remoto più comuni, presente in motori elettrici, ventilatori elettrici e molti altri elettrodomestici. In questo progetto, utilizziamo le conoscenze apprese in precedenza per realizzare una macchina intelligente con telecomando a infrarossi.
 
-Dans la 9ème leçon, nous avons testé la valeur de touche correspondante à chaque touche de la télécommande infrarouge. Dans ce projet, nous pouvons définir le code (valeur de touche) pour que le bouton correspondant contrôle les mouvements de la voiture intelligente, et afficher les schémas de mouvement sur la matrice de LED 8X16.
+Nella 9ª lezione, abbiamo testato il valore corrispondente di ogni tasto del telecomando a infrarossi. In questo progetto, possiamo impostare il codice (valore del tasto) per far sì che il pulsante corrispondente controlli i movimenti della macchina intelligente, e visualizzare i pattern di movimento sulla matrice LED 8X16.
 
-La logique spécifique de la voiture intelligente est présentée dans le tableau ci-dessous :
+La logica specifica della macchina intelligente è mostrata nella tabella seguente:
 
-|                 Touche ultrasonique                  | Valeur de touche | Instructions des touches                                       |
-| :---------------------------------------------: | :-------: | ------------------------------------------------------------ |
-| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Avancer（régler le PWM à 200）<br />afficher le schéma d'avancement |
-| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Reculer（régler le PWM à 200）<br />afficher le schéma de recul |
-| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Tourner à gauche<br />afficher le schéma"STOP"                     |
-| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Tourner à droite<br />afficher le schéma de virage à gauche          |
-| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Arrêter<br />afficher le schéma"STOP"                          |
+|                 Tasto ultrasonico                  | Valore tasto | Istruzioni dai tasti                                         |
+| :------------------------------------------------: | :----------: | ------------------------------------------------------------ |
+| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png)   |   FF629D     | Muovi avanti（imposta PWM a 200）<br />visualizza il pattern di avanzamento |
+| ![](media/ae8110034aacb083151cfd882ee599ba.png)   |   FFA857     | Vai indietro（imposta PWM a 200）<br />visualizza il pattern di retromarcia |
+| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png)   |   FF22DD     | Gira a sinistra<br />visualizza il pattern"STOP"             |
+| ![](media/ad907a618af86f30d52986bbbd57ba76.png)   |   FFC23D     | Gira a destra<br />visualizza il pattern di svolta a sinistra |
+| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png)   |   FF02FD     | Fermati<br />visualizza il pattern"STOP"                     |
 
-**Réglage initial : la matrice de LED 8X16 affiche le schéma"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
+**Impostazione iniziale: la matrice LED 8X16 mostra il pattern"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
 
 
 
-#### **(2)Organigramme :**
+#### **(2)Diagramma di flusso:**
 
 ![](media/wps121.png)
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di collegamento:**
 
 ![](media/54527fe245b218dd22bdff5dafd4805d.png)
 
-<span style="color: rgb(255, 76, 65);">Remarque :</span>
+<span style="color: rgb(255, 76, 65);">Nota:</span>
 
-GND, VCC, SDA et SCL du panneau LED 8x16 sont connectés à G（GND), V（VCC). A4 et A5 de la carte d'extension.
+GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati a G（GND), V（VCC). A4 e A5 della scheda di espansione.
 
-Étant donné que la carte 8833 intègre le récepteur IR, vous n'avez pas besoin de le câbler. Les broches du récepteur IR sont G（GND), V（VCC) et D3.
+Poiché la scheda 8833 integra il ricevitore IR, non è necessario collegarlo. I pin del ricevitore IR sono G（GND), V（VCC) e D3.
 
-#### **(4)Code de test :**
+#### **(4)Codice di test:**
 
-Vous pouvez modifier des blocs pour construire votre code
+Puoi modificare i blocchi per costruire il tuo codice
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -58,14 +58,14 @@ Vous pouvez modifier des blocs pour construire votre code
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Code de test complet**
+**Codice di test completo**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
 
 ![](media/fae6c22640ced038daca9cb6721ab95e.png)
 
-#### **(5)Résultats du test :**
+#### **(5)Risultati del test:**
 
-Après avoir téléversé le code de test avec succès et mis sous tension, la voiture intelligente peut être contrôlée pour se déplacer par télécommande IR et la matrice 8\*16 affiche les schémas correspondants à ses mouvements.
+Dopo aver caricato con successo il codice di test e aver fornito alimentazione, la macchina intelligente può essere controllata nel movimento tramite il telecomando IR e la matrice 8\*16 mostra i pattern corrispondenti ai suoi movimenti.
 
 ![](./media/img-20240117094223.png)

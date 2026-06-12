@@ -1,77 +1,77 @@
-### Projet 8 : Commande et Contrôle de Vitesse des Moteurs
+### Progetto 8: Guida e Controllo della Velocità del Motore
 
-#### **(1) Description :**
+#### **(1)Descrizione:**
 
-Il existe de nombreuses façons de piloter des moteurs. Notre voiture intelligente utilise la solution la plus courante appelée L298P. Le L298P, fabriqué par STMicroelectronics, est un excellent circuit de commande spécialement conçu pour piloter des moteurs à haute puissance.
+Esistono molti modi per pilotare i motori. La nostra auto intelligente utilizza la soluzione più comune chiamata L298P. L298P, prodotto da STMicroelectronics, è un eccellente chip di pilotaggio appositamente progettato per pilotare motori ad alta potenza.
 
-Il peut piloter directement des moteurs à courant continu, des moteurs biphasés et quadriphasés avec un courant de commande atteignant 2A. La borne de sortie du moteur utilise 8 diodes Schottky haute vitesse comme protection.
+Può pilotare direttamente motori DC, motori a due fasi e a quattro fasi con una corrente di pilotaggio che raggiunge i 2A. Il terminale di uscita del motore adotta 8 diodi Schottky ad alta velocità come protezione.
 
-Nous avons conçu une carte d'extension basée sur le circuit L298P dont la conception empilable peut être directement connectée à la carte UNO R3 pour utilisation, réduisant ainsi les difficultés techniques pour les utilisateurs dans l'utilisation et la commande du moteur.
+Abbiamo progettato una scheda di espansione basata sul circuito L298P il cui design a impilamento può essere inserito direttamente nella scheda UNO R3 per l'uso, riducendo le difficoltà tecniche per gli utenti nell'utilizzo e nel pilotaggio del motore.
 
-Empilez la carte d'extension sur la carte, alimentez la BAT, basculez le commutateur DIP sur la position ON, et alimentez simultanément la carte d'extension et la carte UNO R3 via une alimentation externe.
+Impilare la scheda di espansione sulla scheda, alimentare la BAT, girare l'interruttore DIP sull'estremità ON e alimentare la scheda di espansione e la scheda UNO R3 contemporaneamente tramite alimentazione esterna.
 
-Afin de faciliter le câblage, la carte d'extension est équipée d'une interface anti-inversion (PH2.0 -2P -3P -4P -5P) et peut ainsi être directement branchée avec des moteurs, une alimentation et des capteurs/modules.
+Per facilitare il cablaggio, la scheda di espansione è dotata di interfaccia anti-inversione (PH2.0 -2P -3P -4P -5P) e quindi può essere collegata direttamente con motori, alimentatori e sensori/moduli.
 
-L'interface Bluetooth de la carte d'extension de commande est entièrement compatible avec le module Bluetooth Keyestudio HM-10. Par conséquent, il suffit d'insérer le module Bluetooth HM-10 dans l'interface correspondante lors de la connexion.
+L'interfaccia Bluetooth della scheda di espansione per il pilotaggio è completamente compatibile con il modulo Bluetooth Keyestudio HM-10. Pertanto, dobbiamo solo inserire il modulo Bluetooth HM-10 nell'interfaccia corrispondente durante il collegamento.
 
-En même temps, la carte d'extension de commande utilise également des connecteurs à broches 2.54 pour étendre certains ports numériques et analogiques disponibles, afin que vous puissiez continuer à ajouter d'autres capteurs et réaliser des expériences d'extension.
+Allo stesso tempo, la scheda di espansione utilizza anche pin header da 2,54 mm per estendere alcune porte digitali e analogiche disponibili, in modo da poter continuare ad aggiungere altri sensori e svolgere esperimenti di espansione.
 
-La carte d'extension peut être connectée à 4 moteurs à courant continu. Dans le mode de connexion par cavalier par défaut, les moteurs des interfaces A et A1, B et B1 sont connectés en parallèle, et leur schéma de mouvement est identique. 8 cavaliers peuvent être utilisés pour contrôler le sens de rotation des 4 interfaces moteur.
+La scheda di espansione può essere collegata a 4 motori DC. Nella modalità di connessione predefinita con il cappuccio jumper, i motori delle interfacce A e A1, B e B1 sono collegati in parallelo e il loro schema di movimento è lo stesso. 8 cappucci jumper possono essere utilizzati per controllare la direzione di rotazione delle 4 interfacce motore.
 
-Par exemple, lorsque les deux cavaliers devant l'interface moteur A sont changés d'une connexion horizontale à une connexion verticale, le sens de rotation du moteur A est alors opposé au sens de rotation d'origine.
+Ad esempio, quando i due cappucci jumper davanti all'interfaccia del motore A vengono cambiati da una connessione orizzontale a una connessione verticale, la direzione di rotazione del motore A è ora opposta alla direzione di rotazione originale.
 
 ![](media/image-20230427081635216.png)
 
 ![](media/5381c98d3be6da099ce43e841b8f736b.png)
 
-#### **(2) Paramètres :**
+#### **(2)Parametri：**
 
-- Tension d'entrée de la partie logique : DC 5V
+- Tensione di ingresso della parte logica: DC 5V
 
-- Tension d'entrée de la partie de commande : DC 7-12V
+- Tensione di ingresso della parte di pilotaggio: DC 7-12V
 
-- Courant de fonctionnement de la partie logique : ≤36mA
+- Corrente di lavoro della parte logica: ≤36mA
 
-- Courant de fonctionnement de la partie de commande : ≤ 2A
+- Corrente di lavoro della parte di pilotaggio: ≤ 2A
 
-- Puissance de dissipation maximale : 25W (T=75℃)
+- Potenza massima dissipata: 25W (T=75℃)
 
-- Niveau du signal d'entrée de commande :
+- Livello del segnale di controllo in ingresso:
   
-  ​	Niveau haut : 2.3V ≤ Vin ≤ 5V
+  ​	Livello alto: 2,3V ≤ Vin ≤ 5V
   
-  ​	Niveau bas : 0V ≤ Vin ≤ 1.5V
+  ​	Livello basso: 0V ≤ Vin ≤ 1,5V
 
-- Température de fonctionnement : -25℃～＋130℃
+- Temperatura di lavoro: -25℃～＋130℃
 
-#### **(3) Faire se déplacer le robot**
+#### **(3)Pilotare il robot in movimento**
 
-La broche de direction du moteur A est D2, la broche de contrôle de vitesse est D5 ; la broche de direction du moteur B est D4 et la broche de contrôle de vitesse est D6.
+Il pin di direzione del motore A è D2, il pin di controllo della velocità è D5; il pin di direzione del motore B è D4 e il pin di controllo della velocità è D6.
 
-D'après le tableau ci-dessous, nous pouvons savoir comment contrôler le mouvement du robot en contrôlant la rotation de deux moteurs via les ports numériques et les ports PWM. La plage de valeurs PWM est 0-255. Plus la valeur est grande, plus le moteur tourne vite.
+Secondo la tabella seguente, possiamo sapere come controllare il movimento del robot controllando la rotazione di due motori attraverso le porte digitali e le porte PWM. Il range del valore PWM è 0-255. Maggiore è il valore, più veloce ruota il motore.
 
-|     Fonction     |  D4  | D6（PWM） | Moteur（gauche）B |  D2  | D5（PWM） | Moteur（droite）A |
-| :--------------: | :--: | :-------: | :---------------: | :--: | :-------: | :---------------: |
-| Avancer          | HIGH |  255-200  |   Rotation Gauche   | HIGH |  255-200  |   Rotation Gauche   |
-| Reculer          | LOW  |    200    |  Rotation Droite   | LOW  |    200    |  Rotation Droite   |
-| Tourner à Gauche | LOW  |    200    |  Rotation Droite   | HIGH |  255-200  |   Rotation Gauche   |
-| Tourner à Droite | HIGH |  255-200  |   Rotation Gauche   | LOW  |    200    |  Rotation Droite   |
-| Arrêt            | LOW  |     0     |      Arrêt       | LOW  |     0     |      Arrêt       |
-
-
+|   Funzione    |  D4  | D6（PWM） | Motore（sinistra）B |  D2  | D5（PWM） | Motore（destra）A |
+| :-----------: | :--: | :-------: | :-----------------: | :--: | :-------: | :---------------: |
+| Avanti        | HIGH |  255-200  |   Ruota Sinistra    | HIGH |  255-200  |  Ruota Sinistra   |
+| Indietro      | LOW  |    200    |   Ruota Destra      | LOW  |    200    |   Ruota Destra    |
+| Gira Sinistra | LOW  |    200    |   Ruota Destra      | HIGH |  255-200  |  Ruota Sinistra   |
+| Gira Destra   | HIGH |  255-200  |   Ruota Sinistra    | LOW  |    200    |   Ruota Destra    |
+| Stop          | LOW  |     0     |        Stop         | LOW  |     0     |       Stop        |
 
 
-#### **(4) Schéma de connexion :**
+
+
+#### **(4)Schema di Collegamento:**
 
 ![](media/3e53cf19ea5f85a931b955453b86304b.png)
 
-<span style="color: rgb(255, 76, 65);">Remarque :</span>
+<span style="color: rgb(255, 76, 65);">Nota:</span>
 
-Le connecteur à 4 broches est marqué A, A1, B1 et B. Le moteur arrière droit est connecté à B de la carte 8833 et le moteur avant gauche est connecté au port A.
+Il connettore a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro è collegato a B della scheda 8833 e quello anteriore sinistro è collegato alla porta A.
 
-#### **(5) Code de test :**
+#### **(5)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -81,83 +81,83 @@ motor driver
 http://www.keyestudio.com
 */
 
-#define ML_Ctrl 4 // Définir la broche de contrôle de direction du moteur gauche
-#define ML_PWM 6 // Définir la broche de contrôle PWM du moteur gauche
-#define MR_Ctrl 2 // Définir la broche de contrôle de direction du moteur droit
-#define MR_PWM 5 // Définir la broche de contrôle PWM du moteur droit
+#define ML_Ctrl 4 // Definire il pin di controllo della direzione del motore sinistro
+#define ML_PWM 6 // Definire il pin di controllo PWM del motore sinistro
+#define MR_Ctrl 2 // Definire il pin di controllo della direzione del motore destro
+#define MR_PWM 5 // Definire il pin di controllo PWM del motore destro
 
 void setup()
 {
-    pinMode(ML_Ctrl, OUTPUT);// Définir la broche de contrôle de direction du moteur gauche en SORTIE
-    pinMode(ML_PWM, OUTPUT);// Définir la broche de contrôle PWM du moteur gauche en SORTIE
-    pinMode(MR_Ctrl, OUTPUT);// Définir la broche de contrôle de direction du moteur droit en SORTIE
-    pinMode(MR_PWM, OUTPUT);// Définir la broche de contrôle PWM du moteur droit en SORTIE
+    pinMode(ML_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore sinistro come OUTPUT
+    pinMode(ML_PWM, OUTPUT);// Definire il pin di controllo PWM del motore sinistro come OUTPUT
+    pinMode(MR_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore destro come OUTPUT
+    pinMode(MR_PWM, OUTPUT);// Definire il pin di controllo PWM del motore destro come OUTPUT
 }
 
 void loop()
 {
-    // avant
-    digitalWrite(ML_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur gauche sur HIGH
-    analogWrite(ML_PWM, 55); // La vitesse de contrôle PWM du moteur gauche est 55
-    digitalWrite(MR_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur droit sur HIGH
-    analogWrite(MR_PWM, 55); // La vitesse de contrôle PWM du moteur droit est 55
-    delay(2000);// délai de 2s
+    // avanti
+    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
+    analogWrite(ML_PWM, 55); // La velocità di controllo PWM del motore sinistro è 55
+    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
+    analogWrite(MR_PWM, 55); // La velocità di controllo PWM del motore destro è 55
+    delay(2000);// ritardo di 2s
 
-    // arrière
-    digitalWrite(ML_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur gauche sur LOW
-    analogWrite(ML_PWM, 200); // La vitesse de contrôle PWM du moteur gauche est 200
-    digitalWrite(MR_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur droit sur LOW
-    analogWrite(MR_PWM, 200); // La vitesse de contrôle PWM du moteur droit est 200
-    delay(2000);// délai de 2s
+    // indietro
+    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
+    analogWrite(ML_PWM, 200); // La velocità di controllo PWM del motore sinistro è 200
+    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
+    analogWrite(MR_PWM, 200); // La velocità di controllo PWM del motore destro è 200
+    delay(2000);// ritardo di 2s
 
-    // tourner à gauche
-    digitalWrite(ML_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur gauche sur LOW
-    analogWrite(ML_PWM, 200); // La vitesse de contrôle PWM du moteur gauche est 200
-    digitalWrite(MR_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur droit sur HIGH
-    analogWrite(MR_PWM, 55); // La vitesse de contrôle PWM du moteur droit est 55
-    delay(2000);// délai de 2s
+    // gira sinistra
+    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
+    analogWrite(ML_PWM, 200); // La velocità di controllo PWM del motore sinistro è 200
+    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
+    analogWrite(MR_PWM, 55); // La velocità di controllo PWM del motore destro è 55
+    delay(2000);// ritardo di 2s
 
-    // tourner à droite
-    digitalWrite(ML_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur gauche sur HIGH
-    analogWrite(ML_PWM, 55); // La vitesse de contrôle PWM du moteur gauche est 55
-    digitalWrite(MR_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur droit sur LOW
-    analogWrite(MR_PWM, 200); // La vitesse de contrôle PWM du moteur droit est 200
-    delay(2000);// délai de 2s
+    // gira destra
+    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
+    analogWrite(ML_PWM, 55); // La velocità di controllo PWM del motore sinistro è 55
+    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
+    analogWrite(MR_PWM, 200); // La velocità di controllo PWM del motore destro è 200
+    delay(2000);// ritardo di 2s
 
-    // arrêt
+    // stop
     digitalWrite(ML_Ctrl, LOW);
-    analogWrite(ML_PWM, 0); // La vitesse de contrôle PWM du moteur gauche est 0
+    analogWrite(ML_PWM, 0); // La velocità di controllo PWM del motore sinistro è 0
     digitalWrite(MR_Ctrl, LOW);
-    analogWrite(MR_PWM, 0); // La vitesse de contrôle PWM du moteur droit est 0
-    delay(2000);// délai de 2s
+    analogWrite(MR_PWM, 0); // La velocità di controllo PWM del motore destro è 0
+    delay(2000);// ritardo di 2s
 }
 ```
 
-#### **(6) Résultats du test :**
+#### **(6)Risultati del Test:**
 
-Après avoir effectué le câblage selon le schéma, téléversé le code de test et mis sous tension.
+Dopo aver effettuato il cablaggio secondo lo schema, caricato il codice di test e acceso l'alimentazione.
 
 ![](./media/img-20240117082646.png)
 
-la voiture intelligente avance pendant 2s, recule pendant 2s, tourne à gauche pendant 2s, tourne à droite pendant 2s et s'arrête pendant 2s, puis répète cette séquence.
+l'auto intelligente si muove in avanti per 2s, indietro per 2s, gira a sinistra per 2s, gira a destra per 2s e si ferma per 2s, ripetendo questa sequenza.
 
-#### **(7) Explication du code :**
+#### **(7)Spiegazione del Codice:**
 
 **digitalWrite(ML_Ctrl,LOW);**
 
-Le changement entre les niveaux haut et bas permet aux moteurs de tourner dans le sens horaire ou antihoraire. Les broches numériques générales peuvent être utilisées pour contrôler ces mouvements.
+Il cambiamento tra livelli alto e basso può far ruotare i motori in senso orario o antiorario. I pin digitali generali possono essere utilizzati per controllare questi movimenti.
 
 **analogWrite(ML_PWM,200);**
 
-Le réglage de la vitesse du moteur est réalisé par PWM, et la broche qui contrôle la vitesse du moteur doit être la broche PWM de l'Arduino.
+La regolazione della velocità del motore è realizzata tramite PWM, e il pin che controlla la velocità del motore deve essere il pin PWM di Arduino.
 
-#### **(8) Projet d'extension :**
+#### **(8)Progetto di Espansione:**
 
-Nous ajustons la vitesse des moteurs en contrôlant le PWM et le câblage reste identique.
+Regoliamo la velocità dei motori controllando il PWM e il cablaggio rimane invariato.
 
-**Code de test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -167,58 +167,58 @@ motor driver pwm
 http://www.keyestudio.com
 */
 
-#define ML_Ctrl 4 // Définir la broche de contrôle de direction du moteur gauche
-#define ML_PWM 6 // Définir la broche de contrôle PWM du moteur gauche
-#define MR_Ctrl 2 // Définir la broche de contrôle de direction du moteur droit
-#define MR_PWM 5 // Définir la broche de contrôle PWM du moteur droit
+#define ML_Ctrl 4 // Definire il pin di controllo della direzione del motore sinistro
+#define ML_PWM 6 // Definire il pin di controllo PWM del motore sinistro
+#define MR_Ctrl 2 // Definire il pin di controllo della direzione del motore destro
+#define MR_PWM 5 // Definire il pin di controllo PWM del motore destro
 
 void setup() 
 {
-    pinMode(ML_Ctrl, OUTPUT);// Définir la broche de contrôle de direction du moteur gauche en SORTIE
-    pinMode(ML_PWM, OUTPUT);// Définir la broche de contrôle PWM du moteur gauche en SORTIE
-    pinMode(MR_Ctrl, OUTPUT);// Définir la broche de contrôle de direction du moteur droit en SORTIE
-    pinMode(MR_PWM, OUTPUT);// Définir la broche de contrôle PWM du moteur droit en SORTIE
+    pinMode(ML_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore sinistro come OUTPUT
+    pinMode(ML_PWM, OUTPUT);// Definire il pin di controllo PWM del motore sinistro come OUTPUT
+    pinMode(MR_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore destro come OUTPUT
+    pinMode(MR_PWM, OUTPUT);// Definire il pin di controllo PWM del motore destro come OUTPUT
 }
 
 void loop() 
 {
-    // avant
-    digitalWrite(ML_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur gauche sur HIGH
-    analogWrite(ML_PWM, 155); // La vitesse de contrôle PWM du moteur gauche est 155
-    digitalWrite(MR_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur droit sur HIGH
-    analogWrite(MR_PWM, 155); // La vitesse de contrôle PWM du moteur droit est 155
-    delay(2000);// délai de 2s
+    // avanti
+    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
+    analogWrite(ML_PWM, 155); // La velocità di controllo PWM del motore sinistro è 155
+    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
+    analogWrite(MR_PWM, 155); // La velocità di controllo PWM del motore destro è 155
+    delay(2000);// ritardo di 2s
 
-    // arrière
-    digitalWrite(ML_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur gauche sur LOW
-    analogWrite(ML_PWM, 100); // La vitesse de contrôle PWM du moteur gauche est 100
-    digitalWrite(MR_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur droit sur LOW
-    analogWrite(MR_PWM, 100); // La vitesse de contrôle PWM du moteur droit est 100
-    delay(2000);// délai de 2s
+    // indietro
+    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
+    analogWrite(ML_PWM, 100); // La velocità di controllo PWM del motore sinistro è 100
+    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
+    analogWrite(MR_PWM, 100); // La velocità di controllo PWM del motore destro è 100
+    delay(2000);// ritardo di 2s
 
-    // gauche
-    digitalWrite(ML_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur gauche sur LOW
-    analogWrite(ML_PWM, 100); // La vitesse de contrôle PWM du moteur gauche est 100
-    digitalWrite(MR_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur droit sur HIGH
-    analogWrite(MR_PWM, 155); // La vitesse de contrôle PWM du moteur droit est 155
-    delay(2000);// délai de 2s
+    // sinistra
+    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
+    analogWrite(ML_PWM, 100); // La velocità di controllo PWM del motore sinistro è 100
+    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
+    analogWrite(MR_PWM, 155); // La velocità di controllo PWM del motore destro è 155
+    delay(2000);// ritardo di 2s
 
-    // droite
-    digitalWrite(ML_Ctrl, HIGH); // Régler la vitesse de contrôle de direction du moteur gauche sur HIGH
-    analogWrite(ML_PWM, 155); // La vitesse de contrôle PWM du moteur gauche est 155
-    digitalWrite(MR_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur droit sur LOW
-    analogWrite(MR_PWM, 100); // La vitesse de contrôle PWM du moteur droit est 100
-    delay(2000);// délai de 2s
+    // destra
+    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
+    analogWrite(ML_PWM, 155); // La velocità di controllo PWM del motore sinistro è 155
+    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
+    analogWrite(MR_PWM, 100); // La velocità di controllo PWM del motore destro è 100
+    delay(2000);// ritardo di 2s
 
-    // arrêt
-    digitalWrite(ML_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur gauche sur LOW
-    analogWrite(ML_PWM, 0); // La vitesse de contrôle PWM du moteur gauche est 0
-    digitalWrite(MR_Ctrl, LOW); // Régler la vitesse de contrôle de direction du moteur droit sur LOW
-    analogWrite(MR_PWM, 0); // La vitesse de contrôle PWM du moteur droit est 0
-    delay(2000);// délai de 2s
+    // stop
+    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
+    analogWrite(ML_PWM, 0); // La velocità di controllo PWM del motore sinistro è 0
+    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
+    analogWrite(MR_PWM, 0); // La velocità di controllo PWM del motore destro è 0
+    delay(2000);// ritardo di 2s
 }
 ```
 
-Téléversez le code, la vitesse du moteur est plus lente.
+Caricare il codice, la velocità del motore è più lenta.
 
-Un faible courant entraînera une rotation lente du moteur.
+Una corrente bassa farà ruotare il motore lentamente.

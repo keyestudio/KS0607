@@ -1,53 +1,53 @@
-### Projet 20 : Capteur de flamme
+### Progetto 20: Sensore di Fiamma
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)Description :**
+#### **(1)Descrizione：**
 
-Le capteur de flamme utilise un tube récepteur infrarouge pour détecter les flammes. Il convertit la luminosité de la flamme en signaux de niveau haut et bas et les transmet au processeur central pour un traitement de programme correspondant. La valeur de tension du port analogique varie selon qu'une flamme est proche ou absente.
+Il sensore di fiamma utilizza un tubo ricevitore IR per rilevare le fiamme. Converte la luminosità della fiamma in segnali di livello alto e basso e li invia al processore centrale per la corrispondente elaborazione del programma. Il valore di tensione della porta analogica varia a seconda che ci sia una fiamma nelle vicinanze o non ce ne sia affatto.
 
-S'il n'y a pas de flamme, le port analogique lit environ 0,3V ; lorsqu'il y a une flamme, le port analogique lit environ 1,0V. Plus la flamme est proche, plus la valeur de tension est élevée. Il peut être utilisé pour détecter une source de feu ou pour construire un robot intelligent.
+Se non c'è fiamma, la porta analogica legge circa 0,3V; quando c'è una fiamma, la porta analogica legge circa 1,0V. Più la fiamma è vicina, più alto è il valore di tensione. Può essere utilizzato per rilevare una fonte di fuoco o per costruire un robot intelligente.
 
-Notez que la sonde du capteur de flamme ne peut supporter que des températures comprises entre -25℃ et 85℃.
+Si noti che la sonda del sensore di fiamma può sopportare solo temperature comprese tra -25℃ e 85℃.
 
-Pendant l'utilisation, assurez-vous de maintenir le capteur de flamme à une distance sûre du feu pour éviter de l'endommager.
+Durante l'uso, assicurarsi di mantenere il sensore di fiamma a una distanza di sicurezza dal fuoco per evitare di danneggiarlo.
 
-#### **(2)Paramètres :**
+#### **(2)Parametri：**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- Tension de fonctionnement : 3,3V-5V (DC)
+- Tensione di funzionamento: 3,3V-5V (DC)
 
-- Courant : 100mA
+- Corrente: 100mA
 
-- Puissance maximale : 0,5W
+- Potenza massima: 0,5W
 
-- Température de fonctionnement : -10°C à +50 degrés Celsius
+- Temperatura di lavoro: da -10°C a +50 gradi Celsius
 
-- Taille du capteur : 31,6mm x 23,7mm
+- Dimensioni del sensore: 31,6mm x 23,7mm
 
-- Interface : interface 4 broches vers 3 broches
+- Interfaccia: interfaccia da 4pin a 3PIN
 
-- Signal de sortie : signaux analogiques A0, A1
+- Segnale di uscita: segnali analogici A0, A1
 
 
 
-#### **(3)Schéma de connexion :**
+#### **(3)Schema di Collegamento:**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-Les capteurs de flamme sont connectés à A1 et A2.
+I sensori di fiamma sono collegati ad A1 e A2.
 
-Lorsque nous retirons les capteurs à ultrasons et les photorésistances, puis ajoutons des capteurs de flamme et des modules de ventilateur, le robot extincteur est créé.
+Quando rimuoviamo i sensori a ultrasuoni e le fotoresistenze, quindi aggiungiamo i sensori di fiamma e i moduli ventola, si crea il robot antincendio.
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
-1) Cette expérience nécessite l'utilisation d'une source de feu. Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer votre sécurité, veuillez abandonner l'expérience.
-2) **Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.**
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento.
+2）**Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.**
 
 
-#### **(4)Code de test :**
+#### **(4)Codice di Test:**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -62,53 +62,53 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; // Définir la broche de flamme comme broche analogique A1
-int val = 0; // Définir les variables numériques
+int flame = A1; // Definisce il pin della fiamma come pin analogico A1
+int val = 0; // Definisce le variabili digitali
 
 void setup() 
 {
-	pinMode(flame, INPUT); // Définir le buzzer comme source d'entrée
-    Serial.begin(9600); // Régler le débit en bauds à 9600
+	pinMode(flame, INPUT); // Definisce il buzzer come sorgente di input
+    Serial.begin(9600); // Imposta la velocità di trasmissione a 9600
 }
 
 void loop() 
 {
-	val = analogRead(flame); // Lire la valeur analogique du capteur de flamme
-	Serial.println(val); // Afficher la valeur analogique et l'imprimer
-	delay(100); // Délai de 100ms
+	val = analogRead(flame); // Legge il valore analogico del sensore di fiamma
+	Serial.println(val); // Stampa e visualizza il valore analogico
+	delay(100); // Ritardo di 100ms
 }
 ```
 
-#### **(5)Résultat du test :**
+#### **(5)Risultato del Test：**
 
-Connectez les composants, téléversez le code, ouvrez le moniteur série et réglez le débit en bauds à 9600.
+Collegare i componenti, caricare il codice, aprire il monitor seriale e impostare la velocità di trasmissione a 9600.
 
-Vous pouvez visualiser la valeur de simulation du capteur de flamme.
+È possibile visualizzare il valore di simulazione del sensore di fiamma.
 
-Plus la flamme est proche, plus la valeur de simulation est faible.
+Più la fiamma è vicina, minore è il valore di simulazione.
 
-Ajustez le potentiomètre sur le module pour maintenir D1 au point critique. Lorsque le capteur ne détecte pas de flamme, D1 sera éteint, mais si le capteur détecte une flamme, D1 s'allumera.
+Regolare il potenziometro sul modulo per mantenere D1 al punto critico. Quando il sensore non rileva fiamma, D1 sarà spento, ma se il sensore rileva fiamma, D1 si accenderà.
 
 ![](./media/img-20240117085629.png)
 
 ![](media/05db06b3e205dfca63c2ba3aa7ff528e.png)
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
-Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer votre sécurité, veuillez abandonner l'expérience. Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Si prega di tenerlo lontano da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.
 
-#### **(6)Pratique avancée :**
+#### **(6)Pratica Estesa:**
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
-1) Cette expérience nécessite l'utilisation d'une source de feu. Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer votre sécurité, veuillez abandonner l'expérience.
-2) Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento.
+2）Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.
 
-Ensuite, connectez une LED à la broche 9 et nous pouvons la contrôler avec un capteur de flamme, comme indiqué ci-dessous :
+Successivamente, collegare un LED al pin 9 e possiamo controllarlo tramite un sensore di fiamma, come mostrato di seguito;
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-**Code de test**
+**Codice di Test**
 
-(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
 
 ```C
 /*
@@ -123,38 +123,38 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; // Définir la broche de flamme comme broche analogique A1
-int LED = 9; // Définir la LED comme port numérique 9
-int val = 0; // Définir les variables numériques
+int flame = A1; // Definisce il pin della fiamma come pin analogico A1
+int LED = 9; // Definisce il LED come porta digitale 9
+int val = 0; // Definisce le variabili digitali
 
 void setup() 
 {
-    pinMode(flame, INPUT); // Définir la flamme comme source d'entrée
-    pinMode(LED, OUTPUT); // Régler la LED en mode sortie
-    Serial.begin(9600); // Régler le débit en bauds à 9600
+    pinMode(flame, INPUT); // Definisce la fiamma come sorgente di input
+    pinMode(LED, OUTPUT); // Imposta il LED in modalità output
+    Serial.begin(9600); // Imposta la velocità di trasmissione a 9600
 }
 
 void loop() 
 {
-    val = analogRead(flame); // Lire la valeur analogique du capteur de flamme
-    Serial.println(val); // Afficher la valeur analogique et l'imprimer
-    if (val < 300)  // Lorsque la valeur analogique est inférieure à 300, la LED s'allume
+    val = analogRead(flame); // Legge il valore analogico del sensore di fiamma
+    Serial.println(val); // Stampa e visualizza il valore analogico
+    if (val < 300)  // Quando il valore analogico è inferiore a 300, il LED si accende
     {
-    	digitalWrite(LED, HIGH); // La LED s'allume
+    	digitalWrite(LED, HIGH); // Il LED si accende
     } 
     else 
     {
-    	digitalWrite(LED, LOW); // La LED s'éteint
+    	digitalWrite(LED, LOW); // Il LED si spegne
     }
-    delay(50); // Délai de 50ms
+    delay(50); // Ritardo di 50ms
 }
 ```
 
-#### **(8)Résultats du test :**
+#### **(8)Risultati del Test：**
 
-Vous pouvez utiliser la flamme d'un briquet près du capteur de flamme gauche. Lorsque le capteur de flamme détecte une flamme, le module LED s'allumera comme alarme.
+È possibile avvicinare la fiamma di un accendino al sensore di fiamma sinistro. Quando il sensore di fiamma rileva una fiamma, il modulo LED si accenderà come allarme.
 
 ![](./media/img-20240117085131.png)
 
-<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
-Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer votre sécurité, veuillez abandonner l'expérience. Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
+<span style="color: rgb(255, 76, 65);">**Nota:**</span>
+Si prega di tenerlo lontano da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.
