@@ -1,43 +1,43 @@
-### Proyecto 1: Parpadeo de LED
+### Projet 1 : Clignotement de LED
 
-#### (1)Descripción：
+#### (1) Description :
 
 ![](./media/image-20250709122631704.png)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-Para principiantes y entusiastas, el parpadeo de LED es un programa fundamental. LED, la abreviación de diodos emisores de luz, está compuesto por compuestos químicos de Ga, As, P, N, entre otros. El LED puede parpadear en diversos colores modificando el tiempo de retardo en el código de prueba. Al controlar, se alimenta GND y VCC. El LED se encenderá si el extremo S está en nivel alto; de lo contrario, se apagará.
+Pour les débutants et les passionnés, le clignotement de LED est un programme fondamental. LED, l'abréviation de diodes électroluminescentes, est composée de composés chimiques Ga, As, P, N, etc. La LED peut clignoter en différentes couleurs en modifiant le temps de délai dans le code de test. En mode de contrôle, alimentez GND et VCC. La LED s'allumera si l'extrémité S est à un niveau haut ; sinon, elle s'éteindra.
 
-#### **(2)Parámetros:**
+#### **(2) Paramètres :**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Interfaz de control: puerto digital
-- Voltaje de trabajo: DC 3.3-5V
-- Espaciado de pines: 2.54mm
-- Color de visualización del LED: amarillo
+- Interface de contrôle : port numérique
+- Tension de fonctionnement : DC 3.3-5V
+- Espacement des broches : 2.54mm
+- Couleur d'affichage de la LED : jaune
 
-#### (3)Componentes Requeridos:
+#### (3) Composants nécessaires :
 
 ![](./media/image-20250709122437613.png)
 
-#### **(4)Placa de Expansión del Driver de Motor 8833:**
+#### **(4) Carte d'extension du pilote moteur 8833 :**
 
-La placa de expansión del driver de motor Keyestudio 8833 es compatible con la placa de desarrollo Arduino UNO. Simplemente apílela sobre la placa de desarrollo al usarla.
+La carte d'extension du pilote moteur Keyestudio 8833 est compatible avec la carte de développement Arduino UNO. Il suffit de l'empiler sur la carte de développement lors de son utilisation.
 
 ![](media/d8696e83ade31f2b7c56cc5911eacbd7.GIF)
 
-#### **(5)Diagrama de Conexión:**
+#### **(5) Schéma de connexion :**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](./media/image-20250709122655936.png)
 
-<span style="color: rgb(255, 76, 65);">**NOTA:**</span> El LED está conectado al puerto D9. Recuerde instalar los puentes en el shield.
+<span style="color: rgb(255, 76, 65);">**REMARQUE :**</span> La LED est connectée au port D9. N'oubliez pas d'installer les cavaliers sur le shield.
 
-#### **(6)Código de Prueba:**
+#### **(6) Code de test :**
 
-También puede arrastrar bloques para editar su código, como se muestra a continuación.
+Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
 
 ![](media/cc43ba357acb68a4961adb7e5041b6fe.png)
 
@@ -45,28 +45,28 @@ También puede arrastrar bloques para editar su código, como se muestra a conti
 
 ![](media/21dc3c24da4271aa7ec2bfdac732eeb3.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de subir el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et des conflits peuvent survenir avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/ba4723bab640078eccbe1811da138bc3.png)
 
-#### **(7)Resultados de la Prueba:**
+#### **(7) Résultats du test :**
 
-Suba el programa; el LED parpadea con un intervalo de 1s.
+Téléversez le programme, la LED clignote à un intervalle de 1s.
 
-#### **(8)Práctica de Extensión:**
+#### **(8) Pratique d'extension :**
 
-Ya sabemos cómo controlar el LED, entonces cambiemos la frecuencia del LED.
+Nous savons maintenant comment contrôler la LED, alors changeons la fréquence de la LED.
 
-Podemos cambiar la frecuencia del LED sin cambiar el pin del LED. Modifiquemos el código.
+Nous pouvons modifier la fréquence de la LED sans changer la broche de la LED. Modifions le code.
 
-También puede arrastrar bloques para editar su código, como se muestra a continuación.
+Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de subir el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et des conflits peuvent survenir avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/58c76be4c719a885afb500e8f3b80b85.png)
 
-El resultado de la prueba muestra que el LED parpadea más rápido. Por lo tanto, podemos concluir que los pines y el tiempo de retardo afectan la frecuencia de parpadeo.
+Le résultat du test montre que la LED clignote plus rapidement. Par conséquent, nous pouvons conclure que les broches et le temps de délai influencent la fréquence de clignotement.

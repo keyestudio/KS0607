@@ -1,44 +1,44 @@
-### Proyecto 15: Tanque con Control Remoto por Infrarrojos
+### Projet 15 : Char Télécommandé par Infrarouge
 
 ![](./media/image-20250709134800790.png)
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-El control remoto por infrarrojos es una de las aplicaciones de control remoto más comunes que se encuentra en motores eléctricos, ventiladores eléctricos y muchos otros electrodomésticos. En este proyecto, utilizamos los conocimientos aprendidos anteriormente para construir un coche inteligente con control remoto por infrarrojos.
+La télécommande infrarouge est l'une des applications de télécommande les plus courantes que l'on trouve dans les moteurs électriques, les ventilateurs électriques et de nombreux autres appareils électroménagers. Dans ce projet, nous utilisons les connaissances acquises précédemment pour fabriquer une voiture intelligente à télécommande infrarouge.
 
-En la lección 9, probamos el valor de tecla correspondiente a cada botón del control remoto por infrarrojos. En este proyecto, podemos configurar el código (valor de tecla) para que el botón correspondiente controle los movimientos del coche inteligente y muestre los patrones de movimiento en la matriz de LED 8X16.
+Dans la 9ème leçon, nous avons testé la valeur de touche correspondante à chaque touche de la télécommande infrarouge. Dans ce projet, nous pouvons définir le code (valeur de touche) pour que le bouton correspondant contrôle les mouvements de la voiture intelligente, et afficher les schémas de mouvement sur la matrice de LED 8X16.
 
-La lógica específica del coche inteligente se muestra en la tabla a continuación:
+La logique spécifique de la voiture intelligente est présentée dans le tableau ci-dessous :
 
-|                 Tecla ultrasónica                  | Valor de tecla | Instrucciones de las teclas                                       |
+|                 Touche ultrasonique                  | Valeur de touche | Instructions des touches                                       |
 | :---------------------------------------------: | :-------: | ------------------------------------------------------------ |
-| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Avanzar（establecer PWM en 200）<br />mostrar el patrón de avance |
-| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Retroceder（establecer PWM en 200）<br />mostrar el patrón de retroceso |
-| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Girar a la izquierda<br />mostrar el patrón"STOP"                     |
-| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Girar a la derecha<br />mostrar el patrón de giro a la izquierda          |
-| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Detener<br />mostrar el patrón"STOP"                          |
+| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Avancer（régler le PWM à 200）<br />afficher le schéma d'avancement |
+| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Reculer（régler le PWM à 200）<br />afficher le schéma de recul |
+| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Tourner à gauche<br />afficher le schéma"STOP"                     |
+| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Tourner à droite<br />afficher le schéma de virage à gauche          |
+| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Arrêter<br />afficher le schéma"STOP"                          |
 
-**Configuración inicial: la matriz de LED 8X16 muestra el patrón"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
+**Réglage initial : la matrice de LED 8X16 affiche le schéma"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
 
 
 
-#### **(2)Diagrama de flujo:**
+#### **(2)Organigramme :**
 
 ![](media/wps121.png)
 
-#### **(3)Diagrama de conexión:**
+#### **(3)Schéma de connexion :**
 
 ![](media/54527fe245b218dd22bdff5dafd4805d.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">Remarque :</span>
 
-GND, VCC, SDA y SCL del panel LED 8x16 están conectados a G（GND), V（VCC). A4 y A5 de la placa de expansión.
+GND, VCC, SDA et SCL du panneau LED 8x16 sont connectés à G（GND), V（VCC). A4 et A5 de la carte d'extension.
 
-Dado que la placa 8833 integra el receptor IR, no es necesario cablearlo. Los pines del receptor IR son G（GND), V（VCC) y D3.
+Étant donné que la carte 8833 intègre le récepteur IR, vous n'avez pas besoin de le câbler. Les broches du récepteur IR sont G（GND), V（VCC) et D3.
 
-#### **(4)Código de prueba:**
+#### **(4)Code de test :**
 
-Puedes editar bloques para construir tu código
+Vous pouvez modifier des blocs pour construire votre code
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -58,14 +58,14 @@ Puedes editar bloques para construir tu código
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serie, y puede haber conflictos con la comunicación serie Bluetooth, lo que puede provocar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/fae6c22640ced038daca9cb6721ab95e.png)
 
-#### **(5)Resultados de la prueba:**
+#### **(5)Résultats du test :**
 
-Después de cargar el código de prueba correctamente y encender el dispositivo, el coche inteligente puede controlarse para moverse mediante el control remoto IR y la pantalla 8\*16 muestra los patrones correspondientes a sus movimientos.
+Après avoir téléversé le code de test avec succès et mis sous tension, la voiture intelligente peut être contrôlée pour se déplacer par télécommande IR et la matrice 8\*16 affiche les schémas correspondants à ses mouvements.
 
 ![](./media/img-20240117094223.png)

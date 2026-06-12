@@ -1,38 +1,38 @@
-### Proyecto 14: Tanque Seguidor de Línea
+### Projet 14 : Tank Suiveur de Ligne
 
 
-#### **(1)Descripción:**
+#### **(1) Description :**
 
-El proyecto anterior ha presentado cómo confinar el carro inteligente para que se mueva en un espacio determinado. En este proyecto, podemos usar los conocimientos aprendidos anteriormente para convertirlo en un carro inteligente seguidor de línea. En el experimento, usamos el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del carro inteligente, y luego controlar la rotación de los dos motores según los resultados de la detección, para que el carro inteligente se mueva a lo largo de la línea negra.
+Le projet précédent a expliqué comment confiner la voiture intelligente pour qu'elle se déplace dans un certain espace. Dans ce projet, nous pouvons utiliser les connaissances acquises précédemment pour en faire une voiture intelligente suiveur de ligne. Dans l'expérience, nous utilisons le capteur de suivi de ligne pour détecter s'il y a une ligne noire autour de la voiture intelligente, puis nous contrôlons la rotation des deux moteurs en fonction des résultats de détection, afin de faire se déplacer la voiture intelligente le long de la ligne noire.
 
-La lógica específica del carro inteligente seguidor de línea se muestra en la tabla a continuación:
+La logique spécifique de la voiture intelligente suiveur de ligne est présentée dans le tableau ci-dessous :
 
-|               Sensor               |                          Detección                           |
+|               Capteur               |                          Détection                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| Sensor de seguimiento de línea central | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
-|  Sensor de seguimiento de línea izquierdo  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
-| Sensor de seguimiento de línea derecho  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
+| Capteur de suivi de ligne central | Ligne noire détectée : niveau haut<br />Ligne blanche détectée : niveau bas |
+|  Capteur de suivi de ligne gauche  | Ligne noire détectée : niveau haut<br />Ligne blanche détectée : niveau bas |
+| Capteur de suivi de ligne droit  | Ligne noire détectée : niveau haut<br />Ligne blanche détectée : niveau bas |
 
-|                         Condición 1                          |                         Condición 2                          |             Movimiento             |
+|                         Condition 1                          |                         Condition 2                          |             Mouvement             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------: |
-| El sensor de seguimiento de línea central <br />detecta la línea negra | El sensor de seguimiento de línea izquierdo detecta la línea negra <br />y <br />el derecho detecta línea blanca | Girar a la izquierda<br />establecer PWM a 200  |
-| El sensor de seguimiento de línea central <br />detecta la línea negra | El sensor de seguimiento de línea izquierdo detecta línea blanca <br />y <br />el derecho detecta la línea negra | Girar a la derecha<br />establecer PWM a 200 |
-| El sensor de seguimiento de línea central <br />detecta la línea negra | Ambos sensores izquierdo y derecho detectan línea blanca<br />o<br />Ambos detectan la línea negra |           Avanzar           |
-| El sensor de seguimiento de línea central <br />detecta línea blanca  | El sensor de seguimiento de línea izquierdo detecta la línea negra <br />y <br />el derecho detecta línea blanca | Girar a la izquierda<br />establecer PWM a 200  |
-| El sensor de seguimiento de línea central <br />detecta línea blanca  | El sensor de seguimiento de línea izquierdo detecta línea blanca<br />y <br />el derecho detecta la línea negra | Girar a la derecha<br />establecer PWM a 200 |
-| El sensor de seguimiento de línea central <br />detecta línea blanca  | Ambos sensores izquierdo y derecho detectan línea blanca<br />o<br />Ambos sensores izquierdo y derecho detectan la línea negra |               Detener               |
+| Le capteur de suivi de ligne central <br />détecte la ligne noire | Le capteur de suivi de ligne gauche détecte la ligne noire <br />et <br />celui de droite détecte la ligne blanche | Rotation à gauche<br />régler PWM à 200  |
+| Le capteur de suivi de ligne central <br />détecte la ligne noire | Le capteur de suivi de ligne gauche détecte la ligne blanche <br />et <br />celui de droite détecte la ligne noire | Rotation à droite<br />régler PWM à 200 |
+| Le capteur de suivi de ligne central <br />détecte la ligne noire | Les capteurs gauche et droit détectent tous deux la ligne blanche<br />ou<br />les deux détectent la ligne noire |           Avancer           |
+| Le capteur de suivi de ligne central <br />détecte la ligne blanche  | Le capteur de suivi de ligne gauche détecte la ligne noire <br />et <br />celui de droite détecte la ligne blanche | Rotation à gauche<br />régler PWM à 200  |
+| Le capteur de suivi de ligne central <br />détecte la ligne blanche  | Le capteur de suivi de ligne gauche détecte la ligne blanche<br />et <br />celui de droite détecte la ligne noire | Rotation à droite<br />régler PWM à 200 |
+| Le capteur de suivi de ligne central <br />détecte la ligne blanche  | Les capteurs gauche et droit détectent tous deux la ligne blanche<br />ou<br />les deux capteurs de suivi de ligne gauche et droit détectent la ligne noire |               Arrêt               |
 
-#### **(2)Diagrama de flujo:**
+#### **(2) Organigramme :**
 
 ![](media/wps11.png)
 
-#### **(3)Diagrama de cableado:**
+#### **(3) Schéma de câblage :**
 
 ![](media/e5c3763e764359ec8be92102b6d2a7f9.png)
 
-#### **(4)Código de prueba:**
+#### **(4) Code de test :**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ```C
 /*
@@ -42,20 +42,20 @@ La lógica específica del carro inteligente seguidor de línea se muestra en la
   http://www.keyestudio.com
 */
 
-//El cableado del sensor de seguimiento de línea
-#define L_pin  11  //izquierdo
-#define M_pin  7  //central
-#define R_pin  8  //derecho
-#define ML_Ctrl 4  //Definir el pin de control de dirección del motor izquierdo
-#define ML_PWM 6   //Definir el pin de control PWM del motor izquierdo
-#define MR_Ctrl 2  //Definir el pin de control de dirección del motor derecho
-#define MR_PWM 5   //Definir el pin de control PWM del motor derecho
+// Câblage du capteur de suivi de ligne
+#define L_pin  11  // gauche
+#define M_pin  7  // milieu
+#define R_pin  8  // droite
+#define ML_Ctrl 4  // Définir la broche de contrôle de direction du moteur gauche
+#define ML_PWM 6   // Définir la broche de contrôle PWM du moteur gauche
+#define MR_Ctrl 2  // Définir la broche de contrôle de direction du moteur droit
+#define MR_PWM 5   // Définir la broche de contrôle PWM du moteur droit
 int L_val, M_val, R_val;
 
 void setup()
 {
-  Serial.begin(9600); //Establecer la velocidad de baudios a 9600
-  pinMode(L_pin, INPUT); //Establecer todos los pines del sensor de seguimiento de línea como modo de entrada
+  Serial.begin(9600); // Régler le débit en bauds à 9600
+  pinMode(L_pin, INPUT); // Définir toutes les broches du capteur de suivi de ligne en mode entrée
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
   pinMode(ML_Ctrl, OUTPUT);
@@ -66,41 +66,41 @@ void setup()
 
 void loop () 
 {
-  L_val = digitalRead(L_pin); //Leer el valor del sensor izquierdo
-  M_val = digitalRead(M_pin); //Leer el valor del sensor central
-  R_val = digitalRead(R_pin); //Leer el valor del sensor derecho
-  if (M_val == 1) { //el central detecta líneas negras
-    if (L_val == 1 && R_val == 0)  //Si se detecta una línea negra a la izquierda, pero no a la derecha, girar a la izquierda
+  L_val = digitalRead(L_pin); // Lire la valeur du capteur gauche
+  M_val = digitalRead(M_pin); // Lire la valeur du capteur central
+  R_val = digitalRead(R_pin); // Lire la valeur du capteur droit
+  if (M_val == 1) { // le capteur central détecte une ligne noire
+    if (L_val == 1 && R_val == 0)  // Si une ligne noire est détectée à gauche, mais pas à droite, tourner à gauche
     {
       Car_left();
     }
-    else if (L_val == 0 && R_val == 1)  //Si se detecta una línea negra a la derecha, no a la izquierda, girar a la derecha
+    else if (L_val == 0 && R_val == 1)  // Si une ligne noire est détectée à droite, pas à gauche, tourner à droite
     {
       Car_right();
     }
-    else  //de lo contrario, avanzar
+    else  // sinon, avancer
     {
       Car_front();
     }
   }
-  else  //El central no detecta líneas negras
+  else  // Le capteur central ne détecte pas de ligne noire
   {
-    if (L_val == 1 && R_val == 0)  //Si se detecta una línea negra a la izquierda, pero no a la derecha, girar a la izquierda
+    if (L_val == 1 && R_val == 0)  // Si une ligne noire est détectée à gauche, mais pas à droite, tourner à gauche
     {
       Car_left();
     }
-    else if (L_val == 0 && R_val == 1)  //Si se detecta una línea negra a la derecha, no a la izquierda, girar a la derecha
+    else if (L_val == 0 && R_val == 1)  // Si une ligne noire est détectée à droite, pas à gauche, tourner à droite
     {
       Car_right();
     }
-    else  //de lo contrario, detenerse
+    else  // sinon, s'arrêter
     {
       Car_Stop();
     }
   }
 }
 
-//avanzar
+// avancer
 void Car_front()
 {
   digitalWrite(MR_Ctrl, HIGH);
@@ -109,7 +109,7 @@ void Car_front()
   analogWrite(ML_PWM, 100);
 }
 
-//retroceder
+// reculer
 void Car_back()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -118,7 +118,7 @@ void Car_back()
   analogWrite(ML_PWM, 150);
 }
 
-//girar a la izquierda
+// tourner à gauche
 void Car_left()
 {
   digitalWrite(MR_Ctrl, HIGH);
@@ -127,7 +127,7 @@ void Car_left()
   analogWrite(ML_PWM, 150);
 }
 
-//girar a la derecha
+// tourner à droite
 void Car_right()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -136,7 +136,7 @@ void Car_right()
   analogWrite(ML_PWM, 100);
 }
 
-//detenerse
+// s'arrêter
 void Car_Stop()
 {
   digitalWrite(MR_Ctrl, LOW);
@@ -146,8 +146,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Resultado de la prueba:**
+#### **(5) Résultat du test :**
 
-Después de cargar el código de prueba correctamente y encenderlo, el carro inteligente se mueve a lo largo de la línea negra.
+Après avoir téléversé le code de test avec succès et mis le système sous tension, la voiture intelligente se déplace le long de la ligne noire.
 
 ![](./media/img-20240117085916.png)

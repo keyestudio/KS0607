@@ -1,44 +1,44 @@
-### Proyecto 1: Parpadeo de LED
+### Projet 1 : Clignotement d'une LED
 
-#### **(1)Descripción:**
+#### **(1) Description :**
 
 ![](media/64b0b431d58473408ac46b39d2dc2ad0.jpeg)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-Para principiantes y entusiastas, el parpadeo de LED es un programa fundamental. LED, la abreviatura de diodos emisores de luz, está compuesto por compuestos químicos de Ga, As, P, N, entre otros. El LED puede parpadear en diversos colores modificando el tiempo de retardo en el código de prueba. Durante el control, se alimenta GND y VCC. El LED se encenderá si el extremo S está en nivel alto; de lo contrario, se apagará.
+Pour les débutants et les passionnés, le clignotement d'une LED est un programme fondamental. LED, l'abréviation de diodes électroluminescentes, est composée de composés chimiques Ga, As, P, N et ainsi de suite. La LED peut clignoter dans différentes couleurs en modifiant le délai dans le code de test. Lors du contrôle, alimentez GND et VCC. La LED s'allumera si l'extrémité S est à un niveau haut ; sinon, elle s'éteindra.
 
-#### **(2)Parámetros:**
+#### **(2) Paramètres :**
 
 ![](./media/image-20250709104606457.png)
 
-- Interfaz de control: puerto digital
-- Voltaje de trabajo: DC 3.3-5V
-- Espaciado de pines: 2.54mm
-- Color de visualización del LED: amarillo
+- Interface de contrôle : port numérique
+- Tension de fonctionnement : DC 3,3-5V
+- Espacement des broches : 2,54mm
+- Couleur d'affichage de la LED : jaune
 
-#### **(3)Componentes Requeridos:**
+#### **(3) Composants requis :**
 
 ![](media/img-20240117081416.png)
 
 
-#### **(4)Placa de expansión del motor 8833:**
+#### **(4) Carte d'extension du pilote moteur 8833 :**
 
-La placa de expansión del motor Keyestudio 8833 es compatible con la placa de desarrollo Arduino UNO. Solo apílela sobre la placa de desarrollo al utilizarla.
+La carte d'extension du pilote moteur Keyestudio 8833 est compatible avec la carte de développement Arduino UNO. Il suffit de l'empiler sur la carte de développement lors de l'utilisation.
 
 ![](./media/image-20250709104749140.png)
 
-#### **(5)Diagrama de Conexión:**
+#### **(5) Schéma de connexion :**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](media/d68e6475a7c9ed55bb057b75d1b11689.png)
 
-<span style="color: rgb(255, 76, 65);">**NOTA:**</span> El LED está conectado al puerto D9. Recuerde instalar los puentes (jumper caps) en el shield.
+<span style="color: rgb(255, 76, 65);">**REMARQUE :**</span> La LED est connectée au port D9. N'oubliez pas d'installer les cavaliers sur le shield.
 
-#### **(6)Código de Prueba:**
+#### **(6) Code de test :**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ```C
 /*
@@ -53,39 +53,39 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Define el pin del LED para conectar con el puerto digital 9
+int LED = 9; // Définir la broche de la LED pour la connecter au port numérique 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Inicializa el pin del LED en modo de salida
+	pinMode(LED, OUTPUT); // Initialiser la broche de la LED en mode sortie
 }
 
-void loop() // Bucle infinito
+void loop() // Boucle infinie
 {
-	digitalWrite(LED, HIGH); // Salida de nivel alto y enciende el LED
-	delay(1000); // Espera 1s
-	digitalWrite(LED, LOW); // Salida de nivel bajo y apaga el LED
-	delay(1000); // Espera 1s
+	digitalWrite(LED, HIGH); // Sortie niveau haut et allumage de la LED
+	delay(1000); // Attendre 1s
+	digitalWrite(LED, LOW); // Sortie niveau bas et extinction de la LED
+	delay(1000); // Attendre 1s
 }
 ```
 
-#### **(7)Resultados de la Prueba:**
+#### **(7) Résultats du test :**
 
-Cargue el programa, el LED parpadea con un intervalo de 1s.
+Téléversez le programme, la LED clignote à un intervalle de 1s.
 
-#### **(8)Explicación del Código:**
+#### **(8) Explication du code :**
 
-**pinMode(LED，OUTPUT) -** Esta función puede indicar que el pin es de ENTRADA (INPUT) o SALIDA (OUTPUT)
+**pinMode(LED，OUTPUT) -** Cette fonction permet d'indiquer que la broche est en mode INPUT (entrée) ou OUTPUT (sortie)
 
-**digitalWrite(LED，HIGH) -** Cuando el pin está en modo OUTPUT, podemos configurarlo en HIGH (salida de 5V) o LOW (salida de 0V)
+**digitalWrite(LED，HIGH) -** Lorsque la broche est en mode OUTPUT, nous pouvons la régler sur HIGH (sortie 5V) ou LOW (sortie 0V)
 
-#### **(9)Práctica de Extensión:**
+#### **(9) Pratique d'extension :**
 
-Hemos logrado hacer parpadear el LED. A continuación, observemos qué le sucederá al LED si modificamos los pines y el tiempo de retardo.
+Nous avons réussi à faire clignoter la LED. Ensuite, observons ce qui arrivera à la LED si nous modifions les broches et le délai.
 
-**Código de Prueba**
+**Code de test**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede provocar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ```C
 /*
@@ -100,21 +100,21 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Define el pin del LED como 9
+int LED = 9; // Définir la broche de la LED comme étant la broche 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Configura el pin del LED como OUTPUT
+	pinMode(LED, OUTPUT); // Régler la broche de la LED en sortie
 }
 
-void loop() // Bucle infinito
+void loop() // Boucle infinie
 {
-    digitalWrite(LED, HIGH); // Salida de niveles altos, enciende el LED
-	delay(100); // Espera 0.1s
-	digitalWrite(LED, LOW); // Salida de niveles bajos del LED, apaga el LED
-	delay(100); // Espera 0.1s
+    digitalWrite(LED, HIGH); // Sortie niveau haut, allumer la LED
+	delay(100); // Attendre 0,1s
+	digitalWrite(LED, LOW); // Sortie niveau bas de la LED, éteindre la LED
+	delay(100); // Attendre 0,1s
 
 }
 ```
 
-El resultado de la prueba muestra que el LED parpadea más rápido. Por lo tanto, podemos concluir que los pines y el tiempo de retardo afectan la frecuencia de parpadeo.
+Le résultat du test montre que la LED clignote plus rapidement. Par conséquent, nous pouvons conclure que les broches et le délai affectent la fréquence de clignotement.

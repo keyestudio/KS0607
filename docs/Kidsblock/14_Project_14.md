@@ -1,38 +1,38 @@
-### Proyecto 14: Tanque Seguidor de Línea
+### Projet 14 : Tank Suiveur de Ligne
 
 
-#### **(1)Descripción:**
+#### **(1) Description :**
 
-El proyecto anterior introdujo cómo confinar el automóvil inteligente para que se mueva dentro de un cierto espacio. En este proyecto, utilizaremos los conocimientos aprendidos anteriormente para convertirlo en un automóvil inteligente seguidor de línea. En el experimento, usamos el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del automóvil inteligente, y luego controlamos la rotación de los dos motores según los resultados de la detección, para que el automóvil inteligente se mueva a lo largo de la línea negra.
+Le projet précédent a présenté comment confiner la voiture intelligente pour qu'elle se déplace dans un certain espace. Dans ce projet, nous allons utiliser les connaissances acquises précédemment pour en faire une voiture intelligente suiveur de ligne. Dans l'expérience, nous utilisons le capteur de suivi de ligne pour détecter s'il y a une ligne noire autour de la voiture intelligente, puis nous contrôlons la rotation des deux moteurs en fonction des résultats de détection, afin de faire se déplacer la voiture intelligente le long de la ligne noire.
 
-La lógica específica del automóvil inteligente se muestra en la siguiente tabla:
+La logique spécifique de la voiture intelligente est présentée dans le tableau ci-dessous :
 
-|               Sensor               |                          Detección                           |
+|               Capteur               |                          Détection                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| Sensor de seguimiento de línea en el centro | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
-|  Sensor de seguimiento de línea a la izquierda  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
-| Sensor de seguimiento de línea a la derecha  | Línea negra detectada: en nivel alto<br />Línea blanca detectada: en nivel bajo |
+| Capteur de suivi de ligne au milieu | Ligne noire détectée : niveau haut<br />Ligne blanche détectée : niveau bas |
+|  Capteur de suivi de ligne à gauche  | Ligne noire détectée : niveau haut<br />Ligne blanche détectée : niveau bas |
+| Capteur de suivi de ligne à droite  | Ligne noire détectée : niveau haut<br />Ligne blanche détectée : niveau bas |
 
-|                         Condición 1                          |                         Condición 2                          |   Movimiento   |
+|                         Condition 1                          |                         Condition 2                          |   Mouvement   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------: |
-| El sensor de seguimiento de línea <br />en el centro <br />detecta la línea negra | El sensor de seguimiento de línea a la izquierda detecta la línea negra<br />el de la derecha detecta líneas blancas | Girar a la izquierda  |
-| El sensor de seguimiento de línea <br />en el centro <br />detecta la línea negra | El sensor de seguimiento de línea a la izquierda detecta líneas blancas<br />el de la derecha detecta la línea negra | Girar a la derecha |
-| El sensor de seguimiento de línea <br />en el centro <br />detecta la línea negra | Ambos sensores izquierdo y derecho detectan líneas blancas<br />Ambos sensores izquierdo y derecho detectan la línea negra | Avanzar |
-| El sensor de seguimiento de línea<br />en el centro <br />detecta líneas blancas | El sensor de seguimiento de línea a la izquierda detecta la línea negra<br />el de la derecha detecta líneas blancas | Girar a la izquierda  |
-| El sensor de seguimiento de línea<br />en el centro <br />detecta líneas blancas | El sensor de seguimiento de línea a la izquierda detecta líneas blancas<br />el de la derecha detecta la línea negra | Girar a la derecha |
-| El sensor de seguimiento de línea<br />en el centro <br />detecta líneas blancas | Ambos sensores izquierdo y derecho detectan líneas blancas<br />Ambos sensores izquierdo y derecho detectan la línea negra |     Detener     |
+| Le capteur de suivi de ligne <br />au milieu <br />détecte la ligne noire | Le capteur de suivi de ligne à gauche détecte la ligne noire<br />celui à droite détecte des lignes blanches | Tourner à gauche  |
+| Le capteur de suivi de ligne <br />au milieu <br />détecte la ligne noire | Le capteur de suivi de ligne à gauche détecte des lignes blanches<br />celui à droite détecte la ligne noire | Tourner à droite |
+| Le capteur de suivi de ligne <br />au milieu <br />détecte la ligne noire | Les capteurs de suivi de ligne gauche et droit détectent tous deux des lignes blanches<br />Les capteurs de suivi de ligne gauche et droit détectent tous deux la ligne noire | Avancer |
+| Le capteur de suivi de ligne<br />au milieu <br />détecte des lignes blanches | Le capteur de suivi de ligne à gauche détecte la ligne noire<br />celui à droite détecte des lignes blanches | Tourner à gauche  |
+| Le capteur de suivi de ligne<br />au milieu <br />détecte des lignes blanches | Le capteur de suivi de ligne à gauche détecte des lignes blanches<br />celui à droite détecte la ligne noire | Tourner à droite |
+| Le capteur de suivi de ligne<br />au milieu <br />détecte des lignes blanches | Les capteurs de suivi de ligne gauche et droit détectent tous deux des lignes blanches<br />Les capteurs de suivi de ligne gauche et droit détectent tous deux la ligne noire |     Arrêt     |
 
-#### **(2)Diagrama de flujo:**
+#### **(2) Organigramme :**
 
 ![](media/wps11.png)
 
-#### **(3)Diagrama de conexión:**
+#### **(3) Schéma de connexion :**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Código de prueba:**
+#### **(4) Code de test :**
 
-También puedes arrastrar bloques para editar tu código, como se muestra a continuación
+Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -50,15 +50,15 @@ También puedes arrastrar bloques para editar tu código, como se muestra a cont
 
 （8）![](media/fec93c7b8b089de709fd50575931519c.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, ce qui peut provoquer des conflits avec la communication série Bluetooth et entraîner l'échec du téléversement.)
 
 ![](media/294ae4c01072e34b58a334912c90083a.png)
 
 
-#### **(5)Resultados de la prueba:**
+#### **(5) Résultats du test :**
 
-Después de cargar el código de prueba exitosamente y encender el dispositivo, el automóvil inteligente se mueve a lo largo de la línea negra.
+Après avoir téléversé le code de test avec succès et mis sous tension, la voiture intelligente se déplace le long de la ligne noire.
 
 ![](./media/img-20240117094129.png)

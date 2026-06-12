@@ -1,42 +1,42 @@
-### Proyecto 12: Tanque de Evasión de Obstáculos Ultrasónico
+### Projet 12 : Char à évitement d'obstacles par ultrasons
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-En el proyecto anterior, hicimos un auto inteligente seguidor de sonido ultrasónico. De hecho, usando los mismos componentes y el mismo método de cableado, solo necesitamos cambiar el código de prueba para convertirlo en un auto inteligente de evasión de obstáculos ultrasónico. Este auto inteligente puede moverse con el movimiento de las manos humanas.
+Dans le projet précédent, nous avons fabriqué une voiture intelligente à suivi de son par ultrasons. En réalité, en utilisant les mêmes composants et la même méthode de câblage, nous n'avons besoin que de modifier le code de test pour le transformer en une voiture intelligente à évitement d'obstacles par ultrasons. Cette voiture intelligente peut se déplacer en fonction du mouvement des mains humaines.
 
-Usamos sensores ultrasónicos para detectar la distancia entre el auto inteligente y el obstáculo al frente, y luego controlamos la rotación de los dos motores basándonos en estos datos para controlar los movimientos del auto inteligente.
+Nous utilisons des capteurs ultrasoniques pour détecter la distance entre la voiture intelligente et l'obstacle devant elle, puis nous contrôlons la rotation des deux moteurs en fonction de ces données afin de contrôler les mouvements de la voiture intelligente.
 
-|                          Detección                           |         |
+|                          Détection                           |         |
 | :----------------------------------------------------------: | :-----: |
-| Distancia medida por el sensor ultrasónico entre el auto y el obstáculo al frente <br />（establecer el ángulo del servo a 90°） | a (cm)  |
-| Distancia medida por el sensor ultrasónico entre el auto y el obstáculo a la derecha <br />（establecer el ángulo del servo a 0°） | a2 (cm) |
-| Distancia medida por el sensor ultrasónico entre el auto y el obstáculo a la izquierda <br />（establecer el ángulo del servo a 180°） | a1 (cm) |
+| Distance mesurée par le capteur ultrasonique entre la voiture et l'obstacle devant <br />（régler l'angle du servo à 90°） | a (cm)  |
+| Distance mesurée par le capteur ultrasonique entre la voiture et l'obstacle à droite <br />（régler l'angle du servo à 0°） | a2 (cm) |
+| Distance mesurée par le capteur ultrasonique entre la voiture et l'obstacle à gauche <br />（régler l'angle du servo à 180°） | a1 (cm) |
 
-**Configuración: establecer el ángulo inicial del servo a 90°**
+**Réglage : régler l'angle de départ du servo à 90°**
 
-| Condición 1 |        Condición 2         |      Condición 3       | Movimiento                                                     |
+| Condition 1 |        Condition 2         |      Condition 3       | Mouvement                                                     |
 | :---------: | :------------------------: | :--------------------: | :----------------------------------------------------------- |
-|    a＜20    |                            |                        | Detener 500ms；establecer el ángulo del servo a 180°，leer a1，retardo de 100ms；establecer el ángulo del servo a 0°，leer a2，retardo de 0.1s. |
-|             | a1＜50<br />o<br />a2＜50 | **Comparar a1 con a2** |                                                              |
-|             |                            |         a1＞a2         | Establecer el ángulo del servo a 90°，girar a la izquierda durante 700ms（establecer PWM a 255），y avanzar（establecer PWM a 200）. |
-|             |                            |         a1＜a2         | Establecer el ángulo del servo a 90°，girar a la derecha durante 700ms（establecer PWM a 255），y avanzar（establecer PWM a 200）. |
-|             | a1≥50<br />y<br />a2≥50  |         Aleatorio         | Establecer el ángulo del servo a 90°，girar a la izquierda durante 500ms（establecer PWM a 255），y avanzar（establecer PWM a 200）.<br /><br />Establecer el ángulo del servo a 90°，girar a la derecha durante 500ms（establecer PWM a 255），y avanzar（establecer PWM a 200）. |
-|    a≥20     |                            |                        | Avanzar（establecer PWM a 100）                               |
+|    a＜20    |                            |                        | Arrêt pendant 500ms ; régler l'angle du servo à 180°, lire a1, délai de 100ms ; régler l'angle du servo à 0°, lire a2, délai de 0.1s. |
+|             | a1＜50<br />ou<br />a2＜50 | **Comparer a1 avec a2** |                                                              |
+|             |                            |         a1＞a2         | Régler l'angle du servo à 90°, tourner à gauche pendant 700ms（régler PWM à 255）, et avancer（régler PWM à 200）. |
+|             |                            |         a1＜a2         | Régler l'angle du servo à 90°, tourner à droite pendant 700ms（régler PWM à 255）, et avancer（régler PWM à 200）. |
+|             | a1≥50<br />et<br />a2≥50  |         Aléatoire         | Régler l'angle du servo à 90°, tourner à gauche pendant 500ms（régler PWM à 255）, et avancer（régler PWM à 200）.<br /><br />Régler l'angle du servo à 90°, tourner à droite pendant 500ms（régler PWM à 255）, et avancer（régler PWM à 200）. |
+|    a≥20     |                            |                        | Avancer（régler PWM à 100）                               |
 
-#### **(2)Diagrama de flujo:**
+#### **(2)Organigramme :**
 
 ![](media/wps119.png)
 
-#### **(3)Diagrama de conexión:**
+#### **(3)Schéma de connexion :**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> los cables marrón, rojo y naranja del servo están conectados respectivamente a G (GND), V（5V）y D10 de la placa de expansión；y para el sensor ultrasónico, el pin VCC está conectado a 5v (V), el pin Trig al digital 12 (S), el pin Echo al digital 13 (S), y el pin Gnd a Gnd (G); igual que en el proyecto anterior.）
+(<span style="color: rgb(255, 76, 65);">Remarque :</span> les fils marron, rouge et orange du servo sont respectivement connectés à G (GND), V（5V）et D10 de la carte d'extension ; et pour le capteur ultrasonique, la broche VCC est connectée au 5v (V), la broche Trig au numérique 12 (S), la broche Echo au numérique 13 (S), et la broche Gnd à Gnd (G) ; identique au projet précédent.）
 
-#### **(4)Código de prueba:**
+#### **(4)Code de test :**
 
 
-También puedes arrastrar bloques para editar tu código, como se muestra a continuación.![](media/6eb13569aaa7bf560f62049df28b51db.png)
+Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
 （2）![](media/5dcbd405806b8e341505d7316246dbdd.png)
 
@@ -58,14 +58,14 @@ También puedes arrastrar bloques para editar tu código, como se muestra a cont
 
 （11）![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de subir el código, porque la subida del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la subida falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et des conflits peuvent survenir avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
 
 ![](media/4360f9642a8c6b2488767c079d481482.png)
 
-#### **(5)Resultados de la prueba:**
+#### **(5)Résultats du test :**
 
-Después de subir el código de prueba exitosamente, realiza el cableado, gira el interruptor DIP al extremo ON y enciende el dispositivo. El auto inteligente avanzará y evitará obstáculos automáticamente.
+Après avoir téléversé le code de test avec succès, effectuez le câblage, basculez le commutateur DIP sur la position ON et mettez sous tension. La voiture intelligente avancera et évitera automatiquement les obstacles.
 
 ![](./media/img-20240117093950.png)

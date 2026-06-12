@@ -1,33 +1,33 @@
-### Proyecto 10: Tanque Seguidor de Luz
+### Projet 10 : Char Suiveur de Lumière
 
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-En proyectos anteriores, presentamos en detalle el uso de varios sensores, módulos y placas de expansión en el auto inteligente. Ahora pasemos a los proyectos del auto inteligente. Los autos inteligentes seguidores de luz, como su nombre lo indica, son autos inteligentes que pueden seguir la luz.
+Dans les projets précédents, nous avons présenté en détail l'utilisation de divers capteurs, modules et cartes d'extension sur le robot. Passons maintenant aux projets du robot. Le robot suiveur de lumière, comme son nom l'indique, est un robot capable de suivre la lumière.
 
-Podemos combinar los conocimientos de los proyectos de fotoresistencia y control de motores para crear un auto inteligente buscador de luz. En el proyecto, usamos dos módulos fotoresistores para detectar la intensidad de la luz en los lados izquierdo y derecho del auto inteligente, leemos los valores analógicos correspondientes y luego controlamos la rotación de los dos motores basándonos en estos dos datos para así controlar los movimientos del auto inteligente.
+Nous pouvons combiner les connaissances des projets sur la photorésistance et la commande des moteurs pour fabriquer un robot chercheur de lumière. Dans ce projet, nous utilisons deux modules photorésistors pour détecter l'intensité lumineuse des côtés gauche et droit du robot, lire les valeurs analogiques correspondantes, puis contrôler la rotation des deux moteurs en fonction de ces deux données, afin de contrôler les mouvements du robot.
 
-La lógica específica del auto inteligente seguidor de luz se muestra a continuación.
+La logique spécifique du robot suiveur de lumière est présentée ci-dessous.
 
 ![](./media/image-20250709111733042.png)
 
-#### **(2)Diagrama de flujo:**
+#### **(2)Organigramme :**
 
 ![](media/wps8.png)
 
-#### **(3)Diagrama de conexión:**
+#### **(3)Schéma de connexion :**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> Los pines "G", "V" y S del módulo fotoresistor izquierdo están conectados a G (GND), V (VCC) y A1 respectivamente;
+<span style="color: rgb(255, 76, 65);">Remarque :</span> Les broches "G", "V" et S du module photorésistor gauche sont connectées respectivement à G (GND), V (VCC) et A1 ;
 
-Los pines "G", "V" y S del módulo fotoresistor derecho están conectados a G (GND), V (VCC) y A2 respectivamente.
+Les broches "G", "V" et S du module photorésistor droit sont connectées respectivement à G (GND), V (VCC) et A2.
 
-El cable de 4 pines está marcado con A, A1, B1 y B. El motor trasero derecho está conectado al puerto B de la placa de expansión del controlador de motores 8833 y el motor delantero izquierdo está conectado al puerto A de la placa de expansión del controlador de motores 8833.
+Le câble 4 broches est marqué A, A1, B1 et B. Le moteur arrière droit est connecté au port B de la carte d'extension moteur 8833 et le moteur avant gauche est connecté au port A de la carte d'extension moteur 8833.
 
-#### **(4)Código de prueba:**
+#### **(4)Code de test :**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut provoquer des conflits avec la communication série Bluetooth et faire échouer le téléversement.)
 
 ```C
 /*
@@ -36,12 +36,12 @@ El cable de 4 pines está marcado con A, A1, B1 y B. El motor trasero derecho es
   light follow tank
   http://www.keyestudio.com
 */
-#define light_L_Pin A1   //Define el pin del sensor fotosensible de la izquierda
-#define light_R_Pin A2   //Define el pin del sensor fotosensible de la derecha
-#define ML_Ctrl 4  //Define el pin de control de dirección del motor izquierdo
-#define ML_PWM 6   //Define el pin de control PWM del motor izquierdo
-#define MR_Ctrl 2  //Define el pin de control de dirección del motor derecho
-#define MR_PWM 5   //Define el pin de control PWM del motor derecho
+#define light_L_Pin A1   // Définir la broche du capteur photosensible gauche
+#define light_R_Pin A2   // Définir la broche du capteur photosensible droit
+#define ML_Ctrl 4  // Définir la broche de contrôle de direction du moteur gauche
+#define ML_PWM 6   // Définir la broche de contrôle PWM du moteur gauche
+#define MR_Ctrl 2  // Définir la broche de contrôle de direction du moteur droit
+#define MR_PWM 5   // Définir la broche de contrôle PWM du moteur droit
 int left_light;
 int right_light;
 void setup() 
@@ -63,19 +63,19 @@ void loop()
   Serial.println(left_light);
   Serial.print("right_light_value = ");
   Serial.println(right_light);
-  if (left_light > 650 && right_light > 650) //avanzar
+  if (left_light > 650 && right_light > 650) // avancer
   {
     Car_front();
   }
-  else if (left_light > 650 && right_light <= 650)  //girar a la izquierda
+  else if (left_light > 650 && right_light <= 650)  // tourner à gauche
   {
     Car_left();
   }
-  else if (left_light <= 650 && right_light > 650) //girar a la derecha
+  else if (left_light <= 650 && right_light > 650) // tourner à droite
   {
     Car_right();
   }
-  else  //de lo contrario, detenerse
+  else  // sinon, s'arrêter
   {
     Car_Stop();
   }
@@ -114,8 +114,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Resultado de la prueba**
+#### **(5)Résultat du test**
 
-Después de cargar el código de prueba exitosamente, conectar según el diagrama de cableado, deslizar el interruptor DIP hacia el extremo derecho y encenderlo, el auto inteligente sigue la luz para moverse.
+Après avoir téléversé le code de test avec succès, effectué les connexions conformément au schéma de câblage, basculé le commutateur DIP vers la droite et mis sous tension, le robot se déplace en suivant la lumière.
 
 ![Img](./media/img-20240117090537.png)

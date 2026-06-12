@@ -1,44 +1,44 @@
-### Proyecto 21: Tanque Extintor de Incendios
+### Projet 21 : Char d'extinction d'incendie
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-La función de seguimiento de línea del tanque inteligente se explicó en el proyecto anterior. En este proyecto utilizamos el sensor de llama para crear un robot extintor de incendios.
+La fonction de suivi de ligne du char intelligent a été expliquée dans le projet précédent. Dans ce projet, nous utilisons le capteur de flamme pour fabriquer un robot d'extinction d'incendie.
 
-Cuando el carro encuentra llamas, el motor del ventilador girará para apagar el fuego. Por supuesto, primero necesitamos reemplazar el sensor ultrasónico y los dos fotorresistores con un módulo de ventilador y sensores de llama.
+Lorsque le véhicule rencontre des flammes, le moteur du ventilateur tourne pour souffler sur le feu. Bien entendu, nous devons d'abord remplacer le capteur ultrasonique et les deux photorésistances par un module ventilateur et des capteurs de flamme.
 
-La lógica específica del carro inteligente se muestra en la tabla a continuación:
+La logique spécifique du char intelligent est indiquée dans le tableau ci-dessous :
 
-| Sensor de Llama Izquierdo | Sensor de Llama Derecho | Estado                                                        |
-| :-----------------------: | :---------------------: | :------------------------------------------------------------ |
-|           ≤700            |          ≤700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
-|           ≥700            |          ≥700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
-|           ≥700            |          ≥700           | El carro se detiene, el ventilador comienza a girar para apagar la llama |
-|           ＞700           |          ＞700          | El ventilador se detiene, el carro se mueve                   |
+| Capteur de flamme gauche | Capteur de flamme droit | Statut                                                       |
+| :----------------------: | :---------------------: | :----------------------------------------------------------- |
+|          ≤700            |          ≤700           | Le char s'arrête, le ventilateur commence à tourner pour éteindre la flamme |
+|          ≥700            |          ≥700           | Le char s'arrête, le ventilateur commence à tourner pour éteindre la flamme |
+|          ≥700            |          ≥700           | Le char s'arrête, le ventilateur commence à tourner pour éteindre la flamme |
+|          ＞700           |          ＞700          | Le ventilateur s'arrête, le char se déplace                  |
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Este experimento requiere el uso de una fuente de fuego. Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está en condiciones seguras, abandone el experimento.
-2）El sensor de llama no es resistente al fuego, por favor no lo queme directamente con llama.
-Podemos controlar un LED externo con el sensor de llama. El LED sigue conectado a D9. Cuando se detecta fuego, el LED se encenderá.
+<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
+1）Cette expérience nécessite l'utilisation d'une source de feu. Veuillez vous éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer que vous êtes en sécurité, veuillez abandonner l'expérience.
+2）Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
+Nous pouvons contrôler une LED externe avec le capteur de flamme. La LED est toujours connectée à D9. Lorsqu'un feu est détecté, la LED s'allume.
 
 
-#### **(2)Diagrama de flujo:**
+#### **(2)Organigramme :**
 
 ![](media/wps120.png)
 
-#### **(3)Diagrama de Conexión:**
+#### **(3)Schéma de connexion :**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">Remarque :</span>
 
-GND, VCC, SDA y SCL del panel LED 8x16 están conectados a G（GND), V（VCC), A4 y A5.
+GND, VCC, SDA et SCL du panneau LED 8x16 sont connectés à G（GND), V（VCC), A4 et A5.
 
-G, V y A de los dos sensores de llama están conectados a G（GND), V（VCC), A1 y A2 de la placa de expansión.
+G, V et A des deux capteurs de flamme sont reliés à G（GND), V（VCC), A1 et A2 de la carte d'extension.
 
-#### **(4)Código de Prueba:**
+#### **(4)Code de test :**
 
 
-También puede arrastrar bloques para editar su código, como se muestra a continuación
+Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -52,17 +52,17 @@ También puede arrastrar bloques para editar su código, como se muestra a conti
 
 （6）![](media/c0365237fa7ec7de10e9fc465353fae1.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/c07c09e5533a37838722b8c2b513646d.png)
 
-#### **(5)Resultados de la Prueba:**
+#### **(5)Résultats du test :**
 
-Después de cargar el código de prueba exitosamente, encienda el dispositivo y gire el interruptor DIP al extremo ON. El carro inteligente apagará el fuego cuando detecte una llama.
+Après avoir téléversé le code de test avec succès, mettez sous tension et basculez l'interrupteur DIP sur la position ON. Le char intelligent éteindra le feu lorsqu'il détecte une flamme.
 
 ![](media/2de5f1d832d40c0fc94274f1d87443c6.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-Por favor, manténgalo alejado de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está en condiciones seguras, abandone el experimento. El sensor de llama no es resistente al fuego, por favor no lo queme directamente con llama.
+<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
+Veuillez vous éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer que vous êtes en sécurité, veuillez abandonner l'expérience. Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.

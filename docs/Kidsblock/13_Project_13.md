@@ -1,30 +1,30 @@
-### Proyecto 13: Tanque Moviéndose en un Espacio Confinado
+### Projet 13 : Char se déplaçant dans un espace confiné
 
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-Las funciones de seguimiento ultrasónico y evasión de obstáculos del carro inteligente se han presentado en proyectos anteriores. Aquí, tenemos la intención de combinar el conocimiento de los cursos anteriores para confinar el movimiento del carro inteligente dentro de un cierto espacio. En el experimento, usamos el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del carro inteligente, y luego controlamos la rotación de los dos motores según los resultados de la detección, de modo que el carro inteligente quede bloqueado dentro de un círculo dibujado con una línea negra.
+Les fonctions de suivi par ultrasons et d'évitement d'obstacles du véhicule intelligent ont été présentées dans les projets précédents. Ici, nous avons l'intention de combiner les connaissances des cours précédents pour confiner le véhicule intelligent à se déplacer dans un certain espace. Dans l'expérience, nous utilisons le capteur de suivi de ligne pour détecter s'il y a une ligne noire autour du véhicule intelligent, puis nous contrôlons la rotation des deux moteurs en fonction des résultats de détection, afin de confiner le véhicule intelligent dans un cercle tracé avec une ligne noire.
 
-La lógica específica del carro inteligente se muestra en la tabla a continuación:
+La logique spécifique du véhicule intelligent est présentée dans le tableau ci-dessous :
 
 ![](media/image-20230525114604923.png)
 
-|                         Condición                         |                         Movimiento                          |
+|                         Condition                         |                         Mouvement                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| Si uno de los tres sensores de seguimiento de línea detecta líneas negras | Retroceder（establecer PWM en 150）Luego girar a la izquierda（establecer PWM en 150） |
-|             Ninguno de ellos detecta líneas negras              |               Avanzar（establecer PWM en 100）                |
+| Si l'un des trois capteurs de suivi de ligne détecte des lignes noires | Reculer（régler le PWM à 150）Puis tourner à gauche（régler le PWM à 150） |
+|             Aucun d'eux ne détecte de lignes noires              |               Avancer（régler le PWM à 100）                |
 
-#### **(2)Diagrama de flujo**
+#### **(2)Organigramme**
 
 ![](media/b3c30f92cb78d4c2a4a8bd746aef24e1.png)
 
-#### **(3)Diagrama de Conexión:**
+#### **(3)Schéma de connexion :**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Código de Prueba:**
+#### **(4)Code de test :**
 
-También puedes arrastrar bloques para editar tu código, como se muestra a continuación
+Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -44,14 +44,14 @@ También puedes arrastrar bloques para editar tu código, como se muestra a cont
 
 （9）![](media/b919eb2b47ee87ae36e21099e754e8a1.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/e656126c11bb8ebe7b6b0df8f22e7a79.png)
 
-#### **(5)Resultados de la Prueba:**
+#### **(5)Résultats du test :**
 
-Después de cargar el código de prueba exitosamente y encender el dispositivo, el carro inteligente se mueve dentro de un círculo dibujado con una línea negra.
+Après avoir téléversé le code de test avec succès et mis sous tension, le véhicule intelligent se déplace dans un cercle tracé avec une ligne noire.
 
 ![](./media/img-20240117094034.png)

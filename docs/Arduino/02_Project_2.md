@@ -1,42 +1,42 @@
-### Proyecto 2: Ajustar el Brillo del LED
+### Projet 2 : Régler la luminosité de la LED
 
-#### **(1) Descripción:**
+#### **(1)Description :**
 
-En la lección anterior, controlamos el encendido y apagado del LED y lo hicimos parpadear.
+Dans la leçon précédente, nous avons contrôlé l'allumage et l'extinction de la LED et l'avons fait clignoter.
 
-En este proyecto, controlaremos el brillo del LED mediante PWM simulando un efecto de respiración. Del mismo modo, puedes cambiar el tamaño del paso y el tiempo de retardo en el código para demostrar diferentes efectos de respiración.
+Dans ce projet, nous allons contrôler la luminosité de la LED via PWM en simulant un effet de respiration. De même, vous pouvez modifier la longueur du pas et le temps de délai dans le code afin de démontrer différents effets de respiration.
 
-PWM es un medio de controlar la salida analógica a través de medios digitales. El control digital se utiliza para generar ondas cuadradas con diferentes ciclos de trabajo (una señal que cambia constantemente entre niveles alto y bajo) para controlar la salida analógica.
+Le PWM est un moyen de contrôler la sortie analogique par des moyens numériques. Le contrôle numérique est utilisé pour générer des ondes carrées avec différents rapports cycliques (un signal qui bascule constamment entre des niveaux haut et bas) pour contrôler la sortie analogique.
 
-En general, los voltajes de entrada de los puertos son 0V y 5V. ¿Qué pasa si se requieren 3V? ¿O un cambio entre 1V, 3V y 3.5V? No podemos cambiar las resistencias constantemente. Por esta razón, recurrimos al PWM.
+En général, les tensions d'entrée des ports sont 0V et 5V. Que faire si 3V est requis ? Ou une alternance entre 1V, 3V et 3,5V ? Nous ne pouvons pas changer les résistances en permanence. C'est pourquoi nous avons recours au PWM.
 
 ![](media/bbcfcb9ae56abb7e80ee587246fc4be9.GIF)
 
-Para las salidas de voltaje de los puertos digitales de Arduino, solo hay niveles BAJO y ALTO, que corresponden a las salidas de voltaje de 0V y 5V respectivamente. Puedes definir BAJO como "0" y ALTO como "1", y hacer que Arduino genere quinientos "0" o "1" en 1 segundo. Si genera quinientos "1", eso es 5V; si todos son "0", eso es 0V; si genera un patrón de 250 "01", eso es 2.5V.
+Pour les sorties de tension des ports numériques Arduino, il n'existe que des niveaux BAS et HAUT, qui correspondent respectivement aux sorties de tension de 0V et 5V. Vous pouvez définir BAS comme « 0 » et HAUT comme « 1 », et laisser l'Arduino émettre cinq cents « 0 » ou « 1 » en 1 seconde. Si l'on émet cinq cents « 1 », cela correspond à 5V ; si tout est « 0 », cela correspond à 0V ; si l'on émet 250 fois le motif 01, cela correspond à 2,5V.
 
-Este proceso puede compararse con ver una película. Las películas que vemos no son completamente continuas. En realidad, generan 25 imágenes por segundo, lo cual no puede ser percibido por el ojo humano. Por lo tanto, lo interpretamos como un proceso continuo. El PWM funciona de la misma manera. Para generar diferentes voltajes, necesitamos controlar la proporción de 0 y 1. Cuantos más "0" o "1" se generen por unidad de tiempo, más preciso es el control.
+Ce processus peut être comparé à la projection d'un film. Les films que nous regardons ne sont pas complètement continus. En réalité, ils génèrent 25 images par seconde, ce que l'œil humain ne peut pas distinguer. Nous les confondons donc avec un processus continu. Le PWM fonctionne de la même manière. Pour produire différentes tensions, nous devons contrôler le rapport entre les 0 et les 1. Plus il y a de « 0 » ou de « 1 » émis par unité de temps, plus le contrôle est précis.
 
-#### **(2) Parámetros:**
+#### **(2)Paramètres :**
 
 ![](./media/image-20250709104949184.png)
 
-Interfaz de control: Puerto digital 3
+Interface de contrôle : Port numérique 3
 
-Voltaje de trabajo: DC 3.3-5V
+Tension de fonctionnement : DC 3,3-5V
 
-Espaciado entre pines: 2.54mm
+Espacement des broches : 2,54mm
 
-Color de visualización del LED: amarillo
+Couleur d'affichage de la LED : jaune
 
-#### **(3) Diagrama de Conexión:**
+#### **(3)Schéma de connexion :**
 
-Los pines PWM de Arduino están conectados a 3, 5, 6, 9, 10 y 11. Mantén el pin 9 sin cambios.
+Les broches PWM de l'Arduino sont connectées aux broches 3, 5, 6, 9, 10 et 11. Laissez la broche 9 inchangée.
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
-#### **(4) Código de Prueba:**
+#### **(4)Code de test :**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ```C
 /*
@@ -51,49 +51,49 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Define el pin del LED como 9
+int LED = 9; // Définir la broche de la LED comme 9
 
 void setup () 
 {
-	pinMode(LED, OUTPUT); // Configura el pin del LED como SALIDA
+	pinMode(LED, OUTPUT); // Définir la broche de la LED en SORTIE
 }
 
 void loop () 
 {
 	for (int value = 0; value < 255; value = value + 1) 
     {
-		analogWrite(LED, value); // LED ENCENDIDO
-		delay(5); // retardo de 5ms
+		analogWrite(LED, value); // LED allumée
+		delay(5); // délai de 5ms
 	}
 	for (int value = 255; value > 0; value = value - 1) 
     {
-		analogWrite(LED, value); // El LED se atenúa
-		delay(5); // retardo de 5ms
+		analogWrite(LED, value); // La LED s'assombrit
+		delay(5); // délai de 5ms
 	}
 }
 ```
 
-#### **(5) Resultados de la Prueba:**
+#### **(5)Résultats du test :**
 
-Al cargar el código de prueba exitosamente, el LED cambia gradualmente de brillante a oscuro, como la respiración humana, en lugar de encenderse y apagarse inmediatamente.
+Une fois le code de test téléversé avec succès, la LED passe progressivement du brillant à l'obscur, comme la respiration humaine, plutôt que de s'allumer et de s'éteindre instantanément.
 
-#### **(6) Explicación del Código:**
+#### **(6)Explication du code :**
 
-Para repetir ciertas instrucciones, podemos usar la sentencia FOR. El formato de la sentencia FOR se muestra a continuación:
+Pour répéter certaines instructions, nous pouvons utiliser l'instruction FOR. Le format de l'instruction FOR est présenté ci-dessous :
 
 ![图1(1)](media/65da124bdd0ea488291c71c6b879fe95.jpeg)
 
-Secuencia cíclica del FOR:
+Séquence de la boucle FOR :
 
-Ronda 1: 1 → 2 → 3 → 4
+Tour 1 : 1 → 2 → 3 → 4
 
-Ronda 2: 2 → 3 → 4
+Tour 2 : 2 → 3 → 4
 
 …
 
-Hasta que el número 2 no se cumpla, el ciclo "for" termina.
+Jusqu'à ce que la condition 2 ne soit plus vérifiée, la boucle « for » se termine.
 
-Después de conocer este orden, volvamos al código:
+Après avoir compris cet ordre, revenons au code :
 
 **for (int value = 0; value \< 255; value=value+1){**
 
@@ -103,39 +103,39 @@ Después de conocer este orden, volvamos al código:
 
 **...}**
 
-Las dos sentencias "for" hacen que el valor aumente de 0 a 255, luego disminuya de 255 a 0, luego aumente a 255, .... en un bucle infinito.
+Les deux instructions « for » font augmenter la valeur de 0 à 255, puis diminuer de 255 à 0, puis augmenter à nouveau jusqu'à 255, ... en boucle infinie.
 
-Hay una nueva función a continuación ----- analogWrite()
+Il y a une nouvelle fonction dans ce qui suit ----- analogWrite()
 
-Sabemos que el puerto digital solo tiene dos estados, 0 y 1. Entonces, ¿cómo se envía un valor analógico a un valor digital? Aquí es donde se necesita esta función. Observemos la placa Arduino y encontremos 6 pines marcados con "\~" que pueden generar señales PWM.
+Nous savons que le port numérique n'a que deux états : 0 et 1. Alors comment envoyer une valeur analogique vers une valeur numérique ? C'est ici que cette fonction est nécessaire. Observons la carte Arduino et repérons les 6 broches marquées « \~ » qui peuvent émettre des signaux PWM.
 
-El formato de la función es el siguiente:
+Le format de la fonction est le suivant :
 
 **analogWrite(pin,value)**
 
-analogWrite() se utiliza para escribir un valor analógico de 0 a 255 en un puerto PWM, por lo que el valor está en el rango de 0 a 255. Ten en cuenta que solo puedes escribir en los pines digitales con función PWM, como los pines 3, 5, 6, 9, 10, 11.
+analogWrite() est utilisée pour écrire une valeur analogique de 0\~255 pour un port PWM, donc la valeur est dans la plage 0\~255. Notez que vous ne pouvez écrire que sur les broches numériques ayant la fonction PWM, telles que les broches 3, 5, 6, 9, 10, 11.
 
-PWM es una tecnología para obtener una cantidad analógica mediante métodos digitales. El control digital forma una onda cuadrada, y la señal de onda cuadrada solo tiene dos estados de encendido y apagado (es decir, niveles alto o bajo). Al controlar la proporción de la duración del encendido y apagado, se puede simular un voltaje que varía de 0 a 5V. El tiempo de encendido (académicamente denominado nivel alto) se llama ancho de pulso, por lo que PWM también se denomina modulación por ancho de pulso.
+Le PWM est une technologie permettant d'obtenir une quantité analogique par une méthode numérique. Le contrôle numérique forme une onde carrée, et le signal d'onde carrée n'a que deux états : allumé et éteint (c'est-à-dire des niveaux haut ou bas). En contrôlant le rapport de la durée d'allumage et d'extinction, une tension variant de 0 à 5V peut être simulée. La durée d'allumage (académiquement appelée niveau haut) est appelée largeur d'impulsion, c'est pourquoi le PWM est également appelé modulation de largeur d'impulsion.
 
-A través de las siguientes cinco ondas cuadradas, conozcamos más sobre el PWM.
+À travers les cinq ondes carrées suivantes, approfondissons notre compréhension du PWM.
 
 ![](media/553f3d1b6ca04e1aa0479841dd075fa2.png)
 
-En la figura anterior, la línea verde representa un período, y el valor de analogWrite() corresponde a un porcentaje que también se denomina Ciclo de Trabajo.
+Dans la figure ci-dessus, la ligne verte représente une période, et la valeur de analogWrite() correspond à un pourcentage appelé rapport cyclique.
 
-El ciclo de trabajo implica que la duración del nivel alto se divide por la duración del nivel bajo en un ciclo. De arriba hacia abajo, el ciclo de trabajo de la primera onda cuadrada es 0% y su valor correspondiente es 0. El brillo del LED es el más bajo, es decir, apagado. Cuanto más tiempo dure el nivel alto, más brillante será el LED. Por lo tanto, el último ciclo de trabajo es 100%, que corresponde a 255, y el LED es el más brillante. Y 25% significa más oscuro.
+Le rapport cyclique indique que la durée du niveau haut est divisée par la durée du niveau bas dans un cycle. De haut en bas, le rapport cyclique de la première onde carrée est 0% et sa valeur correspondante est 0. La luminosité de la LED est la plus faible, c'est-à-dire éteinte. Plus le niveau haut dure longtemps, plus la LED est lumineuse. Par conséquent, le dernier rapport cyclique est 100%, ce qui correspond à 255, et la LED est la plus lumineuse. Et 25% signifie plus sombre.
 
-El PWM se usa principalmente para ajustar el brillo del LED o la velocidad de rotación de los motores.
+Le PWM est principalement utilisé pour régler la luminosité des LED ou la vitesse de rotation des moteurs.
 
-Juega un papel vital en el control de robots con ruedas inteligentes. Creo que no puedes esperar para aprender el siguiente proyecto.
+Il joue un rôle essentiel dans le contrôle des robots intelligents à roues. Je suis sûr que vous êtes impatient d'apprendre le prochain projet.
 
-#### **(7) Práctica de Extensión:**
+#### **(7)Pratique d'extension :**
 
-Modifiquemos el valor del retardo y mantengamos el pin sin cambios, luego observemos cómo cambia el LED.
+Modifions la valeur du délai en laissant la broche inchangée, puis observons comment la LED change.
 
-**Código de Prueba**
+**Code de test**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ```C
 /*
@@ -150,26 +150,26 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Define el pin del LED como 9
+int LED = 9; // Définir la broche de la LED comme 9
 
 void setup() 
 {
-	pinMode(LED, OUTPUT); // Configura el pin del LED como SALIDA
+	pinMode(LED, OUTPUT); // Définir la broche de la LED en SORTIE
 }
 
 void loop () 
 {
 	for (int value = 0; value < 255; value = value + 1) 
     {
-		analogWrite(LED, value); // LED ENCENDIDO
-		delay(30); // retardo de 30ms
+		analogWrite(LED, value); // LED allumée
+		delay(30); // délai de 30ms
 	}
 	for (int value = 255; value > 0; value = value - 1) 
     {
-		analogWrite(LED, value); // El LED se atenúa
-		delay (30); // retardo de 30ms
+		analogWrite(LED, value); // La LED s'assombrit
+		delay (30); // délai de 30ms
 	}
 }
 ```
 
-Carga el código en la placa de desarrollo y el LED parpadeará más lentamente.
+Téléversez le code sur la carte de développement, la LED clignote plus lentement.

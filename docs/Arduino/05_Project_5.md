@@ -1,50 +1,50 @@
-### Proyecto 5: Control de Servo
+### Projet 5 : Contrôle du Servomoteur
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-Un servomotor es un actuador rotativo de control de posición. Consiste principalmente en una carcasa, una placa de circuito, un motor sin núcleo, un engranaje y un sensor de posición. Su principio de funcionamiento es que el servo recibe la señal enviada por el MCU o receptor y produce una señal de referencia con un período de 20ms y un ancho de 1.5ms. Luego compara el voltaje de polarización de CC adquirido con el voltaje del potenciómetro y obtiene la salida de diferencia de voltaje.
+Un servomoteur est un actionneur rotatif de contrôle de position. Il se compose principalement d'un boîtier, d'une carte de circuit, d'un moteur sans noyau, d'un engrenage et d'un capteur de position. Son principe de fonctionnement est que le servo reçoit le signal envoyé par le MCU ou le récepteur et produit un signal de référence avec une période de 20ms et une largeur de 1,5ms. Il compare ensuite la tension de polarisation CC acquise à la tension du potentiomètre et obtient la sortie de différence de tension.
 
-Cuando la velocidad del motor es constante, el potenciómetro es accionado para girar a través del engranaje de reducción en cascada, lo que lleva a que la diferencia de voltaje sea 0 y el motor deje de girar. Generalmente, el rango de ángulo de rotación del servo es de 0° a 180°.
+Lorsque la vitesse du moteur est constante, le potentiomètre est entraîné en rotation par l'engrenage de réduction en cascade, ce qui conduit à une différence de tension nulle, et le moteur s'arrête de tourner. En général, la plage d'angle de rotation du servo est de 0° à 180°.
 
-El ángulo de rotación del servomotor se controla regulando el ciclo de trabajo de la señal PWM (Modulación por Ancho de Pulso). El ciclo estándar de la señal PWM es de 20ms (50Hz). Teóricamente, el ancho se distribuye entre 1ms-2ms, pero en la práctica está entre 0.5ms-2.5ms. El ancho corresponde al ángulo de rotación de 0° a 180°. Tenga en cuenta que para diferentes marcas de motores, la misma señal puede resultar en diferentes ángulos de rotación.
+L'angle de rotation du servomoteur est contrôlé en régulant le rapport cyclique du signal PWM (Modulation de Largeur d'Impulsion). La période standard du signal PWM est de 20ms (50Hz). Théoriquement, la largeur est distribuée entre 1ms et 2ms, mais en pratique, elle est entre 0,5ms et 2,5ms. La largeur correspond à l'angle de rotation de 0° à 180°. Notez que pour différentes marques de moteurs, le même signal peut produire des angles de rotation différents.
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-En general, el servo tiene tres cables: marrón, rojo y naranja. El cable marrón es la tierra, el rojo es el polo positivo y el naranja es la línea de señal.
+En général, le servo possède trois fils de couleur marron, rouge et orange. Le fil marron est la masse, le rouge est le fil du pôle positif et l'orange est le fil de signal.
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-El ángulo del servo:
+L'angle du servo :
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)Parámetros:**
+#### **(2)Paramètres :**
 
-- Voltaje de trabajo: DC 4.8V \~ 6V
+- Tension de fonctionnement : DC 4,8V \~ 6V
 
-- Rango de ángulo de operación: aproximadamente 180° (a 500 → 2500 μsec)
+- Plage d'angle de fonctionnement : environ 180° (à 500 → 2500 μsec)
 
-- Rango de ancho de pulso: 500 → 2500 μsec
+- Plage de largeur d'impulsion : 500 → 2500 μsec
 
-- Velocidad sin carga: 0.12 ± 0.01 seg / 60 (DC 4.8V) 0.1 ± 0.01 seg / 60 (DC 6V)
+- Vitesse à vide : 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
 
-- Corriente sin carga: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
+- Courant à vide : 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
 
-- Torque de parada: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC 6V)
+- Couple d'arrêt : 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
 
-- Corriente de parada: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
+- Courant d'arrêt : ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
 
-- Corriente en espera: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
+- Courant en veille : 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
 
-#### **(3)Diagrama de Conexión:**
+#### **(3)Schéma de Connexion :**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> Los cables marrón, rojo y naranja del servo se conectan respectivamente a Gnd(G), 5v(V) y 10 del shield. Recuerde conectar una fuente de alimentación externa debido a la alta corriente del servo. De lo contrario, la placa de desarrollo se quemará.
+<span style="color: rgb(255, 76, 65);">Remarque :</span> Les fils marron, rouge et orange du servo sont respectivement connectés à Gnd(G), 5v(V) et 10 du shield. N'oubliez pas de connecter une alimentation externe en raison du courant élevé du servo. Sinon, la carte de développement sera brûlée.
 
-#### **(4)Código de Prueba 1:**
+#### **(4)Code de Test 1 :**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
 
 ```C
 /*
@@ -54,49 +54,49 @@ Servo
 http://www.keyestudio.com
 */
 
-#define servoPin 10 //El pin del servo
+#define servoPin 10 // La broche du servo
 
-int pos; //La variable del ángulo del servo
-int pulsewidth; //La variable del ancho de pulso del servo
+int pos; // La variable de l'angle du servo
+int pulsewidth; // La variable de la largeur d'impulsion du servo
 
 void setup() 
 {
-    pinMode(servoPin, OUTPUT); //Establecer el pin del servo como salida
-    procedure(0); //Establecer el ángulo del servo en 0°
+    pinMode(servoPin, OUTPUT); // Définir la broche du servo comme sortie
+    procedure(0); // Définir l'angle du servo à 0°
 }
 
 void loop() 
 {
-    for (pos = 0; pos <= 180; pos += 1)  // De 1° a 180°
+    for (pos = 0; pos <= 180; pos += 1)  // De 1° à 180°
     {
-    	// en pasos de 1 grado	
-        procedure(pos); // Rotar al ángulo de 'pos'
-        delay(15); //Controlar la velocidad de rotación
+    	// par pas de 1 degré	
+        procedure(pos); // Tourner à l'angle 'pos'
+        delay(15); // Contrôler la vitesse de rotation
     }
-    for (pos = 180; pos >= 0; pos -= 1) // De 180° a 1°
+    for (pos = 180; pos >= 0; pos -= 1) // De 180° à 1°
     { 
-        procedure(pos); // Rotar al ángulo de 'pos'
+        procedure(pos); // Tourner à l'angle 'pos'
         delay(15);
     }
 }
-//La función controla el servo
+// La fonction contrôle le servo
 void procedure(int myangle) 
 {
-    pulsewidth = myangle * 11 + 500; //Calcular el valor del ancho de pulso
+    pulsewidth = myangle * 11 + 500; // Calculer la valeur de la largeur d'impulsion
     digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth); //El tiempo en nivel alto representa el ancho de pulso
+    delayMicroseconds(pulsewidth); // Le temps en niveau haut représente la largeur d'impulsion
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000)); //Como el ciclo es 20ms, el tiempo restante está en nivel bajo
+    delay((20 - pulsewidth / 1000)); // Comme le cycle est de 20ms, le temps restant est en niveau bas
 }
 ```
 
-Al cargar el código, veremos que el servo se mueve de 0° a 180°. En los capítulos siguientes, introduciremos cómo controlar un servo. Además, podemos controlar un servo con una librería de servo de Arduino.
+Après le téléversement du code, nous verrons le servo se déplacer de 0° à 180°. Dans les chapitres suivants, nous présenterons comment piloter un servo. De plus, nous pouvons contrôler un servo avec une bibliothèque servo d'Arduino.
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> Este archivo de librería de servo utiliza el temporizador 1, y la salida PWM de los puertos IO 9 y 10 también utiliza el temporizador 1, por lo que no podemos usar esta librería de servo cuando usemos la salida PWM de D9 y D10 más adelante.
+<span style="color: rgb(255, 76, 65);">Remarque :</span> Ce fichier de bibliothèque servo utilise le timer 1, et la sortie PWM des ports IO 9 et 10 utilise également le timer 1, donc nous ne pouvons pas utiliser cette bibliothèque servo lors de l'utilisation de la sortie PWM de D9 et D10 ultérieurement.
 
-#### **(5)Código de Prueba 2:**
+#### **(5)Code de Test 2 :**
 
-(<span style="color: rgb(255, 76, 65);">Nota: </span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial del Bluetooth, lo que puede causar que la carga del código falle.)
+(<span style="color: rgb(255, 76, 65);">Remarque : </span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement du code.)
 
 ```C
 /*
@@ -108,49 +108,49 @@ Servo
 
 #include <Servo.h>
 
-Servo myservo; // crear servos
-int pos = 0; // Guardar las variables del ángulo
+Servo myservo; // créer des servos
+int pos = 0; // Sauvegarder les variables d'angle
 
 void setup() 
 {
-	myservo.attach(10); //Conectar el servo con el puerto digital 10
+	myservo.attach(10); // Connecter le servo au port numérique 10
 }
 
 void loop() 
 {
-    for (pos = 0; pos <= 180; pos += 1)  //De 0° a 180°
+    for (pos = 0; pos <= 180; pos += 1)  // De 0° à 180°
     {
-    	//la longitud de paso es 1
-        myservo.write(pos); // Rotar al ángulo de 'pos'
-        delay(15); // Esperar 15ms para controlar la velocidad
+    	// la longueur du pas est de 1
+        myservo.write(pos); // Tourner à l'angle 'pos'
+        delay(15); // Attendre 15ms pour contrôler la vitesse
     }
 
-    for (pos = 180; pos >= 0; pos -= 1)  //De 180° a 0°
+    for (pos = 180; pos >= 0; pos -= 1)  // De 180° à 0°
     {
-        myservo.write(pos); // Rotar al ángulo de 'pos'
-        delay(15); // Esperar 15ms para controlar la velocidad
+        myservo.write(pos); // Tourner à l'angle 'pos'
+        delay(15); // Attendre 15ms pour contrôler la vitesse
     }
 }
 ```
 
-#### **(6)Resultados de la Prueba:**
+#### **(6)Résultats des Tests :**
 
-Cargue el código, conecte la alimentación y el servo se moverá en el rango de 0° a 180°.
+Téléversez le code, branchez l'alimentation et le servo se déplace dans la plage de 0° à 180°.
 
 ![](./media/img-20240117090810.png)
 
-#### **(7)Explicación del Código:**
+#### **(7)Explication du Code :**
 
-Arduino viene con **\#include \<Servo.h\>** (función y declaraciones del servo)
+Arduino est livré avec **\#include \<Servo.h\>** (fonction servo et instructions)
 
-A continuación se presentan algunas declaraciones comunes de la función servo:
+Voici quelques instructions courantes de la fonction servo :
 
-1\. **attach（interfaz）**——Establecer la interfaz del servo, los puertos 9 y 10 están disponibles
+1\. **attach（interface）**——Définir l'interface du servo, les ports 9 et 10 sont disponibles
 
-2\. **write（ángulo）**——La declaración para establecer el ángulo de rotación del servo, el rango de ángulo es de 0° a 180°
+2\. **write（angle）**——L'instruction pour définir l'angle de rotation du servo, la plage d'angle est de 0° à 180°
 
-3\. **read（）**——La declaración para leer el ángulo del servo, lee el valor del comando de "write()"
+3\. **read（）**——L'instruction pour lire l'angle du servo, lit la valeur de commande de "write()"
 
-4\. **attached（）**——Verificar si el parámetro del servo ha sido enviado a su interfaz
+4\. **attached（）**——Vérifier si le paramètre du servo est envoyé à son interface
 
-Nota: El formato de escritura anterior es "nombre de variable del servo, declaración específica（）", por ejemplo: myservo.attach(10)
+Remarque : Le format d'écriture ci-dessus est "nom de variable du servo, instruction spécifique（）", par exemple : myservo.attach(10)

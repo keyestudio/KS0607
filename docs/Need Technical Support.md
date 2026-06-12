@@ -1,3 +1,3 @@
-# 6. ¿Necesita soporte técnico?
+# 6. Besoin d'une assistance technique ?
 
- Si encuentra algún problema técnico o necesita asistencia posventa, no dude en ponerse en contacto con nuestro equipo de soporte en **asa12321sas@gmail.com**. ¡Estamos aquí para ayudarle!
+Si vous rencontrez des problèmes techniques ou avez besoin d'une assistance après-vente, n'hésitez pas à contacter notre équipe de support à l'adresse **asa12321sas@gmail.com**. Nous sommes là pour vous aider !

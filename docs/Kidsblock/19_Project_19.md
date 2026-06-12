@@ -1,48 +1,48 @@
-### Proyecto 19: Sensor de Llama
+### Projet 19 : Capteur de flamme
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)Descripción:**
+#### **(1) Description :**
 
-El sensor de llama utiliza un tubo receptor de infrarrojos para detectar llamas. Convierte el brillo de la llama en señales de nivel alto y bajo y las introduce en el procesador central para el procesamiento correspondiente del programa. El valor de voltaje del puerto analógico varía dependiendo de si hay una llama cerca o no hay ninguna llama.
+Le capteur de flamme utilise un tube récepteur infrarouge pour détecter les flammes. Il convertit la luminosité de la flamme en signaux de niveau haut et bas et les transmet au processeur central pour le traitement du programme correspondant. La valeur de tension du port analogique varie selon qu'une flamme est proche ou qu'il n'y en a pas du tout.
 
-Si no hay llama, el puerto analógico lee aproximadamente 0.3V; cuando hay llama, el puerto analógico lee aproximadamente 1.0V. Cuanto más cerca esté la llama, mayor será el valor de voltaje. Se puede usar para detectar una fuente de fuego o para construir un robot inteligente.
+S'il n'y a pas de flamme, le port analogique lit environ 0,3V ; lorsqu'il y a une flamme, le port analogique lit environ 1,0V. Plus la flamme est proche, plus la valeur de tension est élevée. Il peut être utilisé pour détecter une source de feu ou pour construire un robot intelligent.
 
-Tenga en cuenta que la sonda del sensor de llama solo puede soportar temperaturas entre -25℃ y 85℃.
+Notez que la sonde du capteur de flamme ne peut supporter que des températures comprises entre -25℃ et 85℃.
 
-Durante su uso, asegúrese de mantener el sensor de llama a una distancia segura del fuego para evitar dañarlo.
+Lors de l'utilisation, assurez-vous de maintenir le capteur de flamme à une distance de sécurité du feu pour éviter de l'endommager.
 
-#### **(2)Parámetros:**
+#### **(2) Paramètres :**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- Voltaje de trabajo: 3.3V-5V (DC)
+- Tension de fonctionnement : 3,3V-5V (DC)
 
-- Corriente: 100mA
+- Courant : 100mA
 
-- Potencia máxima: 0.5W
+- Puissance maximale : 0,5W
 
-- Temperatura de trabajo: -10°C a +50 grados Celsius
+- Température de fonctionnement : -10°C à +50 degrés Celsius
 
-- Tamaño del sensor: 31.6mmx23.7mm
+- Dimensions du capteur : 31,6mm x 23,7mm
 
-- Interfaz: interfaz de 4 pines a 3 pines
+- Interface : interface 4 broches vers 3 broches
 
-- Señal de salida: señales analógicas A0, A1
+- Signal de sortie : signaux analogiques A0, A1
 
-#### **(3)Diagrama de Conexión:**
+#### **(3) Schéma de connexion :**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-El pin A de dos fotorresistencias está conectado a A1 y A2. Conectamos el sensor de llama a A1 y A2. Reemplazamos dos fotorresistencias y el sensor ultrasónico con dos sensores de llama y un ventilador, y se crea un coche extintor.
+La broche A de deux photorésistances est connectée à A1 et A2. Nous connectons le capteur de flamme à A1 et A2. En remplaçant deux photorésistances et le capteur ultrasonique par deux capteurs de flamme et un ventilateur, une voiture d'extinction est créée.
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Este experimento requiere el uso de una fuente de fuego. Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está seguro, por favor abandone el experimento.
-2）**El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.**
+<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
+1) Cette expérience nécessite l'utilisation d'une source de feu. Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer que vous êtes en sécurité, veuillez abandonner l'expérience.
+2) **Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.**
 
-#### **(4)Código de Prueba:**
+#### **(4) Code de test :**
 
-También puede arrastrar bloques para editar su código, como se muestra a continuación
+Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -52,36 +52,36 @@ También puede arrastrar bloques para editar su código, como se muestra a conti
 
 ![](media/d4da0bd0c55e3580fa95782d50f6e540.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/4bc6c8a4d6e964fd078a6aeb0dd51ff4.png)
 
-#### **(5)Resultados de la Prueba:**
+#### **(5) Résultats du test :**
 
-Conecte los componentes, cargue el código, abra el monitor serial y configure la velocidad de baudios a 9600.
+Câblez les composants, gravez le code, ouvrez le moniteur série et réglez le débit en bauds à 9600.
 
-Puede ver el valor de simulación del sensor de llama.
+Vous pouvez visualiser la valeur de simulation du capteur de flamme.
 
-Cuanto más cerca esté la llama, menor será el valor de simulación.
+Plus la flamme est proche, plus la valeur de simulation est faible.
 
-Ajuste el potenciómetro del módulo para mantener el LED en el punto crítico. Cuando el sensor no detecta llama, el LED estará apagado, pero si el sensor detecta llama, el LED se encenderá.
+Ajustez le potentiomètre sur le module pour maintenir la LED au point critique. Lorsque le capteur ne détecte pas de flamme, la LED sera éteinte, mais si le capteur détecte une flamme, la LED sera allumée.
 
 ![](./media/img-20240117100139.png)
 
 ![](media/60d0ce2044a504135af3b1113a1a4c7d.png)
 
-#### **(6)Práctica de Extensión:**
+#### **(6) Pratique d'extension :**
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Este experimento requiere el uso de una fuente de fuego. Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está seguro, por favor abandone el experimento.
-2）El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.
-Podemos controlar un LED externo con el sensor de llama. El LED sigue conectado a D9. Cuando se detecta fuego, el LED se encenderá.
+<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
+1) Cette expérience nécessite l'utilisation d'une source de feu. Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer que vous êtes en sécurité, veuillez abandonner l'expérience.
+2) Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.
+Nous pouvons contrôler une LED externe avec le capteur de flamme. La LED est toujours connectée à D9. Lorsqu'un feu est détecté, la LED s'allumera.
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-Puede arrastrar bloques para editar su código, como se muestra a continuación
+Vous pouvez faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -93,15 +93,15 @@ Puede arrastrar bloques para editar su código, como se muestra a continuación
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/9d2f5915e4a6991ed4549b39ec853fa5.png)
 
-Puede usar la llama de un encendedor cerca del sensor de llama izquierdo. Cuando el sensor de llama detecte una llama, el módulo LED se encenderá como alarma.
+Vous pouvez utiliser la flamme d'un briquet près du capteur de flamme gauche. Lorsque le capteur de flamme détecte une flamme, le module LED s'allumera comme alarme.
 
 ![](./media/img-20240117100333.png)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-Por favor, manténgala alejada de materiales inflamables para prevenir incendios. Los niños deben experimentar bajo la supervisión de un adulto. Si no puede confirmar que está seguro, por favor abandone el experimento. El sensor de llama no es ignífugo, por favor no lo queme directamente con llama.
+<span style="color: rgb(255, 76, 65);">**Remarque :**</span>
+Veuillez l'éloigner des matières inflammables pour prévenir tout incendie. Les enfants doivent expérimenter sous la supervision d'un adulte. Si vous ne pouvez pas confirmer que vous êtes en sécurité, veuillez abandonner l'expérience. Le capteur de flamme n'est pas ignifuge, veuillez ne pas le brûler directement avec une flamme.

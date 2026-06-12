@@ -1,36 +1,36 @@
-### Proyecto 20: Ventilador
+### Projet 20 : Ventilateur
 
-#### **(1)Descripción：**
+#### **(1)Description :**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-Este módulo de ventilador utiliza un chip de control de motor HR1124S, un chip controlador H-bridge de un solo canal que contiene transistores de potencia PMOS y NMOS de baja resistencia de conducción. La baja resistencia de conducción puede reducir el consumo de energía, contribuyendo al funcionamiento seguro del chip por más tiempo.
+Ce module ventilateur utilise une puce de contrôle de moteur HR1124S, une puce pilote H-bridge à canal unique contenant des tubes d'alimentation PMOS et NMOS à faible résistance de conductivité. La faible résistance de conductivité peut réduire la consommation d'énergie, contribuant ainsi au fonctionnement sûr de la puce pendant une durée plus longue.
 
-Además, su bajo consumo en espera y bajo consumo en estado estático lo hacen aplicable a juguetes. Podemos controlar la dirección de rotación y la velocidad del ventilador enviando señales IN+ e IN- y señales PWM.
+De plus, son faible courant en veille et son faible courant de fonctionnement statique le rendent applicable aux jouets. Nous pouvons contrôler le sens de rotation et la vitesse du ventilateur en émettant des signaux IN+ et IN- ainsi que des signaux PWM.
 
-#### **(2)Parámetros:**
+#### **(2)Paramètres :**
 
-- Voltaje de funcionamiento: 5V
+- Tension de fonctionnement : 5V
 
-- Corriente: 200mA
+- Courant : 200mA
 
-- Potencia máxima: 2W
+- Puissance maximale : 2W
 
-- Temperatura de trabajo: -10 °C a +50 grados Celsius
+- Température de fonctionnement : -10°C à +50 degrés Celsius
 
-- Tamaño: 47.6mm \* 23.8mm
+- Taille : 47.6mm \* 23.8mm
 
-#### **(3)Diagrama de conexión:**
+#### **(3)Schéma de connexion :**
 
-El módulo de ventilador necesita ser impulsado por una corriente elevada; por lo tanto, instalamos un portapilas.
+Le module ventilateur nécessite un courant important pour fonctionner ; par conséquent, nous installons un support de batterie.
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-Los pines GND, VCC, IN+ e IN- del módulo de ventilador se conectan a los pines G, V, 12 y 13 del shield.
+Les broches GND, VCC, IN+ et IN- du module ventilateur sont connectées aux broches G, V, 12 et 13 du shield.
 
-#### **(4)Código de prueba:**
+#### **(4)Code de test :**
 
-También puedes arrastrar bloques para editar tu código, como se muestra a continuación
+Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -38,26 +38,26 @@ También puedes arrastrar bloques para editar tu código, como se muestra a cont
 
 ![](media/4e9354e674060efe6cf540a3e1b87813.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de subir el código, porque la subida del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la subida falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
 
 ![](media/cbb8f153dd0d114bdd350577af7a1f02.png)
 
-#### **(5)Resultados de la prueba:**
+#### **(5)Résultats du test :**
 
-Sube el código, conecta los componentes, enciende el dispositivo y gira el interruptor DIP a ON. El pequeño ventilador girará en sentido horario durante 2s, se detendrá durante 2s y girará en sentido antihorario durante 2s.
+Téléversez le code, connectez les composants, mettez sous tension et réglez l'interrupteur DIP sur ON. Le petit ventilateur tournera dans le sens horaire pendant 2s, s'arrêtera pendant 2s et tournera dans le sens antihoraire pendant 2s.
 
 ![](./media/img-20240117100504.png)
 
-#### **(6)Práctica de extensión:**
+#### **(6)Pratique d'extension :**
 
-Hemos comprendido el principio de funcionamiento del sensor de llama. A continuación, conecta un sensor de llama en el circuito, como se muestra a continuación. Luego controla el ventilador para apagar el fuego con el sensor de llama.
+Nous avons compris le principe de fonctionnement du capteur de flamme. Ensuite, connectez un capteur de flamme dans le circuit, comme indiqué ci-dessous. Puis contrôlez le ventilateur pour éteindre le feu à l'aide du capteur de flamme.
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
 
-Puedes arrastrar bloques para editar tu código, como se muestra a continuación
+Vous pouvez faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -67,13 +67,13 @@ Puedes arrastrar bloques para editar tu código, como se muestra a continuación
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de subir el código, porque la subida del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la subida falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut provoquer l'échec du téléversement.)
 
 ![](media/74ddb07daf4063f0640c31f4243a0864.png)
 
 
-Después de subir el código, enciende el interruptor de alimentación del shield del motor, puedes encender el ventilador cuando se detecte llama desde el sensor de llama izquierdo del robot.
+Après avoir téléversé le code, activez l'interrupteur d'alimentation du shield de pilotage du moteur, vous pouvez allumer le ventilateur lorsqu'une flamme est détectée par le capteur de flamme gauche du robot.
 
 ![](./media/img-20240117102303.png)

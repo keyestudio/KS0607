@@ -1,42 +1,42 @@
-### Proyecto 2: Ajustar el Brillo del LED
+### Projet 2 : Régler la luminosité de la LED
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-En la lección anterior, controlamos el LED encendiéndolo y apagándolo para que parpadeara.
+Dans la leçon précédente, nous avons contrôlé l'allumage et l'extinction de la LED pour la faire clignoter.
 
-En este proyecto, controlaremos el brillo del LED a través de PWM simulando un efecto de respiración. De igual manera, puedes cambiar el tamaño del paso y el tiempo de retardo en el código para demostrar diferentes efectos de respiración.
+Dans ce projet, nous allons contrôler la luminosité de la LED via PWM en simulant un effet de respiration. De même, vous pouvez modifier la longueur du pas et le temps de délai dans le code afin de démontrer différents effets de respiration.
 
-PWM es un medio para controlar la salida analógica a través de medios digitales. El control digital se utiliza para generar ondas cuadradas con diferentes ciclos de trabajo (una señal que cambia constantemente entre niveles alto y bajo) para controlar la salida analógica.
+Le PWM est un moyen de contrôler la sortie analogique par des moyens numériques. Le contrôle numérique est utilisé pour générer des ondes carrées avec différents rapports cycliques (un signal qui bascule constamment entre des niveaux haut et bas) pour contrôler la sortie analogique.
 
-En general, los voltajes de entrada de los puertos son 0V y 5V. ¿Qué pasa si se requieren 3V? ¿O un cambio entre 1V, 3V y 3.5V? No podemos estar cambiando resistencias constantemente. Por esta razón, recurrimos al PWM.
+En général, les tensions d'entrée des ports sont de 0V et 5V. Que faire si 3V est requis ? Ou une commutation entre 1V, 3V et 3,5V ? Nous ne pouvons pas changer les résistances en permanence. Pour cette raison, nous recourons au PWM.
 
 ![](media/bbcfcb9ae56abb7e80ee587246fc4be9.GIF)
 
-Para las salidas de voltaje de los puertos digitales de Arduino, solo existen niveles BAJO y ALTO, que corresponden a las salidas de voltaje de 0V y 5V respectivamente. Puedes definir BAJO como "0" y ALTO como "1", y hacer que Arduino produzca quinientos "0" o "1" dentro de 1 segundo. Si produce quinientos "1", eso es 5V; si todos son "0", eso es 0V; si produce 250 patrones de 01, eso es 2.5V.
+Pour les sorties de tension des ports numériques Arduino, il n'y a que des niveaux BAS et HAUT, qui correspondent respectivement aux sorties de tension de 0V et 5V. Vous pouvez définir BAS comme « 0 » et HAUT comme « 1 », et laisser l'Arduino sortir cinq cents « 0 » ou « 1 » en 1 seconde. Si l'on sort cinq cents « 1 », cela correspond à 5V ; si tout est « 0 », cela correspond à 0V ; si l'on sort 250 motifs 01, cela correspond à 2,5V.
 
-Este proceso puede compararse con ver una película. Las películas que vemos no son completamente continuas. En realidad, generan 25 imágenes por segundo, lo cual no puede ser percibido por los ojos humanos. Por lo tanto, lo percibimos como un proceso continuo. El PWM funciona de la misma manera. Para generar diferentes voltajes, necesitamos controlar la proporción de 0 y 1. Cuantos más "0" o "1" se produzcan por unidad de tiempo, más preciso será el control.
+Ce processus peut être comparé à la projection d'un film. Les films que nous regardons ne sont pas complètement continus. En réalité, il génère 25 images par seconde, ce que l'œil humain ne peut pas distinguer. Par conséquent, nous le percevons comme un processus continu. Le PWM fonctionne de la même manière. Pour produire différentes tensions, nous devons contrôler le rapport entre 0 et 1. Plus on sort de « 0 » ou de « 1 » par unité de temps, plus le contrôle est précis.
 
-#### **(2)Parámetros:**
+#### **(2)Paramètres :**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Interfaz de control: Puerto digital 3
+- Interface de contrôle : Port numérique 3
 
-- Voltaje de trabajo: DC 3.3-5V
+- Tension de fonctionnement : DC 3,3-5V
 
-- Espaciado entre pines: 2.54mm
+- Espacement des broches : 2,54mm
 
-- Color de visualización del LED: amarillo
+- Couleur d'affichage de la LED : jaune
 
-#### **(3)Diagrama de Conexión**
+#### **(3)Schéma de câblage**
 
-Los pines PWM de Arduino están conectados a 3, 5, 6, 9, 10 y 11. Mantén el pin9 sin cambios.
+Les broches PWM de l'Arduino sont connectées aux broches 3, 5, 6, 9, 10 et 11. Gardez la broche 9 inchangée.
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
-#### **(4)Código de Prueba:**
+#### **(4)Code de test :**
 
-También puedes arrastrar bloques para editar tu código, como se muestra a continuación
+Vous pouvez également faire glisser des blocs pour éditer votre code, comme indiqué ci-dessous
 
 ![](media/de8ccd3cb6621f0eb89a8514a9fd8452.png)
 
@@ -44,25 +44,26 @@ También puedes arrastrar bloques para editar tu código, como se muestra a cont
 
 ![](media/3157917e305c01f1920cf4d06aff4ff9.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/aaab53a06684ab078936ee61f9abcbb3.png)
 
 
-#### **(5)Resultados de la Prueba**
+#### **(5)Résultats du test**
 
-Una vez cargado el código de prueba exitosamente, el LED cambia gradualmente de brillante a oscuro, como la respiración humana, en lugar de encenderse y apagarse de inmediato.
+Après avoir téléversé le code de test avec succès, la LED change progressivement du brillant à l'obscur, comme la respiration humaine, plutôt que de s'allumer et de s'éteindre immédiatement.
 
-#### **(6)Práctica de Extensión:**
+#### **(6)Pratique d'extension :**
 
-Modifiquemos el valor del retardo y mantengamos el pin sin cambios, luego observemos cómo cambia el LED.
 
-**Código de Prueba Completo**
+Modifions la valeur du délai tout en gardant la broche inchangée, puis observons comment la LED change.
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+**Code de test complet**
+
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
 
 ![](media/2ff0d71c2688d39695b760a1d0f76965.png)
 
-Carga el código en la placa de desarrollo, el LED parpadea más lentamente.
+Téléversez le code sur la carte de développement, la LED clignote plus lentement.

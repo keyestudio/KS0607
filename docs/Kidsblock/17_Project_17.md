@@ -1,65 +1,65 @@
-### Proyecto 17: Control de Tanque por Bluetooth
+### Projet 17 : Contrôle du Tank par Bluetooth
 
-#### **(1)Descripción:**
+#### **(1) Description :**
 
-Hemos aprendido los conocimientos básicos sobre Bluetooth en el proyecto anterior. En esta lección, usaremos Bluetooth para controlar el carro inteligente. Dado que involucra Bluetooth, se necesitan un extremo emisor y un extremo receptor. En el proyecto, usamos el teléfono móvil como emisor (maestro), y el carro inteligente conectado con el módulo Bluetooth HM-10 (esclavo) como receptor.
+Nous avons appris les connaissances de base du Bluetooth dans le projet précédent. Dans cette leçon, nous allons utiliser le Bluetooth pour contrôler la voiture intelligente. Puisque cela implique le Bluetooth, un émetteur et un récepteur sont nécessaires. Dans le projet, nous utilisons le téléphone mobile comme émetteur (maître), et la voiture intelligente connectée au module Bluetooth HM-10 (esclave) comme récepteur.
 
-Aprendimos anteriormente que enviar un bit puede controlar LEDs. Y el principio de controlar este robot carro es el mismo.
+Nous avons appris précédemment qu'envoyer un bit peut contrôler des LEDs. Le principe de contrôle de ce robot roulant est le même.
 
-Para controlar mejor el robot tanque inteligente, hemos creado especialmente una APP. En esta lección, leeremos todos los valores de las teclas en esta APP a través del código, y luego presentaremos la APP exclusiva de nuestro robot tanque.
+Afin de mieux contrôler le robot tank intelligent, nous avons spécialement créé une APP. Dans cette leçon, nous allons lire toutes les valeurs des touches de cette APP via le code, puis présenter l'APP exclusive de notre robot tank.
 
-#### **(2)Función de las Teclas en la APP:**
+#### **(2) Fonctions des Touches de l'APP :**
 
-La siguiente tabla ilustra las funciones de las teclas correspondientes:
+Le tableau suivant illustre les fonctions des touches correspondantes :
 
-|                      Teclas                       |                                                |                          Funciones                           |
+|                      Touches                       |                                                |                          Fonctions                           |
 | :---------------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
-| ![](media/1118dccd714c7988a51cf2dde58627e3.png) |                                                | Emparejar y conectar el módulo Bluetooth HM-10; hacer clic de nuevo para desconectar |
-| ![](media/b23e65f788685576275cc16bf0b679cc.png) |                                                |                 Seleccionar el robot a operar                  |
-| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) |                                                |       Controlar los movimientos del robot mediante botones       |
-| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) |                                                |      Controlar los movimientos del robot mediante joystick       |
-| ![](media/3ab61154b4ae730a3757f40171846825.png) |                                                |       Controlar los movimientos del robot mediante gravedad       |
-| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) |   Envía "F" al presionar y "S" al soltar    | El carro avanza cuando se presiona y se detiene cuando se suelta |
-| ![](media/b1765938932b8633bd5a96af0293ef24.png) |   Envía "L" al presionar y "S" al soltar    | El carro gira a la izquierda cuando se presiona y se detiene cuando se suelta |
-| ![](media/67f26bd7d2076922470e8805711f2ef9.png) |   Envía "R" al presionar y "S" al soltar    | El carro gira a la derecha cuando se presiona y se detiene cuando se suelta |
-| ![](media/77615a8ca984e538d58e02ac90bc5382.png) |   Envía "B" al presionar y "S" al soltar    | El carro retrocede cuando se presiona y se detiene cuando se suelta |
-| ![](media/f58421773a56c911b09c150d08b0fd67.png) |        Envía "u"+dígito+"\#" al arrastrar         |          Arrastrar para cambiar la velocidad del motor izquierdo          |
-| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) |        Envía "v"+dígito+"\#" al arrastrar         |         Arrastrar para cambiar la velocidad del motor derecho          |
-| ![](media/5dd730ab4d2299210dc2399303b94e33.png) |         Seleccionar para entrar a la página de Funciones          |                                                              |
-| ![](media/a352ca9be952db2838540657b9a70f8c.png) | Envía "G" al presionar y "S" al presionar de nuevo | Entra en modo de evitación de obstáculos al presionar y sale al presionar de nuevo |
-| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | Envía "h" al presionar y "S" al presionar de nuevo | Entra en modo de seguimiento al presionar y sale al presionar de nuevo |
-| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | Envía "e" al presionar y "S" al presionar de nuevo | Entra en modo de seguimiento de línea al presionar y sale al presionar de nuevo |
-| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | Envía "f" al presionar y "S" al presionar de nuevo | Entra en modo de movimiento en espacio confinado al presionar y sale al presionar de nuevo |
-| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | Envía "i" al presionar y "S" al presionar de nuevo | Entra en modo de seguimiento de luz al presionar y sale al presionar de nuevo |
-| ![](media/4250a152c647cc59f72bf51328943371.png) | Envía "j" al presionar y "S" al presionar de nuevo | Entra en modo de extinción de incendios al presionar y sale al presionar de nuevo |
-| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | Seleccionar para entrar al modo de visualización de expresiones faciales |                                                              |
-| ![](media/17261f134c25702ae129624860ab8fe1.png) | Envía "k" al presionar y "z" al presionar de nuevo | Muestra patrón de sonrisa al hacer clic y borra la expresión al hacer clic de nuevo |
-| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | Envía "l" al presionar y "z" al presionar de nuevo | Muestra patrón de disgusto al hacer clic y borra la expresión al hacer clic de nuevo |
-| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | Envía "m" al presionar y "z" al presionar de nuevo | Muestra cara feliz al hacer clic y borra la expresión al hacer clic de nuevo |
-| ![](media/63d935cd1958863f862374ded9b87d6b.png) | Envía "n" al presionar y "z" al presionar de nuevo | Muestra patrón triste al hacer clic y borra la expresión al hacer clic de nuevo |
-| ![](media/5e84087020b919a85495831b231efa5a.png) | Envía "o" al presionar y "z" al presionar de nuevo | Muestra patrón despectivo al hacer clic y borra la expresión al hacer clic de nuevo |
-| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | Envía "p" al presionar y "z" al presionar de nuevo | Muestra patrón en forma de corazón al hacer clic y borra la expresión al hacer clic de nuevo |
-| ![](media/41bf8b28dea6061cea89b640f5646403.png) |                                                | Elegir para entrar a la interfaz de funciones personalizadas; hay seis teclas 1,2,3,4,5,6; con estas teclas, puedes ampliar algunas funciones por ti mismo |
-| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) |               Hacer clic para enviar "w"                | Hacer clic para mostrar el valor analógico detectado por la fotorresistencia izquierda |
-| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) |                Hacer clic para enviar "y"                | Hacer clic para mostrar el valor analógico detectado por la fotorresistencia derecha |
-| ![](media/a76df707b84409e57a1167889c3510d9.png) |                Hacer clic para enviar "x"                | Hacer clic para mostrar la distancia detectada por el sensor ultrasónico (unidad: cm) |
-| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | Hacer clic para enviar "c" <br />Hacer clic de nuevo para enviar "d"  |   Presionar para encender el ventilador y presionar de nuevo para apagarlo    |
+| ![](media/1118dccd714c7988a51cf2dde58627e3.png) |                                                | Associer et connecter le module Bluetooth HM-10 ; cliquer à nouveau pour déconnecter |
+| ![](media/b23e65f788685576275cc16bf0b679cc.png) |                                                |                 Sélectionner le robot à utiliser                  |
+| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) |                                                |       Contrôler les mouvements du robot par boutons       |
+| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) |                                                |      Contrôler les mouvements du robot par joystick       |
+| ![](media/3ab61154b4ae730a3757f40171846825.png) |                                                |       Contrôler les mouvements du robot par gravité       |
+| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) |   Envoie "F" quand appuyé et "S" quand relâché    | La voiture avance quand appuyé et s'arrête quand relâché |
+| ![](media/b1765938932b8633bd5a96af0293ef24.png) |   Envoie "L" quand appuyé et "S" quand relâché    | La voiture tourne à gauche quand appuyé et s'arrête quand relâché |
+| ![](media/67f26bd7d2076922470e8805711f2ef9.png) |   Envoie "R" quand appuyé et "S" quand relâché    | La voiture tourne à droite quand appuyé et s'arrête quand relâché |
+| ![](media/77615a8ca984e538d58e02ac90bc5382.png) |   Envoie "B" quand appuyé et "S" quand relâché    | La voiture recule quand appuyé et s'arrête quand relâché |
+| ![](media/f58421773a56c911b09c150d08b0fd67.png) |        Envoie "u"+chiffre+"\#" quand glissé         |          Glisser pour changer la vitesse du moteur gauche          |
+| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) |        Envoie "v"+chiffre+"\#" quand glissé         |         Glisser pour changer la vitesse du moteur droit          |
+| ![](media/5dd730ab4d2299210dc2399303b94e33.png) |         Sélectionner pour accéder à la page Fonction          |                                                              |
+| ![](media/a352ca9be952db2838540657b9a70f8c.png) | Envoie "G" quand appuyé et "S" quand appuyé à nouveau | Entrer en mode évitement d'obstacles quand appuyé et quitter quand appuyé à nouveau |
+| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | Envoie "h" quand appuyé et "S" quand appuyé à nouveau | Entrer en mode suivi quand appuyé et quitter quand appuyé à nouveau |
+| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | Envoie "e" quand appuyé et "S" quand appuyé à nouveau | Entrer en mode suivi de ligne quand appuyé et quitter quand appuyé à nouveau |
+| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | Envoie "f" quand appuyé et "S" quand appuyé à nouveau | Entrer en mode déplacement dans un espace confiné quand appuyé et quitter quand appuyé à nouveau |
+| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | Envoie "i" quand appuyé et "S" quand appuyé à nouveau | Entrer en mode suivi de lumière quand appuyé et quitter quand appuyé à nouveau |
+| ![](media/4250a152c647cc59f72bf51328943371.png) | Envoie "j" quand appuyé et "S" quand appuyé à nouveau | Entrer en mode extinction d'incendie quand appuyé et quitter quand appuyé à nouveau |
+| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | Sélectionner pour entrer en mode affichage d'expressions faciales |                                                              |
+| ![](media/17261f134c25702ae129624860ab8fe1.png) | Envoie "k" quand appuyé et "z" quand appuyé à nouveau | Affiche un motif souriant quand cliqué et efface l'expression quand cliqué à nouveau |
+| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | Envoie "l" quand appuyé et "z" quand appuyé à nouveau | Affiche un motif dégoûté quand cliqué et efface l'expression quand cliqué à nouveau |
+| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | Envoie "m" quand appuyé et "z" quand appuyé à nouveau | Affiche un visage heureux quand cliqué et efface l'expression quand cliqué à nouveau |
+| ![](media/63d935cd1958863f862374ded9b87d6b.png) | Envoie "n" quand appuyé et "z" quand appuyé à nouveau | Affiche un motif triste quand cliqué et efface l'expression quand cliqué à nouveau |
+| ![](media/5e84087020b919a85495831b231efa5a.png) | Envoie "o" quand appuyé et "z" quand appuyé à nouveau | Affiche un motif méprisant quand cliqué et efface l'expression quand cliqué à nouveau |
+| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | Envoie "p" quand appuyé et "z" quand appuyé à nouveau | Affiche un motif en forme de cœur quand cliqué et efface l'expression quand cliqué à nouveau |
+| ![](media/41bf8b28dea6061cea89b640f5646403.png) |                                                | Choisir d'entrer dans l'interface de fonctions personnalisées ; il y a six touches 1, 2, 3, 4, 5, 6 ; avec ces touches, vous pouvez étendre certaines fonctions par vous-même |
+| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) |               Cliquer pour envoyer "w"                | Cliquer pour afficher la valeur analogique détectée par la photorésistance gauche |
+| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) |                Cliquer pour envoyer "y"                | Cliquer pour afficher la valeur analogique détectée par la photorésistance droite |
+| ![](media/a76df707b84409e57a1167889c3510d9.png) |                Cliquer pour envoyer "x"                | Cliquer pour afficher la distance détectée par le capteur à ultrasons (unité : cm) |
+| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | Cliquer pour envoyer "c" <br />Cliquer à nouveau pour envoyer "d"  |   Appuyer pour allumer le ventilateur et appuyer à nouveau pour l'éteindre    |
 
-#### **(3)Diagrama de Flujo:**
+#### **(3) Organigramme :**
 
 ![](./media/image-20250709135203165.png)
 
-#### **(4)Diagrama de Conexión:**
+#### **(4) Schéma de Connexion :**
 
 ![](media/930a8024364e07505e845624a94c27bd.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">Remarque :</span>
 
-GND, VCC, SDA y SCL del panel LED 8x16 están conectados a G（GND), V（5V), A4 y A5 de la placa de expansión. STATE y BRK no necesitan ser conectados. El módulo BT se inserta en la placa de expansión.
+GND, VCC, SDA et SCL du panneau LED 8x16 sont connectés à G（GND), V（5V), A4 et A5 de la carte d'extension. STATE et BRK n'ont pas besoin d'être connectés. Le module BT est inséré dans la carte d'extension.
 
-#### **(5)Código de Prueba:**
+#### **(5) Code de Test :**
 
-Puedes arrastrar bloques para editar tu código
+Vous pouvez faire glisser des blocs pour éditer votre code
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -79,26 +79,26 @@ Puedes arrastrar bloques para editar tu código
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Código de Prueba Completo**
+**Code de Test Complet**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conectes el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement utilise également la communication série, ce qui peut provoquer des conflits avec la communication série Bluetooth et entraîner l'échec du téléversement.)
 
 ![](media/341e0a01bd6a76edb53f9414ef641a75.png)
 
-#### **(6)Resultado de la Prueba:**
+#### **(6) Résultat du Test :**
 
-Después de cargar el código, conecta el robot al módulo Bluetooth y empareja la APP Bluetooth. Enciende el interruptor de alimentación del escudo del motor. Coloca el robot en el suelo, puedes usar estos botones de la APP Bluetooth para controlar el robot.
+Après avoir téléversé le code, connectez le robot au module Bluetooth et associez l'APP Bluetooth. Allumez l'interrupteur d'alimentation du shield de commande des moteurs. Placez le robot sur le sol, vous pouvez utiliser ces boutons de l'APP Bluetooth pour contrôler le robot.
 
 ![](media/352d5ec83c4246b980da10b5f99711c5.jpeg)
 
-1. Las flechas hacia arriba, abajo, izquierda y derecha controlan el robot para moverse hacia adelante, hacia atrás, a la izquierda y a la derecha respectivamente.
+1. Les flèches haut, bas, gauche et droite contrôlent respectivement le robot pour avancer, reculer, tourner à gauche et tourner à droite.
 
 ![](./media/img-20240117095015.png)
 
-2. Haz clic en el botón de joystick y arrastra la dirección del punto negro dentro del círculo blanco para controlar la dirección de movimiento del robot.
+2. Cliquez sur le bouton joystick et faites glisser la direction du point noir dans le cercle blanc pour contrôler la direction de déplacement du robot.
 
 ![](./media/img-20240117095052.png)
 
-3. Haz clic en el botón de Gravedad e inclina el teléfono en las direcciones hacia adelante, hacia atrás, a la izquierda y a la derecha, y el robot se moverá en la dirección hacia la que se inclina el teléfono.
+3. Cliquez sur le bouton Gravité et inclinez le téléphone dans les directions avant, arrière, gauche et droite, et le robot se déplacera dans la direction dans laquelle le téléphone est incliné.
 
 ![](./media/img-20240117095131.png)

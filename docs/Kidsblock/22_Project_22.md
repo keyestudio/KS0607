@@ -1,49 +1,49 @@
-### Proyecto 22: Múltiples Funciones del Robot Extintor de Incendios
+### Projet 22 : Robot Extincteur à Fonctions Multiples
 
-#### **(1)Descripción:**
+#### **(1)Description :**
 
-El coche inteligente ha realizado una sola función en cada proyecto anterior.
+Le véhicule intelligent n'a exécuté qu'une seule fonction dans chacun des projets précédents.
 
-¿Puede mostrar múltiples funciones a la vez? Sí, puede.
+Peut-il afficher plusieurs fonctions à la fois ? Oui, il le peut.
 
-En este último proyecto grande, pretendemos usar un código completo para controlar el coche inteligente y demostrar todas las funciones mencionadas en los proyectos anteriores. Usamos las teclas de la APP de Bluetooth para cambiar automáticamente entre varias funciones, lo cual es bastante simple y conveniente.
+Dans ce grand projet final, nous avons l'intention d'utiliser un code complet pour contrôler le véhicule intelligent afin de démontrer toutes les fonctions mentionnées dans les projets précédents. Nous utilisons les touches de l'application Bluetooth pour basculer automatiquement entre les différentes fonctions, ce qui est assez simple et pratique.
 
-#### **(2)Diagrama de Flujo:**
+#### **(2)Diagramme de flux :**
 
-<span style="color: rgb(255, 76, 65);">**Por favor, consulte el Proyecto 16 para instalar y configurar la APP de Bluetooth**</span>
+<span style="color: rgb(255, 76, 65);">**Veuillez vous référer au Projet 16 pour installer et configurer l'application Bluetooth**</span>
 
 ![](media/wps122.png)
 
-#### **(3)Diagrama de Conexión:**
+#### **(3)Schéma de connexion :**
 
 ![](media/e7ac834ba04aa2e8862995d2d33ce935.png)
 
-1\. GND, VCC, SDA y SCL de la placa 8x16 están conectados a G (GND), + (VCC), A4 y A5 de la placa de expansión.
+1\. GND, VCC, SDA et SCL de la carte 8x16 sont connectés à G (GND), + (VCC), A4 et A5 de la carte d'extension.
 
-2\. VCC, IN+, IN- y Gnd del módulo de ventilador están conectados a 5V (V), 12 (S), 13 (S) y Gnd (G).
+2\. VCC, IN+, IN- et Gnd du module ventilateur sont connectés à 5V (V), 12 (S), 13 (S) et Gnd (G).
 
-3\. El cable marrón, el cable rojo y el cable naranja del servo están conectados a Gnd (G), 5v (V) y D10.
+3\. Le fil marron, le fil rouge et le fil orange du servomoteur sont connectés à Gnd (G), 5v (V) et D10.
 
-4\. RXD, TXD, GND y VCC del módulo BT están conectados a TX, RX, G (GND) y 5V (VCC). STATE y BRK no necesitan ser conectados.
+4\. RXD, TXD, GND et VCC du module BT sont connectés à TX, RX, G (GND) et 5V (VCC). STATE et BRK n'ont pas besoin d'être interfacés.
 
-5\. Los pines "G", "V" y A del sensor de llama izquierdo están conectados a G (GND), V (VCC) y A1, respectivamente; El sensor de llama derecho está conectado a G (GND), V (VCC) y A2, respectivamente.
+5\. Les broches « G », « V » et A du capteur de flamme gauche sont connectées respectivement à G (GND), V (VCC) et A1 ; Le capteur de flamme droit est connecté à G (GND), V (VCC) et A2, respectivement.
 
-6\. Los puertos distales del sensor de seguimiento de línea son 11, 7 y 8.
+6\. Les ports distaux du capteur de suivi de ligne sont 11, 7 et 8.
 
-#### **(4)Código de Prueba:**
+#### **(4)Code de test :**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> No conecte el módulo Bluetooth antes de cargar el código, porque la carga del código también usa comunicación serial, y puede haber conflictos con la comunicación serial Bluetooth, lo que puede causar que la carga falle.)
-<span style="color: rgb(255, 76, 65);">**Nota:**</span> No puede acelerar el coche mediante la App.
+(<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Ne pas connecter le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série Bluetooth, ce qui peut entraîner l'échec du téléversement.)
+<span style="color: rgb(255, 76, 65);">**Remarque :**</span> Vous ne pouvez pas accélérer le véhicule via l'application.
 
 ![](media/b1527b806741e28e8f2af5107db505fe.png)
 
 
-#### **(5)Resultado de la Prueba:**
+#### **(5)Résultat du test :**
 
-Antes de cargar el código del programa, el módulo Bluetooth debe ser retirado; de lo contrario, la carga del código fallará.
+Avant de téléverser le code du programme, le module Bluetooth doit être retiré ; sinon, le téléversement du code échouera.
 
-Después de cargar el código exitosamente, active los servicios de ubicación en su dispositivo y luego conecte el módulo Bluetooth.
+Après avoir téléversé le code avec succès, activez les services de localisation sur votre appareil, puis connectez le module Bluetooth.
 
-Una vez que el módulo Bluetooth esté conectado y encendido, y la APP móvil esté conectada exitosamente al Bluetooth, podemos usar la APP móvil para controlar el robot tanque.
+Une fois que le module Bluetooth est branché et sous tension, et que l'application mobile est connectée avec succès au Bluetooth, nous pouvons utiliser l'application mobile pour contrôler le robot tank.
 
 ![](media/13656cfee75dc5acbeba18a90a084e159.jpg)

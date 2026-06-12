@@ -1,34 +1,34 @@
-### Proyecto 10: Tanque Seguidor de Luz
+### Projet 10 : Char Suiveur de Lumière
 
 
-#### **(1)Descripción:**
+#### **(1) Description :**
 
-En proyectos anteriores, presentamos detalladamente el uso de varios sensores, módulos y placas de expansión en el carro inteligente. Ahora pasemos a los proyectos del carro inteligente. Los carros inteligentes seguidores de luz, como su nombre lo indica, son carros inteligentes que pueden seguir la luz.
+Dans les projets précédents, nous avons présenté en détail l'utilisation de divers capteurs, modules et cartes d'extension sur le char intelligent. Passons maintenant aux projets du char intelligent. Les chars intelligents suiveurs de lumière, comme leur nom l'indique, sont des chars intelligents capables de suivre la lumière.
 
-Podemos combinar el conocimiento de los proyectos de fotorresistor y accionamiento de motor para crear un carro inteligente buscador de luz. En el proyecto, usamos dos módulos fotorresistores para detectar la intensidad de luz en los lados izquierdo y derecho del carro inteligente, leemos los valores analógicos correspondientes y luego controlamos la rotación de los dos motores basándonos en estos dos datos para controlar así los movimientos del carro inteligente.
+Nous pouvons combiner les connaissances des projets sur la photorésistance et la commande moteur pour fabriquer un char intelligent chercheur de lumière. Dans ce projet, nous utilisons deux modules photorésistors pour détecter l'intensité lumineuse sur les côtés gauche et droit du char intelligent, lire les valeurs analogiques correspondantes, puis contrôler la rotation des deux moteurs en fonction de ces deux données afin de contrôler les mouvements du char intelligent.
 
-La lógica específica del carro inteligente seguidor de luz se muestra a continuación.
+La logique spécifique du char intelligent suiveur de lumière est présentée ci-dessous.
 
 ![image-20230525113331422](media/image-20230525113331422.png)
 
-#### **(2)Diagrama de flujo:**
+#### **(2) Organigramme :**
 
 ![](media/wps117.png)
 
-#### **(3)Diagrama de conexión:**
+#### **(3) Schéma de connexion :**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Nota: </span>Los pines "G", "V" y S del módulo fotorresistor izquierdo están conectados a G (GND), V (VCC) y A1 respectivamente;
+<span style="color: rgb(255, 76, 65);">Remarque : </span>Les broches "G", "V" et S du module photorésistor gauche sont connectées respectivement à G (GND), V (VCC), A1 ;
 
-Los pines "G", "V" y S del módulo fotorresistor derecho están conectados a G (GND), V (VCC) y A2 respectivamente.
+Les broches "G", "V" et S du module photorésistor droit sont connectées respectivement à G (GND), V (VCC) et A2.
 
-El cable de 4 pines está marcado con A, A1, B1 y B. El motor trasero derecho está conectado al puerto B de la placa de expansión controladora de motor 8833 y el motor delantero izquierdo está conectado al puerto A de la placa de expansión controladora de motor 8833.
+Le câble à 4 broches est marqué A, A1, B1 et B. Le moteur arrière droit est connecté au port B de la carte d'extension pilote de moteur 8833 et le moteur avant gauche est connecté au port A de la carte d'extension pilote de moteur 8833.
 
-#### **(4)Código de prueba:**
+#### **(4) Code de test :**
 
 
-También puedes arrastrar bloques para editar tu código, como se muestra a continuación.
+Vous pouvez également faire glisser des blocs pour modifier votre code, comme indiqué ci-dessous.
 
 （1）![](media/9352e6447f9648efddc7d5a748618332.png)
 
@@ -44,17 +44,17 @@ También puedes arrastrar bloques para editar tu código, como se muestra a cont
 
 (7) ![](media/9f023e6f571e597e661a8d71a7f803cb.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> El umbral 650 en el código puede ajustarse apropiadamente según la intensidad de luz específica.
+(<span style="color: rgb(255, 76, 65);">Remarque :</span> Le seuil 650 dans le code peut être ajusté de manière appropriée en fonction de l'intensité lumineuse spécifique.
 
-No conectes el módulo Bluetooth antes de cargar el código, ya que la carga del código también utiliza comunicación serial, y puede haber conflictos con la comunicación serial del Bluetooth, lo que puede provocar que la carga del código falle.)
+Ne connectez pas le module Bluetooth avant de téléverser le code, car le téléversement du code utilise également la communication série, et il peut y avoir des conflits avec la communication série du Bluetooth, ce qui peut entraîner l'échec du téléversement du code.)
 
 ![](media/6300174b85f63c05dbdcb3b77188f9dc.png)
 
 
-#### **(5)Resultados de la prueba:**
+#### **(5) Résultats du test :**
 
-Después de cargar el código de prueba con éxito, realiza el cableado, cambia el interruptor DIP al extremo ON y enciende el dispositivo; el carro inteligente sigue la luz para moverse.
+Après avoir téléversé le code de test avec succès, effectuez le câblage, basculez le commutateur DIP sur la position ON et mettez sous tension ; le char intelligent se déplace en suivant la lumière.
 
 ![](./media/img-20240117093758.png)
