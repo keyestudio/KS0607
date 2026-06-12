@@ -1,36 +1,36 @@
-### Progetto 20: Ventilatore
+### プロジェクト 20: ファン
 
-#### **(1)Descrizione：**
+#### **(1)説明：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-Questo modulo ventilatore utilizza un chip di controllo motore HR1124S, un chip driver H-bridge a canale singolo contenente transistor di potenza PMOS e NMOS a bassa resistenza di conduzione. La bassa resistenza di conduzione può ridurre il consumo energetico, contribuendo al funzionamento sicuro del chip per un tempo più lungo.
+このファンモジュールはHR1124Sモーター制御チップを使用しており、低導電抵抗のPMOSおよびNMOSパワートランジスタを含む単チャンネルHブリッジドライバーチップです。低導電抵抗により消費電力を抑えることができ、チップが長時間安全に動作することに貢献します。
 
-Inoltre, la sua bassa corrente in standby e la bassa corrente di lavoro statica lo rendono adatto ai giocattoli. Possiamo controllare la direzione di rotazione e la velocità del ventilatore inviando segnali IN+ e IN- e segnali PWM.
+また、低スタンバイ電流および低静的動作電流により、おもちゃへの応用が可能です。IN+およびIN-信号とPWM信号を出力することで、ファンの回転方向と速度を制御できます。
 
-#### **(2)Parametri:**
+#### **(2)パラメータ：**
 
-- Tensione di lavoro: 5V
+- 動作電圧：5V
 
-- Corrente: 200mA
+- 電流：200mA
 
-- Potenza massima: 2W
+- 最大電力：2W
 
-- Temperatura di lavoro: da -10°C a +50 gradi Celsius
+- 動作温度：-10°C ～ +50°C
 
-- Dimensioni: 47,6mm \* 23,8mm
+- サイズ：47.6mm \* 23.8mm
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
-Il modulo ventilatore necessita di essere alimentato con corrente elevata; pertanto, installiamo un portabatterie.
+ファンモジュールは大電流による駆動が必要なため、バッテリーホルダーを取り付けます。
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-I pin GND, VCC, IN+ e IN- del modulo ventilatore sono collegati ai pin G, V, 12 e 13 dello shield.
+ファンモジュールのピン GND、VCC、IN+、IN- は、シールドのピン G、V、12、13 に接続されます。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集することもできます
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -38,26 +38,26 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 ![](media/4e9354e674060efe6cf540a3e1b87813.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
 
 ![](media/cbb8f153dd0d114bdd350577af7a1f02.png)
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
-Carica il codice, collega i componenti, accendi e porta l'interruttore DIP su ON. Il piccolo ventilatore girerà in senso orario per 2s, si fermerà per 2s e girerà in senso antiorario per 2s
+コードをアップロードし、部品を配線して電源を入れ、DIPスイッチをONにします。小型ファンは時計回りに2秒間回転し、2秒間停止した後、反時計回りに2秒間回転します。
 
 ![](./media/img-20240117100504.png)
 
-#### **(6)Pratica di Estensione:**
+#### **(6)応用練習：**
 
-Abbiamo compreso il principio di funzionamento del sensore di fiamma. Successivamente, collega un sensore di fiamma nel circuito, come mostrato di seguito. Quindi controlla il ventilatore per spegnere le fiamme con il sensore di fiamma.
+炎センサーの動作原理を理解しました。次に、以下に示すように回路に炎センサーを接続します。そして炎センサーを使ってファンで火を吹き消す制御を行います。
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
 
-Puoi trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集できます
 
 ![](media/4e9d7f8f92495db5208c718292da3e15.png)
 
@@ -67,13 +67,13 @@ Puoi trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
 
 ![](media/74ddb07daf4063f0640c31f4243a0864.png)
 
 
-Dopo aver caricato il codice, accendi l'interruttore di alimentazione dello shield di controllo motore; potrai accendere il ventilatore quando viene rilevata una fiamma dal sensore di fiamma sinistro del robot.
+コードをアップロードした後、モータードライブシールドの電源スイッチをオンにすると、ロボットの左側の炎センサーが炎を検知したときにファンをオンにすることができます。
 
 ![](./media/img-20240117102303.png)

@@ -1,22 +1,22 @@
-### Assemblare il Robot Estintore
+### 消火ロボットを組み立てる
 
-Rimuovere il sensore a ultrasuoni e i due fotoresistori
+超音波センサーと2つの光抵抗を取り外す
 
 ![](./media/d575fad4068d67daffaf3958996a185b.png)
 
 ![](./media/3a350ba2fda9f37c8f0870f16c981f7b.png)
 
-Montare un modulo ventilatore e due sensori di fiamma
+ファンモジュールと2つの炎センサーを取り付ける
 
 ![](./media/f1a3dbebcb34d4a390e4b2412d34e03e.png)
 
-È possibile installare il modulo ventilatore più lontano se il modulo ventilatore e i sensori di fiamma interferiscono
+ファンモジュールと炎センサーが干渉する場合は、ファンモジュールをさらに遠くに取り付けることができます
 
 ![](./media/8ec448f8b626fd9f8f0a6941b927c0af.png)
 
-**Collegamento dei cavi**
+**配線する**
 
-Collegare i due sensori di fiamma
+2つの炎センサーを配線する
 
 ![](./media/e224ea3ffed9b63eda92e9fbd2fc0ed2.png)
 
@@ -34,7 +34,7 @@ Collegare i due sensori di fiamma
 |      V       |           V           |
 |      A       |          A2           |
 
-Collegare il modulo ventilatore
+ファンモジュールを配線する
 
 ![](./media/c646fb9322c3f4315b246a36ee1df17c.png)
 
@@ -49,6 +49,6 @@ Collegare il modulo ventilatore
 
 
 
- **Utilizziamo una batteria al litio modello 18650 con polo positivo appuntito, la cui potenza e capacità non sono vincolate.**
+ **先端が尖った正極を持つ18650型リチウム電池を使用します。電力と容量は問いません。**
 
 ![](./media/img-20240117152622.jpg)

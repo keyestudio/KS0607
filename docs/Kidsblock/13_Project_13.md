@@ -1,30 +1,30 @@
-### Progetto 13: Serbatoio di Movimento in Spazio Confinato
+### プロジェクト 13: 限られた空間内での走行タンク
 
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Le funzioni di inseguimento degli ultrasuoni e di evitamento degli ostacoli dell'auto intelligente sono state introdotte nei progetti precedenti. Qui, intendiamo combinare le conoscenze dei corsi precedenti per confinare l'auto intelligente a muoversi all'interno di un determinato spazio. Nell'esperimento, utilizziamo il sensore di rilevamento della linea per rilevare se c'è una linea nera intorno all'auto intelligente, e poi controlliamo la rotazione dei due motori in base ai risultati del rilevamento, in modo da bloccare l'auto intelligente all'interno di un cerchio disegnato con una linea nera.
+スマートカーの超音波追跡および障害物回避機能については、前のプロジェクトで紹介しました。ここでは、前のコースの知識を組み合わせて、スマートカーを特定の空間内で動くように制限することを目的としています。実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒線があるかどうかを検出し、検出結果に応じて2つのモーターの回転を制御することで、黒線で描かれた円の中にスマートカーを閉じ込めます。
 
-La logica specifica dell'auto intelligente è mostrata nella tabella seguente:
+スマートカーの具体的なロジックは以下の表に示すとおりです:
 
 ![](media/image-20230525114604923.png)
 
-|                         Condizione                         |                         Movimento                          |
+|                         条件                         |                         動作                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| Se uno dei tre sensori di rilevamento della linea rileva linee nere | Vai indietro（imposta PWM a 150）Poi gira a sinistra（imposta PWM a 150） |
-|             Nessuno di essi rileva linee nere              |               Vai avanti（imposta PWM a 100）                |
+| 3つのライントラッキングセンサーのうち1つが黒線を検出した場合 | 後退（PWMを150に設定）その後左折（PWMを150に設定） |
+|             どれも黒線を検出しない場合              |               前進（PWMを100に設定）                |
 
-#### **(2)Diagramma di flusso**
+#### **(2)フローチャート**
 
 ![](media/b3c30f92cb78d4c2a4a8bd746aef24e1.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集することもできます
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -44,14 +44,14 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 （9）![](media/b919eb2b47ee87ae36e21099e754e8a1.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードが失敗する可能性があります。)
 
 ![](media/e656126c11bb8ebe7b6b0df8f22e7a79.png)
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果:**
 
-Dopo aver caricato con successo il codice di test e aver alimentato il dispositivo, l'auto intelligente si muove all'interno di un cerchio disegnato con una linea nera.
+テストコードを正常にアップロードして電源を入れると、スマートカーは黒線で描かれた円の中を走行します。
 
 ![](./media/img-20240117094034.png)

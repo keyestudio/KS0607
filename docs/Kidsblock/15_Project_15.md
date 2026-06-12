@@ -1,44 +1,44 @@
-### Progetto 15: Tank con Telecomando IR
+### プロジェクト15：IR（赤外線）リモートコントロールタンク
 
 ![](./media/image-20250709134800790.png)
 
-#### **(1)Descrizione:**
+#### **(1)説明：**
 
-Il telecomando a infrarossi è una delle applicazioni di controllo remoto più comuni, presente in motori elettrici, ventilatori elettrici e molti altri elettrodomestici. In questo progetto, utilizziamo le conoscenze apprese in precedenza per realizzare una macchina intelligente con telecomando a infrarossi.
+赤外線リモートコントロールは、電動モーター、扇風機、その他多くの家電製品に見られる最も一般的なリモートコントロールの応用の一つです。このプロジェクトでは、これまでに学んだ知識を活用して、赤外線リモートコントロールスマートカーを作製します。
 
-Nella 9ª lezione, abbiamo testato il valore corrispondente di ogni tasto del telecomando a infrarossi. In questo progetto, possiamo impostare il codice (valore del tasto) per far sì che il pulsante corrispondente controlli i movimenti della macchina intelligente, e visualizzare i pattern di movimento sulla matrice LED 8X16.
+第9回のレッスンでは、赤外線リモコンの各キーに対応するキー値をテストしました。このプロジェクトでは、コード（キー値）を設定して、対応するボタンでスマートカーの動きを制御し、8X16 LEDドットマトリクスに動作パターンを表示させることができます。
 
-La logica specifica della macchina intelligente è mostrata nella tabella seguente:
+スマートカーの具体的なロジックは以下の表のとおりです：
 
-|                 Tasto ultrasonico                  | Valore tasto | Istruzioni dai tasti                                         |
-| :------------------------------------------------: | :----------: | ------------------------------------------------------------ |
-| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png)   |   FF629D     | Muovi avanti（imposta PWM a 200）<br />visualizza il pattern di avanzamento |
-| ![](media/ae8110034aacb083151cfd882ee599ba.png)   |   FFA857     | Vai indietro（imposta PWM a 200）<br />visualizza il pattern di retromarcia |
-| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png)   |   FF22DD     | Gira a sinistra<br />visualizza il pattern"STOP"             |
-| ![](media/ad907a618af86f30d52986bbbd57ba76.png)   |   FFC23D     | Gira a destra<br />visualizza il pattern di svolta a sinistra |
-| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png)   |   FF02FD     | Fermati<br />visualizza il pattern"STOP"                     |
+|                 超音波キー                  | キー値 | キーからの指示                                               |
+| :---------------------------------------------: | :-------: | ------------------------------------------------------------ |
+| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | 前進（PWMを200に設定）<br />前進パターンを表示 |
+| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | 後退（PWMを200に設定）<br />後退パターンを表示 |
+| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | 左折<br />"STOP"パターンを表示                     |
+| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | 右折<br />左折パターンを表示          |
+| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | 停止<br />"STOP"パターンを表示                          |
 
-**Impostazione iniziale: la matrice LED 8X16 mostra il pattern"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
+**初期設定：8X16 LEDドットマトリクスに"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"パターンを表示**
 
 
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート：**
 
 ![](media/wps121.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
 ![](media/54527fe245b218dd22bdff5dafd4805d.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">注意：</span>
 
-GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati a G（GND), V（VCC). A4 e A5 della scheda di espansione.
+8x16 LEDパネルのGND、VCC、SDA、SCLは、拡張ボードのG（GND）、V（VCC）、A4、A5に接続されています。
 
-Poiché la scheda 8833 integra il ricevitore IR, non è necessario collegarlo. I pin del ricevitore IR sono G（GND), V（VCC) e D3.
+8833ボードにはIR受信機が統合されているため、配線する必要はありません。IR受信機のピンはG（GND）、V（VCC）、D3です。
 
-#### **(4)Codice di test:**
+#### **(4)テストコード：**
 
-Puoi modificare i blocchi per costruire il tuo codice
+ブロックを編集してコードを構築することができます。
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -58,14 +58,14 @@ Puoi modificare i blocchi per costruire il tuo codice
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Codice di test completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する場合があります。)
 
 ![](media/fae6c22640ced038daca9cb6721ab95e.png)
 
-#### **(5)Risultati del test:**
+#### **(5)テスト結果：**
 
-Dopo aver caricato con successo il codice di test e aver fornito alimentazione, la macchina intelligente può essere controllata nel movimento tramite il telecomando IR e la matrice 8\*16 mostra i pattern corrispondenti ai suoi movimenti.
+テストコードのアップロードが成功し、電源を入れた後、IRリモートコントロールでスマートカーの動きを制御でき、8\*16には動作に対応するパターンが表示されます。
 
 ![](./media/img-20240117094223.png)

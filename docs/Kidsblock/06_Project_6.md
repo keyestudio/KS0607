@@ -1,64 +1,64 @@
-### Progetto 6: Sensore a Ultrasuoni
+### プロジェクト6：超音波センサー
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
 ![](media/0180b169a1c3b228394b43df704fac32.png)
 
-Il sensore a ultrasuoni HC-SR04 utilizza il sonar per determinare la distanza da un oggetto, come fanno i pipistrelli. Offre un'eccellente rilevazione della distanza senza contatto, con alta precisione e letture stabili in un pacchetto facile da usare. È completo di moduli trasmettitore e ricevitore a ultrasuoni.
+HC-SR04超音波センサーは、コウモリと同様にソナーを使用して物体までの距離を測定します。使いやすいパッケージで、高精度かつ安定した読み取り値で優れた非接触距離検出を提供します。超音波送信モジュールと受信モジュールが完備されています。
 
-L'HC-SR04 o il sensore a ultrasuoni viene utilizzato in una vasta gamma di progetti elettronici per creare applicazioni di rilevamento degli ostacoli e misurazione della distanza, nonché varie altre applicazioni. Qui abbiamo proposto il metodo semplice per misurare la distanza con Arduino e il sensore a ultrasuoni e come utilizzare il sensore a ultrasuoni con Arduino.
+HC-SR04または超音波センサーは、障害物検出や距離測定アプリケーションの作成、およびその他のさまざまなアプリケーションのために、幅広いエレクトロニクスプロジェクトで使用されています。ここでは、Arduinoと超音波センサーを使用した距離測定のシンプルな方法と、Arduinoで超音波センサーを使用する方法をご紹介します。
 
 ![](./media/image-20250709133626194.png)
 
-#### **(2)Parametri:**
+#### **(2)パラメーター：**
 
-- Alimentazione: +5V DC
+- 電源電圧：+5V DC
 
-- Corrente a riposo: \<2mA
+- 静止電流：\<2mA
 
-- Corrente di funzionamento: 15mA
+- 動作電流：15mA
 
-- Angolo efficace: \<15°
+- 有効角度：\<15°
 
-- Distanza di rilevamento: 2cm – 400 cm
+- 測定距離：2cm～400cm
 
-- Risoluzione: 0.3 cm
+- 分解能：0.3cm
 
-- Angolo di misurazione: 30 gradi
+- 測定角度：30度
 
-- Larghezza del impulso di trigger in ingresso: 10uS
+- トリガー入力パルス幅：10uS
 
-#### **(3)Il principio del sensore a ultrasuoni:**
+#### **(3)超音波センサーの原理：**
 
-Come mostrato nell'immagine sopra, è come due occhi. Uno è il terminale di trasmissione, l'altro è il terminale di ricezione.
+上の画像に示すように、2つの目のようなものです。一方が送信端、もう一方が受信端です。
 
-Il modulo a ultrasuoni emetterà le onde ultrasoniche dopo aver ricevuto un segnale di attivazione. Quando le onde ultrasoniche incontrano l'oggetto e vengono riflesse indietro, il modulo produce un segnale eco, quindi può determinare la distanza dell'oggetto dalla differenza di tempo tra il segnale di trigger e il segnale eco.
+超音波モジュールは、信号をトリガーした後に超音波を発します。超音波が物体に当たって反射されると、モジュールはエコー信号を出力します。そのため、トリガー信号とエコー信号の時間差から物体までの距離を測定することができます。
 
-Qui, t è il tempo da quando il segnale emesso incontra l'ostacolo a quando ritorna. La velocità di propagazione del suono nell'aria è di circa 343m/s, e distanza = velocità * tempo. Tuttavia, poiché l'onda ultrasonica percorre la distanza fino all'ostacolo e ritorna, il tempo rappresenta il doppio della distanza. Pertanto, è necessario dividere per 2. La distanza misurata dall'**onda ultrasonica = (velocità * tempo) / 2**.
+ここで、tは発射された信号が障害物に当たって返ってくるまでの時間です。空気中の音の伝播速度は約343m/sで、距離＝速度×時間です。ただし、超音波は障害物まで往復するため、時間は距離の2倍を表します。したがって、2で割る必要があります。**超音波で測定した距離＝（速度×時間）／2**。
 
-1. Metodo di utilizzo e diagramma temporale del modulo a ultrasuoni:
+1. 超音波モジュールの使用方法とタイミングチャート：
 
-2. Impostare il ritardo del pin Trig dell'SR04 ad almeno 10μs, il che può attivarlo per rilevare la distanza.
+2. SR04のTrigピンの遅延時間を少なくとも10μSに設定することで、距離検出をトリガーできます。
 
-3. Dopo l'attivazione, il modulo invierà automaticamente otto impulsi ultrasonici a 40KHz e rileverà se c'è un segnale di ritorno. Questo passaggio verrà completato automaticamente dal modulo.
+3. トリガー後、モジュールは自動的に40KHzの超音波パルスを8回送信し、信号の返信があるかどうかを検出します。このステップはモジュールによって自動的に完了します。
 
-4. Se il segnale ritorna, il pin Echo produrrà un livello alto, e la durata del livello alto è il tempo dalla trasmissione dell'onda ultrasonica al ritorno.
+4. 信号が返信された場合、Echoピンは高レベルを出力し、その高レベルの持続時間が超音波の送信から返信までの時間となります。
 
 ![](media/image-20230525110337646.png)
 
-Schema del circuito del sensore a ultrasuoni:
+超音波センサーの回路図：
 
 ![](media/a25028af84d6c7c94382c2a907101241.jpeg)
 
-#### **(4)Schema di collegamento:**
+#### **(4)接続図：**
 
 ![](media/d8fad040d3ab5abe247d6a8d1e08a13d.png)
 
-<span style="color: rgb(255, 76, 65);">Nota sul cablaggio:</span> Il pin VCC del modulo sensore a ultrasuoni è collegato al 5v(V) della scheda di espansione del motore Keyestudio 8833, il pin Trig è collegato al digitale D12, il pin Echo è collegato al digitale D13, e il pin Gnd è collegato a Gnd(G);
+<span style="color: rgb(255, 76, 65);">配線注意：</span> 超音波センサーモジュールのVCCピンはKeyestudio 8833モータードライブ拡張ボードの5v(V)に接続し、TrigピンはデジタルD12に接続し、EchoピンはデジタルD13に接続し、GndピンはGnd(G)に接続します。
 
-#### **(5)Codice di test:**
+#### **(5)テストコード：**
 
-Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seguito.
+以下に示すように、ブロックをドラッグしてコードを編集することもできます。
 
 ![](media/8de1b04be1ba147dd242c66bddeacacc.png)
 
@@ -74,26 +74,26 @@ Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seg
 
 ![](media/b6e575b05bdc050e32c9b2e54e61a750.png)
 
-**Codice di test completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合してアップロードに失敗する可能性があります。)
 
 ![](media/569aff5ff2cbd2f3605f217ebb5ed50b.png)
 
-#### **(6)Risultati del test:**
+#### **(6)テスト結果：**
 
-Carica il codice di test sulla scheda di sviluppo, apri il monitor seriale e imposta la velocità di trasmissione a 9600. La distanza rilevata verrà visualizzata in cm e pollici. Quando ostacoli il sensore a ultrasuoni con la tua mano, il valore della distanza visualizzato si ridurrà.
+テストコードを開発ボードにアップロードし、シリアルモニターを開いてボーレートを9600に設定します。検出された距離がcmとインチで表示されます。手で超音波センサーを遮ると、表示される距離の値が小さくなります。
 
 ![](media/4f77acbf5b226e20e3cdd70c0f90602e.png)
 
-#### **(7)Pratica di estensione:**
+#### **(7)応用練習：**
 
-Abbiamo appena misurato la distanza visualizzata dagli ultrasuoni. Che ne dici di controllare il LED con la distanza misurata? Proviamoci e colleghiamo un modulo LED al pin D9.
+超音波で測定した距離を表示することができました。測定した距離でLEDを制御してみましょう！試してみましょう。D9ピンにLEDライトモジュールを接続します。
 
 ![](media/291ac1db0f38418772d11bb1786b7314.png)
 
 
-Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seguito
+以下に示すように、ブロックをドラッグしてコードを編集することもできます。
 
 ![](media/8de1b04be1ba147dd242c66bddeacacc.png)
 
@@ -109,12 +109,12 @@ Puoi anche trascinare blocchi per modificare il tuo codice, come mostrato di seg
 
 ![](media/b6e575b05bdc050e32c9b2e54e61a750.png)
 
-**Codice di test completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合してアップロードに失敗する可能性があります。)
 
 ![](media/065eac0ad9cfa8f07aeb5e648698bdb5.png)
 
-Carica il codice di test sulla scheda di sviluppo, avvicina la mano al sensore a ultrasuoni e verifica se il LED si accende.
+テストコードを開発ボードにアップロードし、超音波センサーに手を近づけて、LEDが点灯するか確認してください。
 
 ![](./media/img-20240117092413.png)

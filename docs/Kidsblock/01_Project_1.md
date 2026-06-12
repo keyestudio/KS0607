@@ -1,43 +1,43 @@
-### Progetto 1: LED Lampeggiante
+### プロジェクト 1: LEDの点滅
 
-#### (1)Descrizione：
+#### (1)概要：
 
 ![](./media/image-20250709122631704.png)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-Per i principianti e gli appassionati, il LED lampeggiante è un programma fondamentale. LED, abbreviazione di diodi emettitori di luce, è composto da composti chimici Ga, As, P, N e così via. Il LED può lampeggiare in diversi colori modificando il tempo di ritardo nel codice di test. Durante il controllo, alimentare GND e VCC. Il LED si accende se il pin S è a livello alto; altrimenti si spegne.
+初心者や愛好家にとって、LEDの点滅は基本的なプログラムです。LEDは発光ダイオードの略称で、Ga、As、P、Nなどの化学化合物で構成されています。テストコードの遅延時間を変えることで、LEDをさまざまな色で点滅させることができます。制御する際は、GNDとVCCに電源を供給します。S端子がHIGHレベルの場合はLEDが点灯し、そうでない場合は消灯します。
 
-#### **(2)Parametri:**
+#### **(2)パラメータ：**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Interfaccia di controllo: porta digitale
-- Tensione di lavoro: DC 3.3-5V
-- Passo tra i pin: 2.54mm
-- Colore del display LED: giallo
+- 制御インターフェース：デジタルポート
+- 動作電圧：DC 3.3〜5V
+- ピン間隔：2.54mm
+- LED表示色：黄色
 
-#### (3)Componenti Necessari:
+#### (3)必要なコンポーネント：
 
 ![](./media/image-20250709122437613.png)
 
-#### **(4)Scheda di Espansione Motor Driver 8833:**
+#### **(4)8833モータードライバー拡張ボード：**
 
-La scheda di espansione motor driver Keyestudio 8833 è compatibile con la scheda di sviluppo Arduino UNO. È sufficiente inserirla sulla scheda di sviluppo durante l'utilizzo.
+Keyestudio 8833モータードライバー拡張ボードは、Arduino UNO開発ボードと互換性があります。使用する際は、開発ボードの上に重ねて取り付けてください。
 
 ![](media/d8696e83ade31f2b7c56cc5911eacbd7.GIF)
 
-#### **(5)Schema di Collegamento:**
+#### **(5)接続図：**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](./media/image-20250709122655936.png)
 
-<span style="color: rgb(255, 76, 65);">**NOTA:**</span> Il LED è collegato alla porta D9. Ricordarsi di installare i cappucci jumper sullo shield.
+<span style="color: rgb(255, 76, 65);">**注意：**</span> LEDはD9ポートに接続されています。シールドにジャンパーキャップを取り付けることを忘れないでください。
 
-#### **(6)Codice di Test:**
+#### **(6)テストコード：**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
+以下のように、ブロックをドラッグしてコードを編集することもできます。
 
 ![](media/cc43ba357acb68a4961adb7e5041b6fe.png)
 
@@ -45,28 +45,28 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 ![](media/21dc3c24da4271aa7ec2bfdac732eeb3.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する場合があります。)
 
 ![](media/ba4723bab640078eccbe1811da138bc3.png)
 
-#### **(7)Risultati del Test:**
+#### **(7)テスト結果：**
 
-Carica il programma: il LED lampeggia con un intervallo di 1s.
+プログラムをアップロードすると、LEDが1秒間隔で点滅します。
 
-#### **(8)Pratica di Approfondimento:**
+#### **(8)応用練習：**
 
-Abbiamo imparato come controllare il LED, ora modifichiamo la frequenza del LED.
+LEDの制御方法がわかったところで、LEDの点滅頻度を変えてみましょう。
 
-Possiamo cambiare la frequenza del LED senza modificare il pin del LED. Modifichiamo il codice.
+LEDのピンを変えずに、LEDの点滅頻度を変えることができます。コードを修正してみましょう。
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
+以下のように、ブロックをドラッグしてコードを編集することもできます。
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する場合があります。)
 
 ![](media/58c76be4c719a885afb500e8f3b80b85.png)
 
-Il risultato del test mostra che il LED lampeggia più velocemente. Pertanto, possiamo concludere che i pin e il ritardo temporale influenzano la frequenza di lampeggio.
+テスト結果から、LEDがより速く点滅することがわかります。したがって、ピンと遅延時間が点滅頻度に影響を与えるという結論を導き出すことができます。

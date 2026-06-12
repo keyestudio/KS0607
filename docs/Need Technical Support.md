@@ -1,3 +1,3 @@
-# 6. Hai bisogno di supporto tecnico?
+# 6. テクニカルサポートが必要ですか？
 
-Se riscontri problemi tecnici o hai bisogno di assistenza post-vendita, non esitare a contattare il nostro team di supporto all'indirizzo **asa12321sas@gmail.com**. Siamo qui per aiutarti!
+技術的な問題が発生した場合、またはアフターサービスが必要な場合は、サポートチームまでお気軽にご連絡ください：**asa12321sas@gmail.com**。喜んでお手伝いいたします！

@@ -1,38 +1,38 @@
-### Progetto 14: Robot Cingolato Segui-Linea
+### プロジェクト14：ライントラッキングタンク
 
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-Il progetto precedente ha illustrato come confinare l'auto intelligente in modo che si muova all'interno di un determinato spazio. In questo progetto, utilizzeremo le conoscenze apprese in precedenza per trasformarlo in un'auto intelligente segui-linea. Nell'esperimento, utilizziamo il sensore di rilevamento della linea per rilevare se c'è una linea nera intorno all'auto intelligente, e poi controlliamo la rotazione dei due motori in base ai risultati del rilevamento, in modo da far muovere l'auto intelligente lungo la linea nera.
+前のプロジェクトでは、スマートカーを一定のスペース内で移動させる方法を紹介しました。このプロジェクトでは、これまで学んだ知識を活用して、ライントラッキングスマートカーを作製します。実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒いラインがあるかどうかを検出し、検出結果に応じて2つのモーターの回転を制御することで、スマートカーが黒いラインに沿って移動できるようにします。
 
-La logica specifica dell'auto intelligente è mostrata nella tabella seguente:
+スマートカーの具体的なロジックを以下の表に示します：
 
-|               Sensore               |                          Rilevamento                           |
+|               センサー               |                          検出内容                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| Sensore di rilevamento linea al centro | Linea nera rilevata: livello alto<br />Linea bianca rilevata: livello basso |
-|  Sensore di rilevamento linea a sinistra  | Linea nera rilevata: livello alto<br />Linea bianca rilevata: livello basso |
-| Sensore di rilevamento linea a destra  | Linea nera rilevata: livello alto<br />Linea bianca rilevata: livello basso |
+| 中央のライントラッキングセンサー | 黒いライン検出時：ハイレベル<br />白いライン検出時：ローレベル |
+|  左側のライントラッキングセンサー  | 黒いライン検出時：ハイレベル<br />白いライン検出時：ローレベル |
+| 右側のライントラッキングセンサー  | 黒いライン検出時：ハイレベル<br />白いライン検出時：ローレベル |
 
-|                         Condizione 1                          |                         Condizione 2                          |   Movimento   |
+|                         条件1                          |                         条件2                          |   動作   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------: |
-| Il sensore di rilevamento linea <br />al centro <br />rileva la linea nera | Il sensore di rilevamento linea a sinistra rileva la linea nera<br />quello a destra rileva linee bianche | Ruota a sinistra  |
-| Il sensore di rilevamento linea <br />al centro <br />rileva la linea nera | Il sensore di rilevamento linea a sinistra rileva linee bianche<br />quello a destra rileva la linea nera | Ruota a destra |
-| Il sensore di rilevamento linea <br />al centro <br />rileva la linea nera | Entrambi i sensori sinistro e destro rilevano linee bianche<br />Entrambi i sensori sinistro e destro rilevano la linea nera | Avanza |
-| Il sensore di rilevamento linea<br />al centro <br />rileva linee bianche | Il sensore di rilevamento linea a sinistra rileva la linea nera<br />quello a destra rileva linee bianche | Ruota a sinistra  |
-| Il sensore di rilevamento linea<br />al centro <br />rileva linee bianche | Il sensore di rilevamento linea a sinistra rileva linee bianche<br />quello a destra rileva la linea nera | Ruota a destra |
-| Il sensore di rilevamento linea<br />al centro <br />rileva linee bianche | Entrambi i sensori sinistro e destro rilevano linee bianche<br />Entrambi i sensori sinistro e destro rilevano la linea nera |     Stop     |
+| 中央の<br />ライントラッキングセンサーが<br />黒いラインを検出 | 左側のライントラッキングセンサーが黒いラインを検出<br />右側のセンサーが白いラインを検出 | 左回転  |
+| 中央の<br />ライントラッキングセンサーが<br />黒いラインを検出 | 左側のライントラッキングセンサーが白いラインを検出<br />右側のセンサーが黒いラインを検出 | 右回転 |
+| 中央の<br />ライントラッキングセンサーが<br />黒いラインを検出 | 左右両方のライントラッキングセンサーが白いラインを検出<br />左右両方のライントラッキングセンサーが黒いラインを検出 | 前進 |
+| 中央の<br />ライントラッキングセンサーが<br />白いラインを検出 | 左側のライントラッキングセンサーが黒いラインを検出<br />右側のセンサーが白いラインを検出 | 左回転  |
+| 中央の<br />ライントラッキングセンサーが<br />白いラインを検出 | 左側のライントラッキングセンサーが白いラインを検出<br />右側のセンサーが黒いラインを検出 | 右回転 |
+| 中央の<br />ライントラッキングセンサーが<br />白いラインを検出 | 左右両方のライントラッキングセンサーが白いラインを検出<br />左右両方のライントラッキングセンサーが黒いラインを検出 |     停止     |
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート：**
 
 ![](media/wps11.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集することもできます
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -50,15 +50,15 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 （8）![](media/fec93c7b8b089de709fd50575931519c.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
 
 ![](media/294ae4c01072e34b58a334912c90083a.png)
 
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
-Dopo aver caricato con successo il codice di test e aver alimentato il dispositivo, l'auto intelligente si muove lungo la linea nera.
+テストコードのアップロードが成功し、電源を入れると、スマートカーが黒いラインに沿って移動します。
 
 ![](./media/img-20240117094129.png)

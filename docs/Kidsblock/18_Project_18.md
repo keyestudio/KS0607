@@ -1,45 +1,45 @@
-### Progetto 18: Robot Carro Armato a Ultrasuoni - Funzioni Multiple
+### プロジェクト18: 超音波タンクロボット 複数機能
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Il robot auto intelligente ha eseguito una singola funzione in ogni progetto precedente.
+これまでのプロジェクトでは、スマートカーは毎回単一の機能のみを実行してきました。
 
-Può visualizzare più funzioni contemporaneamente? Sì, può farlo.
+一度に複数の機能を表示することはできるでしょうか？はい、できます。
 
-In questo ultimo grande progetto, intendiamo utilizzare un codice completo per controllare il robot auto intelligente e dimostrare tutte le funzioni menzionate nei progetti precedenti. Utilizziamo i tasti sull'APP Bluetooth per passare automaticamente tra le varie funzioni, il che è abbastanza semplice e conveniente.
+この最後の大型プロジェクトでは、完全なコードを使用してスマートカーを制御し、以前のプロジェクトで紹介したすべての機能を実演することを目指しています。Bluetooth APPのキーを使って各種機能を自動的に切り替えます。非常にシンプルで便利です。
 
-#### **(2)Diagramma di Flusso:**
+#### **(2)フロー図:**
 
 ![](media/wps122.png)
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図:**
 
 ![](media/e7ac834ba04aa2e8862995d2d33ce935.png)
 
-1\. GND, VCC, SDA e SCL della scheda 8x16 sono collegati a G (GND), + (VCC), A4 e A5 della scheda di espansione.
+1\. 8x16ボードのGND、VCC、SDA、SCLは、拡張ボードのG (GND)、+ (VCC)、A4、A5に接続されています。
 
-2\. VCC, Trig, Echo e Gnd del sensore a ultrasuoni sono collegati a 5V (V), 12 (S), 13 (S) e Gnd (G).
+2\. 超音波センサーのVCC、Trig、Echo、Gndは、5V (V)、12 (S)、13 (S)、Gnd (G)に接続されています。
 
-3\. Il filo marrone, il filo rosso e il filo arancione del servo sono collegati a Gnd (G), 5v (V) e D10.
+3\. サーボの茶色のワイヤー、赤色のワイヤー、オレンジ色のワイヤーは、Gnd (G)、5v (V)、D10に接続されています。
 
-4\. RXD, TXD, GND e VCC del modulo BT sono collegati a TX, RX, G (GND) e 5V (VCC). STATE e BRK non devono essere collegati.
+4\. BTモジュールのRXD、TXD、GND、VCCは、TX、RX、G (GND)、5V (VCC)に接続されています。STATEとBRKは接続する必要はありません。
 
-5\. I pin "G", "V" e S del modulo fotoresistore sinistro sono collegati rispettivamente a G (GND), V (VCC) e A1; Il modulo fotoresistore destro è collegato rispettivamente a G (GND), V (VCC) e A2.
+5\. 左側の光センサーモジュールの「G」、「V」、Sピンはそれぞれ G (GND)、V (VCC)、A1に接続されています。右側の光センサーモジュールはそれぞれ G (GND)、V (VCC)、A2に接続されています。
 
-6\. Le porte distali del sensore di rilevamento linea sono 11, 7 e 8.
+6\. ライントラッキングセンサーの遠端ポートは11、7、8です。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する場合があります。)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non è possibile accelerare il robot tramite l'App.
+<span style="color: rgb(255, 76, 65);">**注意:**</span> APPを使用して車を加速することはできません。
 
 ![](media/e3c4c6cf504b1b9ea6fbae63f5fd9077.png)
 
-#### **(5)Risultato del Test:**
+#### **(5)テスト結果:**
 
-Prima di caricare il codice del programma, il modulo Bluetooth deve essere rimosso; altrimenti il caricamento del codice fallirà.
+プログラムコードをアップロードする前に、Bluetoothモジュールを取り外す必要があります。そうしないと、コードのアップロードに失敗します。
 
-Dopo aver caricato il codice con successo, attivare i servizi di localizzazione sul dispositivo, quindi collegare il modulo Bluetooth.
+コードのアップロードが成功したら、デバイスの位置情報サービスをオンにし、Bluetoothモジュールに接続します。
 
-Una volta che il modulo Bluetooth è inserito e alimentato, e l'APP mobile è connessa con successo al Bluetooth, possiamo utilizzare l'APP mobile per controllare il robot carro armato.
+Bluetoothモジュールを差し込んで電源を入れ、モバイルAPPがBluetoothへの接続に成功したら、モバイルAPPを使用してタンクロボットを制御することができます。

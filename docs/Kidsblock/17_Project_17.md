@@ -1,65 +1,65 @@
-### Progetto 17: Carro Armato Controllato via Bluetooth
+### プロジェクト17：Bluetooth制御タンク
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-Abbiamo imparato le conoscenze di base del Bluetooth nel progetto precedente. In questa lezione, utilizzeremo il Bluetooth per controllare il robot. Poiché riguarda il Bluetooth, sono necessari un trasmettitore e un ricevitore. Nel progetto, usiamo il telefono cellulare come trasmettitore (master), e il robot connesso con il modulo Bluetooth HM-10 (slave) come ricevitore.
+前のプロジェクトでBluetoothの基本知識を学びました。このレッスンでは、Bluetoothを使ってスマートカーを制御します。Bluetoothを使用するため、送信側と受信側が必要です。このプロジェクトでは、携帯電話を送信側（マスター）として使用し、HM-10 Bluetoothモジュールに接続されたスマートカー（スレーブ）を受信側として使用します。
 
-Abbiamo imparato in precedenza che inviare un bit può controllare i LED. Il principio per controllare questo robot è lo stesso.
+以前、ビットを送信してLEDを制御する方法を学びました。このロボットカーを制御する原理も同様です。
 
-Per controllare meglio il robot carro armato intelligente, abbiamo creato appositamente un'APP. In questa lezione, leggeremo tutti i valori dei tasti su questa APP tramite codice, e poi presenteremo l'APP esclusiva del nostro robot carro armato.
+インテリジェントタンクロボットをより良く制御するために、専用のAPPを作成しました。このレッスンでは、コードを通じてこのAPP上のすべてのキー値を読み取り、タンクロボット専用のAPPをご紹介します。
 
-#### **(2)Funzioni dei Tasti sull'APP:**
+#### **(2)APP上のキー機能：**
 
-La tabella seguente illustra le funzioni dei tasti corrispondenti:
+以下の表は、対応するキーの機能を示しています：
 
-|                      Tasti                       |                                                |                          Funzioni                           |
+|                      キー                       |                                                |                          機能                           |
 | :---------------------------------------------: | :--------------------------------------------: | :----------------------------------------------------------: |
-| ![](media/1118dccd714c7988a51cf2dde58627e3.png) |                                                | Associa e connette il modulo Bluetooth HM-10; clicca di nuovo per disconnettere |
-| ![](media/b23e65f788685576275cc16bf0b679cc.png) |                                                |                 seleziona il robot da controllare                  |
-| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) |                                                |       controllare i movimenti del robot tramite pulsanti       |
-| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) |                                                |      Controllare i movimenti del robot tramite joystick       |
-| ![](media/3ab61154b4ae730a3757f40171846825.png) |                                                |       Controllare i movimenti del robot tramite gravità       |
-| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) |   Invia "F" quando premuto e "S" quando rilasciato    | Il robot si muove in avanti quando premuto e si ferma quando rilasciato |
-| ![](media/b1765938932b8633bd5a96af0293ef24.png) |   Invia "L" quando premuto e "S" quando rilasciato    | Il robot gira a sinistra quando premuto e si ferma quando rilasciato |
-| ![](media/67f26bd7d2076922470e8805711f2ef9.png) |   Invia "R" quando premuto e "S" quando rilasciato    | Il robot gira a destra quando premuto e si ferma quando rilasciato |
-| ![](media/77615a8ca984e538d58e02ac90bc5382.png) |   Invia "B" quando premuto e "S" quando rilasciato    | Il robot va indietro quando premuto e si ferma quando rilasciato |
-| ![](media/f58421773a56c911b09c150d08b0fd67.png) |        Invia "u"+cifra+"\#" quando trascinato         |          Trascina per cambiare la velocità del motore sinistro          |
-| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) |        Invia "v"+cifra+"\#" quando trascinato         |         Trascina per cambiare la velocità del motore destro          |
-| ![](media/5dd730ab4d2299210dc2399303b94e33.png) |         Seleziona per entrare nella pagina Funzioni          |                                                              |
-| ![](media/a352ca9be952db2838540657b9a70f8c.png) | Invia "G" quando premuto e "S" quando premuto di nuovo | Entra in modalità evitamento ostacoli quando premuto ed esce quando premuto di nuovo |
-| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | Invia "h" quando premuto e "S" quando premuto di nuovo | Entra in modalità inseguimento quando premuto ed esce quando premuto di nuovo |
-| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | Invia "e" quando premuto e "S" quando premuto di nuovo | Entra in modalità segui-linea quando premuto ed esce quando premuto di nuovo |
-| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | Invia "f" quando premuto e "S" quando premuto di nuovo | Entra in modalità movimento-in-spazio-confinato quando premuto ed esce quando premuto di nuovo |
-| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | Invia "i" quando premuto e "S" quando premuto di nuovo | Entra in modalità inseguimento luce quando premuto ed esce quando premuto di nuovo |
-| ![](media/4250a152c647cc59f72bf51328943371.png) | Invia "j" quando premuto e "S" quando premuto di nuovo | Entra in modalità estinzione incendio quando premuto ed esce quando premuto di nuovo |
-| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | Seleziona per entrare nella modalità visualizzazione espressioni facciali |                                                              |
-| ![](media/17261f134c25702ae129624860ab8fe1.png) | Invia "k" quando premuto e "z" quando premuto di nuovo | Mostra il pattern sorridente quando cliccato e cancella l'espressione quando cliccato di nuovo |
-| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | Invia "l" quando premuto e "z" quando premuto di nuovo | Mostra il pattern di disgusto quando cliccato e cancella l'espressione quando cliccato di nuovo |
-| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | Invia "m" quando premuto e "z" quando premuto di nuovo | Mostra la faccia felice quando cliccato e cancella l'espressione quando cliccato di nuovo |
-| ![](media/63d935cd1958863f862374ded9b87d6b.png) | Invia "n" quando premuto e "z" quando premuto di nuovo | Mostra il pattern triste quando cliccato e cancella l'espressione quando cliccato di nuovo |
-| ![](media/5e84087020b919a85495831b231efa5a.png) | Invia "o" quando premuto e "z" quando premuto di nuovo | Mostra il pattern sprezzante quando cliccato e cancella l'espressione quando cliccato di nuovo |
-| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | Invia "p" quando premuto e "z" quando premuto di nuovo | Mostra il pattern a forma di cuore quando cliccato e cancella l'espressione quando cliccato di nuovo |
-| ![](media/41bf8b28dea6061cea89b640f5646403.png) |                                                | Scegli per entrare nell'interfaccia delle funzioni personalizzate; ci sono sei tasti 1,2,3,4,5,6; con questi tasti puoi espandere alcune funzioni da solo |
-| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) |               Clicca per inviare "w"                | Clicca per visualizzare il valore analogico rilevato dalla fotoresistenza sinistra |
-| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) |                Clicca per inviare "y"                | Clicca per visualizzare il valore analogico rilevato dalla fotoresistenza destra |
-| ![](media/a76df707b84409e57a1167889c3510d9.png) |                Clicca per inviare "x"                | Clicca per mostrare la distanza rilevata dal sensore a ultrasuoni (unità: cm) |
-| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | Clicca per inviare "c" <br />Clicca di nuovo per inviare "d"  |   Premi per accendere il ventilatore e premi di nuovo per spegnerlo    |
+| ![](media/1118dccd714c7988a51cf2dde58627e3.png) |                                                | HM-10 Bluetoothモジュールとペアリング・接続；再度クリックで切断 |
+| ![](media/b23e65f788685576275cc16bf0b679cc.png) |                                                |                 操作するロボットを選択                  |
+| ![](media/8d910d19cec4d03b5d9cb787425d8d7c.png) |                                                |       ボタンでロボットの動きを制御する       |
+| ![](media/9c0c7230244e08fc5afa28b18e8b4241.png) |                                                |      ジョイスティックでロボットの動きを制御する       |
+| ![](media/3ab61154b4ae730a3757f40171846825.png) |                                                |       重力でロボットの動きを制御する       |
+| ![](media/fe15b0e4a7e705027cb042d0fd2398ea.png) |   押すと"F"を送信、離すと"S"を送信    | 押している間は前進し、離すと停止する |
+| ![](media/b1765938932b8633bd5a96af0293ef24.png) |   押すと"L"を送信、離すと"S"を送信    | 押している間は左折し、離すと停止する |
+| ![](media/67f26bd7d2076922470e8805711f2ef9.png) |   押すと"R"を送信、離すと"S"を送信    | 押している間は右折し、離すと停止する |
+| ![](media/77615a8ca984e538d58e02ac90bc5382.png) |   押すと"B"を送信、離すと"S"を送信    | 押している間は後退し、離すと停止する |
+| ![](media/f58421773a56c911b09c150d08b0fd67.png) |        ドラッグ時に"u"+数字+"\#"を送信         |          ドラッグして左モーターの速度を変更する          |
+| ![](media/a05432839507dd25b7dc7eb1bb9a02bb.png) |        ドラッグ時に"v"+数字+"\#"を送信         |         ドラッグして右モーターの速度を変更する          |
+| ![](media/5dd730ab4d2299210dc2399303b94e33.png) |         選択してファンクションページへ移動          |                                                              |
+| ![](media/a352ca9be952db2838540657b9a70f8c.png) | 押すと"G"を送信、再度押すと"S"を送信 | 押すと障害物回避モードに入り、再度押すと終了する |
+| ![](media/64da14a6ca501aa97f8eb8895e9f6b1c.png) | 押すと"h"を送信、再度押すと"S"を送信 | 押すと追従モードに入り、再度押すと終了する |
+| ![](media/e4f3b211f8c8b06d1eab9dd2281dff74.png) | 押すと"e"を送信、再度押すと"S"を送信 | 押すとライントレースモードに入り、再度押すと終了する |
+| ![](media/3d662f37603a8f0c1c34ab2b9ff28c63.png) | 押すと"f"を送信、再度押すと"S"を送信 | 押すと限られたスペース内移動モードに入り、再度押すと終了する |
+| ![](media/48ab7c8c488c61abc162dbda0fc75f27.png) | 押すと"i"を送信、再度押すと"S"を送信 | 押すとライトフォローモードに入り、再度押すと終了する |
+| ![](media/4250a152c647cc59f72bf51328943371.png) | 押すと"j"を送信、再度押すと"S"を送信 | 押すと消火モードに入り、再度押すと終了する |
+| ![](media/cc420ba3d148bd6b720dd44df9a82768.png) | 選択して顔表情表示モードへ移動 |                                                              |
+| ![](media/17261f134c25702ae129624860ab8fe1.png) | 押すと"k"を送信、再度押すと"z"を送信 | クリックすると笑顔のパターンを表示し、再度クリックすると表情をクリアする |
+| ![](media/a8bff045e822a06a24bfd7599c9f142a.png) | 押すと"l"を送信、再度押すと"z"を送信 | クリックすると嫌悪のパターンを表示し、再度クリックすると表情をクリアする |
+| ![](media/8729f3ac4adf446b388221ae2e4cf71f.png) | 押すと"m"を送信、再度押すと"z"を送信 | クリックすると喜びの顔を表示し、再度クリックすると表情をクリアする |
+| ![](media/63d935cd1958863f862374ded9b87d6b.png) | 押すと"n"を送信、再度押すと"z"を送信 | クリックすると悲しいパターンを表示し、再度クリックすると表情をクリアする |
+| ![](media/5e84087020b919a85495831b231efa5a.png) | 押すと"o"を送信、再度押すと"z"を送信 | クリックすると軽蔑のパターンを表示し、再度クリックすると表情をクリアする |
+| ![](media/3b7d99862c2d9a5e7337645b4548091e.png) | 押すと"p"を送信、再度押すと"z"を送信 | クリックするとハート型のパターンを表示し、再度クリックすると表情をクリアする |
+| ![](media/41bf8b28dea6061cea89b640f5646403.png) |                                                | カスタム機能インターフェースへ移動を選択；1、2、3、4、5、6の6つのキーがあり、これらのキーを使って独自に機能を拡張できる |
+| ![](media/06b8f32aae6c9914ef227d6966ea537f.png) |               クリックで"w"を送信                | クリックすると左側のフォトレジスタで検出されたアナログ値を表示する |
+| ![](media/a89df3c223e6a7d4eac29d4fe2ee14af.png) |                クリックで"y"を送信                | クリックすると右側のフォトレジスタで検出されたアナログ値を表示する |
+| ![](media/a76df707b84409e57a1167889c3510d9.png) |                クリックで"x"を送信                | クリックすると超音波センサーで検出された距離を表示する（単位：cm） |
+| ![](media/704e5c6a72d89ee8f78d79ff3cd9537c.png) | クリックで"c"を送信<br />再度クリックで"d"を送信  |   押すとファンをオンにし、再度押すとオフにする    |
 
-#### **(3)Diagramma di Flusso:**
+#### **(3)フローチャート：**
 
 ![](./media/image-20250709135203165.png)
 
-#### **(4)Schema di Collegamento:**
+#### **(4)接続図：**
 
 ![](media/930a8024364e07505e845624a94c27bd.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">注意：</span>
 
-GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati a G（GND), V（5V), A4 e A5 della scheda di espansione. STATE e BRK non devono essere collegati. Il modulo BT viene inserito nella scheda di espansione.
+8x16 LEDパネルのGND、VCC、SDA、SCLは、拡張ボードのG（GND）、V（5V）、A4、A5に接続します。STATEとBRKは接続不要です。BTモジュールは拡張ボードに差し込みます。
 
-#### **(5)Codice di Test:**
+#### **(5)テストコード：**
 
-Puoi trascinare i blocchi per modificare il codice
+ブロックをドラッグしてコードを編集できます
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -79,26 +79,26 @@ Puoi trascinare i blocchi per modificare il codice
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non connettere il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードが失敗する可能性があります。)
 
 ![](media/341e0a01bd6a76edb53f9414ef641a75.png)
 
-#### **(6)Risultato del Test:**
+#### **(6)テスト結果：**
 
-Dopo aver caricato il codice, connetti il robot al modulo Bluetooth e associa l'APP Bluetooth. Accendi l'interruttore di alimentazione dello shield per motori. Posiziona il robot sul pavimento, puoi usare questi pulsanti dell'app Bluetooth per controllare il robot.
+コードをアップロードした後、ロボットをBluetoothモジュールに接続し、Bluetooth APPとペアリングします。モータードライブシールドの電源スイッチをオンにします。ロボットを床に置き、Bluetooth APPのボタンでロボットを制御できます。
 
 ![](media/352d5ec83c4246b980da10b5f99711c5.jpeg)
 
-1. Le frecce su, giù, sinistra e destra controllano rispettivamente il robot per muoversi in avanti, indietro, a sinistra e a destra.
+1. 上下左右の矢印でロボットをそれぞれ前進、後退、左折、右折させます。
 
 ![](./media/img-20240117095015.png)
 
-2. Clicca il pulsante joystick e trascina la direzione del punto nero nel cerchio bianco per controllare la direzione di movimento del robot.
+2. ジョイスティックボタンをクリックし、白い円の中の黒い点の方向を引っ張ってロボットの移動方向を制御します。
 
 ![](./media/img-20240117095052.png)
 
-3. Clicca il pulsante Gravità e inclina il telefono nelle direzioni avanti, indietro, sinistra e destra, e il robot si muoverà nella direzione in cui il telefono è inclinato.
+3. 重力ボタンをクリックし、スマートフォンを前後左右に傾けると、ロボットはスマートフォンが傾いた方向に移動します。
 
 ![](./media/img-20240117095131.png)

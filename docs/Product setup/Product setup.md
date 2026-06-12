@@ -1,6 +1,6 @@
-# 2. Installazione del Prodotto
+# 2. 製品の組み立て
 
-<span style="color: rgb(255, 76, 65);">**Attenzione**</span>: Impostare l'angolo iniziale del servo e rimuovere le pellicole protettive dalle schede prima di installare questo robot.
+<span style="color: rgb(255, 76, 65);">**注意**</span>: このロボットを組み立てる前に、サーボの初期角度を設定し、ボードから薄い保護フィルムを剥がしてください。
 
 ![](./media/image-20250709092645945.png)
 
@@ -12,7 +12,7 @@
 
 ![KS0607_20](./media/KS0607_20.png)
 
-Prima effettuare i collegamenti elettrici.
+最初に配線してください。
 
 ![](./media/image-20250709093344681.png)
 
@@ -58,7 +58,7 @@ Prima effettuare i collegamenti elettrici.
 
 ![KS0607_36](./media/KS0607_36-17790915806918.png)
 
-<span style="color: rgb(255, 76, 65);">Prestare attenzione alla direzione dei ponticelli.</span>
+<span style="color: rgb(255, 76, 65);">ジャンパーキャップの向きに注意してください。</span>
 
 ![KS0607_37](./media/KS0607_37-17790915896649.png)
 
@@ -82,27 +82,27 @@ Prima effettuare i collegamenti elettrici.
 
 **Step 8**
 
-（È necessario regolare l'angolo del servo）
+（サーボの角度を調整する必要があります）
 
 ![KS0607-098](./media/KS0607-098.jpg)
 
 ![KS0607-097](./media/KS0607-097.jpg)
 
-**Impostare l'angolo del servo a 90°**
+**サーボの角度を90°に設定する**
 
-Per regolare il codice del servo, selezionarlo in base al corso.
+サーボのコードを調整するには、コースに従って選択してください。
 
-1.**Arduino:** Scarica il file del codice: [Arduino](./Arduino.7z)
+1.**Arduino:** コードファイルをダウンロード: [Arduino](./Arduino.7z)
 
 ![](./media/image-20250710110650230.png)
 
-2.**Kidsblock: **Scarica il file del codice: [Kidsblock](./Kidsblock.7z)
+2.**Kidsblock: **コードファイルをダウンロード: [Kidsblock](./Kidsblock.7z)
 
 ![](./media/image-20250710110906515.png)
 
-**Dopo aver inizializzato l'angolo del servo, installare il modulo Bluetooth.**
+**サーボの角度を初期化した後、Bluetoothモジュールを取り付けてください。**
 
-Mantenere il sensore ultrasonico parallelo alla scheda.
+超音波センサーをボードと平行に保ってください。
 
 ![KS0607-096](./media/KS0607-096.jpg)
 
@@ -124,9 +124,9 @@ Mantenere il sensore ultrasonico parallelo alla scheda.
 
 ![KS0607_53](./media/KS0607_53-177909164907716.png)
 
-**Collegamento dei cavi**
+**配線**
 
-Per il pannello LED 8\*16, collegare i cavi ad A4 e A5.
+8\*16 LEDパネルの配線は、A4とA5に接続してください。
 
 ![](./media/image-20250709095552072.png)
 
@@ -134,19 +134,19 @@ Per il pannello LED 8\*16, collegare i cavi ad A4 e A5.
 
 ![](./media/image-20250709095643567.png)
 
-Collegare il motore A alla porta A e il motore B alla porta B.
+モーターAをAポートに、モーターBをBポートに接続してください。
 
 ![](./media/image-20250709095728739.png)
 
 ![](./media/image-20250709095740866.png)
 
-Collegare il cavo di alimentazione.
+電源ワイヤーを接続してください。
 
 ![](./media/image-20250709095759390.png)
 
 ![](./media/image-20250709095811580.png)
 
-Sensore di rilevamento linea (vedere l'immagine)
+ライントラッキングセンサー（写真を参照）
 
 ![](./media/image-20250709095830428.png)
 
@@ -156,13 +156,13 @@ Sensore di rilevamento linea (vedere l'immagine)
 
 ![](./media/image-20250709095911639.png)
 
-Collegare i fotoresistori
+フォトレジスターの配線
 
 ![](./media/image-20250709095929779.png)
 
 ![](./media/image-20250709095939414.png)
 
-| Fotoresistore | Keyestudio 8833 Board |
+| フォトレジスター | Keyestudio 8833 Board |
 | :-----------: | :-------------------: |
 |       G       |           G           |
 |       V       |           V           |
@@ -170,35 +170,35 @@ Collegare i fotoresistori
 
 ![](./media/image-20250709100043670.png)
 
-| Fotoresistore | Keyestudio 8833 Board |
+| フォトレジスター | Keyestudio 8833 Board |
 | :-----------: | :--------------------: |
 |       G       |           G            |
 |       V       |           V            |
 |       S       |           V2           |
 
-Collegare il sensore ultrasonico.
+超音波センサーの配線。
 
 ![](./media/image-20250709100317508.png)
 
 ![](./media/image-20250709100329430.png)
 
-| Sensore Ultrasonico | Keyestudio 8833 Board |
-| :-----------------: | :-------------------: |
+| 超音波センサー | Keyestudio 8833 Board |
+| :---------------: | :-------------------: |
 |        Vcc        |           V           |
 |       Trig        |          D12          |
 |       Echo        |          D13          |
 |        Gnd        |           G           |
 
-Collegare il servo (D10)
+サーボの配線（D10）
 
 ![](./media/image-20250709100626238.png)
 
-| Servo  | Keyestudio 8833 Board |
+| サーボ | Keyestudio 8833 Board |
 | :----: | :-------------------: |
 | Brown  |           G           |
 |  Red   |         V(5V)         |
 | Orange |          D10          |
 
-<span style="color: rgb(255, 76, 65);">**Si utilizza una batteria al litio 18650 con polo positivo a punta, per la quale la potenza e la capacità non sono vincolanti.**</span>
+<span style="color: rgb(255, 76, 65);">**先端が尖った正極を持つ18650型リチウム電池を使用します。電力と容量は特に指定はありません。**</span>
 
 ![](./media/image-20250709100841625.png)

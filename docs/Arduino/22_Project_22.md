@@ -1,37 +1,37 @@
-### Progetto 22: Carro Armato Antincendio
+### プロジェクト22: 消火タンク
 
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-La funzione di inseguimento della linea del carro armato intelligente è stata spiegata nel progetto precedente. In questo progetto utilizziamo il sensore di fiamma per realizzare un robot antincendio.
+スマートタンクのライントラッキング機能については前のプロジェクトで説明しました。このプロジェクトでは炎センサーを使用して消火ロボットを作成します。
 
-Quando il veicolo incontra delle fiamme, il motore della ventola ruoterà per spegnere il fuoco. Naturalmente, dobbiamo prima sostituire il sensore a ultrasuoni e i due fotoresistori con un modulo ventola e sensori di fiamma.
+車が炎を検知すると、ファンのモーターが回転して火を吹き消します。もちろん、まず超音波センサーと2つの光抵抗をファンモジュールと炎センサーに交換する必要があります。
 
-La logica specifica del carro armato intelligente per il tracciamento della linea è mostrata nella tabella seguente:
+ライントラッキングスマートカーの具体的なロジックを以下の表に示します：
 
-| Sensore Fiamma Sinistro | Sensore Fiamma Destro | Stato                                                       |
-| :---------------------: | :-------------------: | :---------------------------------------------------------- |
-|          ≤700           |         ≤700          | Il carro si ferma, la ventola inizia a ruotare per spegnere la fiamma |
-|          ≥700           |         ≥700          | Il carro si ferma, la ventola inizia a ruotare per spegnere la fiamma |
-|          ≥700           |         ≥700          | Il carro si ferma, la ventola inizia a ruotare per spegnere la fiamma |
-|          ＞700          |         ＞700         | La ventola si ferma, il carro si muove                      |
+| 左炎センサー | 右炎センサー | 状態                                          |
+| :----------: | :----------: | :---------------------------------------------- |
+|    ≤700      |    ≤700      | 車が停止、ファンが回転して炎を吹き消す |
+|    ≥700      |    ≥700      | 車が停止、ファンが回転して炎を吹き消す |
+|    ≥700      |    ≥700      | 車が停止、ファンが回転して炎を吹き消す |
+|    ＞700     |    ＞700     | ファンが停止、車が移動                            |
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è sicuri della propria sicurezza, si prega di abbandonare l'esperimento.
-2）Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.
-Possiamo controllare un LED esterno con il sensore di fiamma. Il LED è ancora collegato a D9. Quando viene rilevato il fuoco, il LED si accenderà.
+<span style="color: rgb(255, 76, 65);">**注意:**</span>
+1）この実験では火源を使用します。火災を防ぐために可燃物から遠ざけてください。子供は大人の監督のもとで実験してください。安全であることが確認できない場合は、実験を中断してください。
+2）炎センサーは耐火性ではありません。炎で直接燃やさないでください。
+炎センサーで外部LEDを制御することができます。LEDは引き続きD9に接続されています。火が検知されると、LEDが点灯します。
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート:**
 
 ![](media/wps12.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -41,43 +41,43 @@ Possiamo controllare un LED esterno con il sensore di fiamma. Il LED è ancora c
   http://www.keyestudio.com
 */
 
-int flame_L = A1; //Definisce l'interfaccia della fiamma a sinistra come pin analogico A1
-int flame_R = A2; //Definisce l'interfaccia della fiamma a destra come pin analogico A2
-//Il cablaggio del sensore di tracciamento della linea
-#define L_pin  11  //sinistra
-#define M_pin  7  //centro
-#define R_pin  8  //destra
-//Il pin del servo 130
+int flame_L = A1; //左の炎インターフェースをアナログピンA1として定義
+int flame_R = A2; //右の炎インターフェースをアナログピンA2として定義
+//ライントラッキングセンサーの配線
+#define L_pin  11  //左
+#define M_pin  7  //中央
+#define R_pin  8  //右
+//サーボ130のピン
 int INA = 12;
 int INB = 13;
-#define ML_Ctrl 4  //Definisce il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6   //Definisce il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2  //Definisce il pin di controllo della direzione del motore destro
-#define MR_PWM 5   //Definisce il pin di controllo PWM del motore destro
+#define ML_Ctrl 4  //左モーターの方向制御ピンを定義
+#define ML_PWM 6   //左モーターのPWM制御ピンを定義
+#define MR_Ctrl 2  //右モーターの方向制御ピンを定義
+#define MR_PWM 5   //右モーターのPWM制御ピンを定義
 int L_val, M_val, R_val, flame_valL, flame_valR;
 
 void setup()
 {
   Serial.begin(9600);
-  //Imposta tutti i pin del sensore di tracciamento della linea in modalità input
+  //ライントラッキングセンサーの全ピンを入力モードに設定
   pinMode(L_pin, INPUT);
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  //Definisce la fiamma come INPUT
+  //炎センサーをINPUTとして定義
   pinMode(flame_L, INPUT);
   pinMode(flame_R, INPUT);
-  //Definisce il motore come OUTPUT
+  //モーターをOUTPUTとして定義
   pinMode(ML_Ctrl, OUTPUT);
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  pinMode(INA, OUTPUT);//Imposta la porta digitale INA come OUTPUT
-  pinMode(INB, OUTPUT);//Imposta la porta digitale INB come OUTPUT
+  pinMode(INA, OUTPUT);//デジタルポートINAをOUTPUTに設定
+  pinMode(INB, OUTPUT);//デジタルポートINBをOUTPUTに設定
 }
 
 void loop () 
 {
-  //Legge il valore analogico dei sensori di fiamma
+  //炎センサーのアナログ値を読み取る
   flame_valL = analogRead(flame_L);
   flame_valR = analogRead(flame_R);
   Serial.print(flame_valL);
@@ -93,36 +93,36 @@ void loop ()
   else 
   {
     fan_stop();
-    L_val = digitalRead(L_pin); //Legge il valore del sensore sinistro
-    M_val = digitalRead(M_pin); //Legge il valore del sensore centrale
-    R_val = digitalRead(R_pin); //Legge il valore del sensore destro
+    L_val = digitalRead(L_pin); //左センサーの値を読み取る
+    M_val = digitalRead(M_pin); //中央センサーの値を読み取る
+    R_val = digitalRead(R_pin); //右センサーの値を読み取る
     
-    if (M_val == 1)  //il sensore centrale rileva le linee nere
+    if (M_val == 1)  //中央が黒線を検知
     {
-      if (L_val == 1 && R_val == 0)  //Se viene rilevata una linea nera a sinistra, ma non a destra, gira a sinistra
+      if (L_val == 1 && R_val == 0)  //左に黒線を検知し、右に検知しない場合、左折
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //Se viene rilevata una linea nera a destra, non a sinistra, gira a destra
+      else if (L_val == 0 && R_val == 1)  //右に黒線を検知し、左に検知しない場合、右折
       {
         Car_right();
       }
-      else  //altrimenti, vai avanti
+      else  //それ以外は前進
       {
         Car_front();
       }
     }
-    else  //Il sensore centrale non rileva linee nere
+    else  //中央が黒線を検知しない
     {
-      if (L_val == 1 && R_val == 0)  //Se viene rilevata una linea nera a sinistra, ma non a destra, gira a sinistra
+      if (L_val == 1 && R_val == 0)  //左に黒線を検知し、右に検知しない場合、左折
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //Se viene rilevata una linea nera a destra, non a sinistra, gira a destra
+      else if (L_val == 0 && R_val == 1)  //右に黒線を検知し、左に検知しない場合、右折
       {
         Car_right();
       }
-      else  //altrimenti, fermati
+      else  //それ以外は停止
       {
         Car_Stop();
       }
@@ -132,14 +132,14 @@ void loop ()
 
 void fan_stop() 
 {
-  //smetti di ruotare
+  //回転停止
   digitalWrite(INA, LOW);
   digitalWrite(INB, LOW);
 }
 
 void fan_begin() 
 {
-  //la ventola ruota
+  //ファン回転
   digitalWrite(INA, LOW);
   digitalWrite(INB, HIGH);
 }
@@ -190,11 +190,11 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Risultato del Test:**
+#### **(5)テスト結果:**
 
-Dopo aver caricato con successo il codice di test e alimentato il dispositivo, il carro armato intelligente spegne il fuoco quando rileva una fiamma e continua a muoversi lungo la linea nera.
+テストコードを正常にアップロードして電源を入れると、スマートカーは炎を検知したときに消火し、引き続き黒線に沿って移動します。
 
 ![](media/694677ab33053846ec588667dc40ecfa.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-Si prega di tenerlo lontano da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è sicuri della propria sicurezza, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.
+<span style="color: rgb(255, 76, 65);">**注意:**</span>
+火災を防ぐために可燃物から遠ざけてください。子供は大人の監督のもとで実験してください。安全であることが確認できない場合は、実験を中断してください。炎センサーは耐火性ではありません。炎で直接燃やさないでください。

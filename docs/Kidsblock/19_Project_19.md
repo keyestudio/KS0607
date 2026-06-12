@@ -1,48 +1,48 @@
-### Progetto 19: Sensore di Fiamma
+### プロジェクト19: 炎センサー
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Il sensore di fiamma utilizza un tubo ricevitore IR per rilevare le fiamme. Converte la luminosità della fiamma in segnali di livello alto e basso e li invia al processore centrale per la corrispondente elaborazione del programma. Il valore di tensione della porta analogica varia a seconda che ci sia una fiamma nelle vicinanze o nessuna fiamma.
+炎センサーはIR受信チューブを使用して炎を検出します。炎の明るさを高低レベルの信号に変換し、中央プロセッサに入力して対応するプログラム処理を行います。炎が近くにあるかどうかによって、アナログポートの電圧値が変化します。
 
-Se non c'è fiamma, la porta analogica legge circa 0.3V; quando c'è una fiamma, la porta analogica legge circa 1.0V. Più la fiamma è vicina, più alto è il valore di tensione. Può essere utilizzato per rilevare una fonte di fuoco o per costruire un robot intelligente.
+炎がない場合、アナログポートは約0.3Vを読み取ります。炎がある場合、アナログポートは約1.0Vを読み取ります。炎が近いほど、電圧値は高くなります。火源の検出やスマートロボットの構築に使用できます。
 
-Si noti che la sonda del sensore di fiamma può resistere solo a temperature comprese tra -25℃ e 85℃.
+炎センサーのプローブは-25℃から85℃の温度範囲しか耐えられないことに注意してください。
 
-Durante l'uso, assicurarsi di mantenere il sensore di fiamma a una distanza di sicurezza dal fuoco per evitare di danneggiarlo.
+使用中は、炎センサーが損傷しないように、火から安全な距離を保つようにしてください。
 
-#### **(2)Parametri:**
+#### **(2)パラメータ:**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- Tensione di lavoro: 3.3V-5V (DC)
+- 動作電圧: 3.3V-5V (DC)
 
-- Corrente: 100mA
+- 電流: 100mA
 
-- Potenza massima: 0.5W
+- 最大電力: 0.5W
 
-- Temperatura di lavoro: da -10°C a +50 gradi Celsius
+- 動作温度: -10°C から +50°C
 
-- Dimensioni del sensore: 31.6mmx23.7mm
+- センサーサイズ: 31.6mmx23.7mm
 
-- Interfaccia: interfaccia da 4pin a 3PIN
+- インターフェース: 4ピンから3PINインターフェース
 
-- Segnale di uscita: segnali analogici A0, A1
+- 出力信号: アナログ信号 A0、A1
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図:**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-Il pin A dei due fotoresistori è collegato ad A1 e A2. Colleghiamo il sensore di fiamma ad A1 e A2. Sostituendo i due fotoresistori e il sensore a ultrasuoni con due sensori di fiamma e una ventola, si crea un'auto antincendio.
+2つの光抵抗のピンAはA1とA2に接続されています。炎センサーをA1とA2に接続します。2つの光抵抗と超音波センサーを2つの炎センサーとファンに置き換えると、消火カーが作られます。
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è certi di essere al sicuro, si prega di abbandonare l'esperimento.
-2）**Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.**
+<span style="color: rgb(255, 76, 65);">**注意:**</span>
+1）この実験では火源の使用が必要です。火災を防ぐため、可燃物から離してください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。
+2）**炎センサーは耐火性ではありません。直接炎で燃やさないでください。**
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-È possibile anche trascinare blocchi per modificare il codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集することもできます
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -52,36 +52,36 @@ Il pin A dei due fotoresistori è collegato ad A1 e A2. Colleghiamo il sensore d
 
 ![](media/d4da0bd0c55e3580fa95782d50f6e540.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ![](media/4bc6c8a4d6e964fd078a6aeb0dd51ff4.png)
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果:**
 
-Collegare i componenti, caricare il codice, aprire il monitor seriale e impostare il baud rate a 9600.
+コンポーネントを配線し、コードを書き込んで、シリアルモニターを開き、ボーレートを9600に設定します。
 
-È possibile visualizzare il valore di simulazione del sensore di fiamma.
+炎センサーのシミュレーション値を確認できます。
 
-Più la fiamma è vicina, minore è il valore di simulazione.
+炎が近いほど、シミュレーション値は小さくなります。
 
-Regolare il potenziometro sul modulo per mantenere il LED al punto critico. Quando il sensore non rileva fiamma, il LED sarà spento, ma se il sensore rileva fiamma, il LED si accenderà.
+モジュールのポテンショメーターを調整して、LEDを臨界点に保ちます。センサーが炎を検出しない場合、LEDは消灯しますが、センサーが炎を検出すると、LEDが点灯します。
 
 ![](./media/img-20240117100139.png)
 
 ![](media/60d0ce2044a504135af3b1113a1a4c7d.png)
 
-#### **(6)Pratica di Estensione:**
+#### **(6)応用練習:**
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è certi di essere al sicuro, si prega di abbandonare l'esperimento.
-2）Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.
-Possiamo controllare un LED esterno con il sensore di fiamma. Il LED è ancora collegato a D9. Quando viene rilevato il fuoco, il LED si accenderà.
+<span style="color: rgb(255, 76, 65);">**注意:**</span>
+1）この実験では火源の使用が必要です。火災を防ぐため、可燃物から離してください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。
+2）炎センサーは耐火性ではありません。直接炎で燃やさないでください。
+炎センサーで外部LEDを制御できます。LEDはD9に接続されたままです。火が検出されると、LEDが点灯します。
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-È possibile trascinare blocchi per modificare il codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集できます
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -93,15 +93,15 @@ Possiamo controllare un LED esterno con il sensore di fiamma. Il LED è ancora c
 
 ![](media/cc09f61b782a662eaee267f8dbd8968d.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ![](media/9d2f5915e4a6991ed4549b39ec853fa5.png)
 
-È possibile usare la fiamma di un accendino vicino al sensore di fiamma sinistro. Quando il sensore di fiamma rileva una fiamma, il modulo LED si accenderà come allarme.
+ライターの炎を左側の炎センサーの近くで使用できます。炎センサーが炎を検出すると、LEDモジュールが警報として点灯します。
 
 ![](./media/img-20240117100333.png)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-Si prega di tenerla lontana da materiali infiammabili per prevenire incendi. I bambini devono sperimentare sotto la supervisione di un adulto. Se non si è certi di essere al sicuro, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, si prega di non bruciarlo direttamente con la fiamma.
+<span style="color: rgb(255, 76, 65);">**注意:**</span>
+火災を防ぐため、可燃物から離してください。子供は大人の監督のもとで実験してください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。直接炎で燃やさないでください。

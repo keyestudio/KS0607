@@ -1,33 +1,33 @@
-### Progetto 11: Tank che Segue il Suono a Ultrasuoni
+### プロジェクト11: 超音波追従タンク
 
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Nella lezione precedente, abbiamo imparato a conoscere l'auto intelligente che segue la luce. In questa lezione, possiamo combinare le conoscenze acquisite per realizzare un'auto che segue il suono a ultrasuoni. Nel progetto, utilizziamo sensori a ultrasuoni per rilevare la distanza tra l'auto e l'ostacolo davanti, e poi controlliamo la rotazione dei due motori in base a questi dati in modo da controllare i movimenti dell'auto intelligente.
+前のレッスンでは、光追従スマートカーについて学びました。このレッスンでは、その知識を組み合わせて超音波追従カーを作ることができます。このプロジェクトでは、超音波センサーを使用して車と前方の障害物との距離を検出し、そのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
 
-La logica specifica dell'auto intelligente che segue il suono a ultrasuoni è mostrata nella tabella seguente:
+超音波追従スマートカーの具体的なロジックは、以下の表に示されています：
 
-|                        Rilevamento                        |              Impostazione              |
+|                        検出                        |              設定              |
 | :-----------------------------------------------------: | :-------------------------------: |
-| La distanza (cm) tra l'auto e l'ostacolo frontale | Imposta l'angolo del servo a 90° |
-|                      **Condizione**                      |           **Movimento**            |
-|               distanza≥20 e distanza≤50               |             Vai avanti              |
-|            10＜distanza＜20<br/>distanza＞50            |               Stop                |
-|                       distanza≤10                       |              Vai indietro              |
+| 車と前方の障害物との距離（cm） | サーボの角度を90°に設定 |
+|                      **条件**                      |           **動作**            |
+|               distance≥20 かつ distance≤50               |             前進              |
+|            10＜distance＜20<br/>distance＞50            |               停止                |
+|                       distance≤10                       |              後退              |
 
-#### **(2)Diagramma di Flusso:**
+#### **(2)フローチャート:**
 
 ![](media/wps118.png)
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図:**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> Il collegamento del sensore a ultrasuoni, del servo e del motore è lo stesso dell'esperimento del progetto precedente. GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 sulla scheda di espansione.
+<span style="color: rgb(255, 76, 65);">注意：</span> 超音波センサー、サーボ、モーターの配線は前のプロジェクト実験と同じです。8x16 LEDパネルのGND、VCC、SDA、SCLはそれぞれ拡張ボードのG（GND）、V（VCC）、A4、A5に接続されています。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
+以下のようにブロックをドラッグしてコードを編集することもできます。
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -49,15 +49,15 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 (10) ![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ![](media/b895ca60e3249e09d4c15c356c60099a.png)
 
 
-#### **(5)Risultato del Test:**
+#### **(5)テスト結果:**
 
-Carica il codice, alimenta il dispositivo e porta l'interruttore DIP su ON. Il servo ruoterà di 90°, il pannello LED 8X16 mostrerà ![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png), e l'auto seguirà l'ostacolo durante il movimento.
+コードをアップロードし、電源を入れ、DIPスイッチをONにします。サーボが90°回転し、8X16 LEDパネルに![](media/fdd4ae50b3372cc9c4ef27f6bddda387.png)が表示され、車は障害物に追従して動きます。
 
 ![](./media/img-20240117093900.png)

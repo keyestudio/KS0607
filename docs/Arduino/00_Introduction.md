@@ -1,39 +1,39 @@
-## 4.1 Download dei dati
+## 4.1 データのダウンロード
 
-Le informazioni su Arduino contengono file di libreria e codice del progetto. Clicca per scaricarli per lo studio successivo.
+Arduinoの情報にはライブラリファイルとプロジェクトコードが含まれています。以下のリンクからダウンロードして、今後の学習にお役立てください。
 
-Download dei dati:[Arduino Data](./Arduino.7z)
+データダウンロード：[Arduino Data](./Arduino.7z)
 
-## 4.2 Download del software
+## 4.2 ソフトウェアのダウンロード
 
-Quando otteniamo la scheda di controllo, dobbiamo prima scaricare l'Arduino IDE e il driver.
+コントロールボードを入手したら、まず Arduino IDE とドライバをダウンロードする必要があります。
 
-Puoi scaricare l'Arduino IDE dal sito ufficiale:<https://www.arduino.cc/en/software>.
+Arduino IDE は公式サイトからダウンロードできます：<https://www.arduino.cc/en/software>
 
-Esistono varie versioni di Arduino. Scarica semplicemente una versione adatta al tuo sistema. Prenderemo il sistema WINDOWS come esempio per mostrarti come scaricarlo e installarlo.
+Arduino にはさまざまなバージョンがあります。お使いのシステムに合ったバージョンをダウンロードしてください。ここでは WINDOWS システムを例に、ダウンロードとインストールの方法をご説明します。
 
 ![](./media/Animati.gif)
 
-Devi solo cliccare su JUST DOWNLOAD, poi cliccare sul file scaricato per installarlo.
+JUST DOWNLOAD をクリックし、ダウンロードしたファイルをクリックしてインストールするだけです。
 
-E quando il file ZIP è scaricato, puoi decomprimerlo direttamente e avviarlo.
+ZIP ファイルをダウンロードした場合は、直接解凍して起動することができます。
 
 ![](./media/Animat.gif)
 
-## 4.3 Configurazione dell'Arduino IDE
+## 4.3 Arduino IDE の設定
 
-1. Collegamento della scheda al computer.
+1. ボードをコンピュータに接続します。
 
 ![](./media/Anima.gif)
 
-## 4.4 Aggiunta di librerie
+## 4.4 ライブラリの追加
 
-Cosa sono le librerie?
+ライブラリとは？
 
-Le librerie sono una raccolta di codice che ti permette di collegarti facilmente a un sensore, display, modulo, ecc.
+ライブラリとは、センサー、ディスプレイ、モジュールなどへの接続を簡単にするためのコードの集まりです。
 
-Sono disponibili centinaia di librerie aggiuntive su Internet da scaricare.
+インターネット上には、ダウンロード可能な追加ライブラリが数百種類あります。
 
-Ti illustreremo il modo più semplice per aggiungere le librerie.
+ここでは、ライブラリを追加する最も簡単な方法をご紹介します。
 
 ![](./media/Anim.gif)

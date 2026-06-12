@@ -1,43 +1,43 @@
-### Progetto 4: Sensore di Rilevamento Linea
+### プロジェクト4: ライントラッキングセンサー
 
-#### **(1) Descrizione:**
+#### **(1)概要:**
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
-Il sensore di tracciamento è in realtà un sensore a infrarossi. Il componente utilizzato qui è il tubo a infrarossi TCRT5000.
+トラッキングセンサーは実際には赤外線センサーです。ここで使用されているコンポーネントはTCRT5000赤外線チューブです。
 
-Il suo principio di funzionamento è quello di utilizzare la diversa riflettività della luce infrarossa sui colori, convertendo poi l'intensità del segnale riflesso in un segnale di corrente.
+その動作原理は、赤外線の色に対する反射率の違いを利用し、反射信号の強度を電流信号に変換するものです。
 
-Durante il processo di rilevamento, il nero è attivo al livello ALTO mentre il bianco è attivo al livello BASSO. L'altezza di rilevamento è 0-3 cm.
+検出プロセスでは、黒はHIGHレベルでアクティブになり、白はLOWレベルでアクティブになります。検出高さは0〜3 cmです。
 
-Il modulo di tracciamento linea a 3 canali Keyestudio ha integrato 3 set di tubi a infrarossi TCRT5000 su un singolo scheda, il che rende il cablaggio e il controllo più comodi.
+Keyestudio 3チャンネルライントラッキングモジュールは、3セットのTCRT5000赤外線チューブを1枚の基板に統合しており、配線と制御がより便利になっています。
 
-Se il Sensore di Rilevamento Linea non funziona come previsto, sarà necessario utilizzare un cacciavite per regolare il suo potenziometro per renderlo più sensibile. Quando il dito si avvicina al sensore, il LED integrato si accende, e quando il dito si allontana, il LED integrato si spegne. In questo momento, la sensibilità è relativamente buona.
+ライントラッキングセンサーが期待通りに動作しない場合は、ドライバーを使用してポテンショメーターを調整し、感度を高める必要があります。指をセンサーに近づけると基板上のLEDライトが点灯し、指を離すとLEDライトが消灯します。この状態のとき、感度は比較的良好です。
 
 ![](./media/img-20240117090858.png)
 
-#### **(2) Parametri:**
+#### **(2)パラメータ:**
 
-- Tensione di funzionamento: 3.3-5V (DC)
+- 動作電圧: 3.3-5V (DC)
 
-- Interfaccia: 5PIN
+- インターフェース: 5PIN
 
-- Segnale di uscita: Segnale digitale
+- 出力信号: デジタル信号
 
-- Altezza di rilevamento: 0-3 cm
+- 検出高さ: 0〜3 cm
 
 
-Nota speciale: prima del test, ruotare il potenziometro sul sensore per regolare la sensibilità di rilevamento. Quando si regola il LED alla soglia tra ON e OFF, la sensibilità è la migliore.
+特記事項: テスト前に、センサーのポテンショメーターを回して検出感度を調整してください。LEDがONとOFFの閾値に調整されたとき、感度が最も良くなります。
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> il sensore di tracciamento linea è installato sotto il fondo del robot.
+<span style="color: rgb(255, 76, 65);">注意:</span> ライントラッキングセンサーはロボットの底部の下に取り付けられています。
 
-#### **(3) Schema di Collegamento:**
+#### **(3)接続図:**
 
 ![](media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
-#### **(4) Codice di Test:**
+#### **(4)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -52,27 +52,24 @@ http://www.keyestudio.com
 
 */
 
-//Il cablaggio dei sensori di tracciamento linea
-
-#define L_pin 11 //sinistra
-
-#define M_pin 7 //centro
-
-#define R_pin 8 //destra
+// ライントラッキングセンサーの配線
+#define L_pin 11 // 左
+#define M_pin 7 // 中央
+#define R_pin 8 // 右
 
 void setup()
 {
-    Serial.begin(9600); //Imposta il baud rate a 9600
-    pinMode(L_pin, INPUT); //Imposta tutti i pin dei sensori di tracciamento linea in modalità input
+    Serial.begin(9600); // ボーレートを9600に設定
+    pinMode(L_pin, INPUT); // ライントラッキングセンサーのすべてのピンを入力モードに設定
     pinMode(M_pin, INPUT);
     pinMode(R_pin, INPUT);
 }
 
 void loop ()
 {
-    int L_val = digitalRead(L_pin); //Leggi il valore del sensore sinistro
-    int M_val = digitalRead(M_pin); //Leggi il valore del sensore centrale
-    int R_val = digitalRead(R_pin); //Leggi il valore del sensore destro
+    int L_val = digitalRead(L_pin); // 左センサーの値を読み取る
+    int M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
+    int R_val = digitalRead(R_pin); // 右センサーの値を読み取る
 
     Serial.print(L_val);
     Serial.print(" ");
@@ -80,36 +77,36 @@ void loop ()
     Serial.print(" ");
     Serial.print(R_val);
     Serial.println(" ");
-    delay(100); //ritardo di 100ms
+    delay(100); // 100msの遅延
 }
 ```
 
-#### **(5) Risultati del Test:**
+#### **(5)テスト結果:**
 
-Carica il codice sulla scheda di sviluppo, apri il monitor seriale per verificare i sensori di tracciamento linea. Il valore visualizzato è 1 (livello alto) quando non vengono ricevuti segnali. Il valore passa a 0 quando il sensore è coperto con della carta.
+開発ボードにコードをアップロードし、シリアルモニターを開いてライントラッキングセンサーを確認します。信号が受信されない場合、表示される値は1（HIGHレベル）です。センサーを紙で覆うと値が0に変わります。
 
 ![](./media/img-20240117090920.png)
 
 
 ![](media/b9319753c148f66aabc9bf648ed93da1.png)
 
-#### **(6) Spiegazione del Codice:**
+#### **(6)コードの説明:**
 
-**Serial.begin(9600)** - Inizializza la porta seriale, imposta il baud rate a 9600
+**Serial.begin(9600)** - シリアルポートを初期化し、ボーレートを9600に設定します
 
-**pinMode** - Definisce il pin come modalità input o output
+**pinMode** - ピンを入力または出力モードとして定義します
 
-**digitalRead** - Legge lo stato del pin, che sono generalmente livello ALTO e BASSO
+**digitalRead** - ピンの状態を読み取ります。一般的にHIGHレベルとLOWレベルがあります
 
-#### **(7) Pratica di Estensione:**
+#### **(7)応用練習:**
 
-Dopo aver compreso il suo principio di funzionamento, puoi collegare un LED a D9, in modo da controllare il LED tramite il sensore di tracciamento linea.
+動作原理を理解した後、D9にLEDを接続することで、ライントラッキングセンサーによってLEDを制御できます。
 
 ![](media/1dd733ed6248d09e9b4d218e41559294.png)
 
-**Codice di Test**
+**テストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -123,35 +120,34 @@ http://www.keyestudio.com
 
 */
 
-//Pin LED
-
+// LEDピン
 #define LED 9
-//Il cablaggio dei sensori di tracciamento linea
-#define L_pin 11 //sinistra
-#define M_pin 7 //centro
-#define R_pin 8 //destra
+// ライントラッキングセンサーの配線
+#define L_pin 11 // 左
+#define M_pin 7 // 中央
+#define R_pin 8 // 右
 
 void setup()
 {
-    Serial.begin(9600); //Imposta il baud rate a 9600
-    pinMode(LED, OUTPUT); //Imposta LED in modalità output
-    pinMode(L_pin, INPUT); //Imposta tutti i pin dei sensori di tracciamento linea in modalità input
+    Serial.begin(9600); // ボーレートを9600に設定
+    pinMode(LED, OUTPUT); // LEDを出力モードに設定
+    pinMode(L_pin, INPUT); // ライントラッキングセンサーのすべてのピンを入力モードに設定
     pinMode(M_pin, INPUT);
     pinMode(R_pin, INPUT);
 }
 
 void loop ()
 {
-    int L_val = digitalRead(L_pin); //Leggi il valore del sensore sinistro
-    int M_val = digitalRead(M_pin); //Leggi il valore del sensore centrale
-    int R_val = digitalRead(R_pin); //Leggi il valore del sensore destro
+    int L_val = digitalRead(L_pin); // 左センサーの値を読み取る
+    int M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
+    int R_val = digitalRead(R_pin); // 右センサーの値を読み取る
     Serial.print(L_val);
     Serial.print(" ");
     Serial.print(M_val);
     Serial.print(" ");
     Serial.print(R_val);
     Serial.println(" ");
-    delay(100); //Ritardo di
+    delay(100); // 遅延
 
     if (L_val == 0 || M_val == 0 || R_val == 0) 
     {
@@ -163,3 +159,5 @@ void loop ()
     }
 }
 ```
+
+ 

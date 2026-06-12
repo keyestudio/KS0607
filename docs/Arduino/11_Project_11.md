@@ -1,33 +1,33 @@
-### Progetto 11: Tank con Inseguimento a Ultrasuoni
+### プロジェクト 11: 超音波追従タンク
 
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Nella lezione precedente, abbiamo appreso del robot auto intelligente che segue la luce. In questa lezione, possiamo combinare le conoscenze acquisite per realizzare un'auto che segue il suono a ultrasuoni. 
+前回のレッスンでは、光追従スマートカーについて学びました。このレッスンでは、その知識を組み合わせて超音波音追従カーを作ることができます。
 
-Nel progetto, utilizziamo sensori a ultrasuoni per rilevare la distanza tra l'auto e l'ostacolo davanti, e poi controlliamo la rotazione dei due motori in base a questi dati per controllare i movimenti del robot auto intelligente.
+このプロジェクトでは、超音波センサーを使用してカーと前方の障害物との距離を検出し、そのデータに基づいて2つのモーターの回転を制御し、スマートカーの動きを制御します。
 
-La logica specifica del robot auto intelligente che segue il suono a ultrasuoni è mostrata nella tabella seguente:
+超音波音追従スマートカーの具体的なロジックを以下の表に示します：
 
-|                        Rilevamento                        |              Impostazione              |
-| :-------------------------------------------------------: | :------------------------------------: |
-| La distanza(cm) tra l'auto e l'ostacolo frontale | Impostare l'angolo del servo a 90° |
-|                      **Condizione**                      |           **Movimento**            |
-|               distanza≥20 e distanza≤50               |             Avanti              |
-|            10＜distanza＜20<br/>distanza＞50            |               Ferma                |
-|                       distanza≤10                       |              Indietro              |
+|                        検出                        |              設定              |
+| :-----------------------------------------------------: | :-------------------------------: |
+| カーと前方の障害物との距離(cm) | サーボの角度を90°に設定 |
+|                      **条件**                      |           **動作**            |
+|               distance≥20 かつ distance≤50               |             前進              |
+|            10＜distance＜20<br/>distance＞50            |               停止                |
+|                       distance≤10                       |              後退              |
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート:**
 
 ![](media/wps9.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図:**
 
 ![](media/72a10097d286bc5f9589df031b60484a.png)
 
-#### **(4)Codice di test:**
+#### **(4)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -36,12 +36,12 @@ La logica specifica del robot auto intelligente che segue il suono a ultrasuoni 
   Ultrasonic follow tank
   http://www.keyestudio.com
 */
-#define servoPin 10  //Il pin del servo
+#define servoPin 10  //サーボのピン
 
-#define ML_Ctrl 4  //Definisce il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6   //Definisce il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2  //Definisce il pin di controllo della direzione del motore destro
-#define MR_PWM 5   //Definisce il pin di controllo PWM del motore destro
+#define ML_Ctrl 4  //左モーターの方向制御ピンを定義
+#define ML_PWM 6   //左モーターのPWM制御ピンを定義
+#define MR_Ctrl 2  //右モーターの方向制御ピンを定義
+#define MR_PWM 5   //右モーターのPWM制御ピンを定義
 #define Trig 12
 #define Echo 13
 float distance;
@@ -55,26 +55,26 @@ void setup()
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  procedure(90); //Imposta l'angolo del servo a 90°
-  delay(500); //ritardo di 500ms
+  procedure(90); //サーボの角度を90°に設定
+  delay(500); //500msの遅延
 }
 
 void loop() 
 {
-  distance = checkdistance();  //Assegna la distanza misurata dagli ultrasuoni a distance
-  if (distance >= 20 && distance <= 50) //vai avanti
+  distance = checkdistance();  //超音波で測定した距離をdistanceに代入
+  if (distance >= 20 && distance <= 50) //前進
   {
     Car_front();
   }
-  else if (distance > 10 && distance < 20)  //ferma
+  else if (distance > 10 && distance < 20)  //停止
   {
     Car_Stop();
   }
-  else if (distance <= 10)  //vai indietro
+  else if (distance <= 10)  //後退
   {
     Car_back();
   }
-  else  //In altre condizioni, si ferma
+  else  //その他の条件では停止
   {
     Car_Stop();
   }
@@ -120,19 +120,19 @@ void Car_Stop()
   analogWrite(ML_PWM, 0);
 }
 
-//La funzione per controllare i servo
+//サーボを制御する関数
 void procedure(byte myangle) 
 {
   int pulsewidth;
   for (int i = 0; i < 5; i++) 
   {
-    pulsewidth = myangle * 11 + 500;  //Calcola il valore della larghezza dell'impulso    digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   //Il tempo in livello alto rappresenta la larghezza dell'impulso
+    pulsewidth = myangle * 11 + 500;  //パルス幅の値を計算    digitalWrite(servoPin, HIGH);
+    delayMicroseconds(pulsewidth);   //ハイレベルの時間がパルス幅を表す
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  //Poiché il ciclo è 20ms, il tempo rimanente è in livello basso
+    delay((20 - pulsewidth / 1000));  //サイクルは20msなので、残りの時間はローレベル
   }
 }
-//La funzione per controllare gli ultrasuoni
+//超音波を制御する関数
 float checkdistance() 
 {
   static float distance;
@@ -141,14 +141,14 @@ float checkdistance()
   digitalWrite(Trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(Trig, LOW);
-  distance = pulseIn(Echo, HIGH) / 58.20;  //Il 58.20 qui deriva da 2*29.1=58.2
+  distance = pulseIn(Echo, HIGH) / 58.20;  //58.20は2*29.1=58.2から来ている
   delay(10);
   return distance;
 }
 ```
 
-#### **(5)Risultati del test:**
+#### **(5)テスト結果:**
 
-Caricato con successo il codice di test, effettuati i collegamenti, spostato il commutatore DIP verso destra, alimentato il sistema e impostato il servo a 90°, il robot auto intelligente segue l'ostacolo nei suoi movimenti.
+テストコードを正常にアップロードし、配線して、DIPスイッチを右端に切り替え、電源を入れてサーボを90°に設定すると、スマートカーは障害物に追従して移動します。
 
 ![](./media/img-20240117090457.png)

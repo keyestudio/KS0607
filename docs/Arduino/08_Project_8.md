@@ -1,77 +1,77 @@
-### Progetto 8: Guida e Controllo della Velocità del Motore
+### プロジェクト8: モーター駆動と速度制御
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Esistono molti modi per pilotare i motori. La nostra auto intelligente utilizza la soluzione più comune chiamata L298P. L298P, prodotto da STMicroelectronics, è un eccellente chip di pilotaggio appositamente progettato per pilotare motori ad alta potenza.
+モーターを駆動する方法はたくさんあります。このスマートカーは、L298Pと呼ばれる最も一般的なソリューションを使用しています。STMicroelectronicsが製造するL298Pは、高出力モーターを駆動するために特別に設計された優れた駆動チップです。
 
-Può pilotare direttamente motori DC, motori a due fasi e a quattro fasi con una corrente di pilotaggio che raggiunge i 2A. Il terminale di uscita del motore adotta 8 diodi Schottky ad alta velocità come protezione.
+DCモーター、2相および4相モーターを直接駆動でき、駆動電流は2Aに達します。また、モーターの出力端子には保護として8つの高速ショットキーダイオードが採用されています。
 
-Abbiamo progettato una scheda di espansione basata sul circuito L298P il cui design a impilamento può essere inserito direttamente nella scheda UNO R3 per l'uso, riducendo le difficoltà tecniche per gli utenti nell'utilizzo e nel pilotaggio del motore.
+L298P回路をベースにした拡張ボードを設計しており、積層設計によりUNO R3ボードに直接差し込んで使用することができ、ユーザーがモーターを使用・駆動する際の技術的な困難を軽減します。
 
-Impilare la scheda di espansione sulla scheda, alimentare la BAT, girare l'interruttore DIP sull'estremità ON e alimentare la scheda di espansione e la scheda UNO R3 contemporaneamente tramite alimentazione esterna.
+拡張ボードをボードに重ね、BATに電源を入れ、DIPスイッチをON側に切り替えると、外部電源を介して拡張ボードとUNO R3ボードに同時に電源が供給されます。
 
-Per facilitare il cablaggio, la scheda di espansione è dotata di interfaccia anti-inversione (PH2.0 -2P -3P -4P -5P) e quindi può essere collegata direttamente con motori, alimentatori e sensori/moduli.
+配線を容易にするため、拡張ボードには逆接防止インターフェース（PH2.0 -2P -3P -4P -5P）が装備されており、モーター、電源、センサー/モジュールを直接接続することができます。
 
-L'interfaccia Bluetooth della scheda di espansione per il pilotaggio è completamente compatibile con il modulo Bluetooth Keyestudio HM-10. Pertanto, dobbiamo solo inserire il modulo Bluetooth HM-10 nell'interfaccia corrispondente durante il collegamento.
+駆動拡張ボードのBluetoothインターフェースは、Keyestudio HM-10 Bluetoothモジュールと完全に互換性があります。そのため、接続時にHM-10 Bluetoothモジュールを対応するインターフェースに挿入するだけです。
 
-Allo stesso tempo, la scheda di espansione utilizza anche pin header da 2,54 mm per estendere alcune porte digitali e analogiche disponibili, in modo da poter continuare ad aggiungere altri sensori e svolgere esperimenti di espansione.
+同時に、駆動拡張ボードは2.54ピンヘッダーを使用して、利用可能なデジタルポートとアナログポートを拡張しているため、他のセンサーを追加して拡張実験を続けることができます。
 
-La scheda di espansione può essere collegata a 4 motori DC. Nella modalità di connessione predefinita con il cappuccio jumper, i motori delle interfacce A e A1, B e B1 sono collegati in parallelo e il loro schema di movimento è lo stesso. 8 cappucci jumper possono essere utilizzati per controllare la direzione di rotazione delle 4 interfacce motore.
+拡張ボードには4つのDCモーターを接続できます。デフォルトのジャンパーキャップ接続モードでは、AとA1、BとB1インターフェースのモーターは並列接続されており、動作パターンは同じです。8つのジャンパーキャップを使用して、4つのモーターインターフェースの回転方向を制御できます。
 
-Ad esempio, quando i due cappucci jumper davanti all'interfaccia del motore A vengono cambiati da una connessione orizzontale a una connessione verticale, la direzione di rotazione del motore A è ora opposta alla direzione di rotazione originale.
+例えば、モーターAインターフェース前面の2つのジャンパーキャップを横接続から縦接続に変更すると、モーターAの回転方向が元の方向と逆になります。
 
 ![](media/image-20230427081635216.png)
 
 ![](media/5381c98d3be6da099ce43e841b8f736b.png)
 
-#### **(2)Parametri：**
+#### **(2)パラメーター：**
 
-- Tensione di ingresso della parte logica: DC 5V
+- ロジック部入力電圧: DC 5V
 
-- Tensione di ingresso della parte di pilotaggio: DC 7-12V
+- 駆動部入力電圧: DC 7-12V
 
-- Corrente di lavoro della parte logica: ≤36mA
+- ロジック部動作電流: ≤36mA
 
-- Corrente di lavoro della parte di pilotaggio: ≤ 2A
+- 駆動部動作電流: ≤ 2A
 
-- Potenza massima dissipata: 25W (T=75℃)
+- 最大消費電力: 25W (T=75℃)
 
-- Livello del segnale di controllo in ingresso:
+- 制御信号入力レベル:
   
-  ​	Livello alto: 2,3V ≤ Vin ≤ 5V
+  ​	ハイレベル: 2.3V ≤ Vin ≤ 5V
   
-  ​	Livello basso: 0V ≤ Vin ≤ 1,5V
+  ​	ローレベル: 0V ≤ Vin ≤ 1.5V
 
-- Temperatura di lavoro: -25℃～＋130℃
+- 動作温度: -25℃～＋130℃
 
-#### **(3)Pilotare il robot in movimento**
+#### **(3)ロボットを動かす**
 
-Il pin di direzione del motore A è D2, il pin di controllo della velocità è D5; il pin di direzione del motore B è D4 e il pin di controllo della velocità è D6.
+モーターAの方向ピンはD2、速度制御ピンはD5です。モーターBの方向ピンはD4、速度制御ピンはD6です。
 
-Secondo la tabella seguente, possiamo sapere come controllare il movimento del robot controllando la rotazione di due motori attraverso le porte digitali e le porte PWM. Il range del valore PWM è 0-255. Maggiore è il valore, più veloce ruota il motore.
+以下の表から、デジタルポートとPWMポートを通じて2つのモーターの回転を制御することにより、ロボットの動きを制御する方法がわかります。PWM値の範囲は0〜255で、値が大きいほどモーターの回転が速くなります。
 
-|   Funzione    |  D4  | D6（PWM） | Motore（sinistra）B |  D2  | D5（PWM） | Motore（destra）A |
-| :-----------: | :--: | :-------: | :-----------------: | :--: | :-------: | :---------------: |
-| Avanti        | HIGH |  255-200  |   Ruota Sinistra    | HIGH |  255-200  |  Ruota Sinistra   |
-| Indietro      | LOW  |    200    |   Ruota Destra      | LOW  |    200    |   Ruota Destra    |
-| Gira Sinistra | LOW  |    200    |   Ruota Destra      | HIGH |  255-200  |  Ruota Sinistra   |
-| Gira Destra   | HIGH |  255-200  |   Ruota Sinistra    | LOW  |    200    |   Ruota Destra    |
-| Stop          | LOW  |     0     |        Stop         | LOW  |     0     |       Stop        |
-
-
+|   機能   |  D4  | D6（PWM） | モーター（左）B |  D2  | D5（PWM） | モーター（右）A |
+| :------: | :--: | :-------: | :-------------: | :--: | :-------: | :-------------: |
+| 前進     | HIGH |  255-200  |   左回転        | HIGH |  255-200  |   左回転        |
+| 後退     | LOW  |    200    |  右回転         | LOW  |    200    |  右回転         |
+| 左折     | LOW  |    200    |  右回転         | HIGH |  255-200  |   左回転        |
+| 右折     | HIGH |  255-200  |   左回転        | LOW  |    200    |  右回転         |
+| 停止     | LOW  |     0     |      停止       | LOW  |     0     |      停止       |
 
 
-#### **(4)Schema di Collegamento:**
+
+
+#### **(4)接続図:**
 
 ![](media/3e53cf19ea5f85a931b955453b86304b.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">注意:</span>
 
-Il connettore a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro è collegato a B della scheda 8833 e quello anteriore sinistro è collegato alla porta A.
+4ピンコネクタにはA、A1、B1、Bと表示されています。右後部モーターは8833ボードのBに接続され、左前部モーターはAポートに接続されています。
 
-#### **(5)Codice di Test:**
+#### **(5)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -81,83 +81,83 @@ motor driver
 http://www.keyestudio.com
 */
 
-#define ML_Ctrl 4 // Definire il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6 // Definire il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2 // Definire il pin di controllo della direzione del motore destro
-#define MR_PWM 5 // Definire il pin di controllo PWM del motore destro
+#define ML_Ctrl 4 // 左モーターの方向制御ピンを定義する
+#define ML_PWM 6 // 左モーターのPWM制御ピンを定義する
+#define MR_Ctrl 2 // 右モーターの方向制御ピンを定義する
+#define MR_PWM 5 // 右モーターのPWM制御ピンを定義する
 
 void setup()
 {
-    pinMode(ML_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore sinistro come OUTPUT
-    pinMode(ML_PWM, OUTPUT);// Definire il pin di controllo PWM del motore sinistro come OUTPUT
-    pinMode(MR_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore destro come OUTPUT
-    pinMode(MR_PWM, OUTPUT);// Definire il pin di controllo PWM del motore destro come OUTPUT
+    pinMode(ML_Ctrl, OUTPUT);// 左モーターの方向制御ピンをOUTPUTとして定義する
+    pinMode(ML_PWM, OUTPUT);// 左モーターのPWM制御ピンをOUTPUTとして定義する
+    pinMode(MR_Ctrl, OUTPUT);// 右モーターの方向制御ピンをOUTPUTとして定義する
+    pinMode(MR_PWM, OUTPUT);// 右モーターのPWM制御ピンをOUTPUTとして定義する
 }
 
 void loop()
 {
-    // avanti
-    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
-    analogWrite(ML_PWM, 55); // La velocità di controllo PWM del motore sinistro è 55
-    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
-    analogWrite(MR_PWM, 55); // La velocità di controllo PWM del motore destro è 55
-    delay(2000);// ritardo di 2s
+    // 前進
+    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
+    analogWrite(ML_PWM, 55); // 左モーターのPWM制御速度は55
+    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
+    analogWrite(MR_PWM, 55); // 右モーターのPWM制御速度は55
+    delay(2000);// 2秒間待機
 
-    // indietro
-    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
-    analogWrite(ML_PWM, 200); // La velocità di controllo PWM del motore sinistro è 200
-    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
-    analogWrite(MR_PWM, 200); // La velocità di controllo PWM del motore destro è 200
-    delay(2000);// ritardo di 2s
+    // 後退
+    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
+    analogWrite(ML_PWM, 200); // 左モーターのPWM制御速度は200
+    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
+    analogWrite(MR_PWM, 200); // 右モーターのPWM制御速度は200
+    delay(2000);// 2秒間待機
 
-    // gira sinistra
-    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
-    analogWrite(ML_PWM, 200); // La velocità di controllo PWM del motore sinistro è 200
-    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
-    analogWrite(MR_PWM, 55); // La velocità di controllo PWM del motore destro è 55
-    delay(2000);// ritardo di 2s
+    // 左折
+    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
+    analogWrite(ML_PWM, 200); // 左モーターのPWM制御速度は200
+    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
+    analogWrite(MR_PWM, 55); // 右モーターのPWM制御速度は55
+    delay(2000);// 2秒間待機
 
-    // gira destra
-    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
-    analogWrite(ML_PWM, 55); // La velocità di controllo PWM del motore sinistro è 55
-    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
-    analogWrite(MR_PWM, 200); // La velocità di controllo PWM del motore destro è 200
-    delay(2000);// ritardo di 2s
+    // 右折
+    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
+    analogWrite(ML_PWM, 55); // 左モーターのPWM制御速度は55
+    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
+    analogWrite(MR_PWM, 200); // 右モーターのPWM制御速度は200
+    delay(2000);// 2秒間待機
 
-    // stop
+    // 停止
     digitalWrite(ML_Ctrl, LOW);
-    analogWrite(ML_PWM, 0); // La velocità di controllo PWM del motore sinistro è 0
+    analogWrite(ML_PWM, 0); // 左モーターのPWM制御速度は0
     digitalWrite(MR_Ctrl, LOW);
-    analogWrite(MR_PWM, 0); // La velocità di controllo PWM del motore destro è 0
-    delay(2000);// ritardo di 2s
+    analogWrite(MR_PWM, 0); // 右モーターのPWM制御速度は0
+    delay(2000);// 2秒間待機
 }
 ```
 
-#### **(6)Risultati del Test:**
+#### **(6)テスト結果:**
 
-Dopo aver effettuato il cablaggio secondo lo schema, caricato il codice di test e acceso l'alimentazione.
+図に従って配線し、テストコードをアップロードして電源を入れると、
 
 ![](./media/img-20240117082646.png)
 
-l'auto intelligente si muove in avanti per 2s, indietro per 2s, gira a sinistra per 2s, gira a destra per 2s e si ferma per 2s, ripetendo questa sequenza.
+スマートカーは2秒間前進し、2秒間後退し、2秒間左折し、2秒間右折し、2秒間停止し、この動作を繰り返します。
 
-#### **(7)Spiegazione del Codice:**
+#### **(7)コード説明:**
 
 **digitalWrite(ML_Ctrl,LOW);**
 
-Il cambiamento tra livelli alto e basso può far ruotare i motori in senso orario o antiorario. I pin digitali generali possono essere utilizzati per controllare questi movimenti.
+ハイレベルとローレベルの切り替えにより、モーターを時計回りまたは反時計回りに回転させることができます。これらの動作を制御するには、一般的なデジタルピンを使用できます。
 
 **analogWrite(ML_PWM,200);**
 
-La regolazione della velocità del motore è realizzata tramite PWM, e il pin che controlla la velocità del motore deve essere il pin PWM di Arduino.
+モーターの速度調整はPWMによって実現されており、モーターの速度を制御するピンはArduinoのPWMピンである必要があります。
 
-#### **(8)Progetto di Espansione:**
+#### **(8)応用プロジェクト:**
 
-Regoliamo la velocità dei motori controllando il PWM e il cablaggio rimane invariato.
+PWMを制御することでモーターの速度を調整します。配線は同じです。
 
-**Codice di Test**
+**テストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -167,58 +167,58 @@ motor driver pwm
 http://www.keyestudio.com
 */
 
-#define ML_Ctrl 4 // Definire il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6 // Definire il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2 // Definire il pin di controllo della direzione del motore destro
-#define MR_PWM 5 // Definire il pin di controllo PWM del motore destro
+#define ML_Ctrl 4 // 左モーターの方向制御ピンを定義する
+#define ML_PWM 6 // 左モーターのPWM制御ピンを定義する
+#define MR_Ctrl 2 // 右モーターの方向制御ピンを定義する
+#define MR_PWM 5 // 右モーターのPWM制御ピンを定義する
 
 void setup() 
 {
-    pinMode(ML_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore sinistro come OUTPUT
-    pinMode(ML_PWM, OUTPUT);// Definire il pin di controllo PWM del motore sinistro come OUTPUT
-    pinMode(MR_Ctrl, OUTPUT);// Definire il pin di controllo della direzione del motore destro come OUTPUT
-    pinMode(MR_PWM, OUTPUT);// Definire il pin di controllo PWM del motore destro come OUTPUT
+    pinMode(ML_Ctrl, OUTPUT);// 左モーターの方向制御ピンをOUTPUTとして定義する
+    pinMode(ML_PWM, OUTPUT);// 左モーターのPWM制御ピンをOUTPUTとして定義する
+    pinMode(MR_Ctrl, OUTPUT);// 右モーターの方向制御ピンをOUTPUTとして定義する
+    pinMode(MR_PWM, OUTPUT);// 右モーターのPWM制御ピンをOUTPUTとして定義する
 }
 
 void loop() 
 {
-    // avanti
-    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
-    analogWrite(ML_PWM, 155); // La velocità di controllo PWM del motore sinistro è 155
-    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
-    analogWrite(MR_PWM, 155); // La velocità di controllo PWM del motore destro è 155
-    delay(2000);// ritardo di 2s
+    // 前進
+    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
+    analogWrite(ML_PWM, 155); // 左モーターのPWM制御速度は155
+    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
+    analogWrite(MR_PWM, 155); // 右モーターのPWM制御速度は155
+    delay(2000);// 2秒間待機
 
-    // indietro
-    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
-    analogWrite(ML_PWM, 100); // La velocità di controllo PWM del motore sinistro è 100
-    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
-    analogWrite(MR_PWM, 100); // La velocità di controllo PWM del motore destro è 100
-    delay(2000);// ritardo di 2s
+    // 後退
+    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
+    analogWrite(ML_PWM, 100); // 左モーターのPWM制御速度は100
+    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
+    analogWrite(MR_PWM, 100); // 右モーターのPWM制御速度は100
+    delay(2000);// 2秒間待機
 
-    // sinistra
-    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
-    analogWrite(ML_PWM, 100); // La velocità di controllo PWM del motore sinistro è 100
-    digitalWrite(MR_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore destro su HIGH
-    analogWrite(MR_PWM, 155); // La velocità di controllo PWM del motore destro è 155
-    delay(2000);// ritardo di 2s
+    // 左折
+    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
+    analogWrite(ML_PWM, 100); // 左モーターのPWM制御速度は100
+    digitalWrite(MR_Ctrl, HIGH); // 右モーターの方向制御速度をHIGHに設定する
+    analogWrite(MR_PWM, 155); // 右モーターのPWM制御速度は155
+    delay(2000);// 2秒間待機
 
-    // destra
-    digitalWrite(ML_Ctrl, HIGH); // Impostare la velocità di controllo della direzione del motore sinistro su HIGH
-    analogWrite(ML_PWM, 155); // La velocità di controllo PWM del motore sinistro è 155
-    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
-    analogWrite(MR_PWM, 100); // La velocità di controllo PWM del motore destro è 100
-    delay(2000);// ritardo di 2s
+    // 右折
+    digitalWrite(ML_Ctrl, HIGH); // 左モーターの方向制御速度をHIGHに設定する
+    analogWrite(ML_PWM, 155); // 左モーターのPWM制御速度は155
+    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
+    analogWrite(MR_PWM, 100); // 右モーターのPWM制御速度は100
+    delay(2000);// 2秒間待機
 
-    // stop
-    digitalWrite(ML_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore sinistro su LOW
-    analogWrite(ML_PWM, 0); // La velocità di controllo PWM del motore sinistro è 0
-    digitalWrite(MR_Ctrl, LOW); // Impostare la velocità di controllo della direzione del motore destro su LOW
-    analogWrite(MR_PWM, 0); // La velocità di controllo PWM del motore destro è 0
-    delay(2000);// ritardo di 2s
+    // 停止
+    digitalWrite(ML_Ctrl, LOW); // 左モーターの方向制御速度をLOWに設定する
+    analogWrite(ML_PWM, 0); // 左モーターのPWM制御速度は0
+    digitalWrite(MR_Ctrl, LOW); // 右モーターの方向制御速度をLOWに設定する
+    analogWrite(MR_PWM, 0); // 右モーターのPWM制御速度は0
+    delay(2000);// 2秒間待機
 }
 ```
 
-Caricare il codice, la velocità del motore è più lenta.
+コードをアップロードすると、モーターの速度が遅くなります。
 
-Una corrente bassa farà ruotare il motore lentamente.
+電流が低いとモーターの回転が遅くなります。

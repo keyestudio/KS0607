@@ -1,42 +1,42 @@
-# 3. Installazione del driver
+# 3. ドライバのインストール
 
-## 3.1 Sistema Windows
+## 3.1 Windowsシステム
 
-**Verifica del driver**
+**ドライバの確認**
 
-1. Collegare la scheda madre al computer.
+1. マザーボードをコンピュータに接続します。
 
 ![](./media/1.jpg)
 
-2. Aprire il Gestione dispositivi. Se appare il messaggio **"Silicon Labs CP210x USB to UART Bridge (COMx)"**, significa che il driver è già installato e puoi saltare la sezione **"Installazione del driver"**.
+2. デバイスマネージャーを開きます。**「Silicon Labs CP210x USB to UART Bridge (COMx)」** というメッセージが表示された場合、ドライバがインストール済みであることを示しており、**「ドライバのインストール」** の部分をスキップできます。
 
 ![](./media/Animation.gif)
 
-**Installazione manuale del driver**
+**手動ドライバのインストール**
 
-1. Download del driver
+1. ドライバのダウンロード
 
-- Sistema Windows: [Driver per sistema Windows](./Windows.7z)
+- Windowsシステム: [Windowsシステムドライバ](./Windows.7z)
 
-2. Collegare la scheda madre al computer e aprire il Gestione dispositivi. Se davanti al driver nell'immagine è presente un punto esclamativo giallo, significa che il driver non è installato. Si prega di scaricare il driver e installarlo manualmente.
+2. マザーボードをコンピュータに接続し、デバイスマネージャーを開きます。画像のドライバの前に黄色の感嘆符がある場合、ドライバがインストールされていないことを示しています。ドライバをダウンロードして手動でインストールしてください。
 
 ![](./media/Animation-1750921346712-3.gif)
 
-## 3.2 Sistema MAC
+## 3.2 MACシステム
 
-**1 Verifica del driver**
+**1 ドライバの確認**
 
-Collegare la scheda di sviluppo al computer e andare su [Strumenti] ---> [Porta] per selezionare la porta della scheda di sviluppo. (Nota: Se non si riesce a confermare quale porta corrisponde alla scheda di sviluppo, collegare la scheda madre e scattare una foto per registrare tutte le porte, quindi scollegare la scheda di sviluppo e scattare un'altra foto. Confrontare le due foto per trovare la porta scomparsa, che è la porta della scheda, e selezionarla.) Se non si riesce a riconoscere la porta, sostituire la porta USB del computer o il cavo USB per tentare un nuovo riconoscimento. Se il problema persiste, fare riferimento ai passaggi seguenti per installare il driver.
+開発ボードをコンピュータに接続し、[Tools] ---> [Port] に移動して開発ボードのポートを選択します。（注意：どのポートが開発ボードのポートか確認できない場合は、マザーボードを接続した状態ですべてのポートを記録するためにスクリーンショットを撮り、次に開発ボードを取り外してもう一枚スクリーンショットを撮ってください。2枚の画像を比較して、消えたポートを見つけてください。それが開発ボードのポートです。それを選択してください。）ポートが認識できない場合は、コンピュータのUSBポートまたはUSBケーブルを交換して再認識させてください。それでも解決しない場合は、以下の手順を参照してドライバをインストールしてください。
 
 ![](./media/20250626154343.png)
 
-**2 Installazione manuale del driver**
+**2 手動ドライバのインストール**
 
-1. Download del driver
+1. ドライバのダウンロード
 
-​       Sistema Mac: [Driver per sistema Mac](./Mac.7z)
+​       Macシステム: [Macシステムドライバ](./Mac.7z)
 
-2. Fare doppio clic per decomprimere il pacchetto zip del driver scaricato.
+2. ダウンロードしたドライバのzipパッケージをダブルクリックして解凍します。
 
 ![](./media/image-20250417083615847-1749262759458-8.png)
 
@@ -44,16 +44,16 @@ Collegare la scheda di sviluppo al computer e andare su [Strumenti] ---> [Porta]
 
 ![](./media/image-20250417083918581-1749262759458-5.png)
 
-3. Successivamente, continuare a fare clic su **"Avanti"** fino al completamento dell'installazione.
+3. その後、インストールが完了するまで **「Next」** をクリックし続けます。
 
 ![](./media/7cca827fe946096f228797dadce10661.png)
 
-A questo punto, la porta può essere riconosciuta ricollegando la scheda.
+この時点で、ボードを再度接続するとポートが認識されます。
 
-4. Aprire quindi l'Arduino IDE, fare clic su "Strumenti" e selezionare la scheda Arduino Uno e la porta della scheda di sviluppo riconosciuta.
+4. 次に Arduino IDE に移動し、「Tools」をクリックして、ボード Arduino Uno と認識された開発ボードのポートを選択します。
 
 ![](./media/2.png)
 
-5. Fare clic su ![image-20250417085312966](./media/image-20250417085312966-1749262759459-18.png) per caricare il codice. Al termine verrà visualizzato il messaggio "Done uploading".
+5. ![image-20250417085312966](./media/image-20250417085312966-1749262759459-18.png) をクリックしてコードをアップロードします。完了すると「Done uploading」と表示されます。
 
 ![](./media/3.png)

@@ -1,50 +1,50 @@
-### Progetto 5: Controllo del Servomotore
+### プロジェクト5: サーボ制御
 
-#### **(1)Descrizione:**
+#### **(1)概要:**
 
-Un servomotore è un attuatore rotante per il controllo della posizione. È composto principalmente da un alloggiamento, una scheda circuito, un motore senza nucleo, un ingranaggio e un sensore di posizione. Il suo principio di funzionamento è che il servo riceve il segnale inviato dal MCU o dal ricevitore e produce un segnale di riferimento con un periodo di 20ms e una larghezza di 1,5ms. Confronta quindi la tensione di polarizzazione CC acquisita con la tensione del potenziometro e ottiene l'uscita della differenza di tensione.
+サーボモーターは位置制御型の回転アクチュエーターです。主にハウジング、回路基板、コアレスモーター、ギア、位置センサーで構成されています。その動作原理は、サーボがMCUまたは受信機から送られた信号を受け取り、周期20ms、幅1.5msの基準信号を生成します。次に、取得したDCバイアス電圧をポテンショメーターの電圧と比較し、電圧差出力を得ます。
 
-Quando la velocità del motore è costante, il potenziometro viene azionato a ruotare attraverso l'ingranaggio di riduzione a cascata, il che porta la differenza di tensione a 0 e il motore si ferma. In generale, l'angolo di rotazione del servo è compreso tra 0° e 180°.
+モーターの速度が一定のとき、ポテンショメーターはカスケード減速ギアを通じて回転駆動され、電圧差が0になり、モーターは回転を停止します。一般的に、サーボの回転角度範囲は0°〜180°です。
 
-L'angolo di rotazione del servomotore è controllato regolando il ciclo di lavoro del segnale PWM (Pulse-Width Modulation). Il ciclo standard del segnale PWM è 20ms (50Hz). Teoricamente, la larghezza è distribuita tra 1ms-2ms, ma in realtà è tra 0,5ms-2,5ms. La larghezza corrisponde all'angolo di rotazione da 0° a 180°. Si noti che per motori di marchi diversi, lo stesso segnale può risultare in angoli di rotazione diversi.
+サーボモーターの回転角度は、PWM（パルス幅変調）信号のデューティサイクルを調整することで制御されます。PWM信号の標準周期は20ms（50Hz）です。理論上、パルス幅は1ms〜2msの間に分布しますが、実際には0.5ms〜2.5msの間です。この幅は0°〜180°の回転角度に対応しています。なお、ブランドが異なるモーターでは、同じ信号でも異なる回転角度になる場合があります。
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-In generale, il servo ha tre fili: marrone, rosso e arancione. Il filo marrone è la massa, quello rosso è il polo positivo e quello arancione è il filo del segnale.
+一般的に、サーボには茶色、赤色、オレンジ色の3本の線があります。茶色の線はアース、赤色の線はプラス極、オレンジ色の線は信号線です。
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-L'angolo del servo:
+サーボの角度：
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)Parametri:**
+#### **(2)パラメーター:**
 
-- Tensione di lavoro: DC 4,8V \~ 6V
+- 動作電圧: DC 4.8V \~ 6V
 
-- Intervallo angolo operativo: circa 180° (a 500 → 2500 μsec)
+- 動作角度範囲: 約180°（500 → 2500 μsec時）
 
-- Intervallo larghezza impulso: 500 → 2500 μsec
+- パルス幅範囲: 500 → 2500 μsec
 
-- Velocità a vuoto: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
+- 無負荷速度: 0.12 ± 0.01 sec / 60（DC 4.8V）　0.1 ± 0.01 sec / 60（DC 6V）
 
-- Corrente a vuoto: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
+- 無負荷電流: 200 ± 20mA（DC 4.8V）　220 ± 20mA（DC 6V）
 
-- Coppia di stallo: 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
+- 停動トルク: 1.3 ± 0.01kg · cm（DC 4.8V）　1.5 ± 0.1kg · cm（DC 6V）
 
-- Corrente di stallo: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
+- 停止電流: ≦ 850mA（DC 4.8V）　≦ 1000mA（DC 6V）
 
-- Corrente in standby: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
+- 待機電流: 3 ± 1mA（DC 4.8V）　4 ± 1mA（DC 6V）
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図:**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span> I fili marrone, rosso e arancione del servo sono collegati rispettivamente a Gnd(G), 5v(V) e D10 dello shield. Ricordare di collegare un'alimentazione esterna a causa dell'elevata corrente del servo. In caso contrario, la scheda di sviluppo potrebbe bruciarsi.
+<span style="color: rgb(255, 76, 65);">**注意:**</span> サーボの茶色、赤色、オレンジ色の線は、それぞれシールドのGnd(G)、5v(V)、D10に接続します。サーボの電流が大きいため、外部電源を必ず接続してください。接続しない場合、開発ボードが破損する恐れがあります。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-È possibile anche trascinare i blocchi per modificare il codice, come mostrato di seguito
+以下のようにブロックをドラッグしてコードを編集することもできます。
 
 ![](media/5b04350e0310955ee2ecd48338f556a3.png)
 
@@ -54,14 +54,14 @@ L'angolo del servo:
 
 ![](media/e149b45054fe94196dea220b319cb0bf.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、BluetoothのシリアL通信と競合し、アップロードが失敗する場合があります。)
 
 ![](media/26e37037daf84d69320b76dd13346cd1.png)
 
-#### **(6)Risultati del Test:**
+#### **(6)テスト結果:**
 
-Caricare il codice, collegare l'alimentazione e il servo si muove nell'intervallo tra 0° e 180°.
+コードをアップロードし、電源を接続するとサーボが0°〜180°の範囲で動作します。
 
 ![](./media/img-20240117092225.png)

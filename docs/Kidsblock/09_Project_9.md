@@ -1,96 +1,97 @@
-### Progetto 9: Matrice LED Facciale 8*16
+### プロジェクト9: 8×16 表情LEDドットマトリクス
 
-#### **(1)Descrizione:**
+#### **(1)概要:**
 
-Non sarebbe divertente aggiungere un pannello espressivo al robot? La matrice LED 8*16 di Keyestudio può fare al caso tuo. Con il suo aiuto, potresti progettare espressioni facciali, immagini, pattern e altri display da solo.
+ロボットに表情ボードを追加したら楽しくないでしょうか？Keyestudio 8×16 LEDドットマトリクスがその役割を果たします。これを使えば、表情、画像、パターンなどの表示を自分でデザインすることができます。
 
-Il pannello LED 8*16 è dotato di 128 LED. I dati del microprocessore (Arduino) comunicano con l'AiP1640 attraverso un'interfaccia bus a due fili. Pertanto, può controllare l'accensione e lo spegnimento di 128 LED sul modulo, in modo da far visualizzare alla matrice di punti sul modulo il pattern desiderato. Un cavo HX-2.54 4Pin è fornito per comodità di cablaggio.
+8×16 LEDボードには128個のLEDが搭載されています。マイクロプロセッサ（Arduino）のデータは、2線式バスインターフェースを通じてAiP1640と通信します。これにより、モジュール上の128個のLEDのオン・オフを制御し、モジュール上のドットマトリクスに必要なパターンを表示させることができます。配線を簡単にするためにHX-2.54 4Pinケーブルが付属しています。
 
-#### **(2)Parametri:**
+#### **(2)仕様:**
 
--   Tensione di lavoro: DC 3.3-5V
+-   動作電圧: DC 3.3-5V
 
--   Dissipazione di potenza: 400mW
+-   消費電力: 400mW
 
--   Frequenza di oscillazione: 450KHz
+-   発振周波数: 450KHz
 
--   Corrente di pilotaggio: 200mA
+-   駆動電流: 200mA
 
--   Temperatura di lavoro: -40\~80℃
+-   動作温度: -40〜80℃
 
--   Modalità di comunicazione: bus a due fili
+-   通信方式: 2線式バス
 
-#### **(3)Conoscenze:**
+#### **(3)知識:**
 
-**Circuito della matrice LED 8\*16**
+**8×16 LEDドットマトリクスの回路**
 
 ![](media/edf6c77d05904eebbaa89d557e9e9c1a.png)
 
-**Principio della matrice LED 8\*16**
+**8×16 LEDドットマトリクスの原理**
 
-Come controllare ogni LED della matrice di punti 8\*16? È noto che ogni byte ha 8 bit e ogni bit è 0 o 1. Quando è 0, il LED è spento, mentre quando è 1 il LED è acceso. Un byte può controllare una colonna di LED, e naturalmente 16 byte possono controllare 16 colonne di LED, questa è la matrice di punti 8\*16.
+8×16ドットマトリクスの各LEDをどのように制御するのでしょうか？各バイトは8ビットを持ち、各ビットは0または1です。0の場合LEDはオフ、1の場合LEDはオンになります。1バイトでLEDの1列を制御でき、16バイトで16列のLEDを制御できます。これが8×16ドットマトリクスです。
 
-**Descrizione dei pin e protocollo di comunicazione**
+**ピンの説明と通信プロトコル**
 
-I dati del microprocessore (Arduino) comunicano con l'AiP1640 attraverso un cavo bus a due fili.
+マイクロプロセッサ（Arduino）のデータは、2線式バスケーブルを通じてAiP1640と通信します。
 
-Il diagramma del protocollo di comunicazione è il seguente: (SCLK) è SCL, (DIN) è SDA.
+通信プロトコルの図は以下の通りです（SCLKはSCL、DINはSDAです）。
 
 ![](media/ea2bab37f23c09453c680590b84653d6.png)
 
-①La condizione di partenza per l'ingresso dati: SCL è a livello alto e SDA cambia da alto a basso.
+①データ入力の開始条件: SCLがハイレベルの時にSDAがハイからローに変化します。
 
-②Per l'impostazione del comando dati, ci sono metodi come mostrato nella figura sottostante.
+②データコマンドの設定方法は以下の図の通りです。
 
-Nel nostro programma di esempio, selezionare il metodo per **aggiungere 1 all'indirizzo automaticamente**, il valore binario è 0100 0000 e il corrispondente valore esadecimale è 0x40.
+サンプルプログラムでは、**アドレスを自動的に1加算する**方法を選択しており、2進数値は0100 0000、対応する16進数値は0x40です。
 
 ![](media/image-20230907161100692.png)
 
-③Per l'impostazione del comando indirizzo, l'indirizzo può essere selezionato come mostrato di seguito.
+③アドレスコマンドの設定では、以下のようにアドレスを選択できます。
 
-Il primo 00H è selezionato nel nostro programma di esempio, e il numero binario 1100 0000 corrisponde all'esadecimale 0xc0.
+サンプルプログラムでは最初の00Hを選択しており、2進数1100 0000は16進数0xc0に対応します。
 
 ![](media/image-20230907161152467.png)
 
-④Il requisito per l'ingresso dati è che quando SCL è a livello alto durante l'inserimento dei dati, il segnale su SDA deve rimanere invariato. Solo quando il segnale di clock su SCL è a livello basso, il segnale su SDA può essere modificato. L'inserimento dei dati avviene prima con il bit meno significativo e poi con il bit più significativo.
+④データ入力の要件として、データ入力時にSCLがハイレベルの場合、SDA上の信号は変化してはなりません。SCLのクロック信号がローレベルの時のみ、SDA上の信号を変更できます。データの入力は下位ビットが先で、上位ビットが後です。
 
-⑤La condizione per la fine della trasmissione dati è che quando SCL è a livello basso, SDA a livello basso e SCL a livello alto, il livello di SDA diventa alto.
+⑤データ転送終了の条件は、SCLがローレベルでSDAがローレベルの時にSCLがハイレベルになり、SDAのレベルがハイになることです。
 
-⑥Controllo del display, impostare diverse larghezze di impulso; la larghezza di impulso può essere selezionata come mostrato nella figura sottostante.
+⑥表示制御として、異なるパルス幅を設定します。パルス幅は以下の図のように選択できます。
 
-Nell'esempio, la larghezza di impulso è 4/16, e l'esadecimale corrispondente a 1000 1010 è 0x8A.
+例ではパルス幅は4/16で、1000 1010に対応する16進数は0x8Aです。
 
 ![](media/image-20230907161220995.png)
 
-**Istruzioni per l'uso dello strumento modulus**
+**モジュールツールの使い方の説明**
 
-Lo strumento per la matrice di punti utilizza la versione online, e il link è: <http://dotmatrixtool.com/#>
+ドットマトリクスツールはオンライン版を使用します。リンクは以下の通りです: <http://dotmatrixtool.com/#>
 
-①Inserire il link e la pagina appare come mostrato di seguito
+①リンクにアクセスすると、以下のようなページが表示されます。
 
 ![](media/354693b5679a2615c62e99b7025d6355.png)
 
-②La matrice di punti è 8\*16, quindi regolare l'altezza a 8 e la larghezza a 16, come mostrato nella figura sottostante.
+②ドットマトリクスは8×16なので、高さを8、幅を16に調整します（以下の図参照）。
 
 ![](media/5f0278d66ade370e871b447d360d6e7b.png)
 
-③Generare dati esadecimali dal pattern.
+③パターンから16進数データを生成します。
 
-Come mostrato nella figura sottostante, premere il tasto sinistro del mouse per selezionare, fare clic con il tasto destro per annullare; disegnare il pattern desiderato, fare clic su Generate, e i dati esadecimali di cui abbiamo bisogno verranno generati.
+以下の図のように、左クリックで選択、右クリックでキャンセルします。描きたいパターンを描き、「Generate」をクリックすると、必要な16進数データが生成されます。
 
 ![](media/586e88bf13c61b0918046437ed7f6796.png)
 
-#### **(4)Schema di Collegamento:**
+#### **(4)接続図:**
 
 ![](media/cec50fec4a335b6922e4c6694a133bc1.png)
 
-GND, VCC, SDA e SCL del pannello LED 8x16 sono collegati rispettivamente a G(GND), V (VCC), A4 e A5 della scheda di espansione per la comunicazione seriale a due fili.
+8×16 LED光ボードのGND、VCC、SDA、SCLは、2線式シリアル通信のために拡張ボードのG(GND)、V(VCC)、A4、A5にそれぞれ接続されています。
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> sebbene sia collegato al pin IIC di Arduino, questo modulo non è per la comunicazione IIC. La porta IO qui serve per simulare la comunicazione I2C e può essere collegata a qualsiasi due pin)
+(<span style="color: rgb(255, 76, 65);">注意:</span> ArduinoのIICピンに接続されていますが、このモジュールはIIC通信用ではありません。ここのIOポートはI2C通信をシミュレートするためのもので、任意の2つのピンに接続できます。)
 
-#### **(5)Codice di Test:**
+#### **(5)テストコード:**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
+
+ブロックをドラッグしてコードを編集することもできます（以下参照）。
 
 ![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -98,43 +99,43 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 ![](media/0f0df06e3ed2adbbe3ffaa20dd3fa0a5.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ![](media/75e6f65c9a299868d37544ac42c54f66.png)
 
-#### **(6)Risultati del Test:**
+#### **(6)テスト結果:**
 
-Dopo aver caricato con successo il codice di test, collegare i cavi, portare l'interruttore DIP sull'estremità ON e alimentare il dispositivo; sulla matrice di punti appare un pattern a forma di sorriso.
+テストコードを正常にアップロードし、配線を行い、DIPスイッチをON側に切り替えて電源を入れると、ドットマトリクスに笑顔のパターンが表示されます。
 
 ![](media/0fd4831db288e04e75828346ea66a3f5.png)
 
-#### **(7)Pratica di Estensione:**
+#### **(7)応用練習:**
 
-Utilizziamo lo strumento modulus appena imparato, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), per far visualizzare alla matrice di punti il pattern di avvio, andare avanti, fermarsi e poi cancellare il pattern. L'intervallo di tempo è di 2000 ms.
+先ほど学んだモジュールツール [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#) を使って、ドットマトリクスにスタート、前進、停止のパターンを表示させ、その後パターンをクリアします。時間間隔は2000ミリ秒です。
 
 ![](media/31ab1346c58438ca95c990e4ff963c0d.png)
 
-Blocco per mostrare la faccina sorridente![](media/1702a82ce685e3e7da7b136cbc51e718.png)
+笑顔を表示するブロック![](media/1702a82ce685e3e7da7b136cbc51e718.png)
 
-Codice per mostrare l'espressione![](media/bae6801afc8fbcc0e7a70c243559c266.png)
+表情を表示するコード![](media/bae6801afc8fbcc0e7a70c243559c266.png)
 
-Blocco per mostrare il cuore![](media/dcaa414f16d10068d2c3627959141da6.png)
+ハートを表示するブロック![](media/dcaa414f16d10068d2c3627959141da6.png)
 
-Codice per andare avanti![](media/8fc218e6b35826aa31f5e00f61414651.png)
+前進するコード![](media/8fc218e6b35826aa31f5e00f61414651.png)
 
-Blocco per andare indietro![](media/043abae4540c578f93772ed9b6648e60.png)
+後退するブロック![](media/043abae4540c578f93772ed9b6648e60.png)
 
-Blocco per girare a sinistra![](media/7b3d80a76228ee5b23555af17269a02d.png)
+左折するブロック![](media/7b3d80a76228ee5b23555af17269a02d.png)
 
-Blocco per girare a destra![](media/5a84b3538a62367a8f35cc59071c0bda.png)
+右折するブロック![](media/5a84b3538a62367a8f35cc59071c0bda.png)
 
-Blocco per fermarsi![](media/733bd1f96e1c9d116033a317cb507fac.png)
+停止するブロック![](media/733bd1f96e1c9d116033a317cb507fac.png)
 
-Blocco per cancellare![](media/06d37680acd61c9c5c4113c78c985eca.png)
+クリアするブロック![](media/06d37680acd61c9c5c4113c78c985eca.png)
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
+ブロックをドラッグしてコードを編集することもできます（以下参照）。
 
 （1）![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -142,13 +143,13 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 （3）![](media/e72e75122897b0ef930196f762080623.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, il che può causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ![](media/dee30ed46775feb634d4e8e4ec0a189a.png)
 
-Caricare il codice sulla scheda di sviluppo, il pannello 8\*16 mostrerà i seguenti pattern.
+コードを開発ボードにアップロードすると、8×16ボードに以下のパターンが表示されます。
 
 ![](./media/image-20250709134319784.png)
 

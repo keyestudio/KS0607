@@ -1,34 +1,34 @@
-### Progetto 10: Tank Insegui-Luce
+### プロジェクト10：光追跡タンク
 
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-Nei progetti precedenti, abbiamo introdotto in dettaglio l'uso di vari sensori, moduli e schede di espansione sul robot smart car. Ora passiamo ai progetti del robot smart car. I robot smart car insegui-luce, come suggerisce il nome, sono robot smart car in grado di seguire la luce.
+前のプロジェクトでは、スマートカーのさまざまなセンサー、モジュール、および拡張ボードの使用方法について詳しく説明しました。次はスマートカーのプロジェクトに移りましょう。光追跡スマートカーは、その名の通り、光を追いかけることができるスマートカーです。
 
-Possiamo combinare le conoscenze dei progetti sul fotoresistore e sul driver motore per realizzare un robot smart car che cerca la luce. Nel progetto, utilizziamo due moduli fotoresistore per rilevare l'intensità luminosa sul lato sinistro e destro del robot smart car, leggiamo i valori analogici corrispondenti e quindi controlliamo la rotazione dei due motori in base a questi due dati in modo da controllare i movimenti del robot smart car.
+フォトレジスターとモータードライブのプロジェクトの知識を組み合わせて、光追跡スマートカーを作ることができます。このプロジェクトでは、2つのフォトレジスターモジュールを使用してスマートカーの左右の光の強度を検出し、対応するアナログ値を読み取り、この2つのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
 
-La logica specifica del robot smart car insegui-luce è mostrata di seguito.
+光追跡スマートカーの具体的なロジックは以下の通りです。
 
 ![image-20230525113331422](media/image-20230525113331422.png)
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート：**
 
 ![](media/wps117.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Nota: </span>I pin "G", "V" e S del modulo fotoresistore sinistro sono collegati rispettivamente a G (GND), V (VCC), A1;
+<span style="color: rgb(255, 76, 65);">注意：</span>左側のフォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A1 に接続されています。
 
-I pin "G", "V" e S del modulo fotoresistore destro sono collegati rispettivamente a G (GND), V (VCC) e A2.
+右側のフォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A2 に接続されています。
 
-Il cavo a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro è collegato alla porta B della scheda di espansione driver motore 8833 e il motore anteriore sinistro è collegato alla porta A della scheda di espansione driver motore 8833.
+4ピンケーブルはA、A1、B1、Bと表示されています。右後方モーターは8833モータードライバー拡張ボードのBポートに接続され、左前方モーターはAポートに接続されています。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
+以下のようにブロックをドラッグしてコードを編集することもできます。
 
 （1）![](media/9352e6447f9648efddc7d5a748618332.png)
 
@@ -44,17 +44,17 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 (7) ![](media/9f023e6f571e597e661a8d71a7f803cb.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> La soglia 650 nel codice può essere regolata opportunamente in base all'intensità luminosa specifica.
+(<span style="color: rgb(255, 76, 65);">注意：</span>コード内の閾値650は、具体的な光の強度に応じて適宜調整できます。
 
-Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale del Bluetooth, causando il fallimento del caricamento del codice.)
+コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、BluetoothのシリアL通信と競合が発生し、コードのアップロードが失敗する可能性があります。)
 
 ![](media/6300174b85f63c05dbdcb3b77188f9dc.png)
 
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
-Dopo aver caricato con successo il codice di test, effettuare i collegamenti, portare il selettore DIP sull'estremità ON e accendere il dispositivo: il robot smart car seguirà la luce per muoversi.
+テストコードのアップロードが成功したら、配線し、DIPスイッチをON側に切り替えて電源を入れると、スマートカーは光を追いかけて移動します。
 
 ![](./media/img-20240117093758.png)

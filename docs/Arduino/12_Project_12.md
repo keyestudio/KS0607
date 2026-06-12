@@ -1,47 +1,47 @@
-### Progetto 12: Tank con Evitamento Ostacoli a Ultrasuoni
+### プロジェクト12：超音波障害物回避タンク
 
 ![](./media/image-20250709112200577.png)
 
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-Nel progetto precedente, abbiamo realizzato un'auto intelligente che segue i movimenti utilizzando ultrasuoni. In realtà, utilizzando gli stessi componenti e lo stesso schema di collegamento, è sufficiente modificare il codice di test per trasformarla in un'auto intelligente che evita gli ostacoli con ultrasuoni. Questa auto intelligente può muoversi seguendo il movimento delle mani umane.
+前のプロジェクトでは、超音波を使った追跡スマートカーを作りました。実際には、同じコンポーネントと同じ配線方法を使い、テストコードを変更するだけで、超音波障害物回避スマートカーに変えることができます。このスマートカーは人の手の動きに合わせて動くことができます。
 
-Utilizziamo i sensori a ultrasuoni per rilevare la distanza tra l'auto intelligente e l'ostacolo di fronte, e quindi controlliamo la rotazione dei due motori in base a questi dati per controllare i movimenti dell'auto intelligente.
+超音波センサーを使って、スマートカーと前方の障害物との距離を検出し、そのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
 
-|                          Rilevamento                         |        |
+|                          検出                           |        |
 | :----------------------------------------------------------: | :----: |
-| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo di fronte <br />（impostare l'angolo del servo a 90°） | a(cm)  |
-| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo a destra <br />（impostare l'angolo del servo a 20°） | a2(cm) |
-| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo a sinistra <br />（impostare l'angolo del servo a 160°） | a1(cm) |
-|   **Impostazione:** impostare l'angolo iniziale del servo a 90°    |        |
+| 超音波センサーで測定したカーと前方の障害物との距離 <br />（サーボの角度を90°に設定） | a(cm)  |
+| 超音波センサーで測定したカーと右側の障害物との距離 <br />（サーボの角度を20°に設定） | a2(cm) |
+| 超音波センサーで測定したカーと左側の障害物との距離 <br />（サーボの角度を160°に設定） | a1(cm) |
+|   **設定：** サーボの開始角度を90°に設定する    |        |
 
-|   Condizione 1   |        Condizione 2         | Condizione 3 | Movimento                                                     |
+|   条件1   |        条件2         | 条件3 | 動作                                                     |
 | :-------------: | :------------------------: | ----------- | ------------------------------------------------------------ |
-|      a＜20      |                            |             | Stop per 500ms；<br />impostare l'angolo del servo a 180°, leggere a1, ritardo di 100ms；<br />impostare l'angolo del servo a 0°, leggere a2, ritardo di 0,1s. |
-|                 | a1＜50<br />o<br />a2＜50 |             | Confrontare a1 con a2                                           |
-|                 |                            | a1＞a2      | Impostare l'angolo del servo a 90°, ruotare a sinistra per 700ms (impostare PWM a 255)<br />avanzare（impostare PWM a 200）. |
-|                 |                            | a1＜a2      | Impostare l'angolo del servo a 90°, ruotare a destra per 700ms (impostare PWM a 255) <br />avanzare（impostare PWM a 200）. |
-| **Condizione 1** |      **Condizione 2**       |             | **Movimento**                                                 |
-|      a＜20      | a1≥50<br />e<br />a2≥50  | Casuale      | impostare l'angolo del servo a 90°, ruotare a sinistra per 500ms (impostare PWM a 255)<br />avanzare (impostare PWM a 200)<br /><br />impostare l'angolo del servo a 90°, ruotare a destra per 500ms (impostare PWM a 255) <br />avanzare (impostare PWM a 200) |
-|  **Condizione**  |                            |             | **Movimento**                                                 |
-|      a≥20       |                            |             | avanzare (impostare PWM a 100)                                 |
+|      a＜20      |                            |             | 500ms停止；<br />サーボの角度を180°に設定し、a1を読み取り、100msの遅延；<br />サーボの角度を0°に設定し、a2を読み取り、0.1sの遅延。 |
+|                 | a1＜50<br />または<br />a2＜50 |             | a1とa2を比較する                                           |
+|                 |                            | a1＞a2      | サーボの角度を90°に設定し、700ms左回転（PWMを255に設定）<br />前進（PWMを200に設定）。 |
+|                 |                            | a1＜a2      | サーボの角度を90°に設定し、700ms右回転（PWMを255に設定）<br />前進（PWMを200に設定）。 |
+| **条件1** |      **条件2**       |             | **動作**                                                 |
+|      a＜20      | a1≥50<br />かつ<br />a2≥50  | ランダム      | サーボの角度を90°に設定し、500ms左回転（PWMを255に設定）<br />前進（PWMを200に設定）<br /><br />サーボの角度を90°に設定し、500ms右回転（PWMを255に設定）<br />前進（PWMを200に設定） |
+|  **条件**  |                            |             | **動作**                                                 |
+|      a≥20       |                            |             | 前進（PWMを100に設定）                                 |
 
 
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート：**
 
 ![](media/wps10.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
 ![](media/72a10097d286bc5f9589df031b60484a.png)
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> i fili marrone, rosso e arancione del servo sono collegati rispettivamente a G (GND), V（5V）e D10 della scheda di espansione；e per il sensore a ultrasuoni, il pin VCC è collegato a 5v (V), il pin Trig al digitale 12 (S), il pin Echo al digitale 13 (S), e il pin Gnd a Gnd (G); come nel progetto precedente.）
+(<span style="color: rgb(255, 76, 65);">注意：</span> サーボの茶色、赤色、オレンジ色のワイヤーはそれぞれ拡張ボードのG（GND）、V（5V）、D10に接続します；超音波センサーについては、VCCピンを5v（V）に、Trigピンをデジタル12（S）に、Echoピンをデジタル13（S）に、GndピンをGnd（G）に接続します；前のプロジェクトと同様です。）
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -50,12 +50,12 @@ Utilizziamo i sensori a ultrasuoni per rilevare la distanza tra l'auto intellige
   Ultrasonic avoid tank
   http://www.keyestudio.com
 */
-#define servoPin 10  //Il pin del servo
+#define servoPin 10  //サーボのピン
 int a, a1, a2;
-#define ML_Ctrl 4  //Definisce il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6   //Definisce il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2  //Definisce il pin di controllo della direzione del motore destro
-#define MR_PWM 5   //Definisce il pin di controllo PWM del motore destro
+#define ML_Ctrl 4  //左モーターの方向制御ピンを定義する
+#define ML_PWM 6   //左モーターのPWM制御ピンを定義する
+#define MR_Ctrl 2  //右モーターの方向制御ピンを定義する
+#define MR_PWM 5   //右モーターのPWM制御ピンを定義する
 #define Trig 12
 #define Echo 13
 float distance;
@@ -70,43 +70,43 @@ void setup()
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  procedure(90); //Imposta l'angolo del servo a 90°
-  delay(500); //ritardo di 500ms
+  procedure(90); //サーボの角度を90°に設定する
+  delay(500); //500ms遅延する
 }
 
 void loop() 
 {
-  a = checkdistance();  //Assegna la distanza frontale rilevata dal sensore a ultrasuoni alla variabile a
+  a = checkdistance();  //超音波センサーで検出した前方への距離を変数aに代入する
 
-  if (a < 20) //Quando la distanza frontale è inferiore a 20cm
+  if (a < 20) //前方への距離が20cm未満の場合
   {
-    Car_Stop();  //Il robot si ferma
-    delay(500); //ritardo di 500ms
-    procedure(180);  //Il supporto pan-tilt a ultrasuoni gira a sinistra
-    delay(500); //ritardo di 500ms
-    a1 = checkdistance();  //Assegna la distanza a sinistra rilevata dal sensore a ultrasuoni alla variabile a1
-    delay(100); //leggi il valore
-    procedure(0); //Il supporto pan-tilt a ultrasuoni gira a destra
-    delay(500); //ritardo di 500ms
-    a2 = checkdistance(); //Assegna la distanza a destra rilevata dal sensore a ultrasuoni alla variabile a2
-    delay(100); //leggi il valore
+    Car_Stop();  //ロボットが停止する
+    delay(500); //500ms遅延する
+    procedure(180);  //超音波パンチルトが左を向く
+    delay(500); //500ms遅延する
+    a1 = checkdistance();  //超音波センサーで検出した左側への距離を変数a1に代入する
+    delay(100); //値を読み取る
+    procedure(0); //超音波パンチルトが右を向く
+    delay(500); //500ms遅延する
+    a2 = checkdistance(); //超音波センサーで検出した右側への距離を変数a2に代入する
+    delay(100); //値を読み取る
     
-    procedure(90);  //Torna a 90°
+    procedure(90);  //90°に戻る
     delay(500);
     if (a1 > a2) 
-    { //Quando la distanza a sinistra è maggiore di quella a destra
-      Car_left();  //Il robot gira a sinistra
-      delay(700);  //gira a sinistra per 700ms
+    { //左側への距離が右側より大きい場合
+      Car_left();  //ロボットが左折する
+      delay(700);  //700ms左折する
     } 
     else 
     {
-      Car_right(); //Gira a destra per 700ms
+      Car_right(); //700ms右折する
       delay(700);
     }
   } 
-  else//Quando la distanza frontale è >=20cm，il robot avanza
+  else//前方への距離が20cm以上の場合、ロボットは前進する
   {    
-    Car_front(); //vai avanti
+    Car_front(); //前進する
   }
 
 }
@@ -151,21 +151,21 @@ void Car_Stop()
   analogWrite(ML_PWM, 0);
 }
 
-//La funzione controlla i servo
+//サーボを制御する関数
 void procedure(byte myangle) 
 {
   int pulsewidth;
   for (int i = 0; i < 5; i++) 
   {
-    pulsewidth = myangle * 11 + 500;  //Calcola il valore della larghezza dell'impulso
+    pulsewidth = myangle * 11 + 500;  //パルス幅の値を計算する
     digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   //Il tempo in livello alto rappresenta la larghezza dell'impulso
+    delayMicroseconds(pulsewidth);   //ハイレベルの時間がパルス幅を表す
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  //Poiché il ciclo è di 20ms, il tempo rimanente è in livello basso
+    delay((20 - pulsewidth / 1000));  //サイクルは20msなので、残りの時間はローレベルになる
   }
 }
 
-//La funzione controlla gli ultrasuoni
+//超音波を制御する関数
 float checkdistance() 
 {
   float distance;
@@ -174,14 +174,14 @@ float checkdistance()
   digitalWrite(Trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(Trig, LOW);
-  distance = pulseIn(Echo, HIGH) / 58.20;  //Il 58.20 deriva da 2*29.1=58.2
+  distance = pulseIn(Echo, HIGH) / 58.20;  //ここでの58.20は2*29.1=58.2から来ている
   delay(10);
   return distance;
 }
 ```
 
-#### **(5)Risultato del Test:**
+#### **(5)テスト結果：**
 
-Dopo aver caricato con successo il codice di test, collegato i cavi, spostato il selettore DIP sull'estremità ON e alimentato il sistema, l'auto intelligente avanza e schiva automaticamente gli ostacoli.
+テストコードを正常にアップロードし、配線を行い、DIPスイッチをON側に切り替えて電源を入れると、スマートカーは前進しながら自動的に障害物を回避します。
 
 ![](./media/img-20240117090420.png)

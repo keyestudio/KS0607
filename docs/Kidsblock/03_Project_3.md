@@ -1,43 +1,43 @@
-### Progetto 3: Fotoresistore
+### プロジェクト3: 光センサー（フォトレジスター）
 
 ![](media/36e7e08764ed3c61a1c22f86be8c23d9.jpeg)
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-Il resistore fotosensibile è un resistore speciale realizzato con un materiale semiconduttore come un solfuro o il selenio, e viene applicata anche una resina impermeabile all'umidità con effetto fotoconduttivo. Il resistore fotosensibile è molto sensibile alla luce ambientale; con diverse intensità di illuminazione, la resistenza del resistore fotosensibile cambia. Utilizziamo il resistore fotosensibile per progettare il modulo del resistore fotosensibile.
+光敏抵抗（フォトレジスター）は、硫化物やセレンなどの半導体材料で作られた特殊な抵抗で、光導電効果を持つ防湿樹脂でコーティングされています。光敏抵抗は周囲の光に最も敏感に反応し、照度の強さが異なると光敏抵抗の抵抗値も異なります。この光敏抵抗を利用して光センサーモジュールを設計しています。
 
-Il segnale del modulo è collegato alla porta analogica del microcontrollore. Quando l'intensità della luce è maggiore, la tensione della porta analogica è più alta, ovvero anche il valore di simulazione del microcontrollore è più grande; al contrario, quando l'intensità della luce è minore, la tensione della porta analogica è più bassa, ovvero anche il valore di simulazione del microcontrollore è più piccolo.
+モジュールの信号はマイコンのアナログポートに接続されています。光の強度が強いほど、アナログポートの電圧が大きくなり、マイコンのシミュレーション値も大きくなります。逆に、光の強度が弱いほど、アナログポートの電圧が小さくなり、マイコンのシミュレーション値も小さくなります。
 
-In questo modo, possiamo leggere il valore analogico corrispondente utilizzando il modulo del resistore fotosensibile e rilevare l'intensità della luce nell'ambiente.
+このようにして、光センサーモジュールを使って対応するアナログ値を読み取り、環境中の光の強度を感知することができます。
 
 ![](./media/image-20250709122809574.png)
 
 ![](media/0d9daba6454ef099fe1ceb0e6cb56ec4.png)
 
-#### **(2)Parametri:**
+#### **(2)仕様：**
 
-- Valore di resistenza del resistore fotosensibile: 5K Ω - 0.5M
+- 光敏抵抗の抵抗値：5K Ω〜0.5MΩ
 
-- Tipo di interfaccia: porta di simulazione A0, A1
+- インターフェースタイプ：アナログポート A0、A1
 
-- Tensione di lavoro: 3.3V-5V
+- 動作電圧：3.3V〜5V
 
-- Spaziatura dei pin: 2.54mm
+- ピン間隔：2.54mm
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
-Quello che testeremo di seguito è il modulo fotoresistore sul lato sinistro del robot.
+次にテストするのは、ロボットの左側にある光センサーモジュールです。
 
 ![](./media/img-20240117091730.png)
 
-Il fotoresistore sinistro è collegato ad A1/P3 dello shield di controllo motore.
+左側の光センサーはモータードライブシールドの A1/P3 に接続されています。
 
 ![](media/484852a36f52bdbe44bec1b9a8941e44.png)
 
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-Puoi anche trascinare i blocchi per modificare il codice, come mostrato di seguito.
+以下のようにブロックをドラッグしてコードを編集することもできます。
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -47,31 +47,31 @@ Puoi anche trascinare i blocchi per modificare il codice, come mostrato di segui
 
 ![](media/d4da0bd0c55e3580fa95782d50f6e540.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
 
 ![](media/f29c7da2238bcc2bc70cb4b2c773b50d.png)
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
-Carica il codice sulla scheda di sviluppo. Clicca su ![](media/9011f20d83897d7a5936793c4ae142fc.png) per impostare il baud rate a 9600. Quando lo si copre con la mano, il valore diminuisce; se non lo si copre, il valore aumenta.
+開発ボードにコードをアップロードします。![](media/9011f20d83897d7a5936793c4ae142fc.png) をクリックしてボーレートを9600に設定します。手で覆うと値が小さくなり、覆わない場合は値が大きくなります。
 
 ![](media/53e2fc37ee5bb2c6ec187c309c431c47.png)
 
 
 
-#### **(6)Pratica di Approfondimento:**
+#### **(6)応用練習：**
 
-Il codice sopra si limita a leggere il valore del fotoresistore. Possiamo combinare il fotoresistore con un LED per modificare il comportamento del LED. Che ne dici di controllare la luminosità del LED tramite di esso?
+上記のコードは光センサーの値を読み取るだけです。光センサーとLEDを組み合わせてLEDを変化させることができます。光センサーでLEDの明るさを制御してみましょう。
 
 ![](media/88a89f7996fb7f7d037315e57e8bcd33.png)
 
-Il PWM può cambiare la luminosità del LED, ovvero il LED deve essere collegato al PWM della scheda di sviluppo.
+PWMによって光の明るさを変えることができます。つまり、LEDは開発ボードのPWMに接続する必要があります。
 
-Collega il LED a D9 e lascia invariati gli altri pin, poi modifichiamo il codice.
+LEDを D9 に接続し、他のピンは変更せずに、コードを編集します。
 
-Puoi anche trascinare i blocchi per modificare il codice, come mostrato di seguito.
+以下のようにブロックをドラッグしてコードを編集することもできます。
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -81,12 +81,12 @@ Puoi anche trascinare i blocchi per modificare il codice, come mostrato di segui
 
 ![](media/9ecdfd77e2a69dea5a8df04e7d56a13a.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。）
 
 ![](media/b23bcae806e8e27382b162909d30f3c0.png)
 
-Carica il codice sulla scheda di sviluppo, premiamo sul fotoresistore per vedere se la luminosità del LED è cambiata.
+開発ボードにコードをアップロードし、光センサーを押してLEDの明るさが変化するか確認しましょう。
 
 ![](./media/img-20240117091759.png)

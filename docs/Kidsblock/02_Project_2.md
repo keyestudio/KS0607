@@ -1,42 +1,42 @@
-### Progetto 2: Regolare la Luminosità del LED
+### プロジェクト2: LEDの明るさを調整する
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Nella lezione precedente, abbiamo controllato l'accensione e lo spegnimento del LED facendolo lampeggiare.
+前回のレッスンでは、LEDのオン・オフを制御し、点滅させました。
 
-In questo progetto, controlleremo la luminosità del LED tramite PWM simulando un effetto di respirazione. Allo stesso modo, è possibile modificare la lunghezza del passo e il tempo di ritardo nel codice per ottenere diversi effetti di respirazione.
+このプロジェクトでは、PWMを通じてLEDの明るさを制御し、呼吸のような効果をシミュレートします。同様に、コード内のステップ長と遅延時間を変更することで、異なる呼吸エフェクトを実現することができます。
 
-Il PWM è un mezzo per controllare l'uscita analogica tramite mezzi digitali. Il controllo digitale viene utilizzato per generare onde quadre con diversi cicli di lavoro (un segnale che cambia costantemente tra livelli alti e bassi) per controllare l'uscita analogica.
+PWMは、デジタル手段によってアナログ出力を制御する方法です。デジタル制御を使用して、異なるデューティサイクルの矩形波（高レベルと低レベルを常に切り替える信号）を生成し、アナログ出力を制御します。
 
-In generale, le tensioni di ingresso delle porte sono 0V e 5V. Cosa succede se è necessario il 3V? O un cambio tra 1V, 3V e 3.5V? Non possiamo cambiare le resistenze continuamente. Per questo motivo, ricorriamo al PWM.
+一般に、ポートの入力電圧は0Vと5Vです。3Vが必要な場合はどうでしょうか？または1V、3V、3.5Vの切り替えが必要な場合は？抵抗を絶えず変更することはできません。そのため、PWMを利用します。
 
 ![](media/bbcfcb9ae56abb7e80ee587246fc4be9.GIF)
 
-Per le uscite di tensione delle porte digitali di Arduino, ci sono solo livelli LOW e HIGH, che corrispondono rispettivamente alle uscite di tensione di 0V e 5V. Puoi definire LOW come "0" e HIGH come "1", e lasciare che Arduino emetta cinquecento "0" o "1" in 1 secondo. Se vengono emessi cinquecento "1", equivale a 5V; se tutti sono "0", equivale a 0V; se viene emesso uno schema di 250 "01", equivale a 2.5V.
+Arduinoのデジタルポートの電圧出力には、LOWとHIGHレベルしかなく、それぞれ0Vと5Vの電圧出力に対応しています。LOWを「0」、HIGHを「1」と定義し、Arduinoが1秒間に500個の「0」または「1」を出力するようにすることができます。500個の「1」を出力すれば5V、すべて「0」であれば0V、250個の「01」パターンを出力すれば2.5Vになります。
 
-Questo processo può essere paragonato alla visione di un film. I film che guardiamo non sono completamente continui. In realtà, vengono generate 25 immagini al secondo, il che non può essere percepito dall'occhio umano. Pertanto, lo percepiamo come un processo continuo. Il PWM funziona allo stesso modo. Per produrre tensioni diverse, dobbiamo controllare il rapporto tra 0 e 1. Più "0" o "1" vengono emessi per unità di tempo, più preciso è il controllo.
+このプロセスは映画の上映に例えることができます。私たちが見る映画は完全に連続しているわけではありません。実際には、1秒間に25枚の画像を生成していますが、人間の目にはそれがわかりません。そのため、私たちは連続したプロセスと誤解してしまいます。PWMも同様の仕組みで動作します。異なる電圧を出力するためには、0と1の比率を制御する必要があります。単位時間あたりに出力する「0」または「1」が多いほど、制御がより精密になります。
 
-#### **(2)Parametri:**
+#### **(2)パラメータ:**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Interfaccia di controllo: Porta digitale 3
+- 制御インターフェース: デジタルポート3
 
-- Tensione di lavoro: DC 3.3-5V
+- 動作電圧: DC 3.3-5V
 
-- Passo dei pin: 2.54mm
+- ピン間隔: 2.54mm
 
-- Colore del display LED: giallo
+- LED表示色: 黄色
 
-#### **(3)Schema di Collegamento**
+#### **(3)配線図**
 
-I pin PWM di Arduino sono collegati a 3, 5, 6, 9, 10 e 11. Mantenere il pin9 invariato.
+ArduinoのPWMピンは3、5、6、9、10、11に接続されています。ピン9はそのままにしてください。
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito
+以下に示すように、ブロックをドラッグしてコードを編集することもできます。
 
 ![](media/de8ccd3cb6621f0eb89a8514a9fd8452.png)
 
@@ -44,25 +44,26 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 ![](media/3157917e305c01f1920cf4d06aff4ff9.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero esserci conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ![](media/aaab53a06684ab078936ee61f9abcbb3.png)
 
 
-#### **(5)Risultati del Test**
+#### **(5)テスト結果**
 
-Dopo aver caricato il codice di test con successo, il LED cambia gradualmente da luminoso a scuro, come il respiro umano, anziché accendersi e spegnersi immediatamente.
+テストコードのアップロードに成功すると、LEDは明るいところから暗いところへと徐々に変化し、人間の呼吸のように、すぐにオン・オフするのではなく、ゆっくりと変化します。
 
-#### **(6)Pratica di Estensione:**
+#### **(6)応用練習:**
 
-Modifichiamo il valore del ritardo mantenendo il pin invariato, quindi osserviamo come cambia il LED.
 
-**Codice di Test Completo**
+遅延の値を変更し、ピンはそのままにして、LEDがどのように変化するかを観察しましょう。
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero esserci conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+**完全なテストコード**
+
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用しており、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ![](media/2ff0d71c2688d39695b760a1d0f76965.png)
 
-Carica il codice sulla scheda di sviluppo, il LED lampeggia più lentamente.
+開発ボードにコードをアップロードすると、LEDがより遅くに点滅します。

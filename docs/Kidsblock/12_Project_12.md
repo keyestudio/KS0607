@@ -1,42 +1,42 @@
-### Progetto 12: Tank con Elusione degli Ostacoli a Ultrasuoni
+### プロジェクト12：超音波障害物回避タンク
 
-#### **(1)Descrizione:**
+#### **(1)説明：**
 
-Nel progetto precedente, abbiamo realizzato un'auto intelligente che segue il suono a ultrasuoni. In realtà, utilizzando gli stessi componenti e lo stesso metodo di cablaggio, dobbiamo solo modificare il codice di test per trasformarla in un'auto intelligente per l'elusione degli ostacoli a ultrasuoni. Questa auto intelligente può muoversi con il movimento delle mani umane.
+前のプロジェクトでは、超音波音声追従スマートカーを作りました。実際には、同じコンポーネントと同じ配線方法を使用し、テストコードを変更するだけで、超音波障害物回避スマートカーに変えることができます。このスマートカーは人の手の動きに合わせて動くことができます。
 
-Utilizziamo sensori a ultrasuoni per rilevare la distanza tra l'auto intelligente e l'ostacolo di fronte, e poi controlliamo la rotazione dei due motori in base a questi dati per controllare i movimenti dell'auto intelligente.
+超音波センサーを使用して、スマートカーと前方の障害物との距離を検出し、このデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
 
-|                          Rilevamento                          |         |
-| :----------------------------------------------------------: | :-----: |
-| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo di fronte <br />（impostare l'angolo del servo a 90°） | a (cm)  |
-| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo a destra <br />（impostare l'angolo del servo a 0°） | a2 (cm) |
-| Distanza misurata dal sensore a ultrasuoni tra l'auto e l'ostacolo a sinistra <br />（impostare l'angolo del servo a 180°） | a1 (cm) |
+|                          検出                          |         |
+| :----------------------------------------------------: | :-----: |
+| 前方の障害物との距離（超音波センサーで計測）<br />（サーボの角度を90°に設定） | a (cm)  |
+| 右側の障害物との距離（超音波センサーで計測）<br />（サーボの角度を0°に設定） | a2 (cm) |
+| 左側の障害物との距離（超音波センサーで計測）<br />（サーボの角度を180°に設定） | a1 (cm) |
 
-**Impostazione: impostare l'angolo iniziale del servo a 90°**
+**設定：サーボの開始角度を90°に設定**
 
-| Condizione 1 |        Condizione 2         |      Condizione 3       | Movimento                                                     |
-| :---------: | :------------------------: | :--------------------: | :----------------------------------------------------------- |
-|    a＜20    |                            |                        | Fermarsi per 500ms；impostare l'angolo del servo a 180°，leggere a1，ritardo di 100ms；impostare l'angolo del servo a 0°，leggere a2，ritardo di 0.1s. |
-|             | a1＜50<br />o<br />a2＜50 | **Confrontare a1 con a2** |                                                              |
-|             |                            |         a1＞a2         | Impostare l'angolo del servo a 90°，ruotare a sinistra per 700ms（impostare PWM a 255），e muoversi in avanti（impostare PWM a 200）. |
-|             |                            |         a1＜a2         | Impostare l'angolo del servo a 90°，ruotare a destra per 700ms（impostare PWM a 255），e muoversi in avanti（impostare PWM a 200）. |
-|             | a1≥50<br />e<br />a2≥50  |         Casuale         | Impostare l'angolo del servo a 90°，ruotare a sinistra per 500ms（impostare PWM a 255），e muoversi in avanti（impostare PWM a 200）.<br /><br />Impostare l'angolo del servo a 90°，ruotare a destra per 500ms（impostare PWM a 255），e muoversi in avanti（impostare PWM a 200）. |
-|    a≥20     |                            |                        | muoversi in avanti（impostare PWM a 100）                               |
+| 条件1 |        条件2         |      条件3       | 動作                                                     |
+| :---: | :------------------: | :--------------: | :------------------------------------------------------- |
+| a＜20 |                      |                  | 500ms停止；サーボの角度を180°に設定し、a1を読み取り、100msの遅延；サーボの角度を0°に設定し、a2を読み取り、0.1sの遅延。 |
+|       | a1＜50<br />または<br />a2＜50 | **a1とa2を比較** |                                                          |
+|       |                      |      a1＞a2      | サーボの角度を90°に設定し、700ms左回転（PWMを255に設定）し、前進（PWMを200に設定）。 |
+|       |                      |      a1＜a2      | サーボの角度を90°に設定し、700ms右回転（PWMを255に設定）し、前進（PWMを200に設定）。 |
+|       | a1≥50<br />かつ<br />a2≥50  |      ランダム      | サーボの角度を90°に設定し、500ms左回転（PWMを255に設定）し、前進（PWMを200に設定）。<br /><br />サーボの角度を90°に設定し、500ms右回転（PWMを255に設定）し、前進（PWMを200に設定）。 |
+| a≥20  |                      |                  | 前進（PWMを100に設定）                                   |
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート：**
 
 ![](media/wps119.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
 ![](media/c5c842ac7e834b9b24ab06b3ce3d02ac.png)
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> i fili marrone, rosso e arancione del servo sono collegati rispettivamente a G (GND), V（5V）e D10 della scheda di espansione；e per il sensore a ultrasuoni, il pin VCC è collegato al 5v (V), il pin Trig al digitale 12 (S), il pin Echo al digitale 13 (S), e il pin Gnd a Gnd (G); come nel progetto precedente.）
+(<span style="color: rgb(255, 76, 65);">注意：</span> サーボの茶色、赤色、オレンジ色のワイヤーはそれぞれ拡張ボードのG (GND)、V（5V）、D10に接続されます；超音波センサーについては、VCCピンを5v (V)に、Trigピンをデジタル12 (S)に、EchoピンをD13 (S)に、GndピンをGnd (G)に接続します；前のプロジェクトと同様です。）
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.![](media/6eb13569aaa7bf560f62049df28b51db.png)
+以下のようにブロックをドラッグしてコードを編集することもできます。![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
 （2）![](media/5dcbd405806b8e341505d7316246dbdd.png)
 
@@ -58,14 +58,14 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 （11）![](media/fcad8e3c5bf2690dfc7ed07200f72401.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用しており、Bluetoothシリアル通信と競合が生じ、アップロードが失敗する可能性があります。)
 
 ![](media/4360f9642a8c6b2488767c079d481482.png)
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
-Dopo aver caricato con successo il codice di test, effettuare il cablaggio, portare il selettore DIP sull'estremità ON e alimentare il dispositivo. L'auto intelligente si muoverà in avanti ed eviterà automaticamente gli ostacoli.
+テストコードのアップロードが成功したら、配線し、DIPスイッチをON側に切り替えて電源を入れます。スマートカーは前進し、自動的に障害物を回避します。
 
 ![](./media/img-20240117093950.png)

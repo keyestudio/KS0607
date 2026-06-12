@@ -1,33 +1,33 @@
-### Progetto 10: Tank Insegui-Luce
+### プロジェクト10：ライトフォロータンク
 
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-Nei progetti precedenti, abbiamo introdotto in dettaglio l'uso di vari sensori, moduli e schede di espansione sul robot smart car. Ora passiamo ai progetti del robot smart car. I robot smart car insegui-luce, come suggerisce il nome, sono robot smart car in grado di seguire la luce.
+前回のプロジェクトでは、スマートカーに搭載されている各種センサー、モジュール、拡張ボードの使い方について詳しく説明しました。ここからはスマートカーを使ったプロジェクトに移ります。ライトフォロースマートカーとは、その名の通り光を追いかけることができるスマートカーです。
 
-Possiamo combinare le conoscenze acquisite nei progetti sul fotoresistore e sulla guida dei motori per realizzare un robot smart car che insegue la luce. Nel progetto, utilizziamo due moduli fotoresistori per rilevare l'intensità luminosa sui lati sinistro e destro del robot smart car, leggiamo i corrispondenti valori analogici, e quindi controlliamo la rotazione dei due motori in base a questi due dati, così da controllare i movimenti del robot smart car.
+フォトレジスターとモータードライブのプロジェクトで学んだ知識を組み合わせて、光追尾スマートカーを作ることができます。このプロジェクトでは、2つのフォトレジスターモジュールを使用してスマートカーの左右の光の強度を検出し、対応するアナログ値を読み取り、その2つのデータに基づいて2つのモーターの回転を制御することで、スマートカーの動きを制御します。
 
-La logica specifica del robot smart car insegui-luce è mostrata di seguito.
+ライトフォロースマートカーの具体的なロジックは以下の通りです。
 
 ![](./media/image-20250709111733042.png)
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート：**
 
 ![](media/wps8.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
 ![](media/d8132c5a3f88a1016d27e5fa9e5fda92.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> I pin "G", "V" e S del modulo fotoresistore sinistro sono collegati rispettivamente a G (GND), V (VCC), A1;
+<span style="color: rgb(255, 76, 65);">注意：</span> 左フォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A1 に接続されています；
 
-I pin "G", "V" e S del modulo fotoresistore destro sono collegati rispettivamente a G (GND), V (VCC) e A2.
+右フォトレジスターモジュールのピン「G」、「V」、Sはそれぞれ G (GND)、V (VCC)、A2 に接続されています。
 
-Il cavo a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro è collegato alla porta B della scheda di espansione driver motore 8833 e il motore anteriore sinistro è collegato alla porta A della scheda di espansione driver motore 8833.
+4ピンケーブルにはA、A1、B1、Bの表示があります。右後方モーターは8833モータードライバー拡張ボードのBポートに接続し、左前方モーターはAポートに接続します。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -36,12 +36,12 @@ Il cavo a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro
   light follow tank
   http://www.keyestudio.com
 */
-#define light_L_Pin A1   // Definisce il pin del sensore fotosensibile a sinistra
-#define light_R_Pin A2   // Definisce il pin del sensore fotosensibile a destra
-#define ML_Ctrl 4  // Definisce il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6   // Definisce il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2  // Definisce il pin di controllo della direzione del motore destro
-#define MR_PWM 5   // Definisce il pin di controllo PWM del motore destro
+#define light_L_Pin A1   //左側の光センサーのピンを定義する
+#define light_R_Pin A2   //右側の光センサーのピンを定義する
+#define ML_Ctrl 4  //左モーターの方向制御ピンを定義する
+#define ML_PWM 6   //左モーターのPWM制御ピンを定義する
+#define MR_Ctrl 2  //右モーターの方向制御ピンを定義する
+#define MR_PWM 5   //右モーターのPWM制御ピンを定義する
 int left_light;
 int right_light;
 void setup() 
@@ -63,19 +63,19 @@ void loop()
   Serial.println(left_light);
   Serial.print("right_light_value = ");
   Serial.println(right_light);
-  if (left_light > 650 && right_light > 650) // vai avanti
+  if (left_light > 650 && right_light > 650) //前進
   {
     Car_front();
   }
-  else if (left_light > 650 && right_light <= 650)  // gira a sinistra
+  else if (left_light > 650 && right_light <= 650)  //左折
   {
     Car_left();
   }
-  else if (left_light <= 650 && right_light > 650) // gira a destra
+  else if (left_light <= 650 && right_light > 650) //右折
   {
     Car_right();
   }
-  else  // altrimenti, fermati
+  else  //それ以外は停止
   {
     Car_Stop();
   }
@@ -114,8 +114,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Risultato del Test**
+#### **(5)テスト結果**
 
-Dopo aver caricato con successo il codice di test, collegato secondo lo schema di cablaggio, spostato il selettore DIP verso destra e alimentato il dispositivo, il robot smart car si muove seguendo la luce.
+テストコードのアップロードが完了し、配線図通りに接続し、DIPスイッチを右端に切り替えて電源を入れると、スマートカーは光を追いかけて動きます。
 
 ![Img](./media/img-20240117090537.png)

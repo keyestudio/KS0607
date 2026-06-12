@@ -1,43 +1,43 @@
-### Progetto 3: Fotoresistore
+### プロジェクト3：フォトレジスタ
 
 ![](media/36e7e08764ed3c61a1c22f86be8c23d9.jpeg)
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
-La resistenza fotosensibile è una resistenza speciale realizzata con un materiale semiconduttore come un solfuro o il selenio, ed è rivestita con una resina impermeabile all'umidità con effetto fotoconduttivo. La resistenza fotosensibile è molto sensibile alla luce ambientale: con diverse intensità di illuminazione, il valore della resistenza fotosensibile cambia. Usiamo la resistenza fotosensibile per progettare il modulo fotoresistore.
+光感知抵抗（フォトレジスタ）は、硫化物やセレンなどの半導体材料で作られた特殊な抵抗で、光導電効果を持つ防湿樹脂でコーティングされています。光感知抵抗は周囲の光に最も敏感で、照明の強さが異なると、光感知抵抗の抵抗値も異なります。光感知抵抗を使用して光感知抵抗モジュールを設計します。
 
-Il segnale del modulo è collegato alla porta analogica del microcontrollore. Quando l'intensità della luce è più forte, la tensione sulla porta analogica è maggiore, ovvero anche il valore analogico del microcontrollore è più grande; al contrario, quando l'intensità della luce è più debole, la tensione sulla porta analogica è minore, ovvero anche il valore analogico del microcontrollore è più piccolo.
+モジュールの信号はマイクロコントローラのアナログポートに接続されます。光の強度が強いほど、アナログポートの電圧が大きくなり、つまりマイクロコントローラのシミュレーション値も大きくなります。逆に、光の強度が弱いほど、アナログポートの電圧が小さくなり、つまりマイクロコントローラのシミュレーション値も小さくなります。
 
-In questo modo, possiamo leggere il corrispondente valore analogico usando il modulo fotoresistore, e rilevare l'intensità della luce nell'ambiente.
+このようにして、光感知抵抗モジュールを使用して対応するアナログ値を読み取り、環境内の光の強度を検知することができます。
 
 ![](media/7784e14e15402644cdbe674d500327c4.png)
 
 ![](media/0d9daba6454ef099fe1ceb0e6cb56ec4.png)
 
-#### **(2)Parametri:**
+#### **(2)パラメータ：**
 
-Valore della resistenza fotosensibile: 5K Ou-0.5m
+光感知抵抗の抵抗値：5K Ou-0.5m
 
-Tipo di interfaccia: porta di simulazione A0, A1
+インターフェースタイプ：シミュレーションポート A0、A1
 
-Tensione di funzionamento: 3.3V-5V
+動作電圧：3.3V-5V
 
-Passo dei pin: 2.54mm
+ピン間隔：2.54mm
 
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図：**
 
-Quello che andremo a testare è il modulo fotoresistore sul lato sinistro del robot.
+次にテストするのはロボットの左側にある光感知抵抗モジュールです。
 
 ![](./media/img-20240117091559.png)
 
-Il fotoresistore sinistro è collegato ad A1/P3 dello shield del motore.
+左側の光感知抵抗はモータードライブシールドの A1/P3 に接続されています。
 
 ![](media/484852a36f52bdbe44bec1b9a8941e44.png)
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する場合があります。）
 
 ```C
 /*
@@ -52,48 +52,48 @@ http://www.keyestudio.com
 
 */
 
-int sensorPin = A1; // A1 è il pin di ingresso del fotoresistore
+int sensorPin = A1; // A1はフォトレジスタの入力ピン
 
-int sensorValue = 0; // salva il valore del fotoresistore
+int sensorValue = 0; // フォトレジスタの値を保存する
 
 void setup() 
 {
-	Serial.begin(9600); // Apri il monitor della porta seriale e imposta il baud rate a 9600
+	Serial.begin(9600); // シリアルポートモニターを開き、ボーレートを9600に設定する
 }
 
 void loop() 
 {
-	sensorValue = analogRead(sensorPin); // Leggi il valore analogico dal sensore fotoresistore
-	Serial.println(sensorValue); // La porta seriale stampa il valore del fotoresistore
-	delay(500); // Ritardo di 500ms
+	sensorValue = analogRead(sensorPin); // フォトレジスタセンサーからアナログ値を読み取る
+	Serial.println(sensorValue); // シリアルポートにフォトレジスタの値を出力する
+	delay(500); // 500msの遅延
 }
 ```
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
 ![](media/54b92578e3210999e23f5fb8138f0fa0.png)
 
-Coprendo il sensore, il valore diminuisce; se non viene coperto, il valore aumenta.
+覆うと値が小さくなり、覆わない場合は値が大きくなります。
 
-#### **(6)Spiegazione del Codice:**
+#### **(6)コードの説明：**
 
-**analogRead(sensorPin)**: legge il valore analogico del fotoresistore
+**analogRead(sensorPin)**：フォトレジスタのアナログ値を読み取る
 
-**Serial.begin(9600)**: inizializza la porta seriale e imposta il baud rate a 9600
+**Serial.begin(9600)**：シリアルポートを初期化し、ボーレートを9600に設定する
 
-**Serial.println**: stampa seriale
+**Serial.println**：シリアル出力
 
-#### **(7)Pratica Avanzata:**
+#### **(7)応用練習：**
 
-Il codice sopra legge soltanto il valore del fotoresistore. Possiamo combinare il fotoresistore con un LED per modificarne la luminosità. Che ne dici di controllare la luminosità del LED tramite il fotoresistore?
+上記のコードはフォトレジスタの値を読み取るだけです。光感知とLEDを組み合わせてLEDを変化させることができます。フォトレジスタでLEDの明るさを制御してみましょう。
 
 ![](media/88a89f7996fb7f7d037315e57e8bcd33.png)
 
-La luminosità del LED è controllata tramite PWM. Pertanto, colleghiamo il LED al pin PWM (pin 9) dello shield.
+LEDの明るさはPWMで制御されます。そのため、LEDをシールドのPMWピン（ピン9）に接続します。
 
-**Codice di Test**
+**テストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する場合があります。）
 
 ```c
 /*
@@ -108,31 +108,31 @@ http://www.keyestudio.com
 
 */
 
-int analogInPin = A1; // A1 è il pin di ingresso del fotoresistore
+int analogInPin = A1; // A1はフォトレジスタの入力ピン
 
-int analogOutPin = 9; // La porta digitale 9 è l'uscita PMW
+int analogOutPin = 9; // デジタルポート9がPMWの出力
 
-int sensorValue = 0; // salva la variabile del valore di resistenza del fotoresistore
+int sensorValue = 0; // フォトレジスタの抵抗値の変数を保存する
 
-int outputValue = 0; // Valore in uscita al PMW
+int outputValue = 0; // PMWへの出力値
 
 void setup() 
 {
-	Serial.begin(9600); // Apri il monitor della porta seriale e imposta il baud rate a 9600
+	Serial.begin(9600); // シリアルポートモニターを開き、ボーレートを9600に設定する
 }
 
 void loop() 
 {
-    sensorValue = analogRead(analogInPin); // Leggi il valore analogico dal sensore fotoresistore
-    // Mappa i valori analogici da 0\~1023 ai valori di uscita PWM da 255\~0
+    sensorValue = analogRead(analogInPin); // フォトレジスタセンサーからアナログ値を読み取る
+    // アナログ値0\~1023をPWM出力値255\~0にマッピングする
     outputValue = map(sensorValue, 0, 1023, 255, 0);
-    // Cambia l'uscita analogica
+    // アナログ出力を変更する
     analogWrite(analogOutPin, outputValue);
-    Serial.println(sensorValue); // La porta seriale stampa il valore del fotoresistore
+    Serial.println(sensorValue); // シリアルポートにフォトレジスタの値を出力する
     delay(2);
 }
 ```
 
-Carica il codice sulla scheda di sviluppo, poi copri il fotoresistore e osserva la luminosità del LED.
+開発ボードにコードをアップロードし、フォトレジスタを覆ってLEDの明るさの変化を観察してください。
 
 ![](./media/img-20240117091105.png)

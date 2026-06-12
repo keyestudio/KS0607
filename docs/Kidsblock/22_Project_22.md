@@ -1,49 +1,49 @@
-### Progetto 22: Robot Antincendio con Funzioni Multiple
+### プロジェクト 22: 消火ロボット 多機能
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Il veicolo intelligente ha eseguito una singola funzione in ogni progetto precedente.
+スマートカーは、これまでの各プロジェクトで単一の機能を実行してきました。
 
-Può mostrare più funzioni contemporaneamente? Sì, può farlo.
+一度に複数の機能を表示することはできますか？はい、できます。
 
-In questo ultimo grande progetto, intendiamo utilizzare un codice completo per controllare il veicolo intelligente e dimostrare tutte le funzioni menzionate nei progetti precedenti. Utilizziamo i tasti dell'APP Bluetooth per passare automaticamente da una funzione all'altra, il che è abbastanza semplice e conveniente.
+この最後の大きなプロジェクトでは、完全なコードを使用してスマートカーを制御し、前のプロジェクトで紹介したすべての機能を示します。Bluetooth APPのキーを使用して様々な機能を自動的に切り替えます。非常にシンプルで便利です。
 
-#### **(2)Diagramma di Flusso:**
+#### **(2)フロー図:**
 
-<span style="color: rgb(255, 76, 65);">**Fare riferimento al Progetto 16 per installare e configurare l'APP Bluetooth**</span>
+<span style="color: rgb(255, 76, 65);">**Bluetooth APPのインストールと設定についてはプロジェクト16を参照してください**</span>
 
 ![](media/wps122.png)
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図:**
 
 ![](media/e7ac834ba04aa2e8862995d2d33ce935.png)
 
-1\. GND, VCC, SDA e SCL della scheda 8x16 sono collegati a G (GND), + (VCC), A4 e A5 della scheda di espansione.
+1\. 8x16ボードのGND、VCC、SDA、SCLは、拡張ボードのG（GND）、+（VCC）、A4、A5に接続されています。
 
-2\. VCC, IN+, IN- e Gnd del modulo ventola sono collegati a 5V (V), 12 (S), 13 (S) e Gnd (G).
+2\. ファンモジュールのVCC、IN+、IN-、Gndは、5V（V）、12（S）、13（S）、Gnd（G）に接続されています。
 
-3\. Il filo marrone, il filo rosso e il filo arancione del servo sono collegati a Gnd (G), 5v (V) e D10.
+3\. サーボの茶色のワイヤー、赤色のワイヤー、オレンジ色のワイヤーは、Gnd（G）、5v（V）、D10に接続されています。
 
-4\. RXD, TXD, GND e VCC del modulo BT sono collegati a TX, RX, G (GND) e 5V (VCC). STATE e BRK non devono essere collegati.
+4\. BTモジュールのRXD、TXD、GND、VCCは、TX、RX、G（GND）、5V（VCC）に接続されています。STATEとBRKは接続する必要はありません。
 
-5\. I pin "G", "V" e A del sensore di fiamma sinistro sono collegati rispettivamente a G (GND), V (VCC) e A1; il sensore di fiamma destro è collegato a G (GND), V (VCC) e A2, rispettivamente.
+5\. 左側炎センサーのピン「G」、「V」、AはそれぞれG（GND）、V（VCC）、A1に接続されています。右側炎センサーはG（GND）、V（VCC）、A2にそれぞれ接続されています。
 
-6\. Le porte distali del sensore di rilevamento linea sono 11, 7 e 8.
+6\. ライントラッキングセンサーの遠端ポートは11、7、8です。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando un fallimento del caricamento.)
-<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non è possibile accelerare il veicolo tramite l'App.
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
+<span style="color: rgb(255, 76, 65);">**注意:**</span> Appを使用してカーを加速することはできません。
 
 ![](media/b1527b806741e28e8f2af5107db505fe.png)
 
 
-#### **(5)Risultato del Test:**
+#### **(5)テスト結果:**
 
-Prima di caricare il codice del programma, il modulo Bluetooth deve essere rimosso; altrimenti, il caricamento del codice fallirà.
+プログラムコードをアップロードする前に、Bluetoothモジュールを取り外す必要があります。そうしないと、コードのアップロードが失敗します。
 
-Dopo aver caricato il codice con successo, attivare i servizi di localizzazione sul dispositivo, quindi collegare il modulo Bluetooth.
+コードのアップロードが成功したら、デバイスの位置情報サービスをオンにして、Bluetoothモジュールを接続します。
 
-Una volta che il modulo Bluetooth è inserito e alimentato, e l'APP mobile è collegata con successo al Bluetooth, possiamo utilizzare l'APP mobile per controllare il robot cingolato.
+Bluetoothモジュールが接続されて電源が入り、モバイルAPPがBluetoothへの接続に成功すると、モバイルAPPを使用してタンクロボットを制御できます。
 
 ![](media/13656cfee75dc5acbeba18a90a084e159.jpg)

@@ -1,39 +1,39 @@
-### Progetto 7: Ricezione IR
+### プロジェクト7：IR受信
 
-#### **(1)Descrizione:**
+#### **(1)概要：**
 
 ![](./media/image-20250709133757050.png)
 
-Non c'è dubbio che il telecomando a infrarossi sia onnipresente nella vita quotidiana. Viene utilizzato per controllare vari elettrodomestici, come televisori, stereo, videoregistratori e ricevitori di segnale satellitare. Il controllo remoto a infrarossi è composto da un sistema di trasmissione e da un sistema di ricezione a infrarossi, ovvero un telecomando a infrarossi, un modulo ricevitore a infrarossi e un microcontrollore in grado di decodificare il segnale.
+赤外線リモコンは日常生活のあらゆる場所で使用されていることは間違いありません。テレビ、ステレオ、ビデオレコーダー、衛星信号受信機など、様々な家庭用電化製品の制御に使用されています。赤外線リモコンは赤外線送信システムと赤外線受信システムで構成されており、すなわち赤外線リモコン本体、赤外線受信モジュール、およびデコード可能なシングルチップマイコンで構成されています。
 
-Il segnale portante a infrarossi da 38K emesso dal telecomando viene codificato dal chip di codifica presente nel telecomando stesso. È composto da un codice pilota, un codice utente, il codice utente inverso, il codice dati e il codice dati inverso. L'intervallo di tempo degli impulsi viene utilizzato per distinguere se si tratta di un segnale 0 o 1, e la codifica è composta da questi segnali 0 e 1.
+リモコンから送信される38Kの赤外線キャリア信号は、リモコン内のエンコーディングチップによってエンコードされます。これはパイロットコード、ユーザーコード、ユーザー逆コード、データコード、およびデータ逆コードのセクションで構成されています。パルスの時間間隔を使用して0または1の信号を区別し、エンコーディングはこれらの0と1の信号で構成されています。
 
-Il codice utente dello stesso telecomando rimane invariato, mentre il codice dati consente di distinguere il tasto premuto.
+同じリモコンのユーザーコードは変わりませんが、データコードによってキーを区別できます。
 
-Quando viene premuto un tasto del telecomando, quest'ultimo invia un segnale portante a infrarossi. Quando il ricevitore IR riceve il segnale, il programma decodifica il segnale portante e determina quale tasto è stato premuto. Il microcontrollore decodifica il segnale 01 ricevuto, determinando così quale tasto è stato premuto sul telecomando.
+リモコンのボタンが押されると、リモコンは赤外線キャリア信号を送信します。IR受信機が信号を受信すると、プログラムはキャリア信号をデコードして、どのキーが押されたかを判断します。MCUは受信した01信号をデコードし、リモコンのどのキーが押されたかを判断します。
 
 ![](media/5ad0f889b39646ecb13664511479efc8.png)
 
-Il ricevitore a infrarossi che utilizziamo è un modulo ricevitore IR. È composto principalmente da una testa ricevitrice a infrarossi, che è un dispositivo che integra ricezione, amplificazione e demodulazione. Il suo IC interno ha completato la demodulazione e può realizzare la ricezione a infrarossi fino all'uscita, risultando compatibile con i segnali TTL. Inoltre, è adatto per il controllo remoto a infrarossi e la trasmissione di dati a infrarossi. Il modulo di ricezione a infrarossi realizzato con questo ricevitore ha solo tre pin: linea del segnale, VCC e GND. È molto comodo da collegare con Arduino e altri microcontrollori.
+使用している赤外線受信機は赤外線受信モジュールです。主に赤外線受信ヘッドで構成されており、受信、増幅、復調を統合したデバイスです。内部のICが復調を完了しており、赤外線受信から出力まで対応し、TTL信号と互換性があります。また、赤外線リモコンや赤外線データ転送に適しています。受信機で作られた赤外線受信モジュールはピンが3本のみで、信号線、VCC、GNDです。Arduinoやその他のマイコンとの通信が非常に便利です。
 
-#### **(2)Parametri:**
+#### **(2)パラメータ：**
 
-- Tensione di funzionamento: 3.3-5V（DC）
-- Interfaccia: 3PIN
-- Segnale di uscita: Segnale digitale
-- Angolo di ricezione: 90 gradi
-- Frequenza: 38khz
-- Distanza di ricezione: 10m
+- 動作電圧：3.3〜5V（DC）
+- インターフェース：3PIN
+- 出力信号：デジタル信号
+- 受信角度：90度
+- 周波数：38khz
+- 受信距離：10m
 
-Ricevitore a infrarossi integrato nella scheda di controllo motori:
+モータードライブボードに統合された赤外線受信機：
 
 ![](./media/image-20250709133832650.png)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span> Poiché il ricevitore IR è integrato nella scheda di espansione Keyestudio 8833 motor drive, non è necessario effettuare ulteriori collegamenti. I pin del ricevitore IR sulla scheda di espansione Keyestudio 8833 motor drive sono G (GND), V (VCC) e D3.
+<span style="color: rgb(255, 76, 65);">**注意：**</span> IR受信機はKeyestudio 8833モータードライブ拡張ボードに統合されているため、追加の配線は不要です。Keyestudio 8833モータードライブ拡張ボード上のIR受信機のピンはG（GND）、V（VCC）、D3です。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-È possibile anche trascinare i blocchi per modificare il codice, come mostrato di seguito
+ブロックをドラッグしてコードを編集することもできます。以下に示します。
 
 ![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -43,30 +43,30 @@ Ricevitore a infrarossi integrato nella scheda di controllo motori:
 
 ![](media/0aa28f86f26d94bdb4c951c994aa854f.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
 
 ![](media/90978855cddd94c161f9ed02f85b0674.png)
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果：**
 
-Carica il codice sulla scheda di sviluppo e imposta il baud rate a 9600. Prendi il telecomando, puntalo verso il sensore ricevitore a infrarossi e premi un tasto per inviare il segnale. Vedrai il valore del tasto corrispondente. Se il tasto viene tenuto premuto troppo a lungo, potrebbe facilmente apparire un carattere illeggibile "FFFFFFFF".
+コードを開発ボードにアップロードし、ボーレートを9600に設定します。リモコンを取り出し、赤外線受信センサーに向けて、ボタンを押して信号を送信します。対応するキー値が表示されます。キーを長押しすると、文字化けした「FFFFFFFF」が表示されやすくなります。
 
 ![](media/5c01c594a5a11511cf52466eb5f27e45.png)
 
-Di seguito abbiamo elencato il valore di ciascun tasto del telecomando Keyestudio, che puoi conservare come riferimento.
+以下にkeyestudioリモコンの各キー値を一覧にしました。参考用としてご活用ください。
 
 ![](media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-#### **(6)Pratica di Approfondimento:**
+#### **(6)応用練習：**
 
-Abbiamo appena decodificato i valori dei tasti del telecomando IR. Ora utilizziamolo per controllare l'accensione e lo spegnimento di un LED. È necessario collegare un modulo LED al pin D9, mentre la posizione del pin del ricevitore a infrarossi rimane invariata. Quando viene premuto il tasto OK sul telecomando, il LED collegato a D9 si accenderà, e quando il tasto OK viene premuto di nuovo, il LED si spegnerà.
+IRリモコンのキー値のデコードができました。次に、これを使用してLEDライトのオン・オフを制御してみましょう。LEDライトモジュールをD9ピンに接続する必要があります。一方、赤外線受信機のピン位置は変わりません。リモコンのOKボタンを押すと、D9に接続されたLEDが点灯し、OKボタンをもう一度押すと、LEDが消灯します。
 
 ![](media/e05da7ef9e7b6f63f414f2ca7e3f4ee3.png)
 
 
-È possibile anche trascinare i blocchi per modificare il codice, come mostrato di seguito
+ブロックをドラッグしてコードを編集することもできます。以下に示します。
 
 （1）![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -82,12 +82,12 @@ Abbiamo appena decodificato i valori dei tasti del telecomando IR. Ora utilizzia
 
 （7）![](media/d7be3fa06a1456d46472fffd61823c73.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+（<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。）
 
 ![](media/57149c79243ff22aa00ff2c54dd4f70b.png)
 
-Carica il codice sulla scheda di sviluppo e premi il tasto "OK" sul telecomando per accendere e spegnere il LED.
+コードを開発ボードにアップロードし、リモコンの「OK」キーを押してLEDのオン・オフを切り替えます。
 
 ![](./media/img-20240117092532.png)

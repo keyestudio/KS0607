@@ -1,32 +1,32 @@
-### Progetto 13: Carro Armato in Movimento in uno Spazio Limitato
+### プロジェクト13: 限られたスペース内で動くタンク
 
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Le funzioni di inseguimento tramite ultrasuoni e di evitamento degli ostacoli del robot smart car sono state introdotte nei progetti precedenti. Qui intendiamo combinare le conoscenze dei corsi precedenti per confinare il robot smart car in modo che si muova in un determinato spazio.
+スマートカーの超音波追従および障害物回避機能については、以前のプロジェクトで紹介しました。ここでは、以前のコースの知識を組み合わせて、スマートカーを一定のスペース内で動くように制限することを目的としています。
 
-Nell'esperimento, utilizziamo il sensore di rilevamento della linea per rilevare se c'è una linea nera intorno al robot smart car, e poi controlliamo la rotazione dei due motori in base ai risultati del rilevamento, in modo da bloccare il robot smart car all'interno di un cerchio tracciato con una linea nera.
+実験では、ライントラッキングセンサーを使用してスマートカーの周囲に黒線があるかどうかを検出し、その検出結果に応じて2つのモーターの回転を制御することで、黒線で描かれた円の中にスマートカーを閉じ込めます。
 
-La logica specifica del robot smart car con rilevamento della linea è mostrata nella tabella seguente:
+ライントラッキングスマートカーの具体的なロジックは、以下の表に示されています：
 
 ![](./media/image-20250709112523897.png)
 
-|                         Condizione                         |                         Movimento                          |
+|                         条件                         |                         動作                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| Se uno dei tre sensori di rilevamento della linea rileva linee nere | Vai indietro（imposta PWM a 150）Poi gira a sinistra（imposta PWM a 150） |
-|             Nessuno di essi rileva linee nere              |               Vai avanti（imposta PWM a 100）                |
+| 3つのライントラッキングセンサーのいずれかが黒線を検出した場合 | 後退する（PWMを150に設定）その後左折する（PWMを150に設定） |
+|             いずれも黒線を検出しない場合              |               前進する（PWMを100に設定）                |
 
-#### **(2)Diagramma di flusso:**
+#### **(2)フローチャート:**
 
 ![](media/image-20230427092708208.png)
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図:**
 
 ![](media/e5c3763e764359ec8be92102b6d2a7f9.png)
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero esserci conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -36,21 +36,21 @@ La logica specifica del robot smart car con rilevamento della linea è mostrata 
   http://www.keyestudio.com
 */
 
-//Collegamento del sensore di rilevamento della linea
-#define L_pin  11  //sinistra
-#define M_pin  7  //centro
-#define R_pin  8  //destra
+// ラインセンサーの配線
+#define L_pin  11  // 左
+#define M_pin  7  // 中央
+#define R_pin  8  // 右
 
-#define ML_Ctrl 4  //Definisce il pin di controllo della direzione del motore sinistro
-#define ML_PWM 6   //Definisce il pin di controllo PWM del motore sinistro
-#define MR_Ctrl 2  //Definisce il pin di controllo della direzione del motore destro
-#define MR_PWM 5   //Definisce il pin di controllo PWM del motore destro
+#define ML_Ctrl 4  // 左モーターの方向制御ピンを定義
+#define ML_PWM 6   // 左モーターのPWM制御ピンを定義
+#define MR_Ctrl 2  // 右モーターの方向制御ピンを定義
+#define MR_PWM 5   // 右モーターのPWM制御ピンを定義
 int L_val, M_val, R_val;
 
 void setup()
 {
-  Serial.begin(9600); //Imposta il baud rate a 9600
-  pinMode(L_pin, INPUT); //Imposta tutti i pin del sensore di rilevamento della linea come modalità input
+  Serial.begin(9600); // ボーレートを9600に設定
+  pinMode(L_pin, INPUT); // ラインセンサーの全ピンを入力モードに設定
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
   pinMode(ML_Ctrl, OUTPUT);
@@ -61,14 +61,14 @@ void setup()
 
 void loop () 
 {
-  L_val = digitalRead(L_pin); //Leggi il valore del sensore sinistro
-  M_val = digitalRead(M_pin); //Leggi il valore del sensore centrale
-  R_val = digitalRead(R_pin); //Leggi il valore del sensore destro
-  if ( L_val == 0 && M_val == 0 && R_val == 0 )  //quando le linee nere non vengono rilevate, vai avanti
+  L_val = digitalRead(L_pin); // 左センサーの値を読み取る
+  M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
+  R_val = digitalRead(R_pin); // 右センサーの値を読み取る
+  if ( L_val == 0 && M_val == 0 && R_val == 0 )  // 黒線が検出されない場合、前進する
   {
     Car_front();
   }
-  else  //le linee nere vengono rilevate, vai indietro poi gira a sinistra
+  else  // 黒線が検出された場合、後退してから左折する
   {
     Car_back();
     delay(700);
@@ -118,8 +118,8 @@ void Car_Stop()
 }
 ```
 
-#### **(5)Risultati del Test:**
+#### **(5)テスト結果:**
 
-Dopo aver caricato con successo il codice di test e averlo alimentato, il robot smart car si muove in uno spazio confinato, all'interno del cerchio tracciato con la linea nera.
+テストコードのアップロードが成功し、電源を入れると、スマートカーは黒線で描かれた円の中の限られたスペース内で動きます。
 
 ![](./media/img-20240117090340.png)

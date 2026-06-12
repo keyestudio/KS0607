@@ -1,36 +1,36 @@
-### Progetto 21: Ventilatore
+### プロジェクト21：ファン
 
-#### **(1)Descrizione：**
+#### **(1)概要：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-Questo modulo ventilatore utilizza un chip di controllo motore HR1124S, un chip driver H-bridge a canale singolo contenente transistor di potenza PMOS e NMOS a bassa resistenza di conduzione. La bassa resistenza di conduzione può ridurre il consumo energetico, contribuendo al funzionamento sicuro del chip per un tempo più lungo.
+このファンモジュールはHR1124Sモーター制御チップを使用しており、低導電抵抗のPMOSおよびNMOSパワートランジスタを含む単チャンネルHブリッジドライバチップです。低導電抵抗により消費電力を抑えることができ、チップを長時間安全に動作させることができます。
 
-Inoltre, la sua bassa corrente di standby e la bassa corrente di lavoro statica lo rendono adatto ai giocattoli. Possiamo controllare la direzione di rotazione e la velocità del ventilatore inviando segnali IN+ e IN- e segnali PWM.
+また、低スタンバイ電流および低静的動作電流により、玩具への応用に適しています。IN+およびIN-信号とPWM信号を出力することで、ファンの回転方向と速度を制御できます。
 
-#### **(2)Specifiche:**
+#### **(2)仕様：**
 
-Tensione di lavoro: 5V
+動作電圧：5V
 
-Corrente: 200MA
+電流：200MA
 
-Potenza massima: 2W
+最大電力：2W
 
-Temperatura di funzionamento: da -10 gradi Celsius a +50 gradi Celsius
+動作温度：-10℃～+50℃
 
-Dimensioni: 47.6MM \*23.8MM
+サイズ：47.6MM \*23.8MM
 
-#### **(3)Schema di collegamento:**
+#### **(3)接続図：**
 
-Il modulo ventilatore necessita di essere alimentato con corrente elevata; pertanto, installiamo un portabatterie.
+ファンモジュールは大電流による駆動が必要なため、バッテリーホルダーを取り付けます。
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-I pin GND, VCC, IN+ e IN- del modulo ventilatore sono collegati ai pin G, V, D12 e D13 dello shield.
+ファンモジュールのGND、VCC、IN+、IN-ピンは、シールドのG、V、D12、D13ピンに接続されます。
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -45,40 +45,40 @@ int INB = 13;
 
 void setup()
 {
-    pinMode(INA, OUTPUT);//Imposta la porta digitale INA come uscita
-    pinMode(INB, OUTPUT);//Imposta la porta digitale INB come uscita
+    pinMode(INA, OUTPUT);//デジタルポートINAを出力に設定
+    pinMode(INB, OUTPUT);//デジタルポートINBを出力に設定
 }
 
 void loop() 
 {
-    //Imposta il ventilatore per ruotare in senso antiorario per 3s
+    //ファンを3秒間反時計回りに回転させる
     digitalWrite(INA, LOW);
     digitalWrite(INB, HIGH);
     delay(3000);
-    //Imposta il ventilatore per fermarsi per 1s
+    //ファンを1秒間停止させる
     digitalWrite(INA, LOW);
     digitalWrite(INB, LOW);
     delay(1000);
-    //Imposta il ventilatore per ruotare in senso orario per 3s
+    //ファンを3秒間時計回りに回転させる
     digitalWrite(INA, HIGH);
     digitalWrite(INB, LOW);
     delay(3000);
 }
 ```
 
-#### **(5)Risultati del Test：**
+#### **(5)テスト結果：**
 
-Carica il codice, collega i componenti e inserisci l'alimentazione. Il piccolo ventilatore girerà in senso antiorario per 3000ms, si fermerà per 1000ms e girerà in senso orario per 3000ms.
+コードをアップロードし、部品を配線して電源を接続します。小型ファンは3000ms間反時計回りに回転し、1000ms間停止し、300ms間時計回りに回転します。
 
 ![](./media/img-20240117085032.png)
 
-#### **(6)Pratica Avanzata:**
+#### **(6)応用練習：**
 
-Abbiamo compreso il principio di funzionamento del sensore di fiamma. Ora, collegare un sensore di fiamma nel circuito, come mostrato di seguito. Quindi controllare il ventilatore per spegnere il fuoco con il sensore di fiamma.
+炎センサーの動作原理を理解しました。次に、以下に示すように炎センサーを回路に接続し、炎センサーを使用してファンで火を消す制御を行います。
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anch'esso la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, causando il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -90,34 +90,34 @@ http://www.keyestudio.com
 
 int INA = 12;
 int INB = 13;
-int flame = A1; //Definisci il pin della fiamma come pin analogico A1
-int val = 0; //Definisci variabili digitali
+int flame = A1; //炎ピンをアナログピンA1として定義
+int val = 0; //デジタル変数を定義
 
 void setup() 
 {
-    pinMode(INA, OUTPUT);//Imposta la porta digitale INA come uscita
-    pinMode(INB, OUTPUT);//Imposta la porta digitale INB come uscita
-    pinMode(flame, INPUT); //Definisci la fiamma come sorgente di ingresso
+    pinMode(INA, OUTPUT);//デジタルポートINAを出力に設定
+    pinMode(INB, OUTPUT);//デジタルポートINBを出力に設定
+    pinMode(flame, INPUT); //炎センサーを入力として定義
 }
 
 void loop() 
 {
-    val = analogRead(flame); //Leggi il valore analogico del sensore di fiamma
-    if (val <= 700)  //Quando il valore analogico≤700, il ventilatore è acceso
+    val = analogRead(flame); //炎センサーのアナログ値を読み取る
+    if (val <= 700)  //アナログ値が700以下のとき、ファンをオンにする
     {
-        //Accendi il ventilatore quando viene rilevata una fiamma
+        //炎が検出されたときにファンをオンにする
         digitalWrite(INA, LOW);
         digitalWrite(INB, HIGH);
     } 
     else 
     {
-        //Altrimenti si ferma
+        //それ以外の場合は動作を停止する
         digitalWrite(INA, LOW);
         digitalWrite(INB, LOW);
     }
 }
 ```
 
-Dopo aver caricato il codice, accendi l'interruttore di alimentazione dello shield del driver motore; potrai accendere il ventilatore quando viene rilevata una fiamma dal sensore di fiamma sinistro del robot.
+コードをアップロードした後、モータードライブシールドの電源スイッチをオンにすると、ロボットの左側の炎センサーが炎を検知したときにファンをオンにすることができます。
 
 ![](./media/image-20250709115926832.png)

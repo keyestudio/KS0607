@@ -1,44 +1,44 @@
-### Progetto 1: LED Lampeggiante
+### プロジェクト 1: LED点滅
 
-#### **(1)Descrizione:**
+#### **(1)概要:**
 
 ![](media/64b0b431d58473408ac46b39d2dc2ad0.jpeg)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-Per i principianti e gli appassionati, il LED Lampeggiante è un programma fondamentale. Il LED, abbreviazione di diodi emettitori di luce, è composto da composti chimici Ga, As, P, N e altri. Il LED può lampeggiare in diversi colori modificando il tempo di ritardo nel codice di test. Quando è in funzione, alimentare GND e VCC. Il LED si accenderà se il terminale S è a livello alto; in caso contrario, si spegnerà.
+初心者や愛好家にとって、LED点滅は基本的なプログラムです。LEDは発光ダイオードの略称で、Ga、As、P、Nなどの化学化合物で構成されています。テストコードのディレイ時間を変更することで、LEDはさまざまな色で点滅することができます。制御時は、GNDとVCCに電源を供給します。S端がハイレベルの場合、LEDが点灯し、ローレベルの場合は消灯します。
 
-#### **(2)Parametri:**
+#### **(2)パラメータ:**
 
 ![](./media/image-20250709104606457.png)
 
-- Interfaccia di controllo: porta digitale
-- Tensione di lavoro: DC 3.3-5V
-- Passo pin: 2.54mm
-- Colore display LED: giallo
+- 制御インターフェース: デジタルポート
+- 動作電圧: DC 3.3-5V
+- ピン間隔: 2.54mm
+- LED表示色: 黄色
 
-#### **(3)Componenti Necessari:**
+#### **(3)必要なコンポーネント:**
 
 ![](media/img-20240117081416.png)
 
 
-#### **(4)Scheda di espansione driver motore 8833:**
+#### **(4)8833モータードライバー拡張ボード:**
 
-La scheda di espansione driver motore Keyestudio 8833 è compatibile con la scheda di sviluppo Arduino UNO. Basta installarla sulla scheda di sviluppo durante l'utilizzo.
+Keyestudio 8833モータードライバー拡張ボードは、Arduino UNO開発ボードと互換性があります。使用する際は、開発ボードの上に重ねて装着してください。
 
 ![](./media/image-20250709104749140.png)
 
-#### **(5)Schema di Collegamento:**
+#### **(5)接続図:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](media/d68e6475a7c9ed55bb057b75d1b11689.png)
 
-<span style="color: rgb(255, 76, 65);">**NOTA:**</span> Il LED è collegato alla porta D9. Ricordarsi di installare i cappucci jumper sullo shield.
+<span style="color: rgb(255, 76, 65);">**注意:**</span> LEDはD9ポートに接続されています。シールドにジャンパーキャップを取り付けることを忘れないでください。
 
-#### **(6)Codice di Test:**
+#### **(6)テストコード:**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -53,39 +53,39 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Definisce il pin del LED da collegare alla porta digitale 9
+int LED = 9; //LEDのピンをデジタルポート9に定義する
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Inizializza il pin del LED in modalità output
+	pinMode(LED, OUTPUT); //LEDピンを出力モードに初期化する
 }
 
-void loop() // ciclo infinito
+void loop() //無限ループ
 {
-	digitalWrite(LED, HIGH); // Emette livello alto e accende il LED
-	delay(1000); // Attendi 1s
-	digitalWrite(LED, LOW); // Emette livello basso e spegne il LED
-	delay(1000); // Attendi 1s
+	digitalWrite(LED, HIGH); //ハイレベルを出力し、LEDを点灯する
+	delay(1000); //1秒待つ
+	digitalWrite(LED, LOW); //ローレベルを出力し、LEDを消灯する
+	delay(1000); //1秒待つ
 }
 ```
 
-#### **(7)Risultati del Test:**
+#### **(7)テスト結果:**
 
-Carica il programma, il LED lampeggia con un intervallo di 1s.
+プログラムをアップロードすると、LEDが1秒間隔で点滅します。
 
-#### **(8)Spiegazione del Codice:**
+#### **(8)コードの説明:**
 
-**pinMode(LED，OUTPUT) -** Questa funzione può indicare che il pin è INPUT o OUTPUT
+**pinMode(LED，OUTPUT) -** この関数はピンがINPUTかOUTPUTかを指定します。
 
-**digitalWrite(LED，HIGH) -** Quando il pin è OUTPUT, possiamo impostarlo su HIGH (output 5V) o LOW (output 0V)
+**digitalWrite(LED，HIGH) -** ピンがOUTPUTの場合、HIGH（5V出力）またはLOW（0V出力）に設定できます。
 
-#### **(9)Pratica di Estensione:**
+#### **(9)応用練習:**
 
-Abbiamo fatto lampeggiare il LED con successo. Ora, osserviamo cosa succederà al LED se modifichiamo i pin e il tempo di ritardo.
+LEDの点滅に成功しました。次に、ピンとディレイ時間を変更するとLEDがどうなるか観察してみましょう。
 
-**Codice di Test**
+**テストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードに失敗する可能性があります。)
 
 ```C
 /*
@@ -100,21 +100,21 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; // Definisce il pin del LED come 9
+int LED = 9; //LEDのピンを9として定義する
 
 void setup()
 {
-	pinMode(LED, OUTPUT); // Imposta il pin del LED su OUTPUT
+	pinMode(LED, OUTPUT); //LEDのピンをOUTPUTに設定する
 }
 
-void loop() // Ciclo infinito
+void loop() //無限ループ
 {
-    digitalWrite(LED, HIGH); // emette livelli alti, accende il LED
-	delay(100); // Attendi 0.1s
-	digitalWrite(LED, LOW); // LED emette livelli bassi, spegne il LED
-	delay(100); // Attendi 0.1s
+    digitalWrite(LED, HIGH); //ハイレベルを出力し、LEDを点灯する
+	delay(100); //0.1秒待つ
+	digitalWrite(LED, LOW); //ローレベルを出力し、LEDを消灯する
+	delay(100); //0.1秒待つ
 
 }
 ```
 
-Il risultato del test mostra che il LED lampeggia più velocemente. Pertanto, possiamo concludere che i pin e il tempo di ritardo influenzano la frequenza di lampeggio.
+テスト結果より、LEDがより速く点滅することが確認できます。したがって、ピンとディレイ時間が点滅の周波数に影響を与えるという結論を導くことができます。

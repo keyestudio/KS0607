@@ -1,53 +1,54 @@
-### Progetto 20: Sensore di Fiamma
+### プロジェクト 20: 炎センサー
 
 ![](media/7cf8c051f489b06119c262cd059c23c5.jpeg)
 
-#### **(1)Descrizione：**
+#### **(1)説明：**
 
-Il sensore di fiamma utilizza un tubo ricevitore IR per rilevare le fiamme. Converte la luminosità della fiamma in segnali di livello alto e basso e li invia al processore centrale per la corrispondente elaborazione del programma. Il valore di tensione della porta analogica varia a seconda che ci sia una fiamma nelle vicinanze o non ce ne sia affatto.
+炎センサーはIR受光管を使用して炎を検出します。炎の明るさを高低レベルの信号に変換し、中央処理装置に入力して対応するプログラム処理を行います。アナログポートの電圧値は、近くに炎があるかどうかによって異なります。
 
-Se non c'è fiamma, la porta analogica legge circa 0,3V; quando c'è una fiamma, la porta analogica legge circa 1,0V. Più la fiamma è vicina, più alto è il valore di tensione. Può essere utilizzato per rilevare una fonte di fuoco o per costruire un robot intelligente.
+炎がない場合、アナログポートは約0.3Vを読み取ります。炎がある場合、アナログポートは約1.0Vを読み取ります。炎が近いほど、電圧値は高くなります。火源の検出やスマートロボットの構築に使用できます。
 
-Si noti che la sonda del sensore di fiamma può sopportare solo temperature comprese tra -25℃ e 85℃.
+炎センサーのプローブは-25℃から85℃の温度範囲しか耐えられないことに注意してください。
 
-Durante l'uso, assicurarsi di mantenere il sensore di fiamma a una distanza di sicurezza dal fuoco per evitare di danneggiarlo.
+使用中は、炎センサーを火から安全な距離に保ち、損傷を避けてください。
 
-#### **(2)Parametri：**
+#### **(2)パラメータ：**
 
 ![](media/e2c77a94067ccd3e634fb3674c02b80f.png)
 
-- Tensione di funzionamento: 3,3V-5V (DC)
+- 動作電圧：3.3V-5V（DC）
 
-- Corrente: 100mA
+- 電流：100mA
 
-- Potenza massima: 0,5W
+- 最大電力：0.5W
 
-- Temperatura di lavoro: da -10°C a +50 gradi Celsius
+- 動作温度：-10°Cから+50°C
 
-- Dimensioni del sensore: 31,6mm x 23,7mm
+- センサーサイズ：31.6mmx23.7mm
 
-- Interfaccia: interfaccia da 4pin a 3PIN
+- インターフェース：4pinから3PINインターフェース
 
-- Segnale di uscita: segnali analogici A0, A1
+- 出力信号：アナログ信号 A0、A1
 
 
 
-#### **(3)Schema di Collegamento:**
+#### **(3)接続図：**
 
 ![](media/10f5f2256c61c54bf7f9a7a0c52375f9.png)
 
-I sensori di fiamma sono collegati ad A1 e A2.
+炎センサーはA1とA2に接続されています。
 
-Quando rimuoviamo i sensori a ultrasuoni e le fotoresistenze, quindi aggiungiamo i sensori di fiamma e i moduli ventola, si crea il robot antincendio.
+超音波センサーと光電抵抗を取り外し、炎センサーとファンモジュールを追加すると、
+消火ロボットが完成します。
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento.
-2）**Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.**
+<span style="color: rgb(255, 76, 65);">**注意：**</span>
+1）この実験では火源を使用します。火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。
+2）**炎センサーは耐火性ではありません。直接炎で燃やさないでください。**
 
 
-#### **(4)Codice di Test:**
+#### **(4)テストコード：**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -62,53 +63,53 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; // Definisce il pin della fiamma come pin analogico A1
-int val = 0; // Definisce le variabili digitali
+int flame = A1; //炎ピンをアナログピンA1として定義
+int val = 0; //デジタル変数を定義
 
 void setup() 
 {
-	pinMode(flame, INPUT); // Definisce il buzzer come sorgente di input
-    Serial.begin(9600); // Imposta la velocità di trasmissione a 9600
+	pinMode(flame, INPUT); //ブザーを入力ソースとして定義
+    Serial.begin(9600); //ボーレートを9600に設定
 }
 
 void loop() 
 {
-	val = analogRead(flame); // Legge il valore analogico del sensore di fiamma
-	Serial.println(val); // Stampa e visualizza il valore analogico
-	delay(100); // Ritardo di 100ms
+	val = analogRead(flame); //炎センサーのアナログ値を読み取る
+	Serial.println(val);//アナログ値を出力して印刷する
+	delay(100); //100msの遅延
 }
 ```
 
-#### **(5)Risultato del Test：**
+#### **(5)テスト結果：**
 
-Collegare i componenti, caricare il codice, aprire il monitor seriale e impostare la velocità di trasmissione a 9600.
+部品を接続し、コードを書き込み、シリアルモニターを開いてボーレートを9600に設定します。
 
-È possibile visualizzare il valore di simulazione del sensore di fiamma.
+炎センサーのシミュレーション値を確認できます。
 
-Più la fiamma è vicina, minore è il valore di simulazione.
+炎が近いほど、シミュレーション値は小さくなります。
 
-Regolare il potenziometro sul modulo per mantenere D1 al punto critico. Quando il sensore non rileva fiamma, D1 sarà spento, ma se il sensore rileva fiamma, D1 si accenderà.
+モジュールのポテンショメーターを調整して、D1を臨界点に維持します。センサーが炎を検出しない場合、D1はオフになりますが、センサーが炎を検出した場合、D1はオンになります。
 
 ![](./media/img-20240117085629.png)
 
 ![](media/05db06b3e205dfca63c2ba3aa7ff528e.png)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-Si prega di tenerlo lontano da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.
+<span style="color: rgb(255, 76, 65);">**注意：**</span>
+火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。直接炎で燃やさないでください。
 
-#### **(6)Pratica Estesa:**
+#### **(6)応用練習：**
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-1）Questo esperimento richiede l'uso di una fonte di fuoco. Si prega di tenerla lontana da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento.
-2）Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.
+<span style="color: rgb(255, 76, 65);">**注意：**</span>
+1）この実験では火源を使用します。火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。
+2）炎センサーは耐火性ではありません。直接炎で燃やさないでください。
 
-Successivamente, collegare un LED al pin 9 e possiamo controllarlo tramite un sensore di fiamma, come mostrato di seguito;
+次に、LEDをピン9に接続し、炎センサーで制御します。以下のとおりです；
 
 ![](media/814c315d3bb44278b476a754d3681227.png)
 
-**Codice di Test**
+**テストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, poiché il caricamento del codice utilizza anche la comunicazione seriale e potrebbero verificarsi conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意：**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ```C
 /*
@@ -123,38 +124,38 @@ http://www.keyestudio.com
 
 */
 
-int flame = A1; // Definisce il pin della fiamma come pin analogico A1
-int LED = 9; // Definisce il LED come porta digitale 9
-int val = 0; // Definisce le variabili digitali
+int flame = A1; //炎ピンをアナログピンA1として定義
+int LED = 9; //LEDをデジタルポート9として定義
+int val = 0; //デジタル変数を定義
 
 void setup() 
 {
-    pinMode(flame, INPUT); // Definisce la fiamma come sorgente di input
-    pinMode(LED, OUTPUT); // Imposta il LED in modalità output
-    Serial.begin(9600); // Imposta la velocità di trasmissione a 9600
+    pinMode(flame, INPUT); //炎を入力ソースとして定義
+    pinMode(LED, OUTPUT); //LEDを出力モードに設定
+    Serial.begin(9600); //ボーレートを9600に設定
 }
 
 void loop() 
 {
-    val = analogRead(flame); // Legge il valore analogico del sensore di fiamma
-    Serial.println(val); // Stampa e visualizza il valore analogico
-    if (val < 300)  // Quando il valore analogico è inferiore a 300, il LED si accende
+    val = analogRead(flame); //炎センサーのアナログ値を読み取る
+    Serial.println(val);//アナログ値を出力して印刷する
+    if (val < 300)  //アナログ値が300未満の場合、LEDがオンになる
     {
-    	digitalWrite(LED, HIGH); // Il LED si accende
+    	digitalWrite(LED, HIGH); //LEDをオンにする
     } 
     else 
     {
-    	digitalWrite(LED, LOW); // Il LED si spegne
+    	digitalWrite(LED, LOW); //LEDをオフにする
     }
-    delay(50); // Ritardo di 50ms
+    delay(50); //50msの遅延
 }
 ```
 
-#### **(8)Risultati del Test：**
+#### **(8)テスト結果：**
 
-È possibile avvicinare la fiamma di un accendino al sensore di fiamma sinistro. Quando il sensore di fiamma rileva una fiamma, il modulo LED si accenderà come allarme.
+ライターの炎を左の炎センサーに近づけることができます。炎センサーが炎を検出すると、LEDモジュールがアラームとして点灯します。
 
 ![](./media/img-20240117085131.png)
 
-<span style="color: rgb(255, 76, 65);">**Nota:**</span>
-Si prega di tenerlo lontano da oggetti infiammabili per prevenire incendi. I bambini devono effettuare l'esperimento sotto la supervisione di un adulto. Se non si è in grado di confermare la propria sicurezza, si prega di abbandonare l'esperimento. Il sensore di fiamma non è ignifugo, non bruciarlo direttamente con una fiamma.
+<span style="color: rgb(255, 76, 65);">**注意：**</span>
+火災を防ぐため、可燃物から遠ざけてください。子供は大人の監督のもとで実験を行ってください。安全を確認できない場合は、実験を中止してください。炎センサーは耐火性ではありません。直接炎で燃やさないでください。

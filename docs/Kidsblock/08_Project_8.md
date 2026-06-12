@@ -1,62 +1,62 @@
-### Progetto 8: Controllo e Velocità del Motore
+### プロジェクト 8: モーター駆動と速度制御
 
-#### **(1)Descrizione:**
+#### **(1)説明:**
 
-Esistono molti modi per pilotare i motori. La nostra auto intelligente utilizza la soluzione più comune chiamata L298P. L298P, prodotto da STMicroelectronics, è un eccellente chip di pilotaggio appositamente progettato per guidare motori ad alta potenza. Può pilotare direttamente motori DC, motori a due e quattro fasi con una corrente di pilotaggio fino a 2A. Il terminale di uscita del motore adotta 8 diodi Schottky ad alta velocità come protezione. Abbiamo progettato una scheda di espansione basata sul circuito L298P, il cui design a impilamento può essere collegato direttamente alla scheda UNO R3 riducendo le difficoltà tecniche per gli utenti nell'uso e nel pilotaggio del motore.
+モーターを駆動する方法は多数あります。このスマートカーでは、L298Pと呼ばれる最も一般的なソリューションを使用しています。STマイクロエレクトロニクス社製のL298Pは、高出力モーターを駆動するために特別に設計された優れた駆動チップです。DCモーター、2相および4相モーターを直接駆動でき、駆動電流は2Aに達します。また、モーターの出力端子には保護用として8個の高速ショットキーダイオードが採用されています。L298P回路をベースにした拡張ボードを設計しており、積層設計によりUNO R3ボードに直接差し込んで使用できるため、ユーザーがモーターを使用・駆動する際の技術的な難しさを軽減しています。
 
-Impila la scheda di espansione sulla scheda, alimenta la BAT, porta il selettore DIP sull'estremità ON e alimenta contemporaneamente la scheda di espansione e la scheda UNO R3 tramite alimentazione esterna. Per facilitare il cablaggio, la scheda di espansione è dotata di un'interfaccia anti-inversione (PH2.0 -2P -3P -4P -5P) e quindi può essere collegata direttamente con motori, alimentatori e sensori/moduli. L'interfaccia Bluetooth della scheda di espansione del driver è completamente compatibile con il modulo Bluetooth Keyestudio HM-10. Pertanto, dobbiamo solo inserire il modulo Bluetooth HM-10 nell'interfaccia corrispondente durante la connessione. Allo stesso tempo, la scheda di espansione del driver utilizza anche header pin da 2,54 mm per estendere alcune porte digitali e analogiche disponibili, così da poter continuare ad aggiungere altri sensori ed effettuare esperimenti di espansione.
+拡張ボードをボードに重ね、BATに電源を供給し、DIPスイッチをON端に切り替えると、外部電源から拡張ボードとUNO R3ボードに同時に電力が供給されます。配線を容易にするため、拡張ボードには逆接続防止インターフェース（PH2.0 -2P -3P -4P -5P）が装備されており、モーター、電源、センサー/モジュールを直接接続できます。ドライブ拡張ボードのBluetoothインターフェースは、Keyestudio HM-10 Bluetoothモジュールと完全に互換性があります。したがって、接続時にHM-10 Bluetoothモジュールを対応するインターフェースに挿入するだけで済みます。同時に、ドライブ拡張ボードは2.54ピンヘッダーを使用して、使用可能なデジタルポートとアナログポートを一部拡張しており、他のセンサーを追加して拡張実験を続けることができます。
 
-La scheda di espansione può essere collegata a 4 motori DC. Nella modalità di connessione con jumper cap predefinita, i motori delle interfacce A e A1, B e B1 sono collegati in parallelo e il loro schema di movimento è lo stesso. 8 jumper cap possono essere utilizzati per controllare il senso di rotazione delle 4 interfacce motore. Ad esempio, quando i due jumper cap davanti all'interfaccia del motore A vengono cambiati da una connessione orizzontale a una connessione verticale, il senso di rotazione del motore A diventa opposto a quello originale.
+拡張ボードには4つのDCモーターを接続できます。デフォルトのジャンパーキャップ接続モードでは、AとA1、BとB1インターフェースのモーターが並列接続され、動作パターンは同じになります。8個のジャンパーキャップを使用して、4つのモーターインターフェースの回転方向を制御できます。例えば、モーターAインターフェース前の2つのジャンパーキャップを水平接続から垂直接続に変更すると、モーターAの回転方向は元の方向と反対になります。
 
 ![](media/6c3731f639e113c8f32fe1829f239898.png)
 
 ![](media/62ee9578858ecc8e27b824af65fb22bb.png)
 
-#### **(2)Parametri:**
+#### **(2)パラメーター:**
 
--   Tensione di ingresso della parte logica: DC 5V
+-   ロジック部入力電圧: DC 5V
 
--   Tensione di ingresso della parte di pilotaggio: DC 7-12V
+-   駆動部入力電圧: DC 7-12V
 
--   Corrente di funzionamento della parte logica: ≤36mA
+-   ロジック部動作電流: ≤36mA
 
--   Corrente di funzionamento della parte di pilotaggio: ≤ 2A
+-   駆動部動作電流: ≤ 2A
 
--   Potenza massima di dissipazione: 25W (T=75℃)
+-   最大消費電力: 25W (T=75℃)
 
--   Livello del segnale di controllo in ingresso:
+-   制御信号入力レベル:
 
-    Livello alto: 2.3V ≤ Vin ≤ 5V
+    ハイレベル: 2.3V ≤ Vin ≤ 5V
 
-    Livello basso: 0V ≤ Vin ≤ 1.5V
+    ローレベル: 0V ≤ Vin ≤ 1.5V
 
--   Temperatura di funzionamento: -25℃～＋130℃
+-   動作温度: -25℃～＋130℃
 
-#### **(3)Guida il robot a muoversi:**
+#### **(3)ロボットを動かす:**
 
-Il pin di direzione del motore A è D2, il pin di controllo della velocità è D5; il pin di direzione del motore B è D4 e il pin di controllo della velocità è D6.
+Aモーターの方向ピンはD2、速度制御ピンはD5です。Bモーターの方向ピンはD4、速度制御ピンはD6です。
 
-In base alla tabella seguente, possiamo sapere come controllare il movimento del robot controllando la rotazione di due motori tramite le porte digitali e le porte PWM. Il valore PWM è compreso nell'intervallo 0-255. Maggiore è il valore, più velocemente ruota il motore.
+以下の表から、デジタルポートとPWMポートを通じて2つのモーターの回転を制御することで、ロボットの動きを制御する方法がわかります。PWM値の範囲は0〜255で、値が大きいほどモーターの回転が速くなります。
 
-|   Funzione   |  D4  | D6（PWM） | Motore (sinistra) B |  D2  | D5（PWM） | Motore (destra) A |
-| :----------: | :--: | :-------: | :-----------------: | :--: | :-------: | :---------------: |
-| Avanza | HIGH |     0     |   Ruota a sinistra   | HIGH |     0     |   Ruota a sinistra   |
-|   Indietreggia    | LOW  |    255    |  Ruota a destra   | LOW  |    255    |  Ruota a destra   |
-| Gira a sinistra  | LOW  |    255    |  Ruota a destra   | HIGH |    100    |   Ruota a sinistra   |
-| Gira a destra | HIGH |    100    |   Ruota a sinistra   | LOW  |    255    |  Ruota a destra   |
-|     Stop     | LOW  |     0     |      Stop       | LOW  |     0     |      Stop       |
+|   機能   |  D4  | D6（PWM） | モーター（左）B |  D2  | D5（PWM） | モーター（右）A |
+| :------: | :--: | :-------: | :-------------: | :--: | :-------: | :-------------: |
+| 前進     | HIGH |     0     |   左回転        | HIGH |     0     |   左回転        |
+| 後退     | LOW  |    255    |  右回転         | LOW  |    255    |  右回転         |
+| 左折     | LOW  |    255    |  右回転         | HIGH |    100    |   左回転        |
+| 右折     | HIGH |    100    |   左回転        | LOW  |    255    |  右回転         |
+| 停止     | LOW  |     0     |      停止       | LOW  |     0     |      停止       |
 
-#### **(4)Schema di collegamento:**
+#### **(4)接続図:**
 
 ![](./media/image-20250709134029403.png)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span>
+<span style="color: rgb(255, 76, 65);">注意:</span>
 
-Il connettore a 4 pin è contrassegnato con A, A1, B1 e B. Il motore posteriore destro è collegato a B della scheda 8833 e quello anteriore sinistro è collegato alla porta A.
+4ピンコネクターにはA、A1、B1、Bの表記があります。右後方のモーターは8833ボードのBに接続し、左前方のモーターはAポートに接続します。
 
-#### **(5)Codice di Test:**
+#### **(5)テストコード:**
 
-Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di seguito.
+以下のようにブロックをドラッグしてコードを編集することもできます。
 
 （1）![](media/7cbc4d14c2e2dac956f2e9f145f01f31.png)
 
@@ -66,17 +66,17 @@ Puoi anche trascinare i blocchi per modificare il tuo codice, come mostrato di s
 
 （4）![](media/b7215c8a4997a188947e80fdee1a8cd9.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
-(<span style="color: rgb(255, 76, 65);">**Nota:**</span> Non collegare il modulo Bluetooth prima di caricare il codice, perché il caricamento del codice utilizza anche la comunicazione seriale, e potrebbero esserci conflitti con la comunicazione seriale Bluetooth, che possono causare il fallimento del caricamento.)
+(<span style="color: rgb(255, 76, 65);">**注意:**</span> コードをアップロードする前にBluetoothモジュールを接続しないでください。コードのアップロードにもシリアル通信を使用するため、Bluetoothシリアル通信と競合が発生し、アップロードが失敗する可能性があります。)
 
 ![](media/332229f3dc01a38de898367f52531b28.png)
 
 
-#### **(6)Risultati del Test:**
+#### **(6)テスト結果:**
 
-Dopo aver cablato secondo lo schema, caricato il codice di test e alimentato il tutto.
+図に従って配線し、テストコードをアップロードして電源を入れます。
 
 ![](./media/img-20240117092625.png)
 
-l'auto intelligente avanza per 2s, indietreggia per 2s, gira a sinistra per 2s, gira a destra per 2s e si ferma per 2s.
+スマートカーは前進2秒、後退2秒、左折2秒、右折2秒、停止2秒の動作を行います。
