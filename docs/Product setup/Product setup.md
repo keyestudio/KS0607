@@ -1,10 +1,10 @@
-# 2. Product Installation
+# 2. Produktinstallation
 
-<span style="color: rgb(255, 76, 65);">**Caution**</span>: Set the initial angle of the servo Peel thin films off boards before installing this robot .
+<span style="color: rgb(255, 76, 65);">**Vorsicht**</span>: Stellen Sie den Anfangswinkel des Servos ein und entfernen Sie Schutzfolien von den Platinen, bevor Sie diesen Roboter installieren.
 
 ![](./media/image-20250709092645945.png)
 
- **Step1**
+ **Schritt 1**
 
 ![KS0607_18](./media/KS0607_18.png)
 
@@ -12,7 +12,7 @@
 
 ![KS0607_20](./media/KS0607_20.png)
 
-Please wire up first.
+Bitte zuerst die Kabel anschließen.
 
 ![](./media/image-20250709093344681.png)
 
@@ -24,7 +24,7 @@ Please wire up first.
 
 ![KS0607_23](./media/KS0607_23.png)
 
-**Step2 **
+**Schritt 2**
 
 ![KS0607_24](./media/KS0607_24.png)
 
@@ -32,7 +32,7 @@ Please wire up first.
 
 ![KS0607_26](./media/KS0607_26.png)
 
-**Step 3**
+**Schritt 3**
 
 ![KS0607_28](media\KS0607_28.png)
 
@@ -40,7 +40,7 @@ Please wire up first.
 
 ![KS0607_30](./media/KS0607_30-177909269696918.png)
 
- **Step 4**
+ **Schritt 4**
 
 ![KS0607_31](./media/KS0607_31-17790915380363.png)
 
@@ -54,17 +54,17 @@ Please wire up first.
 
 
 
-**Step 5**
+**Schritt 5**
 
 ![KS0607_36](./media/KS0607_36-17790915806918.png)
 
-<span style="color: rgb(255, 76, 65);">Note the direction of jumper caps.</span>
+<span style="color: rgb(255, 76, 65);">Achten Sie auf die Richtung der Jumper-Kappen.</span>
 
 ![KS0607_37](./media/KS0607_37-17790915896649.png)
 
 ![KS0607_38](./media/KS0607_38-177909159600610.png)
 
- **Step 6**
+ **Schritt 6**
 
 ![KS0607_39](./media/KS0607_39.png)
 
@@ -72,7 +72,7 @@ Please wire up first.
 
 ![KS0607_41](./media/KS0607_41.png)
 
-**Step 7**
+**Schritt 7**
 
 ![KS0607_42](./media/KS0607_42.png)
 
@@ -80,35 +80,35 @@ Please wire up first.
 
 ![KS0607_44](./media/KS0607_44.png)
 
-**Step 8**
+**Schritt 8**
 
-（Need to adjust the angle of the servo）
+（Der Winkel des Servos muss eingestellt werden）
 
 ![KS0607-098](./media/KS0607-098.jpg)
 
 ![KS0607-097](./media/KS0607-097.jpg)
 
-**Set the angle of the servo to 90°**
+**Stellen Sie den Winkel des Servos auf 90° ein**
 
-To adjust the code of the servo,please select it according to the course.
+Um den Code des Servos anzupassen, wählen Sie bitte entsprechend dem Kurs aus.
 
-1.**Arduino:** Download the code file: [Arduino](./Arduino.7z)
+1.**Arduino:** Laden Sie die Code-Datei herunter: [Arduino](./Arduino.7z)
 
 ![](./media/image-20250710110650230.png)
 
-2.**Kidsblock: **Download the code file: [Kidsblock](./Kidsblock.7z)
+2.**Kidsblock:** Laden Sie die Code-Datei herunter: [Kidsblock](./Kidsblock.7z)
 
 ![](./media/image-20250710110906515.png)
 
-**After initializing servo angle, install the Bluetooth module.**
+**Nach der Initialisierung des Servo-Winkels das Bluetooth-Modul einbauen.**
 
-Keep the ultrasonic sensor parallel to the board.
+Halten Sie den Ultraschallsensor parallel zur Platine.
 
 ![KS0607-096](./media/KS0607-096.jpg)
 
 ![](./media/image-20250709095307371.png)
 
- **Step 9**
+ **Schritt 9**
 
 ![KS0607_48](./media/KS0607_48-177909161769011.png)
 
@@ -116,7 +116,7 @@ Keep the ultrasonic sensor parallel to the board.
 
 ![KS0607_50](./media/KS0607_50-177909163131113.png)
 
-**Step 10**
+**Schritt 10**
 
 ![KS0607_51](./media/KS0607_51-177909163803814.png)
 
@@ -124,9 +124,9 @@ Keep the ultrasonic sensor parallel to the board.
 
 ![KS0607_53](./media/KS0607_53-177909164907716.png)
 
-**Wire up**
+**Verkabelung**
 
-For 8\*16 LED panel, Make wires connect to A4 and A5.
+Für das 8\*16 LED-Panel die Kabel mit A4 und A5 verbinden.
 
 ![](./media/image-20250709095552072.png)
 
@@ -134,19 +134,19 @@ For 8\*16 LED panel, Make wires connect to A4 and A5.
 
 ![](./media/image-20250709095643567.png)
 
-Connect the motor A to A port and make the motor B to B port.
+Motor A an Port A und Motor B an Port B anschließen.
 
 ![](./media/image-20250709095728739.png)
 
 ![](./media/image-20250709095740866.png)
 
-Connect the power wire.
+Das Stromversorgungskabel anschließen.
 
 ![](./media/image-20250709095759390.png)
 
 ![](./media/image-20250709095811580.png)
 
-Line Tracking Sensor(see the picture)
+Linienverfolgungssensor (siehe Abbildung)
 
 ![](./media/image-20250709095830428.png)
 
@@ -156,50 +156,49 @@ Line Tracking Sensor(see the picture)
 
 ![](./media/image-20250709095911639.png)
 
-Wire up the photoresistors
+Fotowiderstände anschließen
 
 ![](./media/image-20250709095929779.png)
 
 ![](./media/image-20250709095939414.png)
 
-| Photoresistor | Keyestudio 8833 Board |
-| :-----------: | :-------------------: |
-|       G       |           G           |
-|       V       |           V           |
-|       s       |          A1           |
+| Fotowiderstand | Keyestudio 8833 Board |
+| :------------: | :-------------------: |
+|       G        |           G           |
+|       V        |           V           |
+|       s        |          A1           |
 
 ![](./media/image-20250709100043670.png)
 
-| Photoresistor | Keyestudio 8833  Board |
-| :-----------: | :--------------------: |
-|       G       |           G            |
-|       V       |           V            |
-|       S       |           V2           |
+| Fotowiderstand | Keyestudio 8833 Board |
+| :------------: | :-------------------: |
+|       G        |           G           |
+|       V        |           V           |
+|       S        |          V2           |
 
-Wire up ultrasonic sensor.
+Ultraschallsensor anschließen.
 
 ![](./media/image-20250709100317508.png)
 
 ![](./media/image-20250709100329430.png)
 
-| Ultrasonic Sensor | Keyestudio 8833 Board |
+| Ultraschallsensor | Keyestudio 8833 Board |
 | :---------------: | :-------------------: |
 |        Vcc        |           V           |
 |       Trig        |          D12          |
 |       Echo        |          D13          |
 |        Gnd        |           G           |
 
-Wire up the servo(D10)
+Servo anschließen (D10)
 
 ![](./media/image-20250709100626238.png)
 
 | Servo  | Keyestudio 8833 Board |
 | :----: | :-------------------: |
-| Brown  |           G           |
-|  Red   |         V(5V)         |
+| Braun  |           G           |
+|  Rot   |         V(5V)         |
 | Orange |          D10          |
 
-<span style="color: rgb(255, 76, 65);">**We adopt a model 18650 lithium battery with a pointed positive pole, whose power and capacity are not required.**</span>
+<span style="color: rgb(255, 76, 65);">**Wir verwenden einen 18650-Lithium-Akku mit einem spitzen Pluspol, dessen Leistung und Kapazität keine besonderen Anforderungen haben.**</span>
 
 ![](./media/image-20250709100841625.png)
-

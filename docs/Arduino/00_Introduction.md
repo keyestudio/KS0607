@@ -1,40 +1,39 @@
-## 4.1 Data download
+## 4.1 Daten herunterladen
 
-Arduino information contains library files and project code. Please click to download for follow-up study.
+Arduino-Informationen enthalten Bibliotheksdateien und Projektcode. Bitte klicken Sie zum Herunterladen für das weitere Studium.
 
-Data download:[Arduino Data](./Arduino.7z)
+Daten herunterladen:[Arduino Data](./Arduino.7z)
 
-## 4.2 Software Download
+## 4.2 Software herunterladen
 
-When we get the control board, we need to download the Arduino IDE and driver first. 
+Wenn wir die Steuerplatine erhalten, müssen wir zuerst die Arduino IDE und den Treiber herunterladen.
 
-You could download Arduino IDE from the official website:<https://www.arduino.cc/en/software>.
+Sie können die Arduino IDE von der offiziellen Website herunterladen:<https://www.arduino.cc/en/software>.
 
-There are various versions of Arduino. Just download a suitable version for your system. We will take the WINDOWS system as an example to show you how to download and install it.
+Es gibt verschiedene Versionen von Arduino. Laden Sie einfach eine geeignete Version für Ihr System herunter. Wir nehmen das WINDOWS-System als Beispiel, um Ihnen zu zeigen, wie man es herunterlädt und installiert.
 
 ![](./media/Animati.gif)
 
-You just need to click JUST DOWNLOAD, then click the downloaded file to install it.
+Sie müssen nur auf JUST DOWNLOAD klicken und dann auf die heruntergeladene Datei klicken, um sie zu installieren.
 
-And when the ZIP file is downloaded, you can directly unzip and start it.
+Und wenn die ZIP-Datei heruntergeladen ist, können Sie sie direkt entpacken und starten.
 
 ![](./media/Animat.gif)
 
-## 4.3 Set Arduino IDE 
+## 4.3 Arduino IDE einrichten
 
-1. Connecting the board to the computer.
+1. Verbinden Sie die Platine mit dem Computer.
 
 ![](./media/Anima.gif)
 
-## 4.4 Add Library
+## 4.4 Bibliothek hinzufügen
 
-What are Libraries ?
+Was sind Bibliotheken?
 
-Libraries are a collection of code that makes it easy for you to connect to a sensor, display, module, etc.  
+Bibliotheken sind eine Sammlung von Code, die es Ihnen erleichtert, eine Verbindung zu einem Sensor, einem Display, einem Modul usw. herzustellen.
 
-There are hundreds of additional libraries available on the Internet for download. 
+Im Internet stehen Hunderte von zusätzlichen Bibliotheken zum Download bereit.
 
-We will introduce the simplest way for you to add libraries. 
+Wir stellen Ihnen die einfachste Methode vor, um Bibliotheken hinzuzufügen.
 
 ![](./media/Anim.gif)
-

@@ -1,43 +1,43 @@
-### Project 3: Photoresistor
+### Projekt 3: Fotowiderstand
 
 ![](media/36e7e08764ed3c61a1c22f86be8c23d9.jpeg)
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-The photosensitive resistor is a special resistor made of a semiconductor material such as a sulfide or selenium, and a moisture-proof resin is also coated with a photoconductive effect. The photosensitive resistance is most sensitive to the ambient light, different illumination strength, and the resistance of the photosensitive resistance is different. We use the photosensitive resistance to design the photosensitive resistor module. 
+Der lichtempfindliche Widerstand ist ein spezieller Widerstand, der aus einem Halbleitermaterial wie Sulfid oder Selen hergestellt wird, und eine feuchtigkeitsbeständige Beschichtung mit einem fotoleitenden Effekt ist ebenfalls aufgetragen. Der Fotowiderstand reagiert am empfindlichsten auf das Umgebungslicht; bei unterschiedlicher Beleuchtungsstärke ist der Widerstandswert des Fotowiderstands verschieden. Wir verwenden den Fotowiderstand, um das Fotowiderstandsmodul zu entwerfen.
 
-The module signal is connected to the microcontroller analog port. When the light intensity is stronger, the larger the analog port voltage, that is, the simulation value of the microcontroller is also large; in turn, when the light intensity is weaker, the smaller the analog port voltage, that is, the simulation value of the microcontroller is also small. 
+Das Modulsignal ist mit dem Analogport des Mikrocontrollers verbunden. Wenn die Lichtintensität stärker ist, ist die Spannung am Analogport größer, d. h. der Analogwert des Mikrocontrollers ist ebenfalls größer; umgekehrt, wenn die Lichtintensität schwächer ist, ist die Spannung am Analogport kleiner, d. h. der Analogwert des Mikrocontrollers ist ebenfalls kleiner.
 
-In this way, we can read the corresponding analog value using the photosensitive resistor module, and the intensity of the light in the inductive environment.
+Auf diese Weise können wir den entsprechenden Analogwert mithilfe des Fotowiderstandsmoduls auslesen und die Lichtintensität in der Umgebung erfassen.
 
 ![](media/7784e14e15402644cdbe674d500327c4.png)
 
 ![](media/0d9daba6454ef099fe1ceb0e6cb56ec4.png)
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
-Photosensitive resistance resistance value: 5K Ou-0.5m
+Widerstandswert des Fotowiderstands: 5K Ohm-0,5m
 
-Interface type: simulation port A0, A1
+Schnittstellentyp: Simulationsport A0, A1
 
-Working voltage: 3.3V-5V
+Betriebsspannung: 3,3V-5V
 
-Pin spacing: 2.54mm
+Pinabstand: 2,54mm
 
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
-What we are going to test next isthe photoresistor module on the leftside ofthe robot
+Was wir als nächstes testen werden, ist das Fotowiderstandsmodul auf der linken Seite des Roboters.
 
 ![](./media/img-20240117091559.png)
 
-The left photoresistoris connected to A1/P3 of the motor drive shield.
+Der linke Fotowiderstand ist mit A1/P3 des Motorantriebsboards verbunden.
 
 ![](media/484852a36f52bdbe44bec1b9a8941e44.png)
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls die serielle Kommunikation nutzt und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ```C
 /*
@@ -52,48 +52,48 @@ http://www.keyestudio.com
 
 */
 
-int sensorPin = A1; // A1 is the input pin of photoresistor
+int sensorPin = A1; // A1 ist der Eingangspin des Fotowiderstands
 
-int sensorValue = 0; // save the value of photoresistors
+int sensorValue = 0; // Speichert den Wert des Fotowiderstands
 
 void setup() 
 {
-	Serial.begin(9600); //Open the serial port monitor and set the baud rate to 9600
+	Serial.begin(9600); // Seriellen Monitor öffnen und Baudrate auf 9600 setzen
 }
 
 void loop() 
 {
-	sensorValue = analogRead(sensorPin); //Read the analog value from the photoresistor sensor
-	Serial.println(sensorValue); //The serial port prints the value of the photoresistor
-	delay(500); //Delay in 500ms
+	sensorValue = analogRead(sensorPin); // Analogwert vom Fotowiderstandssensor lesen
+	Serial.println(sensorValue); // Serieller Monitor gibt den Wert des Fotowiderstands aus
+	delay(500); // Verzögerung von 500ms
 }
 ```
 
-#### **(5)Test Results:**
+#### **(5)Testergebnisse:**
 
 ![](media/54b92578e3210999e23f5fb8138f0fa0.png)
 
-When covering it, the value gets smaller; if not, the value gets larger
+Wenn man ihn abdeckt, wird der Wert kleiner; wenn nicht, wird der Wert größer.
 
-#### **(6)Code Explanation:**
+#### **(6)Code-Erklärung:**
 
-**analogRead(sensorPin)**: read the analog value of photoresistors
+**analogRead(sensorPin)**: liest den Analogwert des Fotowiderstands
 
-**Serial.begin(9600)**: initialize serial port and set baud rate to 9600
+**Serial.begin(9600)**: initialisiert den seriellen Port und setzt die Baudrate auf 9600
 
-**Serial.println**: serial prints
+**Serial.println**: serielle Ausgabe
 
-#### **(7)Extension Practice:**
+#### **(7)Erweiterungsübung:**
 
-The above code just reads the value of the photoresistor. We can make the photosensitive and LED combine to change the LED.How about controlling the LED’s brightness by it?
+Der obige Code liest nur den Wert des Fotowiderstands. Wir können den Fotowiderstand und eine LED kombinieren, um die LED zu steuern. Wie wäre es, die Helligkeit der LED damit zu regeln?
 
 ![](media/88a89f7996fb7f7d037315e57e8bcd33.png)
 
-The LED’s brightness is controlled by PWM. Therefore, we connect the LED to PMW pin(pin 9) of the shield.
+Die Helligkeit der LED wird durch PWM gesteuert. Daher verbinden wir die LED mit dem PWM-Pin (Pin 9) des Boards.
 
-**Test Code**
+**Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls die serielle Kommunikation nutzt und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ```c
 /*
@@ -108,31 +108,31 @@ http://www.keyestudio.com
 
 */
 
-int analogInPin = A1; // A1 is the input pin of photoresistor
+int analogInPin = A1; // A1 ist der Eingangspin des Fotowiderstands
 
-int analogOutPin = 9; // Digital port 9 is the output of PMW
+int analogOutPin = 9; // Digitalport 9 ist der PWM-Ausgang
 
-int sensorValue = 0; // save the variable of the resistance value of photoresistors
+int sensorValue = 0; // Speichert die Variable des Widerstandswerts des Fotowiderstands
 
-int outputValue = 0; // Value output to PMW
+int outputValue = 0; // Wert, der an PWM ausgegeben wird
 
 void setup() 
 {
-	Serial.begin(9600); //Open the serial port monitor and set the baud rate to 9600
+	Serial.begin(9600); // Seriellen Monitor öffnen und Baudrate auf 9600 setzen
 }
 
 void loop() 
 {
-    sensorValue = analogRead(analogInPin); //Read the analog value from thephotoresistor sensor
-    // Map the analog values 0\~1023 to the PWM output values 255\~0
+    sensorValue = analogRead(analogInPin); // Analogwert vom Fotowiderstandssensor lesen
+    // Analogwerte 0\~1023 auf PWM-Ausgabewerte 255\~0 abbilden
     outputValue = map(sensorValue, 0, 1023, 255, 0);
-    // Change analog output
+    // Analogen Ausgang ändern
     analogWrite(analogOutPin, outputValue);
-    Serial.println(sensorValue); //The serial port prints the value of thephotoresistor
+    Serial.println(sensorValue); // Serieller Monitor gibt den Wert des Fotowiderstands aus
     delay(2);
 }
 ```
 
-Upload code to the development board, then cover the photoresistor and observe the LED’s brightness.
+Laden Sie den Code auf das Entwicklungsboard hoch, decken Sie dann den Fotowiderstand ab und beobachten Sie die Helligkeit der LED.
 
 ![](./media/img-20240117091105.png)

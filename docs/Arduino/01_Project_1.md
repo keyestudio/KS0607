@@ -1,44 +1,44 @@
-### Project 1: LED Blinks
+### Projekt 1: LED blinkt
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
 ![](media/64b0b431d58473408ac46b39d2dc2ad0.jpeg)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-For starters and enthusiasts, LED Blink is a fundamental program. LED, the abbreviation of light emitting diodes, consists of Ga, As, P, N chemical compounds and so on. The LED can flash in diverse colors by altering the delay time in the test code. When in control, power on GND and VCC. The LED will be on if the S end is at a high level; otherwise, it will go off.
+Für Einsteiger und Enthusiasten ist das LED-Blinken ein grundlegendes Programm. LED, die Abkürzung für Leuchtdioden, besteht aus chemischen Verbindungen wie Ga, As, P, N und so weiter. Die LED kann in verschiedenen Farben aufleuchten, indem die Verzögerungszeit im Testcode geändert wird. Bei der Steuerung werden GND und VCC mit Strom versorgt. Die LED leuchtet, wenn der S-Anschluss auf hohem Pegel ist; andernfalls geht sie aus.
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
 ![](./media/image-20250709104606457.png)
 
-- Control interface: digital port
-- Working voltage: DC 3.3-5V
-- Pin spacing: 2.54mm
-- LED display color: yellow
+- Steuerungsschnittstelle: digitaler Port
+- Betriebsspannung: DC 3,3–5 V
+- Pin-Abstand: 2,54 mm
+- LED-Anzeigefarbe: gelb
 
-#### **(3)Components Required:**
+#### **(3)Benötigte Komponenten:**
 
 ![](media/img-20240117081416.png)
 
 
-#### **(4)8833 Motor driver expansion board:**
+#### **(4)8833 Motor-Treiber-Erweiterungsplatine:**
 
-The Keyestudio 8833 motor driver expansion board is compatible with the Arduino UNO development board. Just stack it onto the development board when using it.
+Die Keyestudio 8833 Motor-Treiber-Erweiterungsplatine ist kompatibel mit dem Arduino UNO Entwicklungsboard. Beim Verwenden einfach auf das Entwicklungsboard aufstecken.
 
 ![](./media/image-20250709104749140.png)
 
-#### **(5)Connection Diagram:**
+#### **(5)Anschlussdiagramm:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](media/d68e6475a7c9ed55bb057b75d1b11689.png)
 
-<span style="color: rgb(255, 76, 65);">**NOTE:**</span> The LED is connected to the D9 port. Remember to install jumper caps onto the shield.
+<span style="color: rgb(255, 76, 65);">**HINWEIS:**</span> Die LED ist mit dem D9-Port verbunden. Denken Sie daran, Jumper-Kappen auf dem Shield zu installieren.
 
-#### **(6)Test Code:**
+#### **(6)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, die das Hochladen fehlschlagen lassen.)
 
 ```C
 /*
@@ -53,39 +53,39 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; //Define the pin of LED to connect with digital port 9
+int LED = 9; // Definiere den Pin der LED, der mit dem digitalen Port 9 verbunden ist
 
 void setup()
 {
-	pinMode(LED, OUTPUT); //Initialize the LED pin to output mode
+	pinMode(LED, OUTPUT); // Initialisiere den LED-Pin als Ausgang
 }
 
-void loop() //infinite loop
+void loop() // Endlosschleife
 {
-	digitalWrite(LED, HIGH); //Output high level and turn on the LED
-	delay(1000); //Wait for 1s
-	digitalWrite(LED, LOW); //Output low level and turn off the LED
-	delay(1000); //Wait for 1s
+	digitalWrite(LED, HIGH); // Hohen Pegel ausgeben und LED einschalten
+	delay(1000); // 1s warten
+	digitalWrite(LED, LOW); // Niedrigen Pegel ausgeben und LED ausschalten
+	delay(1000); // 1s warten
 }
 ```
 
-#### **(7)Test Results:**
+#### **(7)Testergebnisse:**
 
-Upload the program, LED blinks at the interval of 1s.
+Nach dem Hochladen des Programms blinkt die LED im Abstand von 1 s.
 
-#### **(8)Code Explanation:**
+#### **(8)Code-Erklärung:**
 
-**pinMode(LED，OUTPUT) -** This function can denote that the pin is INPUT or OUTPUT
+**pinMode(LED，OUTPUT) -** Diese Funktion kann angeben, ob der Pin INPUT oder OUTPUT ist
 
-**digitalWrite(LED，HIGH) -** When pin is OUTPUT, we can set it to HIGH(output 5V) or LOW(output 0V)
+**digitalWrite(LED，HIGH) -** Wenn der Pin OUTPUT ist, kann er auf HIGH (5 V ausgeben) oder LOW (0 V ausgeben) gesetzt werden
 
-#### **(9)Extension Practice:**
+#### **(9)Erweiterungsübung:**
 
-We have succeeded in blinking LED. Next, let’s observe what will happen to the LED if we modify pins and delay time.
+Wir haben die LED erfolgreich zum Blinken gebracht. Als Nächstes beobachten wir, was mit der LED passiert, wenn wir Pins und Verzögerungszeit ändern.
 
-**Test Code**
+**Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, die das Hochladen fehlschlagen lassen.)
 
 ```C
 /*
@@ -100,21 +100,21 @@ http://www.keyestudio.com
 
 */
 
-int LED = 9; //Define the pin of the LED as 9
+int LED = 9; // Definiere den Pin der LED als 9
 
 void setup()
 {
-	pinMode(LED, OUTPUT); //Set the pin of the LED to OUTPUT
+	pinMode(LED, OUTPUT); // Setze den Pin der LED auf OUTPUT
 }
 
-void loop() //Infinite loop
+void loop() // Endlosschleife
 {
-    digitalWrite(LED, HIGH); //output high levels, light up LED
-	delay(100); //Wait for 0.1s
-	digitalWrite(LED, LOW); //LED output low levels, turn off LED
-	delay(100); //Wait for 0.1s
+    digitalWrite(LED, HIGH); // Hohe Pegel ausgeben, LED einschalten
+	delay(100); // 0,1s warten
+	digitalWrite(LED, LOW); // LED gibt niedrige Pegel aus, LED ausschalten
+	delay(100); // 0,1s warten
 
 }
 ```
 
-The test result shows that the LED flashes faster. Therefore, we can draw a conclusion that pins and time delaying affect flash frequency.
+Das Testergebnis zeigt, dass die LED schneller blinkt. Daher können wir schlussfolgern, dass Pins und Verzögerungszeit die Blinkfrequenz beeinflussen.

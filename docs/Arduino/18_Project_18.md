@@ -1,24 +1,24 @@
-### Project 18: BT Speed Control Robot
+### Projekt 18: BT-Geschwindigkeitssteuerung Roboter
 
-#### (1)**Description:**
+#### (1)**Beschreibung:**
 
-In the previous project, we learned how to control the smart tank with Bluetooth. The PWM value of the motor we used in front of us is 200 (the speed is 200). 
+Im vorherigen Projekt haben wir gelernt, wie man den Smart-Panzer mit Bluetooth steuert. Der PWM-Wert des Motors, den wir zuvor verwendet haben, beträgt 200 (die Geschwindigkeit ist 200).
 
-In this lesson, we will use Bluetooth to adjust the speed of the smart car. It is not limited to Fixed speed of 200. We define two variables to store the speed values of the left and right motors respectively. Through the previous study, we know that the range of this value can only take 0 to 255.
+In dieser Lektion werden wir Bluetooth verwenden, um die Geschwindigkeit des Smart Cars anzupassen. Es ist nicht auf eine feste Geschwindigkeit von 200 begrenzt. Wir definieren zwei Variablen, um die Geschwindigkeitswerte des linken bzw. rechten Motors zu speichern. Durch das vorherige Studium wissen wir, dass der Bereich dieses Wertes nur 0 bis 255 betragen kann.
 
-#### **(2)Flow chart:**
+#### **(2)Flussdiagramm:**
 
 ![](media/image-20230427102042028.png)
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
 ![](media/930a8024364e07505e845624a94c27bd.png)
 
-The GND, VCC, SDA, and SCL of the 8x16 LED dot matrix are respectively connected to-(GND), + (VCC), SDA, SCL of the expansion board;
+GND, VCC, SDA und SCL der 8x16 LED-Dot-Matrix sind jeweils mit -(GND), +(VCC), SDA, SCL der Erweiterungsplatine verbunden;
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">Note:</span> When uploading the code, the Bluetooth module must be unplugged, and the Bluetooth can be reconnected after the uploading process. Otherwise the code may not be burned.)
+(<span style="color: rgb(255, 76, 65);">Hinweis:</span> Beim Hochladen des Codes muss das Bluetooth-Modul abgezogen werden. Bluetooth kann erst nach dem Hochladevorgang wieder verbunden werden. Andernfalls kann der Code möglicherweise nicht gebrannt werden.)
 
 ```C
 /*
@@ -28,7 +28,7 @@ The GND, VCC, SDA, and SCL of the 8x16 LED dot matrix are respectively connected
   http://www.keyestudio.com
 */
 
-//Array, used to save data of images, can be calculated by yourself or gotten from modulus tool
+// Array, zum Speichern von Bilddaten, kann selbst berechnet oder mit dem Modulus-Tool ermittelt werden
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 unsigned char front[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x12, 0x09, 0x12, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char back[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x48, 0x90, 0x48, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -38,17 +38,17 @@ unsigned char STOP01[] = {0x2E, 0x2A, 0x3A, 0x00, 0x02, 0x3E, 0x02, 0x00, 0x3E, 
 unsigned char clear[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char speed_a[] = {0x00, 0x00, 0x00, 0x20, 0x10, 0x08, 0x04, 0x02, 0xff, 0x02, 0x04, 0x08, 0x10, 0x20, 0x00, 0x00};
 unsigned char speed_d[] = {0x00, 0x00, 0x00, 0x04, 0x08, 0x10, 0x20, 0x40, 0xff, 0x40, 0x20, 0x10, 0x08, 0x04, 0x00, 0x00};
-#define SCL_Pin  A5  //set the pin of clock to A5
-#define SDA_Pin  A4  //A4 set data pin to A4
+#define SCL_Pin  A5  // Taktpin auf A5 setzen
+#define SDA_Pin  A4  // A4 Datenpin auf A4 setzen
 
-#define ML_Ctrl 4  //define the direction control pin of the left motor
-#define ML_PWM 6   //define the PWM control pins of the left motor
-#define MR_Ctrl 2  //define the direction control pin of the right motor
-#define MR_PWM 5   //define the PWM control pin of the right motor
-char ble_val;      //define the PWM control pin of the right motor
-byte speeds_L = 200; //The initial speed of the left motor is 200
-byte speeds_R = 200; //The initial speed of the right motor is 200
-String speeds_l, speeds_r; //Receive a string of PWM to convert to an integer PWM value
+#define ML_Ctrl 4  // Richtungssteuerungspin des linken Motors definieren
+#define ML_PWM 6   // PWM-Steuerungspin des linken Motors definieren
+#define MR_Ctrl 2  // Richtungssteuerungspin des rechten Motors definieren
+#define MR_PWM 5   // PWM-Steuerungspin des rechten Motors definieren
+char ble_val;      // PWM-Steuerungspin des rechten Motors definieren
+byte speeds_L = 200; // Die Anfangsgeschwindigkeit des linken Motors beträgt 200
+byte speeds_R = 200; // Die Anfangsgeschwindigkeit des rechten Motors beträgt 200
+String speeds_l, speeds_r; // Einen PWM-String empfangen und in einen ganzzahligen PWM-Wert umwandeln
 
 void setup() 
 {
@@ -61,8 +61,8 @@ void setup()
 
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  matrix_display(clear); //clear screens
-  matrix_display(start01);  //show the image to start
+  matrix_display(clear); // Bildschirm löschen
+  matrix_display(start01);  // Startbild anzeigen
 }
 
 void loop() 
@@ -73,26 +73,26 @@ void loop()
     Serial.println(ble_val);
     switch (ble_val) 
     {
-      case 'F':  //the command to go front
+      case 'F':  // Befehl zum Vorwärtsfahren
         Car_front();
         break;
-      case 'B':  //the command to go back
+      case 'B':  // Befehl zum Rückwärtsfahren
         Car_back();
         break;
-      case 'L':  //the command to turn left
+      case 'L':  // Befehl zum Linksdrehen
         Car_left();
         break;
-      case 'R':  //the command to turn right
+      case 'R':  // Befehl zum Rechtsdrehen
         Car_right();
         break;
-      case 'S':  //the command to stop
+      case 'S':  // Befehl zum Anhalten
         Car_Stop();
         break;
-      case 'u':  //Receive a string starting with u and ending with #, and convert it to an integer value
+      case 'u':  // Einen String empfangen, der mit u beginnt und mit # endet, und in einen ganzzahligen Wert umwandeln
         speeds_l = Serial.readStringUntil('#');
         speeds_L = String(speeds_l).toInt();
         break;
-      case 'v':  //Receive a string starting with v and ending with #, and convert it to an integer value
+      case 'v':  // Einen String empfangen, der mit v beginnt und mit # endet, und in einen ganzzahligen Wert umwandeln
         speeds_r = Serial.readStringUntil('#');
         speeds_R = String(speeds_r).toInt();
         break;
@@ -100,7 +100,7 @@ void loop()
   }
 }
 
-/***************The function to run the motor***************/
+/***************Funktion zum Betreiben des Motors***************/
 
 void Car_back() 
 {
@@ -108,7 +108,7 @@ void Car_back()
   analogWrite(MR_PWM, speeds_R);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, speeds_L);
-  matrix_display(back);  //Go back
+  matrix_display(back);  // Rückwärtsfahren
 }
 
 void Car_front() 
@@ -117,7 +117,7 @@ void Car_front()
   analogWrite(MR_PWM, 255 - speeds_R);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 255 - speeds_L);
-  matrix_display(front);  //show the image to go front
+  matrix_display(front);  // Bild für Vorwärtsfahren anzeigen
 }
 
 void Car_left() 
@@ -126,7 +126,7 @@ void Car_left()
   analogWrite(MR_PWM, 255 - speeds_R);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, speeds_L);
-  matrix_display(left);  //show the image to turn left
+  matrix_display(left);  // Bild für Linksdrehen anzeigen
 }
 
 void Car_right() 
@@ -135,7 +135,7 @@ void Car_right()
   analogWrite(MR_PWM, speeds_R);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 255 - speeds_L);
-  matrix_display(right);  //show the image to turn right
+  matrix_display(right);  // Bild für Rechtsdrehen anzeigen
 }
 
 void Car_Stop() 
@@ -144,25 +144,25 @@ void Car_Stop()
   analogWrite(MR_PWM, 0);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 0);
-  matrix_display(STOP01);  //show the image to stop
+  matrix_display(STOP01);  // Bild zum Anhalten anzeigen
 }
 
-//This function is used for dot matrix screen display
+// Diese Funktion wird zur Anzeige auf dem Dot-Matrix-Bildschirm verwendet
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //Function to call data transfer start condition
-  IIC_send(0xc0);  //Choose an address
-  for (int i = 0; i < 16; i++) //Pattern data has 16 bytes
+  IIC_start();  // Funktion zum Aufrufen der Startbedingung für die Datenübertragung
+  IIC_send(0xc0);  // Adresse auswählen
+  for (int i = 0; i < 16; i++) // Musterdaten haben 16 Bytes
   {
-    IIC_send(matrix_value[i]); //transfer pattern data
+    IIC_send(matrix_value[i]); // Musterdaten übertragen
   }
-  IIC_end();   //End pattern data transfer
+  IIC_end();   // Musterdatenübertragung beenden
   IIC_start();
-  IIC_send(0x8A);  //display control, select pulse width as 4/16
+  IIC_send(0x8A);  // Anzeigesteuerung, Pulsbreite als 4/16 auswählen
   IIC_end();
 }
 
-//Conditions for the start of data transfer
+// Bedingungen für den Start der Datenübertragung
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -173,7 +173,7 @@ void IIC_start()
   digitalWrite(SCL_Pin, LOW);
 }
 
-//the sign of ending data transmission
+// Zeichen für das Ende der Datenübertragung
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -185,12 +185,12 @@ void IIC_end()
   delayMicroseconds(3);
 }
 
-//transfer data
+// Daten übertragen
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //each character has 8 digits, which is detected one by one
+  for (byte mask = 0x01; mask != 0; mask <<= 1) // Jedes Zeichen hat 8 Stellen, die einzeln geprüft werden
   {
-    if (send_data & mask)  //set high or low levels in light of each bit(0 or 1)
+    if (send_data & mask)  // Hohe oder niedrige Pegel entsprechend jedem Bit (0 oder 1) setzen
     {
       digitalWrite(SDA_Pin, HIGH);
     } 
@@ -199,17 +199,17 @@ void IIC_send(unsigned char send_data)
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Pull the clock pin SCL_Pin high to stop data transmission
+    digitalWrite(SCL_Pin, HIGH); // Taktpin SCL_Pin auf HIGH ziehen, um die Datenübertragung zu stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //pull down the clock pin SCL_Pin to change signals of SDA
+    digitalWrite(SCL_Pin, LOW); // Taktpin SCL_Pin nach unten ziehen, um SDA-Signale zu ändern
   }
 }
 ```
 
-#### **(5)Test Results:**
+#### **(5)Testergebnisse:**
 
-After uploading the test code successfully, dialing the DIP switch to the right end, powering it on, and pairing the APP with Bluetooth, the smart car can be controlled to move by the APP. And the speed of the car can be regulated by pulling the speed dials of the left and right motors.
+Nach erfolgreichem Hochladen des Testcodes, Umlegen des DIP-Schalters auf die rechte Seite, Einschalten und Kopplung der APP mit Bluetooth kann das Smart Car durch die APP gesteuert werden. Die Geschwindigkeit des Fahrzeugs kann durch Ziehen der Geschwindigkeitsregler des linken und rechten Motors reguliert werden.
 
 ![](media/b9c902b937801f829b9ce2fd254b1849.jpeg)
 
-(You can refer to function table in project 17 )
+(Sie können die Funktionstabelle in Projekt 17 als Referenz verwenden.)

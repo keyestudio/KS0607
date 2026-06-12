@@ -1,3 +1,3 @@
-# 6. Need Technical Support?
+# 6. Technischer Support benötigt?
 
- If you encounter any technical issues or need after-sales assistance, please feel free to contact our support team at **asa12321sas@gmail.com**. We are here to help!
+Wenn Sie auf technische Probleme stoßen oder Kundendienst nach dem Kauf benötigen, wenden Sie sich bitte an unser Support-Team unter **asa12321sas@gmail.com**. Wir helfen Ihnen gerne weiter!

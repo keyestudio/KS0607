@@ -1,22 +1,22 @@
-### Assemble Fire Extinguishing Robot
+### Feuerlöschroboter zusammenbauen
 
-Remove the ultrasonic sensor and two photoresistors.
+Entferne den Ultraschallsensor und die zwei Fotowiderstände.
 
 ![](./media/d575fad4068d67daffaf3958996a185b.png)
 
 ![](./media/3a350ba2fda9f37c8f0870f16c981f7b.png)
 
-Put on a fan module and two flame sensors.
+Setze ein Lüftermodul und zwei Flammensensoren ein.
 
 ![](./media/f1a3dbebcb34d4a390e4b2412d34e03e.png)
 
-You can make the fan module install further if the fan module and flame sensors interfere.
+Du kannst das Lüftermodul weiter entfernt installieren, wenn das Lüftermodul und die Flammensensoren sich gegenseitig behindern.
 
 ![](./media/8ec448f8b626fd9f8f0a6941b927c0af.png)
 
-**Wire up**
+**Verdrahtung**
 
-Wire up the two flame sensors.
+Verdrahte die zwei Flammensensoren.
 
 ![](./media/e224ea3ffed9b63eda92e9fbd2fc0ed2.png)
 
@@ -34,7 +34,7 @@ Wire up the two flame sensors.
 |      V       |           V           |
 |      A       |          A2           |
 
-Wire up the fan module .
+Verdrahte das Lüftermodul.
 
 ![](./media/c646fb9322c3f4315b246a36ee1df17c.png)
 
@@ -45,7 +45,6 @@ Wire up the fan module .
 |     IN+     |          D12          |
 |     IN-     |          D13          |
 
- **We adopt a model 18650 lithium battery with a pointed positive pole, whose power and capacity are not required.**
+**Wir verwenden eine 18650-Lithiumbatterie mit einem spitzen Pluspol, bei der Leistung und Kapazität keine Anforderungen haben.**
 
 ![](./media/img-20240117152607.jpg)
-

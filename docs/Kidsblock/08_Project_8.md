@@ -1,62 +1,62 @@
-### Project 8: Motor Driving and Speed Control
+### Projekt 8: Motorsteuerung und Geschwindigkeitsregelung
 
-#### **(1)Description:**
+#### **(1) Beschreibung:**
 
-There are many ways to drive motors. Our smart car uses the most common solution called L298P. L298P, produced by STMicroelectronics, is an excellent driving chip specially designed for driving high-power motors . It can directly drive DC motors, two-phase and four-phase motors with the driving current reaching 2A. And the motor’s output terminal adopts 8 high-speed Schottky diodes as protection. We have designed an expansion board based on the L298P circuit of which the laminated design can be directly plugged into the UNO R3 board for use reducing the technical difficulties for users in using and driving the motor.
+Es gibt viele Möglichkeiten, Motoren anzusteuern. Unser Smart Car verwendet die gängigste Lösung namens L298P. L298P, hergestellt von STMicroelectronics, ist ein hervorragender Ansteuerungschip, der speziell für den Antrieb von Hochleistungsmotoren entwickelt wurde. Er kann DC-Motoren, zweiphasige und vierphasige Motoren direkt ansteuern, wobei der Antriebsstrom bis zu 2A erreicht. Der Ausgangsanschluss des Motors verwendet 8 schnelle Schottky-Dioden als Schutz. Wir haben eine Erweiterungsplatine basierend auf dem L298P-Schaltkreis entwickelt, die durch ihr gestapeltes Design direkt auf das UNO R3-Board gesteckt werden kann und so die technischen Schwierigkeiten für Benutzer bei der Verwendung und dem Antrieb des Motors reduziert.
 
-Stack the expansion board on the board, power the BAT , turn the DIP switch to the ON end, and power the expansion board and the UNO R3 board at the same time via external power supply. In order to facilitate wiring, the expansion board is equipped with anti-reverse interface (PH2.0 -2P -3P -4P -5P) and thus it can be directly plug with motors, power supply, and sensors /modules. The Bluetooth interface of the drive expansion board is fully compatible with the Keyestudio HM-10 Bluetooth module. Therefore, we only need to insert the HM-10 Bluetooth module into the corresponding interface when connecting. At the same time, the drive extension board also uses 2.54 pin headers to extend out some available digital ports and analog ports, so that you can continue to add other sensors and carry out expansion experiments.
+Stecken Sie die Erweiterungsplatine auf das Board, versorgen Sie BAT mit Strom, drehen Sie den DIP-Schalter auf die ON-Seite und versorgen Sie die Erweiterungsplatine und das UNO R3-Board gleichzeitig über eine externe Stromversorgung. Um die Verkabelung zu erleichtern, ist die Erweiterungsplatine mit verpolungssicheren Schnittstellen (PH2.0 -2P -3P -4P -5P) ausgestattet, sodass Motoren, Stromversorgung und Sensoren/Module direkt angesteckt werden können. Die Bluetooth-Schnittstelle der Antriebserweiterungsplatine ist vollständig kompatibel mit dem Keyestudio HM-10 Bluetooth-Modul. Daher müssen wir das HM-10 Bluetooth-Modul beim Anschließen nur in die entsprechende Schnittstelle stecken. Gleichzeitig verwendet die Antriebserweiterungsplatine auch 2,54-mm-Stiftleisten, um einige verfügbare Digital- und Analogports zu erweitern, sodass Sie weitere Sensoren hinzufügen und Erweiterungsexperimente durchführen können.
 
-The expansion board can be connected to 4 DC motors. In the default jumper cap connection mode, the A and A1, B and B1 interface motors are connected in parallel, and their motion pattern is the same. 8 jumper caps can be used to control the rotation direction of the 4 motor interfaces. For example, when the two jumper caps in front of the motor A interface are changed from a horizontal connection to a vertical connection, the rotation direction of the motor A now is opposite to the original rotation direction.
+Die Erweiterungsplatine kann mit 4 DC-Motoren verbunden werden. Im Standard-Jumper-Verbindungsmodus sind die Schnittstellen A und A1 sowie B und B1 parallel geschaltet, und ihr Bewegungsmuster ist identisch. Mit 8 Jumperkappen kann die Drehrichtung der 4 Motorschnittstellen gesteuert werden. Wenn beispielsweise die zwei Jumperkappen vor der Motorschnittstelle A von einer horizontalen auf eine vertikale Verbindung geändert werden, ist die Drehrichtung von Motor A nun entgegengesetzt zur ursprünglichen Drehrichtung.
 
 ![](media/6c3731f639e113c8f32fe1829f239898.png)
 
 ![](media/62ee9578858ecc8e27b824af65fb22bb.png)
 
-#### **(2)Parameters:**
+#### **(2) Parameter:**
 
--   Logic part input voltage: DC 5V
+-   Eingangsspannung des Logikteils: DC 5V
 
--   Driving part input voltage: DC 7-12V
+-   Eingangsspannung des Antriebsteils: DC 7-12V
 
--   Logic part working current: ≤36mA
+-   Betriebsstrom des Logikteils: ≤36mA
 
--   Driving part working current: ≤ 2A
+-   Betriebsstrom des Antriebsteils: ≤ 2A
 
--   Maximum dissipation power: 25W (T=75℃)
+-   Maximale Verlustleistung: 25W (T=75℃)
 
--   Control signal input level:
+-   Eingangspegel des Steuersignals:
 
-    High level: 2.3V ≤ Vin ≤ 5V
+    High-Pegel: 2,3V ≤ Vin ≤ 5V
 
-    Low level: 0V ≤ Vin ≤ 1.5V
+    Low-Pegel: 0V ≤ Vin ≤ 1,5V
 
--   Working temperature: -25℃～＋130℃
+-   Betriebstemperatur: -25℃～＋130℃
 
-#### **(3)Drive the robot to move:**
+#### **(3) Den Roboter bewegen:**
 
-The direction pin of A motor is D2, the speed control pin is D5; the direction pin of B motor is in D4 and the speed control pin is D6,
+Der Richtungspin von Motor A ist D2, der Geschwindigkeitssteuerungspin ist D5; der Richtungspin von Motor B ist D4 und der Geschwindigkeitssteuerungspin ist D6.
 
-According to the table below, we can know how to control the movement of the robot by controlling the rotation of two motors through the digital ports and PWM ports . Among them, the range of PWM value is 0-255. The larger the value is, the faster the motor rotates.
+Anhand der folgenden Tabelle können wir erkennen, wie die Bewegung des Roboters durch die Steuerung der Drehung zweier Motoren über die Digitalports und PWM-Ports gesteuert wird. Der Wertebereich des PWM-Werts liegt dabei zwischen 0 und 255. Je größer der Wert ist, desto schneller dreht sich der Motor.
 
-|   Function   |  D4  | D6（PWM） | Motor （left）B |  D2  | D5（PWM） | Motor（Right）A |
-| :----------: | :--: | :-------: | :-------------: | :--: | :-------: | :-------------: |
-| Move Forward | HIGH |     0     |   Rotate Left   | HIGH |     0     |   Rotate Left   |
-|   Go Back    | LOW  |    255    |  Rotate Right   | LOW  |    255    |  Rotate Right   |
-| Rotate Left  | LOW  |    255    |  Rotate Right   | HIGH |    100    |   Rotate Left   |
-| Rotate Right | HIGH |    100    |   Rotate Left   | LOW  |    255    |  Rotate Right   |
-|     Stop     | LOW  |     0     |      Stop       | LOW  |     0     |      Stop       |
+|   Funktion    |  D4  | D6（PWM） | Motor （links）B |  D2  | D5（PWM） | Motor（rechts）A |
+| :-----------: | :--: | :-------: | :--------------: | :--: | :-------: | :--------------: |
+| Vorwärts fahren | HIGH |     0     |   Dreht links   | HIGH |     0     |   Dreht links   |
+|  Rückwärts fahren   | LOW  |    255    |  Dreht rechts   | LOW  |    255    |  Dreht rechts   |
+| Links drehen  | LOW  |    255    |  Dreht rechts   | HIGH |    100    |   Dreht links   |
+| Rechts drehen | HIGH |    100    |   Dreht links   | LOW  |    255    |  Dreht rechts   |
+|    Stopp      | LOW  |     0     |      Stopp       | LOW  |     0     |      Stopp       |
 
-#### **(4)Connection Diagram:**
+#### **(4) Anschlussdiagramm:**
 
 ![](./media/image-20250709134029403.png)
 
-<span style="color: rgb(255, 76, 65);">Note:</span>
+<span style="color: rgb(255, 76, 65);">Hinweis:</span>
 
-The 4-pinconnector is marked with A, A1, B1 and B. The right rear motor is connected to B of the 8833 board and left front one is connected to A port.
+Der 4-polige Stecker ist mit A, A1, B1 und B gekennzeichnet. Der rechte hintere Motor ist mit B des 8833-Boards verbunden und der linke vordere Motor ist mit dem A-Port verbunden.
 
-#### **(5)Test Code:**
+#### **(5) Testcode:**
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
 
 （1）![](media/7cbc4d14c2e2dac956f2e9f145f01f31.png)
 
@@ -66,17 +66,17 @@ You can also drag blocks to edit your code, as shown below.
 
 （4）![](media/b7215c8a4997a188947e80fdee1a8cd9.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/332229f3dc01a38de898367f52531b28.png)
 
 
-#### **(6)Test Results:**
+#### **(6) Testergebnisse:**
 
-After wiring according to the diagram, uploading the test code and powering it up.
+Nach der Verkabelung gemäß dem Diagramm, dem Hochladen des Testcodes und der Inbetriebnahme.
 
 ![](./media/img-20240117092625.png)
 
-the smart car moves forward for 2s, goes back for 2s, turns left for 2s, turns right for 2s and stops for 2s.
+fährt das Smart Car 2 Sekunden vorwärts, 2 Sekunden rückwärts, dreht 2 Sekunden nach links, dreht 2 Sekunden nach rechts und stoppt für 2 Sekunden.

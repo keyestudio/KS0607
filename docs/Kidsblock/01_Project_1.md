@@ -1,43 +1,43 @@
-### Project 1: LED Blinks
+### Projekt 1: LED blinkt
 
-#### (1)Description：
+#### (1) Beschreibung：
 
 ![](./media/image-20250709122631704.png)
 
 ![](media/ae87aea86f6c7e427f7adfc0e7c0efe3.png)
 
-For starters and enthusiasts, LED Blink is a fundamental program. LED, the abbreviation of light emitting diodes, consists of Ga, As, P, N chemical compounds and so on. The LED can flash in diverse colors by altering the delay time in the test code. When in control, power on GND and VCC. The LED will be on if the S end is at a high level; otherwise, it will go off.
+Für Einsteiger und Enthusiasten ist das LED-Blinken ein grundlegendes Programm. LED ist die Abkürzung für Leuchtdioden und besteht aus chemischen Verbindungen wie Ga, As, P, N usw. Die LED kann in verschiedenen Farben blinken, indem die Verzögerungszeit im Testcode geändert wird. Bei der Steuerung wird GND und VCC mit Strom versorgt. Die LED leuchtet, wenn der S-Anschluss auf einem hohen Pegel liegt; andernfalls erlischt sie.
 
-#### **(2)Parameters:**
+#### **(2) Parameter:**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Control interface: digital port
-- Working voltage: DC 3.3-5V
-- Pin spacing: 2.54mm
-- LED display color: yellow
+- Steuerschnittstelle: Digitalport
+- Betriebsspannung: DC 3,3–5 V
+- Pin-Abstand: 2,54 mm
+- LED-Anzeigefarbe: Gelb
 
-#### (3)Components Required:
+#### (3) Benötigte Komponenten:
 
 ![](./media/image-20250709122437613.png)
 
-#### **(4)8833 Motor Driver Expansion Board:**
+#### **(4) 8833 Motor-Treiber-Erweiterungsplatine:**
 
-The Keyestudio 8833 motor driver expansion board is compatible with the Arduino UNO development board. Just stack it onto the development board when using it.
+Die Keyestudio 8833 Motor-Treiber-Erweiterungsplatine ist mit dem Arduino UNO-Entwicklungsboard kompatibel. Stecken Sie sie einfach auf das Entwicklungsboard, wenn Sie sie verwenden.
 
 ![](media/d8696e83ade31f2b7c56cc5911eacbd7.GIF)
 
-#### **(5)Connection Diagram:**
+#### **(5) Anschlussdiagramm:**
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
 ![](./media/image-20250709122655936.png)
 
-<span style="color: rgb(255, 76, 65);">**NOTE:**</span> The LED is connected to the D9 port. Remember to install jumper caps onto the shield.
+<span style="color: rgb(255, 76, 65);">**HINWEIS:**</span> Die LED ist mit dem D9-Port verbunden. Denken Sie daran, Jumper-Kappen auf dem Shield zu installieren.
 
-#### **(6)Test Code:**
+#### **(6) Testcode:**
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
 
 ![](media/cc43ba357acb68a4961adb7e5041b6fe.png)
 
@@ -45,28 +45,28 @@ You can also drag blocks to edit your code, as shown below.
 
 ![](media/21dc3c24da4271aa7ec2bfdac732eeb3.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/ba4723bab640078eccbe1811da138bc3.png)
 
-#### **(7)Test Results:**
+#### **(7) Testergebnisse:**
 
-Upload the program, LED blinks at the interval of 1s.
+Laden Sie das Programm hoch, die LED blinkt im Abstand von 1 s.
 
-#### **(8)Extension Practice:**
+#### **(8) Erweiterungsübung:**
 
-We have known how to control the LED, then let's change the frequency of the LED.
+Wir wissen nun, wie man die LED steuert. Dann wollen wir die Blinkfrequenz der LED ändern.
 
-We can the frequency of the LED without changing the pin of the LED. Let's modify the code.
+Wir können die Frequenz der LED ändern, ohne den Pin der LED zu wechseln. Lassen Sie uns den Code anpassen.
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt.
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/58c76be4c719a885afb500e8f3b80b85.png)
 
-The test result shows that the LED flashes faster. Therefore, we can draw a conclusion that pins and time delaying affect flash frequency.
+Das Testergebnis zeigt, dass die LED schneller blinkt. Daher können wir schlussfolgern, dass Pins und Zeitverzögerung die Blinkfrequenz beeinflussen.

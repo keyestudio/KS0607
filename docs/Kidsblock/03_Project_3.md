@@ -1,43 +1,43 @@
-### Project 3: Photoresistor
+### Projekt 3: Fotowiderstand
 
 ![](media/36e7e08764ed3c61a1c22f86be8c23d9.jpeg)
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-The photosensitive resistor is a special resistor made of a semiconductor material such as a sulfide or selenium, and a moisture-proof resin is also coated with a photoconductive effect. The photosensitive resistance is most sensitive to the ambient light, different illumination strength, and the resistance of the photosensitive resistance is different. We use the photosensitive resistance to design the photosensitive resistor module. 
+Der lichtempfindliche Widerstand ist ein spezieller Widerstand, der aus einem Halbleitermaterial wie Sulfid oder Selen hergestellt wird, und zusätzlich mit einem feuchtigkeitsbeständigen Harz mit fotoleitendem Effekt beschichtet ist. Der Fotowiderstand reagiert am empfindlichsten auf das Umgebungslicht; bei unterschiedlicher Lichtstärke ist der Widerstandswert des Fotowiderstands unterschiedlich. Wir verwenden den lichtempfindlichen Widerstand, um das Fotowiderstandsmodul zu entwerfen.
 
-The module signal is connected to the microcontroller analog port. When the light intensity is stronger, the larger the analog port voltage, that is, the simulation value of the microcontroller is also large; in turn, when the light intensity is weaker, the smaller the analog port voltage, that is, the simulation value of the microcontroller is also small. 
+Das Modulsignal ist mit dem analogen Port des Mikrocontrollers verbunden. Wenn die Lichtintensität stärker ist, ist die Spannung am analogen Port größer, d.h. der Simulationswert des Mikrocontrollers ist ebenfalls größer; umgekehrt gilt: Wenn die Lichtintensität schwächer ist, ist die Spannung am analogen Port kleiner, d.h. der Simulationswert des Mikrocontrollers ist ebenfalls kleiner.
 
-In this way, we can read the corresponding analog value using the photosensitive resistor module, and the intensity of the light in the inductive environment.
+Auf diese Weise können wir den entsprechenden Analogwert mithilfe des Fotowiderstandsmoduls auslesen und die Lichtintensität in der Umgebung erfassen.
 
 ![](./media/image-20250709122809574.png)
 
 ![](media/0d9daba6454ef099fe1ceb0e6cb56ec4.png)
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
-- Photosensitive resistance resistance value: 5K Ou-0.5m
+- Widerstandswert des Fotowiderstands: 5K Ohm-0,5m
 
-- Interface type: simulation port A0, A1
+- Schnittstellentyp: Simulationsport A0, A1
 
-- Working voltage: 3.3V-5V
+- Betriebsspannung: 3,3V-5V
 
-- Pin spacing: 2.54mm
+- Pin-Abstand: 2,54mm
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
-What we are going to test next isthe photoresistor module on the leftside ofthe robot.
+Als nächstes testen wir das Fotowiderstandsmodul auf der linken Seite des Roboters.
 
 ![](./media/img-20240117091730.png)
 
-The left photoresistoris connected to A1/P3 of the motor drive shield.
+Der linke Fotowiderstand ist mit A1/P3 des Motorantriebsshields verbunden.
 
 ![](media/484852a36f52bdbe44bec1b9a8941e44.png)
 
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -47,31 +47,31 @@ You can also drag blocks to edit your code, as shown below.
 
 ![](media/d4da0bd0c55e3580fa95782d50f6e540.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/f29c7da2238bcc2bc70cb4b2c773b50d.png)
 
-#### **(5)Test Results:**
+#### **(5)Testergebnisse:**
 
-Upload the code to the development board. Click ![](media/9011f20d83897d7a5936793c4ae142fc.png) to set baud rate 9600.When covering it with your hand, the value gets smaller; if not, the value gets larger.
+Laden Sie den Code auf das Entwicklungsboard hoch. Klicken Sie auf ![](media/9011f20d83897d7a5936793c4ae142fc.png), um die Baudrate auf 9600 einzustellen. Wenn Sie den Sensor mit der Hand abdecken, wird der Wert kleiner; wenn nicht, wird der Wert größer.
 
 ![](media/53e2fc37ee5bb2c6ec187c309c431c47.png)
 
 
 
-#### **(6)Extension Practice:**
+#### **(6)Erweiterungsübung:**
 
-The above code just reads the value of the photoresistor. We can make the photosensitive and LED combine to change the LED.How about controlling the LED’s brightness by it?
+Der obige Code liest lediglich den Wert des Fotowiderstands. Wir können den Fotowiderstand und die LED kombinieren, um die LED zu steuern. Was wäre, wenn wir die Helligkeit der LED damit steuern würden?
 
 ![](media/88a89f7996fb7f7d037315e57e8bcd33.png)
 
-PWM can change the light brightness, that is, LED should be connected to the PWM of the development board.
+PWM kann die Lichthelligkeit ändern, d.h. die LED sollte mit dem PWM des Entwicklungsboards verbunden werden.
 
-Connect the LED to D9 and keep other pins unchanged, then we edit code.
+Verbinden Sie die LED mit D9 und lassen Sie die anderen Pins unverändert, dann bearbeiten wir den Code.
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 ![](media/f3bb36c8d40016865672399259c7945d.png)
 
@@ -81,12 +81,12 @@ You can also drag blocks to edit your code, as shown below.
 
 ![](media/9ecdfd77e2a69dea5a8df04e7d56a13a.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/b23bcae806e8e27382b162909d30f3c0.png)
 
-Upload the code to the development board, we press the photoresistor to see if the brightness of the LED light has changed.
+Laden Sie den Code auf das Entwicklungsboard hoch. Wir drücken auf den Fotowiderstand, um zu sehen, ob sich die Helligkeit der LED verändert hat.
 
 ![](./media/img-20240117091759.png)

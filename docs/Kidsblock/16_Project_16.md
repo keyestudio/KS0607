@@ -1,62 +1,62 @@
-### Project 16: Bluetooth Remote Control
+### Projekt 16: Bluetooth-Fernsteuerung
 
 ![](./media/image-20250709134858245.png)
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-In the last several decades, Bluetooth has become the most popular wireless communication module for it is easy to use and has found wide applications in most devices powered by batteries.
+In den letzten Jahrzehnten hat sich Bluetooth zum beliebtesten drahtlosen Kommunikationsmodul entwickelt, da es einfach zu bedienen ist und in den meisten batteriebetriebenen Geräten weit verbreitet eingesetzt wird.
 
-In order to adjust with the time and reality and need the needs of customers, Bluetooth has been upgraded several times. In recent years, it embraces lots of transformations in terms of data transfer rate, power consumption of wearable devices and IoT devices, and security systems and others. Here, we plan to learn about DX-BT24 with Arduino board.
+Um sich an die Zeit, die Realität und die Bedürfnisse der Kunden anzupassen, wurde Bluetooth mehrfach aktualisiert. In den letzten Jahren hat es viele Veränderungen hinsichtlich Datenübertragungsrate, Stromverbrauch von Wearables und IoT-Geräten sowie Sicherheitssystemen und anderem erfahren. Hier planen wir, das DX-BT24 mit dem Arduino-Board kennenzulernen.
 
 #### **(2)Parameter:**
 
-- Bluetooth protocol: Bluetooth Specification V5.1 BLE
-- Working distance: In an open environment, achieve 40m ultra-long distance
-- Communication Operating frequency: 2.4GHz ISM band
-- Communication interface: UART
-- Bluetooth certification: in line with FCC CE ROHS REACH certification standards
-- Serial port parameters: 9600, 8 data bits, 1 stop bit, invalid bit, no flow control
-- Power: 5V DC
-- Operating temperature: –10 to +65 degrees Celsius
+- Bluetooth-Protokoll: Bluetooth Specification V5.1 BLE
+- Betriebsreichweite: In einer offenen Umgebung bis zu 40 m Ultralangstrecke
+- Betriebsfrequenz für die Kommunikation: 2,4 GHz ISM-Band
+- Kommunikationsschnittstelle: UART
+- Bluetooth-Zertifizierung: Entspricht den FCC CE ROHS REACH-Zertifizierungsstandards
+- Serielle Schnittstellenparameter: 9600, 8 Datenbits, 1 Stoppbit, kein ungültiges Bit, keine Flusssteuerung
+- Stromversorgung: 5V DC
+- Betriebstemperatur: –10 bis +65 Grad Celsius
 
 
-#### **(3)Application:**
+#### **(3)Anwendung:**
 
-The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. Mainly used in the field of short-distance wireless data transmission. Avoid cumbersome cable connections and can directly replace serial cables. Successful application areas of BT24 modules:
+Das DX-BT24-Modul unterstützt auch das BT5.1 BLE-Protokoll, das direkt mit iOS-Geräten mit BLE-Bluetooth-Funktion verbunden werden kann und das dauerhafte Ausführen von Hintergrundprogrammen unterstützt. Wird hauptsächlich im Bereich der drahtlosen Kurzstrecken-Datenübertragung eingesetzt. Vermeidet umständliche Kabelverbindungen und kann Serienkabel direkt ersetzen. Erfolgreiche Anwendungsbereiche von BT24-Modulen:
 
-※ Bluetooth wireless data transmission; 
+※ Drahtlose Bluetooth-Datenübertragung;
 
-※ Mobile phone, computer peripheral equipment; 
+※ Mobiltelefone, Computerperipheriegeräte;
 
-※ Handheld POS equipment; 
+※ Tragbare POS-Geräte;
 
-※ Wireless data transmission of medical equipment;
+※ Drahtlose Datenübertragung medizinischer Geräte;
 
-※ Smart home control; 
+※ Smart-Home-Steuerung;
 
-※ Bluetooth printer; 
+※ Bluetooth-Drucker;
 
-※ Bluetooth remote control toys; 
+※ Bluetooth-Fernsteuerungsspielzeug;
 
-※ Shared bicycles;
+※ Leihfahrräder;
 
-#### **(4)Pins description:**
+#### **(4)Pin-Beschreibung:**
 
 ![](media/cd97cf79ff5cdd5bbd78f4cc960d38e5.png)
 
-①STATE：state pin
+①STATE：Statuspin
 
-②RX：reception pin
+②RX：Empfangspin
 
-③TX：sending pin
+③TX：Sendepin
 
-④GND：grounded
+④GND：Masse
 
-⑤VCC：power pin
+⑤VCC：Stromversorgungspin
 
-⑥EN：enable pin
+⑥EN：Aktivierungspin
 
-Connect Bluetooth to the development board
+Bluetooth mit dem Entwicklungsboard verbinden
 
 | Uno  | BT24 |
 | :--: | :--: |
@@ -65,92 +65,91 @@ Connect Bluetooth to the development board
 | VCC  |  5V  |
 | GND  | GND  |
 
-#### **(5)Connection Diagram:**
+#### **(5)Schaltungsdiagramm:**
 
 ![](media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
-#### **(6)Download APP:**
+#### **(6)APP herunterladen:**
 
-##### **For IOS system**
+##### **Für iOS-System**
 
-1\. Open App Store.
+1\. App Store öffnen.
 
-2\. Search <span style="color: rgb(61, 167, 66);">KeyesRobot</span> in the Apple Store and click download.
+2\. Suchen Sie nach <span style="color: rgb(61, 167, 66);">KeyesRobot</span> im Apple Store und klicken Sie auf Herunterladen.
 
 ![](./media/img-20240111141301.png)
 
-3\. After the app is installed, you will see the following icon on your phone desktop.
+3\. Nach der Installation der App sehen Sie das folgende Symbol auf dem Startbildschirm Ihres Telefons.
 
 ![](./media/img-20240111141412.png)
 
-**How to connect iOS Phone to Bluetooth module:**
+**So verbinden Sie das iOS-Telefon mit dem Bluetooth-Modul:**
 
-1\. Turn on the Bluetooth and location services on phone through settings.
+1\. Aktivieren Sie Bluetooth und Ortungsdienste auf dem Telefon über die Einstellungen.
 
 ![](./media/img-20240111141943.png)
 
-2\. Allow KeyesRobot APP to access Bluetooth through settings.
+2\. Erlauben Sie der KeyesRobot APP, über die Einstellungen auf Bluetooth zuzugreifen.
 
 ![](./media/img-20240111142052.png)
 
-3\. Click to open KeyesRobot App.
+3\. Klicken Sie zum Öffnen der KeyesRobot App.
 
 ![](./media/img-20240111142140.png)
 
-4\. KeyesRobot App is a universal APP, which is applied to multiple keyestudio robots. If the interface does not display "TANK ROBOT", you can click the left and right buttons to find "TANK ROBOT".
+4\. KeyesRobot App ist eine universelle APP, die für mehrere Keyestudio-Roboter verwendet wird. Wenn die Oberfläche nicht „TANK ROBOT" anzeigt, können Sie auf die linken und rechten Schaltflächen klicken, um „TANK ROBOT" zu finden.
 
-5\. Click the <span style="color: rgb(61, 167, 66);">Bluetooth button</span>![](./media/img-20240111142336.png) in the upper right corner to scan the bluetooth
+5\. Klicken Sie auf die <span style="color: rgb(61, 167, 66);">Bluetooth-Schaltfläche</span>![](./media/img-20240111142336.png) in der oberen rechten Ecke, um Bluetooth zu scannen.
 
 ![](./media/img-20240111142415.png)
 
-6\. You will see a Bluetooth named <span style="color: rgb(0, 209, 0);">**BT24**</span>, click the <span style="color: rgb(255, 169, 0);">Connect</span> button.
+6\. Sie sehen ein Bluetooth-Gerät mit dem Namen <span style="color: rgb(0, 209, 0);">**BT24**</span>, klicken Sie auf die Schaltfläche <span style="color: rgb(255, 169, 0);">Verbinden</span>.
 
 ![](./media/img-20240111142536.png)
 
-7\. If the onboard LED on the Bluetooth module stops flashing and stays on, it means your phone is successfully connected to the Bluetooth module.
+7\. Wenn die integrierte LED am Bluetooth-Modul aufhört zu blinken und dauerhaft leuchtet, bedeutet dies, dass Ihr Telefon erfolgreich mit dem Bluetooth-Modul verbunden wurde.
 
 ![](./media/img-20240111142702.png)
 
 
-##### **For Android System**
+##### **Für Android-System**
 
-1\. Search <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> in Google Play, or open the following link to download and install the app. 
+1\. Suchen Sie nach <span style="color: rgb(61, 167, 66);">**KeyesRobot**</span> in Google Play, oder öffnen Sie den folgenden Link, um die App herunterzuladen und zu installieren.
 
 [https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio](https://play.google.com/store/apps/details?id=com.keyestudio.keyestudio)
 
 ![](./media/img-20240111143312.png)
 
-2\. Turn on the Bluetooth and the location services of the mobile phone
+2\. Schalten Sie Bluetooth und die Ortungsdienste des Mobiltelefons ein.
 
 ![](./media/img-20240111143354.png)
 
-3\. Find the KeyesRobot Bluetooth app from settings, click on the permission options of the app, and
-enable Location and nearby device permissions.(<span style="color: rgb(255, 76, 65);">Note:</span> Some mobile phones do not have nearby device permissions function.)
+3\. Suchen Sie die KeyesRobot Bluetooth-App in den Einstellungen, klicken Sie auf die Berechtigungsoptionen der App und aktivieren Sie die Berechtigungen für Standort und Geräte in der Nähe. (<span style="color: rgb(255, 76, 65);">Hinweis:</span> Einige Mobiltelefone verfügen nicht über die Funktion für Berechtigungen für Geräte in der Nähe.)
 
 ![](./media/img-20240111143451.png)
 
-4\. Click to open KeyesRobot App.
+4\. Klicken Sie zum Öffnen der KeyesRobot App.
 
 ![](./media/img-20240111143529.png)
 
-5\. KeyesRobot App is a universal APP, which is applied to multiple keyestudio robots. If the interface does not display "TANK ROBOT", you can click the left and right buttons to find "TANK ROBOT".
+5\. KeyesRobot App ist eine universelle APP, die für mehrere Keyestudio-Roboter verwendet wird. Wenn die Oberfläche nicht „TANK ROBOT" anzeigt, können Sie auf die linken und rechten Schaltflächen klicken, um „TANK ROBOT" zu finden.
 
-6\. Click the <span style="color: rgb(61, 167, 66);">Bluetooth button</span>![](./media/img-20240111142336.png) in the upper right corner to scan the bluetooth
+6\. Klicken Sie auf die <span style="color: rgb(61, 167, 66);">Bluetooth-Schaltfläche</span>![](./media/img-20240111142336.png) in der oberen rechten Ecke, um Bluetooth zu scannen.
 
 ![](./media/img-20240111142415.png)
 
-7\. You will see a Bluetooth named <span style="color: rgb(0, 209, 0);">**BT24**</span>, click the <span style="color: rgb(255, 169, 0);">Connect</span> button.![](./media/img-20240111143910.png)
+7\. Sie sehen ein Bluetooth-Gerät mit dem Namen <span style="color: rgb(0, 209, 0);">**BT24**</span>, klicken Sie auf die Schaltfläche <span style="color: rgb(255, 169, 0);">Verbinden</span>.![](./media/img-20240111143910.png)
 
-8\. When your phone is successfully connected to the Bluetooth module, the onboard LED on the Bluetooth module will stop flashing and stay on.
+8\. Wenn Ihr Telefon erfolgreich mit dem Bluetooth-Modul verbunden ist, hört die integrierte LED am Bluetooth-Modul auf zu blinken und bleibt dauerhaft an.
 
 ![](./media/img-20240111144004.png)
 
 ![](./media/img-20240111142702.png)
 
 
-#### **(7)BT Test Code:**
+#### **(7)BT-Testcode:**
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop ziehen, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 （1）![](media/2a66a7e8b37c68ddc51cfdb3aff53ac2.png)
 
@@ -162,42 +161,42 @@ You can also drag blocks to edit your code, as shown below
 
 （5）![](media/c8228c5040a43ae322612b312c995ac3.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, die zum Fehlschlagen des Uploads führen können.)
 
 ![](media/4766ada3bf48bb35522f292d9352bb78.png)
 
 
-Upload the code to the development board, then plug in the Bluetooth module, and then connected the mobile phone to the Bluetooth module.
+Laden Sie den Code auf das Entwicklungsboard hoch, stecken Sie dann das Bluetooth-Modul ein und verbinden Sie anschließend das Mobiltelefon mit dem Bluetooth-Modul.
 
-After the mobile phone is successfully connected to the Bluetooth module, click to open the Bluetooth APP and click the <span style="color: rgb(0, 252, 255);">Select</span> button on the <span style="color: rgb(0, 252, 255);">homepage</span>.
+Nachdem das Mobiltelefon erfolgreich mit dem Bluetooth-Modul verbunden wurde, klicken Sie auf die Bluetooth-APP, um sie zu öffnen, und klicken Sie auf der <span style="color: rgb(0, 252, 255);">Startseite</span> auf die Schaltfläche <span style="color: rgb(0, 252, 255);">Auswählen</span>.
 
 ![](./media/img-20240111144744.png)
 
-The main interface of the Bluetooth app is shown in the figure below.
+Die Hauptoberfläche der Bluetooth-App ist in der folgenden Abbildung dargestellt.
 
 ![](./media/img-20240111144859.png)
 
-Click ![Img](./media/img-20240111171312.png)and set the baud rate to 9600. Click the icon on the APP interface and the serial monitor will display command sent by button.
+Klicken Sie auf ![Img](./media/img-20240111171312.png) und stellen Sie die Baudrate auf 9600 ein. Klicken Sie auf das Symbol in der APP-Oberfläche und der serielle Monitor zeigt den per Schaltfläche gesendeten Befehl an.
 
 ![](media/f5004f5334fb4885ac0096f99e4133f9.png)
 
 <br>
 <br>
-<span style="color: rgb(255, 76, 65);">**Note: The APP connection method is the same as below.**</span>
+<span style="color: rgb(255, 76, 65);">**Hinweis: Die APP-Verbindungsmethode ist dieselbe wie unten beschrieben.**</span>
 <br>
 <br>
 
 
-#### **(8)Extension Practice:**
+#### **(8)Erweiterungsübung:**
 
-In the above project, Bluetooth receives the signal sent by the mobile phone and displays it on the serial port of the development board. Here we use the command sent by the mobile phone to turn on or off an LED. Looking at the wiring diagram, an LED is connected to the D9 pin,
+Im obigen Projekt empfängt Bluetooth das vom Mobiltelefon gesendete Signal und zeigt es auf dem seriellen Port des Entwicklungsboards an. Hier verwenden wir den vom Mobiltelefon gesendeten Befehl, um eine LED ein- oder auszuschalten. Wie im Schaltungsdiagramm zu sehen ist, ist eine LED am Pin D9 angeschlossen.
 
 ![](media/549c10efcf47f29f8f6355d8cd0497cc.png)
 
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop ziehen, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 （1）![](media/2a66a7e8b37c68ddc51cfdb3aff53ac2.png)
 
@@ -211,15 +210,15 @@ You can also drag blocks to edit your code, as shown below
 
 （6）![](media/4164bcf66d3d2415f43a0efcd1ce4243.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, die zum Fehlschlagen des Uploads führen können.)
 
 ![](media/91fd9d6f85e291fe90a63e5095ed7f44.png)
 
-After the code above is successfully uploaded. Click ![](media/d5e59839bafc63f8b35c78c60573d1fc.png) to control the LED.
+Nachdem der obige Code erfolgreich hochgeladen wurde, klicken Sie auf ![](media/d5e59839bafc63f8b35c78c60573d1fc.png), um die LED zu steuern.
 
 ![](./media/img-20240117094418.png)
 
 
-After you finish the BT project, remove it.
+Nachdem Sie das BT-Projekt abgeschlossen haben, entfernen Sie es.

@@ -1,44 +1,44 @@
-### Project 21: Fire Extinguishing Tank
+### Projekt 21: Feuerlösch-Panzer
 
-#### **(1)Description:**
+#### **(1) Beschreibung:**
 
-The line-tracking function of the smart tank has been explained in the previous project. And in this project we use the flame sensor to make a fire extinguishing robot. 
+Die Spurverfolgungs-Funktion des Smart-Panzers wurde im vorherigen Projekt erläutert. In diesem Projekt verwenden wir den Flammensensor, um einen Feuerlöschroboter zu bauen.
 
-When the car encounters flames, the motor of the fan will rotate to blow out the fire. Of course, we need to replace the ultrasonic sensor and two photoresistors with a fan module and flame sensors first.
+Wenn das Fahrzeug auf Flammen trifft, dreht sich der Motor des Lüfters, um das Feuer auszublasen. Natürlich müssen wir zuerst den Ultraschallsensor und die beiden Fotowiderstände durch ein Lüftermodul und Flammensensoren ersetzen.
 
-The specific logic of the smart car is shown in the table below:
+Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
 
-| Left Flame Sensors | Right Flame Sensors | Status                                          |
-| :----------------: | :-----------------: | :---------------------------------------------- |
-|        ≤700        |        ≤700         | Car stops, fan starts rotating to blow out the flame |
-|        ≥700        |        ≥700         | Car stops, fan starts rotating to blow out the flame |
-|        ≥700        |        ≥700         | Car stops, fan starts rotating to blow out the flame |
-|       ＞700        |        ＞700        | Fan stops, car moves                            |
+| Linker Flammensensor | Rechter Flammensensor | Status                                                        |
+| :------------------: | :-------------------: | :------------------------------------------------------------ |
+|        ≤700          |         ≤700          | Auto stoppt, Lüfter beginnt zu drehen, um die Flamme auszublasen |
+|        ≥700          |         ≥700          | Auto stoppt, Lüfter beginnt zu drehen, um die Flamme auszublasen |
+|        ≥700          |         ≥700          | Auto stoppt, Lüfter beginnt zu drehen, um die Flamme auszublasen |
+|        ＞700         |         ＞700         | Lüfter stoppt, Auto bewegt sich                               |
 
-<span style="color: rgb(255, 76, 65);">**Note:**</span>
-1）This experiment requires the use of a fire source. Please make it away from flammable items to prevent fire. Children should experiment under adult supervision. If you cannot confirm that you are safe, please abandon the experiment. 
-2）The flame sensoris not fireproof, please do not burn it directly with flame.
-We can control an external LED with the flame sensor. The LED still is connected to D9. When fire is connected, LED will be on.
+<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
+1） Dieses Experiment erfordert die Verwendung einer Feuerquelle. Bitte halten Sie Abstand von brennbaren Gegenständen, um Brände zu verhindern. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie sich nicht sicher sind, dass Sie sicher sind, verzichten Sie bitte auf das Experiment.
+2） Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.
+Wir können eine externe LED mit dem Flammensensor steuern. Die LED ist weiterhin mit D9 verbunden. Wenn Feuer erkannt wird, leuchtet die LED auf.
 
 
-#### **(2)Flow chart:**
+#### **(2) Flussdiagramm:**
 
 ![](media/wps120.png)
 
-#### **(3)Connection Diagram:**
+#### **(3) Anschlussdiagramm:**
 
 ![](media/c02e461ac7bdbab7fd14a19c453e08e4.png)
 
-<span style="color: rgb(255, 76, 65);">Note:</span>
+<span style="color: rgb(255, 76, 65);">Hinweis:</span>
 
-GND, VCC, SDA and SCL of the 8x16 LED panel are connected to G（GND, V（VCC), A4 and A5.
+GND, VCC, SDA und SCL des 8x16-LED-Panels sind mit G（GND), V（VCC), A4 und A5 verbunden.
 
-G, V and A of two flame sensors are interfaced with G（GND), V（VCC), A1 and A2 of the expansion board.
+G, V und A der beiden Flammensensoren sind mit G（GND), V（VCC), A1 und A2 des Erweiterungsboards verbunden.
 
-#### **(4)Test Code:**
+#### **(4) Testcode:**
 
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -52,17 +52,17 @@ You can also drag blocks to edit your code, as shown below
 
 （6）![](media/c0365237fa7ec7de10e9fc465353fae1.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/c07c09e5533a37838722b8c2b513646d.png)
 
-#### **(5)Test Results:**
+#### **(5) Testergebnisse:**
 
-After upload the test code successfully, power up and turn the DIP switch to ON end. The smart car will put out the fire when it detects flame.
+Nachdem der Testcode erfolgreich hochgeladen wurde, schalten Sie die Stromversorgung ein und stellen Sie den DIP-Schalter auf die ON-Seite. Das Smart Car löscht das Feuer, wenn es eine Flamme erkennt.
 
 ![](media/2de5f1d832d40c0fc94274f1d87443c6.jpeg)
 
-<span style="color: rgb(255, 76, 65);">**Note:**</span>
-Please make it away from flammable items to prevent fire. Children should experiment under adult supervision. If you cannot confirm that you are safe, please abandon the experiment. The flame sensor is not fireproof, please do not burn it directly with flame.
+<span style="color: rgb(255, 76, 65);">**Hinweis:**</span>
+Bitte halten Sie Abstand von brennbaren Gegenständen, um Brände zu verhindern. Kinder sollten das Experiment unter Aufsicht von Erwachsenen durchführen. Wenn Sie sich nicht sicher sind, dass Sie sicher sind, verzichten Sie bitte auf das Experiment. Der Flammensensor ist nicht feuerfest, bitte verbrennen Sie ihn nicht direkt mit einer Flamme.

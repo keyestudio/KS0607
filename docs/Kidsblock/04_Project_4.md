@@ -1,39 +1,39 @@
-### Project 4: Line Tracking Sensor
+### Projekt 4: Linienverfolgungssensor
 
-#### **(1)Description:**
+#### **(1) Beschreibung:**
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
-The tracking sensor is actually an infrared sensor. The component used here is the TCRT5000 infrared tube.
+Der Linienverfolgungssensor ist eigentlich ein Infrarotsensor. Das hier verwendete Bauteil ist die TCRT5000 Infrarotröhre.
 
-Its working principle is to use different reflectivity of infrared light to colors, then convert the strength of the reflected signal into a current signal.
+Sein Funktionsprinzip beruht darauf, dass Infrarotlicht unterschiedlich stark von verschiedenen Farben reflektiert wird, und das reflektierte Signal wird in ein Stromsignal umgewandelt.
 
-During the process of detection, black is active at HIGH level while white is active at LOW level. The detection height is 0-3 cm.
+Während des Erkennungsvorgangs ist Schwarz bei HIGH-Pegel aktiv, während Weiß bei LOW-Pegel aktiv ist. Die Erkennungshöhe beträgt 0–3 cm.
 
-Keyestudio 3-channel line tracking module has integrated 3 sets of TCRT5000 infrared tube on a single board, which is more convenient for wiring and control.
+Das Keyestudio 3-Kanal-Linienverfolgungsmodul hat 3 TCRT5000 Infrarotröhren auf einer einzigen Platine integriert, was die Verkabelung und Steuerung komfortabler macht.
 
-If the Line Tracking Sensor does not work as expected, you will need to use a screwdriver to adjust its potentiometerto make it more sensitive. When yourfinger is close to the sensor, its on-board LED light turns on, and when yourfinger moves away, its on-board LED light turns off. At thistime, itssensitivity isrelatively good.
+Wenn der Linienverfolgungssensor nicht wie erwartet funktioniert, müssen Sie einen Schraubenzieher verwenden, um das Potentiometer anzupassen und ihn empfindlicher zu machen. Wenn Ihr Finger sich dem Sensor nähert, leuchtet die bordeigene LED auf, und wenn Ihr Finger sich entfernt, erlischt die bordeigene LED. Zu diesem Zeitpunkt ist die Empfindlichkeit relativ gut.
 
 ![](./media/img-20240117091947.png)
 
-#### **(2)Parameters:**
+#### **(2) Parameter:**
 
-- Operating Voltage: 3.3-5V (DC)
-- Interface: 5PIN
-- Output Signal: Digital signal
-- Detection Height: 0-3 cm
+- Betriebsspannung: 3,3–5 V (DC)
+- Schnittstelle: 5PIN
+- Ausgangssignal: Digitales Signal
+- Erkennungshöhe: 0–3 cm
 
-Special note: before testing,rotate the potentiometer on the sensor to adjust the detection sensitivity. When adjust the LED at the threshold between ON and OFF, the sensitivity is the best.
+Besonderer Hinweis: Drehen Sie vor dem Test das Potentiometer am Sensor, um die Erkennungsempfindlichkeit einzustellen. Wenn die LED an der Schaltschwelle zwischen EIN und AUS eingestellt wird, ist die Empfindlichkeit am besten.
 
-<span style="color: rgb(255, 76, 65);">Note:</span> the line tracking sensor is installed under the bottom of the robot.
+<span style="color: rgb(255, 76, 65);">Hinweis:</span> Der Linienverfolgungssensor ist unter dem Boden des Roboters montiert.
 
-#### **(3)Connection Diagram:**
+#### **(3) Anschlussdiagramm:**
 
 ![](media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
-#### **(4)Test Code:**
+#### **(4) Testcode:**
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 ![](media/5ad9eb9c639b74f8271a55079dcf845c.png)
 
@@ -45,25 +45,25 @@ You can also drag blocks to edit your code, as shown below.
 
 ![](media/1a6838765472e3cd3836abb5202d9ab1.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/5298cdfb6fd7c71df155c969c80450cd.png)
 
-#### **(5)Test Results:**
+#### **(5) Testergebnisse:**
 
-Upload the code to the development board, open serial monitor to 9600 and check line tracking sensors. And the displayed value is 1(high level) when no signals are received. The value shifts into 0 when the sensor is covered with paper.
+Laden Sie den Code auf das Entwicklungsboard hoch, öffnen Sie den seriellen Monitor auf 9600 und überprüfen Sie die Linienverfolgungssensoren. Der angezeigte Wert ist 1 (HIGH-Pegel), wenn keine Signale empfangen werden. Der Wert wechselt zu 0, wenn der Sensor mit Papier abgedeckt wird.
 
 ![](media/5630032421adf9446d51b770f0e7f8af.png)
 
-#### **(6)Extension Practice:**
+#### **(6) Erweiterungsübung:**
 
-We can control an LED with this sensor. The LED is connected to D9. If we cover it , the LED will light up.
+Wir können eine LED mit diesem Sensor steuern. Die LED ist mit D9 verbunden. Wenn wir ihn abdecken, leuchtet die LED auf.
 
 ![](media/1dd733ed6248d09e9b4d218e41559294.png)
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 ![](media/5ad9eb9c639b74f8271a55079dcf845c.png)
 
@@ -79,12 +79,12 @@ You can also drag blocks to edit your code, as shown below.
 
 ![](media/b10e1897e99af2c1ade6c09da6c30dba.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/b5a4b5a04cdee9f79d6e18a5c48cbe48.png)
 
-When an object (such as paper or a finger) approaches the line-following sensor, the sensor detects the return signal emitted by itself, and the LED module lights up. When the sensor does not detect any return signal, the LED module turns off.
+Wenn sich ein Objekt (wie Papier oder ein Finger) dem Linienverfolgungssensor nähert, erkennt der Sensor das von ihm selbst ausgesendete Rücksignal und das LED-Modul leuchtet auf. Wenn der Sensor kein Rücksignal erkennt, erlischt das LED-Modul.
 
 ![](./media/img-20240117092116.png)

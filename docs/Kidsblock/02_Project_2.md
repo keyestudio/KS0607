@@ -1,42 +1,42 @@
-### Project 2: Adjust LED Brightness
+### Projekt 2: LED-Helligkeit einstellen
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-In previous lesson, we control LED on and off and make it blink.
+In der vorherigen Lektion haben wir die LED ein- und ausgeschaltet und zum Blinken gebracht.
 
-In this project, we will control LED’s brightness through PWM simulating breathing effect. Similarly, you can change the step length and delay time in the code so as to demonstrate different breathing effects.
+In diesem Projekt steuern wir die Helligkeit der LED über PWM und simulieren damit einen Atemeffekt. Ebenso können Sie die Schrittlänge und die Verzögerungszeit im Code ändern, um verschiedene Atemeffekte darzustellen.
 
-PWM is a means of controlling the analog output via digital means. Digital control is used to generate square waves with different duty cycles (a signal that constantly switches between high and low levels) to control the analog output. 
+PWM ist eine Methode zur Steuerung des analogen Ausgangs über digitale Mittel. Die digitale Steuerung wird verwendet, um Rechteckwellen mit unterschiedlichen Tastverhältnissen (ein Signal, das ständig zwischen hohen und niedrigen Pegeln wechselt) zu erzeugen, um den analogen Ausgang zu steuern.
 
-In general, the input voltages of ports are 0V and 5V. What if the 3V is required? Or a switch among 1V, 3V and 3.5V? We cannot change resistors constantly. For this reason, we resort to PWM. 
+Im Allgemeinen betragen die Eingangsspannungen der Ports 0V und 5V. Was ist, wenn 3V benötigt werden? Oder ein Wechsel zwischen 1V, 3V und 3,5V? Wir können nicht ständig Widerstände wechseln. Aus diesem Grund greifen wir auf PWM zurück.
 
 ![](media/bbcfcb9ae56abb7e80ee587246fc4be9.GIF)
 
-For Arduino digital port voltage outputs, there are only LOW and HIGH levels, which correspond to the voltage outputs of 0V and 5V respectively. You can define LOW as“0”and HIGH as“1’, and let the Arduino output five hundred‘0’or‘1’within 1 second. If output five hundred‘1’, that is 5V; if all of which is‘0’,that is 0V; if output 250 01 pattern, that is 2.5V. 
+Bei den digitalen Port-Spannungsausgängen des Arduino gibt es nur LOW- und HIGH-Pegel, die jeweils den Spannungsausgängen von 0V und 5V entsprechen. Sie können LOW als „0" und HIGH als „1" definieren und den Arduino innerhalb von 1 Sekunde fünfhundert „0" oder „1" ausgeben lassen. Wenn fünfhundert „1" ausgegeben werden, sind das 5V; wenn alles „0" ist, sind das 0V; wenn 250 01-Muster ausgegeben werden, sind das 2,5V.
 
-This process can be likened to showing a movie. The movie we watch are not completely continuous. Actually, it generates 25 pictures per second, which cannot be told by human eyes. Therefore, we mistake it as a continuous process. PWM works in the same way. To output different voltages, we need to control the ratio of 0 and 1. The more‘0’or‘1’ output per unit time, the more accurate the control.
+Dieser Vorgang lässt sich mit dem Abspielen eines Films vergleichen. Die Filme, die wir schauen, sind nicht vollständig kontinuierlich. Tatsächlich werden 25 Bilder pro Sekunde erzeugt, was das menschliche Auge nicht unterscheiden kann. Daher nehmen wir es als kontinuierlichen Prozess wahr. PWM funktioniert auf die gleiche Weise. Um unterschiedliche Spannungen auszugeben, müssen wir das Verhältnis von 0 und 1 steuern. Je mehr „0" oder „1" pro Zeiteinheit ausgegeben werden, desto genauer ist die Steuerung.
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
 ![](media/0ea85307e1317c25f2a8d92f25319aa8.png)
 
-- Control interface: Digital port 3
+- Steuerungsschnittstelle: Digitaler Port 3
 
-- Working voltage: DC 3.3-5V
+- Betriebsspannung: DC 3,3-5V
 
-- Pin spacing: 2.54mm
+- Pin-Abstand: 2,54mm
 
-- LED display color: yellow
+- LED-Anzeigefarbe: Gelb
 
-#### **(3)Wiring Diagram**
+#### **(3)Schaltplan**
 
-PWM pins of the Arduino are connected to 3, 5, 6, 9, 10 and 11.Keep the pin9 unchanged.
+Die PWM-Pins des Arduino sind mit 3, 5, 6, 9, 10 und 11 verbunden. Pin9 bleibt unverändert.
 
 ![](media/8ad54723c1d6149952c730217a1861cd.png)
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 ![](media/de8ccd3cb6621f0eb89a8514a9fd8452.png)
 
@@ -44,28 +44,26 @@ You can also drag blocks to edit your code, as shown below
 
 ![](media/3157917e305c01f1920cf4d06aff4ff9.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/aaab53a06684ab078936ee61f9abcbb3.png)
 
 
-#### **(5)Test Results**
+#### **(5)Testergebnisse**
 
-Upload test code successfully, LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
+Nach erfolgreichem Hochladen des Testcodes ändert sich die LED allmählich von hell zu dunkel, wie der menschliche Atem, anstatt sofort ein- und auszuschalten.
 
-#### **(6)Extension Practice:**
+#### **(6)Erweiterungsübung:**
 
 
-Let’s modify the value of delay and remain the pin unchanged, then observe how LED changes.
+Lassen Sie uns den Verzögerungswert ändern und den Pin unverändert lassen, und beobachten Sie dann, wie sich die LED verändert.
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/2ff0d71c2688d39695b760a1d0f76965.png)
 
-Upload the code to development board, LED flashes more slowly.
-
-
+Laden Sie den Code auf die Entwicklungsplatine hoch, die LED blinkt langsamer.

@@ -10,12 +10,9 @@
     00_Introduction
 
 
-5.4 Projects
+5.4 Projekte
 ------------------------
 
-In this section, we will start from a single sensor and move to complex experiments to introduce you to how the tank robot works.
-
-**Note:** (G), marked on each sensor and module, is the negative pole and connected to “G”, “-” or “GND” on the sensor shield or control board; (V) is the positive pole and linked with V, VCC, + or 5V on the sensor shield or control board.
 
 
 .. toctree::

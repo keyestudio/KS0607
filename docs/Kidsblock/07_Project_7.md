@@ -1,39 +1,39 @@
-### Project 7: IR Reception
+### Projekt 7: IR-Empfang
 
-#### **(1)Description:**
+#### **(1) Beschreibung:**
 
 ![](./media/image-20250709133757050.png)
 
-There is no doubt that infrared remote control is ubiquitous in daily life. It is used to control various household appliances, such as TVs, stereos, video recorders and satellite signal receivers. Infrared remote control is composed of infrared transmitting and infrared receiving systems, that is, an infrared remote control and infrared receiving module and a single-chip microcomputer capable of decoding.   
+Zweifellos ist die Infrarot-Fernbedienung im täglichen Leben allgegenwärtig. Sie wird zur Steuerung verschiedener Haushaltsgeräte verwendet, wie z. B. Fernseher, Stereoanlagen, Videorekorder und Satellitenempfänger. Die Infrarot-Fernbedienung besteht aus einem Infrarot-Sende- und einem Infrarot-Empfangssystem, d. h. einer Infrarot-Fernbedienung, einem Infrarot-Empfangsmodul und einem Mikrocontroller, der zur Decodierung fähig ist.
 
-The 38K infrared carrier signal emitted by the remote controller is encoded by the encoding chip in the remote controller. It is composed of a section of pilot code, user code, user inverse code, data code, and data inverse code. The time interval of the pulse is used to distinguish whether it is a 0 or 1 signal, and the encoding is made up of these 0 and 1 signals. 
+Das vom Fernbedienungsgerät ausgesendete 38K-Infrarot-Trägersignal wird vom Codierchip in der Fernbedienung codiert. Es besteht aus einem Pilotcode, einem Benutzercode, einem invertierten Benutzercode, einem Datencode und einem invertierten Datencode. Das Zeitintervall der Impulse wird verwendet, um zu unterscheiden, ob es sich um ein 0- oder 1-Signal handelt, und die Codierung wird aus diesen 0- und 1-Signalen zusammengesetzt.
 
-The user code of the same remote control is unchanged while the data code can distinguish the key.
+Der Benutzercode derselben Fernbedienung bleibt unverändert, während der Datencode die Taste unterscheiden kann.
 
-When the remote control button is pressed, the remote control sends out an infrared carrier signal. When the IR receiver receives the signal, the program will decode the carrier signal and determines which key is pressed. The MCU decodes the received 01 signal, thereby judging what key is pressed by the remote control.
+Wenn die Fernbedienungstaste gedrückt wird, sendet die Fernbedienung ein Infrarot-Trägersignal aus. Wenn der IR-Empfänger das Signal empfängt, decodiert das Programm das Trägersignal und bestimmt, welche Taste gedrückt wurde. Der Mikrocontroller decodiert das empfangene 01-Signal und ermittelt dadurch, welche Taste der Fernbedienung gedrückt wurde.
 
 ![](media/5ad0f889b39646ecb13664511479efc8.png)
 
-Infrared receiver we use is an infrared receiver module. Mainly composed of an infrared receiver head, which is a device that integrates reception, amplification, and demodulation. Its internal IC has completed demodulation, and can achieve from infrared reception to output and be compatible with TTL signals. Additionally, it is suitable for infrared remote control and infrared data transmission. The infrared receiving module made by the receiver has only three pins, signal line, VCC and GND. It is very convenient to communicate with Arduino and other microcontrollers.
+Der von uns verwendete Infrarotempfänger ist ein Infrarot-Empfangsmodul. Es besteht hauptsächlich aus einem Infrarot-Empfangskopf, einem Gerät, das Empfang, Verstärkung und Demodulation integriert. Der interne IC hat die Demodulation abgeschlossen und kann den Infrarotempfang bis zur Ausgabe realisieren und ist mit TTL-Signalen kompatibel. Außerdem ist es für Infrarot-Fernsteuerung und Infrarot-Datenübertragung geeignet. Das vom Empfänger hergestellte Infrarot-Empfangsmodul hat nur drei Pins: Signalleitung, VCC und GND. Es ist sehr praktisch, mit Arduino und anderen Mikrocontrollern zu kommunizieren.
 
-#### **(2)Parameters:**
+#### **(2) Parameter:**
 
-- Operating Voltage: 3.3-5V（DC）
-- Interface: 3PIN
-- Output Signal: Digital signal
-- Receiving Angle: 90 degrees
-- Frequency: 38khz
-- Receiving Distance: 10m
+- Betriebsspannung: 3,3–5 V (DC)
+- Schnittstelle: 3PIN
+- Ausgangssignal: Digitalsignal
+- Empfangswinkel: 90 Grad
+- Frequenz: 38 kHz
+- Empfangsreichweite: 10 m
 
-Infrared receiver integrated on motor drive board：
+Auf der Motorsteuerplatine integrierter Infrarotempfänger:
 
 ![](./media/image-20250709133832650.png)
 
-<span style="color: rgb(255, 76, 65);">**Note:**</span> Since the IR receiver is integrated into the Keyestudio 8833 motor drive expansion board, no additional wiring is required. The pins of the IR receiver on the Keyestudio 8833 motor drive expansion board are G (GND), V (VCC), and D3.
+<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Da der IR-Empfänger in die Keyestudio 8833 Motorantriebs-Erweiterungsplatine integriert ist, ist keine zusätzliche Verkabelung erforderlich. Die Pins des IR-Empfängers auf der Keyestudio 8833 Motorantriebs-Erweiterungsplatine sind G (GND), V (VCC) und D3.
 
-#### **(4)Test Code:**
+#### **(4) Testcode:**
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 ![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -43,30 +43,30 @@ You can also drag blocks to edit your code, as shown below
 
 ![](media/0aa28f86f26d94bdb4c951c994aa854f.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was zu einem Fehlschlagen des Uploads führen kann.)
 
 ![](media/90978855cddd94c161f9ed02f85b0674.png)
 
-#### **(5)Test Results:**
+#### **(5) Testergebnisse:**
 
-Upload the code to the development board, and set the baud rate to 9600. Take out the remote control, aim it at the infrared receiving sensor, and press a button to send the signal. You will see the corresponding key value. If the key is pressed for too long, a garbled "FFFFFFFF" may easily appear.
+Laden Sie den Code auf die Entwicklungsplatine hoch und stellen Sie die Baudrate auf 9600 ein. Nehmen Sie die Fernbedienung heraus, richten Sie sie auf den Infrarot-Empfangssensor und drücken Sie eine Taste, um das Signal zu senden. Sie sehen den entsprechenden Tastenwert. Wenn die Taste zu lange gedrückt wird, kann leicht ein unlesbares „FFFFFFFF" erscheinen.
 
 ![](media/5c01c594a5a11511cf52466eb5f27e45.png)
 
-Below we have listed out each key value of keyestudio remote control. So you can keep it for reference.
+Nachfolgend haben wir jeden Tastenwert der Keyestudio-Fernbedienung aufgelistet. Sie können ihn als Referenz aufbewahren.
 
 ![](media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-#### **(6)Extension Practice:**
+#### **(6) Erweiterungsübung:**
 
-We have just decoded the key values of the IR remote. Now let's use it to control an LED light on and off. We need to connect an LED light module to the D9 pin, while the pin position of the infrared receiver remains unchanged. When the OK button on the remote control is pressed, the LED connected to D9 will light up, and when the OK button is pressed again, the LED will turn off.
+Wir haben gerade die Tastenwerte der IR-Fernbedienung decodiert. Nun wollen wir damit eine LED-Leuchte ein- und ausschalten. Wir müssen ein LED-Leuchtmodul an den D9-Pin anschließen, während die Pin-Position des Infrarotempfängers unverändert bleibt. Wenn die OK-Taste auf der Fernbedienung gedrückt wird, leuchtet die an D9 angeschlossene LED auf, und wenn die OK-Taste erneut gedrückt wird, erlischt die LED.
 
 ![](media/e05da7ef9e7b6f63f414f2ca7e3f4ee3.png)
 
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 （1）![](media/cfe0841bcc9404c29519ed623195ca6a.png)
 
@@ -82,12 +82,12 @@ You can also drag blocks to edit your code, as shown below
 
 （7）![](media/d7be3fa06a1456d46472fffd61823c73.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was zu einem Fehlschlagen des Uploads führen kann.)
 
 ![](media/57149c79243ff22aa00ff2c54dd4f70b.png)
 
-Upload the code to the development board, and press the “OK” key on the remote control to turn the LED on and off.
+Laden Sie den Code auf die Entwicklungsplatine hoch und drücken Sie die „OK"-Taste auf der Fernbedienung, um die LED ein- und auszuschalten.
 
 ![](./media/img-20240117092532.png)

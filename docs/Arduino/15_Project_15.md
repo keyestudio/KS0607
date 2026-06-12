@@ -1,45 +1,45 @@
-### Project 15: IR Remote Control Tank
+### Projekt 15: IR-Ferngesteuerter Panzer
 
 ![](./media/image-20250709113214889.png)
 
 
-#### **(1)Description:**
+#### **(1) Beschreibung:**
 
-Infrared remote control is one of the most common remote control found applications in electric motors, electric fans, and many other household appliances. In this project,we use the knowledge we learned before to make an infrared remote control smart car.
+Infrarot-Fernsteuerung ist eine der häufigsten Fernsteuerungsanwendungen in Elektromotoren, Ventilatoren und vielen anderen Haushaltsgeräten. In diesem Projekt nutzen wir das zuvor erlernte Wissen, um ein infrarotgesteuertes Smart-Car zu bauen.
 
-In the 9th lesson, we have tested the corresponding key value of each key of the infrared remote control. In the project, we can set the code (key value) to make the corresponding button to control the movements of the smart car, and display the movement patterns on the 8X16 LED dot matrix.
+In der 9. Lektion haben wir den entsprechenden Tastenwert jeder Taste der Infrarot-Fernbedienung getestet. In diesem Projekt können wir den Code (Tastenwert) so festlegen, dass die entsprechende Taste die Bewegungen des Smart-Cars steuert und die Bewegungsmuster auf der 8×16 LED-Punktmatrix angezeigt werden.
 
-The specific logic of the line-tracking smart car is shown in the table:
+Die genaue Logik des linienführenden Smart-Cars ist in der folgenden Tabelle dargestellt:
 
-|                        Ultrasonic key                        | Key value |                    Instructions from keys                    |
-| :----------------------------------------------------------: | :-------: | :----------------------------------------------------------: |
-| ![image-20230427094710725](media/image-20230427094710725.png) |  FF629D   | Move forward（set PWM to 200）<br />display the pattern of going forward |
-| ![image-20230427094716639](media/image-20230427094716639.png) |  FFA857   | Go back（set PWM to 200）<br />display the pattern of going back |
-| ![image-20230427094720417](media/image-20230427094720417.png) |  FF22DD   |           Turn left<br />display the pattern“STOP”           |
-| ![image-20230427094725151](media/image-20230427094725151.png) |  FFC23D   |     Turn right<br />display the pattern of turning left      |
-| ![image-20230427094729839](media/image-20230427094729839.png) |  FF02FD   |             Stop<br />display the pattern“STOP”              |
+|                        Ultraschall-Taste                     | Tastenwert |                    Anweisungen der Tasten                    |
+| :----------------------------------------------------------: | :--------: | :----------------------------------------------------------: |
+| ![image-20230427094710725](media/image-20230427094710725.png) |  FF629D    | Vorwärts fahren（PWM auf 200 setzen）<br />Muster „Vorwärts" anzeigen |
+| ![image-20230427094716639](media/image-20230427094716639.png) |  FFA857    | Rückwärts fahren（PWM auf 200 setzen）<br />Muster „Rückwärts" anzeigen |
+| ![image-20230427094720417](media/image-20230427094720417.png) |  FF22DD    |           Links abbiegen<br />Muster „STOP" anzeigen         |
+| ![image-20230427094725151](media/image-20230427094725151.png) |  FFC23D    |     Rechts abbiegen<br />Muster „Links abbiegen" anzeigen    |
+| ![image-20230427094729839](media/image-20230427094729839.png) |  FF02FD    |             Anhalten<br />Muster „STOP" anzeigen             |
 
-**Initial setting**: 8X16 LED dot matrix shows the pattern“![](media/wps20.jpg)”.
+**Anfangseinstellung**: Das 8×16 LED-Punktmatrix-Display zeigt das Muster „![](media/wps20.jpg)".
 
 
 
-#### **(2)Flow chart:**
+#### **(2) Ablaufdiagramm:**
 
 ![](media/wps21.png)
 
-#### **(3)Connection Diagram:**
+#### **(3) Schaltplan:**
 
 ![](media/54527fe245b218dd22bdff5dafd4805d.png)
 
-<span style="color: rgb(255, 76, 65);">Note:</span>
+<span style="color: rgb(255, 76, 65);">Hinweis:</span>
 
-GND, VCC, SDA and SCL of the 8x16 LED panel are connected to G（GND), V（VCC). SDA and SCL of the expansion board.
+GND, VCC, SDA und SCL des 8×16 LED-Panels sind mit G（GND), V（VCC), SDA und SCL der Erweiterungsplatine verbunden.
 
-Since the 8833 board integrates the IR receiver, you don’t need to wire it up. The pins of the IR receiver are G（GND), V（VCC) and D3.
+Da die 8833-Platine den IR-Empfänger integriert, muss dieser nicht separat verdrahtet werden. Die Pins des IR-Empfängers sind G（GND), V（VCC) und D3.
 
-#### (4)**Test Code:**
+#### (4) **Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ```C
 /*
@@ -51,9 +51,9 @@ Since the 8833 board integrates the IR receiver, you don’t need to wire it up.
 #include <IRremote.h>
 IRrecv irrecv(3);  //
 decode_results results;
-long ir_rec;  //Used to store the received infrared values
+long ir_rec;  // Wird verwendet, um empfangene Infrarotwerte zu speichern
 
-//Array, used to save data of images, can be calculated by yourself or gotten from modulus tool
+// Array, um Bilddaten zu speichern, kann selbst berechnet oder mit einem Modultool ermittelt werden
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 unsigned char front[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x12, 0x09, 0x12, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char back[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x48, 0x90, 0x48, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -61,18 +61,18 @@ unsigned char left[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x44, 0x28, 0x10, 0x
 unsigned char right[] = {0x00, 0x10, 0x28, 0x44, 0x10, 0x28, 0x44, 0x10, 0x28, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char STOP01[] = {0x2E, 0x2A, 0x3A, 0x00, 0x02, 0x3E, 0x02, 0x00, 0x3E, 0x22, 0x3E, 0x00, 0x3E, 0x0A, 0x0E, 0x00};
 unsigned char clear[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-#define SCL_Pin  A5  //Set the clock pin as A5
-#define SDA_Pin  A4  //Set the data pin as A4
+#define SCL_Pin  A5  // Taktpin als A5 festlegen
+#define SDA_Pin  A4  // Datenpin als A4 festlegen
 
-#define ML_Ctrl 4  //Define the direction control pin of the left motor
-#define ML_PWM 6   //Define the PWM control pin of the left motor
-#define MR_Ctrl 2  //Define the direction control pin of the right motor
-#define MR_PWM 5    //Define the PWM control pin of the right motor
+#define ML_Ctrl 4  // Richtungssteuerungspin des linken Motors definieren
+#define ML_PWM 6   // PWM-Steuerungspin des linken Motors definieren
+#define MR_Ctrl 2  // Richtungssteuerungspin des rechten Motors definieren
+#define MR_PWM 5    // PWM-Steuerungspin des rechten Motors definieren
 
 void setup() 
 {
   Serial.begin(9600);
-  irrecv.enableIRIn();  //Initialize infrared receiver library
+  irrecv.enableIRIn();  // Infrarot-Empfänger-Bibliothek initialisieren
 
   pinMode(ML_Ctrl, OUTPUT);
   pinMode(ML_PWM, OUTPUT);
@@ -81,13 +81,13 @@ void setup()
 
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  matrix_display(clear); //clear screens
-  matrix_display(start01);  //show the image to start
+  matrix_display(clear); // Bildschirm löschen
+  matrix_display(start01);  // Startbild anzeigen
 }
 
 void loop() 
 {
-  if (irrecv.decode(&results))  //Receive infrared remote control value
+  if (irrecv.decode(&results))  // Infrarot-Fernsteuerwert empfangen
   {
     ir_rec = results.value;
     String type = "UNKNOWN";
@@ -103,25 +103,25 @@ void loop()
 
   switch (ir_rec) 
   {
-    case 0xFF629D: Car_front();     break;   //the command to go front
-    case 0xFFA857: Car_back();      break;   //the command to go back
-    case 0xFF22DD: Car_T_left();    break;   //the command to turn left
-    case 0xFFC23D: Car_T_right();   break;   //the command to turn right
-    case 0xFF02FD: Car_Stop();      break;   //the command to stop
-    case 0xFF30CF: Car_left();      break;   //the command to rotate to left
-    case 0xFF7A85: Car_right();     break;   //the command to rotate to right
+    case 0xFF629D: Car_front();     break;   // Befehl zum Vorwärtsfahren
+    case 0xFFA857: Car_back();      break;   // Befehl zum Rückwärtsfahren
+    case 0xFF22DD: Car_T_left();    break;   // Befehl zum Linksabbiegen
+    case 0xFFC23D: Car_T_right();   break;   // Befehl zum Rechtsabbiegen
+    case 0xFF02FD: Car_Stop();      break;   // Befehl zum Anhalten
+    case 0xFF30CF: Car_left();      break;   // Befehl zum Drehen nach links
+    case 0xFF7A85: Car_right();     break;   // Befehl zum Drehen nach rechts
     default: break;
   }
 }
 
-/***************The function to run the motor***************/
+/***************Funktion zum Antreiben der Motoren***************/
 void Car_back() 
 {
   digitalWrite(MR_Ctrl, LOW);
   analogWrite(MR_PWM, 200);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 200);
-  matrix_display(back);  //Go back
+  matrix_display(back);  // Rückwärts fahren
 }
 
 void Car_front() 
@@ -130,7 +130,7 @@ void Car_front()
   analogWrite(MR_PWM, 55);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 55);
-  matrix_display(front);  //show the image to go front
+  matrix_display(front);  // Bild für Vorwärtsfahren anzeigen
 }
 
 void Car_left() 
@@ -139,7 +139,7 @@ void Car_left()
   analogWrite(MR_PWM, 55);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 200);
-  matrix_display(left);  //show the image to turn lefr
+  matrix_display(left);  // Bild für Linksabbiegen anzeigen
 }
 
 void Car_right() 
@@ -148,7 +148,7 @@ void Car_right()
   analogWrite(MR_PWM, 200);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 55);
-  matrix_display(right);  //show the image to turn right
+  matrix_display(right);  // Bild für Rechtsabbiegen anzeigen
 }
 
 void Car_Stop() 
@@ -157,7 +157,7 @@ void Car_Stop()
   analogWrite(MR_PWM, 0);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 0);
-  matrix_display(STOP01);  //show the image to stop
+  matrix_display(STOP01);  // Bild für Anhalten anzeigen
 }
 
 void Car_T_left() 
@@ -166,7 +166,7 @@ void Car_T_left()
   analogWrite(MR_PWM, 0);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 100);
-  matrix_display(left);  //show the image to turn lefr
+  matrix_display(left);  // Bild für Linksabbiegen anzeigen
 }
 
 void Car_T_right() 
@@ -175,25 +175,25 @@ void Car_T_right()
   analogWrite(MR_PWM, 100);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 0);
-  matrix_display(right);  //show the image to turn right
+  matrix_display(right);  // Bild für Rechtsabbiegen anzeigen
 }
 
-//This function is used for dot matrix screen display
+// Diese Funktion wird für die Anzeige auf der Punktmatrix verwendet
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //Function to call data transfer start condition
-  IIC_send(0xc0);  //Choose an address
-  for (int i = 0; i < 16; i++) //Pattern data has 16 bytes
+  IIC_start();  // Funktion zum Aufrufen der Startbedingung für die Datenübertragung
+  IIC_send(0xc0);  // Adresse auswählen
+  for (int i = 0; i < 16; i++) // Musterdaten haben 16 Bytes
   {
-    IIC_send(matrix_value[i]); //transfer pattern data
+    IIC_send(matrix_value[i]); // Musterdaten übertragen
   }
-  IIC_end();   //End pattern data transfer
+  IIC_end();   // Musterdatenübertragung beenden
   IIC_start();
-  IIC_send(0x8A);  //display control, select pulse width as 4/16
+  IIC_send(0x8A);  // Anzeigesteuerung, Pulsbreite als 4/16 auswählen
   IIC_end();
 }
 
-//Conditions for the start of data transfer
+// Bedingungen für den Start der Datenübertragung
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -204,7 +204,7 @@ void IIC_start()
   digitalWrite(SCL_Pin, LOW);
 }
 
-//the sign of ending data transmission
+// Zeichen für das Ende der Datenübertragung
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -216,12 +216,12 @@ void IIC_end()
   delayMicroseconds(3);
 }
 
-//transfer data
+// Daten übertragen
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //each character has 8 digits, which is detected one by one
+  for (byte mask = 0x01; mask != 0; mask <<= 1) // Jedes Zeichen hat 8 Stellen, die einzeln geprüft werden
   {
-    if (send_data & mask)  //set high or low levels in light of each bit(0 or 1)
+    if (send_data & mask)  // Hohe oder niedrige Pegel entsprechend jedem Bit (0 oder 1) setzen
     {
       digitalWrite(SDA_Pin, HIGH);
     } 
@@ -230,15 +230,15 @@ void IIC_send(unsigned char send_data)
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Pull the clock pin SCL_Pin high to stop data transmission
+    digitalWrite(SCL_Pin, HIGH); // Taktpin SCL_Pin auf HIGH ziehen, um die Datenübertragung zu stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //pull down the clock pin SCL_Pin to change signals of SDA
+    digitalWrite(SCL_Pin, LOW); // Taktpin SCL_Pin auf LOW ziehen, um SDA-Signale zu ändern
   }
 }
 ```
 
-#### **(5)Test Result:**
+#### **(5) Testergebnis:**
 
-After uploading the code, turn on the power switch of the motor drive shield. Place the robot on the floor, refer to the table above and press different buttons, the robot will move in the corresponding preset direction.
+Nach dem Hochladen des Codes schalten Sie den Netzschalter des Motorantriebsmoduls ein. Stellen Sie den Roboter auf den Boden, beziehen Sie sich auf die obige Tabelle und drücken Sie verschiedene Tasten – der Roboter bewegt sich in die entsprechende voreingestellte Richtung.
 
 ![](./media/img-20240117090114.png)

@@ -1,44 +1,44 @@
-### Project 15: IR Remote Control Tank
+### Projekt 15: Infrarot-Ferngesteuerter Panzer
 
 ![](./media/image-20250709134800790.png)
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-Infrared remote control is one of the most common remote control applications found in electric motors, electric fans, and many other household appliances. In this project, we use the knowledge we learned before to make an infrared remote control smart car.
+Infrarot-Fernsteuerung ist eine der häufigsten Fernsteuerungsanwendungen in Elektromotoren, Elektrolüftern und vielen anderen Haushaltsgeräten. In diesem Projekt nutzen wir das zuvor erlernte Wissen, um ein infrarot-ferngesteuertes Smart Car zu bauen.
 
-In the 9th lesson, we tested the corresponding key value of each key of the infrared remote control. In this project, we can set the code (key value) to make the corresponding button control the movements of the smart car, and display the movement patterns on the 8X16 LED dot matrix.
+In der 9. Lektion haben wir den entsprechenden Tastenwert jeder Taste der Infrarot-Fernbedienung getestet. In diesem Projekt können wir den Code (Tastenwert) festlegen, damit die entsprechende Taste die Bewegungen des Smart Cars steuert und die Bewegungsmuster auf der 8X16 LED-Punktmatrix anzeigt.
 
-The specific logic of the smart car is shown in the table below:
+Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
 
-|                 Ultrasonic key                  | Key value | Instructions from keys                                       |
+|                 Ultraschall-Taste                  | Tastenwert | Anweisungen der Tasten                                       |
 | :---------------------------------------------: | :-------: | ------------------------------------------------------------ |
-| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Move forward（set PWM to 200）<br />display the pattern of going forward |
-| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Go back（set PWM to 200）<br />display the pattern of going back |
-| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Turn left<br />display the pattern“STOP”                     |
-| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Turn right<br />display the pattern of turning left          |
-| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Stop<br />display the pattern“STOP”                          |
+| ![](media/b11dc5ffa6cccebc6088e5d557d76daf.png) |  FF629D   | Vorwärts fahren（PWM auf 200 setzen）<br />Muster für Vorwärtsfahren anzeigen |
+| ![](media/ae8110034aacb083151cfd882ee599ba.png) |  FFA857   | Rückwärts fahren（PWM auf 200 setzen）<br />Muster für Rückwärtsfahren anzeigen |
+| ![](media/bce9cba2c6d2465fbcce570ad4210eba.png) |  FF22DD   | Links abbiegen<br />Muster „STOP" anzeigen                     |
+| ![](media/ad907a618af86f30d52986bbbd57ba76.png) |  FFC23D   | Rechts abbiegen<br />Muster für Links abbiegen anzeigen          |
+| ![](media/9716a4ed61a4064d2f47a7b73eccaf87.png) |  FF02FD   | Anhalten<br />Muster „STOP" anzeigen                          |
 
-**Initial setting: 8X16 LED dot matrix shows the pattern“![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)”**
+**Anfangseinstellung: 8X16 LED-Punktmatrix zeigt das Muster"![](media/dc59c5fcb4fcf6af4d4a5ebb14b7a919.png)"**
 
 
 
-#### **(2)Flow chart:**
+#### **(2)Ablaufdiagramm:**
 
 ![](media/wps121.png)
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
 ![](media/54527fe245b218dd22bdff5dafd4805d.png)
 
-<span style="color: rgb(255, 76, 65);">Note:</span>
+<span style="color: rgb(255, 76, 65);">Hinweis:</span>
 
-GND, VCC, SDA and SCL of the 8x16 LED panel are connected to G（GND), V（VCC). A4 and A5 of the expansion board.
+GND, VCC, SDA und SCL des 8x16 LED-Panels sind mit G（GND), V（VCC), A4 und A5 der Erweiterungsplatine verbunden.
 
-Since the 8833 board integrates the IR receiver, you don’t need to wire it up. The pins of the IR receiver are G（GND), V（VCC) and D3.
+Da die 8833-Platine den IR-Empfänger bereits integriert hat, muss dieser nicht extra verdrahtet werden. Die Pins des IR-Empfängers sind G（GND), V（VCC) und D3.
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-You can edit blocks to build up your code
+Sie können Blöcke bearbeiten, um Ihren Code aufzubauen
 
 （1）![](media/949a82a4516f57a5e65fdbbd944dc860.png)
 
@@ -58,14 +58,14 @@ You can edit blocks to build up your code
 
 （9）![](media/3af2546fe93dc84ed3c3002543ae8069.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ![](media/fae6c22640ced038daca9cb6721ab95e.png)
 
-#### **(5)Test Results:**
+#### **(5)Testergebnisse:**
 
-After upload the test code successfully and power up, the smart car can be controlled to move by IR remote control and the 8\*16 shows the corresponding patterns of its movements.
+Nachdem der Testcode erfolgreich hochgeladen und das Gerät eingeschaltet wurde, kann das Smart Car durch die Infrarot-Fernbedienung gesteuert werden, und das 8\*16-Display zeigt die entsprechenden Bewegungsmuster an.
 
 ![](./media/img-20240117094223.png)

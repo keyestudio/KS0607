@@ -1,50 +1,50 @@
-### Project 5: Servo Control
+### Projekt 5: Servo-Steuerung
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-A servo motor is a position control rotary actuator. It mainly consists of a housing, a circuit board, a core-less motor, a gear, and a position sensor. Its working principle is that the servo receives the signal sent by the MCU or receiver and produces a reference signal with a period of 20ms and a width of 1.5ms. It then compares the acquired DC bias voltage to the voltage of the potentiometer and obtains the voltage difference output.
+Ein Servomotor ist ein positionsgesteuerter Drehantrieb. Er besteht hauptsächlich aus einem Gehäuse, einer Leiterplatte, einem kernlosen Motor, einem Getriebe und einem Positionssensor. Das Funktionsprinzip besteht darin, dass der Servo das vom Mikrocontroller oder Empfänger gesendete Signal empfängt und ein Referenzsignal mit einer Periode von 20 ms und einer Breite von 1,5 ms erzeugt. Anschließend wird die erfasste DC-Vorspannungsspannung mit der Spannung des Potentiometers verglichen und die Spannungsdifferenzausgabe ermittelt.
 
-When the motor speed is constant, the potentiometer is driven to rotate through the cascade reduction gear, which leads that the voltage difference is 0, and the motor stops rotating. Generally, the angle range of servo rotation is 0° --180 °
+Wenn die Motorgeschwindigkeit konstant ist, wird das Potentiometer über das kaskadierende Untersetzungsgetriebe zum Drehen angetrieben, wodurch die Spannungsdifferenz 0 wird und der Motor aufhört zu drehen. Im Allgemeinen liegt der Drehwinkelbereich des Servos zwischen 0° und 180°.
 
-The rotation angle of servo motor is controlled by regulating the duty cycle of PWM (Pulse-Width Modulation) signal. The standard cycle of PWM signal is 20ms (50Hz). Theoretically, the width is distributed between 1ms-2ms, but in fact, it's between 0.5ms-2.5ms. The width corresponds to the rotation angle from 0° to 180°. Note that for different brand motors, the same signal may result in different rotation angles.  
+Der Drehwinkel des Servomotors wird durch die Regelung des Tastverhältnisses des PWM-Signals (Pulsweitenmodulation) gesteuert. Der Standardzyklus des PWM-Signals beträgt 20 ms (50 Hz). Theoretisch liegt die Breite zwischen 1 ms und 2 ms, tatsächlich jedoch zwischen 0,5 ms und 2,5 ms. Die Breite entspricht dem Drehwinkel von 0° bis 180°. Beachten Sie, dass das gleiche Signal bei verschiedenen Motormarken zu unterschiedlichen Drehwinkeln führen kann.
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-In general, servo has three lines in brown, red and orange. The brown wire is grounded, the red one is a positive pole line and the orange one is a signal line.
+Im Allgemeinen hat ein Servo drei Leitungen in Braun, Rot und Orange. Die braune Leitung ist geerdet, die rote ist die Plusleitung und die orangefarbene ist die Signalleitung.
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-The angle of the servo:
+Der Winkel des Servos:
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
-- Working voltage: DC 4.8V \~ 6V
+- Betriebsspannung: DC 4,8 V \~ 6 V
 
-- Operating angle range: about 180 ° (at 500 → 2500 μsec)
+- Betriebswinkelbereich: ca. 180° (bei 500 → 2500 μsec)
 
-- Pulse width range: 500 → 2500 μsec
+- Pulsbreitenbereich: 500 → 2500 μsec
 
-- No-load speed: 0.12 ± 0.01 sec / 60 (DC 4.8V) 0.1 ± 0.01 sec / 60 (DC 6V)
+- Leerlaufdrehzahl: 0,12 ± 0,01 sec / 60 (DC 4,8 V) 0,1 ± 0,01 sec / 60 (DC 6 V)
 
-- No-load current: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
+- Leerlaufstrom: 200 ± 20 mA (DC 4,8 V) 220 ± 20 mA (DC 6 V)
 
-- Stopping torque: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC 6V)
+- Haltemoment: 1,3 ± 0,01 kg · cm (DC 4,8 V) 1,5 ± 0,1 kg · cm (DC 6 V)
 
-- Stop current: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
+- Haltestrom: ≦ 850 mA (DC 4,8 V) ≦ 1000 mA (DC 6 V)
 
-- Standby current: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
+- Ruhestrom: 3 ± 1 mA (DC 4,8 V) 4 ± 1 mA (DC 6 V)
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">Note:</span> The brown, red and orange wire of the servo are respectively attached to Gnd(G), 5v(V) and 10 of the shield. Remember to connect an external power because of the high current of the servo. If not, the development board will be burnt out.
+<span style="color: rgb(255, 76, 65);">Hinweis:</span> Die braune, rote und orangefarbene Leitung des Servos werden jeweils mit Gnd(G), 5v(V) und 10 des Shields verbunden. Denken Sie daran, eine externe Stromversorgung anzuschließen, da der Servo einen hohen Strom benötigt. Andernfalls wird das Entwicklungsboard beschädigt.
 
-#### **(4)Test Code 1:**
+#### **(4)Testcode 1:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ```C
 /*
@@ -54,49 +54,49 @@ Servo
 http://www.keyestudio.com
 */
 
-#define servoPin 10 //The pin of servo
+#define servoPin 10 // Der Pin des Servos
 
-int pos; //The variable of servo’s angle
-int pulsewidth; //The variable of servo’s pulse width
+int pos; // Die Variable des Servowinkels
+int pulsewidth; // Die Variable der Pulsbreite des Servos
 
 void setup() 
 {
-    pinMode(servoPin, OUTPUT); //Set the pin of servo as output
-    procedure(0); //Set the angle of servo to 0°
+    pinMode(servoPin, OUTPUT); // Den Pin des Servos als Ausgang setzen
+    procedure(0); // Den Winkel des Servos auf 0° setzen
 }
 
 void loop() 
 {
-    for (pos = 0; pos <= 180; pos += 1)  // From 1°to 180°
+    for (pos = 0; pos <= 180; pos += 1)  // Von 1° bis 180°
     {
-    	// in steps of 1 degree	
-        procedure(pos); // Rotate to the angle of 'pos'
-        delay(15); //Control the speed of rotation
+    	// in Schritten von 1 Grad	
+        procedure(pos); // Zum Winkel 'pos' drehen
+        delay(15); // Rotationsgeschwindigkeit steuern
     }
-    for (pos = 180; pos >= 0; pos -= 1) // From 180° to 1°
+    for (pos = 180; pos >= 0; pos -= 1) // Von 180° bis 1°
     { 
-        procedure(pos); // Rotate to the angle of 'pos'
+        procedure(pos); // Zum Winkel 'pos' drehen
         delay(15);
     }
 }
-//The function controls the servo
+// Die Funktion steuert den Servo
 void procedure(int myangle) 
 {
-    pulsewidth = myangle * 11 + 500; //Calculate the value of pulse width
+    pulsewidth = myangle * 11 + 500; // Den Wert der Pulsbreite berechnen
     digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth); //The time in high level represents the pulse width
+    delayMicroseconds(pulsewidth); // Die Zeit im High-Pegel entspricht der Pulsbreite
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000)); //As the cycle is 20ms, the time left is in low level
+    delay((20 - pulsewidth / 1000)); // Da der Zyklus 20 ms beträgt, verbleibt die restliche Zeit im Low-Pegel
 }
 ```
 
-Upload code, we will see the servo move from 0° to 180°. In the further chapters, we will introduce how to drive a servo. Additionally, we can control a servo with a servo library of Arduino.
+Nach dem Hochladen des Codes bewegt sich der Servo von 0° bis 180°. In den folgenden Kapiteln wird erläutert, wie ein Servo angesteuert wird. Darüber hinaus kann ein Servo mit einer Servo-Bibliothek von Arduino gesteuert werden.
 
-<span style="color: rgb(255, 76, 65);">Note:</span> This servo library file uses timer 1, and the PWM output of IO ports 9 and 10 also uses timer 1, so we cannot use this servo library when using the PWM output of D9 and D10 later.
+<span style="color: rgb(255, 76, 65);">Hinweis:</span> Diese Servo-Bibliotheksdatei verwendet Timer 1, und die PWM-Ausgabe der IO-Ports 9 und 10 verwendet ebenfalls Timer 1. Daher kann diese Servo-Bibliothek nicht verwendet werden, wenn später die PWM-Ausgabe von D9 und D10 genutzt wird.
 
-#### **(5)Test Code2:**
+#### **(5)Testcode 2:**
 
-(<span style="color: rgb(255, 76, 65);">Note: </span> Do not connect the Bluetooth module before uploading the code, because the uploading of the code also uses serial communication, and there may be conflicts with the serial communication of the Bluetooth, which can cause the uploading of the code to fail.)
+(<span style="color: rgb(255, 76, 65);">Hinweis: </span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Kommunikation des Bluetooths kommen kann, was dazu führen kann, dass das Hochladen des Codes fehlschlägt.)
 
 ```C
 /*
@@ -108,49 +108,49 @@ Servo
 
 #include <Servo.h>
 
-Servo myservo; // create servos
-int pos = 0; // Save the variables of angle
+Servo myservo; // Servo erstellen
+int pos = 0; // Die Variablen des Winkels speichern
 
 void setup() 
 {
-	myservo.attach(10); //Connect the servo with digital port 10
+	myservo.attach(10); // Den Servo mit dem digitalen Port 10 verbinden
 }
 
 void loop() 
 {
-    for (pos = 0; pos <= 180; pos += 1)  //From 0° to 180°
+    for (pos = 0; pos <= 180; pos += 1)  // Von 0° bis 180°
     {
-    	//step length is 1
-        myservo.write(pos); // Rotate to the angle of 'pos'
-        delay(15); // Wait for 15ms to control speed
+    	// Schrittlänge ist 1
+        myservo.write(pos); // Zum Winkel 'pos' drehen
+        delay(15); // 15 ms warten, um die Geschwindigkeit zu steuern
     }
 
-    for (pos = 180; pos >= 0; pos -= 1)  //From 180° to 0°
+    for (pos = 180; pos >= 0; pos -= 1)  // Von 180° bis 0°
     {
-        myservo.write(pos); // Rotate to the angle of 'pos'
-        delay(15); // Wait for 15ms to control speed
+        myservo.write(pos); // Zum Winkel 'pos' drehen
+        delay(15); // 15 ms warten, um die Geschwindigkeit zu steuern
     }
 }
 ```
 
-#### **(6)Test Results:**
+#### **(6)Testergebnisse:**
 
-Upload code, plug in power and servo moves in the range of 0° and 180°.
+Code hochladen, Stromversorgung anschließen und der Servo bewegt sich im Bereich von 0° bis 180°.
 
 ![](./media/img-20240117090810.png)
 
-#### **(7)Code Explanation:**
+#### **(7)Code-Erklärung:**
 
-Arduino comes with **\#include \<Servo.h\>** (servo function and statement）
+Arduino wird mit **\#include \<Servo.h\>** geliefert (Servo-Funktion und -Anweisungen)
 
-The following are some common statements of the servo function:
+Im Folgenden sind einige häufig verwendete Anweisungen der Servo-Funktion aufgeführt:
 
-1\. **attach（interface）**——Set servo interface, port 9 and 10 are available
+1\. **attach（Schnittstelle）**——Servo-Schnittstelle festlegen, Port 9 und 10 sind verfügbar
 
-2\. **write（angle）**——The statement to set rotation angle of servo, the angle range is from 0° to 180°
+2\. **write（Winkel）**——Die Anweisung zum Festlegen des Drehwinkels des Servos, der Winkelbereich liegt zwischen 0° und 180°
 
-3\. **read（）**——The statement to read angle of servo, read the command value of “write()”
+3\. **read（）**——Die Anweisung zum Lesen des Winkels des Servos, liest den Befehlswert von „write()"
 
-4\. attached（）——Judge if the parameter of servo is sent to its interface
+4\. **attached（）**——Überprüfen, ob der Parameter des Servos an seine Schnittstelle gesendet wurde
 
-Note: The above written format is“servo variable name, specific statement（）”, for instance: myservo.attach(10)
+Hinweis: Das oben genannte Schreibformat lautet „Servo-Variablenname, spezifische Anweisung（）", zum Beispiel: myservo.attach(10)

@@ -1,33 +1,33 @@
-### Project 11: Ultrasonic Following Tank
+### Projekt 11: Ultraschall-Folge-Panzer
 
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-In the previous lesson, we learned about the light-following smart car. And in this lesson, we can combine the knowledge to make an ultrasonic sound-following car. 
+In der vorherigen Lektion haben wir den lichtfolgenden Smart-Car kennengelernt. In dieser Lektion können wir das Wissen kombinieren, um ein ultraschallgesteuertes Folgeauto zu bauen.
 
-In the project, we use ultrasonic sensors to detect the distance between the car and the obstacle in front, and then control the rotation of the two motors based on this data so as to control the movements of the smart car.
+In diesem Projekt verwenden wir Ultraschallsensoren, um den Abstand zwischen dem Auto und dem Hindernis davor zu erkennen, und steuern dann die Drehung der beiden Motoren basierend auf diesen Daten, um so die Bewegungen des Smart-Cars zu kontrollieren.
 
-The specific logic of the ultrasonic sound- following smart car is shown in the table blow:
+Die spezifische Logik des ultraschallgesteuerten Folge-Smart-Cars ist in der folgenden Tabelle dargestellt:
 
-|                        Detection                        |              Setting              |
-| :-----------------------------------------------------: | :-------------------------------: |
-| The distance(cm) between the car and the obstacle front | Set the angle of the servo to 90° |
-|                      **Condition**                      |           **Movement**            |
-|               distance≥20 and distance≤50               |             Go front              |
-|            10＜distance＜20<br/>distance＞50            |               Stop                |
-|                       distance≤10                       |              go back              |
+|                        Erkennung                        |              Einstellung              |
+| :-----------------------------------------------------: | :-----------------------------------: |
+| Der Abstand (cm) zwischen dem Auto und dem Hindernis vorne | Servowinkel auf 90° einstellen |
+|                      **Bedingung**                      |           **Bewegung**            |
+|               Abstand≥20 und Abstand≤50               |             Vorwärts fahren              |
+|            10＜Abstand＜20<br/>Abstand＞50            |               Stopp                |
+|                       Abstand≤10                       |              Rückwärts fahren              |
 
-#### **(2)Flow chart:**
+#### **(2)Flussdiagramm:**
 
 ![](media/wps9.png)
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
 ![](media/72a10097d286bc5f9589df031b60484a.png)
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ```C
 /*
@@ -36,12 +36,12 @@ The specific logic of the ultrasonic sound- following smart car is shown in the 
   Ultrasonic follow tank
   http://www.keyestudio.com
 */
-#define servoPin 10  //The pin of servo
+#define servoPin 10  //Der Pin des Servos
 
-#define ML_Ctrl 4  //Define the direction control pin of the left motor
-#define ML_PWM 6   //Define the PWM control pin of the left motor
-#define MR_Ctrl 2  //Define the direction control pin of the right motor
-#define MR_PWM 5   //Define the PWM control pin of the right motor
+#define ML_Ctrl 4  //Richtungssteuerungspin des linken Motors definieren
+#define ML_PWM 6   //PWM-Steuerungspin des linken Motors definieren
+#define MR_Ctrl 2  //Richtungssteuerungspin des rechten Motors definieren
+#define MR_PWM 5   //PWM-Steuerungspin des rechten Motors definieren
 #define Trig 12
 #define Echo 13
 float distance;
@@ -55,26 +55,26 @@ void setup()
   pinMode(ML_PWM, OUTPUT);
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
-  procedure(90); //Set the angle of the servo to 90°
-  delay(500); //delay in 500ms
+  procedure(90); //Servowinkel auf 90° einstellen
+  delay(500); //Verzögerung von 500ms
 }
 
 void loop() 
 {
-  distance = checkdistance();  //Assign the distance measured by ultrasonic sound to distance
-  if (distance >= 20 && distance <= 50) //go front
+  distance = checkdistance();  //Den vom Ultraschall gemessenen Abstand der Variablen distance zuweisen
+  if (distance >= 20 && distance <= 50) //vorwärts fahren
   {
     Car_front();
   }
-  else if (distance > 10 && distance < 20)  //stop
+  else if (distance > 10 && distance < 20)  //stopp
   {
     Car_Stop();
   }
-  else if (distance <= 10)  //go back
+  else if (distance <= 10)  //rückwärts fahren
   {
     Car_back();
   }
-  else  //In other conditions, it stops
+  else  //In anderen Fällen stoppt es
   {
     Car_Stop();
   }
@@ -120,19 +120,19 @@ void Car_Stop()
   analogWrite(ML_PWM, 0);
 }
 
-//The function to control servos
+//Die Funktion zur Steuerung von Servos
 void procedure(byte myangle) 
 {
   int pulsewidth;
   for (int i = 0; i < 5; i++) 
   {
-    pulsewidth = myangle * 11 + 500;  //Calculate the value of pulse width    digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   //The time in high level represents the pulse width
+    pulsewidth = myangle * 11 + 500;  //Den Wert der Impulsbreite berechnen    digitalWrite(servoPin, HIGH);
+    delayMicroseconds(pulsewidth);   //Die Zeit im High-Pegel entspricht der Impulsbreite
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  //As the cycle is 20ms, the time left is in low level
+    delay((20 - pulsewidth / 1000));  //Da der Zyklus 20ms beträgt, verbleibt die restliche Zeit im Low-Pegel
   }
 }
-//The function to control ultrasonic sound
+//Die Funktion zur Steuerung des Ultraschalls
 float checkdistance() 
 {
   static float distance;
@@ -141,14 +141,14 @@ float checkdistance()
   digitalWrite(Trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(Trig, LOW);
-  distance = pulseIn(Echo, HIGH) / 58.20;  //The 58.20 here comes from 2*29.1=58.2
+  distance = pulseIn(Echo, HIGH) / 58.20;  //Die 58.20 ergibt sich aus 2*29.1=58.2
   delay(10);
   return distance;
 }
 ```
 
-#### **(5)Test Results:**
+#### **(5)Testergebnisse:**
 
-Upload the test code successfully, wire up, dial the DIP switch to the right end, power up and set the servo to 90°，the smart car follows the obstacle to move.
+Nach erfolgreichem Hochladen des Testcodes, Verkabelung, Umlegen des DIP-Schalters auf die rechte Seite, Einschalten der Stromversorgung und Einstellen des Servos auf 90° folgt das Smart-Car dem Hindernis in seiner Bewegung.
 
 ![](./media/img-20240117090457.png)

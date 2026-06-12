@@ -1,36 +1,36 @@
-### Project 21: Fan
+### Projekt 21: Lüfter
 
-#### **(1)Description：**
+#### **(1) Beschreibung：**
 
 ![](media/4afc1c9720d36beba8adfac0ee22ff10.png)
 
-This fan module uses a HR1124S motor-controlling chip, a single-channel H-bridge driver chip containing a low-conductivity resistance PMOS and NMOS power tubes. The low-conducting resistance can ease the power consumption, contributing to the safe work of the chip for longer time. 
+Dieses Lüftermodul verwendet einen HR1124S Motorsteuerungs-Chip, einen einspurigen H-Brücken-Treiber-Chip, der einen PMOS- und NMOS-Leistungstransistor mit niedrigem Leitwiderstand enthält. Der niedrige Leitwiderstand kann den Energieverbrauch verringern und dazu beitragen, dass der Chip länger sicher arbeitet.
 
-In addition, its low standby current and low static working current makes itself apply to toys. We can control the rotation direction and speed of the fan by outputting IN + and IN- signals and PWM signals.
+Darüber hinaus macht ihn sein niedriger Standby-Strom und niedriger statischer Arbeitsstrom für Spielzeug geeignet. Wir können die Drehrichtung und Geschwindigkeit des Lüfters durch Ausgabe von IN+ und IN- Signalen sowie PWM-Signalen steuern.
 
-#### **(2)Specification:**
+#### **(2) Spezifikation:**
 
-Working voltage: 5V
+Betriebsspannung: 5V
 
-Current: 200MA
+Strom: 200MA
 
-Maximum power: 2W
+Maximale Leistung: 2W
 
-Operating temperature: -10 degrees Celsius to +50 degrees Celsius
+Betriebstemperatur: -10 Grad Celsius bis +50 Grad Celsius
 
-Size: 47.6MM \*23.8MM
+Größe: 47,6MM \*23,8MM
 
-#### **(3)Connection Diagram:**
+#### **(3) Anschlussdiagramm:**
 
-The fan module needs driving by large current; therefore, we install a battery holder.
+Das Lüftermodul benötigt einen hohen Strom zum Antrieb; daher installieren wir einen Batteriehalter.
 
 ![](media/2bd9aa5cc21e274458328958561f1915.png)
 
-The pin GND, VCC, IN+ and IN- of the fan module are connected to pin G, V, D12 and D13 of the shield.
+Die Pins GND, VCC, IN+ und IN- des Lüftermoduls sind mit den Pins G, V, D12 und D13 des Shields verbunden.
 
-#### **(4)Test Code:**
+#### **(4) Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ```C
 /*
@@ -45,40 +45,40 @@ int INB = 13;
 
 void setup()
 {
-    pinMode(INA, OUTPUT);//Set digital port INA as output
-    pinMode(INB, OUTPUT);//Set digital port INB as output
+    pinMode(INA, OUTPUT);// Digitalen Port INA als Ausgang setzen
+    pinMode(INB, OUTPUT);// Digitalen Port INB als Ausgang setzen
 }
 
 void loop() 
 {
-    //Set the fan to rotate anticlockwise for 3s
+    // Lüfter für 3s gegen den Uhrzeigersinn drehen lassen
     digitalWrite(INA, LOW);
     digitalWrite(INB, HIGH);
     delay(3000);
-    //Set the fan to stop for 1s
+    // Lüfter für 1s anhalten
     digitalWrite(INA, LOW);
     digitalWrite(INB, LOW);
     delay(1000);
-    //Set the fan to rotate clockwise for 3s
+    // Lüfter für 3s im Uhrzeigersinn drehen lassen
     digitalWrite(INA, HIGH);
     digitalWrite(INB, LOW);
     delay(3000);
 }
 ```
 
-#### **(5)Test Results：**
+#### **(5) Testergebnisse：**
 
-Upload code, wire up components and plug in power. The small fan will turn anticlockwise for 3000ms, stop for 1000ms, and clockwise for 300ms.
+Code hochladen, Komponenten verdrahten und Strom anschließen. Der kleine Lüfter dreht sich 3000ms lang gegen den Uhrzeigersinn, hält 1000ms an und dreht sich dann 300ms im Uhrzeigersinn.
 
 ![](./media/img-20240117085032.png)
 
-#### **(6)Extension Practice:**
+#### **(6) Erweiterte Übung:**
 
-We have understood the working principle of the flame sensor. Next, hook up a flame sensor in the circuit , as shown below. Then control the fan to blew out fire with the flame sensor.
+Wir haben das Funktionsprinzip des Flammensensors verstanden. Als Nächstes schließen wir einen Flammensensor in den Schaltkreis an, wie unten gezeigt. Dann steuern wir den Lüfter so, dass er ein Feuer mit dem Flammensensor ausbläst.
 
 ![](media/67463007499fe6b3f077b4bfbdce6cad.png)
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ```C
 /*
@@ -90,34 +90,34 @@ http://www.keyestudio.com
 
 int INA = 12;
 int INB = 13;
-int flame = A1; //Define the flame pin as analog pin A1
-int val = 0; //Define digital variables
+int flame = A1; // Flammensensor-Pin als analogen Pin A1 definieren
+int val = 0; // Digitale Variable definieren
 
 void setup() 
 {
-    pinMode(INA, OUTPUT);//Set digital port INA as output
-    pinMode(INB, OUTPUT);//Set digital port INB as output
-    pinMode(flame, INPUT); //Define the flame as an input source
+    pinMode(INA, OUTPUT);// Digitalen Port INA als Ausgang setzen
+    pinMode(INB, OUTPUT);// Digitalen Port INB als Ausgang setzen
+    pinMode(flame, INPUT); // Flamme als Eingangsquelle definieren
 }
 
 void loop() 
 {
-    val = analogRead(flame); //Read the analog value of the flame sensor
-    if (val <= 700)  //When analog value≤700, fan is on
+    val = analogRead(flame); // Analogen Wert des Flammensensors lesen
+    if (val <= 700)  // Wenn analoger Wert ≤ 700, Lüfter einschalten
     {
-        //Turn on the fan when flame is detected
+        // Lüfter einschalten, wenn Flamme erkannt wird
         digitalWrite(INA, LOW);
         digitalWrite(INB, HIGH);
     } 
     else 
     {
-        //Otherwise it stops operating
+        // Andernfalls stoppt er den Betrieb
         digitalWrite(INA, LOW);
         digitalWrite(INB, LOW);
     }
 }
 ```
 
-After uploading the code, turn on the power switch of the motor drive shield, you can turn on the fan when flame is detected from the left flame sensor of the robot.
+Nachdem der Code hochgeladen wurde, schalten Sie den Netzschalter des Motorantriebs-Shields ein. Sie können den Lüfter einschalten, wenn eine Flamme vom linken Flammensensor des Roboters erkannt wird.
 
 ![](./media/image-20250709115926832.png)

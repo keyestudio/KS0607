@@ -10,7 +10,7 @@
     00_Introduction
 
 
-4.5 Projects
+4.5 Projekte
 -----------------------------
 
 

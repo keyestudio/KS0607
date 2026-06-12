@@ -1,36 +1,36 @@
-### Project 19: Ultrasonic Tank Robot Multiple Functions
+### Projekt 19: Ultraschall-Panzerroboter Mehrfachfunktionen
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-The smart car has performed a single function in every previous project. 
+Der Smart Car hat in jedem vorherigen Projekt eine einzelne Funktion ausgeführt.
 
-Can it display multiply functions at a time ? Positive. 
+Kann er mehrere Funktionen gleichzeitig anzeigen? Ja.
 
-In this last big project, we intend to use a complete code to control the smart car to show off all functions mentioned in previous projects. We use the keys on the Bluetooth APP to automatically switch various functions, quite simple and convenient.
+In diesem letzten großen Projekt beabsichtigen wir, einen vollständigen Code zu verwenden, um den Smart Car zu steuern und alle in früheren Projekten erwähnten Funktionen zu zeigen. Wir verwenden die Tasten auf der Bluetooth-APP, um automatisch zwischen verschiedenen Funktionen zu wechseln, was sehr einfach und bequem ist.
 
-#### **(2)Flow Diagram:**
+#### **(2)Ablaufdiagramm:**
 
 ![](media/image-20230427102547633.png)
 
-#### **(3)Connection Diagram:**
+#### **(3)Verbindungsdiagramm:**
 
 ![](media/e7ac834ba04aa2e8862995d2d33ce935.png)
 
-1\. GND, VCC, SDA, and SCL of the 8x16 board are connected to G (GND), + (VCC), A4, and A5 of the expansion board.
+1\. GND, VCC, SDA und SCL des 8x16-Boards sind mit G (GND), + (VCC), A4 und A5 des Erweiterungsboards verbunden.
 
-2\. VCC, Trig, Echo, and Gnd of the ultrasonic sensor are connected to 5V (V), 12 (S), 13 (S), and Gnd (G).
+2\. VCC, Trig, Echo und Gnd des Ultraschallsensors sind mit 5V (V), 12 (S), 13 (S) und Gnd (G) verbunden.
 
-3\. The brown wire, red wire, and orange wire of the servo are connected to Gnd (G), 5v (V), and D10.
+3\. Das braune Kabel, das rote Kabel und das orangefarbene Kabel des Servos sind mit Gnd (G), 5v (V) und D10 verbunden.
 
-4\. RXD, TXD, GND, and VCC of the BT module are connected to TX, RX, G (GND), and 5V (VCC). STATE and BRK don’t need to be interfaced.
+4\. RXD, TXD, GND und VCC des BT-Moduls sind mit TX, RX, G (GND) und 5V (VCC) verbunden. STATE und BRK müssen nicht angeschlossen werden.
 
-5\. The pins "G", "V", and S of the left photoresistor module are connected to G (GND), V (VCC), and A1, respectively; The right photoresistor module is connected to G (GND), V (VCC), and A2, respectively.
+5\. Die Pins „G", „V" und S des linken Fotowiderstandsmoduls sind jeweils mit G (GND), V (VCC) und A1 verbunden; Das rechte Fotowiderstandsmodul ist jeweils mit G (GND), V (VCC) und A2 verbunden.
 
-6\. The distal ports of the line tracking sensor are 11, 7, and 8.
+6\. Die distalen Anschlüsse des Linienverfolgungssensors sind 11, 7 und 8.
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der Bluetooth-Serielkommunikation kommen kann, was dazu führen kann, dass der Upload fehlschlägt.)
 
 ```C
 /*
@@ -42,12 +42,12 @@ In this last big project, we intend to use a complete code to control the smart 
 #include <IRremote.h>
 IRrecv irrecv(3);  //
 decode_results results;
-long ir_rec;  //used to save the IR value 
+long ir_rec;  // wird verwendet, um den IR-Wert zu speichern
 
 /***********/
 #define USE_FAN_FUNCTION   0
 
-//Array, used to save data of images, can be calculated by yourself or gotten from modulus tool
+// Array, wird verwendet, um Bilddaten zu speichern, kann selbst berechnet oder mit dem Modulus-Tool ermittelt werden
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 unsigned char STOP01[] = {0x2E, 0x2A, 0x3A, 0x00, 0x02, 0x3E, 0x02, 0x00, 0x3E, 0x22, 0x3E, 0x00, 0x3E, 0x0A, 0x0E, 0x00};
 unsigned char front[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x12, 0x09, 0x12, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -64,57 +64,57 @@ unsigned char Heart[] = {0x00, 0x00, 0x0C, 0x1E, 0x3F, 0x7F, 0xFE, 0xFC, 0xFE, 0
 
 unsigned char clear[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-#define SCL_Pin  A5  //set the pin of clock to A5
-#define SDA_Pin  A4  //set the data pin to A4
+#define SCL_Pin  A5  // den Takt-Pin auf A5 setzen
+#define SDA_Pin  A4  // den Daten-Pin auf A4 setzen
 
-#define ML_Ctrl 4  //define the direction control pin of the left motor as 4
-#define ML_PWM 6   //define the PWM control pin of the left motor 
-#define MR_Ctrl 2  //define the direction control pin of the right sensor
-#define MR_PWM 5   //define the PWM control pin of the right motor 
-char ble_val;      //used to save the Bluetooth value
-byte speeds_L = 200; //the initial speed of the left motor is 200
-byte speeds_R = 200; //the initial speed of the right motor is 200
-String speeds_l, speeds_r; //receive PWM characters and convert them into PWM value
+#define ML_Ctrl 4  // den Richtungssteuerungspin des linken Motors als 4 definieren
+#define ML_PWM 6   // den PWM-Steuerungspin des linken Motors definieren
+#define MR_Ctrl 2  // den Richtungssteuerungspin des rechten Sensors definieren
+#define MR_PWM 5   // den PWM-Steuerungspin des rechten Motors definieren
+char ble_val;      // wird verwendet, um den Bluetooth-Wert zu speichern
+byte speeds_L = 200; // die Anfangsgeschwindigkeit des linken Motors beträgt 200
+byte speeds_R = 200; // die Anfangsgeschwindigkeit des rechten Motors beträgt 200
+String speeds_l, speeds_r; // PWM-Zeichen empfangen und in PWM-Wert umwandeln
 
-//wire up the line tracking sensor
-#define L_pin  11  //left
-#define M_pin  7  //middle
-#define R_pin  8  //right
+// Linienverfolgungssensor anschließen
+#define L_pin  11  // links
+#define M_pin  7  // mitte
+#define R_pin  8  // rechts
 int L_val, M_val, R_val;
 
-#if USE_FAN_FUNCTION  /****use fan*******/
-int flame_L = A1; //define the analog port of the left flame sensor to A1
-int flame_R = A2; //define the analog port of the right flame sensor to A2
+#if USE_FAN_FUNCTION  /****Lüfter verwenden*******/
+int flame_L = A1; // den analogen Anschluss des linken Flammensensors auf A1 definieren
+int flame_R = A2; // den analogen Anschluss des rechten Flammensensors auf A2 definieren
 int flame_valL, flame_valR;
 
-//the pin of 130 motor
+// der Pin des 130-Motors
 int INA = 12;
 int INB = 13;
 
-#else /****use the ultrasonic sensor*******/
-#define servoPin    10  //servo Pin
-#define light_L_Pin A1   //define the pin of the left photoresistor
-#define light_R_Pin A2   //define the pin of the right photoresistor
+#else /****Ultraschallsensor verwenden*******/
+#define servoPin    10  // Servo-Pin
+#define light_L_Pin A1   // den Pin des linken Fotowiderstands definieren
+#define light_R_Pin A2   // den Pin des rechten Fotowiderstands definieren
 int left_light;
 int right_light;
 
 #define Trig 12
 #define Echo 13
-float distance;//Store the distance values detected by ultrasonic for following
+float distance;// Speichert die vom Ultraschall erkannten Distanzwerte für die Verfolgung
 
-//Store the distance values detected by ultrasonic for obstacle avoidance
+// Speichert die vom Ultraschall erkannten Distanzwerte zur Hindernisumgehung
 int a;
 int a1;
 int a2;
 
 #endif
 
-bool flag;  //flag invariable, used to enter and exit a mode
+bool flag;  // Flag-Variable, wird verwendet, um einen Modus zu betreten und zu verlassen
 
 void setup() 
 {
   Serial.begin(9600);
-  irrecv.enableIRIn();  //Initialize the library of the IR remote
+  irrecv.enableIRIn();  // die Bibliothek der IR-Fernbedienung initialisieren
 
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
@@ -124,91 +124,91 @@ void setup()
   pinMode(MR_Ctrl, OUTPUT);
   pinMode(MR_PWM, OUTPUT);
 
-  pinMode(L_pin, INPUT); //define the pins of sensors to INPUT
+  pinMode(L_pin, INPUT); // die Pins der Sensoren als INPUT definieren
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
 
-  matrix_display(clear);    //clear screen
-  matrix_display(start01);  //show start
+  matrix_display(clear);    // Bildschirm löschen
+  matrix_display(start01);  // Start anzeigen
 
-#if USE_FAN_FUNCTION/****use the fan*******/
-  pinMode(INA, OUTPUT);//set INA to OUTPUT
-  pinMode(INB, OUTPUT);//set INB to OUTPUT
+#if USE_FAN_FUNCTION/****den Lüfter verwenden*******/
+  pinMode(INA, OUTPUT);// INA auf OUTPUT setzen
+  pinMode(INB, OUTPUT);// INB auf OUTPUT setzen
 
-  //define inputs of the flame sensor
+  // Eingänge des Flammensensors definieren
   pinMode(flame_L, INPUT);
   pinMode(flame_R, INPUT);
-#else/****use the ultrasonic sensor*******/
+#else/****den Ultraschallsensor verwenden*******/
   pinMode(servoPin, OUTPUT);
   pinMode(light_L_Pin, INPUT);
   pinMode(light_R_Pin, INPUT);
 
   pinMode(Trig, OUTPUT);
   pinMode(Echo, INPUT);
-  procedure(90); //set the angle of the servo to 90°
+  procedure(90); // den Winkel des Servos auf 90° setzen
 #endif
 }
 
 void loop() 
 {
-  if (Serial.available()) //if there is data in the serial buffer
+  if (Serial.available()) // wenn Daten im seriellen Puffer vorhanden sind
   {
     ble_val = Serial.read();
     Serial.println(ble_val);
     switch (ble_val) 
     {
-      case 'F': Car_front(); break; //the command to go front
+      case 'F': Car_front(); break; // der Befehl zum Vorwärtsfahren
 
-      case 'B': Car_back(); break;  //the command to go back
+      case 'B': Car_back(); break;  // der Befehl zum Rückwärtsfahren
 
-      case 'L': Car_left(); break;  //the command to turn left
+      case 'L': Car_left(); break;  // der Befehl zum Linksdrehen
 
-      case 'R': Car_right(); break; //the command to turn right
+      case 'R': Car_right(); break; // der Befehl zum Rechtsdrehen
 
-      case 'S': Car_Stop();  break; //stop
+      case 'S': Car_Stop();  break; // stoppen
 
-      case 'e': Tracking();  break; //enter the line tracking mode
+      case 'e': Tracking();  break; // den Linienverfolgungsmodus starten
 
-      case 'f': Confinement(); break;  //enter the confinement mode
+      case 'f': Confinement(); break;  // den Begrenzungsmodus starten
 
-#if USE_FAN_FUNCTION/****use fan*******/
-      case 'j': Fire(); break;  //enable extinguishing fire mode
+#if USE_FAN_FUNCTION/****Lüfter verwenden*******/
+      case 'j': Fire(); break;  // den Feuerlöschmodus aktivieren
 
-      case 'c': fan_begin(); break;  //enable the fan
+      case 'c': fan_begin(); break;  // den Lüfter einschalten
 
-      case 'd': fan_stop();  break;  //turn off the fan
+      case 'd': fan_stop();  break;  // den Lüfter ausschalten
 
-#else/****use the ultrasonic sensor*******/
-      case 'g': Avoid(); break;  //enter obstacle avoidance mode
+#else/****den Ultraschallsensor verwenden*******/
+      case 'g': Avoid(); break;  // den Hindernisumgehungsmodus starten
 
-      case 'h': Follow(); break;  //enter light following mode
+      case 'h': Follow(); break;  // den Ultraschall-Folgemodus starten
 
-      case 'i': Light_following();  break;  //enter light following mode
+      case 'i': Light_following();  break;  // den Lichtfolgemodus starten
 #endif
       case 'u': 
         speeds_l = Serial.readStringUntil('#'); 
         speeds_L = String(speeds_l).toInt(); 
-        break; //start by receiving u, end by receiving characters # and convert into the integer
+        break; // beginnt mit dem Empfang von u, endet mit dem Empfang von # und wird in eine ganze Zahl umgewandelt
 
       case 'v': 
         speeds_r = Serial.readStringUntil('#');
         speeds_R = String(speeds_r).toInt(); 
-        break; //start by receiving u, end by receiving characters # and convert into the integer
+        break; // beginnt mit dem Empfang von u, endet mit dem Empfang von # und wird in eine ganze Zahl umgewandelt
 
-      case 'k': matrix_display(Smile);    break;  //show "smile" face
-      case 'l': matrix_display(Disgust);  break;  //show "disgust" face
-      case 'm': matrix_display(Happy);    break;  //show "happy" face
-      case 'n': matrix_display(Squint);   break;  //show "Sad" face
-      case 'o': matrix_display(Despise);  break;  //show "despise" face
-      case 'p': matrix_display(Heart);    break;  //show the hearbeat image
-      case 'z': matrix_display(clear);    break;  //clear images
+      case 'k': matrix_display(Smile);    break;  // "Lächeln"-Gesicht anzeigen
+      case 'l': matrix_display(Disgust);  break;  // "Ekel"-Gesicht anzeigen
+      case 'm': matrix_display(Happy);    break;  // "Glücklich"-Gesicht anzeigen
+      case 'n': matrix_display(Squint);   break;  // "Traurig"-Gesicht anzeigen
+      case 'o': matrix_display(Despise);  break;  // "Verachtung"-Gesicht anzeigen
+      case 'p': matrix_display(Heart);    break;  // das Herzbild anzeigen
+      case 'z': matrix_display(clear);    break;  // Bilder löschen
 
       default: break;
     }
   }
 
-#if (USE_FAN_FUNCTION != 1)/****the function to not use the fan*******/
-  //The following three signals are mainly used for cyclic printing
+#if (USE_FAN_FUNCTION != 1)/****die Funktion ohne Lüfter verwenden*******/
+  // Die folgenden drei Signale werden hauptsächlich für den zyklischen Druck verwendet
   if (ble_val == 'x') 
   {
     distance = checkdistance(); Serial.println(distance);
@@ -228,26 +228,26 @@ void loop()
   }
 #endif
 
-  if (irrecv.decode(&results))  //Receive infrared remote control value
+  if (irrecv.decode(&results))  // Infrarot-Fernbedienungswert empfangen
   {
     ir_rec = results.value;
     Serial.println(ir_rec, HEX);
     switch (ir_rec) 
     {
-      case 0xFF629D: Car_front();   break;   //go front
-      case 0xFFA857: Car_back();    break;   //go back
-      case 0xFF22DD: Car_left();    break;   //rotate to left
-      case 0xFFC23D: Car_right();   break;   //rotate to right
-      case 0xFF02FD: Car_Stop();    break;   //stop
+      case 0xFF629D: Car_front();   break;   // vorwärts fahren
+      case 0xFFA857: Car_back();    break;   // rückwärts fahren
+      case 0xFF22DD: Car_left();    break;   // nach links drehen
+      case 0xFFC23D: Car_right();   break;   // nach rechts drehen
+      case 0xFF02FD: Car_Stop();    break;   // stoppen
       default: break;
     }
     irrecv.resume();
   }
 }
 
-#if (USE_FAN_FUNCTION != 1)/****use the ultrasonic sensor*******/
+#if (USE_FAN_FUNCTION != 1)/****den Ultraschallsensor verwenden*******/
 
-//Control the ultrasonic sensor
+// Den Ultraschallsensor steuern
 float checkdistance() 
 {
   float distance;
@@ -262,91 +262,91 @@ float checkdistance()
 }
 
 
-//the function to control the servo
+// die Funktion zur Steuerung des Servos
 void procedure(int myangle) 
 {
   int pulsewidth;
-  pulsewidth = map(myangle, 0, 180, 500, 2000);  //Calculate the pulse width value, which should be the mapping value from 500 to 2500. Considering the influence of the infrared library, 500~2000 is used here.
+  pulsewidth = map(myangle, 0, 180, 500, 2000);  // Den Impulsbreitenwert berechnen, der der Zuordnungswert von 500 bis 2500 sein sollte. Angesichts des Einflusses der Infrarotbibliothek wird hier 500~2000 verwendet.
   for (int i = 0; i < 5; i++) 
   {
     digitalWrite(servoPin, HIGH);
-    delayMicroseconds(pulsewidth);   //The duration of the high level is the pulse width
+    delayMicroseconds(pulsewidth);   // Die Dauer des High-Pegels ist die Impulsbreite
     digitalWrite(servoPin, LOW);
-    delay((20 - pulsewidth / 1000));  //The period is 20ms, so the low level lasts the rest of the time
+    delay((20 - pulsewidth / 1000));  // Die Periode beträgt 20ms, daher dauert der Low-Pegel die restliche Zeit
   }
 }
 
-/*****************obstacle avoidance******************/
+/*****************Hindernisumgehung******************/
 void Avoid()
 {
   flag = 0;
   while (flag == 0)
   {
-    a = checkdistance();  //the front distance is set to a
-    if (a < 20) //When the distance in front is less than 20cm
+    a = checkdistance();  // der vordere Abstand wird auf a gesetzt
+    if (a < 20) // Wenn der Abstand nach vorne weniger als 20 cm beträgt
     {
-      Car_Stop();  //stop
-      delay(500); //delay in 500ms
-      procedure(180);  //servo turns left
-      delay(500); //delay in 500ms
-      a1 = checkdistance();  //the left distance is set to a1
-      delay(100); //read value
+      Car_Stop();  // stoppen
+      delay(500); // 500ms verzögern
+      procedure(180);  // Servo dreht nach links
+      delay(500); // 500ms verzögern
+      a1 = checkdistance();  // der linke Abstand wird auf a1 gesetzt
+      delay(100); // Wert lesen
 
-      procedure(0); //servo turns right
-      delay(500); //delay in 500ms
-      a2 = checkdistance(); ///the right distance is set to a2
-      delay(100); //read value
+      procedure(0); // Servo dreht nach rechts
+      delay(500); // 500ms verzögern
+      a2 = checkdistance(); // der rechte Abstand wird auf a2 gesetzt
+      delay(100); // Wert lesen
 
-      procedure(90);  //back to 90°
+      procedure(90);  // zurück auf 90°
       delay(500);
-      if (a1 > a2)  //When the distance on the left is greater than the distance on the right
+      if (a1 > a2)  // Wenn der Abstand links größer als der Abstand rechts ist
       {
-        Car_left();  //the robot turns left
-        delay(700);  //turn left 700ms
+        Car_left();  // der Roboter dreht nach links
+        delay(700);  // 700ms nach links drehen
       } 
       else 
       {
-        Car_right(); //turn right
+        Car_right(); // nach rechts drehen
         delay(700);
       }
     }
-    else  //if the front distance ≥20cm，robot goes front
+    else  // wenn der vordere Abstand ≥20cm ist, fährt der Roboter vorwärts
     {
-      Car_front(); //go front
+      Car_front(); // vorwärts fahren
     }
-    //receive the Bluetooth value to exit the loop
+    // den Bluetooth-Wert empfangen, um die Schleife zu beenden
     if (Serial.available())
     {
       ble_val = Serial.read();
-      if (ble_val == 'S')  //receive S
+      if (ble_val == 'S')  // S empfangen
       {
-        flag = 1;  //Set flag to 1 to exit the loop
+        flag = 1;  // Flag auf 1 setzen, um die Schleife zu beenden
         Car_Stop();
       }
     }
   }
 }
 
-/*******************following***************/
+/*******************Folgen***************/
 void Follow() 
 {
   flag = 0;
   while (flag == 0) 
   {
-    distance = checkdistance();  //set the distance value to distance
-    if (distance >= 20 && distance <= 60) //go front
+    distance = checkdistance();  // den Distanzwert auf distance setzen
+    if (distance >= 20 && distance <= 60) // vorwärts fahren
     {
       Car_front();
     }
-    else if (distance > 10 && distance < 20)  // stop
+    else if (distance > 10 && distance < 20)  // stoppen
     {
       Car_Stop();
     }
-    else if (distance <= 10)  //go back
+    else if (distance <= 10)  // rückwärts fahren
     {
       Car_back();
     }
-    else  //stop
+    else  // stoppen
     {
       Car_Stop();
     }
@@ -355,14 +355,14 @@ void Follow()
       ble_val = Serial.read();
       if (ble_val == 'S')
       {
-        flag = 1;  //exit the loop
+        flag = 1;  // die Schleife beenden
         Car_Stop();
       }
     }
   }
 }
 
-/****************light following******************/
+/****************Lichtfolgen******************/
 void Light_following() 
 {
   flag = 0;
@@ -370,19 +370,19 @@ void Light_following()
   {
     left_light = analogRead(light_L_Pin);
     right_light = analogRead(light_R_Pin);
-    if (left_light > 650 && right_light > 650) //go forward
+    if (left_light > 650 && right_light > 650) // vorwärts fahren
     {
       Car_front();
     }
-    else if (left_light > 650 && right_light <= 650)  //turn left
+    else if (left_light > 650 && right_light <= 650)  // nach links drehen
     {
       Car_left();
     }
-    else if (left_light <= 650 && right_light > 650) //turn right
+    else if (left_light <= 650 && right_light > 650) // nach rechts drehen
     {
       Car_right();
     }
-    else  //or else, stop
+    else  // sonst stoppen
     {
       Car_Stop();
     }
@@ -398,28 +398,28 @@ void Light_following()
   }
 }
 
-#else/****use the fan*******/
-/***************enable the fan*****************/
+#else/****den Lüfter verwenden*******/
+/***************den Lüfter einschalten*****************/
 void fan_begin() 
 {
   digitalWrite(INA, LOW);
   digitalWrite(INB, HIGH);
 }
 
-/***************stop fanning*****************/
+/***************den Lüfter stoppen*****************/
 void fan_stop() 
 {
   digitalWrite(INA, LOW);
   digitalWrite(INB, LOW);
 }
 
-/***************extinguish fire****************/
+/***************Feuer löschen****************/
 void Fire() 
 {
   flag = 0;
   while (flag == 0) 
   {
-    //Read the analog value of the flame sensor
+    // Den Analogwert des Flammensensors lesen
     flame_valL = analogRead(flame_L);
     flame_valR = analogRead(flame_R);
     if (flame_valL <= 700 || flame_valR <= 700) 
@@ -430,36 +430,38 @@ void Fire()
     else 
     {
       fan_stop();
-      L_val = digitalRead(L_pin); //Read the value of the left sensor
-      M_val = digitalRead(M_pin); //Read the value of the left sensor
-      R_val = digitalRead(R_pin); //Read the value of the right sensor
+      L_val = digitalRead(L_pin); // den Wert des linken Sensors lesen
+      M_val = digitalRead(M_pin); // den Wert des mittleren Sensors lesen
+      R_val = digitalRead(R_pin); // den Wert des rechten Sensors lesen
+```
 
-      if (M_val == 1)  //the middle one detects black lines
+```cpp
+     if (M_val == 1)  //Die mittlere Einheit erkennt schwarze Linien
       {
-        if (L_val == 1 && R_val == 0)  //If a black line is detected on the left, but not on the right, turn left
+        if (L_val == 1 && R_val == 0)  //Wenn links eine schwarze Linie erkannt wird, aber rechts nicht, nach links abbiegen
         {
           Car_left();
         }
-        else if (L_val == 0 && R_val == 1)  //If a black line is detected on the right, not on the left, turn right
+        else if (L_val == 0 && R_val == 1)  //Wenn rechts eine schwarze Linie erkannt wird, aber links nicht, nach rechts abbiegen
         {
           Car_right();
         }
-        else  //go front
+        else  //vorwärts fahren
         {
           Car_front();
         }
       }
-      else  //the middle one detects black lines
+      else  //Die mittlere Einheit erkennt schwarze Linien
       {
-        if (L_val == 1 && R_val == 0)  //If a black line is detected on the left, but not on the right, turn left
+        if (L_val == 1 && R_val == 0)  //Wenn links eine schwarze Linie erkannt wird, aber rechts nicht, nach links abbiegen
         {
           Car_left();
         }
-        else if (L_val == 0 && R_val == 1)  //If a black line is detected on the right, not on the left, turn right
+        else if (L_val == 0 && R_val == 1)  //Wenn rechts eine schwarze Linie erkannt wird, aber links nicht, nach rechts abbiegen
         {
           Car_right();
         }
-        else  //otherwise stop
+        else  //sonst anhalten
         {
           Car_Stop();
         }
@@ -479,41 +481,41 @@ void Fire()
 
 #endif
 
-/***************line tracking*****************/
+/***************Linienverfolgung*****************/
 void Tracking() 
 {
   flag = 0;
   while (flag == 0) 
   {
-    L_val = digitalRead(L_pin); //Read the value of the left sensor
-    M_val = digitalRead(M_pin); //Read the value of the intermediate sensor
-    R_val = digitalRead(R_pin); //Read the value of the sensor on the right
-    if (M_val == 1)  //the middle one detects black lines
+    L_val = digitalRead(L_pin); //Wert des linken Sensors lesen
+    M_val = digitalRead(M_pin); //Wert des mittleren Sensors lesen
+    R_val = digitalRead(R_pin); //Wert des rechten Sensors lesen
+    if (M_val == 1)  //Die mittlere Einheit erkennt schwarze Linien
     {
-      if (L_val == 1 && R_val == 0)  //If a black line is detected on the left, but not on the right, turn left
+      if (L_val == 1 && R_val == 0)  //Wenn links eine schwarze Linie erkannt wird, aber rechts nicht, nach links abbiegen
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1)  //If a black line is detected on the right, not on the left, turn right
+      else if (L_val == 0 && R_val == 1)  //Wenn rechts eine schwarze Linie erkannt wird, aber links nicht, nach rechts abbiegen
       {
         Car_right();
       }
-      else  //go front
+      else  //vorwärts fahren
       {
         Car_front();
       }
     }
-    else  //the middle sensor doesn’t detect black lines
+    else  //Der mittlere Sensor erkennt keine schwarzen Linien
     {
-      if (L_val == 1 && R_val == 0)  //If a black line is detected on the left, but not on the right, turn left
+      if (L_val == 1 && R_val == 0)  //Wenn links eine schwarze Linie erkannt wird, aber rechts nicht, nach links abbiegen
       {
         Car_left();
       }
-      else if (L_val == 0 && R_val == 1) //If a black line is detected on the right, not on the left, turn right
+      else if (L_val == 0 && R_val == 1) //Wenn rechts eine schwarze Linie erkannt wird, aber links nicht, nach rechts abbiegen
       { 
         Car_right();
       }
-      else //otherwise stop
+      else //sonst anhalten
       { 
         Car_Stop();
       }
@@ -530,16 +532,16 @@ void Tracking()
   }
 }
 
-/***************Confinement*****************/
+/***************Eingrenzung*****************/
 void Confinement() 
 {
   flag = 0;
   while (flag == 0) 
   {
-    L_val = digitalRead(L_pin); //Read the value of the left sensor
-    M_val = digitalRead(M_pin); //Read the value of the intermediate sensor
-    R_val = digitalRead(R_pin); //Read the value of the sensor on the right
-    if ( L_val == 0 && M_val == 0 && R_val == 0 ) //Go front when no black lines are detected 
+    L_val = digitalRead(L_pin); //Wert des linken Sensors lesen
+    M_val = digitalRead(M_pin); //Wert des mittleren Sensors lesen
+    R_val = digitalRead(R_pin); //Wert des rechten Sensors lesen
+    if ( L_val == 0 && M_val == 0 && R_val == 0 ) //Vorwärts fahren, wenn keine schwarzen Linien erkannt werden 
     {      
         Car_front();
     }
@@ -563,23 +565,23 @@ void Confinement()
 }
 
 
-/***************dot matrix******************/
-//this function is used for the display of dot matrix 
+/***************Punktmatrix******************/
+//Diese Funktion wird für die Anzeige der Punktmatrix verwendet 
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //use the function to start transmitting data
-  IIC_send(0xc0);  //select an address
-  for (int i = 0; i < 16; i++) //image data have 16 characters
+  IIC_start();  //Funktion zum Starten der Datenübertragung verwenden
+  IIC_send(0xc0);  //Eine Adresse auswählen
+  for (int i = 0; i < 16; i++) //Bilddaten haben 16 Zeichen
   {
-    IIC_send(matrix_value[i]); //data to transmit pictures
+    IIC_send(matrix_value[i]); //Daten zur Übertragung von Bildern
   }
-  IIC_end();   //end the data transmission of pictures
+  IIC_end();   //Datenübertragung der Bilder beenden
   IIC_start();
-  IIC_send(0x8A);  //show control and select pulse width 4/16
+  IIC_send(0x8A);  //Anzeigesteuerung und Impulsbreite 4/16 auswählen
   IIC_end();
 }
 
-//the condition that data starts transmitting
+//Bedingung, unter der die Datenübertragung beginnt
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -590,12 +592,12 @@ void IIC_start()
   digitalWrite(SCL_Pin, LOW);
 }
 
-//transmit data
+//Daten übertragen
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //each character has 8 digits, which is detected one by one
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Jedes Zeichen hat 8 Stellen, die einzeln geprüft werden
   {
-    if (send_data & mask) //set high or low levels in light of each bit(0 or 1)
+    if (send_data & mask) //Hohes oder niedriges Niveau je nach jedem Bit (0 oder 1) setzen
     { 
       digitalWrite(SDA_Pin, HIGH);
     } 
@@ -604,13 +606,13 @@ void IIC_send(unsigned char send_data)
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //pull up the clock pin SCL_Pin to end the transmission of data
+    digitalWrite(SCL_Pin, HIGH); //Taktpin SCL_Pin hochziehen, um die Datenübertragung zu beenden
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //pull down the clock pin SCL_Pin to change signals of SDA 
+    digitalWrite(SCL_Pin, LOW); //Taktpin SCL_Pin herunterziehen, um SDA-Signale zu ändern 
   }
 }
 
-//the sign that transmission of data ends
+//Zeichen, dass die Datenübertragung endet
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -622,14 +624,14 @@ void IIC_end()
   delayMicroseconds(3);
 }
 
-/***************motor runs****************/
+/***************Motor läuft****************/
 void Car_back() 
 {
   digitalWrite(MR_Ctrl, LOW);
   analogWrite(MR_PWM, speeds_R);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, speeds_L);
-  matrix_display(back);  //show the image of going back
+  matrix_display(back);  //Bild der Rückwärtsfahrt anzeigen
 }
 
 void Car_front() 
@@ -638,7 +640,7 @@ void Car_front()
   analogWrite(MR_PWM, 255 - speeds_R);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 255 - speeds_L);
-  matrix_display(front);  //show the image of going front
+  matrix_display(front);  //Bild der Vorwärtsfahrt anzeigen
 }
 
 void Car_left() 
@@ -647,7 +649,7 @@ void Car_left()
   analogWrite(MR_PWM, 255 - speeds_R);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, speeds_L);
-  matrix_display(left);  //show the image of turning left
+  matrix_display(left);  //Bild der Linkskurve anzeigen
 }
 
 void Car_right() 
@@ -656,7 +658,7 @@ void Car_right()
   analogWrite(MR_PWM, speeds_R);
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 255 - speeds_L);
-  matrix_display(right);  //show the image of turning right
+  matrix_display(right);  //Bild der Rechtskurve anzeigen
 }
 
 void Car_Stop() 
@@ -665,16 +667,16 @@ void Car_Stop()
   analogWrite(MR_PWM, 0);
   digitalWrite(ML_Ctrl, LOW);
   analogWrite(ML_PWM, 0);
-  matrix_display(STOP01);  //show the stop image
+  matrix_display(STOP01);  //Haltebild anzeigen
 }
 ```
 
-#### **(5)Test Result:**
+#### **(5)Testergebnis:**
 
-Before uploading the program code, the Bluetooth module needs to be removed; otherwise, the code upload will fail.
+Vor dem Hochladen des Programmcodes muss das Bluetooth-Modul entfernt werden, da sonst das Hochladen des Codes fehlschlägt.
 
-After uploading the code successfully, turn on location services on your device, and then connect the Bluetooth module.
+Nachdem der Code erfolgreich hochgeladen wurde, aktivieren Sie den Standortdienst auf Ihrem Gerät und verbinden Sie dann das Bluetooth-Modul.
 
-Once the Bluetooth module is plugged in and powered on, and the mobile APP is successfully connected to the Bluetooth, we can use the mobile APP to control the tank robot.
+Sobald das Bluetooth-Modul eingesteckt und eingeschaltet ist und die mobile APP erfolgreich mit dem Bluetooth verbunden ist, können wir die mobile APP verwenden, um den Panzerroboter zu steuern.
 
-You can also control the robot with the remote control.
+Sie können den Roboter auch mit der Fernbedienung steuern.

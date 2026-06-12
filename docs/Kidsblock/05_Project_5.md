@@ -1,50 +1,50 @@
-### Project 5: Servo Control
+### Projekt 5: Servo-Steuerung
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-A servo motor is a position control rotary actuator. It mainly consists of a housing, a circuit board, a core-less motor, a gear, and a position sensor. Its working principle is that the servo receives the signal sent by the MCU or receiver and produces a reference signal with a period of 20ms and a width of 1.5ms. It then compares the acquired DC bias voltage to the voltage of the potentiometer and obtains the voltage difference output.
+Ein Servomotor ist ein positionsgesteuerter Drehantrieb. Er besteht hauptsächlich aus einem Gehäuse, einer Leiterplatte, einem kernlosen Motor, einem Getriebe und einem Positionssensor. Das Funktionsprinzip besteht darin, dass der Servo das vom MCU oder Empfänger gesendete Signal empfängt und ein Referenzsignal mit einer Periode von 20 ms und einer Breite von 1,5 ms erzeugt. Anschließend wird die erfasste DC-Offsetspannung mit der Spannung des Potentiometers verglichen und die Spannungsdifferenz am Ausgang ermittelt.
 
-When the motor speed is constant, the potentiometer is driven to rotate through the cascade reduction gear, which leads that the voltage difference is 0, and the motor stops rotating. Generally, the angle range of servo rotation is 0° --180 °.
+Wenn die Motorgeschwindigkeit konstant ist, wird das Potentiometer über das nachgeschaltete Untersetzungsgetriebe zur Rotation angetrieben, wodurch die Spannungsdifferenz 0 wird und der Motor stoppt. Im Allgemeinen liegt der Drehwinkelbereich des Servos bei 0° bis 180°.
 
-The rotation angle of servo motor is controlled by regulating the duty cycle of PWM (Pulse-Width Modulation) signal. The standard cycle of PWM signal is 20ms (50Hz). Theoretically, the width is distributed between 1ms-2ms, but in fact, it's between 0.5ms-2.5ms. The width corresponds to the rotation angle from 0° to 180°. Note that for different brand motors, the same signal may result in different rotation angles.  
+Der Drehwinkel des Servomotors wird durch die Regelung des Tastverhältnisses des PWM-Signals (Pulsweitenmodulation) gesteuert. Der Standardzyklus des PWM-Signals beträgt 20 ms (50 Hz). Theoretisch liegt die Breite zwischen 1 ms und 2 ms, aber tatsächlich liegt sie zwischen 0,5 ms und 2,5 ms. Die Breite entspricht dem Drehwinkel von 0° bis 180°. Zu beachten ist, dass bei verschiedenen Motormarken dasselbe Signal zu unterschiedlichen Drehwinkeln führen kann.
 
 ![](media/69be958142b773acdae33eeef12afed7.png)
 
-In general, servo has three lines in brown, red and orange. The brown wire is grounded, the red one is a positive pole line and the orange one is a signal line.
+Im Allgemeinen hat ein Servo drei Leitungen in Braun, Rot und Orange. Die braune Leitung ist die Masse, die rote ist der Pluspol und die orange ist die Signalleitung.
 
 ![](media/49467dfa70799401a5a5acc691014aee.png)
 
-The angle of the servo:
+Der Winkel des Servos:
 
 ![](media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
-- Working voltage: DC 4.8V \~ 6V
+- Betriebsspannung: DC 4,8V \~ 6V
 
-- Operating angle range: about 180 ° (at 500 → 2500 μsec)
+- Betriebswinkelbereich: ca. 180° (bei 500 → 2500 μsec)
 
-- Pulse width range: 500 → 2500 μsec
+- Pulsbreitenbereich: 500 → 2500 μsec
 
-- No-load speed: 0.12 ± 0.01 sec / 60 (DC 4.8V) 0.1 ± 0.01 sec / 60 (DC 6V)
+- Leerlaufgeschwindigkeit: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
 
-- No-load current: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
+- Leerlaufstrom: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
 
-- Stopping torque: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC 6V)
+- Haltemoment: 1,3 ± 0,01kg · cm (DC 4,8V) 1,5 ± 0,1kg · cm (DC 6V)
 
-- Stop current: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
+- Haltestrom: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
 
-- Standby current: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
+- Ruhestrom: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
 ![](media/5120d0b422a1d0b1f1ba075aa5911c25.png)
 
-<span style="color: rgb(255, 76, 65);">**Note:**</span> The brown, red, and orange wires of the servo are respectively attached to Gnd(G), 5v(V), and D10 of the shield. Remember to connect an external power supply because of the high current of the servo. If not, the development board will be burnt out.
+<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Die braunen, roten und orangefarbenen Leitungen des Servos werden jeweils mit Gnd(G), 5v(V) und D10 des Shields verbunden. Denken Sie daran, eine externe Stromversorgung anzuschließen, da der Servo einen hohen Strom benötigt. Andernfalls wird das Entwicklungsboard beschädigt.
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten dargestellt
 
 ![](media/5b04350e0310955ee2ecd48338f556a3.png)
 
@@ -54,14 +54,14 @@ You can also drag blocks to edit your code, as shown below
 
 ![](media/e149b45054fe94196dea220b319cb0bf.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/26e37037daf84d69320b76dd13346cd1.png)
 
-#### **(6)Test Results:**
+#### **(6)Testergebnisse:**
 
-Upload code, plug in power and servo moves in the range of 0° and 180°.
+Code hochladen, Stromversorgung anschließen und der Servo bewegt sich im Bereich von 0° bis 180°.
 
 ![](./media/img-20240117092225.png)

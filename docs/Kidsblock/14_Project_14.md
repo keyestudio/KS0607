@@ -1,38 +1,38 @@
-### Project 14:Line-tracking Tank
+### Projekt 14: Spurverfolgungs-Panzer
 
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-The previous project introduced how to confine the smart car to move within a certain space. In this project, we will use the knowledge learned before to make it a line-tracking smart car. In the experiment, we use the line-tracking sensor to detect whether there is a black line around the smart car, and then control the rotation of the two motors according to the detection results, so as to make the smart car move along the black line.
+Im vorherigen Projekt wurde erklärt, wie man das Smart Car dazu bringt, sich innerhalb eines bestimmten Bereichs zu bewegen. In diesem Projekt werden wir das bisher erlernte Wissen nutzen, um daraus ein spurverfolgendes Smart Car zu machen. Im Experiment verwenden wir den Spurverfolgungssensor, um zu erkennen, ob sich eine schwarze Linie in der Nähe des Smart Cars befindet, und steuern dann entsprechend den Erkennungsergebnissen die Drehung der beiden Motoren, damit das Smart Car der schwarzen Linie entlangfährt.
 
-The specific logic of the smart car is shown in the table below:
+Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
 
-|               Sensor               |                          Detection                           |
+|               Sensor               |                          Erkennung                           |
 | :--------------------------------: | :----------------------------------------------------------: |
-| Line-tracking sensor in the middle | Black line detected: in high level<br />White line detected: in low level |
-|  Line-tracking sensor on the left  | Black line detected: in high level<br />White line detected: in low level |
-| Line-tracking sensor on the right  | Black line detected: in high level<br />White line detected: in low level |
+| Spurverfolgungssensor in der Mitte | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
+|  Spurverfolgungssensor links  | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
+| Spurverfolgungssensor rechts  | Schwarze Linie erkannt: High-Pegel<br />Weiße Linie erkannt: Low-Pegel |
 
-|                         Condition 1                          |                         Condition 2                          |   Movement   |
+|                         Bedingung 1                          |                         Bedingung 2                          |   Bewegung   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------: |
-| Line-tracking sensor <br />in the middle <br />detects the black line | Line-tracking sensor on the left detects the black line<br />the one on the right detects white lines | Rotate left  |
-| Line-tracking sensor <br />in the middle <br />detects the black line | Line-tracking sensor on the left detects white lines<br />the one on the right detects the black line | Rotate right |
-| Line-tracking sensor <br />in the middle <br />detects the black line | Both the left and right  line-tracking sensors detect white lines<br />Both the left and right line-tracking sensors detect  the black line | Move forward |
-| Line-tracking sensor<br />in the middle <br />detects white lines | Line-tracking sensor on the left detects the black line<br />the one on the right detects white lines | Rotate left  |
-| Line-tracking sensor<br />in the middle <br />detects white lines | Line-tracking sensor on the left detects white lines<br />the one on the right detects the black line | Rotate right |
-| Line-tracking sensor<br />in the middle <br />detects white lines | Both the left and right  line-tracking sensors detect white lines<br />Both the left and right line-tracking sensors detect  the black line |     Stop     |
+| Spurverfolgungssensor <br />in der Mitte <br />erkennt die schwarze Linie | Spurverfolgungssensor links erkennt die schwarze Linie<br />der rechte erkennt weiße Linien | Links drehen  |
+| Spurverfolgungssensor <br />in der Mitte <br />erkennt die schwarze Linie | Spurverfolgungssensor links erkennt weiße Linien<br />der rechte erkennt die schwarze Linie | Rechts drehen |
+| Spurverfolgungssensor <br />in der Mitte <br />erkennt die schwarze Linie | Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen weiße Linien<br />Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen die schwarze Linie | Vorwärts fahren |
+| Spurverfolgungssensor<br />in der Mitte <br />erkennt weiße Linien | Spurverfolgungssensor links erkennt die schwarze Linie<br />der rechte erkennt weiße Linien | Links drehen  |
+| Spurverfolgungssensor<br />in der Mitte <br />erkennt weiße Linien | Spurverfolgungssensor links erkennt weiße Linien<br />der rechte erkennt die schwarze Linie | Rechts drehen |
+| Spurverfolgungssensor<br />in der Mitte <br />erkennt weiße Linien | Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen weiße Linien<br />Sowohl der linke als auch der rechte Spurverfolgungssensor erkennen die schwarze Linie |     Stopp     |
 
-#### **(2)Flow chart:**
+#### **(2)Flussdiagramm:**
 
 ![](media/wps11.png)
 
-#### **(3)Connection Diagram:**
+#### **(3)Anschlussdiagramm:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Test Code:**
+#### **(4)Testcode:**
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop bearbeiten, wie unten gezeigt
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -50,15 +50,15 @@ You can also drag blocks to edit your code, as shown below
 
 （8）![](media/fec93c7b8b089de709fd50575931519c.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Schließen Sie das Bluetooth-Modul nicht an, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/294ae4c01072e34b58a334912c90083a.png)
 
 
-#### **(5)Test Results:**
+#### **(5)Testergebnisse:**
 
-After uploading the test code successfully and powering on, the smart car moves along the black line.
+Nach dem erfolgreichen Hochladen des Testcodes und dem Einschalten der Stromversorgung fährt das Smart Car der schwarzen Linie entlang.
 
 ![](./media/img-20240117094129.png)

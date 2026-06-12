@@ -1,30 +1,30 @@
-### Project 13: Move-in-Confined-Space Tank
+### Projekt 13: Panzer – Bewegung im begrenzten Raum
 
 
-#### **(1)Description:**
+#### **(1) Beschreibung:**
 
-The ultrasonic sound-following and obstacle avoidance functions of the smart car have been introduced in previous projects. Here, we intend to combine the knowledge from the previous courses to confine the smart car to move within a certain space. In the experiment, we use the line-tracking sensor to detect whether there is a black line around the smart car, and then control the rotation of the two motors according to the detection results, so as to lock the smart car in a circle drawn with a black line.
+Die Ultraschall-Verfolgungsfunktion und die Hindernisumfahrungsfunktion des Smart Cars wurden in vorherigen Projekten vorgestellt. Hier beabsichtigen wir, das Wissen aus den vorherigen Kursen zu kombinieren, um das Smart Car auf einen bestimmten Bereich zu beschränken. Im Experiment verwenden wir den Linienverfolgungssensor, um zu erkennen, ob sich eine schwarze Linie um das Smart Car befindet, und steuern dann die Drehung der beiden Motoren entsprechend der Erkennungsergebnisse, um das Smart Car innerhalb eines mit einer schwarzen Linie gezeichneten Kreises zu halten.
 
-The specific logic of the smart car is shown in the table below:
+Die spezifische Logik des Smart Cars ist in der folgenden Tabelle dargestellt:
 
 ![](media/image-20230525114604923.png)
 
-|                         Condition                         |                         Movement                          |
+|                         Bedingung                         |                         Bewegung                          |
 | :-------------------------------------------------------: | :-------------------------------------------------------: |
-| If one of three line tracking sensors detects black lines | Go back（set PWM to 150）Then turn left（set PWM to 150） |
-|             None of them detects black lines              |               Go forward（set PWM to 100）                |
+| Wenn einer der drei Linienverfolgungssensoren schwarze Linien erkennt | Zurückfahren (PWM auf 150 setzen), dann links drehen (PWM auf 150 setzen) |
+|             Keiner von ihnen erkennt schwarze Linien              |               Vorwärts fahren (PWM auf 100 setzen)                |
 
-#### **(2)Flow chart**
+#### **(2) Flussdiagramm**
 
 ![](media/b3c30f92cb78d4c2a4a8bd746aef24e1.png)
 
-#### **(3)Connection Diagram:**
+#### **(3) Anschlussdiagramm:**
 
 ![](media/34c48ca77307761e5ce0b1a1fb202201.png)
 
-#### **(4)Test Code:**
+#### **(4) Testcode:**
 
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt
 
 （1）![](media/6eb13569aaa7bf560f62049df28b51db.png)
 
@@ -44,14 +44,14 @@ You can also drag blocks to edit your code, as shown below
 
 （9）![](media/b919eb2b47ee87ae36e21099e754e8a1.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es zu Konflikten mit der seriellen Bluetooth-Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/e656126c11bb8ebe7b6b0df8f22e7a79.png)
 
-#### **(5)Test Results:**
+#### **(5) Testergebnisse:**
 
-After uploading the test code successfully and powering up, the smart car moves in a circle drawn with a black line.
+Nachdem der Testcode erfolgreich hochgeladen und das Gerät eingeschaltet wurde, bewegt sich das Smart Car innerhalb eines mit einer schwarzen Linie gezeichneten Kreises.
 
 ![](./media/img-20240117094034.png)

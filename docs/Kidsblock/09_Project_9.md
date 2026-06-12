@@ -1,98 +1,96 @@
-### Project 9: 8*16 Facial Expression LED Dot Matrix
+### Projekt 9: 8*16 LED-Punktmatrix für Gesichtsausdrücke
 
-#### **(1)Description:**
+#### **(1)Beschreibung:**
 
-Won’t it be fun if a expression board is added to the robot? And the Keyestudio 8*16 LED dot matrix can do the trick. With the help of it, you could design facial expressions, images, patterns and other displays by yourselves.
+Wäre es nicht toll, wenn dem Roboter ein Ausdrucks-Display hinzugefügt wird? Die Keyestudio 8*16 LED-Punktmatrix kann genau das leisten. Mit ihrer Hilfe können Sie selbst Gesichtsausdrücke, Bilder, Muster und andere Anzeigen gestalten.
 
-The 8*16 LED board comes with 128 LEDs. The data of the microprocessor (Arduino) communicates with the AiP1640 through a two-wire bus interface. Therefore, it can control the on and off of 128 LEDs on the module, so as to make the dot matrix on the module to display the pattern you need. A HX-2.54 4Pin cable is provided for your convenience of wiring.
+Das 8*16 LED-Board verfügt über 128 LEDs. Die Daten des Mikroprozessors (Arduino) kommunizieren mit dem AiP1640 über eine Zwei-Draht-Busschnittstelle. Damit kann er das Ein- und Ausschalten von 128 LEDs auf dem Modul steuern, sodass die Punktmatrix auf dem Modul das gewünschte Muster anzeigt. Ein HX-2.54 4Pin-Kabel wird für Ihre Bequemlichkeit bei der Verkabelung mitgeliefert.
 
-#### **(2)Parameters:**
+#### **(2)Parameter:**
 
--   Working voltage: DC 3.3-5V
+-   Betriebsspannung: DC 3,3–5 V
 
--   Power loss: 400mW
+-   Leistungsaufnahme: 400 mW
 
--   Oscillation frequency: 450KHz
+-   Schwingungsfrequenz: 450 KHz
 
--   Drive current: 200mA
+-   Treiberstrom: 200 mA
 
--   Working temperature: -40\~80℃
+-   Betriebstemperatur: -40\~80℃
 
--   Communication mode: two-wire bus
+-   Kommunikationsmodus: Zwei-Draht-Bus
 
-#### **(3)Knowledge:**
+#### **(3)Wissenswertes:**
 
-**Circuit of the 8\*16 LED dot matrix**
+**Schaltkreis der 8\*16 LED-Punktmatrix**
 
 ![](media/edf6c77d05904eebbaa89d557e9e9c1a.png)
 
-**Principle of the 8\*16 LED dot matrix**
+**Funktionsprinzip der 8\*16 LED-Punktmatrix**
 
-How to control each LED of the 8\*16 dot matrix? It is known that each byte has 8 bits and each bit is 0 or 1. when it is 0, LED is off while when it is 1 LED is on. One byte can control one column of the LED,and naturally 16 bytes can control 16 columns of LEDs, that’s the 8\*16 dot matrix.
+Wie steuert man jede LED der 8*16-Punktmatrix? Es ist bekannt, dass jedes Byte 8 Bits hat und jedes Bit 0 oder 1 ist. Wenn es 0 ist, ist die LED aus, wenn es 1 ist, ist die LED an. Ein Byte kann eine Spalte der LEDs steuern, und entsprechend können 16 Bytes 16 Spalten von LEDs steuern – das ist die 8*16-Punktmatrix.
 
-**Pins description and communication protocol**
+**Pin-Beschreibung und Kommunikationsprotokoll**
 
-The data of the microprocessor (Arduino) communicates with the AiP1640 through a two-wire bus cable.
+Die Daten des Mikroprozessors (Arduino) kommunizieren mit dem AiP1640 über ein Zwei-Draht-Buskabel.
 
-The communication protocol diagram is as follows (SCLK) is SCL, (DIN) is SDA.
+Das Kommunikationsprotokoll-Diagramm ist wie folgt: (SCLK) ist SCL, (DIN) ist SDA.
 
 ![](media/ea2bab37f23c09453c680590b84653d6.png)
 
-①The starting condition for data input: SCL is high level and SDA changes from high to low.
+①Die Startbedingung für die Dateneingabe: SCL ist High-Pegel und SDA wechselt von High zu Low.
 
-②For data command setting, there are methods as shown in the figure below.
+②Für die Datenbefehls-Einstellung gibt es Methoden, wie in der folgenden Abbildung gezeigt.
 
-In our sample program, select the way to **add 1 to the address automatically**, the binary value is 0100 0000 and the corresponding hexadecimal value is 0x40.
+In unserem Beispielprogramm wird die Methode **Adresse automatisch um 1 erhöhen** gewählt; der Binärwert ist 0100 0000 und der entsprechende Hexadezimalwert ist 0x40.
 
 ![](media/image-20230907161100692.png)
 
-③For address command setting, the address can be selected as shown below.
+③Für die Adressbefehls-Einstellung kann die Adresse wie unten gezeigt ausgewählt werden.
 
-The first 00H is selected in our sample program, and the binary number 1100 0000 corresponds to the hexadecimal 0xc0.
+Im Beispielprogramm wird die erste Adresse 00H ausgewählt, und die Binärzahl 1100 0000 entspricht dem Hexadezimalwert 0xc0.
 
 ![](media/image-20230907161152467.png)
 
+④Die Anforderung für die Dateneingabe ist, dass bei High-Pegel von SCL während der Dateneingabe das Signal auf SDA unverändert bleiben muss. Nur wenn das Taktsignal auf SCL Low-Pegel hat, kann das Signal auf SDA geändert werden. Die Dateneingabe erfolgt zuerst mit dem niedrigsten Bit und zuletzt mit dem höchsten Bit.
 
-④The requirement for data input is that when SCL is at high level when inputting data, the signal on SDA must remain unchanged. Only when the clock signal on SCL is at low level, can the signal on SDA be changed. The input of data is the low bit first, and the high bit later.
+⑤Die Bedingung für das Ende der Datenübertragung ist, dass wenn SCL auf Low-Pegel und SDA auf Low-Pegel ist und SCL auf High-Pegel wechselt, der Pegel von SDA auf High wechselt.
 
-⑤The condition for the end of data transmission is that when SCL is at low level, SDA at low level and SCL at high level, the level of SDA becomes high.
+⑥Anzeigesteuerung: verschiedene Pulsbreiten einstellen; die Pulsbreite kann wie in der folgenden Abbildung gezeigt ausgewählt werden.
 
-⑥Display control, set different pulse width, pulse width can be selected as shown in the figure below.
-
-In the example, the pulse width is 4/16, and the hexadecimal corresponding to 1000 1010 is 0x8A.
+Im Beispiel beträgt die Pulsbreite 4/16, und das Hexadezimaläquivalent von 1000 1010 ist 0x8A.
 
 ![](media/image-20230907161220995.png)
 
-**Instructions for the use of modulus tool**
+**Anleitung zur Verwendung des Modulus-Tools**
 
-The dot matrix tool uses the online version, and the link is: <http://dotmatrixtool.com/#>
+Das Punktmatrix-Tool verwendet die Online-Version, der Link lautet: <http://dotmatrixtool.com/#>
 
-①Enter the link and the page appears as shown below
+①Rufen Sie den Link auf, und die Seite erscheint wie unten abgebildet.
 
 ![](media/354693b5679a2615c62e99b7025d6355.png)
 
-②The dot matrix is 8\*16, so adjust the height to 8 and width to 16, as shown in the figure below.
+②Die Punktmatrix ist 8\*16, passen Sie daher die Höhe auf 8 und die Breite auf 16 an, wie in der folgenden Abbildung gezeigt.
 
 ![](media/5f0278d66ade370e871b447d360d6e7b.png)
 
-③Generate hexadecimal data from the pattern.
+③Hexadezimaldaten aus dem Muster generieren.
 
-As shown in the figure below, press the left mouse button to select, right click to cancel; draw the pattern you want, click Generate, and the hexadecimal data we need will be generated.
+Wie in der folgenden Abbildung gezeigt: linke Maustaste drücken zum Auswählen, rechtsklicken zum Abbrechen; zeichnen Sie das gewünschte Muster, klicken Sie auf Generate, und die benötigten Hexadezimaldaten werden generiert.
 
 ![](media/586e88bf13c61b0918046437ed7f6796.png)
 
-#### **(4)Connection Diagram:**
+#### **(4)Anschlussdiagramm:**
 
 ![](media/cec50fec4a335b6922e4c6694a133bc1.png)
 
-The GND, VCC, SDA, and SCL of the 8x16 LED light board are respectively connected to the G(GND), V (VCC), A4 and A5 of the expansion board for two-wire serial communication.
+GND, VCC, SDA und SCL des 8x16 LED-Boards werden jeweils mit G(GND), V(VCC), A4 und A5 der Erweiterungsplatine für die serielle Zwei-Draht-Kommunikation verbunden.
 
-(<span style="color: rgb(255, 76, 65);">Note:</span> though it is connected with the IIC pin of Arduino, this module is not for IIC communication. And the IO port here is to simulate I2C communication and can be connected with any two pins )
+(<span style="color: rgb(255, 76, 65);">Hinweis:</span> Obwohl es mit dem IIC-Pin des Arduino verbunden ist, ist dieses Modul nicht für die IIC-Kommunikation vorgesehen. Der IO-Port hier simuliert die I2C-Kommunikation und kann mit beliebigen zwei Pins verbunden werden.)
 
-#### **(5)Test Code:**
+#### **(5)Testcode:**
 
-
-You can also drag blocks to edit your code, as shown below
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 ![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -100,43 +98,43 @@ You can also drag blocks to edit your code, as shown below
 
 ![](media/0f0df06e3ed2adbbe3ffaa20dd3fa0a5.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/75e6f65c9a299868d37544ac42c54f66.png)
 
-#### **(6)Test Results:**
+#### **(6)Testergebnisse:**
 
-After uploading the test code successfully, wire up, turn the DIP switch to the ON end and power up, a smile-shaped pattern shows on the dot matrix.
+Nachdem der Testcode erfolgreich hochgeladen wurde, verkabeln Sie alles, drehen Sie den DIP-Schalter auf die ON-Seite und schalten Sie die Stromversorgung ein. Auf der Punktmatrix erscheint ein lächelndes Muster.
 
 ![](media/0fd4831db288e04e75828346ea66a3f5.png)
 
-#### **(7)Extension Practice:**
+#### **(7)Erweiterungsübung:**
 
-We use the modulus tool we just learned, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), to make the dot matrix display the pattern start , go forward, and stop and then clear the pattern. The time interval is 2000 ms.
+Wir verwenden das gerade erlernte Modulus-Tool, [http://dotmatrixtool.com/#](http://dotmatrixtool.com/#), damit die Punktmatrix die Muster Start, Vorwärts fahren und Stopp anzeigt und dann das Muster löscht. Das Zeitintervall beträgt 2000 ms.
 
 ![](media/31ab1346c58438ca95c990e4ff963c0d.png)
 
-Block to show smile face![](media/1702a82ce685e3e7da7b136cbc51e718.png)
+Block zum Anzeigen eines lächelnden Gesichts![](media/1702a82ce685e3e7da7b136cbc51e718.png)
 
-Code to show expression![](media/bae6801afc8fbcc0e7a70c243559c266.png)
+Code zum Anzeigen eines Ausdrucks![](media/bae6801afc8fbcc0e7a70c243559c266.png)
 
-Block to show heart![](media/dcaa414f16d10068d2c3627959141da6.png)
+Block zum Anzeigen eines Herzens![](media/dcaa414f16d10068d2c3627959141da6.png)
 
-Code for moving forward![](media/8fc218e6b35826aa31f5e00f61414651.png)
+Code für Vorwärtsfahren![](media/8fc218e6b35826aa31f5e00f61414651.png)
 
-Block for going back![](media/043abae4540c578f93772ed9b6648e60.png)
+Block für Rückwärtsfahren![](media/043abae4540c578f93772ed9b6648e60.png)
 
-Block for turning left![](media/7b3d80a76228ee5b23555af17269a02d.png)
+Block für Linksdrehen![](media/7b3d80a76228ee5b23555af17269a02d.png)
 
-Block for turning right![](media/5a84b3538a62367a8f35cc59071c0bda.png)
+Block für Rechtsdrehen![](media/5a84b3538a62367a8f35cc59071c0bda.png)
 
-Block for stopping![](media/733bd1f96e1c9d116033a317cb507fac.png)
+Block zum Stoppen![](media/733bd1f96e1c9d116033a317cb507fac.png)
 
-Block for clearing up![](media/06d37680acd61c9c5c4113c78c985eca.png)
+Block zum Löschen![](media/06d37680acd61c9c5c4113c78c985eca.png)
 
-You can also drag blocks to edit your code, as shown below.
+Sie können auch Blöcke per Drag-and-Drop verschieben, um Ihren Code zu bearbeiten, wie unten gezeigt.
 
 （1）![](media/e346413e7f38f5f6368dd8262f173514.png)
 
@@ -144,13 +142,13 @@ You can also drag blocks to edit your code, as shown below.
 
 （3）![](media/e72e75122897b0ef930196f762080623.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-(<span style="color: rgb(255, 76, 65);">**Note:**</span> Do not connect the Bluetooth module before uploading the code, because uploading the code also uses serial communication, and there may be conflicts with the Bluetooth serial communication, which can cause the upload to fail.)
+(<span style="color: rgb(255, 76, 65);">**Hinweis:**</span> Verbinden Sie das Bluetooth-Modul nicht, bevor Sie den Code hochladen, da das Hochladen des Codes ebenfalls die serielle Kommunikation verwendet und es möglicherweise zu Konflikten mit der Bluetooth-seriellen Kommunikation kommen kann, was dazu führen kann, dass das Hochladen fehlschlägt.)
 
 ![](media/dee30ed46775feb634d4e8e4ec0a189a.png)
 
-Upload the code to the development board, the 8\*16 board will show following patters.
+Laden Sie den Code auf das Entwicklungsboard hoch; das 8\*16-Board zeigt folgende Muster an.
 
 ![](./media/image-20250709134319784.png)
 
