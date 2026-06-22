@@ -1,10 +1,4 @@
-* **Bezüglich des Sprachwechsels im Tutorial beachten Sie bitte das folgende animierte Bild.**
-* **Concernant le changement de langue dans le tutoriel, veuillez vous référer à l'image animée suivante.**
 * **En relación con el cambio de idioma en el tutorial, consulte la siguiente imagen animada.**
-* **Per quanto riguarda il cambio di lingua nel tutorial, fare riferimento alla seguente immagine animata.**
-* **Jeśli chodzi o przełączanie języka w samouczku, zapoznaj się z poniższym obrazkiem animowanym.**
-* **Wat betreft het veranderen van de taal in de tutorial, zie de volgende geanimeerde afbeelding.**
-* **Angående språkbytet i handledningen, vänligen se följande animerade bild.**
 
 ![](./media/1234567.gif)
 
