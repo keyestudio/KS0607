@@ -34,7 +34,7 @@ Sluit eerst de bedrading aan.
 
 **Stap 3**
 
-![KS0607_28](media\KS0607_28.png)
+![KS0607_28](./media/KS0607_28.png)
 
 ![KS0607_29](./media/KS0607_29-177909268352217.png)
 
